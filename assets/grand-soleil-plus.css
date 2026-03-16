@@ -336,3 +336,21 @@ color:#FAF9F7;
     column-gap: 0.2em;
   }
 }
+
+.stepper-hero_gsp{
+    border-radius: 50px;
+    background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
+    backdrop-filter: blur(48px);
+}
+
+.hidden_gs{
+    display: none;
+}
+
+.view_gsp{
+    display: block;
+}
+
+.bg-141312_gsp{
+    background-color: #141312;
+}

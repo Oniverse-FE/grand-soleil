@@ -1,306 +1,181 @@
-<div class="flex flex-col text-white gap-6 lg:gap-12 pb-[32px] lg:pb-[72px]">
+{% assign news_blog = blogs['news'] %}
+{% assign total_news = news_blog.articles_count %}
 
-  <!-- Title + Arrows -->
-  <div class="px-4 md:px-12 lg:px-24 m-custom relative flex justify-between items-center">
-    <div class="uppercase text-4xl md:text-[56px] md:leading-[48px] h8">
-      {{ section.settings.highlight-news-title }}
-    </div>
-    <div class="arrow-news absolute right-4 md:right-12 lg:right-24 bottom-0 flex gap-2">
-      <button class="prev-news p-2 rounded-full border border-white hover:bg-white/40 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-          <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round" />
-        </svg>
-      </button>
-      <button class="next-news p-2 rounded-full border border-white hover:bg-white/40 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-          <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round" />
-        </svg>
-      </button>
-    </div>
-  </div>
+<div class="bg_gs bg_gsp flex flex-col lg:flex-row overflow-hidden" style="background-color: {{ section.settings.news_background_color }};">
 
-  <!-- News Slider -->
-  <div class="news-slider flex gap-3 lg:gap-4 px-4 md:px-12 lg:px-24 overflow-x-auto scrollbar-hide">
-    {% assign sorted_articles = blogs.news.articles | sort: "created_at" | reverse %}
-    {% assign counter = 0 %}
-    {% for article in sorted_articles %}
-      {% if article.tags contains 'highlight' %}
-        {% if counter < 5 %}
-        <a href="{{ article.url }}" class="flex-shrink-0 flex flex-col gap-4 pb-6 lg:pb-8 bg-antracite rounded-[10px]
-          w-[343px] md:w-[316px] lg:w-[405px] xl:w-[430px] hover:opacity-90 transition-opacity duration-200">
-
-          <!-- Image -->
-          <div class="h-[144px] lg:h-[178px] w-full">
-            {% if article.image %}
-              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" class="h-[144px] lg:h-[178px] w-full object-cover rounded-t-[10px]">
-            {% endif %}
-          </div>
-
-          <!-- Content -->
-          <div class="flex flex-col px-4 lg:px-8 h-full gap-4">
-            <div class="flex flex-col gap-2">
-              <div class="body-medium text-[12px] leading-[18px] lg:text-sm lg:leading-5">
-                {{ article.metafields.custom.news_data | date: "%d.%m.%Y" }}
-              </div>
-              <div class="uppercase h8 lg:font-bold text-[26px] leading-8 lg:text-[42px] lg:leading-12 3">
-                {{ article.title }}
-              </div>
-              <div class="body-regular mb-[16px] lg:mb-[40px] text-sm leading-5 lg:text-[16px] lg:leading-[22px] line-clamp-3 lg:line-clamp-3">
-                {{ article.content | strip_html }}
-              </div>
-            </div>
-            <div class="mt-auto body-semibold text-[14px] lg:text-[16px] w-fit uppercase group animation">
-              <span class="relative flex flex-row gap-1 pb-1">
-                {{ section.settings.read-news-label }}
-                <span class="underline cta-underline"></span>
-              </span>
-            </div>
-
-
-
-
-          </div>
-        </a>
-        {% assign counter = counter | plus: 1 %}
-        {% endif %}
+  {% comment %} Colonna Testi Sinistra {% endcomment %}
+  <div class="flex flex-col justify-start items-start lg:w-[35%] gap-4 px-4 py-8 lg:py-[60px] lg:px-[60px] z-20 bg-inherit">
+      {% if section.settings.subtitle %}
+      <div class="heading-lg_gs heading-lg_gsp" style="color: {{ section.settings.subtitle_color }};">
+          {{ section.settings.subtitle }}
+      </div>
       {% endif %}
-    {% endfor %}
+      <div class="text-left flex heading-lg_gs heading-lg_gsp" style="color: {{ section.settings.title_color }};">
+          {{ section.settings.news-slider-title }}
+      </div>
+
+      {% if section.settings.content %}
+      <div class="body-lg_gs body-lg_gsp" style="color: {{ section.settings.content_color }};">
+          {{ section.settings.content }}
+      </div>
+      {% endif %}
+
+      <div class="flex flex-col gap-4 lg:flex-row mt-4">
+          <a href="{{ news_blog.url }}"
+             class="cta-all-news link-lg_gsp link-ld_gs text-center cta-blue_gs cta-truffle_gsp px-6 py-4">
+             {{ section.settings.news-slider-cta-all-label }}
+          </a>
+      </div>
   </div>
 
-  <!-- CTA Button sotto le card -->
-  {% if section.settings.show_cta %}
-  <div class="px-4 lg:px-24 flex justify-center body-semibold text-[16px] leading-[14px] w-full lg:w-fit mx-auto mt-4 lg:mt-4">
-    <a href="{{ section.settings.link-to-news-page.url }}" class="mobile-w-full rounded-4xl py-3.5 px-7 block text-center" style="{% if section.settings.all-news-cta-bg-transparent == true %}background-color:transparent;{% else %}background-color:{{ section.settings.all-news-cta-bg-color }};{% endif %} color:{{ section.settings.all-news-cta-color }}; border: 1px solid {{ section.settings.all-news-cta-border-color }}; backdrop-filter: blur(40px);">
-      {{ section.settings.all-news-pg }}
-    </a>
+  {% comment %} Slider News {% endcomment %}
+  <div class="flex-1 lg:w-[65%] lg:mt-10 mb-[32px] lg:mb-[60px] relative">
+    
+    {% comment %} Container Card {% endcomment %}
+    <div id="news-container"
+         class="flex flex-row gap-4 lg:gap-6 overflow-x-auto scroll-smooth px-4 lg:px-0 no-scrollbar">
+
+      {% for article in news_blog.articles limit: 12 %}
+          <div class="news-card flex-shrink-0 group relative overflow-hidden rounded-[10px] cursor-pointer shadow-lg"
+               onclick="window.location.href='{{ article.url }}'">
+              
+              <div class="aspect-[4/5] w-full overflow-hidden">
+                  {% if article.image %}
+                    <img src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title }}"
+                         class="w-full h-full object-cover transition-transform duration-700 ease-in-out transform group-hover:scale-110">
+                  {% else %}
+                    <div class="w-full h-full bg-neutral-800 flex items-center justify-center"></div>
+                  {% endif %}
+                  
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80"></div>
+                  
+                  <div class="absolute inset-0 p-6 flex flex-col justify-end gap-2">
+                      <span class="link-md_gs link-md_gsp text-black bg-EBEFF2_gs bg_gsp px-3 py-[6px] rounded-[50px min-w-[85px]"
+                            style="color: {{ section.settings.date_article_color }};">
+                          {{ article.published_at | date: "%d %b %Y" }}
+                      </span>
+                      
+                      <h3 class="heading-sm_gs heading-sm_gsp text-color_gs text-color_gsp">
+                          {{ article.title }}
+                      </h3>
+
+                      <div class="cta-news-item text-[14px] text-white underline opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 mt-2">
+                         {{ section.settings.news-cta-label }}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+
+    {% comment %} Footer Slider: Contatore e Frecce {% endcomment %}
+    <div class="flex items-center justify-between mt-8 px-4 lg:pr-10">
+        
+        {% comment %} Contatore (Sinistra) {% endcomment %}
+        <div id="news-counter" class="tt-norms-pro text-[16px] lg:text-[18px] font-medium tracking-widest" style="color: {{ section.settings.date_article_color }};">
+            <span id="current-index">1</span> / <span id="total-count">{{ total_news | at_most: 12 }}</span>
+        </div>
+
+        {% comment %} Frecce (Destra) {% endcomment %}
+        <div class="flex gap-3">
+            <button id="prev-news" class="arrow-btn rounded-full flex items-center justify-center bg-black/40 hover:bg-black/60 border border-white/20 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 h-5 lg:w-6 lg:h-6">
+                    <path d="M15.8228 4.88056C16.1527 4.55561 15.9191 4 15.4525 4C15.313 4 15.1792 4.05484 15.0809 4.15236L8.59473 10.5858C7.80176 11.3668 7.80176 12.6332 8.59473 13.4142L15.1324 19.8535C15.2276 19.9473 15.3567 20 15.4914 20C15.9436 20 16.1701 19.4614 15.8503 19.1464L9.31264 12.7071C8.91615 12.3166 8.91615 11.6834 9.31264 11.2929L15.8228 4.88056Z" fill="white"/>
+                </svg>
+            </button>
+            <button id="next-news" class="arrow-btn rounded-full flex items-center justify-center bg-black/40 hover:bg-black/60 border border-white/20 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 h-5 lg:w-6 lg:h-6">
+                    <path d="M8.17719 19.1194C7.84728 19.4444 8.08094 20 8.5475 20C8.68703 20 8.82078 19.9452 8.9191 19.8476L15.4053 13.4142C16.1982 12.6332 16.1982 11.3668 15.4053 10.5858L8.86761 4.14646C8.7724 4.05268 8.64326 4 8.50862 4.00001C8.05638 4.00004 7.82992 4.5386 8.1497 4.85357L14.6874 11.2929C15.0839 11.6834 15.0839 12.3166 14.6874 12.7071L8.17719 19.1194Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
+    </div>
   </div>
-  {% endif %}
 </div>
 
 <style>
-/* --- Scrollbar & cursore (invariati) --- */
-.scrollbar-hide { 
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
-}
-.scrollbar-hide::-webkit-scrollbar { display: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-.news-slider {
-  cursor: grab;
-  cursor: -webkit-grab;
-}
-.news-slider.dragging {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-}
-.group {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-.group span {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background-color: white;
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: transform 2s ease;
-}
-.cta-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  opacity: 1;
-  background-color: white;
-  transform: translateX(0%);
-  transition: transform 2s ease;
-}
-.group:hover .underline {
-  transform: translateX(100%);
-}
-.group:hover .cta-underline {
-  animation: enter-line 1.2s ease forwards;
-  animation-delay: 0.8s;
-  opacity: 1;
-}
-@keyframes enter-line {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+.news-card { width: 100%; }
+@media (min-width: 1024px) { .news-card { width: calc((100% / 2) - 12px); } }
+@media (min-width: 1920px) { .news-card { width: calc((100% / 3) - 16px); } }
+
+.arrow-btn { width: 44px; height: 44px; cursor: pointer; }
+.arrow-btn.disabled { opacity: 0.2; pointer-events: none; }
+
+@media(max-width:1024px) {
+  .cta-news-item { opacity: 1; transform: none; }
+  .arrow-btn { width: 40px; height: 40px; }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.querySelector('.news-slider');
-  const prev = document.querySelector('.prev-news');
-  const next = document.querySelector('.next-news');
+    const container = document.getElementById('news-container');
+    const currentIndexEl = document.getElementById('current-index');
+    const prevBtn = document.getElementById('prev-news');
+    const nextBtn = document.getElementById('next-news');
+    const cards = container.querySelectorAll('.news-card');
 
-  if (!slider || !prev || !next) return;
+    function updateSlider() {
+        if (!container) return;
+        
+        // 1. Aggiorna lo stato delle frecce
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+        prevBtn.classList.toggle('disabled', scrollLeft <= 10);
+        nextBtn.classList.toggle('disabled', scrollLeft >= (scrollWidth - clientWidth) - 10);
 
-  const updateButtons = () => {
-    prev.disabled = slider.scrollLeft <= 0;
-    next.disabled = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth - 1;
-  };
+        // 2. Calcola l'indice corrente basato sulla card più visibile
+        let current = 1;
+        cards.forEach((card, index) => {
+            const cardLeft = card.offsetLeft - container.offsetLeft;
+            if (cardLeft <= scrollLeft + 50) {
+                current = index + 1;
+            }
+        });
+        currentIndexEl.textContent = current;
+    }
 
-  const scrollLeft = () => {
-    slider.scrollBy({ left: -slider.clientWidth * 0.8, behavior: 'smooth' });
-  };
+    function scrollByCard(direction) {
+        const cardWidth = cards[0].offsetWidth + 24; // width + gap
+        container.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
 
-  const scrollRight = () => {
-    slider.scrollBy({ left: slider.clientWidth * 0.8, behavior: 'smooth' });
-  };
+    container.addEventListener('scroll', updateSlider);
+    window.addEventListener('resize', updateSlider);
+    
+    prevBtn.onclick = () => scrollByCard(-1);
+    nextBtn.onclick = () => scrollByCard(1);
 
-  prev.addEventListener('click', scrollLeft);
-  next.addEventListener('click', scrollRight);
-
-  slider.addEventListener('scroll', updateButtons);
-  updateButtons();
-
-  // --- Gestione drag SOLO desktop ---
-  if (window.matchMedia('(pointer: fine)').matches) {
-    let isDown = false;
-    let startX = 0;
-    let scrollStart = 0;
-    let isDragging = false;
-
-    slider.addEventListener('mousedown', (e) => {
-      isDown = true;
-      isDragging = false;
-      startX = e.clientX;
-      scrollStart = slider.scrollLeft;
-      slider.classList.add('cursor-grabbing');
-      e.preventDefault();
-    });
-
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('cursor-grabbing');
-      setTimeout(() => { isDragging = false; }, 50);
-    });
-
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('cursor-grabbing');
-    });
-
-    slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      const moveX = startX - e.clientX;
-      if (Math.abs(moveX) > 5) {
-        isDragging = true;
-      }
-      slider.scrollLeft = scrollStart + moveX;
-    });
-
-    // blocca click se trascinato
-    slider.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (isDragging) {
-          e.preventDefault();
-        }
-      });
-    });
-  }
+    updateSlider(); // Init
 });
 </script>
 
 {% schema %}
 {
-  "name": "News",
-  "settings": [
-    {
-      "type": "header",
-      "content": "General Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "highlight-news-hero",
-      "label": "Is this a Hero section?",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "highlight-news-title",
-      "label": "Title",
-      "default": "Ultime novità"
-    },
-    {
-      "type": "text",
-      "id": "read-news-label",
-      "label": "Link to article label",
-      "default": "leggi l'articolo"
-    },
-    {
-      "type": "page",
-      "id": "link-to-news-page",
-      "label": "Select the page about all the news"
-    },
-    {
-      "type": "text",
-      "id": "all-news-pg",
-      "label": "Link to article page",
-      "default": "Leggi tutte le news"
-    },
-    {
-      "type": "header",
-      "content": "CTA Settings"
-    },
-    {
-      "type": "color",
-      "id": "all-news-cta-bg-color",
-      "label": "Bg color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "all-news-cta-color",
-      "label": "Text color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "all-news-cta-border-color",
-      "label": "Border color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "text",
-      "id": "all-news-cta-label",
-      "label": "Label",
-      "default": "Discover more"
-    },
-    {
-      "type": "checkbox",
-      "id": "all-news-cta-bg-transparent",
-      "label": "Bg transparent",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "show_cta",
-      "label": "Mostra CTA",
-      "default": true
-    }
-  ],
-  "presets": [
-    {
-      "name": "News",
-      "category": "News Sections"
-    }
-  ]
+"name": "News Slider Footer Nav",
+"settings": [
+{ "type": "color", "id": "news_background_color", "label": "Background", "default": "#1a1a1a" },
+{ "type": "color", "id": "title_article_color", "label": "Article title color", "default": "#fff" },
+{ "type": "color", "id": "date_article_color", "label": "Date/Counter color", "default": "#BEBEBE" },
+{ "type": "header", "content": "Subtitle" },
+{ "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Ultime News"  },
+{ "type": "color", "id": "subtitle_color", "label": "Subtitle Color", "default": "#BEBEBE" },
+{ "type": "header", "content": "Title" },
+{ "type": "text","id": "news-slider-title", "label": "Title", "default": "LEGGI IL BLOG" },
+{ "type": "color", "id": "title_color", "label": "Title Color", "default": "#fff" },
+{ "type": "header", "content": "Content" },
+{ "type": "textarea", "id": "content", "label": "Content" },
+{ "type": "color", "id": "content_color", "label": "Content Color", "default": "#fff" },
+{ "type": "header", "content": "CTA Labels" },
+{ "type": "text", "id": "news-cta-label", "label": "Card CTA Label", "default": "Leggi l'articolo" },
+{ "type": "text", "id": "news-slider-cta-all-label", "label": "All News Label", "default": "Vedi tutto" }
+],
+"presets": [
+{
+"name": "News Slider Footer Nav","category":"Home page"
+}
+]
 }
 {% endschema %}

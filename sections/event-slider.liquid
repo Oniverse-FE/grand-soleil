@@ -5,7 +5,7 @@
     </div>
 
     <!-- slider -->
-    <div class="flex flex-col w-full justify-center items-start gap-6 lg:gap-8 bg-dark_gs bg-beige_gsp text-color_gs text-color_gsp p-4 md:p-8 lg:p-10">
+    <div class="flex flex-col w-full justify-center items-start gap-6 lg:gap-8 text-color_gs text-color_gsp">
         {% assign now_timestamp = 'now' | date: '%s' %}
         {% for article in blogs['events'].articles %}
             {% assign end_date_str = article.metafields.custom.event_end_date %}
@@ -13,7 +13,7 @@
                 {% assign end_date_timestamp = end_date_str | date: '%s' %}
                 {% if end_date_timestamp >= now_timestamp %}
 
-                    <div class="flex flex-col lg:flex-row gap-4 xl:gap-10 w-full cursor-pointer"
+                    <div class="flex flex-col lg:flex-row gap-4 xl:gap-10 w-full cursor-pointer bg-dark_gs bg-beige_gsp p-4 md:p-8 lg:p-10"
                          onclick="window.location.href='{{ article.url }}'">
 
                         <!-- title + info + links + booking -->
@@ -47,8 +47,8 @@
                             <!-- CTA buttons -->
                             <div class="w-full flex flex-col gap-4 pb-6 lg:pb-0 lg:flex-row">
                                 <!-- Discover More -->
-                                <div class="flex w-full">
-                                    <a href="{{ article.url }}" class="w-full text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6"> {{ section.settings.event-slider-cta2-label }}</a>
+                                <div class="flex w-full justify-end">
+                                    <a href="{{ article.url }}" class="w-full md:max-w-[207px] text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6"> {{ section.settings.event-slider-cta2-label }}</a>
                                 </div>
                             </div>
                         </div>
