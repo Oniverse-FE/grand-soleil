@@ -41,6 +41,24 @@
       "name": "Hero Banner",
       "settings": {}
     },
+    "text_and_image_WmYNYT": {
+      "type": "text-and-image",
+      "name": "Image and Text",
+      "settings": {
+        "imgandtext-image-left": false,
+        "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "imgandtext-cta_label1": "Scopri la GS Cup",
+        "imgandtext-cta_url1": "#",
+        "imgandtext-cta_label2": "TitleScopri la GS Cup",
+        "imgandtext-cta_url2": "#",
+        "imgandtext-title": "Grand Soleil Cup",
+        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
+        "padding_top": 40,
+        "padding_bottom": 96,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 56
+      }
+    },
     "sailing_story_wwLe3R": {
       "type": "sailing-story",
       "name": "Sailing story",
@@ -54,6 +72,25 @@
         "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
         "cta_text": "Leggi la sailing story",
         "cta_url": ""
+      }
+    },
+    "event_slider_yWwQkM": {
+      "type": "event-slider",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-cta1-bg-color": "#ffffff",
+        "event-slider-cta1-color": "#ffffff",
+        "event-slider-cta1-border-color": "#ffffff",
+        "event-slider-cta1-label": "Book an appointment",
+        "event-slider-cta1-bg-transparent": true,
+        "event-slider-cta2-bg-color": "#ffffff",
+        "event-slider-cta2-color": "#000000",
+        "event-slider-cta2-border-color": "#ffffff",
+        "event-slider-cta2-label": "Discover more",
+        "event-slider-cta2-bg-transparent": false,
+        "font_size_desk": "42px",
+        "font_size_mob": "36px"
       }
     },
     "text_image_with_background_pHwXNp": {
@@ -82,32 +119,14 @@
         "fd-cta_label2": "Chiedi informazioni",
         "fd-cta_link2": "#"
       }
-    },
-    "event_slider_yWwQkM": {
-      "type": "event-slider",
-      "name": "Future events",
-      "settings": {
-        "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-cta1-bg-color": "#ffffff",
-        "event-slider-cta1-color": "#ffffff",
-        "event-slider-cta1-border-color": "#ffffff",
-        "event-slider-cta1-label": "Book an appointment",
-        "event-slider-cta1-bg-transparent": true,
-        "event-slider-cta2-bg-color": "#ffffff",
-        "event-slider-cta2-color": "#000000",
-        "event-slider-cta2-border-color": "#ffffff",
-        "event-slider-cta2-label": "Discover more",
-        "event-slider-cta2-bg-transparent": false,
-        "font_size_desk": "42px",
-        "font_size_mob": "36px"
-      }
     }
   },
   "order": [
     "hero_banner_3kHJKY",
+    "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
+    "event_slider_yWwQkM",
     "text_image_with_background_pHwXNp",
-    "find_dealer_LkPTw9",
-    "event_slider_yWwQkM"
+    "find_dealer_LkPTw9"
   ]
 }
