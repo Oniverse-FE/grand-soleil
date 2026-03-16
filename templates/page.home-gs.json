@@ -9,37 +9,105 @@
  */
 {
   "sections": {
-    "blog_breadcrumb_hWzjPM": {
-      "type": "blog-breadcrumb",
-      "name": "Blog Breadcrumb",
+    "hero_banner_3kHJKY": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_kbmENK": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-title": "Titolo banner",
+            "content-title-color": "#000000",
+            "button_1_label": "Scopri di più",
+            "button_1_url": "",
+            "aria_label_btn1": "",
+            "button_2_label": "Contattaci",
+            "button_2_url": "",
+            "aria_label_btn2": "",
+            "button-1-bg-color": "#ffffff",
+            "button-1-text-color": "#000000",
+            "button-1-transparent": false,
+            "button-2-bg-color": "#000000",
+            "button-2-text-color": "#ffffff",
+            "button-2-transparent": true,
+            "button-1-border-color": "#ffffff",
+            "button-2-border-color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "content_kbmENK"
+      ],
+      "name": "Hero Banner",
+      "settings": {}
+    },
+    "sailing_story_wwLe3R": {
+      "type": "sailing-story",
+      "name": "Sailing story",
       "settings": {
-        "intermediate-page": "news",
-        "related-blog": "news"
+        "main_title": "Sailing story",
+        "link_text": "Vedi tutte le sailing story",
+        "link_url": "",
+        "main_image": "shopify://shop_images/Sailing_story_card.png",
+        "subtitle": "EPISODIO 1",
+        "inner_title": "To the Max",
+        "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
+        "cta_text": "Leggi la sailing story",
+        "cta_url": ""
       }
     },
-    "news_hub_eBeejC": {
-      "type": "news-hub",
-      "name": "News Hub",
+    "text_image_with_background_pHwXNp": {
+      "type": "text-image-with-background",
+      "name": "Box Testo e Immagine",
       "settings": {
-        "news-hub-title": "ALL THE LATEST NEWS FROM THE WORLD OF VANDUTCH",
-        "news-cta-read-more": "READ MORE",
-        "news-hub-search-placeholder": "Search for news",
-        "no-event-label": "We are sorry, there are currently no news items matching your search.",
-        "all-event-label": "View all news"
+        "image_position": "right",
+        "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+        "pretitle": "SERVICE & AFTER SALE",
+        "title": "Valore che dura nel tempo",
+        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
+        "button_label": "Scopri tutti i servizi",
+        "button_link": ""
       }
     },
-    "empty_space_rR9Ygy": {
-      "type": "empty-space",
-      "name": "Empty space",
+    "find_dealer_LkPTw9": {
+      "type": "find-dealer",
+      "name": "Find a dealer",
       "settings": {
-        "mobile-height": 144,
-        "desktop-height": 280
+        "fd-content_alignment": "center",
+        "fd-cta_position": "center",
+        "fd-title": "Trova un dealer",
+        "fd-text1": "L’esperienza dei nostri dealers è insostituibile. Trova il quello più vicino a te per saperne di più ed entrare nel mondo Grand Soleil Yachts.",
+        "fd-cta_label": "Contatta il dealer",
+        "fd-cta_link": "#",
+        "fd-cta_label2": "Chiedi informazioni",
+        "fd-cta_link2": "#"
+      }
+    },
+    "event_slider_yWwQkM": {
+      "type": "event-slider",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-cta1-bg-color": "#ffffff",
+        "event-slider-cta1-color": "#ffffff",
+        "event-slider-cta1-border-color": "#ffffff",
+        "event-slider-cta1-label": "Book an appointment",
+        "event-slider-cta1-bg-transparent": true,
+        "event-slider-cta2-bg-color": "#ffffff",
+        "event-slider-cta2-color": "#000000",
+        "event-slider-cta2-border-color": "#ffffff",
+        "event-slider-cta2-label": "Discover more",
+        "event-slider-cta2-bg-transparent": false,
+        "font_size_desk": "42px",
+        "font_size_mob": "36px"
       }
     }
   },
   "order": [
-    "blog_breadcrumb_hWzjPM",
-    "news_hub_eBeejC",
-    "empty_space_rR9Ygy"
+    "hero_banner_3kHJKY",
+    "sailing_story_wwLe3R",
+    "text_image_with_background_pHwXNp",
+    "find_dealer_LkPTw9",
+    "event_slider_yWwQkM"
   ]
 }
