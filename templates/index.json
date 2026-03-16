@@ -20,17 +20,19 @@
         "column_hhhndN": {
           "type": "column",
           "settings": {
-            "title": "",
+            "video_url": "shopify://files/videos/GrandSoleil.mp4",
+            "inner_image": "shopify://shop_images/g8.svg",
             "button_label": "Entra",
-            "link": ""
+            "link": "shopify://pages/grand-soleil"
           }
         },
         "column_FrTCgM": {
           "type": "column",
           "settings": {
-            "title": "",
+            "video_url": "shopify://files/videos/GrandSoleil.mp4",
+            "inner_image": "shopify://shop_images/logo.svg",
             "button_label": "Entra",
-            "link": ""
+            "link": "shopify://pages/grand-soleil-plus"
           }
         }
       },
