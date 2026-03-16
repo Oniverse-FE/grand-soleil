@@ -9,37 +9,24 @@
  */
 {
   "sections": {
-    "hero_banner_3kHJKY": {
-      "type": "hero-banner",
-      "blocks": {
-        "content_kbmENK": {
-          "type": "content",
-          "settings": {
-            "content-media": false,
-            "content-title": "Titolo banner",
-            "content-title-color": "#000000",
-            "button_1_label": "Scopri di più",
-            "button_1_url": "",
-            "aria_label_btn1": "",
-            "button_2_label": "Contattaci",
-            "button_2_url": "",
-            "aria_label_btn2": "",
-            "button-1-bg-color": "#ffffff",
-            "button-1-text-color": "#000000",
-            "button-1-transparent": false,
-            "button-2-bg-color": "#000000",
-            "button-2-text-color": "#ffffff",
-            "button-2-transparent": true,
-            "button-1-border-color": "#ffffff",
-            "button-2-border-color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "content_kbmENK"
-      ],
-      "name": "Hero Banner",
-      "settings": {}
+    "product_image_MeRpGm": {
+      "type": "product-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/Sailing_story_card.png",
+        "image_mobile": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
+    },
+    "subtitle_text_bgKxpn": {
+      "type": "subtitle-text",
+      "name": "Subtile & Text Scroll",
+      "settings": {
+        "simple-intro-title": "DUE ANIME, UN’UNICA ICONA",
+        "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto."
+      }
     },
     "text_and_image_WmYNYT": {
       "type": "text-and-image",
@@ -122,7 +109,8 @@
     }
   },
   "order": [
-    "hero_banner_3kHJKY",
+    "product_image_MeRpGm",
+    "subtitle_text_bgKxpn",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
     "event_slider_yWwQkM",
