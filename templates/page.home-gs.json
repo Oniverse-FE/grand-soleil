@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blog_breadcrumb_hWzjPM": {
+      "type": "blog-breadcrumb",
+      "name": "Blog Breadcrumb",
+      "settings": {
+        "intermediate-page": "news",
+        "related-blog": "news"
+      }
+    },
+    "news_hub_eBeejC": {
+      "type": "news-hub",
+      "name": "News Hub",
+      "settings": {
+        "news-hub-title": "ALL THE LATEST NEWS FROM THE WORLD OF VANDUTCH",
+        "news-cta-read-more": "READ MORE",
+        "news-hub-search-placeholder": "Search for news",
+        "no-event-label": "We are sorry, there are currently no news items matching your search.",
+        "all-event-label": "View all news"
+      }
+    },
+    "empty_space_rR9Ygy": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 144,
+        "desktop-height": 280
+      }
+    }
+  },
+  "order": [
+    "blog_breadcrumb_hWzjPM",
+    "news_hub_eBeejC",
+    "empty_space_rR9Ygy"
+  ]
+}
