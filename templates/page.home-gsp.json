@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_image_MeRpGm": {
+      "type": "product-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/Sailing_story_card.png",
+        "image_mobile": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
+    },
+    "subtitle_text_bgKxpn": {
+      "type": "subtitle-text",
+      "name": "Subtile & Text Scroll",
+      "settings": {
+        "simple-intro-title": "DUE ANIME, UN’UNICA ICONA",
+        "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto."
+      }
+    },
+    "text_and_image_WmYNYT": {
+      "type": "text-and-image",
+      "name": "Image and Text",
+      "settings": {
+        "imgandtext-image-left": false,
+        "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "imgandtext-cta_label1": "Scopri la GS Cup",
+        "imgandtext-cta_url1": "#",
+        "imgandtext-cta_label2": "TitleScopri la GS Cup",
+        "imgandtext-cta_url2": "#",
+        "imgandtext-title": "Grand Soleil Cup",
+        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
+        "padding_top": 40,
+        "padding_bottom": 96,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "sailing_story_wwLe3R": {
+      "type": "sailing-story",
+      "name": "Sailing story",
+      "settings": {
+        "main_title": "Sailing story",
+        "link_text": "Vedi tutte le sailing story",
+        "link_url": "",
+        "main_image": "shopify://shop_images/Sailing_story_card.png",
+        "subtitle": "EPISODIO 1",
+        "inner_title": "To the Max",
+        "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
+        "cta_text": "Leggi la sailing story",
+        "cta_url": ""
+      }
+    },
+    "event_slider_yWwQkM": {
+      "type": "event-slider",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-cta1-bg-color": "#ffffff",
+        "event-slider-cta1-color": "#ffffff",
+        "event-slider-cta1-border-color": "#ffffff",
+        "event-slider-cta1-label": "Book an appointment",
+        "event-slider-cta1-bg-transparent": true,
+        "event-slider-cta2-bg-color": "#ffffff",
+        "event-slider-cta2-color": "#000000",
+        "event-slider-cta2-border-color": "#ffffff",
+        "event-slider-cta2-label": "Discover more",
+        "event-slider-cta2-bg-transparent": false,
+        "font_size_desk": "42px",
+        "font_size_mob": "36px"
+      }
+    },
+    "text_image_with_background_pHwXNp": {
+      "type": "text-image-with-background",
+      "name": "Box Testo e Immagine",
+      "settings": {
+        "image_position": "right",
+        "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+        "pretitle": "SERVICE & AFTER SALE",
+        "title": "Valore che dura nel tempo",
+        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
+        "button_label": "Scopri tutti i servizi",
+        "button_link": ""
+      }
+    },
+    "find_dealer_LkPTw9": {
+      "type": "find-dealer",
+      "name": "Find a dealer",
+      "settings": {
+        "fd-content_alignment": "center",
+        "fd-cta_position": "center",
+        "fd-title": "Trova un dealer",
+        "fd-text1": "L’esperienza dei nostri dealers è insostituibile. Trova il quello più vicino a te per saperne di più ed entrare nel mondo Grand Soleil Yachts.",
+        "fd-cta_label": "Contatta il dealer",
+        "fd-cta_link": "#",
+        "fd-cta_label2": "Chiedi informazioni",
+        "fd-cta_link2": "#"
+      }
+    }
+  },
+  "order": [
+    "product_image_MeRpGm",
+    "subtitle_text_bgKxpn",
+    "text_and_image_WmYNYT",
+    "sailing_story_wwLe3R",
+    "event_slider_yWwQkM",
+    "text_image_with_background_pHwXNp",
+    "find_dealer_LkPTw9"
+  ]
+}
