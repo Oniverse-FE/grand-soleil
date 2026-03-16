@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "newsletter",
+            "settings": {
+              "newsletter-title": "Subscribe to our newsletter",
+              "newsletter-text": "Stay up to date with everything happening in the world of VanDutch. Subscribe to our newsletter!",
+              "newsletter-mail-placeholder": "E-mail",
+              "newsletter-fields-required": "*required fields",
+              "newsletter-is-required": true,
+              "newsletter-submit-button-text": "Subscribe",
+              "newsletter-button-text-color": "#000000",
+              "newsletter-button-background-color": "#acacac"
+            }
+          },
+          "footer-1": {
+            "type": "footer-menu",
+            "settings": {
+              "footer-menu-title-color": "#d6cbc9",
+              "footer-menu-link-color": "#ffffff",
+              "footer-left-menu-1": "modelli",
+              "footer-menu-link-caps-l1": true,
+              "footer-left-menu-2": "footer",
+              "footer-menu-link-caps-l2": true,
+              "footer-left-menu-3": "",
+              "footer-menu-link-caps-l3": false,
+              "footer-right-menu-1": "discover",
+              "footer-menu-link-caps-r1": false,
+              "footer-right-menu-2": "legal-area",
+              "footer-menu-link-caps-r2": false,
+              "footer-right-menu-3": "social",
+              "footer-menu-link-caps-r3": false
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1"
+        ],
+        "custom_css": [],
+        "settings": {
+          "newsletter-form-ty-title": "Thank you!",
+          "newsletter-form-ty-text": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
+          "newsletter-form-ty-btn-label": "Close",
+          "bar-button-text": "Find a VD Center",
+          "bar-button-url": "shopify://pages/vandutch-centers",
+          "bar-button-bg-color": "#ffffff",
+          "bar-button-text-color": "#000000",
+          "bar-button-bg-trasparent": false,
+          "bar-text": "©2024 CANTIERE DEL PARDO S.p.A. • ITALY • P.IVA 03869300404 • Cap. Soc. € 5.261.600,00 i.v. • All Rights Reserved",
+          "newsletter-form-bg-color": "#292929",
+          "newsletter-form-text-color": "#ffffff",
+          "newsletter-form-title": "Get in touch",
+          "newsletter-form-text": "Please fill out the form below to subscribe to our newsletter",
+          "join-label": "Why would you like to join?*",
+          "join-vd-label": "VanDutch Owner",
+          "join-ent-label": "Enthusiast",
+          "newsletter-form-required-text": "* indicates required fields",
+          "newsletter-mail-is-required": true,
+          "newsletter-markConsLabel": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms.",
+          "newsletter-profConsLabel": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us.",
+          "newsletter-privacy_label": "",
+          "newsletter-marketing-title": "Direct marketing consent",
+          "newsletter-profiling-title": "Profiling consent",
+          "newsletter-marketing-text": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning VanDutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be collected until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+          "newsletter-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the «VanDutch Yachts» boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the restriction of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+          "newsletter-privacy-url": "privacy-policy",
+          "newsletter-form-submit-button-text": "Subscribe",
+          "newsletter-form-button-text-color": "#000000",
+          "newsletter-form-button-background-color": "#acacac"
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "models_8eTtbT": {
+            "type": "models",
+            "settings": {
+              "model-title": "32",
+              "model-title-color": "#f76c00",
+              "model-link": "shopify://pages/vandutch-32",
+              "model-image": "shopify://shop_images/V32.png"
+            }
+          },
+          "models_RqLUqB": {
+            "type": "models",
+            "settings": {
+              "model-title": "40",
+              "model-title-color": "#f76c00",
+              "model-link": "shopify://pages/vandutch-40",
+              "model-image": "shopify://shop_images/V40.png"
+            }
+          },
+          "models_ciKXjg": {
+            "type": "models",
+            "settings": {
+              "model-title": "48",
+              "model-title-color": "#f76c00",
+              "model-link": "shopify://pages/vandutch-48",
+              "model-image": "shopify://shop_images/V48.png"
+            }
+          },
+          "models_EVzBNg": {
+            "type": "models",
+            "settings": {
+              "model-title": "56",
+              "model-title-color": "#f76c00",
+              "model-link": "shopify://pages/vandutch-56",
+              "model-image": "shopify://shop_images/V56.png"
+            }
+          },
+          "models_NPKeJy": {
+            "type": "models",
+            "settings": {
+              "model-title": "75",
+              "model-title-color": "#f76c00",
+              "model-link": "shopify://pages/vandutch-75",
+              "model-image": "shopify://shop_images/V75.png"
+            }
+          }
+        },
+        "block_order": [
+          "models_8eTtbT",
+          "models_RqLUqB",
+          "models_ciKXjg",
+          "models_EVzBNg",
+          "models_NPKeJy"
+        ],
+        "custom_css": [],
+        "settings": {
+          "pdp-page-handles": "vandutch-32,vandutch-40,vandutch-48,vandutch-56,vandutch-75",
+          "contact-bg-transparent": false,
+          "contact-bg-color": "#ffffff",
+          "contact-border-color": "#ffffff",
+          "contact-label": "Contact us",
+          "contact-link": "shopify://pages/contacts",
+          "header-link-caps": true,
+          "mini-header-link-caps": false,
+          "header-text-color": "#ffffff"
+        }
+      },
+      "animation": {
+        "type": "animation",
+        "settings": {
+          "subscription-title": "Grazie",
+          "subscription-text": "Presto riceverai le notizie più rilevanti dal mondo VanDutch."
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

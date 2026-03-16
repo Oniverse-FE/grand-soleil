@@ -1,0 +1,149 @@
+<div id="loading-overlay" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
+
+  <div id="logo-wrapper" class="relative flex items-center justify-center">
+
+    <img id="logo-mini" src="{{ 'white-logo-mini.svg' | asset_url }}" alt="Loading Logo" class="w-80 lg:w-128 h-auto">
+
+    <img id="logo-full" src="{{ 'white-logo.svg' | asset_url }}" alt="Loading Logo"
+      class="w-28 h-auto absolute top-0 left-1/2 transform -translate-x-1/2 opacity-0 hidden">
+  </div>
+</div>
+<!-- Overlay di conferma -->
+<div id="confirm-subscription" class="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
+        <div class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 gap-3 w-xl rounded-xl">
+            <div class="flex flex-row justify-between">
+                <div class="flex size-6"></div>
+                <h6 class="tk-aktiv-grotesk h6 text-[36px] lg:text-[42px]">{{ section.settings.subscription-title }}</h6>
+                <button id="subscription-close" aria-label="Chiudi" class="flex flex-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z" fill="white"/>
+                </svg>
+                </button>
+            </div>
+            <div class="text-center body-regular">
+                {{ section.settings.subscription-text }}
+            </div>
+        </div>
+    </div>
+<style>
+  html.loading-active,
+  body.loading-active {
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const logoMini = document.getElementById('logo-mini');
+    const logoFull = document.getElementById('logo-full');
+    const logoWrapper = document.getElementById('logo-wrapper');
+    const confirmOverlay = document.getElementById('confirm-subscription');
+    const closeBtn = document.getElementById('subscription-close');
+
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    // Controllo parametri URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const skipAnimation = urlParams.has('newsletter-subscription') || urlParams.has('newsletter-unsubscription');
+
+    if (skipAnimation) {
+      // Nascondi overlay di loading
+      if (loadingOverlay) loadingOverlay.style.display = 'none';
+      document.body.classList.remove('loading-active');
+
+      // Mostra overlay conferma
+      confirmOverlay.classList.remove('pointer-events-none');
+      confirmOverlay.classList.add('opacity-100');
+
+      // Gestisci chiusura overlay
+      closeBtn.addEventListener('click', () => {
+        confirmOverlay.classList.add('opacity-0', 'pointer-events-none');
+        confirmOverlay.classList.remove('opacity-100');
+      });
+
+      return; // non avviare animazione
+    }
+
+    // Timeline animazione se NON c'è il parametro
+    const tl = gsap.timeline();
+
+    // Mini logo shrink
+    tl.to(logoMini, {
+      width: '7rem',
+      duration: 1.5,
+      ease: 'power2.inOut'
+    });
+
+    tl.set(logoFull, { display: 'block' }, "+=0.2");
+
+    tl.to(logoMini, {
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power1.inOut'
+    }, "+=0.3");
+
+    tl.to(logoFull, {
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power1.inOut'
+    }, "<");
+
+    // Logo movement
+    tl.to(logoWrapper, {
+      y: () => {
+        const finalTop = isMobile ? 18 : 48;
+        const wrapperRect = logoWrapper.getBoundingClientRect();
+        return finalTop - wrapperRect.top;
+      },
+      duration: isMobile ? 1.0 : 1.5,
+      ease: 'power3.inOut'
+    });
+
+    // Overlay fade out
+    tl.to(loadingOverlay, {
+      opacity: 0,
+      duration: isMobile ? 1.2 : 1.8,
+      ease: 'power3.in'
+    }, "<");
+
+    // Fine: nascondi overlay e riabilita scroll
+    tl.set(loadingOverlay, {
+      display: 'none',
+      onComplete: () => {
+        document.body.classList.remove('loading-active');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+"name": "Animazione di Caricamento",
+"class": "section-loading-animation",
+"settings": [
+    {
+    "type": "text",
+    "id": "subscription-title",
+    "label": "Newsletter subscription text",
+    "default": "Grazie"
+  },
+  {
+    "type": "text",
+    "id": "subscription-text",
+    "label": "Newsletter subscription text",
+    "default": "Presto riceverai le notizie più rilevanti dal mondo VanDutch."
+  }
+],
+"presets": [
+{
+"name": "Animazione di Caricamento"
+}
+]
+}
+{% endschema %}

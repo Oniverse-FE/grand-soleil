@@ -1,0 +1,410 @@
+<!-- Tabs -->
+<div id="{{ section.settings.id }}" class="flex flex-col max-h-[1200px] lg:max-h-[721px] tabs-width tabs-padding gap-14 lg:gap-12"
+     style="--padding-top-desktop: {{ section.settings.padding_top }}px; --padding-bottom-desktop: {{ section.settings.padding_bottom }}px; --padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;">
+
+  <div class="flex flex-col gap-8 px-4 md:px-12 lg:px-24 md:max-w-[427px]">
+    <!-- Tab Buttons -->
+    <div class="flex w-full lg:w-fit rounded-xl body-regular text-[12px] leading-[18px] bg-antracite">
+      <div id="first-tab"
+           class="cursor-pointer body-semibold flex flex-1 rounded-xl px-4 py-2 transition-colors duration-300 bg-white text-black justify-center lg:justify-start lg:items-baseline whitespace-nowrap">
+        <span class="body-semibold">{{ section.settings.first-tab-label }}</span>
+      </div>
+      <div id="second-tab"
+           class="cursor-pointer body-semibold flex flex-1 rounded-xl px-4 py-2 transition-colors duration-300 text-white justify-center items-center whitespace-nowrap">
+        <span class="body-semibold">{{ section.settings.second-tab-label }}</span>
+      </div>
+    </div>
+
+    <!-- Tab Text -->
+    <div class="relative w-full lg:w-[511px] text-white body-regular text-[16px] leading-[22px] pb-14 lg:pb-12">
+      <div id="first-tab-text" class="absolute top-0 transition-opacity duration-500 opacity-100">
+        {{ section.settings.first-tab-text }}
+      </div>
+      <div id="second-tab-text" class="absolute top-0 transition-opacity duration-500 opacity-0 hidden">
+        {{ section.settings.second-tab-text }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Images -->
+  <div class="relative w-full overflow-hidden rounded-none lg:rounded-xl z-10">
+
+    <!-- First Tab Image/Slider -->
+    {% assign has_first_slider = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'image-slider-first-tab' %}
+        {% assign has_first_slider = true %}
+      {% endif %}
+    {% endfor %}
+
+    <div id="first-tab-image-container"
+         class="transition-opacity duration-500 opacity-100 {% unless has_first_slider %}max-h-[1200px] lg:max-h-[721px]{% endunless %} relative">
+      {% if has_first_slider %}
+        <!-- Slider controls -->
+        <div class="flex justify-end z-20 gap-2 lg:gap-4 px-4 md:px-12 lg:px-24 pb-3 lg:pb-6">
+          <button class="first-tab-prev p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+              <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="first-tab-next p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+              <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="first-tab-scroll" class="px-4 md:px-12 lg:px-24 flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 scroll-smooth touch-auto cursor-grab active:cursor-grabbing scrollbar-hide w-full max-w-full">
+          {% for block in section.blocks %}
+            {% if block.type == 'image-slider-first-tab' %}
+              <div class="flex-shrink-0 relative h-[216px] lg:h-[621px] w-[324px] lg:w-[932px] rounded-[10px]">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alt }}" class="w-full h-full rounded-[10px] object-cover">
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Single Image -->
+        <div class="w-full">
+          <!-- Mobile Image Full Width -->
+          <div class="block md:hidden lg:hidden w-full">
+            <img src="{{ section.settings.first-tab-image-mobile | img_url: 'master' }}" 
+                 alt="{{ section.settings.first-tab-label }}"
+                 class="w-full h-auto object-cover transition-opacity duration-500 opacity-100" />
+          </div>
+          <!-- Desktop Image with Side Padding 96px -->
+          <div class="hidden md:flex lg:flex justify-center md:px-[48px] px-[96px]">
+            <div class="w-full flex justify-center">
+              <img src="{{ section.settings.first-tab-image-desktop | img_url: 'master' }}" 
+                   alt="{{ section.settings.first-tab-label }}"
+                   class="block h-auto max-h-[721px] w-auto object-contain transition-opacity duration-500 opacity-100 rounded-2xl" />
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Second Tab Image/Slider -->
+    {% assign has_second_slider = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'image-slider-second-tab' %}
+        {% assign has_second_slider = true %}
+      {% endif %}
+    {% endfor %}
+
+    <div id="second-tab-image-container"
+         class="transition-opacity duration-500 opacity-0 hidden {% unless has_second_slider %}max-h-[1200px] lg:max-h-[721px]{% endunless %} relative">
+      {% if has_second_slider %}
+        <!-- Slider controls -->
+        <div class="flex justify-end z-20 gap-2 px-4 md:px-12 lg:px-24 pb-4">
+          <button class="second-tab-prev p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+              <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="second-tab-next p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+              <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="second-tab-scroll" class="px-4 lg:px-24 flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 scroll-smooth touch-auto cursor-grab active:cursor-grabbing scrollbar-hide w-full max-w-full">
+          {% for block in section.blocks %}
+            {% if block.type == 'image-slider-second-tab' %}
+              <div class="flex-shrink-0 relative h-[216px] lg:h-[621px] w-[324px] lg:w-[932px] rounded-[10px]">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alt }}" class="w-full h-full rounded-[10px] object-cover">
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Single Image -->
+        <div class="w-full">
+          <!-- Mobile Image Full Width -->
+          <div class="block md:hidden lg:hidden w-full">
+            <img src="{{ section.settings.second-tab-image-mobile | img_url: 'master' }}" 
+                 alt="{{ section.settings.second-tab-label }}"
+                 class="w-full h-auto object-cover transition-opacity duration-500 opacity-100" />
+          </div>
+          <!-- Desktop Image with Side Padding 96px -->
+          <div class="hidden md:flex lg:flex justify-center md:px-[48px] px-[96px]">
+            <div class="w-full flex justify-center">
+              <img src="{{ section.settings.second-tab-image-desktop | img_url: 'master' }}" 
+                   alt="{{ section.settings.second-tab-label }}"
+                   class="block h-auto max-h-[721px] w-auto object-contain transition-opacity duration-500 opacity-100 rounded-2xl" />
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+<style>
+.tabs-padding {
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
+}
+
+@media screen and (min-width: 1350px) {
+  .tabs-width {
+    max-height: 1000px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tabs-padding {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
+  }
+}
+@media (max-width: 1024px) {
+  #scroll-container-{{ section.id }} {
+    scroll-snap-type: none; /* rimuove eventuali snap */
+    -webkit-overflow-scrolling: touch; /* scroll fluido su iOS */
+  }
+}
+</style>
+
+<script>
+// Selezione elementi principali
+const firstTab = document.getElementById("first-tab");
+const secondTab = document.getElementById("second-tab");
+const firstText = document.getElementById("first-tab-text");
+const secondText = document.getElementById("second-tab-text");
+const firstContainer = document.getElementById("first-tab-image-container");
+const secondContainer = document.getElementById("second-tab-image-container");
+
+// Funzione per attivare i tab
+function activateTab(isFirst) {
+  firstTab.classList.toggle("bg-white", isFirst);
+  firstTab.classList.toggle("text-black", isFirst);
+  firstTab.classList.toggle("text-white", !isFirst);
+
+  secondTab.classList.toggle("bg-white", !isFirst);
+  secondTab.classList.toggle("text-black", !isFirst);
+  secondTab.classList.toggle("text-white", isFirst);
+
+  firstText.classList.toggle("opacity-100", isFirst);
+  firstText.classList.toggle("opacity-0", !isFirst);
+  secondText.classList.toggle("opacity-100", !isFirst);
+  secondText.classList.toggle("opacity-0", isFirst);
+
+  setTimeout(() => {
+    firstText.classList.toggle("hidden", !isFirst);
+    secondText.classList.toggle("hidden", isFirst);
+  }, 500);
+
+  firstContainer.classList.toggle("opacity-100", isFirst);
+  firstContainer.classList.toggle("opacity-0", !isFirst);
+  firstContainer.classList.toggle("hidden", !isFirst);
+
+  secondContainer.classList.toggle("opacity-100", !isFirst);
+  secondContainer.classList.toggle("opacity-0", isFirst);
+  secondContainer.classList.toggle("hidden", isFirst);
+}
+
+// Gestione click sui tab
+firstTab.addEventListener("click", () => activateTab(true));
+secondTab.addEventListener("click", () => activateTab(false));
+
+// Funzione unica per slider prev/next + drag
+function setupSlider(containerId, prevBtnClass, nextBtnClass) {
+  const container = document.getElementById(containerId);
+  const prevBtn = document.querySelector(`.${prevBtnClass}`);
+  const nextBtn = document.querySelector(`.${nextBtnClass}`);
+
+  if (!container || !prevBtn || !nextBtn) return;
+
+  // Funzione per calcolare lo scroll visibile dinamicamente
+  const getScrollAmount = () => container.getBoundingClientRect().width;
+
+  // Prev/Next
+  prevBtn.addEventListener("click", () => {
+    const move = Math.min(getScrollAmount(), container.scrollLeft);
+    container.scrollBy({ left: -move, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const remaining = container.scrollWidth - container.clientWidth - container.scrollLeft;
+    const move = Math.min(getScrollAmount(), remaining);
+    container.scrollBy({ left: move, behavior: "smooth" });
+  });
+
+  // Aggiornamento stato bottoni
+  const updateButtons = () => {
+    prevBtn.disabled = container.scrollLeft <= 0;
+    nextBtn.disabled = Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 1;
+  };
+  container.addEventListener("scroll", updateButtons);
+  updateButtons();
+
+  // Drag scroll
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    container.classList.add("active");
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+    e.preventDefault();
+  });
+
+  container.addEventListener("mouseleave", () => { isDown = false; container.classList.remove("active"); });
+  container.addEventListener("mouseup", () => { isDown = false; container.classList.remove("active"); });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2; // velocità
+    container.scrollLeft = scrollLeft - walk;
+  });
+
+  // Blocca drag immagini
+  container.querySelectorAll("img").forEach(img => img.addEventListener("dragstart", e => e.preventDefault()));
+}
+
+// Inizializza slider prima tab subito
+setupSlider("first-tab-scroll", "first-tab-prev", "first-tab-next");
+
+// Inizializza slider seconda tab solo al click
+secondTab.addEventListener("click", () => {
+  activateTab(false);
+  setupSlider("second-tab-scroll", "second-tab-prev", "second-tab-next");
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Tabs Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "first-tab-label",
+      "label": "First Tab Label"
+    },
+    {
+      "type": "textarea",
+      "id": "first-tab-text",
+      "label": "First Tab Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "first-tab-image-mobile",
+      "label": "First Tab Image (Mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "first-tab-image-desktop",
+      "label": "First Tab Image (Desktop)"
+    },
+    {
+      "type": "text",
+      "id": "second-tab-label",
+      "label": "Second Tab Label"
+    },
+    {
+      "type": "textarea",
+      "id": "second-tab-text",
+      "label": "Second Tab Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "second-tab-image-mobile",
+      "label": "Second Tab Image (Mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "second-tab-image-desktop",
+      "label": "Second Tab Image (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top Desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom Desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image-slider-first-tab",
+      "name": "First Tab Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Text"
+        }
+      ]
+    },
+    {
+      "type": "image-slider-second-tab",
+      "name": "Second Tab Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+<div class="px-4 md:px-12 lg:px-24">
+  <div class="flex w-full rounded-[10px] overflow-hidden justify-center items-center relative">
+    <div class="w-full rounded-[10px] max-w-[1900px]">
+        {{ section.settings.editor-video }}
+    </div>
+    <!-- Play button overlay -->
+    <div id="play-button-video" class="absolute top-0 left-0 w-full h-full flex items-center justify-center cursor-pointer z-10 hidden">
+        <div class="w-[80px] h-[80px] flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-4xl">
+        {% render 'play-icon' %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+    "name": "Rounded Video",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "editor-video",
+            "label": "Editorial content video"
+        },
+        {
+            "type": "text",
+            "id": "rounded-image-alt",
+            "label": "Image alt",
+            "default": "Alt"
+        }
+        ],
+        "presets": [
+            {
+                "name": "Rounded Video",
+                "category": "Media Sections"
+            }
+        ]
+}
+{% endschema %}

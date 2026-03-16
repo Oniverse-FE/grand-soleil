@@ -1,0 +1,472 @@
+<div class="flex flex-col px-4 lg:px-24 gap-6 text-white py-24 lg:py-32">
+    <!-- title -->
+    <div class="flex h6 uppercase text-[36px] leading-[42px] lg:text-[56px] lg:leading-[62px]">
+        {{ section.settings.generic-form-title }}
+    </div>
+
+    <!-- form + cta -->
+     {% form 'contact' %}
+    <div class="flex flex-col gap-[46px] lg:gap-[72px]">
+        <!-- form -->
+        <div class="flex flex-col gap-10 lg:gap-16">      
+            <!-- fields -->
+            <div id="contact-form-box" class="flex flex-col lg:h-[292px] lg:flex-wrap gap-4 lg:gap-y-8 lg:gap-x-[121px] w-full lg:w-fit">
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when 'text' %}
+                            <div class="border-b border-white flex flex-col w-full lg:w-[511px]">
+                                <input 
+                                    type="{{ block.settings.form-textfield-type }}" 
+                                    id="form-{{ section.id }}-{{ block.settings.form-textfield-type-code }}"
+                                    name="contact[{{ block.settings.form-textfield-type-code }}]" 
+                                    class="w-full bg-transparent text-sm py-3"
+                                    {% if block.settings.form-textfield-required %} 
+                                        required 
+                                        placeholder="{{ block.settings.form-textfield-placeholder }}*"
+                                    {% endif %}
+                                    placeholder="{{ block.settings.form-textfield-placeholder }}" />
+                            </div>
+
+                        {% when 'selection' %}
+                            <div class="relative w-full lg:w-[511px]">
+                                <button
+                                    type="button"
+                                    id="form-{{ section.id }}-dropdownButton"
+                                    class="w-full border-b border-white py-3 text-white text-left"
+                                >
+                                    {% if block.settings.form-selection-required == true %}
+                                        <span id="dropdownSelected">{{ block.settings.form-selection-placeholder }}*</span>
+                                    {% else %}
+                                        <span id="dropdownSelected">{{ block.settings.form-selection-placeholder }}</span>
+                                    {% endif %}
+                                </button>
+                                <!-- options -->
+                                <ul
+                                    id="form-{{ section.id }}-dropdownOptions"
+                                    class="absolute hidden bg-[#262626] text-white w-full lg:w-[511px] mt-1 shadow-lg z-10 max-h-60 overflow-auto border-[1px] border-white rounded-2xl"
+                                >
+                                    {% assign options = block.settings.form-selection-options | split: ',' %}
+                                    {% for option in options %}
+                                        <li
+                                            class="px-4 py-2 hover:bg-gray-200 hover:text-black cursor-pointer"
+                                            data-value="{{ option | strip }}"
+                                        >
+                                            {{ option | strip }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <input
+                                    type="hidden"
+                                    name="contact[select-option]"
+                                    id="form-{{ section.id }}-dropdownInput"
+                                    {% if block.settings.form-selection-required %}
+                                        required
+                                    {% endif %}
+                                >
+                            </div>
+
+                        {% when 'textarea' %}
+                            <div class="border-b border-white flex flex-col relative w-full lg:w-[511px]">
+                                <div class="lg:block flex text-xs text-[#D6CBC9]">
+                                    {{ block.settings.form-message-placeholder }}
+                                </div>
+                                <textarea  
+                                    id="form-{{ section.id }}-message"
+                                    name="contact[body]" 
+                                    class="w-full bg-transparent text-sm py-3 text-white"
+                                    maxlength="{{ block.settings.form-message-max-size }}"
+                                    {% if block.settings.form-message-required %}
+                                        required
+                                    {% endif %}
+                                ></textarea>
+                                <div class="text-xs text-right text-[#D6CBC9] mt-1">
+                                    <span id="form-{{ section.id }}-char-count">0</span> / {{ block.settings.form-message-max-size }}
+                                </div>
+                            </div>
+                    {% endcase %}
+                {% endfor %}
+            </div>
+
+            <!-- privacy -->
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-28 body-regular text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]">
+                <div class="flex items-center h-auto gap-4 w-full lg:w-[552px]">
+                    <input type="hidden" name="contact[accepts_marketing]" value="false">
+                    <input style="aspect-ratio:1/1" type="checkbox" class="w-6 h-6 rounded-sm appearance-none border-1 border-white bg-transparent checked:bg-white  transition-all duration-200" id="marketingConsent-{{ section.id }}" name="contact[accepts_marketing]">
+                    <label class="w-auto">{{ section.settings.form-markConsLabel }} <u><a id="shortMarketing-{{ section.id }}">{{ section.settings.form-privacy-label | default: "Privacy Policy" }}</a></u></label>
+                </div>
+                <div class="flex items-center h-auto gap-4 w-full lg:w-[552px]">
+                    <input type="hidden" name="contact[accepts_profiling]" value="false">
+                    <input style="aspect-ratio:1/1" type="checkbox" class="appearance-none w-6 h-6 rounded-sm border-1 border-white bg-transparent checked:bg-white  transition-all duration-200 disabled:border-[#ACACAC]" id="profilingConsent" name="contact[profiling_consent]" disabled>
+                    <label class="text-white transition-colors duration-200" id="profilingLabel-{{ section.id }}">{{ section.settings.form-profConsLabel }} <u><a id="shortProfiling-{{ section.id }}">{{ section.settings.form-privacy-label | default: "Privacy Policy" }}</a></u></label>
+                </div>
+            </div>
+
+            <!-- link to privacy -->
+            <u><a href="{{ section.settings.form-privacy-url }}" class="body-regular text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]">{{ section.settings.form-privacy-label | default: "Privacy Policy" }}</a></u>
+
+            <!-- cta -->
+            <div class="w-full lg:w-fit justify-start body-semibold text-[16px] leading-[14px]">
+                <button id="form-{{ section.id }}-submit" aria-label="{{ section.settings.form-submit-button-text }}" type="submit" class="w-full px-7 py-3.5 rounded-4xl" style="color:{{ section.settings.form-button-text-color }};background-color:{{ section.settings.form-button-background-color }};">{{ section.settings.form-submit-button-text }}</button>
+            </div>
+        </div>
+    </div>
+{% endform %}
+</div>
+<div id="marketing-overlay-{{ section.id }}" class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
+        <div class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+            <div class="flex flex-row justify-between">
+                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.form-marketing-title }}</h6>
+                <button id="marketing-close-{{ section.id }}" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z" fill="white"/>
+                </svg>
+                </button>
+            </div>
+            <div>
+                {{ section.settings.form-marketing-text }} <u><a href="{{ section.settings.form-privacy-url }}">{{ section.settings.privacy_label | default: "Privacy Policy" }}</a></u> 
+            </div>
+        </div>
+    </div>
+
+    <div id="profiling-overlay-{{ section.id }}" class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
+        <div class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+            <div class="flex justify-between">
+                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.form-profiling-title }}</h6>
+                <button  id="profiling-close-{{ section.id }}" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z" fill="white"/>
+                </svg>
+                </button>
+            </div>
+            <div>
+                {{ section.settings.form-profiling-text }} <u><a href="{{ section.settings.form-privacy-url }}">{{ section.settings.privacy_label | default: "Privacy Policy" }}</a></u> 
+            </div>
+        </div>
+    </div>
+<style>
+    #contact-form-box input[type="text"]:focus,
+    #contact-form-box input[type="email"]:focus,
+    #contact-form-box input[type="tel"]:focus {
+        outline: none;
+        /* niente bordo blu default */
+        border-bottom: 1px solid #F76C00;
+        /* bordo arancione al focus */
+    }
+
+    #contact-form-box .textarea-wrapper:focus-within {
+        border-bottom: 1px solid #F76C00;
+    }
+
+    #contact-form-box textarea:focus {
+        outline: none;
+        /* rimuove il bordo blu default */
+    }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll("[id^='form-'][id$='-submit']");
+
+  forms.forEach((submitButton) => {
+    const formId = submitButton.id.replace(/-submit$/, "");
+    const sectionId = formId.split("form-")[1];
+
+    // --- Dropdown ---
+    const dropdownButton = document.getElementById(`form-${sectionId}-dropdownButton`);
+    const dropdownOptions = document.getElementById(`form-${sectionId}-dropdownOptions`);
+    const dropdownInput = document.getElementById(`form-${sectionId}-dropdownInput`);
+    const dropdownSelected = document.getElementById(`dropdownSelected`);
+
+    if (dropdownButton && dropdownOptions) {
+      dropdownButton.addEventListener("click", () => {
+        dropdownOptions.classList.toggle("hidden");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdownButton.contains(e.target) && !dropdownOptions.contains(e.target)) {
+          dropdownOptions.classList.add("hidden");
+        }
+      });
+
+      dropdownOptions.querySelectorAll("li").forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.getAttribute("data-value");
+          dropdownSelected.innerText = value;
+          dropdownInput.value = value;
+          dropdownOptions.classList.add("hidden");
+        });
+      });
+    }
+
+    // --- Char Count per textarea ---
+    const textarea = document.getElementById(`form-${sectionId}-message`);
+    const charCount = document.getElementById(`form-${sectionId}-char-count`);
+    if (textarea && charCount) {
+      textarea.addEventListener("input", () => {
+        charCount.innerText = textarea.value.length;
+      });
+      charCount.innerText = textarea.value.length; // init
+    }
+
+    // --- Overlay shortMarketing ---
+    const shortMarketing = document.getElementById(`shortMarketing-${sectionId}`);
+    const marketingOverlay = document.getElementById(`marketing-overlay-${sectionId}`);
+    const marketingClose = document.getElementById(`marketing-close-${sectionId}`);
+
+    if (shortMarketing && marketingOverlay && marketingClose) {
+      shortMarketing.addEventListener("click", () => {
+        marketingOverlay.classList.remove("opacity-0", "pointer-events-none");
+        marketingOverlay.classList.add("opacity-100");
+      });
+
+      marketingClose.addEventListener("click", () => {
+        marketingOverlay.classList.remove("opacity-100");
+        marketingOverlay.classList.add("opacity-0");
+        setTimeout(() => {
+          marketingOverlay.classList.add("pointer-events-none");
+        }, 300);
+      });
+    }
+
+    // --- Overlay shortProfiling ---
+    const shortProfiling = document.getElementById(`shortProfiling-${sectionId}`);
+    const profilingOverlay = document.getElementById(`profiling-overlay-${sectionId}`);
+    const profilingClose = document.getElementById(`profiling-close-${sectionId}`);
+
+    if (shortProfiling && profilingOverlay && profilingClose) {
+      shortProfiling.addEventListener("click", () => {
+        profilingOverlay.classList.remove("opacity-0", "pointer-events-none");
+        profilingOverlay.classList.add("opacity-100");
+      });
+
+      profilingClose.addEventListener("click", () => {
+        profilingOverlay.classList.remove("opacity-100");
+        profilingOverlay.classList.add("opacity-0");
+        setTimeout(() => {
+          profilingOverlay.classList.add("pointer-events-none");
+        }, 300);
+      });
+    }
+
+    // --- Profiling toggle in base al marketing ---
+    const marketingConsent = document.getElementById(`marketingConsent-${sectionId}`);
+    const profilingConsent = document.getElementById(`profilingConsent`);
+    const profilingLabel = document.getElementById(`profilingLabel-${sectionId}`);
+
+    function updateProfilingState() {
+      if (marketingConsent && marketingConsent.checked) {
+        profilingConsent.disabled = false;
+        profilingLabel.classList.remove("text-[#ACACAC]", "cursor-not-allowed");
+        profilingLabel.classList.add("text-white");
+      } else {
+        profilingConsent.checked = false;
+        profilingConsent.disabled = true;
+        profilingLabel.classList.remove("text-white");
+        profilingLabel.classList.add("text-[#ACACAC]", "cursor-not-allowed");
+      }
+    }
+
+    if (marketingConsent && profilingConsent && profilingLabel) {
+      updateProfilingState(); // init
+      marketingConsent.addEventListener("change", updateProfilingState);
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+    "name": "Generic form",
+    "settings": [
+        {
+            "type": "text",
+            "id": "generic-form-title",
+            "label": "Title",
+            "default": "Facci una domanda"
+        },
+        {
+            "type": "text",
+            "id": "form-markConsLabel",
+            "label": "form marketing consent text",
+            "default": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services."
+        },
+        {
+            "type": "text",
+            "id": "form-profConsLabel",
+            "label": "form profiling consent text",
+            "default": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us."
+        },
+        {
+            "type": "text",
+            "id": "form-privacy-label",
+            "label": "form privacy label"
+        },
+        {
+            "type": "text",
+            "id": "form-marketing-title",
+            "label": "form marketing short title",
+            "default": "Direct marketing consent"
+        },
+        {
+            "type": "text",
+            "id": "form-profiling-title",
+            "label": "form profiling short title",
+            "default": "Profiling consent"
+        },
+        {
+            "type": "text",
+            "id": "form-marketing-text",
+            "label": "form marketing short text",
+            "default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning VanDutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be collected until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:"
+        },
+        {
+            "type": "text",
+            "id": "form-profiling-text",
+            "label": "form profiling short text",
+            "default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the «VanDutch Yachts» boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the restriction of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "
+        },
+        {
+            "type": "text",
+            "id": "form-privacy-url",
+            "label": "form privacy url",
+            "default": "#"
+        },
+        {
+            "type": "color",
+            "id": "form-button-background-color",
+            "label": "form background color",
+            "default": "#ACACAC"
+        },
+        {
+            "type": "color",
+            "id": "form-button-text-color",
+            "label": "form text color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "form-submit-button-text",
+            "label": "Submit label",
+            "default": "Invia la tua richiesta"
+        }
+        ],
+        "blocks": [
+            {
+                "name": "Textfield",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "form-textfield-type",
+                        "label": "Select the field",
+                        "options": [{
+                            "label": "Text",
+                            "value": "text"
+                        },
+                        {
+                            "label": "Email",
+                            "value": "email"
+                        },
+                        {
+                            "label": "Phone",
+                            "value": "tel"
+                        }
+                        ]
+                    },
+                    {
+                        "type": "select",
+                        "id": "form-textfield-type-code",
+                        "label": "Select the type code",
+                        "options": [{
+                            "label": "First Name",
+                            "value": "first_name"
+                        },
+                        {
+                            "label": "Last Name",
+                            "value": "last_name"
+                        },
+                        {
+                            "label": "Email",
+                            "value": "email"
+                        },
+                        {
+                            "label": "Phone",
+                            "value": "phone"
+                        },
+                        {
+                            "label": "Port",
+                            "value": "port"
+                        },
+                        {
+                            "label": "Boat",
+                            "value": "boat"
+                        }
+                        ]
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "form-textfield-required",
+                        "label": "Required field",
+                        "default": false
+                    },
+                    {
+                        "type": "text",
+                        "id": "form-textfield-placeholder",
+                        "label": "Field placeholder"
+                    }
+                ]
+            },
+            {
+                "name": "Selections (list)",
+                "type": "selection",
+                "settings": [
+                    {
+                        "type": "checkbox",
+                        "id": "form-selection-required",
+                        "label": "Required field",
+                        "default": false
+                    },
+                    {
+                        "type": "text",
+                        "id": "form-selection-placeholder",
+                        "label": "Field placeholder"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "form-selection-options",
+                        "label": "Insert the options separeted by comma",
+                        "default": "Option 1,Option 2, Option 3"
+                    }
+                ]
+            },
+            {
+                "name": "Textarea",
+                "type": "textarea",
+                "settings": [
+                    {
+                        "type": "checkbox",
+                        "id": "form-message-required",
+                        "label": "Required field",
+                        "default": false
+                    },
+                    {
+                        "type": "text",
+                        "id": "form-message-placeholder",
+                        "label": "Field placeholder"
+                    },
+                    {
+                        "type": "number",
+                        "id": "form-message-max-size",
+                        "label": "Max number of chars",
+                        "default": 250
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Generic form",
+                "category" : "Common sections"
+            }
+        ]
+}
+{% endschema %}

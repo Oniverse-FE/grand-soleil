@@ -1,0 +1,384 @@
+<div id="{{ section.settings.id }}" class="flex tech-padding flex-col px-4 md:px-12 lg:px-24 gap-14 lg:gap-[72px]" style="--padding-top-desktop: {{ section.settings.padding_top }}; --padding-bottom-desktop: {{ section.settings.padding_bottom }};  --padding-top-mobile: {{ section.settings.padding_top_mobile }};   --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }};">
+  <div class="flex flex-col">
+    <div class="pb-[24px] lg:pb-[32px] text-[26px] lg:text-[42px] uppercase text-white lg:font-bold leading-8 lg:leading-12 tk-mongoose">
+      {{ section.settings.tech-spec-title }}
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-[105px]">
+      <!-- Colonna sinistra -->
+      <div class="flex flex-col w-full gap-8 lg:gap-10">
+        {% assign left_column_count = section.settings.left-col-block-count | default: 3 %}
+        {% assign block_index = 0 %}
+        {% for block in section.blocks %}
+          {% assign block_index = block_index | plus: 1 %}
+          {% if block_index <= left_column_count and block.type == 'tech-spec-block' %}
+            {% assign show_block = false %}
+            {% for i in (1..5) %}
+              {% assign title_key = "tech-spec-div" | append: i | append: "-title" %}
+              {% assign text_key = "tech-spec-div" | append: i | append: "-text" %}
+              {% assign title = block.settings[title_key] %}
+              {% assign text = block.settings[text_key] %}
+              {% if title != blank and text != blank %}
+                {% assign show_block = true %}
+              {% endif %}
+            {% endfor %}
+            {% if show_block %}
+              <div class="flex flex-col gap-4 lg:gap-6 w-full text-white">
+                <div class="tech-spec-title">{{ block.settings.tech-spec-title }}</div>
+                <div class="flex flex-col gap-2 lg:gap-3">
+                  {% for i in (1..5) %}
+                    {% assign title_key = "tech-spec-div" | append: i | append: "-title" %}
+                    {% assign text_key = "tech-spec-div" | append: i | append: "-text" %}
+                    {% assign title = block.settings[title_key] %}
+                    {% assign text = block.settings[text_key] %}
+                    {% if title != blank and text != blank %}
+                      <div class="tech-spec-div tech-spec-text">
+                        <div class="flex body-regular">{{ title }}</div>
+                        <div class="flex font-semibold text-right">{{ text }}</div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Colonna destra -->
+      <div class="flex flex-col w-full gap-8 lg:gap-10">
+        {% assign block_index = 0 %}
+        {% for block in section.blocks %}
+          {% assign block_index = block_index | plus: 1 %}
+          {% if block_index > left_column_count and block.type == 'tech-spec-block' %}
+            {% assign show_block = false %}
+            {% for i in (1..5) %}
+              {% assign title_key = "tech-spec-div" | append: i | append: "-title" %}
+              {% assign text_key = "tech-spec-div" | append: i | append: "-text" %}
+              {% assign title = block.settings[title_key] %}
+              {% assign text = block.settings[text_key] %}
+              {% if title != blank and text != blank %}
+                {% assign show_block = true %}
+              {% endif %}
+            {% endfor %}
+            {% if show_block %}
+              <div class="flex flex-col gap-4 lg:gap-6 w-full text-white">
+                <div class="tech-spec-title">{{ block.settings.tech-spec-title }}</div>
+                <div class="flex flex-col gap-2 lg:gap-3">
+                  {% for i in (1..5) %}
+                    {% assign title_key = "tech-spec-div" | append: i | append: "-title" %}
+                    {% assign text_key = "tech-spec-div" | append: i | append: "-text" %}
+                    {% assign title = block.settings[title_key] %}
+                    {% assign text = block.settings[text_key] %}
+                    {% if title != blank and text != blank %}
+                      <div class="tech-spec-div tech-spec-text">
+                        <div class="flex">{{ title }}</div>
+                        <div class="flex font-semibold text-right">{{ text }}</div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col w-full justify-center items-center body-regular text-[16px] leading-3.5 pt-[56px] lg:pt-[72px]">
+      <div class="flex flex-col w-full lg:w-[406px] gap-4">
+        <div class="flex w-full">
+          {% if section.settings.brochure-visible %}
+            <a href="{{ section.settings.brochure-link }}" target="_blank"
+               class="tech-btn {% if section.settings.brochure-transparent %}btn-transparent{% endif %}"
+               style="{% if section.settings.brochure-transparent != true %}background-color:{{ section.settings.brochure-bg-color }};{% endif %}
+                      color:{{ section.settings.brochure-color }};
+                      border:1px solid {{ section.settings.brochure-border-color }};
+                      backdrop-filter:blur(40px);">
+              {{ section.settings.brochure-cta-label }}
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="flex w-full">
+          {% if section.settings.info-cta-visible %}
+            <a href="{{ section.settings.info-cta-link }}"
+               class="tech-btn {% if section.settings.info-transparent %}btn-transparent{% endif %}"
+               style="{% if section.settings.info-transparent != true %}background-color:{{ section.settings.info-bg-color }};{% endif %}
+                      color:{{ section.settings.info-color }};
+                      border:1px solid {{ section.settings.info-border-color }};
+                      backdrop-filter:blur(40px);">
+              {{ section.settings.info-cta-label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.tech-spec-div {
+  width: 100%;
+  font-family: "mongoose";
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  align-items: flex-start;
+  gap: 48px;
+  border-radius: 4px;
+  background: #292929;
+}
+
+.tech-spec-title {
+  font-family: "aktiv-grotesk";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.tech-spec-text {
+  font-family: "aktiv-grotesk";
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .tech-spec-title { font-size: 20px; line-height: 26px; }
+  .tech-spec-text { font-size: 16px; line-height: 22px; }
+}
+
+.tech-padding {
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
+}
+@media screen and (min-width: 768px) {
+  .tech-padding {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
+  }
+}
+
+/* --- CTA Buttons --- */
+.tech-btn {
+  width: 100%;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-align: center;
+  padding: 14px 28px;
+  transition: all 0.3s ease;
+}
+
+/* Hover per CTA con background pieno */
+.tech-btn:not(.btn-transparent):hover {
+  opacity: 0.75;
+}
+
+/* Hover per CTA trasparente */
+.tech-btn.btn-transparent:hover {
+  border-color: #ACACAC !important;
+  background-color: #ACACAC !important;
+}
+</style>
+{% schema %}
+{
+  "name": "Technical Specification",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Identification"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Id section",
+      "default": "tech-spec"
+    },
+    {
+      "type": "text",
+      "id": "tech-spec-title",
+      "label": "Technical specifications title",
+      "default": "SPECIFICHE TECNICHE"
+    },
+    {
+      "type": "number",
+      "id": "left-col-block-count",
+      "label": "How many blocks in the left column?",
+      "default": 2
+    },
+
+    {
+      "type": "header",
+      "content": "Brochure Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "brochure-visible",
+      "label": "Brochure button visible",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "brochure-cta-label",
+      "label": "Brochure CTA Label",
+      "default": "Scarica la brochure"
+    },
+    {
+      "type": "url",
+      "id": "brochure-link",
+      "label": "Link to the brochure file"
+    },
+    {
+      "type": "checkbox",
+      "id": "brochure-transparent",
+      "label": "Brochure button background transparent",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "brochure-bg-color",
+      "label": "Brochure button background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "brochure-color",
+      "label": "Brochure button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "brochure-border-color",
+      "label": "Brochure button border color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Info CTA Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "info-cta-visible",
+      "label": "Info CTA button visible",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "info-cta-label",
+      "label": "Info CTA Label",
+      "default": "Richiedi informazioni"
+    },
+    {
+      "type": "url",
+      "id": "info-cta-link",
+      "label": "Link to the info page"
+    },
+    {
+      "type": "checkbox",
+      "id": "info-transparent",
+      "label": "Info button background transparent",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "info-bg-color",
+      "label": "Info button background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "info-color",
+      "label": "Info button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "info-border-color",
+      "label": "Info button border color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Padding & Spacing"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Space top",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "72px", "label": "Small - 72px" },
+        { "value": "128px", "label": "Medium - 128px" },
+        { "value": "160px", "label": "Big - 160px" }
+      ],
+      "default": "72px"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Space bottom",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "72px", "label": "Small - 72px" },
+        { "value": "128px", "label": "Medium - 128px" },
+        { "value": "280px", "label": "Big - 280px" }
+      ],
+      "default": "128px"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Space top (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "48px", "label": "Extra small - 48px" },
+        { "value": "72px", "label": "Small - 72px" },
+        { "value": "80px", "label": "Medium - 80px" },
+        { "value": "128px", "label": "Big - 128px" }
+      ],
+      "default": "48px"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Space bottom (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "48px", "label": "Small - 48px" },
+        { "value": "72px", "label": "Medium - 72px" },
+        { "value": "160px", "label": "Big - 160px" }
+      ],
+      "default": "48px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tech-spec-block",
+      "name": "Tech-spec block",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "tech-spec-title", "label": "Block title", "default": "Titolo" },
+        { "type": "text", "id": "tech-spec-div1-title", "label": "First label title", "default": "Titolo label" },
+        { "type": "text", "id": "tech-spec-div1-text", "label": "First label value", "default": "Value" },
+        { "type": "text", "id": "tech-spec-div2-title", "label": "Second label title", "default": "Titolo label" },
+        { "type": "text", "id": "tech-spec-div2-text", "label": "Second label value", "default": "Value" },
+        { "type": "text", "id": "tech-spec-div3-title", "label": "Third label title", "default": "Titolo label" },
+        { "type": "text", "id": "tech-spec-div3-text", "label": "Third label value", "default": "Value" },
+        { "type": "text", "id": "tech-spec-div4-title", "label": "Fourth label title", "default": "Titolo label" },
+        { "type": "text", "id": "tech-spec-div4-text", "label": "Fourth label value", "default": "Value" },
+        { "type": "text", "id": "tech-spec-div5-title", "label": "Fifth label title", "default": "Titolo label" },
+        { "type": "text", "id": "tech-spec-div5-text", "label": "Fifth label value", "default": "Value" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Technical Specification",
+      "category": "PDP Sections"
+    }
+  ]
+}
+{% endschema %}

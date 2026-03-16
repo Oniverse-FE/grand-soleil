@@ -1,0 +1,340 @@
+<div class="flex flex-col text-white gap-4 lg:gap-12 pb-[128px] lg:pb-[280px]">
+
+  <!-- Title + Arrows -->
+  <div class="px-4 md:px-12 lg:px-24 m-custom relative flex justify-between items-center">
+    <div class="uppercase text-4xl md:text-[56px] md:leading-[48px] lg:text-[56px] lg:leading-[48px] h8">
+      {{ section.settings.highlight-news-title }}
+    </div>
+    <!-- Frecce fino a 1400px -->
+    <div class="arrow-news absolute right-4 md:right-12 lg:right-24 bottom-0 flex gap-2">
+      <button class="prev-news p-2 rounded-full border border-white hover:bg-white/40 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+          <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round" />
+        </svg>
+      </button>
+      <button class="next-news p-2 rounded-full border border-white hover:bg-white/40 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+          <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- News Slider -->
+  <div class="news-slider flex gap-3 lg:gap-4 px-4 md:px-12 lg:px-24 overflow-x-auto scrollbar-hide">
+    {% assign sorted_articles = blogs.news.articles | sort: "created_at" | reverse %}
+    {% assign counter = 0 %}
+    {% for article in sorted_articles %}
+      {% if article.tags contains 'highlight' %}
+        {% if counter < 3 %}
+        <a href="{{ article.url }}" class="flex-shrink-0 flex flex-col gap-4 pb-6 lg:pb-8 bg-antracite rounded-[10px]
+          w-[343px] md:w-[316px] lg:w-[405px] xl:w-[430px] 2xl:w-[calc(100%/3)] hover:opacity-90 transition-opacity duration-200">
+
+          <!-- Image -->
+          <div class="h-[144px] lg:h-[178px] w-full">
+            {% if article.image %}
+              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" class="h-[144px] lg:h-[178px] w-full object-cover rounded-t-[10px]">
+            {% endif %}
+          </div>
+
+          <!-- Content -->
+          <div class="flex flex-col px-4 lg:px-8 h-full gap-4">
+            <div class="flex flex-col gap-2">
+              <div class="body-medium text-[12px] leading-[18px] lg:text-sm lg:leading-5">
+                {{ article.metafields.custom.news_data | date: "%d.%m.%Y" }}
+              </div>
+              <div class="uppercase h8 lg:font-bold text-[26px] leading-8 lg:text-[42px] lg:leading-12 3">
+                {{ article.title }}
+              </div>
+              <div class="body-regular mb-[16px] lg:mb-[40px] text-sm leading-5 lg:text-[16px] lg:leading-[22px] line-clamp-3 lg:line-clamp-3">
+                {{ article.content | strip_html }}
+              </div>
+            </div>
+            <div class="mt-auto body-semibold text-[14px] lg:text-[16px] group-news animation-news w-fit uppercase">
+              <span class="relative flex flex-row gap-1 pb-1">
+                {{ section.settings.read-news-label }}
+                <span class="underline-news cta-underline-news"></span>
+              </span>
+            </div>
+          </div>
+        </a>
+        {% assign counter = counter | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- CTA Button sotto le card -->
+  {% if section.settings.show_cta %}
+  <div class="px-4 lg:px-24 flex justify-center body-semibold text-[16px] leading-[14px] w-full lg:w-fit mx-auto mt-4 lg:mt-4">
+    <a href="{{ section.settings.link-to-news-page.url }}"
+      class="mobile-w-full rounded-4xl py-3.5 px-7 block text-center highlight-cta"
+      data-transparent="{{ section.settings.all-news-cta-bg-transparent }}"
+      style="{% if section.settings.all-news-cta-bg-transparent == true %}
+        background-color:transparent;
+      {% else %}
+        background-color:{{ section.settings.all-news-cta-bg-color }};
+      {% endif %}
+      color:{{ section.settings.all-news-cta-color }};
+      border:1px solid {{ section.settings.all-news-cta-border-color }};
+      backdrop-filter:blur(40px);">
+      {{ section.settings.all-news-pg }}
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+.scrollbar-hide { 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+@media (max-width: 768px){
+  .mobile-w-full { 
+    width: 100%; 
+  }
+}
+@media (min-width: 1400px){
+  .arrow-news{
+    visibility: hidden;
+  }
+  .news-slider{
+    overflow-x: hidden !important;
+  }
+  .news-slider {
+    cursor: auto !important;
+  }
+}
+
+/* Drag feedback solo sotto 1400px */
+.news-slider {
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+.news-slider.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* --- CTA Hover Effect --- */
+.highlight-cta {
+  transition: all 0.2s ease;
+}
+
+/* CTA trasparente → cambia solo bordo */
+.highlight-cta.cta-transparent:hover {
+  background-color: #ACACAC !important;
+  border-color: #ACACAC !important;
+}
+
+/* CTA con background pieno → opacità 75% */
+.highlight-cta:not(.cta-transparent):hover {
+  opacity: 0.75;
+}
+.group-news span {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+    overflow: hidden;
+}
+.underline-news {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: white;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 2s ease;
+}
+.cta-underline-news {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    opacity: 1;
+    background-color: white;
+    transform: translateX(0%);
+    transition: transform 2s ease;
+}
+.group-news:hover .underline-news {
+    transform: translateX(100%);
+}
+.group-news:hover .cta-underline-news {
+    animation: enter-line 1.2s ease forwards;
+    animation-delay: 0.8s;
+    opacity: 1;
+}
+@keyframes enter-line {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- CTA dinamica ---
+  const cta = document.querySelector('.highlight-cta');
+  if (cta && cta.dataset.transparent === 'true') {
+    cta.classList.add('cta-transparent');
+  }
+
+  // --- Slider ---
+  const slider = document.querySelector('.news-slider');
+  const prev = document.querySelector('.prev-news');
+  const next = document.querySelector('.next-news');
+
+  if (!slider || !prev || !next) return;
+
+  const getCardWidth = () => {
+      const card = slider.querySelector('a');
+      const style = card ? getComputedStyle(card) : null;
+      return card ? card.offsetWidth + parseInt(style.marginRight) : 300;
+  };
+
+  const updateButtons = () => {
+      if (window.innerWidth >= 1400) return;
+      prev.disabled = slider.scrollLeft <= 0;
+      next.disabled = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth - 1;
+  };
+
+  const scrollLeft = () => {
+      if (window.innerWidth >= 1400) return;
+      const move = Math.min(getCardWidth(), slider.scrollLeft);
+      slider.scrollBy({ left: -move, behavior: 'smooth' });
+  };
+
+  const scrollRight = () => {
+      if (window.innerWidth >= 1400) return;
+      const remaining = slider.scrollWidth - slider.clientWidth - slider.scrollLeft;
+      const move = Math.min(getCardWidth(), remaining);
+      slider.scrollBy({ left: move, behavior: 'smooth' });
+  };
+
+  prev.addEventListener('click', scrollLeft);
+  next.addEventListener('click', scrollRight);
+
+  slider.addEventListener('scroll', updateButtons);
+  updateButtons();
+
+  // --- Drag con mouse ---
+  let isDown = false;
+  let startX;
+  let scrollLeftStart;
+
+  slider.addEventListener('mousedown', (e) => {
+    if (window.innerWidth >= 1400) return;
+    isDown = true;
+    slider.classList.add('dragging');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeftStart = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('dragging');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('dragging');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown || window.innerWidth >= 1400) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeftStart - walk;
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Highlights news",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "highlight-news-hero",
+      "label": "Is this an Hero section?",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "highlight-news-title",
+      "label": "Title",
+      "default": "Ultime novità"
+    },
+    {
+      "type": "text",
+      "id": "read-news-label",
+      "label": "Link to article label",
+      "default": "leggi l'articolo"
+    },
+    {
+        "type": "page",
+        "id": "link-to-news-page",
+        "label": "Select the page about all the news"    
+    },
+    {
+      "type": "text",
+      "id": "all-news-pg",
+      "label": "Link to article page",
+      "default": "Leggi tutte le news"
+    },
+    {
+      "type": "color",
+      "id": "all-news-cta-bg-color",
+      "label": "Bg color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "all-news-cta-color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "all-news-cta-border-color",
+      "label": "Border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "all-news-cta-label",
+      "label": "Label",
+      "default": "Discover more"
+    },
+    {
+      "type": "checkbox",
+      "id": "all-news-cta-bg-transparent",
+      "label": "Bg transparent",
+      "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "show_cta",
+        "label": "Mostra CTA",
+        "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Highlights news",
+      "category": "News Sections"
+    }
+  ]
+}
+{% endschema %}

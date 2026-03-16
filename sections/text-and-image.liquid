@@ -1,0 +1,163 @@
+<div style="--padding-top-desktop: {{ section.settings.padding_top }}px; 
+            --padding-bottom-desktop: {{ section.settings.padding_bottom }}px; 
+            --padding-top-mobile: {{ section.settings.padding_top_mobile }}px; 
+            --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;"
+     class="bg_gs bg_gsp text-image-padding flex flex-col {% if section.settings.imgandtext-image-left %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} px-4 md:px-12 lg:px-[96px] text-white gap-6 lg:gap-0">
+
+    <!-- img -->
+    <div class="w-full lg:w-[calc(6/12*100%)] lg:mr-[16px]">
+        <img src="{{ section.settings.imgandtext-image-desktop | image_url }}" alt="{{ section.settings.imgandtext-title }}" class="rounded-[16px] w-full lg:h-[542px] object-cover">
+    </div>
+
+    <!-- spacer 1 column -->
+    <div class="hidden lg:block lg:w-[calc(1/12*100%)]"></div>
+
+    <!-- title + text -->
+    <div class="flex flex-col justify-center gap-2 lg:gap-4 w-full md:w-[437px]  lg:w-[calc(5/12*100%)]">
+        <!-- title -->
+        <div class="flex heading-lg_gsp heading-lg_gs text-color_gs text-color_gsp">
+            {{ section.settings.imgandtext-title }}
+        </div>
+        <!-- text -->
+        <div class="flex justify-center body-lg_gsp body-lg_gs text-color_gs text-color_gsp">
+            {{ section.settings.imgandtext-text | newline_to_br }}
+        </div>
+        <div class="flex flex-row gap-4 mt-6">
+          {% if section.settings.imgandtext-cta_url1 != blank %}
+            <a href="{{ section.settings.imgandtext-cta_url1 }}" class="link-lg_gs link-lg_gsp px-6 py-4 cta-blue_gs cta-truffle_gsp">{{ section.settings.imgandtext-cta_label1 }}</a>
+          {% endif %}
+          {% if section.settings.imgandtext-cta_url2 != blank %}
+            <a href="{{ section.settings.imgandtext-cta_url2 }}" class="link-lg_gs link-lg_gsp px-6 py-4 cta-border-light_gs cta-border-dark_gsp">{{ section.settings.imgandtext-cta_label2 }}</a>
+          {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<style>
+.text-image-padding {
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+}
+
+@media screen and (min-width: 768px) {
+    .text-image-padding {
+        padding-top: var(--padding-top-desktop);
+        padding-bottom: var(--padding-bottom-desktop);
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Text and Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "imgandtext-image-left",
+      "label": "Image on the left",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "imgandtext-image-desktop",
+      "label": "Image for Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "imgandtext-image-mobile",
+      "label": "Image for Mobile"
+    },
+
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-cta_label1",
+      "label": "Cta Label",
+      "default": "Title"
+    },
+    {
+      "type": "url",
+      "id": "imgandtext-cta_url1",
+      "label": "Cta url"
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-cta_label2",
+      "label": "Cta Label",
+      "default": "Title"
+    },
+    {
+      "type": "url",
+      "id": "imgandtext-cta_url2",
+      "label": "Cta url"
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "imgandtext-text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at risus gravida, porttitor tortor in, vulputate dui."
+    },
+
+    {
+      "type": "header",
+      "content": "Padding & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top Desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom Desktop",
+      "min": 0,
+      "max": 300,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image and Text",
+      "category": "Common sections"
+    }
+  ]
+}
+{% endschema %}

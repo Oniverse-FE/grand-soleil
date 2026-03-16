@@ -1,0 +1,315 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 gap-12 lg:gap-20 text-white w-full pb-36 md:pb-[280px] lg:pb-[280px]">
+  <!-- title + description -->
+   {% if section.settings.celebrity-title != blank or section.settings.celebrity-description != blank %}
+    <div class="flex flex-col gap-3 justify-start w-full md:w-[437px] lg:w-[511px]">
+      <div class="flex h6 text-[26px] leading-[32px] md:text-[42px] md:leading-[48px] uppercase">
+        {{ section.settings.celebrity-title }}
+      </div>
+      <div class="flex body-regular text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]">
+        {{ section.settings.celebrity-description | newline_to_br }}
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- responsive grid layout -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 w-full">
+    {% for block in section.blocks %}
+    <div class="zoom-image {% if block.settings.celebrity-card-small %}col-span-1{% else %}col-span-2{% endif %}">
+      <img
+        src="{{ block.settings.celebrity-card-image | image_url }}"
+        alt="{{ block.settings.celebrity-card-title }}"
+        class="rounded-[10px] object-cover h-[210px] lg:h-[377px] w-full cursor-pointer celebrity-image"
+        data-index="{{ forloop.index0 }}"
+        data-title="{{ block.settings.celebrity-card-title }}"
+        data-src="{{ block.settings.celebrity-card-image | image_url }}"
+      />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- full screen modal -->
+<div id="celebrity-modal" class="fixed inset-0 z-50 hidden bg-[#101010]/60 lg:bg-black bg-opacity-95 flex flex-col lg:flex-row items-center justify-center gap-4 px-4 lg:p-0">
+  <!-- close button -->
+  <button id="modal-close"
+          class="self-end lg:absolute top-14 right-28 rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M4.92969 19.0713L19.0718 4.92915" stroke="white" stroke-linecap="round"/>
+      <path d="M4.92969 4.92871L19.0718 19.0708" stroke="white" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- left arrow (desktop only) -->
+  <button id="modal-prev"
+          class="hidden lg:flex absolute left-[112px] bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] p-4">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- modal image -->
+  <img id="modal-image" src="" alt=""
+       class="max-w-full max-h-full lg:w-full lg:h-full lg:object-cover rounded-[10px]" />
+
+  <!-- modal title -->
+  <div id="modal-title"
+       class="text-white lg:absolute bottom-[60px] lg:rounded-[10px] items-center justify-center text-center lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:px-4 lg:py-2 text-4xl leading-[42px] lg:text-[42px] lg:leading-[48px] uppercase h6"></div>
+
+  <!-- right arrow (desktop only) -->
+  <button id="modal-next"
+          class="hidden lg:flex absolute right-[112px] bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] p-4">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- mobile arrows -->
+  <div class="flex lg:hidden w-full justify-between" id="mobile-arrows">
+    <button id="modal-prev-m">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button id="modal-next-m">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+body.modal-open::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--Blur-VD-Blur, rgba(16,16,16,0.60));
+  backdrop-filter: blur(48px);
+  z-index: 40;
+}
+
+/* Blocca scroll sotto il modal (anche su iOS) */
+body.modal-open {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  top: var(--scroll-y);
+}
+
+/* Mobile landscape */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .flex.flex-col.px-4,
+  .flex.flex-col.px-4.lg\:px-24 {
+    gap: 16px !important;
+  }
+
+  #celebrity-modal {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .grid {
+    gap: 16px !important;
+  }
+
+  #celebrity-modal img#modal-image {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #modal-title {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60));
+    backdrop-filter: blur(48px);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  #modal-close {
+    position: absolute;
+    top: 14px;
+    right: 28px;
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60));
+    backdrop-filter: blur(48px);
+    padding: 1rem;
+    border-radius: 9999px;
+  }
+
+  #mobile-arrows {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    padding: 0 40px;
+    justify-content: space-between;
+  }
+
+  #mobile-arrows button {
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60));
+    backdrop-filter: blur(48px);
+    padding: 1rem;
+    border-radius: 9999px;
+  }
+}
+@media (min-width: 1024px) {
+  #celebrity-modal img#modal-image {
+    border-radius: 0 !important;
+  }
+}
+.zoom-image {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.zoom-image img {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.zoom-image:hover img {
+  transform: scale(1.05);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const images = document.querySelectorAll('.celebrity-image');
+  const modal = document.getElementById('celebrity-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const closeBtn = document.getElementById('modal-close');
+  const nextBtn = document.getElementById('modal-next');
+  const prevBtn = document.getElementById('modal-prev');
+  const nextBtnM = document.getElementById('modal-next-m');
+  const prevBtnM = document.getElementById('modal-prev-m');
+
+  let currentIndex = 0;
+  let scrollY = 0;
+
+  const data = Array.from(images).map(img => ({
+    src: img.dataset.src,
+    title: img.dataset.title
+  }));
+
+  const openModal = (index) => {
+    currentIndex = index;
+    modal.classList.remove('hidden');
+
+    // blocca scroll
+    scrollY = window.scrollY;
+    document.body.style.setProperty('--scroll-y', `-${scrollY}px`);
+    document.body.classList.add('modal-open');
+
+    updateModal();
+  };
+
+  const updateModal = () => {
+    modalImage.src = data[currentIndex].src;
+    modalTitle.textContent = data[currentIndex].title;
+  };
+
+  const closeModal = () => {
+    modal.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+
+    // ripristina scroll
+    const y = document.body.style.getPropertyValue('--scroll-y');
+    document.body.style.removeProperty('--scroll-y');
+    window.scrollTo(0, parseInt(y || '0') * -1);
+  };
+
+  const next = () => {
+    currentIndex = (currentIndex + 1) % data.length;
+    updateModal();
+  };
+
+  const prev = () => {
+    currentIndex = (currentIndex - 1 + data.length) % data.length;
+    updateModal();
+  };
+
+  images.forEach((img, index) => img.addEventListener('click', () => openModal(index)));
+
+  closeBtn.addEventListener('click', closeModal);
+  nextBtn?.addEventListener('click', next);
+  prevBtn?.addEventListener('click', prev);
+  nextBtnM?.addEventListener('click', next);
+  prevBtnM?.addEventListener('click', prev);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Celebrity img slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Basic Settings"
+    },
+    {
+      "type": "text",
+      "id": "celebrity-title",
+      "label": "Title",
+      "default": "VANDUTCH CELEBRITY: SCELTO DAI MIGLIORI"
+    },
+    {
+      "type": "textarea",
+      "id": "celebrity-description",
+      "label": "Description",
+      "default": "Da Lewis Hamilton e George Russell a Max Verstappen, David Beckham, Luis Fonsi e molte altre celebrità internazionali hanno scelto VanDutch per vivere il mare con stile, comfort e prestazioni superiori. Gli yacht VanDutch, conosciuti per il design affilato e le dotazioni di lusso, sono diventati simbolo di status ed eleganza. La presenza costante di personaggi di fama mondiale conferma il fascino irresistibile di VanDutch: la scelta perfetta per chi cerca il massimo, sia in termini di esclusività che di esperienza in mare."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Celebrity card",
+      "type": "celebrity-card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Card Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "celebrity-card-image",
+          "label": "Pick an image"
+        },
+        {
+          "type": "text",
+          "id": "celebrity-card-title",
+          "label": "Card title",
+          "default": "Card title"
+        },
+        {
+          "type": "checkbox",
+          "id": "celebrity-card-small",
+          "label": "Small pic",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Celebrity img slider",
+      "category": "Partnership Sections"
+    }
+  ]
+}
+{% endschema %}

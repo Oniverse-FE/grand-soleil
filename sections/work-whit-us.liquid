@@ -1,0 +1,140 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 px-4 md:px-12 lg:px-24 py-32 lg:py-48 gap-10 text-white">
+  <!-- title + description + cta -->
+  <div class="flex flex-col gap-6 md:w-[437px] lg:gap-8 lg:col-span-5">
+    <!-- title + description -->
+    <div class="flex flex-col justify-start gap-3 w-full">
+      <!-- title -->
+      <div class="h6 text-[26px] leading-[32px] lg:text-[42px] lg:leading-[48px] uppercase">
+        {{ section.settings.wwu-title }}
+      </div>
+      <!-- description -->
+      <div class="body-regular text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]">
+        {{ section.settings.wwu-description | newline_to_br }}
+      </div>
+    </div>
+
+    <!-- cta -->
+    <div class="flex w-full md:w-[215px] justify-start">
+      <a href="{{ section.settings.wwu-cta-link }}" 
+         id="wwu-cta"
+         class="wwu-btn {% if section.settings.wwu-cta-bg-transparent == true %}btn-transparent{% endif %}"
+         style="{% if section.settings.wwu-cta-bg-transparent == false %}background-color:{{ section.settings.wwu-cta-bg-color }};{% endif %}
+                color:{{ section.settings.wwu-cta-color }};
+                border:1px solid {{ section.settings.wwu-cta-border-color }};
+                border-radius:32px;
+                font-weight:600;
+                text-align:center;
+                padding:14px 28px;">
+        {{ section.settings.wwu-cta-label }}
+      </a>
+    </div>
+  </div>
+
+  <!-- empty column -->
+  <div class="hidden lg:block col-span-1"></div>
+
+  <!-- image -->
+  <div class="lg:col-span-6">
+    <img src="{{ section.settings.wwu-image | image_url }}" 
+         alt="{{ section.settings.wwu-title }}" 
+         class="w-full md:h-[364px] h-[192px] lg:h-[347px] 2xl:h-auto object-cover rounded-[10px]">
+  </div>
+</div>
+
+<style>
+/* CTA base */
+.wwu-btn {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Hover per CTA con background pieno */
+.wwu-btn:not(.btn-transparent):hover {
+  opacity: 0.75;
+}
+
+/* Hover per CTA trasparente */
+.wwu-btn.btn-transparent:hover {
+  border-color: #ACACAC !important;
+  /* opzionale: cambia anche il colore del testo */
+  /* color: #ACACAC !important; */
+}
+</style>
+
+{% schema %}
+{
+  "name": "Work with us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title and Description"
+    },
+    {
+      "type": "text",
+      "id": "wwu-title",
+      "label": "Title",
+      "default": "COLLABORATE WITH US"
+    },
+    {
+      "type": "textarea",
+      "id": "wwu-description",
+      "label": "Description",
+      "default": "VanDutch is more than a brand: it’s an aesthetic language, an exclusive experience, a recognizable lifestyle around the world. We are always open to authentic connections with those who share our values: innovation, elegance, performance. If you share our vision, contact us: the best partnerships start from a shared idea."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "wwu-cta-label",
+      "label": "CTA Label",
+      "default": "Collaborate with us"
+    },
+    {
+      "type": "url",
+      "id": "wwu-cta-link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "wwu-cta-bg-transparent",
+      "label": "CTA Transparent",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "wwu-cta-bg-color",
+      "label": "CTA Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "wwu-cta-color",
+      "label": "CTA Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "wwu-cta-border-color",
+      "label": "CTA Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "wwu-image",
+      "label": "Select Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Work with us",
+      "category": "Partnership Sections"
+    }
+  ]
+}
+{% endschema %}

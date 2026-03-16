@@ -1,0 +1,443 @@
+<div id="{{ section.settings.id }}" class="relative flex flex-col {% if section.settings.image-slider-title %} gap-4 lg:gap-6 {% endif %}">
+  {% if section.settings.image-slider-title %}
+    <div class="flex flex-row relative w-full justify-between px-4 md:px-12 lg:px-24">
+      <div class="flex h6 justify-start text-white uppercase text-[26px] leading-[30px] md:text-[42px] md:leading-[42px] lg:text-[42px] lg:leading-[42px]">
+        {{ section.settings.image-slider-title }}
+      </div>
+  {% endif %}
+      <div class="flex justify-end gap-2 lg:gap-4 z-20">
+          <button class="prev-{{ section.id }} p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+              </svg>
+          </button>
+          <button class="next-{{ section.id }} p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+              </svg>
+          </button>
+      </div>
+  {% if section.settings.image-slider-title %}
+    </div>
+  {% endif %}
+  
+  <div id="scroll-container-{{ section.id }}" 
+       class="pl-mobile pl-tablet pl-desk flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 cursor-grab lg:cursor-grab scrollbar-hide w-full max-w-full">
+       
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}
+          {% render block %}
+        {% when 'image-slider-image' %}
+          <div class="w-image flex-shrink-0 relative rounded-[10px]" style="--width-image-desktop: {{ section.settings.width-desktop }}; --width-image-mobile: {{ section.settings.width-mobile }}; --height-image-desktop: {{ section.settings.height-desktop }}; --height-image-mobile: {{ section.settings.height-mobile }}">
+            <img src="{{ block.settings.image-slider-image | img_url: 'master' }}"
+                 alt="{{ block.settings.image-slider-image-alt }}"
+                 data-title="{{ block.settings.image-slider-image-title }}"
+                 data-subtitle="{{ block.settings.image-slider-image-subtitle }}"
+                 class="w-image h-full rounded-[10px] object-cover" 
+                 style="--width-image-desktop: {{ section.settings.width-desktop }}; --width-image-mobile: {{ section.settings.width-mobile }}; --height-image-desktop: {{ section.settings.height-desktop }}; --height-image-mobile: {{ section.settings.height-mobile }}">
+                 
+            {% if block.settings.image-slider-overlay %}
+              <div class="absolute inset-0 rounded-[10px]" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+            {% endif %}
+            
+            {% if block.settings.image-slider-image-title %}
+              <div class="flex absolute bottom-2 lg:bottom-3 left-6 lg:left-8 text-white uppercase h6 text-4xl leading-[42px] md:text-[42px] md:leading-[48px] lg:text-[42px] lg:leading-[48px]">
+                {{ block.settings.image-slider-image-title }}
+              </div>
+            {% endif %}
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+<div id="lightbox-{{ section.id }}" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
+  <div class="lightbox relative w-full flex flex-col gap-4">
+    <button id="modal-close-{{ section.id }}" type="button"
+            class="self-end absolute top-[236px] lg:top-[56px] right-4 lg:right-28 rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M4.92969 19.0713L19.0718 4.92915" stroke="white" stroke-linecap="round"/>
+        <path d="M4.92969 4.92871L19.0718 19.0708" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  <div class="lightbox relative w-full items-center justify-center">
+  <img id="lightbox-img-{{ section.id }}" src="" class="w-full h-full object-contain" alt="Enlarged image">
+  </div>
+    <div id="lightbox-text-{{ section.id }}" class="absolute bottom-64 lg:bottom-10 text-center text-white">
+      <h2 id="lightbox-title-{{ section.id }}" class="uppercase mb-2"></h2>
+      <p id="lightbox-subtitle-{{ section.id }}" class="text-sm hidden lg:text-lg"></p>
+    </div>
+    <div id="lightbox-arrow-{{ section.id }}">
+    <button id="modal-prev-{{ section.id }}"
+            class="flex absolute left-[0px] lg:left-[112px] lg:bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button id="modal-next-{{ section.id }}"
+            class="flex absolute right-[0px] lg:right-[112px] lg:bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.pl-desk { padding-left: 96px; padding-right: 96px; }
+.w-image { width: var(--width-image-desktop); height: var(--height-image-desktop); }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .pl-tablet {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+body.no-scroll { overflow: hidden; position: fixed; width: 100%; }
+#scroll-container-{{ section.id }} { user-select: none; }
+#lightbox-{{ section.id }} { display: none; }
+#lightbox-{{ section.id }}.visible { display: flex; }
+#lightbox-{{ section.id }} img { width: 100%; height: 100%; object-fit: cover; }
+#lightbox-text-{{ section.id }} { max-width: 100%; }
+
+@media (max-width: 798px) {
+  .pl-mobile { padding-left: 16px; padding-right: 16px; }
+  .w-image { width: var(--width-image-mobile); height: var(--height-image-mobile); }
+  #lightbox-{{ section.id }} {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+   /*padding: 16px !important;*/
+  }
+
+  #modal-close-{{ section.id }} {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    /*margin-bottom: 16px;*/
+    z-index: 10;
+  }
+
+  #lightbox-img-{{ section.id }} {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh !important;
+    object-fit: contain !important;
+    border-radius: 10px !important;
+  }
+
+  #lightbox-text-{{ section.id }} {
+    position: relative !important;
+    bottom: auto !important;
+    /*margin-bottom: 16px;*/
+    text-align: center;
+  }
+
+  #lightbox-arrow-{{ section.id }}{
+    display:flex !important;
+    justify-content:space-between !important;
+  }
+
+
+  #modal-prev-{{ section.id }},
+  #modal-next-{{ section.id }} {
+    position: relative ;
+    display: inline-flex ;
+  }
+
+
+  #lightbox-{{ section.id }} .arrows-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px; 
+  }
+}
+  
+@media (max-width: 1023px) and (orientation: landscape) {
+  #modal-close-{{ section.id }} {
+    position: absolute !important;
+    top: 24px !important;
+    right: 16px !important;
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
+    backdrop-filter: blur(48px) !important;
+    padding: 8px;
+    border-radius: 9999px !important;
+  }
+  #lightbox-{{ section.id }} {
+    padding: 0 !important;
+  }
+  #lightbox-img-{{ section.id }} {
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+  }
+  #modal-prev-{{ section.id }},
+  #modal-next-{{ section.id }} {
+    bottom: 99px !important;
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
+    backdrop-filter: blur(48px) !important;
+    padding: 8px;
+    border-radius: 9999px !important;
+  }
+  .lightbox{
+    height: 100% !important;
+  }
+  #lightbox-text-{{ section.id }}{
+    position: absolute !important;
+    bottom: 30px !important;
+    border-radius:10px !important;
+    left:45% !important;
+  }
+  #lightbox-title-{{ section.id }}{
+    margin:0 !important;
+    padding: 4px 16px 4px 16px!important;
+  }
+  #modal-prev-{{ section.id }}{ left: 16px !important; }
+  #modal-next-{{ section.id }}{ right: 16px !important; }
+  #lightbox-{{ section.id }} img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+}
+@media (max-width: 667px) and (orientation: landscape) {
+#lightbox-text-{{ section.id }}{
+    display:none;
+}
+ #modal-prev-{{ section.id }},
+  #modal-next-{{ section.id }} {
+    bottom: 77px !important;
+  }
+}
+@media (min-width: 1025px) {
+  #modal-close-{{ section.id }} {
+    position: absolute !important;
+    top: 24px !important;
+    right: 16px !important;
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
+    backdrop-filter: blur(48px) !important;
+    padding: 16px;
+    border-radius: 9999px !important;
+  }
+  #modal-prev-{{ section.id }},
+  #modal-next-{{ section.id }} {
+    bottom: 37px !important;
+    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
+    backdrop-filter: blur(48px) !important;
+    padding: 16px;
+    border-radius: 9999px !important;
+  }
+  .lightbox{
+    height: 100%;
+  }
+  #lightbox-text-{{ section.id }}{
+    bottom: 37px !important;
+    border-radius:10px !important;
+    left:50% !important;
+  }
+  #lightbox-title-{{ section.id }}{
+    margin:0 !important;
+    padding: 8px 16px 8px 16px!important;
+  }
+  #modal-prev-{{ section.id }}{ left: 16px !important; }
+  #modal-next-{{ section.id }}{ right: 16px !important; }
+  #lightbox-{{ section.id }} img { width: 100% !important; height: auto !important; object-fit: cover !important; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('scroll-container-{{ section.id }}');
+    const images = Array.from(slider.querySelectorAll('img'));
+    const lightbox = document.getElementById('lightbox-{{ section.id }}');
+    const lightboxImg = document.getElementById('lightbox-img-{{ section.id }}');
+    const titleEl = document.getElementById('lightbox-title-{{ section.id }}');
+    const subtitleEl = document.getElementById('lightbox-subtitle-{{ section.id }}');
+    const closeBtn = document.getElementById('modal-close-{{ section.id }}');
+    const prevBtn = document.getElementById('modal-prev-{{ section.id }}');
+    const nextBtn = document.getElementById('modal-next-{{ section.id }}');
+    const prevBtnSlider = document.querySelector('.prev-{{ section.id }}');
+    const nextBtnSlider = document.querySelector('.next-{{ section.id }}');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let currentIndex = 0;
+    let scrollPosition = 0;
+
+    const showLightbox = (index) => {
+        scrollPosition = window.scrollY; // salva scroll corrente
+        const img = images[index];
+        lightboxImg.src = img.src;
+        titleEl.textContent = img.dataset.title || '';
+        subtitleEl.textContent = img.dataset.subtitle || '';
+        lightbox.classList.add('visible');
+        document.body.classList.add('no-scroll');
+        document.body.style.top = `-${scrollPosition}px`; // blocca scroll
+        currentIndex = index;
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('visible');
+        document.body.classList.remove('no-scroll');
+        document.body.style.top = '';
+        window.scrollTo(0, scrollPosition); // ripristina scroll
+    };
+
+    const showPrev = () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showLightbox(currentIndex);
+    };
+
+    const showNext = () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showLightbox(currentIndex);
+    };
+
+    const scrollAmount = slider.clientWidth * 0.8;
+
+    prevBtnSlider.addEventListener('click', () => {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    nextBtnSlider.addEventListener('click', () => {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    slider.addEventListener('mousedown', e => {
+        e.preventDefault();
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => isDown = false);
+    slider.addEventListener('mouseup', () => isDown = false);
+    slider.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1; 
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    images.forEach((img, idx) => {
+        img.addEventListener('click', () => showLightbox(idx));
+        img.addEventListener('dragstart', e => e.preventDefault());
+    });
+
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeLightbox();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Id section",
+      "default": "slider"
+    },
+    {
+      "type": "text",
+      "id": "image-slider-title",
+      "label": "Title (optional)"
+    },
+    {
+      "type": "select",
+      "id": "width-desktop",
+      "label": "Width image desktop",
+      "options": [
+        { "value": "511px", "label": "Small - 511px" },
+        { "value": "932px", "label": "Big - 932px" }
+      ],
+      "default": "932px"
+    },
+    {
+      "type": "select",
+      "id": "width-mobile",
+      "label": "Width image mobile",
+      "options": [
+        { "value": "327px", "label": "Small - 327px" },
+        { "value": "324px", "label": "Big - 324px" }
+      ],
+      "default": "324px"
+    },
+    {
+      "type": "select",
+      "id": "height-desktop",
+      "label": "Height image desktop",
+      "options": [
+        { "value": "337px", "label": "Small - 337px" },
+        { "value": "621px", "label": "Big - 621px" }
+      ],
+      "default": "621px"
+    },
+    {
+      "type": "select",
+      "id": "height-mobile",
+      "label": "Height image mobile",
+      "options": [
+        { "value": "216px", "label": "Small - 216px" },
+        { "value": "240px", "label": "Big - 240px" }
+      ],
+      "default": "216px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image-slider-image",
+      "name": "Image slider image",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image-slider-image",
+          "label": "Select an image"
+        },
+        {
+          "type": "text",
+          "id": "image-slider-image-alt",
+          "label": "Alt text of the image selected",
+          "default": "ALT TEXT"
+        },
+        {
+          "type": "text",
+          "id": "image-slider-image-title",
+          "label": "Image title ( optional )",
+          "default": "Title"
+        },
+        {
+          "type": "checkbox",
+          "id": "image-slider-overlay",
+          "label": "Show gradient",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider",
+      "category": "Media Sections"
+    }
+  ]
+}
+{% endschema %}

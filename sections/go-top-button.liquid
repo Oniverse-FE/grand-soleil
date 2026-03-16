@@ -1,0 +1,35 @@
+<div class="relative flex h-10 w-full px-4 md:px-12 lg:px-24 mt-[80px] md:mt-[184px] lg:mt-[184px] mb-[32px] md:mb-[64px] lg:mb-[64px]">
+    <div id="scrollToTopBtn" class="absolute right-4 lg:right-24">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-8 lg:size-10 ">
+        <rect width="32" height="32" rx="16" fill="#F2EFEC"/>
+        <path d="M15.9998 24C15.7236 24 15.4998 23.7761 15.4998 23.5L15.4998 8.91699C15.2955 8.9892 15.1027 9.10417 14.9392 9.26758L8.35331 15.8535C8.15805 16.0488 7.84154 16.0488 7.64628 15.8535C7.45101 15.6583 7.45101 15.3417 7.64628 15.1465L14.2322 8.56055C15.2085 7.58444 16.7911 7.58444 17.7674 8.56055L24.3533 15.1465L24.4178 15.2246C24.5459 15.4187 24.5242 15.6827 24.3533 15.8535C24.1824 16.0244 23.9185 16.0461 23.7244 15.918L23.6463 15.8535L17.0603 9.26758C16.8969 9.10417 16.7041 8.9892 16.4998 8.91699L16.4998 23.5C16.4998 23.7761 16.2759 24 15.9998 24Z" fill="#101010"/>
+        </svg>
+    </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    if (scrollBtn) {
+      scrollBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    }
+  });
+</script>
+{% schema %}
+{
+    "name": "Back to top",
+    "settings": [
+        
+        ],
+    "presets": [
+        {
+            "name": "Back to top",
+            "category": "PDP Sections"
+        }
+    ]
+}
+{% endschema %}

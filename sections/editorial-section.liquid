@@ -1,0 +1,154 @@
+<div id="{{ section.settings.id }}" class="bg_gs bg_gsp flex flex-col py-[104px] md:py-20 lg:py-[96px] px-4 md:px-8 lg:px-[128px]">
+    
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-[64px] mb-10 lg:mb-16">
+        
+        {% for block in section.blocks %}
+            {% case block.type %}
+                
+                {% when 'title' %}
+                    <div class="w-full md:w-[582px] lg:w-[828px] flex flex-row md:flex-col {{ block.settings.title_alignment }}">
+                        <h2 class="heading-lg_gsp heading-lg_gs text-color_gs text-color_gsp">
+                            {{ block.settings.editorial-title }}
+                        </h2>
+                    </div>
+
+                {% when 'text-area' %}
+                    <div class="w-full w-full md:w-[585px] lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk">
+                        <div class="body-lg_gs body-lg_gsp text-color-gs text-color_gsp">
+                            {{ block.settings.editor-text }}
+                        </div>
+                        
+                        {% if block.settings.editorial-label != blank %}
+                            <div class="flex justify-start">
+                                <a href="{{ block.settings.editorial-url }}" 
+                                   aria-label="{{ block.settings.aria_label_btn }}" 
+                                   class="inline-flex px-8 py-4 text-center link-lg_gs link-lg_gsp cta-truffle_gsp cta-white_gs transition-all">
+                                   {{ block.settings.editorial-label }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+
+            {% endcase %}
+        {% endfor %}
+    </div>
+
+    <div class="flex flex-col mt-[56px] md:mt-[64px] md:mt-[96px]">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'video' %}
+                    {% if block.settings.editor-video %}
+                        <div class="w-full rounded-[16px] overflow-hidden relative aspect-video" data-block-type="video">
+                            <div class="w-full h-full [&>iframe]:w-full [&>iframe]:h-full">
+                                {{ block.settings.editor-video }}
+                            </div>
+                            <div id="play-button-video" class="absolute inset-0 flex items-center justify-center cursor-pointer z-10 hidden">
+                                <div class="w-[80px] h-[80px] flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md">
+                                    {% render 'play-icon' %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% when 'image' %}
+                    {% if block.settings.editor-image != blank %}
+                        <div class="w-full rounded-[16px] overflow-hidden">
+                            {{ block.settings.editor-image | image_url: width: 2000 | image_tag: 
+                                class: 'w-full h-auto object-cover rounded-[16px]',
+                                loading: 'lazy',
+                                alt: block.settings.alt_image 
+                            }}
+                        </div>
+                    {% endif %}
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+// Mantieni lo script originale per Vimeo
+</script>
+
+{% schema %}
+{
+    "name": "Editorial content",
+    "settings": [
+        {
+            "type": "text",
+            "id": "id",
+            "label": "Id section",
+            "default": "content"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "title",
+            "name": "Title",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id":"editorial-title",
+                    "label": "Title"
+                }
+            ]
+        },
+        {
+            "type": "text-area",
+            "name": "Text area",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "editor-text",
+                    "label": "Editor content text"
+                },
+                {
+                    "type": "text",
+                    "id": "editorial-label",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "editorial-url",
+                    "label": "Button link"
+                }
+            ]
+        },
+        {
+            "type": "video",
+            "name": "Video",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "editor-video",
+                    "label": "Editorial content video"
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "Image",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "editor-image",
+                    "label": "Editorial content image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Editorial content",
+            "blocks": [
+                { "type": "title" },
+                { "type": "text-area" },
+                { "type": "video" }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+<div class="flex px-4 md:px-12 lg:px-24 text-white w-full justify-between lg:mt-[32px]">
+    <!-- data -->
+    <div class="flex items-center body-regular text-[14px] leading-[18px] lg:text-sm lg:leading-5">
+        {{ article.metafields.custom.news_data | date: "%d.%m.%Y" }}
+    </div>
+
+    <!-- icona di condivisione -->
+    <div class="flex items-center news-share-button cursor-pointer" role="button" aria-label="Condividi articolo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17 8C18.1046 8 19 7.10457 19 6C19 4.89543 18.1046 4 17 4C15.8954 4 15 4.89543 15 6C15 6.19726 15.0286 6.38784 15.0818 6.56785L8.40328 10.5749C8.04225 10.2194 7.54674 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14C7.54674 14 8.04225 13.7806 8.40328 13.4251L15.0818 17.4322C15.0286 17.6122 15 17.8027 15 18C15 19.1046 15.8954 20 17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16C16.4533 16 15.9578 16.2194 15.5967 16.5749L8.91824 12.5678C8.97144 12.3878 9 12.1973 9 12C9 11.8027 8.97144 11.6122 8.91824 11.4322L15.5967 7.42506C15.9578 7.78061 16.4533 8 17 8Z" fill="white"/>
+        </svg>
+    </div>
+</div>
+
+<!-- Script per la condivisione -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const shareButton = document.querySelector(".news-share-button");
+
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
+      const shareData = {
+        title: document.title,
+        text: "Guarda questa notizia interessante!",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        // Drawer di sistema su mobile
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.warn("Condivisione annullata o non riuscita:", err);
+        }
+      } else {
+        // Fallback desktop: copia link negli appunti
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert("Link copiato negli appunti!");
+        } catch (err) {
+          console.error("Errore nel copiare il link:", err);
+        }
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.news-share-button:hover svg {
+  opacity: 0.8;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+</style>
+
+{% schema %}
+{
+  "name": "News Share Bar",
+  "presets": [
+    {
+      "name": "News Share Bar",
+      "category": "News Sections"
+    }
+  ]
+}
+{% endschema %}

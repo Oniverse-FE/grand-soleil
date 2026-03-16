@@ -1,0 +1,69 @@
+<div class="flex px-4 md:px-12 lg:px-24 pt-[96px] lg:pt-[165px]">
+  <nav class="text-sm lg:text-[16px] leading-5 lg:leading-[22px] text-white/60 body-regular flex flex-wrap justify-start" aria-label="Breadcrumb">
+    <ol class="list-reset flex flex-wrap gap-1 whitespace-normal">
+      
+      {% comment %}
+        Sezione per articoli del blog
+      {% endcomment %}
+      {% if template contains 'article' %}
+        {% comment %}<li>
+          <a href="{{ blog.url }}" class="hover:underline">{{ blog.title }}</a>
+        </li>{% endcomment %}
+        {% if section.settings.intermediate-page != blank %}
+          {% comment %}<li><span>/</span></li>{% endcomment %}
+          <li>
+            <a href="{{ section.settings.intermediate-page.url }}" class="hover:underline">
+              {{ pages[section.settings.intermediate-page].title }}
+            </a>
+          </li>
+        {% endif %}
+        <li><span>/</span></li>
+        <li>{{ article.title }}</li>
+
+      {% comment %}
+        Pagina intermedia (es. /pages/tutte-le-news)
+      {% endcomment %}
+      {% elsif template contains 'page' and page.handle == section.settings.intermediate-page %}
+        {% assign target-blog = blogs[section.settings.related-blog] %}
+        {% if target-blog %}
+          <li>
+            <a href="{{ target-blog.url }}" class="hover:underline max-w-[300px] lg:max-w-[500px]">{{ target-blog.title }}</a>
+          </li>
+          <li><span>/</span></li>
+        {% endif %}
+        <li>{{ page.title }}</li>
+
+      {% comment %}
+        Pagina del blog stesso
+      {% endcomment %}
+      {% elsif template contains 'blog' %}
+        <li>{{ blog.title }}</li>
+      {% endif %}
+
+    </ol>
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Event Breadcrumb",
+  "settings": [
+    {
+      "type": "page",
+      "id": "intermediate-page",
+      "label": "Select intermediate page"
+    },
+    {
+      "type": "blog",
+      "id": "related-blog",
+      "label": "Select the blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Event Breadcrumb",
+      "category": "Common sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,114 @@
+{% assign video_desktop = section.settings.hero-video-desktop %}
+{% assign video_mobile = section.settings.hero-video-mobile %}
+{% assign image_desktop = section.settings.hero-image-desktop %}
+{% assign image_mobile = section.settings.hero-image-mobile %}
+
+<div id="{{ section.settings.id }}" class="relative w-full overflow-hidden hero-video-section">
+
+  {% if video_desktop != blank and video_mobile != blank %}
+
+    <!-- Video desktop -->
+    {% if video_desktop != blank %}
+      {% render 'video-player', video_desktop: video_desktop %}
+    {% endif %}
+
+    <!-- Video mobile -->
+     {% if video_mobile != blank %}
+      {% render 'video-player-mobile', video_mobile: video_mobile %}
+    {% endif %} 
+    {% comment %}
+    {% if video_mobile != blank %}
+      <div class="flex lg:hidden w-full h-full justify-center items-center">
+        <div class="w-full h-full hero-video-mobile">
+          {{ video_mobile | video_tag: autoplay: true, loop: true, muted: true, controls: true, preload: "auto", playsinline: true }}
+        </div>
+        <!-- Gradient overlay -->
+        <div class="absolute bottom-0 left-0 w-full h-[100vh] pointer-events-none bg-gradient-to-b from-transparent via-[#10101080] to-[#101010]"></div>
+      </div>
+    {% endif %}
+    {% endcomment %}
+
+  {% elsif image_desktop != blank and image_mobile != blank %} 
+
+    <!-- Image desktop -->
+    {% if image_desktop != blank %}
+      <div class="hidden lg:flex w-full h-full justify-center items-center">
+        <div class="w-full h-full">
+          <img src="{{ image_desktop | image_url }}" alt="{{ section.settings.alt_image }}" class="w-full h-auto object-cover" loading="lazy">
+        </div>
+        <!-- Gradient overlay -->
+        <div class="absolute bottom-0 left-0 w-full h-[100vh] pointer-events-none bg-gradient-to-b from-transparent via-[#10101080] to-[#101010]"></div>
+      </div>
+    {% endif %}
+
+    <!-- Image mobile -->
+    {% if image_mobile != blank %}
+      <div class="flex lg:hidden w-full h-full justify-center items-center">
+        <div class="w-full h-full hero-image-mobile">
+          <img src="{{ image_mobile | image_url }}" alt="{{ section.settings.alt_image }}" class="w-full h-auto object-cover" loading="lazy">
+        </div>
+        <!-- Gradient overlay -->
+        <div class="absolute bottom-0 left-0 w-full h-[100vh] pointer-events-none bg-gradient-to-b from-transparent via-[#10101080] to-[#101010]"></div>
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+</div>
+
+<style>
+  /* Mobile landscape: forza larghezza video a 940px */
+  @media screen and (orientation: landscape) and (max-width: 1024px) {
+    .hero-video-section .hero-video-mobile video {
+      width: 940px !important;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Id section",
+      "default": "hero-video"
+    },
+    {
+      "type": "video",
+      "id": "hero-video-desktop",
+      "label": "Desktop video"
+    },
+    {
+      "type": "video",
+      "id": "hero-video-mobile",
+      "label": "Mobile video"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero-image-desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero-image-mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "alt-image",
+      "label": "Alt text image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero video",
+      "category": "Media Sections"
+    }
+  ]
+}
+{% endschema %}

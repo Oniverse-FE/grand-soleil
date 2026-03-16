@@ -1,0 +1,535 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 gap-3 lg:gap-6 pt-[96px] lg:pt-[165px]">
+    <div class="flex text-4xl h6 md:text-[56px] lg:text-[56px] text-white leading-[42px] md:leading-[62px] lg:leading-[62px] justify-start uppercase">
+        <h6> {{ section.settings.vdcenter-intro-title }} </h6>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 text-white gap-4 lg:gap-[121px] body-regular text-[16px] leading-6">
+        <div class="w-[427px] xl:w-[90%] max-w-full h-auto ">
+                {{ section.settings.vdcenter-intro-left |  newline_to_br }}
+        </div>
+        <div class="w-[427px] xl:w-[90%] max-w-full h-auto">
+                {{ section.settings.vdcenter-intro-right }}
+        </div>
+    </div>
+    <div class="flex pt-[20px] lg:pt-[24px] w-full justify-center items-center md:justify-start md:items-start lg:justify-center lg:items-center">
+      <button id="vd-center-contact" class="vdcenter-cta {% if section.settings.vdcenter-contact-bg-transparent == true %}btn-transparent{% endif %} rounded-[50px] px-7 py-3.5 w-full md:w-[427px] lg:w-fit font-semibold text-[16px] leading-3.5 transition-all duration-300"
+        style="{% if section.settings.vdcenter-contact-bg-transparent == false %} background-color:{{ section.settings.vdcenter-contact-bg-color }};{% endif %}color:{{ section.settings.vdcenter-contact-text-color }}; border:1px solid {{ section.settings.vdcenter-contact-border-color }};">
+          {{ section.settings.vdcenter-contact-label | newline_to_br }}
+      </button>
+    </div>
+</div>
+
+<!-- form -->
+<div id="vd-form-wrapper"
+        class="fixed top-0 left-0 flex justify-center items-end md:items-center w-full h-full bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-700 ease-out"
+        style="fill: var(--Blur-VD-Blur, rgba(16, 16, 16, 0.60)); backdrop-filter: blur(48px);">
+
+    <!-- Box form animato da sotto -->
+    <div id="form-box"
+        class="flex flex-col max-h-[80vh] overflow-y-auto overflow-visible opacity-0 translate-y-full transition-all duration-[800ms] max-w-[720px] w-full bg-white rounded-xl lg:px-10 py-8  px-4 gap-10 "
+        style="background-color: {{ section.settings.vdcenter-contact-form-bg-color }}; color:{{ section.settings.vdcenter-contact-form-text-color }}">
+        
+        <!-- Header con titolo e X e testo-->    
+        <div class="flex flex-col gap-6">
+            <div class="flex justify-between">
+                <div class="font-medium text-xl">{{ section.settings.vdcenter-contact-form-title }}</div>
+                <div id="vdcenter-contact-form-close" class="cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                </div>
+            </div>
+            <div class="text-[16px]">{{ section.settings.vdcenter-contact-form-text }}</div>
+        </div>
+
+        <!-- First Name -->
+         <div class="border-b border-white flex flex-col">
+        <div class="hidden lg:block flex text-xs text-[#D6CBC9]">{{ section.settings.vdcenter-contact-fname }}</div>
+        <input 
+            type="text" 
+            id="form-vdcenter-contact-fname"
+            name="contact[name]" 
+            class="w-full bg-transparent text-sm py-3"
+            {% if section.settings.vdcenter-contact-fname-is-required == true %} 
+                required 
+                placeholder="{{ section.settings.vdcenter-contact-fname }}*"
+            {% endif %}
+            placeholder="{{ section.settings.vdcenter-contact-fname }}" />
+        </div>
+
+        <!-- Last Name -->
+         <div class="border-b border-white flex flex-col">
+        <div class="hidden lg:block flex text-xs text-[#D6CBC9]">{{ section.settings.vdcenter-contact-lname }}</div>
+        <input 
+            type="text" 
+            id="form-vdcenter-contact-lname"
+            name="contact[last-name]" 
+            class="w-full bg-transparent text-sm py-3"
+            {% if section.settings.vdcenter-contact-lname-is-required == true %} 
+                required 
+                placeholder="{{ section.settings.vdcenter-contact-lname }}*"
+            {% endif %}
+            placeholder="{{ section.settings.vdcenter-contact-lname }}" />
+        </div>
+
+        <!-- Input mail -->
+        <div class="border-b border-white flex flex-col">
+        <div class="hidden lg:block flex text-xs text-[#D6CBC9]">{{ section.settings.vdcenter-contact-mail }}</div>
+        <input 
+            type="email" 
+            id="form-vdcenter-contact-mail"
+            name="contact[email]" 
+            class="w-full bg-transparent text-sm py-3"
+            {% if section.settings.vdcenter-contact-mail-is-required == true %} 
+                required 
+                placeholder="{{ section.settings.vdcenter-contact-mail }}*"
+            {% endif %}
+            placeholder="{{ section.settings.vdcenter-contact-mail }}" />
+        </div>
+
+        <!-- VD Center selection -->
+        <div class="relative">
+            <!-- Bottone visivo -->
+            <button
+                type="button"
+                id="dropdownButton"
+                class="w-full border-b border-white py-3 text-white text-left"
+                onclick="toggleDropdown()"
+            >
+                {% if section.settings.vdcenter-selection-required == true %}
+                    <span id="dropdownSelected">{{ section.settings.vdcenter-selection-label }}*</span>
+                {% else %}
+                    <span id="dropdownSelected">{{ section.settings.vdcenter-selection-label }}</span>
+                {% endif %}
+            </button>
+
+            <!-- Lista opzioni -->
+            <ul
+                id="dropdownOptions"
+                class="absolute hidden bg-[#262626] text-white w-full mt-1 shadow-lg z-10 max-h-60 overflow-auto border-[1px] border-white rounded-2xl"
+            >
+                {% assign options = section.settings.vdcenter-selection-options | split: ',' %}
+                {% for option in options %}
+                <li
+                    class="px-4 py-2 hover:bg-gray-200 hover:text-black cursor-pointer"
+                    onclick="selectOption(this)"
+                    data-value="{{ option | strip }}"
+                >
+                    {{ option | strip }}
+                </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Input nascosto per invio nel form -->
+            <input
+                type="hidden"
+                name="contact[select-option]"
+                id="dropdownInput"
+                {% if section.settings.vdcenter-selection-required %}
+                required
+                {% endif %}
+            >
+        </div>
+            
+        <!-- Input message -->
+        <div class="border-b border-white flex flex-col relative">
+        <div class="hidden lg:block flex text-xs text-[#D6CBC9]">
+            {{ section.settings.vdcenter-contact-message }}
+        </div>
+        <textarea  
+            id="form-vdcenter-contact-message"
+            name="contact[message]" 
+            class="w-full bg-transparent text-sm py-3 text-white"
+            maxlength="{{ section.settings.vdcenter-contact-message-max }}"
+            oninput="updateCharCount(this)"
+            {% if section.settings.vdcenter-contact-message-is-required %}
+            required
+            {% endif %}
+        ></textarea>
+        <div class="text-xs text-right text-[#D6CBC9] mt-1">
+            <span id="char-count">0</span> / {{ section.settings.vdcenter-contact-message-max }}
+        </div>
+        </div>
+
+
+        <div class="flex text-[14px]">
+            {{ section.settings.vdcenter-contact-form-required-text }}
+        </div>
+        <div class="flex flex-col gap-6 text-[18px]">
+            <div class="flex items-center h-auto gap-4">
+                <input type="hidden" name="customer[accepts_marketing]" value="false">
+                <input style="aspect-ratio:1/1" type="checkbox" class="w-6 h-6 rounded-sm appearance-none border-1 border-white bg-transparent checked:bg-white  transition-all duration-200" id="marketingConsent" name="contact[accepts_marketing]">
+                <label class="w-auto">{{ section.settings.vdcenter-contact-markConsLabel }} <u><a id="shortMarketing">{{ section.settings.vdcenter-contact-privacy-label | default: "Privacy Policy" }}</a></u></label>
+          </div>
+          <div class="flex items-center h-auto gap-4">
+              <input style="aspect-ratio:1/1" type="checkbox" class="appearance-none w-6 h-6 rounded-sm border-1 border-white bg-transparent checked:bg-white  transition-all duration-200 disabled:border-[#ACACAC]" id="profilingConsent" name="contact[profiling_consent]" disabled>
+            <label class="text-white transition-colors duration-200" id="profilingLabel">{{ section.settings.vdcenter-contact-profConsLabel }} <u><a id="shortProfiling">{{ section.settings.vdcenter-contact-privacy-label | default: "Privacy Policy" }}</a></u></label>
+          </div>
+        </div>
+        <u><a href="{{ section.settings.vdcenter-contact-privacy-url }}">{{ section.settings.privacy_label | default: "Privacy Policy" }}</a></u>
+        
+        <div class="flex font-medium justify-center tk-aktiv-grotesk">
+            <button id="vdcenter-contact-form-submit" aria-label="{{ section.settings.vdcenter-contact-form-submit-button-text }}" type="button" class="w-full px-7 py-3.5 rounded-4xl text-[16px] font-semibold w-[300px]" style="color:{{ section.settings.vdcenter-contact-form-button-text-color }};background-color:{{ section.settings.vdcenter-contact-form-button-background-color }};">{{ section.settings.vdcenter-contact-form-submit-button-text }}</button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+.vdcenter-cta {
+  transition: all 0.3s ease;
+}
+.vdcenter-cta:not(.btn-transparent):hover {
+  opacity: 0.75;
+}
+.vdcenter-cta.btn-transparent:hover {
+  border-color: #ACACAC !important;
+  background-color: #ACACAC !important;
+}
+  #form-box {
+    transform: translateY(0);
+    opacity: 1;
+}
+#vd-form-wrapper.active #form-box {
+    transform: translateY(-100%);
+    opacity: 1;
+}
+</style>
+
+<script>
+const formWrapperContact = document.getElementById("vd-form-wrapper");
+const formBoxContact = document.getElementById("form-box");
+const submitContact = document.getElementById("vd-center-contact");
+const formCloseContact = document.getElementById("vdcenter-contact-form-close");
+
+function updateCharCount(textarea) {
+    document.getElementById('char-count').innerText = textarea.value.length;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const textarea = document.getElementById('form-vdcenter-contact-message');
+    updateCharCount(textarea);
+});
+
+function toggleDropdown() {
+    document.getElementById('dropdownOptions').classList.toggle('hidden');
+}
+
+function selectOption(element) {
+    const value = element.getAttribute('data-value');
+    document.getElementById('dropdownSelected').innerText = value;
+    document.getElementById('dropdownInput').value = value;
+    document.getElementById('dropdownOptions').classList.add('hidden');
+}
+
+document.addEventListener('click', function (event) {
+    const dropdown = document.getElementById('dropdownOptions');
+    const button = document.getElementById('dropdownButton');
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden');
+    }
+});
+
+submitContact.addEventListener("click", () => {
+    formWrapperContact.classList.remove("opacity-0", "pointer-events-none");
+    formWrapperContact.classList.add("opacity-100");
+    formBoxContact.classList.remove("opacity-0", "translate-y-full");
+    formBoxContact.classList.add("opacity-100", "translate-y-0");
+    document.body.classList.add("overflow-hidden");
+});
+
+formCloseContact.addEventListener("click", () => {
+    formWrapperContact.classList.remove("opacity-100");
+    formWrapperContact.classList.add("opacity-0");
+    formBoxContact.classList.remove("opacity-100", "translate-y-0");
+    formBoxContact.classList.add("opacity-0", "translate-y-full");
+    document.body.classList.remove("overflow-hidden");
+    setTimeout(() => formWrapperContact.classList.add("pointer-events-none"), 800);
+});
+
+formWrapperContact.addEventListener("click", (event) => {
+    if (!formBoxContact.contains(event.target)) {
+        formWrapperContact.classList.remove("opacity-100");
+        formWrapperContact.classList.add("opacity-0");
+        formBoxContact.classList.remove("opacity-100", "translate-y-0");
+        formBoxContact.classList.add("opacity-0", "translate-y-full");
+        document.body.classList.remove("overflow-hidden");
+        setTimeout(() => formWrapperContact.classList.add("pointer-events-none"), 800);
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        formWrapperContact.classList.remove("opacity-100");
+        formWrapperContact.classList.add("opacity-0");
+        formBoxContact.classList.remove("opacity-100", "translate-y-0");
+        formBoxContact.classList.add("opacity-0", "translate-y-full");
+        document.body.classList.remove("overflow-hidden");
+        setTimeout(() => formWrapperContact.classList.add("pointer-events-none"), 800);
+    }
+});
+</script>
+
+{% schema %}
+{
+  "name": "VD Center intro",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro Text"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-intro-title",
+      "label": "Intro Title",
+      "default": "vandutch center"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-intro-left",
+      "label": "Div left",
+      "default": "Vivi il mondo VanDutch nelle destinazioni più iconiche a livello globale. I nostri VanDutch Centers rappresentano l’eccellenza dello yachting di lusso, offrendo accesso a servizi su misura e a un’accoglienza esclusiva, pensata per te, i tuoi ospiti e il tuo yacht."
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-intro-right",
+      "label": "Div right"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-contact-bg-transparent",
+      "label": "Transparent background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-bg-color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-text-color",
+      "label": "Text color",
+      "default": "#101010"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-border-color",
+      "label": "Border color",
+      "default": "#101010"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-label",
+      "label": "Button label",
+      "default": "Contatta un centro"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact Form Colors"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-form-bg-color",
+      "label": "Form background color",
+      "default": "#292929"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-form-text-color",
+      "label": "Form text color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact Form Texts"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-form-title",
+      "label": "Form title",
+      "default": "Contatta il centro"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-form-text",
+      "label": "Form description",
+      "default": "Please fill out the form below to subscribe to our newsletter"
+    },
+
+    {
+      "type": "header",
+      "content": "Form Fields"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-fname",
+      "label": "First Name Label",
+      "default": "Nome"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-contact-fname-is-required",
+      "label": "First Name required",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-lname",
+      "label": "Last Name Label",
+      "default": "Cognome"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-contact-lname-is-required",
+      "label": "Last Name required",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-mail",
+      "label": "Mail Label",
+      "default": "Email"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-contact-mail-is-required",
+      "label": "Mail required",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-selection-label",
+      "label": "VD Center selection label",
+      "default": "Sede da contattare"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-selection-options",
+      "label": "VD Centers divided by comma",
+      "default": "VD Center Amsterdam,VD Center Balearics - Mallorca,VD Center Balearics - Ibiza"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-selection-required",
+      "label": "VD center required",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-message",
+      "label": "Message Label",
+      "default": "Messaggio"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-contact-message-is-required",
+      "label": "Message required",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "vdcenter-contact-message-max",
+      "label": "Max char message",
+      "default": 250,
+      "min": 10,
+      "max": 1000,
+      "step": 10
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-form-required-text",
+      "label": "'Required' text",
+      "default": "* Campi obbligatori"
+    },
+
+    {
+      "type": "header",
+      "content": "Consent & Privacy"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-markConsLabel",
+      "label": "Marketing consent text",
+      "default": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts..."
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-profConsLabel",
+      "label": "Profiling consent text",
+      "default": "By giving your consent, we will be able to send you personalised marketing communications..."
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-privacy_label",
+      "label": "Privacy label"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-marketing-title",
+      "label": "Marketing short title",
+      "default": "Direct marketing consent"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-profiling-title",
+      "label": "Profiling short title",
+      "default": "Profiling consent"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-marketing-text",
+      "label": "Marketing short text",
+      "default": "By checking this box, you give your consent to receive commercial communications..."
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-profiling-text",
+      "label": "Profiling short text",
+      "default": "By ticking this box, we will send personalised (profiled) commercial communications..."
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-privacy-url",
+      "label": "Privacy URL",
+      "default": "#"
+    },
+
+    {
+      "type": "header",
+      "content": "Form Button"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-contact-form-submit-button-text",
+      "label": "Button text",
+      "default": "Invia richiesta"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-form-button-text-color",
+      "label": "Button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-contact-form-button-background-color",
+      "label": "Button background color",
+      "default": "#ACACAC"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VD Center intro",
+      "category": "VD Center Sections"
+    }
+  ]
+}
+{% endschema %}

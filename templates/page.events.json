@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "events-list": {
+      "type": "events-list",
+      "settings": {
+        "event-section-title": "Our activities",
+        "future-event-label": "Future events",
+        "past-event-label": "Past events",
+        "event-search-placeholder": "Search for an event",
+        "future-event-discover-label": "discover more",
+        "future-event-calendar-label": "",
+        "future-event-book-label": "Book an appointment",
+        "past-event-discover-label": "",
+        "no-event-label": "Subscribe to our newsletter and don’t miss upcoming events.",
+        "all-event-label": "VIEW ALL EVENTS",
+        "title-no-event": "Stay updated",
+        "text-no-event": "Scroll and subscribe to our newsletter and don’t miss upcoming events."
+      }
+    },
+    "app_form_U3jUHr": {
+      "type": "app-form",
+      "name": "Appointment form",
+      "settings": {
+        "appointment-form-bg-color": "#292929",
+        "appointment-form-text-color": "#ffffff",
+        "appointment-form-title": "Book an appointment",
+        "appointment-form-required-text": "* indicates required fields",
+        "app-fname-label": "First name",
+        "app-fname-required": true,
+        "app-fname-placeholder": "Insert your first name",
+        "app-lname-label": "Last name",
+        "app-lname-required": true,
+        "app-lname-placeholder": "Insert your last name",
+        "app-country-label": "Country",
+        "app-country-required": true,
+        "app-country-placeholder": "Select your country",
+        "app-mail-label": "Email",
+        "app-mail-required": true,
+        "app-mail-placeholder": "example@domain.com",
+        "app-date-label": "Appointment day",
+        "app-date-required": true,
+        "app-date-placeholder": "Select a date",
+        "app-boat-q-label": "Have you already got a boat?",
+        "app-boat-q-required": false,
+        "app-boat-q-affermative-label": "Yes, by VanDutch Yacths",
+        "app-boat-q-other-label": "Yes, by other brands",
+        "app-boat-q-negative-label": "No",
+        "app-buy-q-label": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?",
+        "app-buy-q-required": false,
+        "app-buy-q-affermative-label": "Yes",
+        "app-buy-q-negative-label": "No",
+        "app-boat-sel-label": "For which boats would you like more information?",
+        "app-boat-sel-required": false,
+        "options": "VD32, VD40, VD48, VD56, VD75",
+        "app-message-label": "Any specific request?",
+        "app-message-required": false,
+        "app-message-placeholder": "Write your request here",
+        "app-contact-q-label": "Contact preferences",
+        "app-contact-q-required": false,
+        "app-contact-q-mail-label": "Email",
+        "app-contact-q-phone-label": "Phone",
+        "app-contact-q-both-label": "Both",
+        "app-form-markConsLabel": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms.",
+        "app-form-profConsLabel": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us.",
+        "app-form-privacy-page": "",
+        "app-form-privacy-label": "Privacy Policy",
+        "app-form-marketing-title": "DIRECT MARKETING CONSENT",
+        "app-form-marketing-text": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "app-form-profiling-title": "PROFILING CONSENT",
+        "app-form-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "appointment-form-submit-button-text": "Send request",
+        "appointment-form-button-text-color": "#000000",
+        "appointment-form-button-background-color": "#acacac",
+        "app-form-boat-q-model-label": "Model",
+        "app-form-boat-q-model-placeholder": "Insert the model",
+        "app-form-boat-q-port-label": "Mooring country",
+        "app-form-boat-q-port-placeholder": "Select the country",
+        "app-form-contact-q-prefix-label": "Prefix",
+        "app-form-contact-q-prefix-placeholder": "+39",
+        "app-form-contact-q-phone-label": "Phone",
+        "app-form-contact-q-phone-placeholder": "XXXXXXXXXX",
+        "app-form-ty-title": "Thank you!",
+        "app-form-ty-text": "Thank you. You will be contacted shortly regarding the request you have submitted.",
+        "app-form-ty-btn-label": "Close"
+      }
+    }
+  },
+  "order": [
+    "events-list",
+    "app_form_U3jUHr"
+  ]
+}

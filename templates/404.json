@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "404-template": {
+      "type": "404-template",
+      "settings": {
+        "main_title": "IT LOOKS LIKE YOU'VE GONE OFF COURSE",
+        "content_page": "We are sorry, but the page you are looking for no longer exists.\n<br>\nTry returning to safer waters!",
+        "cta_text": "Go to home page",
+        "button-bg-color": "#ffffff",
+        "button-text-color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "404-template"
+  ]
+}

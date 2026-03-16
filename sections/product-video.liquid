@@ -1,0 +1,148 @@
+{% assign shortEmbedDesktop = section.settings.vimeo-short-desktop %}
+{% assign shortEmbedMobile = section.settings.vimeo-short-mobile %}
+
+{% if section.settings.full-video-rounded == true %}
+  <div class="relative w-full px-4 lg:px-24">
+{% endif %}
+
+<div id="{{ section.settings.id }}"
+     class="relative w-full fullvideo-padding aspect-video overflow-hidden {% if section.settings.full-video-rounded == true %}rounded-[10px]{% endif %}"
+     style="--margin-bottom-mobile: {{ section.settings.margin_block_mobile }}; --margin-bottom-desktop: {{ section.settings.margin_block }}">
+
+  <!-- Short video desktop -->
+  {% if shortEmbedDesktop != blank %}
+  <div class="hidden lg:block absolute top-0 left-0 w-full h-full z-10">
+    <div class="w-full h-full short-desktop-embed">
+      {{ shortEmbedDesktop }}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Short video mobile -->
+  {% if shortEmbedMobile != blank %}
+  <div class="block lg:hidden absolute top-0 left-0 w-full h-full z-10">
+    <div class="w-full h-full short-mobile-embed">
+      {{ shortEmbedMobile }}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+{% if section.settings.full-video-rounded == true %}
+  </div>
+{% endif %}
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const shortIframeDesktop = document.querySelector('.short-desktop-embed iframe');
+    const shortIframeMobile = document.querySelector('.short-mobile-embed iframe');
+    let shortPlayer;
+
+    // Inizializza il player corretto in base alla larghezza dello schermo
+    if (window.innerWidth >= 1024 && shortIframeDesktop) {
+      shortPlayer = new Vimeo.Player(shortIframeDesktop, { loop: false });
+    } else if (shortIframeMobile) {
+      shortPlayer = new Vimeo.Player(shortIframeMobile, { loop: true });
+    }
+
+    if (!shortPlayer) return;
+
+    // Imposta autoplay e muto
+    shortPlayer.setMuted(true);
+    shortPlayer.play().catch(console.warn);
+  });
+</script>
+
+<style>
+  .fullvideo-padding {
+    margin-bottom: var(--margin-bottom-mobile);
+  }
+
+  @media screen and (min-width: 768px) {
+    .fullvideo-padding {
+      margin-bottom: var(--margin-bottom-desktop);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Full Video",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-video-rounded",
+      "label": "Rounded video",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Section ID",
+      "default": "video"
+    },
+
+    {
+      "type": "header",
+      "content": "Vimeo Embeds"
+    },
+    {
+      "type": "textarea",
+      "id": "vimeo-short-desktop",
+      "label": "Vimeo SHORT embed code (Desktop)"
+    },
+    {
+      "type": "textarea",
+      "id": "vimeo-short-mobile",
+      "label": "Vimeo SHORT embed code (Mobile)"
+    },
+    {
+      "type": "textarea",
+      "id": "vimeo-long-embed",
+      "label": "Vimeo LONG embed code (Desktop)"
+    },
+    {
+      "type": "textarea",
+      "id": "vimeo-long-mobile",
+      "label": "Vimeo LONG embed code (Mobile)"
+    },
+
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "select",
+      "id": "margin_block",
+      "label": "Space",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "40px", "label": "Small - 40px" }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "select",
+      "id": "margin_block_mobile",
+      "label": "Space above/below (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "20px", "label": "Small - 20px" }
+      ],
+      "default": "0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Video",
+      "category": "Media Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,187 @@
+<div class="relative flex flex-col h-dvh w-full overflow-hidden">
+  <div class="flex flex-col flex-1">
+    {% assign index = 0 %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}
+          {% render block %}
+        {% when 'content' %}
+          <div
+            class="gallery-slide {% if forloop.first %}flex{% else %}hidden{% endif %} flex-col justify-end h-full w-full transition-opacity duration-1000 ease-in-out"
+            data-index="{{ index }}"
+          >
+            <!-- Sfondo (rimane absolute per riempire tutto) -->
+            <div class="absolute inset-0 -z-10">
+              {% if block.settings.content-media %}
+                <video autoplay loop muted playsinline class="w-full h-full object-cover lg:hidden">
+                  <source src="{{ block.settings.content-video-mobile | file_url }}" type="video/mp4" />
+                </video>
+                <video autoplay loop muted playsinline class="w-full h-full object-cover hidden lg:inline">
+                  <source src="{{ block.settings.content-video-desktop | file_url }}" type="video/mp4" />
+                </video>
+              {% else %}
+                <img src="{{ block.settings.content-image-mobile | img_url: 'master' }}" alt="{{ block.settings.content-title }}" class="w-full h-full object-cover lg:hidden" />
+                <img src="{{ block.settings.content-image-desktop | img_url: 'master' }}" alt="{{ block.settings.content-title }}" class="w-full h-full object-cover hidden lg:inline" />
+              {% endif %}
+            </div>
+          </div>
+          {% assign index = index | plus: 1 %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <!-- Frecce (restano absolute) -->
+  <div class="flex absolute bottom-[32px] lg:bottom-[48px] right-4 md:right-6 lg:right-24 gap-2 lg:gap-4 z-20 translate-y-1/2 lg:translate-y-0">
+    <button class="prev-slide-gallery p-2 rounded-full flex justify-center items-center bg-[rgba(0,0,0,0.60)] backdrop-blur-xl text-white transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="next-slide-gallery p-2 rounded-full flex justify-center items-center bg-[rgba(0,0,0,0.60)] backdrop-blur-xl text-white transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .stepper-active {
+    width: 56px !important;
+  }
+  .stepper-inactive {
+    width: 24px !important;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.gallery-slide');
+    const steppers = document.querySelectorAll('.stepper-bar');
+    const nextBtn = document.querySelector('.next-slide-gallery');
+    const prevBtn = document.querySelector('.prev-slide-gallery');
+    let current = 0;
+
+    // Reset delle barre stepper (solo estetico, opzionale)
+    function resetSteppers() {
+      steppers.forEach(bar => {
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        void bar.offsetWidth; // forza reflow per riattivare la transizione
+        bar.style.transition = 'width 12s linear';
+      });
+    }
+
+    // Anima la barra della slide attiva
+    function animateStepper(index) {
+      resetSteppers();
+      if (steppers[index]) {
+        steppers[index].style.width = '100%';
+      }
+    }
+
+    // Aggiorna la larghezza visiva delle barre
+    function updateStepperWidths(index) {
+      steppers.forEach((bar, i) => {
+        const parent = bar.parentElement;
+        parent.style.transition = 'width 0.3s ease-in-out';
+        parent.style.width = (i === index) ? '56px' : '24px';
+      });
+    }
+
+    // Mostra una slide specifica
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('hidden');
+          slide.classList.add('flex');
+        } else {
+          slide.classList.remove('flex');
+          slide.classList.add('hidden');
+        }
+      });
+      animateStepper(index);
+      updateStepperWidths(index);
+      current = index;
+    }
+
+    // Slide successiva
+    function nextSlide() {
+      const next = (current + 1) % slides.length;
+      showSlide(next);
+    }
+
+    // Slide precedente
+    function prevSlide() {
+      const prev = (current - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    // Gestione swipe su dispositivi touch
+    let startX = 0;
+    let endX = 0;
+
+    function handleTouchStart(e) {
+      startX = e.touches[0].clientX;
+    }
+
+    function handleTouchEnd(e) {
+      endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+
+      // threshold per evitare trigger accidentali
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextSlide(); // swipe left → slide successiva
+        } else {
+          prevSlide(); // swipe right → slide precedente
+        }
+      }
+    }
+
+    // Attiva swipe su ogni slide
+    slides.forEach(slide => {
+      slide.addEventListener('touchstart', handleTouchStart, { passive: true });
+      slide.addEventListener('touchend', handleTouchEnd, { passive: true });
+    });
+
+    // Pulsanti frecce
+    nextBtn?.addEventListener('click', nextSlide);
+    prevBtn?.addEventListener('click', prevSlide);
+
+    // Click sui "stepper" per navigare
+    steppers.forEach((bar, index) => {
+      bar.parentElement.addEventListener('click', () => showSlide(index));
+    });
+
+    // Inizializza
+    showSlide(current);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Gallery",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "content",
+      "limit": 3,
+      "settings": [
+        { "type": "checkbox", "id": "content-media", "label": "Select if you want to show the video instead of the image", "default": false },
+        { "type": "image_picker", "id": "content-image-mobile", "label": "Content image - MOBILE" },
+        { "type": "image_picker", "id": "content-image-desktop", "label": "Content image - DESKTOP" },
+        { "type": "video", "id": "content-video-mobile", "label": "Content video - MOBILE" },
+        { "type": "video", "id": "content-video-desktop", "label": "Content video - DESKTOP" },
+        { "type": "text", "id": "content-title", "label": "Alt image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery",
+      "category": "Media Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,305 @@
+{% comment %}
+  Sezione Dual/Triple Entrance - Full Viewport h-dvh con logica Two-Tap Mobile
+{% endcomment %}
+
+<section class="relative h-dvh w-full overflow-hidden bg-black section-{{ section.id }}">
+  
+  {% comment %} Logo Centrale Fisso {% endcomment %}
+  {% if section.settings.center_logo != blank %}
+    <div class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-28 md:w-44 lg:w-60 transition-transform duration-500">
+      <img src="{{ section.settings.center_logo | image_url: width: 600 }}" alt="Main Logo" class="w-full h-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+    </div>
+  {% endif %}
+
+  <div class="flex flex-col md:flex-row w-full h-full relative group/container">
+    
+    {% for block in section.blocks %}
+      <div 
+        class="entrance-column relative flex-[1_1_0%] h-full transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group overflow-hidden md:hover:flex-[2.5_2.5_0%]" 
+        {{ block.shopify_attributes }}
+      >
+        
+        {% comment %} Link sulla colonna {% endcomment %}
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" class="column-link absolute inset-0 z-[25] block"></a>
+        {% endif %}
+
+        {% comment %} Sfondi (Video e Immagine fallback) {% endcomment %}
+        <div class="absolute inset-0 w-full h-full pointer-events-none">
+          {%- if block.settings.video_url != blank -%}
+            {{ block.settings.video_url | video_tag: 
+                loop: true, 
+                muted: true, 
+                controls: false, 
+                playsinline: true,
+                preload: "auto", 
+                class: 'hover-video absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105' 
+            }}
+          {%- endif -%}
+          
+          {%- if block.settings.image != blank -%}
+            <img 
+              src="{{ block.settings.image | image_url: width: 2000 }}" 
+              alt="{{ block.settings.image.alt }}"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 {% if block.settings.video_url != blank %}opacity-0{% endif %}"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+
+        {% comment %} Gradiente {% endcomment %}
+        <div 
+          class="absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0"
+          style="background: linear-gradient(0deg, rgba(5, 9, 13, 0.48) 0%, rgba(5, 9, 13, 0.48) 100%);"
+        ></div>
+
+        {% comment %} Immagine/Logo interno {% endcomment %}
+        {% if block.settings.inner_image != blank %}
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-1/4 md:w-1/5 transition-all duration-700 group-hover:scale-110">
+            <img src="{{ block.settings.inner_image | image_url: width: 600 }}" alt="Inner Image" class="w-full h-auto object-contain drop-shadow-2xl">
+          </div>
+        {% endif %}
+
+        {% comment %} CTA {% endcomment %}
+        <div class="absolute md:mt-[28px] top-[40%] left-1/2 -translate-x-1/2 z-40 w-full flex justify-center pointer-events-none transition-all duration-500 opacity-100 translate-y-16 md:translate-y-24 lg:translate-y-28">
+          {% if block.settings.button_label != blank %}
+            <div class="pointer-events-auto">
+              <span class="inline-block px-6 py-4 link-lg cta_dual-entrance group-hover:cta-hover_dual-entrance transition-all duration-300 transform">
+                {{ block.settings.button_label }}
+              </span>
+            </div>
+          {% endif %}
+        </div>
+
+        {% comment %} Contenuto Bottom {% endcomment %}
+        <div class="relative h-full flex flex-col justify-end p-4 md:p-4 z-30 pointer-events-none">
+          {% if block.settings.video_url != blank %}
+            <div class="flex">
+              <button class="video-control-btn pointer-events-auto flex items-center justify-center w-8 h-8 rounded-full play-pause transition-all duration-300" aria-label="Play/Pause Video">
+                <span class="play-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 10V2L10 6L2 10Z" stroke="#EBEFF2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="pause-svg hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6.50049 14.1882C6.50029 14.464 6.27636 14.688 6.00049 14.6882C5.72447 14.6882 5.50069 14.4641 5.50049 14.1882L5.50049 1.80731C5.50049 1.53117 5.72435 1.30731 6.00049 1.30731C6.27648 1.30749 6.50049 1.53128 6.50049 1.80731L6.50049 14.1882ZM10.5005 14.1882C10.5003 14.464 10.2764 14.688 10.0005 14.6882C9.72447 14.6882 9.50069 14.4641 9.50049 14.1882V1.80731C9.50049 1.53117 9.72435 1.30731 10.0005 1.30731C10.2765 1.30749 10.5005 1.53128 10.5005 1.80731V14.1882Z" fill="#EBEFF2"/>
+                    </svg>
+                </span>
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector('.section-{{ section.id }}');
+  const columns = container.querySelectorAll('.entrance-column');
+  
+  const isMobile = () => window.innerWidth < 768;
+
+  columns.forEach(col => {
+    const video = col.querySelector('.hover-video');
+    const btn = col.querySelector('.video-control-btn');
+    const link = col.querySelector('.column-link');
+    if (!video) return;
+
+    const playIcon = btn?.querySelector('.play-svg');
+    const pauseIcon = btn?.querySelector('.pause-svg');
+
+    const updateUI = () => {
+      if (video.paused) {
+        playIcon?.classList.remove('hidden');
+        pauseIcon?.classList.add('hidden');
+      } else {
+        playIcon?.classList.add('hidden');
+        pauseIcon?.classList.remove('hidden');
+      }
+    };
+
+    // Stato iniziale
+    video.currentTime = 0.1;
+
+    // --- LOGICA MOBILE (Two-Tap) ---
+    if (link) {
+      link.addEventListener('click', function(e) {
+        if (isMobile()) {
+          if (!col.classList.contains('is-expanded')) {
+            e.preventDefault(); // Blocca navigazione al primo click
+            
+            // Reset altre colonne
+            columns.forEach(c => {
+              c.classList.remove('is-expanded');
+              c.querySelector('.hover-video')?.pause();
+            });
+
+            // Espandi questa
+            col.classList.add('is-expanded');
+            video.play().then(updateUI).catch(() => {});
+          }
+          // Al secondo click, col ha 'is-expanded', quindi il link parte normalmente
+        }
+      });
+    }
+
+    // --- LOGICA DESKTOP (Hover) ---
+    col.addEventListener('mouseenter', () => {
+      if (!isMobile() && btn?.getAttribute('data-manual-pause') !== 'true') {
+        video.play().then(updateUI).catch(() => {});
+      }
+    });
+
+    col.addEventListener('mouseleave', () => {
+      if (!isMobile()) {
+        video.pause();
+        updateUI();
+      }
+    });
+
+    // --- CONTROLLO MANUALE PLAY/PAUSE ---
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (video.paused) {
+          video.play();
+          btn.setAttribute('data-manual-pause', 'false');
+        } else {
+          video.pause();
+          btn.setAttribute('data-manual-pause', 'true');
+        }
+        updateUI();
+      });
+    }
+  });
+
+  // Reset se si clicca fuori (Mobile)
+  document.addEventListener('click', (e) => {
+    if (isMobile() && !e.target.closest('.entrance-column')) {
+      columns.forEach(c => {
+        c.classList.remove('is-expanded');
+        c.querySelector('.hover-video')?.pause();
+      });
+    }
+  });
+});
+</script>
+
+<style>
+  .entrance-column { 
+    will-change: flex; 
+    backface-visibility: hidden; 
+    transition: flex 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  
+  .section-{{ section.id }} { max-width: 100vw !important; margin: 0 !important; }
+  
+  .video-control-btn {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  
+  .entrance-column:hover .video-control-btn,
+  .entrance-column.is-expanded .video-control-btn {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 767px) {
+    /* Layout Mobile */
+    .section-{{ section.id }} .flex-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* La colonna attiva prende il ~70% (7/10 della proporzione flex) */
+    .entrance-column.is-expanded {
+      flex: 7 7 0% !important;
+    }
+    
+    .entrance-column:not(.is-expanded) {
+      flex: 1.5 1.5 0% !important;
+    }
+
+    .section-{{ section.id }} .entrance-column .absolute.top-\[40\%\] {
+      top: 50%;
+    }
+    
+    .video-control-btn { opacity: 1; transform: none; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dual entrance",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "center_logo",
+      "label": "Logo Centrale Fisso"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Colonna",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image/Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Immagine fallback"
+        },
+        {
+          "type": "video",
+          "id": "video_url",
+          "label": "Video"
+        },
+        {
+          "type": "header",
+          "content": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "inner_image",
+          "label": "Logo"
+        },
+        {
+          "type": "header",
+          "content": "CTA"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Testo Bottone (Sotto Logo)",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link Colonna"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dual entrance",
+      "blocks": [
+        { "type": "column" },
+        { "type": "column" }
+      ]
+    }
+  ]
+}
+{% endschema %}

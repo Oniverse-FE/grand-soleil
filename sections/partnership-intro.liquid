@@ -1,0 +1,184 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 text-white gap-16 pt-[96px] lg:pt-[165px] pb-10 lg:pb-32">
+    <!-- title + description -->
+    <div class="flex flex-col justify-start gap-3 lg:gap-4 md:w-[437px] lg:w-[511px]">
+        <!-- title -->
+        <div class="flex h6 text-4xl leading-[42px] md:text-[56px] md:leading-[62px] uppercase">
+            {{ section.settings.partnership-title }}
+        </div>
+        <!-- description -->
+        <div class="flex body-regular text-[16px] leading-[22px] md:text-[18px] md:leading-[24px]">
+            {{ section.settings.partnership-intro-description }}
+        </div>
+    </div>
+
+    <!-- partnership cards -->
+    <div class="flex flex-col w-full gap-8 lg:gap-6">
+        {% for block in section.blocks %}
+        <!-- card wrapper (clickable) -->
+        <a href="{{ block.settings.part-card-page.url }}" class="group block">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-0 rounded-[10px] lg:rounded-l-[10px] overflow-hidden pb-8 lg:pb-0 w-full bg-antracite hover:bg-[#2c2c2c] transition-colors duration-300">
+                
+                <!-- img -->
+                <img 
+                  src="{{ block.settings.part-card-image | image_url }}" 
+                  alt="{{ block.settings.part-card-title }}" 
+                  class="rounded-t-[10px] lg:rounded-t-none lg:rounded-l-[10px] lg:rounded-r-none w-full h-[192px] lg:w-[615px] lg:h-auto object-cover xl:object-contain"
+                >
+
+                <!-- content -->
+                <div class="flex flex-col px-4 lg:px-10 lg:py-8 justify-center lg:items-center gap-6 lg:gap-8 md:w-[437px] lg:w-full">
+                    
+                    <!-- title + description -->
+                    <div class="flex flex-col gap-2 lg:gap-3">
+                        <!-- title -->
+                        <h3 class="cart-title h7 uppercase text-[26px] leading-[32px] lg:text-[42px] lg:leading-[48px] text-white">
+                          {{ block.settings.part-card-title }}
+                        </h3>
+                        <!-- description -->
+                        <p class="body-regular text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px] text-white/90">
+                          {{ block.settings.part-card-description }}
+                        </p>
+                    </div>
+
+                    <!-- link label (now styled text, whole card is clickable) -->
+                    <div class="flex w-full justify-start group-partnership">
+                        <span class="font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px]">
+                          {{ block.settings.part-card-page-label }}
+                          <span class="underline-partnership cta-underline-partnership"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .cart-title{
+        font-size: 42px !important;
+        line-height: 48px !important;
+    }
+
+    @media (max-width: 768px) {
+        .cart-title{
+            font-size: 26px !important;
+            line-height: 32px !important;
+        }
+    }
+
+    .group-partnership span {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .underline-partnership {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: white;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: transform 2s ease;
+    }
+    .cta-underline-partnership {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      opacity: 1;
+      background-color: white;
+      transform: translateX(0%);
+      transition: transform 2s ease;
+    }
+    .group-partnership:hover .underline-partnership {
+      transform: translateX(100%);
+    }
+    .group-partnership:hover .cta-underline-partnership {
+      animation: enter-line 1.2s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 1;
+    }
+    @keyframes enter-line {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Partnership intro",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "partnership-title",
+      "label": "Title",
+      "default": "partnership"
+    },
+    {
+      "type": "text",
+      "id": "partnership-intro-description",
+      "label": "Description",
+      "default": "Le partnership VanDutch nascono dall’incontro tra visioni affini e spiriti innovativi. Collaborazioni selezionate che riflettono i valori del brand e ne amplificano lo stile, trasformando ogni progetto condiviso in un’estensione naturale del nostro mondo."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Partnership card",
+      "type": "partnership-card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Card Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "part-card-image",
+          "label": "Pick an image"
+        },
+        {
+          "type": "text",
+          "id": "part-card-title",
+          "label": "Title",
+          "default": "MERCEDES-AMG PETRONAS F1 TEAM"
+        },
+        {
+          "type": "textarea",
+          "id": "part-card-description",
+          "label": "Description",
+          "default": "Durante il Gran Premio di Monaco di Formula 1, tenutosi a Monte Carlo dal 24 al 26 maggio 2024, la collaborazione tra VanDutch Yachts e il team Mercedes-AMG PETRONAS F1 ha rappresentato la perfetta sintesi tra lusso e performance."
+        },
+        {
+          "type": "text",
+          "id": "part-card-page-label",
+          "label": "Link label",
+          "default": "SCOPRI LA COLLABORAZIONE"
+        },
+        {
+          "type": "page",
+          "id": "part-card-page",
+          "label": "Select the partnership page"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partnership intro",
+      "category": "Partnership Sections"
+    }
+  ]
+}
+{% endschema %}

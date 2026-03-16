@@ -1,0 +1,44 @@
+<div class="flex px-4 md:px-12 lg:px-24 pt-[96px] lg:pt-[165px]">
+    {% assign current_path = request.path %}
+    {% assign breadcrumb_item = '' %}
+
+
+    {% for link in section.settings.breadcrumb-menu.links %}
+        {% assign link_path = link.url | remove: shop.url %}
+    {% if link_path == current_path or link_path == request.url %}
+        {% assign breadcrumb_item = link.title %}
+    {% endif %}
+    {% endfor %}
+    <nav class="text-sm lg:text-[16px] leading-5 lg:leading-[22px] text-white/60 body-regular " aria-label="EventBreadcrumb">
+        <ol class="list-reset flex flex-wrap gap-1 whitespace-normal">
+        <li><a href="{{ section.settings.breadcrumb-root }}" class="hover:underline">{{ section.settings.breadcrumb-menu.title }}</a></li>
+        {% if breadcrumb_item != '' %}
+        <li><span >/</span></li>
+        <li >{{ breadcrumb_item }}</li>
+        {% endif %}
+    </ol>
+    </nav>
+</div>
+{% schema %}
+{
+    "name": "Breadcrumbs",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "breadcrumb-menu",
+            "label": "Select the list"
+        },
+        {
+            "type": "page",
+            "id": "breadcrumb-root",
+            "label": "Select the original page"
+        }
+        ],
+        "presets": [
+            {
+                "name": "Generic Breadcrumb",
+                "category" : "Common sections"
+            }
+        ]
+}
+{% endschema %}

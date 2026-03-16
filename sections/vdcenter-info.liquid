@@ -1,0 +1,345 @@
+<div class="info-margin w-full px-4 md:px-12 lg:px-24" style="--margin-top-mobile: {{ section.settings.margin_top_mobile }}px; --margin-top-desktop: {{ section.settings.margin_top }}px;" >
+  <div class="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-4 justify-between"> 
+
+    <!-- text part -->
+    <div class="flex flex-col gap-3 lg:gap-4 text-white md:w-[437px] lg:w-full lg:col-span-5">
+      <!-- title -->
+      <div class="flex h7 uppercase text-4xl leading-[42px] md:text-[56px] md:leading-[62px] lg:text-[56px] lg:leading-[62px]">
+        {{ section.settings.vdcenter-page-title }}
+      </div>
+      <!-- text -->
+      <div class="flex body-regular text-[16px] leading-[22px]">
+        {{ section.settings.vdcenter-page-text1 | newline_to_br }}
+      </div>
+    </div>
+
+    <!-- empty column (desktop only) -->
+    <div class="hidden lg:block col-span-1"></div>
+
+    <!-- info part -->
+    <div class="flex flex-col gap-10 lg:col-span-6">
+      <!-- div info-->
+      <div class="flex flex-col gap-6 text-white">
+        <div class="flex flex-col gap-2 text-white">
+          <!-- position -->
+          {% if section.settings.intro-type == true %}
+          <div class="flex justify-start gap-4 p-4 bg-antracite rounded-[4px]">
+            <div class="flex justify-center items-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M16.4184 11.7053L16.4089 11.7239L16.4003 11.7429L12.9102 19.4098C12.5548 20.1907 11.4455 20.1907 11.09 19.4098L7.59972 11.743L7.59107 11.724L7.58164 11.7053C7.21121 10.9742 7 10.1384 7 9.24689C7 6.31072 9.2762 4 12 4C14.7238 4 17 6.31072 17 9.24689C17 10.1384 16.7888 10.9742 16.4184 11.7053ZM6 9.24689C6 10.2978 6.24926 11.2882 6.68959 12.1573L10.1799 19.8241C10.8909 21.3859 13.1094 21.3859 13.8204 19.8241L17.3104 12.1572C17.7507 11.2881 18 10.2978 18 9.24689C18 5.79683 15.3137 3 12 3C8.68629 3 6 5.79683 6 9.24689ZM14 9.24655C14 10.4577 13.0669 11.37 12 11.37C10.9331 11.37 10 10.4577 10 9.24655C10 8.03542 10.9331 7.12311 12 7.12311C13.0669 7.12311 14 8.03542 14 9.24655ZM15 9.24655C15 10.9716 13.6569 12.37 12 12.37C10.3431 12.37 9 10.9716 9 9.24655C9 7.52152 10.3431 6.12311 12 6.12311C13.6569 6.12311 15 7.52152 15 9.24655Z"
+                  fill="#F76C00" />
+              </svg>
+            </div>
+            <div
+              class="flex flex-col justify-start body-medium text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]">
+              <div class="font-medium">
+                {{ section.settings.vdcenter-page-position1 }}
+              </div>
+              <div class="font-medium">
+                {{ section.settings.vdcenter-page-position2 }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if section.settings.vdcenter-page-address1 and section.settings.vdcenter-page-address2 != blank %}
+          <div class="flex justify-start gap-4 p-4 bg-antracite rounded-[4px]">
+            <div class="flex justify-center items-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M16.4184 11.7053L16.4089 11.7239L16.4003 11.7429L12.9102 19.4098C12.5548 20.1907 11.4455 20.1907 11.09 19.4098L7.59972 11.743L7.59107 11.724L7.58164 11.7053C7.21121 10.9742 7 10.1384 7 9.24689C7 6.31072 9.2762 4 12 4C14.7238 4 17 6.31072 17 9.24689C17 10.1384 16.7888 10.9742 16.4184 11.7053ZM6 9.24689C6 10.2978 6.24926 11.2882 6.68959 12.1573L10.1799 19.8241C10.8909 21.3859 13.1094 21.3859 13.8204 19.8241L17.3104 12.1572C17.7507 11.2881 18 10.2978 18 9.24689C18 5.79683 15.3137 3 12 3C8.68629 3 6 5.79683 6 9.24689ZM14 9.24655C14 10.4577 13.0669 11.37 12 11.37C10.9331 11.37 10 10.4577 10 9.24655C10 8.03542 10.9331 7.12311 12 7.12311C13.0669 7.12311 14 8.03542 14 9.24655ZM15 9.24655C15 10.9716 13.6569 12.37 12 12.37C10.3431 12.37 9 10.9716 9 9.24655C9 7.52152 10.3431 6.12311 12 6.12311C13.6569 6.12311 15 7.52152 15 9.24655Z"
+                  fill="#F76C00" />
+              </svg>
+            </div>
+            <div
+              class="flex flex-col justify-start body-medium text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]">
+              <div class="font-medium">
+                {{ section.settings.vdcenter-page-address1 }}
+              </div>
+              <div class="font-medium">
+                {{ section.settings.vdcenter-page-address2 }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- date -->
+        {% if section.settings.intro-type == false %}
+        {%- assign start_date = section.settings.vdcenter-page-position1| date: "%Y-%m-%d" -%}
+        {%- assign end_date = section.settings.vdcenter-page-position2 | date: "%Y-%m-%d" -%}
+        {%- assign start_day = start_date | date: "%d" -%}
+        {%- assign start_month = start_date | date: "%m" -%}
+        {%- assign start_year = start_date | date: "%Y" -%}
+        {%- assign end_day = end_date | date: "%d" -%}
+        {%- assign end_month = end_date | date: "%m" -%}
+        {%- assign end_year = end_date | date: "%Y" -%}
+        <div class="flex justify-start gap-4 p-4 bg-antracite rounded-[4px]">
+          <div class="flex justify-center items-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect x="4.5" y="6.19336" width="15" height="12.3064" rx="1.5" stroke="#F76C00" />
+              <path d="M8 7.91016L8 4.99938" stroke="#F76C00" stroke-linecap="round" />
+              <path d="M16 7.91016L16 4.99938" stroke="#F76C00" stroke-linecap="round" />
+              <path d="M5.14062 10.1279L18.8549 10.1279" stroke="#F76C00" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div
+            class="flex flex-row body-medium text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px] items-center justify-center">
+            {%- if start_date == end_date -%}
+            {{ start_day }}/{{ start_month }}/{{ start_year }}
+            {%- elsif start_month == end_month and start_year == end_year -%}
+            {{ start_day }} - {{ end_day }}/{{ end_month }}/{{ end_year }}
+            {%- elsif start_year == end_year -%}
+            {{ start_day }}/{{ start_month }} - {{ end_day }}/{{ end_month }}/{{ end_year }}
+            {%- else -%}
+            {{ start_day }}/{{ start_month }}/{{ start_year }} - {{ end_day }}/{{ end_month }}/{{ end_year }}
+            {%- endif -%}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- general info -->
+        <div class="flex flex-col gap-2 lg:col-span-6">
+          {% for block in section.blocks %}
+          {% case block.type %}
+          {% when '@app' %}
+          {% render block %}
+          {% when 'info-row' %}
+          <div
+            class="flex flex-row w-full py-2.5 px-4 justify-between text-white bg-antracite body-regular text-sm lg:text-[16px] leading-5 lg:leading-[22px] rounded-[4px]">
+            <div class="body-regular ">
+              {{ block.settings.vdcenter-page-info-type }}
+            </div>
+            <div class="body-medium">
+              {{ block.settings.vdcenter-page-info-value }}
+            </div>
+          </div>
+          {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- div buttons -->
+      <div class="flex flex-col xl:flex-row w-full gap-4">
+        <a href="{{ section.settings.vdcenter-info-contact-link }}"
+          id="vdcenter-info-contact"
+          class="booking-cta rounded-[50px] px-7 py-3.5 w-full flex-1 body-semibold text-[16px] leading-3.5 transition-all duration-300"
+          style="{% if section.settings.vdcenter-info-contact-bg-transparent == false %} background-color: {{ section.settings.vdcenter-info-contact-bg-color }}; {% else %} background-color: transparent; {% endif %} color: {{ section.settings.vdcenter-info-contact-text-color }}; border: 1px solid {{ section.settings.vdcenter-info-contact-border-color }};">
+          {{ section.settings.vdcenter-info-contact-label }}
+        </a>
+
+        <a href="{{ section.settings.vdcenter-info-maps-link }}"
+          id="vdcenter-info-maps"
+          class="rounded-[50px] px-7 py-3.5 w-full flex-1 body-semibold text-[16px] leading-3.5 transition-all duration-300 {% if section.settings.vdcenter-info-maps-hidden %}hidden{% endif %}"
+          style="{% if section.settings.vdcenter-info-maps-bg-transparent == false %} background-color: {{ section.settings.vdcenter-info-maps-bg-color }}; {% else %} background-color: transparent; {% endif %} color: {{ section.settings.vdcenter-info-maps-text-color }}; border: 1px solid {{ section.settings.vdcenter-info-maps-border-color }};">
+          {{ section.settings.vdcenter-info-maps-label }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .info-margin {
+    margin-top: var(--margin-top-mobile);
+  }
+  @media screen and (min-width: 768px) {
+  .info-margin {
+    margin-top: var(--margin-top-desktop);
+  }
+}
+ #vdcenter-info-contact:hover,
+  #vdcenter-info-maps:hover {
+    background-color: rgba(255,255,255,0.75) !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "VD Center Info",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Info"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-page-title",
+      "label": "Title",
+      "default": "vandutch center amsterdam"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-page-text1",
+      "label": "Text 1",
+      "default": "Dopo aver consolidato una presenza internazionale, VanDutch Yachts è tornato alle origini, nella multiculturale Amsterdam, città in cui il brand è nato nel 2008. A pochi minuti dall’aeroporto di Schiphol, tra laghi interni e canali cittadini, l’ufficio di VanDutch Amsterdam offre un accesso privilegiato al fascino autentico della nautica del Nord Europa."
+    },
+    {
+      "type": "checkbox",
+      "id": "intro-type",
+      "label": "Is the section used in a VD Center Page?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-page-position1",
+      "label": "Text 1 or Start date (yyyy-mm-dd)",
+      "default": "Jachthaven 1, 2172JX"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-page-position2",
+      "label": "Text 2 or End date (yyyy-mm-dd)",
+      "default": "Sassenheim, Paesi Bassi, EU"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-page-address1",
+      "label": "Address second place"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-page-address2",
+      "label": "Address second place"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-info-contact-bg-transparent",
+      "label": "Transparent background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-contact-bg-color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-contact-text-color",
+      "label": "Text color",
+      "default": "#101010"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-contact-border-color",
+      "label": "Border color",
+      "default": "#101010"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-info-contact-label",
+      "label": "Button label",
+      "default": "Contatta un centro"
+    },
+    {
+      "type": "url",
+      "id": "vdcenter-info-contact-link",
+      "label": "Button link"
+    },
+
+    {
+      "type": "header",
+      "content": "Maps Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-info-maps-bg-transparent",
+      "label": "Transparent background",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "vdcenter-info-maps-hidden",
+      "label": "Hidden",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-maps-bg-color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-maps-text-color",
+      "label": "Text color",
+      "default": "#101010"
+    },
+    {
+      "type": "color",
+      "id": "vdcenter-info-maps-border-color",
+      "label": "Border color",
+      "default": "#101010"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-info-maps-label",
+      "label": "Button label",
+      "default": "Contatta un centro"
+    },
+    {
+      "type": "url",
+      "id": "vdcenter-info-maps-link",
+      "label": "Button link"
+    },
+
+    {
+      "type": "header",
+      "content": "Margins"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Top margin mobile (px)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top margin desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Info Row",
+      "type": "info-row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "vdcenter-page-info-type",
+          "label": "Type",
+          "default": "Type"
+        },
+        {
+          "type": "text",
+          "id": "vdcenter-page-info-value",
+          "label": "Value",
+          "default": "Value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info tab",
+      "category": "VD Centers Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,221 @@
+<!-- CTA Badge -->
+<div class="w-full h-auto flex items-center justify-center fixed z-50 left-0 bottom-0 opacity-0 transition-opacity duration-300 ease-in-out" id="cta-badge">
+  <div
+    class="inline-flex flex-col items-center justify-center px-[28px] py-[14px] rounded-full bg-[rgba(0,0,0,0.60)] backdrop-blur-xl badge-overlay cursor-pointer mb-[32px]">
+    <p class="text-[16px] leading-[14px] font-semibold text-white whitespace-nowrap">{{ section.settings.cta_text }}</p>
+  </div>
+</div>
+
+<!-- Menu Box -->
+<div
+  class="container-ancor-links w-[90%] max-w-[312px] h-auto fixed left-1/2 bottom-[calc(56px+32px)] -translate-x-1/2 z-30 flex flex-col items-center justify-center bg-[rgba(16,16,16,0.60)] backdrop-blur-lg rounded-[10px] opacity-0 pointer-events-none transition-all duration-200 ease"
+  style="padding-top:16px; padding-bottom:32px;">
+
+  <!-- X Icon -->
+  <div
+    class="w-full flex justify-end absolute top-4 right-6 cursor-pointer text-white closing-icon">
+    {% render 'x-icon' %}
+  </div>
+
+  <!-- Menu Links -->
+  <ul class="w-full flex flex-col items-center justify-center gap-y-4" style="gap:16px; padding-inline:24px;">
+    {% for block in section.blocks %}
+      <li class="w-full flex items-center justify-center {% if forloop.first %}first-link{% endif %}">
+        <a href="#{{ block.settings.link }}" class="ancor-link w-full text-center">
+          {{ block.settings.label }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<style>
+.badge-overlay {
+  display: inline-flex;
+  min-width: 120px;
+}
+#cta-badge .badge-overlay {
+  margin-bottom: 32px;
+}
+@media (max-width: 1024px) {
+  #cta-badge .badge-overlay { margin-bottom: 24px; }
+}
+@media (max-width: 768px) {
+  #cta-badge .badge-overlay { margin-bottom: 16px; }
+}
+.ancor-link {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  font-size: 16px;
+  line-height: 22px;
+  color: white;
+  text-decoration: none;
+}
+.ancor-link:hover,
+.ancor-link.active { opacity: 1; }
+.container-ancor-links.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.closing-icon { z-index: 50; }
+.container-ancor-links ul li.first-link { margin-top: 32px; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const containerLinks = document.querySelector('.container-ancor-links');
+    const closingIcon = document.querySelector('.closing-icon');
+    const badgeOverlay = document.querySelector('.badge-overlay');
+    const allLinks = document.querySelectorAll('.ancor-link');
+    const ctaBadge = document.getElementById('cta-badge');
+    const footer = document.querySelector('footer');
+
+    const scrollDuration = {{ section.settings.scroll_duration | default: 5000 }};
+
+    const smoothScrollTo = (targetY, duration) => {
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        let startTime = null;
+
+        const easeInOutQuad = (t) => {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        };
+
+        const step = (currentTime) => {
+            if (!startTime) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const easing = easeInOutQuad(progress);
+
+            window.scrollTo(0, startY + distance * easing);
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(step);
+            }
+        };
+
+        requestAnimationFrame(step);
+    };
+
+    const showCtaOnScroll = () => {
+        if (!footer) return;
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const footerTop = footer.getBoundingClientRect().top + scrollY;
+
+        if (scrollY > 50 && (scrollY + windowHeight < footerTop)) {
+            ctaBadge.classList.add('opacity-100');
+            ctaBadge.classList.remove('opacity-0');
+            ctaBadge.style.pointerEvents = 'auto';
+        } else {
+            ctaBadge.classList.add('opacity-0');
+            ctaBadge.classList.remove('opacity-100');
+            ctaBadge.style.pointerEvents = 'none';
+        }
+    };
+
+    window.addEventListener('scroll', showCtaOnScroll);
+
+    const openMenu = () => {
+        containerLinks.classList.add('show');
+        document.addEventListener('click', handleOutsideClick);
+    };
+    const closeMenu = () => {
+        containerLinks.classList.remove('show');
+        document.removeEventListener('click', handleOutsideClick);
+    };
+    const toggleMenu = () => {
+        if (window.scrollY < 50) return;
+        if (containerLinks.classList.contains('show')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    };
+    const handleOutsideClick = (event) => {
+        if (!containerLinks.contains(event.target) && !ctaBadge.contains(event.target)) {
+            closeMenu();
+        }
+    };
+
+    ctaBadge.addEventListener('click', toggleMenu);
+    closingIcon.addEventListener('click', closeMenu);
+
+    allLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const targetY = targetSection.offsetTop;
+                smoothScrollTo(targetY, scrollDuration);
+            }
+            allLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            closeMenu();
+        });
+    });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Proxy Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CTA Settings"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Overview"
+    },
+    {
+      "type": "range",
+      "id": "scroll_duration",
+      "label": "Scroll Duration (ms)",
+      "min": 1000,
+      "max": 9000,
+      "step": 500,
+      "default": 5000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_item",
+      "name": "Menu Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Menu Item Settings"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Item Label",
+          "default": "Design"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Section ID"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Proxy Bar",
+      "category": "Custom",
+      "blocks": [
+        { "type": "link_item" },
+        { "type": "link_item" },
+        { "type": "link_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

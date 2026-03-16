@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "empty_space_nTXpQ9": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 96,
+        "desktop-height": 165
+      }
+    },
+    "press_room_yNGNnW": {
+      "type": "press-room",
+      "name": "Resource Hub",
+      "settings": {
+        "pressroom-title": "press room",
+        "pressroom-search-placeholder": "Search articles",
+        "pressroom-outof": "of",
+        "pressroom-art": "articles",
+        "pressroom-read-more": "read more",
+        "no-event-label": "We are sorry, there are currently no news items matching your search.",
+        "all-event-label": "View all news"
+      }
+    }
+  },
+  "order": [
+    "empty_space_nTXpQ9",
+    "press_room_yNGNnW"
+  ]
+}

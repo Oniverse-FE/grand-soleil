@@ -1,0 +1,1176 @@
+<div class="flex flex-col gap-3 lg:gap-4 text-white px-4 md:px-12 lg:px-24 py-30 lg:py-40 pt-0 lg:pt-0">
+    <!-- link to all news -->
+    <div class="flex text-white uppercase font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] mb-[96px] md:mb-[160px] lg:mb-[128px] group-form animation-form">
+        <a href="{{ section.settings.link-to-news-page.url }}" class="font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold w-fit relative">
+            <span class="mb-[6px]">{{ section.settings.link-to-news-label }}</span>
+            <span class="underline-form cta-underline-form"></span>
+        </a>
+        </div>
+
+    <div class="flex flex-col lg:flex-row justify-between w-full gap-10 lg:gap-20">
+        <div class="flex flex-col gap-0 lg:gap-10 w-full md:w-[437px] lg:w-5/12">
+        <div class="flex h6 uppercase text-[36px] leading-[42px] md:text-[56px] md:leading-[62px]">
+            {{ section.settings.news-intro-title }}
+        </div>
+            <div class="flex body-regular text-[16px] leading-[22px] md:text-[18px] md:leading-[24px] w-full">
+                {{ section.settings.news-intro-text }}
+            </div>
+            <div class="flex flex-col gap-2">
+                {% for block in section.blocks %}
+                <div class="flex justify-between bg-antracite rounded-[10px] py-2.5 px-4 w-full gap-12">
+                    <div class="flex body-regular text-[14px] leading-[20px] lg:text-[16px] lg:leading-[22px]">
+                        {{ block.settings.news-line-type }}
+                    </div>
+                    <div class="flex text-right body-semibold text-[14px] leading-[20px] lg:text-[16px] lg:leading-[22px]">
+                        {{ block.settings.news-line-value }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="lg:w-1/2">
+        {% form 'customer', id: 'news_form' %}
+
+        <div id="news-form-box"
+            class="flex flex-col overflow-y-auto overflow-visible rounded-xl lg:px-8 lg:py-8 py-6 px-4 gap-16"
+            style="background-color: {{ section.settings.news-form-bg-color }}; color: {{ section.settings.news-form-text-color }}">
+
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between">
+                                <div class="body-medium text-[18px] leading-[24px] lg:text-xl">{{ section.settings.news-form-title }}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end text-[12px] leading-[18px] md:text-[14px] md:leading-[20px] body-regular">
+                            {{ section.settings.news-form-required-text }}
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.news-fname-label}}{% if section.settings.news-fname-required
+                                == true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="text" id="news-form-first-name" name="contact[first_name]"
+                                placeholder="{{- section.settings.news-fname-placeholder }}" {% if
+                                section.settings.news-fname-required==true %} required {% endif %}>
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.news-lname-label}}{% if section.settings.news-lname-required
+                                == true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="text" id="news-form-last-name" name="contact[last_name]"
+                                placeholder="{{- section.settings.news-lname-placeholder }}" {% if
+                                section.settings.news-lname-required==true %} required {% endif %}>
+                        </div>
+                        <div id="phone-fields-phone" class="flex flex-row gap-4 lg:gap-6 my-6 w-full">
+                                <div class="flex flex-col gap-1 w-[47px]">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.news-prefix-label  }}</div>
+                                    <input
+                                        class="input-field body-regular text-white placeholder-[#D6CBC9] text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                        type="text" id="phone-prefix-phone" name="contact[phone-prefix-phone]"
+                                        placeholder="{{ section.settings.news-prefix-placeholder }}" {% if
+                                section.settings.news-phone-required==true %} required {% endif %}>
+                                </div>
+                                <div class="flex flex-col gap-1 w-full relative">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.news-phone-label }}</div>
+                                    <input
+                                        class="input-field body-regular text-white placeholder-[#D6CBC9] text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                        type="tel" id="phone-number-phone" name="contact[phone-number-phone]"
+                                        placeholder="{{ section.settings.news-phone-placeholder }}" {% if
+                                section.settings.news-phone-required==true %} required {% endif %}>
+                                </div>
+                            </div>
+
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.news-mail-label}}{% if section.settings.news-mail-required ==
+                                true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="email" id="news-form-mail" name="contact[email]"
+                                placeholder="{{- section.settings.news-mail-placeholder }}" {% if
+                                section.settings.news-mail-required==true %} required {% endif %}>
+                        </div>
+                </div>
+                <div class="body-regular text-[#D6CBC9] text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex ">
+                        {{ section.settings.news-boat-sel-label }}{% if section.settings.news-boat-sel-required ==
+                        true %}*{%
+                        endif %}
+                    </div>
+                    {% assign options = section.settings.options | split: ',' %}
+                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
+                        {% for option in options %}
+                        {% assign clean_option = option | strip %}
+                        <label
+                            class="flex gap-1 py-1.5 px-3 bg-[#f8f8f8] border-1 border-white cursor-pointer relative text-white transition-all body-regular text-[16px] leading-[22px] bg-antracite rounded-4xl">
+                            <input type="checkbox" class="multi-checkbox" value="{{ clean_option }}" hidden>
+                            {{ clean_option }}
+                            <span class=" hidden cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-black">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+
+                    <input type="hidden" name="contact[boat-selection]" id="news-form-boat-selection" {% if
+                        section.settings.news-boat-sel-required %} required {% endif %}>
+                </div>
+
+                <div class="body-regular text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex text-[#D6CBC9]">
+                        {{ section.settings.news-boat-q-label }}{% if section.settings.news-boat-q-required ==
+                        true %}*{%
+                        endif %}
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="boat-y" name="contact[boat-question]" value="vd" data-target="boat-y-fields">
+                                <label for="boat-y">{{ section.settings.news-boat-q-affermative-label }}</label>
+                            </div>
+                            <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-4 w-full">
+                                <div class="flex flex-col gap-1 w-full">
+                                    <div class="flex text-[#D6CBC9] body-regular text-[12px] leading-[18px]">{{
+                                        section.settings.news-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 py-1 border-white"
+                                        type="text" id="boat-y-model" name="contact[boat-y-model]"
+                                        placeholder="{{ section.settings.news-form-boat-q-model-placeholder }}">
+                                </div>
+                                <div class="flex flex-col gap-1 relative w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.news-form-boat-q-port-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 py-1 border-white pr-10 country-input"
+                                        type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
+                                        placeholder="{{ section.settings.news-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
+                                    <div
+                                        class="country-flag absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none">
+                                    </div>
+                                    <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                        <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="boat-o" name="contact[boat-question]" value="other" data-target="boat-o-fields">
+                                <label for="boat-o">{{ section.settings.news-boat-q-other-label }}</label>
+                            </div>
+                            <div id="boat-o-fields" class="hidden flex flex-col md:flex-row gap-6 my-4 w-full">
+                                <div class="flex flex-col gap-1 w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.news-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] py-1 border-b-1 border-white"
+                                        type="text" id="boat-o-model" name="contact[boat-o-model]"
+                                        placeholder="{{ section.settings.news-form-boat-q-model-placeholder}}">
+                                </div>
+                                <div class="flex flex-col gap-1 relative w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.news-form-boat-q-port-label}}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] py-1 border-b-1 border-white pr-10 country-input"
+                                        type="text" name="contact[boat-o-port-country]" id="boat-o-port-country"
+                                        placeholder="{{ section.settings.news-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
+                                    <div
+                                        class="country-flag absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none">
+                                    </div>
+                                    <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                        <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio"
+                                class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                id="boat-n" name="contact[boat-question]" value="no" data-target="">
+                            <label for="boat-n">{{ section.settings.news-boat-q-negative-label }}</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex flex-col gap-6 text-[18px]">
+                <div class="flex items-center h-auto gap-4">
+                    <input style="aspect-ratio:1/1" type="checkbox"
+                        class="w-6 h-6 rounded-sm appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                        id="news-form-marketingConsent">
+                    <label class="w-auto" id="news-form-profilingLabel">
+                        {{ section.settings.news-form-markConsLabel }}
+                        <u><a id="news-form-shortMarketing">{{ section.settings.news-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
+                    </label>
+                </div>
+                <div class="flex items-center h-auto gap-4">
+                    <input style="aspect-ratio:1/1" type="checkbox"
+                        class="appearance-none w-6 h-6 rounded-sm border-1 border-white bg-transparent checked:bg-white transition-all duration-200 disabled:border-[#ACACAC]"
+                        id="news-form-profilingConsent" disabled>
+                    <label class="text-white transition-colors duration-200" id="news-form-profilingLabel">
+                        {{ section.settings.news-form-profConsLabel }}
+                        <u><a id="news-form-shortProfiling">{{ section.settings.news-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
+                    </label>
+                </div>
+                <u><a href="{{ section.settings.news-privacy-url }}">{{ section.settings.news-form-privacy-label |
+                    default: "Privacy
+                    Policy" }}</a></u>
+            </div>
+
+            <div class="flex body-medium h-[42px] justify-center tk-aktiv-grotesk">
+                <button id="news-form-submit" aria-label="{{ section.settings.news-form-submit-button-text }}" type="submit" class="news-submit-btn w-full px-7 py-3.5 rounded-4xl text-[16px] leading-[14px] font-semibold w-[300px] transition-all duration-300"
+                        style="color: {{ section.settings.news-form-button-text-color }};background-color: {{ section.settings.news-form-button-background-color }};border: 1px solid {{ section.settings.news-form-button-border-color }};">
+                            {{ section.settings.news-form-submit-button-text }}
+                </button>
+            </div>
+
+            <input type="hidden" name="contact[tags]" id="CustomerTags">
+            <input type="hidden" name="contact[note]" id="CustomerNote">
+            <input type="hidden" id="eventHandle" value="">
+            <input type="hidden" id="eventTitle" value="">
+
+
+        </div>
+        {% endform %}
+        </div>
+    </div>
+</div>
+<div id="thankyou-popup" class="fixed inset-0 top-0 left-0 flex justify-center items-center w-screen h-screen bg-black/50 z-50 hidden transition-opacity duration-300">
+    <div class="popup-content fixed inset-0 flex items-center justify-center">
+        <div class="flex flex-col w-full max-w-[720px] h-fit items-center justify-start lg:justify-center bg-[#292929] text-white py-6 px-6 gap-6 lg:mx-0 lg:px-14 lg:py-10 lg:gap-10 rounded-xl">
+            <div class="flex flex-row justify-between w-full">
+                <div class="hidden lg:flex size-6"></div>
+                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">
+                    {{ section.settings.news-form-ty-title }}
+                </h6>
+                <button id="news-form-ty-close" aria-label="Chiudi">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                            fill="white" />
+                    </svg>
+                </button>
+            </div>
+            <div class="text-start lg:text-center">
+                {{ section.settings.news-form-ty-text }}
+            </div>
+            <div>
+                <button class="w-[342px] lg:w-[234px] py-3.5 px-7 body-semibold text-[16px] leading-[14px] bg-white text-black rounded-4xl" id="news-form-ty-close-btn">
+                    {{ section.settings.news-form-ty-btn-label }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="news-form-marketing-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+        <div class="flex flex-row justify-between">
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.news-form-marketing-title }}
+            </h6>
+            <button id="news-form-marketing-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div>
+            {{ section.settings.news-form-marketing-text }} <u><a href="{{ section.settings.news-form-privacy-page }}">{{
+                    section.settings.news-form-privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
+    </div>
+</div>
+
+<div id="news-form-profiling-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+        <div class="flex justify-between">
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.news-form-profiling-title }}
+            </h6>
+            <button id="news-form-profiling-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div>
+            {{ section.settings.news-form-profiling-text }} <u><a href="{{ section.settings.news-form-privacy-page }}">{{
+                    section.settings.privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
+    </div>
+</div>
+
+<style>
+    #countryList::-webkit-scrollbar {
+        display: none;
+    }
+    #news-form-profilingConsent:disabled + #news-form-profilingLabel {
+        color: #ACACAC;
+    }
+    #countryList {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    #news-form-box input[type="text"],
+    #news-form-box input[type="email"],
+    #news-form-box input[type="phone"],
+    #news-form-box input[type="tel"] {
+        border-bottom: 1px solid white;
+        background: transparent;
+        color: white;
+        transition: border-color 0.3s ease;
+    }
+
+    #news-form-box input[type="text"]:focus,
+    #news-form-box input[type="email"]:focus,
+    #news-form-box input[type="phone"]:focus,
+    #news-form-box input[type="tel"]:focus {
+        outline: none;
+        border-bottom: 1px solid #F76C00;
+    }
+
+    #news-form-box .error {
+        border-bottom: 1px solid #FF575C !important;
+    }
+
+    .error-message {
+        color: #FF575C;
+        font-size: 12px;
+        margin-top: 4px;
+        line-height: 18px;
+    }
+
+    #news-form-box .textarea-wrapper:focus-within {
+        border-bottom: 1px solid #F76C00;
+    }
+
+    #news-form-box textarea:focus {
+        outline: none;
+    }
+
+    .country-arrow.open svg {
+        transform: rotate(180deg) !important;
+    }
+
+    .country-name {
+        display:none;
+    }
+
+    .country-arrow {
+        margin-left: 10px !important;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    .country-flag{
+        right: 28px !important;
+    }
+
+    @media (max-width: 1024px) {
+        .popup-content{
+            margin-inline: 16px !important;
+        }
+    }
+    .news-submit-btn {
+        transition: all 0.3s ease;
+    }
+
+    .news-submit-btn:hover {
+        filter: brightness(1.1);
+        opacity: 75%;
+    }
+    .group-form a {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .underline-form {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: white;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform 2s ease;
+    }
+    .cta-underline-form {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        opacity: 1;
+        background-color: white;
+        transform: translateX(0%);
+        transition: transform 2s ease;
+    }
+    .group-form:hover .underline-form {
+        transform: translateX(100%);
+    }
+    .group-form:hover .cta-underline-form {
+        animation: enter-line 1.2s ease forwards;
+        animation-delay: 0.8s;
+        opacity: 1;
+    }
+    @keyframes enter-line {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('news_form');
+    if (!form) return;
+
+    const $ = sel => form.querySelector(sel);
+    const $$ = sel => Array.from(form.querySelectorAll(sel));
+    const tagsInput = $('#CustomerTags');
+    const noteInput = $('#CustomerNote');
+    const submitButton = $('#news-form-submit');
+
+    if (submitButton) submitButton.disabled = false;
+
+    const lang = window.location.pathname.includes('/it/') ? 'it' : 'en';
+
+    const errorMessages = {
+        'contact[first_name]': { it: 'Inserisci il tuo nome', en: 'Enter your first name' },
+        'contact[last_name]': { it: 'Inserisci il tuo cognome', en: 'Enter your last name' },
+        'contact[email]': { it: 'Inserisci un’email valida', en: 'Enter a valid email' },
+        'contact[phone-number-phone]': { it: 'Inserisci un numero di telefono valido', en: 'Enter a valid phone number' },
+        'contact[phone-prefix-phone]': { it: '', en: '' },
+        'contact[boat-question]': { it: 'Seleziona una delle opzioni', en: 'Select one of the options' },
+        'contact[boat-selection]': { it: 'Seleziona almeno una barca se richiesta', en: 'Select at least one boat if required' },
+        'contact[country]': { it: 'Seleziona un paese', en: 'Select a country' }
+    };
+
+    // ===== LOGICA CONSENSI =====
+    const marketingCheckbox = $('#news-form-marketingConsent');
+    const profilingCheckbox = $('#news-form-profilingConsent');
+    if (profilingCheckbox) profilingCheckbox.disabled = true;
+
+    if (marketingCheckbox && profilingCheckbox) {
+        marketingCheckbox.addEventListener('change', function () {
+            if (this.checked) profilingCheckbox.disabled = false;
+            else { profilingCheckbox.disabled = true; profilingCheckbox.checked = false; }
+        });
+    }
+
+    // ===== COUNTRY DROPDOWN =====
+    let allCountries = [];
+    fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json')
+        .then(res => res.json())
+        .then(data => allCountries = data.map(c => ({ name: c.name.common, code: c.cca2.toLowerCase() })))
+        .catch(err => console.error(err));
+
+    const countryInputs = document.querySelectorAll('.country-input');
+    countryInputs.forEach(input => {
+        const container = input.closest('.flex.flex-col.gap-1.relative');
+        if (!container) return;
+        const ul = container.querySelector('.countryList');
+        const flagContainer = container.querySelector('.country-flag');
+        const arrowContainer = container.querySelector('.country-arrow');
+
+        input.addEventListener('click', e => { 
+            e.stopPropagation(); 
+            clearFieldError(input); 
+            toggleDropdown(true, ul, input, flagContainer, arrowContainer); 
+        });
+
+        input.addEventListener('input', () => { 
+            clearFieldError(input); 
+            filterCountries(input, ul, flagContainer, arrowContainer); 
+        });
+
+        input.addEventListener('blur', () => setTimeout(() => { 
+            if (ul && !ul.classList.contains('hidden')) 
+                toggleDropdown(false, ul, input, flagContainer, arrowContainer); 
+        }, 150));
+
+        // Permette di cliccare la freccia per aprire/chiudere il dropdown
+        if (arrowContainer) {
+            arrowContainer.addEventListener('click', e => {
+                e.stopPropagation();
+                const isOpen = !ul.classList.contains('hidden');
+                toggleDropdown(!isOpen, ul, input, flagContainer, arrowContainer);
+            });
+        }
+    });
+
+    function setFlag(country, code, flagContainer, arrowContainer) {
+        if (!flagContainer) return;
+        flagContainer.innerHTML = `
+            <div class="flex items-center gap-[10px]">
+                <img src="https://flagcdn.com/w40/${code}.png"
+                     alt="Flag of ${country}"
+                     class="w-5 h-4 rounded-sm object-cover translate-x-[-3px]">
+                <span class="country-name">${country}</span>
+            </div>
+        `;
+        flagContainer.style.opacity = 1;
+        flagContainer.classList.remove('hidden');
+
+        if (arrowContainer) {
+            arrowContainer.classList.remove('hidden');
+            arrowContainer.style.marginLeft = '10px';
+        }
+    }
+
+    function toggleDropdown(show, ul, input, flagContainer, arrowContainer) {
+        if (!ul) return;
+        if (show) {
+            ul.classList.remove('hidden');
+            if (input) filterCountries(input, ul, flagContainer, arrowContainer);
+            arrowContainer?.classList.add('open');
+        } else {
+            ul.classList.add('hidden');
+            arrowContainer?.classList.remove('open');
+        }
+    }
+
+    function filterCountries(input, ul, flagContainer, arrowContainer) {
+        if (!input || !ul) return;
+        const filter = input.value.toLowerCase();
+
+        if (!filter.trim()) {
+            if (flagContainer) {
+                flagContainer.innerHTML = '';
+                flagContainer.classList.add('hidden');
+            }
+        }
+
+        ul.innerHTML = '';
+        const countriesToShow = !filter.trim()
+            ? allCountries.slice(0, 250)
+            : allCountries.filter(c => c.name.toLowerCase().includes(filter));
+
+        countriesToShow.forEach(c => {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 m-2 hover:bg-black bg-antracite cursor-pointer flex items-center gap-2 rounded-lg';
+            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" alt="Flag of ${c.name}" class="w-5 h-4 rounded-sm object-cover"><span>${c.name}</span>`;
+            li.addEventListener('mousedown', e => {
+                e.preventDefault();
+                input.value = c.name;
+                setFlag(c.name, c.code, flagContainer, arrowContainer);
+                input.dispatchEvent(new Event('input',{bubbles:true}));
+                toggleDropdown(false, ul, input, flagContainer, arrowContainer);
+                input.focus();
+            });
+            ul.appendChild(li);
+        });
+
+        if (countriesToShow.length === 0) {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 m-2 text-sm text-gray-400';
+            li.textContent = lang==='it'?'Nessun paese trovato':'No countries found';
+            ul.appendChild(li);
+        }
+    }
+
+    // ===== ERROR HANDLING =====
+    function createErrorMessageNode(text) { const el = document.createElement('div'); el.className='error-message'; el.textContent=text; return el; }
+    function clearFieldError(input) { if (!input) return; input.classList.remove('error'); const next=input.nextElementSibling; if(next && next.classList.contains('error-message')) next.remove(); }
+    function setFieldError(input, key) { if(!input) return; clearFieldError(input); input.classList.add('error'); const msgText=errorMessages[key]?errorMessages[key][lang]:(lang==='it'?'Campo obbligatorio':'Required field'); input.insertAdjacentElement('afterend', createErrorMessageNode(msgText)); }
+    function validateEmail(value){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+    function validatePhone(value){ if(!value) return false; const cleaned=value.trim(); const basic=/^[+]?[\d\s().-]{6,}$/; if(!basic.test(cleaned)) return false; const digits=cleaned.replace(/\D/g,''); return digits.length>=5; }
+
+    form.querySelectorAll('input, textarea').forEach(input => input.addEventListener('input', () => clearFieldError(input)));
+
+    // ===== MULTI-CHECKBOX BARCHE =====
+    form.querySelectorAll('[data-name="contact[boat-selection]"] label').forEach(label => {
+        const checkbox = label.querySelector("input[type=checkbox]");
+        const icon = label.querySelector("span");
+        label.addEventListener('click', e => {
+            e.preventDefault();
+            if(!checkbox) return;
+            checkbox.checked=!checkbox.checked;
+            if(checkbox.checked){
+                label.classList.add("bg-white","text-black");
+                label.classList.remove("bg-antracite","text-white");
+                icon?.classList.remove("hidden");
+            } else {
+                label.classList.add("bg-antracite","text-white");
+                label.classList.remove("bg-white","text-black");
+                icon?.classList.add("hidden");
+            }
+            const hiddenBoat=$('#contact-form-boat-selection');
+            if(hiddenBoat){
+                const selected=Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb=>cb.value);
+                hiddenBoat.value=selected.join(', ');
+                hiddenBoat.dispatchEvent(new Event('change',{bubbles:true}));
+            }
+        });
+    });
+
+    // ===== CAMPI CONDIZIONALI RADIO =====
+    const conditionalRadios = ['contact[boat-question]'];
+    conditionalRadios.forEach(name => {
+        const radios = $$(`input[name="${name}"]`);
+        radios.forEach(radio => {
+            radio.dataset.wasChecked = radio.checked ? "true" : "false";
+            radio.addEventListener('change', () => {
+                radios.forEach(r => {
+                    const targetId = r.dataset.target;
+                    if(targetId){
+                        const target = document.getElementById(targetId);
+                        if(target) target.classList.add('hidden');
+                    }
+                });
+                if(radio.checked && radio.dataset.target){
+                    const target=document.getElementById(radio.dataset.target);
+                    if(target) target.classList.remove('hidden');
+                }
+            });
+        });
+    });
+
+    document.addEventListener('click', e=>{
+        const radio=e.target;
+        if(radio.matches && radio.matches('input[type="radio"]')){
+            if(radio.checked && radio.dataset.wasChecked==="true"){ radio.checked=false; radio.dataset.wasChecked="false"; radio.dispatchEvent(new Event('change',{bubbles:true})); }
+            else{ const group=document.querySelectorAll(`input[name="${radio.name}"]`); group.forEach(r=>r.dataset.wasChecked="false"); radio.dataset.wasChecked="true"; }
+        }
+    });
+
+    // ===== SUBMIT FORM =====
+    submitButton.addEventListener('click', e => {
+        e.preventDefault();
+        form.querySelectorAll('.error-message').forEach(el=>el.remove());
+        form.querySelectorAll('.error').forEach(el=>el.classList.remove('error'));
+        let hasError=false;
+        const requiredInputs = Array.from(form.querySelectorAll('[required]'));
+        requiredInputs.forEach(input=>{
+            const name=input.name; const value=(input.value||'').trim();
+            if(!value){ hasError=true; setFieldError(input,name); return; }
+            if(name==='contact[email]'&&!validateEmail(value)){ hasError=true; setFieldError(input,name); }
+            if(name==='contact[phone]'&&!validatePhone(value)){ hasError=true; setFieldError(input,name); }
+        });
+        if(hasError) return;
+
+        const tags=['news']; if(marketingCheckbox?.checked) tags.push('marketing'); if(profilingCheckbox?.checked) tags.push('profiling');
+        const boats=Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb=>cb.value);
+        boats.forEach(b=>tags.push(b.replace(/\s+/g,'-')));
+        if(tagsInput) tagsInput.value=[...new Set(tags)].join(',');
+        const noteLines=[]; if(boats.length) noteLines.push("Selected Boats: "+boats.join(", ")); if(noteInput) noteInput.value=noteLines.join("\n");
+
+        const formData=new FormData(form);
+        fetch(form.action,{method:"POST",body:formData,headers:{"Accept":"application/json"}})
+            .then(res=>res.ok?showThankYouPopup():res.json().then(err=>alert(lang==='it'?"Errore: "+JSON.stringify(err):"Error: "+JSON.stringify(err))))
+            .catch(err=>alert(lang==='it'?"Si è verificato un errore durante l'invio.":"An error occurred while submitting."));
+    });
+
+    // ===== POPUP RINGRAZIAMENTO =====
+    const thankYouPopup=document.getElementById("thankyou-popup");
+    const closeTyBtns=[document.getElementById("news-form-ty-close"),document.getElementById("news-form-ty-close-btn")];
+
+    function showThankYouPopup(){ if(!thankYouPopup) return; thankYouPopup.classList.remove("hidden"); thankYouPopup.classList.add("flex","items-center","justify-center","backdrop-blur-xl","bg-[#101010]/60"); document.body.style.overflow="hidden"; }
+    function hideThankYouPopup(){ if(!thankYouPopup) return; thankYouPopup.classList.add("hidden"); thankYouPopup.classList.remove("flex","items-center","justify-center","backdrop-blur-xl","bg-[#101010]/60"); document.body.style.overflow=""; }
+
+    closeTyBtns.forEach(btn=>btn?.addEventListener("click",hideThankYouPopup));
+    if(thankYouPopup){
+        thankYouPopup.addEventListener("click",e=>{
+            const content=thankYouPopup.querySelector(".popup-content");
+            if(!content.contains(e.target)) hideThankYouPopup();
+        });
+    }
+});
+</script>
+
+{% schema %}
+{
+"name": "News intro",
+"settings": [
+{
+    "type": "page",
+    "id": "link-to-news-page",
+    "label": "Select the page about all the news"    
+},
+{
+    "type": "text",
+    "id": "link-to-news-label",
+    "label": "Label of the link",
+    "default": "VISUALIZZA TUTTE LE NEWS"
+},
+{
+"type": "text",
+"id": "news-intro-title",
+"label": "Title",
+"default": "Contatti"
+},
+{
+"type": "textarea",
+"id": "news-intro-text",
+"label": "Description",
+"default": "Siamo sempre al tuo fianco, che tu stia scoprendo VanDutch o sia già parte della nostra community. Il nostro team è pronto ad assisterti con discrezione, competenza e attenzione ai dettagli per richieste generali, informazioni su modelli, eventi o servizi. Contattaci direttamente o rivolgiti al VanDutch Center più vicino. Ogni richiesta è gestita con cura per garantire un’esperienza su misura a ogni armatore."
+},
+{
+"type": "color",
+"id": "news-form-bg-color",
+"label": "News form bg color",
+"default": "#292929"
+},
+{
+"type": "color",
+"id": "news-form-text-color",
+"label": "News form text color",
+"default": "#ffffff"
+},
+{
+"type": "text",
+"id": "news-form-title",
+"label": "News form title",
+"default": "Ask to VanDutch"
+},
+{
+"type": "text",
+"id": "news-form-required-text",
+"label": "Form 'required' text",
+"default": "* indicates required fields"
+},
+{
+"type": "text",
+"id": "news-fname-label",
+"label": "First Name Label",
+"default": "First name"
+},
+{
+"type": "checkbox",
+"id": "news-fname-required",
+"label": "First Name Required",
+"default": true
+},
+{
+"type": "text",
+"id": "news-fname-placeholder",
+"label": "First Name Placeholder",
+"default": "Insert your first name"
+},
+{
+"type": "text",
+"id": "news-lname-label",
+"label": "Last Name Label",
+"default": "Last name"
+},
+{
+"type": "checkbox",
+"id": "news-lname-required",
+"label": "Last Name Required",
+"default": true
+},
+{
+"type": "text",
+"id": "news-lname-placeholder",
+"label": "Last Name Placeholder",
+"default": "Insert your last name"
+},
+{
+"type": "text",
+"id": "news-prefix-label",
+"label": "Prefix label",
+"default": "Prefix"
+},
+{
+"type": "text",
+"id": "news-prefix-placeholder",
+"label": "Prefix placeholder",
+"default": "+39"
+},
+{
+"type": "text",
+"id": "news-phone-label",
+"label": "Question - Number label",
+"default": "Phone*"
+},
+{
+"type": "text",
+"id": "news-phone-placeholder",
+"label": "Question - Number placeholder",
+"default": "XXXXXXXX"
+},{
+"type": "checkbox",
+"id": "news-phone-required",
+"label": "Phone Required",
+"default": true
+},
+{
+"type": "text",
+"id": "news-country-placeholder",
+"label": "Country Placeholder",
+"default": "Select your country"
+},
+{
+"type": "text",
+"id": "news-mail-label",
+"label": "Mail Label",
+"default": "Email"
+},
+{
+"type": "checkbox",
+"id": "news-mail-required",
+"label": "Mail Required",
+"default": true
+},
+{
+"type": "text",
+"id": "news-mail-placeholder",
+"label": "Mail Placeholder",
+"default": "example@domain.com"
+},
+{
+"type": "text",
+"id": "news-date-label",
+"label": "Date Label",
+"default": "Appointment day"
+},
+{
+"type": "checkbox",
+"id": "news-date-required",
+"label": "Date Required",
+"default": true
+},
+{
+"type": "text",
+"id": "news-date-placeholder",
+"label": "Date Placeholder",
+"default": "Select a date"
+},
+{
+"type": "text",
+"id": "news-boat-q-label",
+"label": "Boat Question Label",
+"default": "Have you already got a boat?"
+},
+{
+"type": "checkbox",
+"id": "news-boat-q-required",
+"label": "Boat question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "news-boat-q-affermative-label",
+"label": "Boat question affermative label",
+"default": "Yes, by VanDutch Yacths"
+},
+{
+"type": "text",
+"id": "news-boat-q-other-label",
+"label": "Boat question other label",
+"default": "Yes, by other brands"
+},
+{
+"type": "text",
+"id": "news-boat-q-negative-label",
+"label": "Boat question negative label",
+"default": "No"
+},
+{
+"type": "text",
+"id": "news-buy-q-label",
+"label": "Buy Question Label",
+"default": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?"
+},
+{
+"type": "checkbox",
+"id": "news-buy-q-required",
+"label": "Buy question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "news-buy-q-affermative-label",
+"label": "Buy question affermative label",
+"default": "Yes"
+},
+{
+"type": "text",
+"id": "news-buy-q-negative-label",
+"label": "Buy question negative label",
+"default": "No"
+},
+{
+"type": "text",
+"id": "news-boat-sel-label",
+"label": "Boat Selection Label",
+"default": "For which boats would you like more information?"
+},
+{
+"type": "checkbox",
+"id": "news-boat-sel-required",
+"label": "Boat Selection Required",
+"default": false
+},
+{
+"type": "textarea",
+"id": "options",
+"label": "Boat (separeted by comma)",
+"default": "VD32, VD40, VD48, VD56, VD75"
+},
+{
+"type": "text",
+"id": "news-message-label",
+"label": "Message Label",
+"default": "Any specific request?"
+},
+{
+"type": "checkbox",
+"id": "news-message-required",
+"label": "Message Required",
+"default": false
+},
+{
+"type": "text",
+"id": "news-message-placeholder",
+"label": "Message Placeholder",
+"default": "Write your request here"
+},
+{
+"type": "number",
+"id": "news-message-max-lenght",
+"label" : "Message max lenght"
+},
+{
+"type": "text",
+"id": "news-news-q-label",
+"label": "News Question Label",
+"default": "News preferences"
+},
+{
+"type": "checkbox",
+"id": "news-news-q-required",
+"label": "News question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "news-news-q-mail-label",
+"label": "News question mail label",
+"default": "Email"
+},
+{
+"type": "text",
+"id": "news-news-q-phone-label",
+"label": "News question phone label",
+"default": "Phone"
+},
+{
+"type": "text",
+"id": "news-news-q-both-label",
+"label": "News question both label",
+"default": "Both"
+},
+{
+"type":"text",
+"id": "news-form-markConsLabel",
+"label": "Marketing consent text",
+"default": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms."
+},
+{
+"type":"text",
+"id": "news-form-profConsLabel",
+"label": "Profiling consent text",
+"default": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us. "
+},
+{
+"type": "url",
+"id": "news-form-privacy-page",
+"label": "Privacy Policy Page URL"
+},
+{
+"type": "text",
+"id": "news-form-privacy-label",
+"label": "Privacy Policy link label",
+"default": "Privacy Policy"
+},
+{
+"type": "text",
+"id": "news-form-marketing-title",
+"label": "Direct marketing short title",
+"default": "DIRECT MARKETING CONSENT"
+},
+{
+"type": "text",
+"id": "news-form-marketing-text",
+"label": "Direct marketing short text",
+"default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy: "
+},
+{
+"type": "text",
+"id": "news-form-profiling-title",
+"label": "Profiling short title",
+"default": "PROFILING CONSENT"
+},
+{
+"type": "text",
+"id": "news-form-profiling-text",
+"label": "Profiling short text",
+"default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "
+},
+{
+"type": "text",
+"id": "news-form-submit-button-text",
+"label": "Submit button label",
+"default": "Send request"
+},
+{
+"type": "color",
+"id": "news-form-button-text-color",
+"label": "Submit button text color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "news-form-button-background-color",
+"label": "Submit button background color",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "news-form-boat-q-model-label",
+"label": "Boat question - Model label",
+"default" : "Model"
+},
+{
+"type": "text",
+"id": "news-form-boat-q-model-placeholder",
+"label": "Boat question - Model placeholder",
+"default" : "Insert the model"
+},
+{
+"type": "text",
+"id": "news-form-boat-q-port-label",
+"label": "Boat question - Port label",
+"default" : "Mooring country"
+},
+{
+"type": "text",
+"id": "news-form-boat-q-port-placeholder",
+"label": "Boat question - Port placeholder",
+"default" : "Select the country"
+},
+{
+"type": "text",
+"id": "news-form-news-q-prefix-label",
+"label": "News question - Prefix label",
+"default": "Prefix"
+},
+{
+"type": "text",
+"id": "news-form-news-q-prefix-placeholder",
+"label": "News question - Prefix placeholder",
+"default": "+39"
+},
+{
+"type": "text",
+"id": "news-form-news-q-phone-label",
+"label": "Question - Number label",
+"default": "Phone"
+},
+{
+"type": "text",
+"id": "news-form-news-q-phone-placeholder",
+"label": "Question - Number placeholder",
+"default": "XXXXXXXXXX"
+},
+{
+"type": "text",
+"id": "news-form-ty-title",
+"label" : "Thank you popup title",
+"default": "Thank you!"
+},
+{
+"type": "textarea",
+"id": "news-form-ty-text",
+"label": "Thank you popup text",
+"default": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications."
+},
+{
+"type": "text",
+"id": "news-form-ty-btn-label",
+"label": "Thank you button label",
+"default": "Close"
+}
+],
+"blocks": [
+{
+"name": "news",
+"type": "contact",
+"settings": [
+{
+"type": "text",
+"id": "news-line-type",
+"label": "Type ('Phone','Mail',..)",
+"default": "Type"
+},
+{
+"type": "text",
+"id": "news-line-value",
+"label": "Value",
+"default": "Value"
+}
+]
+}
+],
+"presets": [
+{
+"name": "News intro",
+"category" : "News sections"
+}
+]
+}
+{% endschema %}

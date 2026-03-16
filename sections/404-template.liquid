@@ -1,0 +1,68 @@
+<!-- 404 template -->
+<div class="w-full h-auto bg_gs">
+  <div class="w-full h-[100vh] flex flex-col items-start justify-center p-6 lg:px-10">
+    <!-- main text content -->
+    <div class="w-full h-auto flex flex-col items-start justify-center gap-y-8">
+      <!-- content text -->
+      <div class="w-full h-auto flex flex-col items-start justify-center gap-y-3 lg:gap-y-4">
+        <!-- content titles -->
+        <div class="w-full h-auto flex flex-col items-center justify-center gap-2">
+          <h1 class="heading-md_gs text-color_gs text-center">{{ section.settings.main_title | default: "Oops!" }}</h1>
+        </div>
+        <!-- content paragraphs -->
+        <div class="w-full h-auto flex items-center justify-center">
+          <p class="text-center body-sm_gs text-color_gs">{{ section.settings.content_page | default: "The page you are looking for might have been removed had its name changed or is temporarily unavailable." }}</p>
+        </div> 
+      </div>
+      <!-- content cta -->
+      <div class="w-full h-auto flex items-center justify-center">
+        <!-- cta -->
+        <div class="w-full h-auto md:w-auto lg:w-auto text-center px-7 py-3.5 items-center justify-center cta-border-light_gs">
+          <a href="/" style="color:{{ section.settings.button-text-color }};" class="text-center body-sm_gs w-full" >
+            {{ section.settings.cta_text | default: "Go to home page" }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    /*hide breadcrumbs content */
+    .breadcrumbs{
+        display: none;
+    }
+</style>
+
+{% schema %}
+  {
+    "name": "404-template",
+    "settings": [
+      {
+        "type": "text",
+        "id": "main_title",
+        "label": "Main title"
+      }, {
+        "type": "textarea",
+        "id": "content_page",
+        "label": "Content page"
+      }, {
+        "type": "text",
+        "id": "cta_text",
+        "label": "Cta text"
+      },
+      {
+            "type": "color",
+            "id": "button-bg-color",
+            "label": "Button background",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "button-text-color",
+            "label": "Button textcolor",
+            "default": "#000000"
+        }
+    ]
+  }
+{% endschema %}

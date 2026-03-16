@@ -1,0 +1,306 @@
+<div class="flex flex-col gap-4 lg:gap-6 overflow-hidden pt-[64px] lg:pt-[160px] mb-[144px] lg:mb-[280px]">
+    <div class="px-4 md:px-12 lg:px-24 flex flex-col lg:flex-row lg:gap-12">
+        <!-- titolo + testo -->
+        <div class="flex flex-col gap-3 lg:gap-4 justify-start text-white w-full lg:w-[511px]">
+            <p class="h6 text-[26px] lg:text-[42px] uppercase">
+                {{ section.settings.vdcenter-models-title }}
+            </p>
+            <div class="body-regular text-[16px] lg:text-[18px] w-full">
+                {{ section.settings.vdcenter-models-text }}
+            </div>
+        </div>
+    </div>
+
+        <!-- blocco frecce -->
+        <div class="arrows-controls flex justify-center lg:flex-col lg:pt-[24px] gap-2 lg:gap-4 absolute lg:static bottom-0 lg:bottom-0">
+            <button
+                class="prev-model p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round" />
+                </svg>
+            </button>
+            <button
+                class="next-model p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+    <!-- slider -->
+    <div class="relative">
+        <div id="models-scroll-container" class="pl-mobile pl-desk flex flex-nowrap gap-3 lg:gap-4 w-full overflow-x-auto scrollbar-hide scroll-smooth">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when '@app' %}
+                        {% render block %}
+                    {% when 'vdcenter-model' %}
+                        <div class="flex flex-col w-[327px] width-lg shrink-0 rounded-[10px] gap-6 pb-8 bg-antracite text-white snap-start">
+                            <div class="flex h-[180px] lg:h-[222px] w-full">
+                                <img id="vdcenter-model-image-{{ block.id }}"
+                                    src="{{ block.settings.vdcenter-model-card-image | img_url: 'master' }}"
+                                    alt="{{ block.settings.vdcenter-model-card-title }}"
+                                    class="w-full object-cover rounded-t-[10px]">
+                            </div>
+                            <div class="flex flex-col gap-10 px-4 lg:px-8">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex w-full justify-start">
+                                        <h6 class="text-4xl leading-[42px] lg:text-[42px] lg:leading-12 uppercase">
+                                            {{ block.settings.vdcenter-model-card-title }}
+                                        </h6>
+                                    </div>
+                                    <div class="flex flex-col gap-3.5 w-full">
+                                        <div class="flex flex-row justify-between body-medium pb-2 border-b-[1px] border-white text-[12px] leading-[18px] lg:text-sm lg:leading-5">
+                                            <p>{{ block.settings.vdcenter-model-card-info-type1 }}</p>
+                                            <p>{{ block.settings.vdcenter-model-card-info-label1 }}</p>
+                                        </div>
+                                        <div class="flex flex-row justify-between body-medium pb-2 border-b-[1px] border-white text-[12px] leading-[18px] lg:text-sm lg:leading-5">
+                                            <p>{{ block.settings.vdcenter-model-card-info-type2 }}</p>
+                                            <p>{{ block.settings.vdcenter-model-card-info-label2 }}</p>
+                                        </div>
+                                        <div class="flex flex-row justify-between body-medium pb-2 border-b-[1px] border-white text-[12px] leading-[18px] lg:text-sm lg:leading-5">
+                                            <p>{{ block.settings.vdcenter-model-card-info-type3 }}</p>
+                                            <p>{{ block.settings.vdcenter-model-card-info-label3 }}</p>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px] group-vdmodel animation-vdmodel w-fit">
+                                    <a href="{{ block.settings.vdcenter-model-card-link.url }}"> 
+                                        <span class="mb-[6px]">{{ block.settings.vdcenter-model-card-link-label }}</span>
+                                        <span class="underline-vdmodel cta-underline-vdmodel"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+@media screen and (min-width: 768px) {
+    .width-lg {
+        width: 32.6%;
+    }
+}
+
+.pl-desk{
+        padding-left: 96px;
+        padding-right: 96px;
+    }
+
+@media (max-width: 768px){
+    .pl-mobile{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.arrows-controls {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    margin-top: 32px;
+    right: 16px;
+}
+
+@media screen and (min-width: 1024px) {
+    .arrows-controls {
+        position: relative;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 0;
+        right: 96px;
+    }
+}
+
+  .group-vdmodel a {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap:4px;
+      overflow: hidden;
+  }
+  .underline-vdmodel {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: white;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: transform 2s ease;
+  }
+  .cta-underline-vdmodel {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      opacity: 1;
+      background-color: white;
+      transform: translateX(0%);
+      transition: transform 2s ease;
+  }
+  .group-vdmodel:hover .underline-vdmodel {
+      transform: translateX(100%);
+  }
+  .group-vdmodel:hover .cta-underline-vdmodel {
+      animation: enter-line 1.2s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 1;
+  }
+  @keyframes enter-line {
+      0% {
+          transform: translateX(-100%);
+      }
+      100% {
+          transform: translateX(0);
+      }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('models-scroll-container');
+  const prev = document.querySelector('.prev-model');
+  const next = document.querySelector('.next-model');
+
+  const getCardWidth = () => {
+    const card = slider.querySelector('div');
+    if (!card) return 300;
+    const style = getComputedStyle(slider);
+    const gap = parseFloat(style.gap) || 0;
+    return card.offsetWidth + gap;
+  };
+
+  prev.addEventListener('click', () => {
+    const move = Math.min(getCardWidth(), slider.scrollLeft);
+    slider.scrollBy({ left: -move, behavior: 'smooth' });
+  });
+
+  next.addEventListener('click', () => {
+    const remainingScroll = slider.scrollWidth - slider.clientWidth - slider.scrollLeft;
+    const move = Math.min(getCardWidth(), remainingScroll);
+    slider.scrollBy({ left: move, behavior: 'smooth' });
+  });
+});
+</script>
+
+{% schema %}
+{
+    "name": "VD Center Models",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Info"
+        },
+        {
+            "type": "text",
+            "id": "vdcenter-models-title",
+            "label": "Title",
+            "default": "Modelli disponibili"
+        },
+        {
+            "type": "textarea",
+            "id": "vdcenter-models-text",
+            "label": "Text",
+            "default": "Dal Mediterraneo all’Atlantico, i VanDutch Center sono il luogo ideale per scoprire quale modello è perfetto per te. Oltre a servizi esclusivi e team dedicati, ogni centro espone una selezione di modelli VanDutch disponibili per visita e prova in acqua."
+        }
+    ],
+    "blocks": [
+        {
+            "name": "VD Center Model",
+            "type": "vdcenter-model",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Model Image & Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "vdcenter-model-card-image",
+                    "label": "Pick the model image"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-title",
+                    "label": "Model title",
+                    "default": "Vandutch 32"
+                },
+                {
+                    "type": "header",
+                    "content": "Model Info"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-type1",
+                    "label": "Info Type 1",
+                    "default": "Type 1"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-label1",
+                    "label": "Info Label 1",
+                    "default": "Label 1"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-type2",
+                    "label": "Info Type 2",
+                    "default": "Type 2"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-label2",
+                    "label": "Info Label 2",
+                    "default": "Label 2"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-type3",
+                    "label": "Info Type 3",
+                    "default": "Type 3"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-info-label3",
+                    "label": "Info Label 3",
+                    "default": "Label 3"
+                },
+                {
+                    "type": "header",
+                    "content": "Link to Model Page"
+                },
+                {
+                    "type": "page",
+                    "id": "vdcenter-model-card-link",
+                    "label": "Select the model page"
+                },
+                {
+                    "type": "text",
+                    "id": "vdcenter-model-card-link-label",
+                    "label": "Label for link to model",
+                    "default": "Scopri il Pippopluto2000"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "VD Center Models",
+            "category": "VD Centers Sections"
+        }
+    ]
+}
+{% endschema %}

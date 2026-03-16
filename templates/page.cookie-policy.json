@@ -1,0 +1,176 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-landing": {
+      "type": "main-landing",
+      "disabled": true,
+      "settings": {}
+    },
+    "simple_text_intro_3dAzFM": {
+      "type": "simple-text-intro",
+      "name": "Simple Text Intro",
+      "settings": {
+        "simple-intro-title": "COOKIE POLICY",
+        "simple-intro-text": "This website uses cookies to improve your browsing experience and make it faster and more interactive. \n\nThis cookie policy describes the cookies used and explains how to enable or disable them. We invite you to periodically check the content of this page, together with the privacy policy available on our website, to stay up to date with any changes we may make.",
+        "padding_top": 164,
+        "padding_block": 144,
+        "padding_block_top": 100,
+        "padding_block_mobile": 64
+      }
+    },
+    "accordion_policy_emwjjr": {
+      "type": "accordion-policy",
+      "blocks": {
+        "service_Kdftt7": {
+          "type": "service",
+          "settings": {
+            "service_type": "WHAT ARE COOKIE? WHAT COOKIE ARE USED? HOW TO ENABLE OR DISABLE THEM?",
+            "service_list": "Cookie are small text files that are stored on your device and that allow you to personalise your online browsing or simply make it easier for you (by storing, for example, the language in which you wish to consult a site). Thanks to cookie, it is therefore possible to collect information about your online browsing and use it to facilitate or personalise your browsing experience.\nOn this website we use various types of cookie, differing in type and purpose. In general, cookie can be divided into two main categories: “technical” cookie and “profiling” cookie.",
+            "service_type2": "Technical cookie",
+            "service_list2": "<b>Technical cookie</b> ensure optimal use of our website by making it smoother and easier to navigate. These cookie are used for the sole purpose of enabling the smooth use of our online services. Without these cookies, some sections of our website would not be accessible or would be difficult to use. As these cookies are essential for the use of our website, they are always active and cannot be deactivated. Furthermore, your consent is not required for the activation of these cookies. The legal basis that allows us to use them is our legitimate interest in the proper functioning of this website.\n\n<b>Functionality cookie</b> that enable navigation according to a selected set of criteria (e.g. language) also fall within the category of technical cookie. \n\nFurthermore, <b>analytical cookies</b> are also considered technical cookies, since they allow us to process only statistical information, collected in aggregate form, relating to the number of visitors and how they use our website.",
+            "service_type3": "Profiling cookie",
+            "service_list3": "<b>Profiling cookie</b> are used to collect information relating to your browsing habits (e.g.pages visited etc.): we process this data to offer you personalised content and targeted advertising. All profiling cookies can be enabled/disabled by clicking on the Cookie Settings or by changing the settings of the browser you are using to surf the web.\nPlease note that profiling cookies will only be activated if you click on the ‘Accept’ button on the cookie banner on our website. Therefore, profiling cookies collect information about your browsing only if you have given your consent.\n\nCookie can also be classified as <b>proprietary (or first-party)</b> cookie if managed directly by Cantiere del Pardo, or <b>third-party</b> cookies, i.e. owned by our commercial partners.",
+            "service_type4": "",
+            "service_list4": "",
+            "service_type5": "",
+            "service_list5": "",
+            "service_type6": "",
+            "service_list6": "",
+            "service_type7": "",
+            "service_list7": "",
+            "service_type8": "",
+            "service_list8": ""
+          }
+        },
+        "service_4cqXig": {
+          "type": "service",
+          "settings": {
+            "service_type": "LIST OF IMPLEMENTED COOKIE",
+            "service_list": "<!-- OneTrust Cookies List start -->\n<div id=\"ot-sdk-cookie-policy\"></div>\n<!-- OneTrust Cookies List end -->",
+            "service_type2": "",
+            "service_list2": "",
+            "service_type3": "",
+            "service_list3": "",
+            "service_type4": "",
+            "service_list4": "",
+            "service_type5": "",
+            "service_list5": "",
+            "service_type6": "",
+            "service_list6": "",
+            "service_type7": "",
+            "service_list7": "",
+            "service_type8": "",
+            "service_list8": ""
+          }
+        },
+        "service_dXVRq9": {
+          "type": "service",
+          "settings": {
+            "service_type": "DATA CONTROLLER",
+            "service_list": "The Data Controller is Cantiere del Pardo S.p.A., with registered office in Via F.lli Lumière 34, Forlì (FC), e-mail <a style=\"text-decoration:underline\" href=\"mailto:privacy@cantieredelpardo.com\">privacy@cantieredelpardo.com</a>.",
+            "service_type2": "",
+            "service_list2": "",
+            "service_type3": "",
+            "service_list3": "",
+            "service_type4": "",
+            "service_list4": "",
+            "service_type5": "",
+            "service_list5": "",
+            "service_type6": "",
+            "service_list6": "",
+            "service_type7": "",
+            "service_list7": "",
+            "service_type8": "",
+            "service_list8": ""
+          }
+        },
+        "service_Kmr6ea": {
+          "type": "service",
+          "settings": {
+            "service_type": "COMMUNICATION AND TRANSFER OF YOUR DATA",
+            "service_list": "The information collected through cookie will be communicated to our staff in their capacity as persons authorized to process the data as well as to our suppliers and consultants (e.g. our IT service and platform providers) in their capacity as data processors, involved in the management and maintenance of our website.\nThe data may be transferred outside the European Union: in this case, data will only be transferred after signing the Standard Contractual Clauses approved by the EU Commission with Decision No. 2021/914/EU or to countries that can guarantee an adequate level of personal data protection and are therefore subject to an Adequacy Decision adopted by the EU Commission.",
+            "service_type2": "",
+            "service_list2": "",
+            "service_type3": "",
+            "service_list3": "",
+            "service_type4": "",
+            "service_list4": "",
+            "service_type5": "",
+            "service_list5": "",
+            "service_type6": "",
+            "service_list6": "",
+            "service_type7": "",
+            "service_list7": "",
+            "service_type8": "",
+            "service_list8": ""
+          }
+        },
+        "service_CNceGX": {
+          "type": "service",
+          "settings": {
+            "service_type": "PRIVACY RIGHTS",
+            "service_list": "As a data subject, you can exercise the rights listed below by writing to the e-mail address <a style=\"text-decoration:underline\" href=\"mailto:privacy@cantieredelpardo.com\">privacy@cantieredelpardo.com</a>. You will receive a response as soon as possible and, in any event, within 30 days. We may ask you for additional information if, in connection with your request, it is necessary to verify your identity.",
+            "service_type2": "Right of access",
+            "service_list2": "You have the right to know whether your data is being processed and, if so, to obtain a copy of that data. You also have the right to be informed about: the origin of the data, the categories of personal data processed, the recipients of the data, the purposes of the processing, the existence of automated decision-making processes (including profiling), the data retention period and the rights recognised by the GDPR.",
+            "service_type3": "Right to rectification and integration",
+            "service_list3": "You have the right to have your data corrected or integrated if they are inaccurate or incomplete.",
+            "service_type4": "Right to erasure",
+            "service_list4": "You have the right to request the deletion of your data they are no longer necessary or if the Data Controller is no longer authorised to process them.",
+            "service_type5": "Right to restriction of processing",
+            "service_list5": "You have the right to obtain the restriction of personal data concerning you in the following cases: i) if you have questioned the accuracy of your personal data; in this case you can request a restriction of the processing for the period necessary to verify the accuracy of the data; ii) if we are no longer authorized to process the data, and instead of deleting them, you can ask us to restrict their use; iii) if the personal data in our possession, despite being no longer necessary for the purposes for which they were collected, are necessary for you to ascertain, exercise or defend a right in court; vi) if you have objected to a processing based on one of our legitimate interests. In this case, pending the assessment of whether our legitimate grounds prevail over your interests, rights and freedoms, you may request the restriction of the processing.",
+            "service_type6": "Right to data portability",
+            "service_list6": "You have the right to receive your personal data in a structured, commonly used and machine-readable format; you also have the right to request the transfer of such data to another data controller.",
+            "service_type7": "Right to withdraw the consent",
+            "service_list7": "You have the right to withdraw at any time the consent you have given for the processings that are based on it.",
+            "service_type8": "Right to object",
+            "service_list8": "You have the right to object at any time to the processings of your personal data that are based on our legitimate interest.\n\nMoreover, if you believe that the processing of your data conflicts with the data protection provisions, you also have <b>the right to lodge a complaint</b> with the Data protection authority."
+          }
+        }
+      },
+      "block_order": [
+        "service_Kdftt7",
+        "service_4cqXig",
+        "service_dXVRq9",
+        "service_Kmr6ea",
+        "service_CNceGX"
+      ],
+      "name": "Accordion",
+      "settings": {}
+    },
+    "empty_space_HFYeVq": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 50,
+        "desktop-height": 76
+      }
+    },
+    "simple_text_intro_VwD3cL": {
+      "type": "simple-text-intro",
+      "name": "Simple Text Intro",
+      "settings": {
+        "simple-intro-title": "",
+        "simple-intro-text": "<b>Last update: September 2025</b>",
+        "padding_top": 0,
+        "padding_block": 144,
+        "padding_block_top": 0,
+        "padding_block_mobile": 64
+      }
+    }
+  },
+  "order": [
+    "main-landing",
+    "simple_text_intro_3dAzFM",
+    "accordion_policy_emwjjr",
+    "empty_space_HFYeVq",
+    "simple_text_intro_VwD3cL"
+  ]
+}

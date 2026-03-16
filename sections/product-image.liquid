@@ -1,0 +1,139 @@
+{% assign ImageDesktop = section.settings.image_desktop %}
+{% assign ImageMobile = section.settings.image_mobile %}
+
+<div id="{{ section.settings.id }}" 
+     class="relative fullimage-padding w-full h-[812px] md:h-[1133px] lg:h-[1024px] overflow-hidden transition-all duration-[1400ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+     style="--margin-bottom-mobile: {{ section.settings.margin_block_mobile }}; --margin-bottom-desktop: {{ section.settings.margin_block }}">
+  
+  <div class="image-wrapper relative w-full h-full transition-all duration-[1400ms] ease-[cubic-bezier(0.77,0,0.175,1)] px-[16px] md:px-[48px] lg:px-[96px]">
+    
+    <!-- desktop image -->
+    {% if ImageDesktop != blank %}
+      <img src="{{ ImageDesktop | img_url: 'master' }}" 
+           alt="{{ section.settings.alt_image }}"
+           class="hidden md:hidden lg:block w-full h-full object-cover cursor-pointer z-10"
+           id="short-desktop-img">
+    {% endif %}
+  
+    <!-- mobile image -->
+    {% if ImageMobile != blank %}
+      <img src="{{ ImageMobile | img_url: 'master' }}" 
+           alt="{{ section.settings.alt_image }}"
+           class="block md:block lg:hidden w-full h-full object-cover cursor-pointer z-10"
+           id="short-mobile-img">
+    {% endif %}
+  
+  </div>
+</div>
+
+<style>
+  .fullimage-padding {
+    margin-bottom: var(--margin-bottom-mobile);
+  }
+
+  @media screen and (min-width: 768px) {
+    .fullimage-padding {
+      margin-bottom: var(--margin-bottom-desktop);
+    }
+  }
+
+  /* Stato "full screen" */
+  .fullimage-padding.full-screen .image-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .fullimage-padding.full-screen img {
+    border-radius: 0 !important;
+  }
+
+  /* Blocca temporaneamente lo scroll */
+  body.scroll-locked {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  document.addEventListener('scroll', function() {
+    const section = document.getElementById('{{ section.settings.id }}');
+    const rect = section.getBoundingClientRect();
+    const body = document.body;
+
+    // L’espansione inizia quando la sezione è al 30% dello schermo
+    const startTrigger = window.innerHeight * 0.7;
+
+    if (rect.top < startTrigger && !section.classList.contains('full-screen')) {
+      section.classList.add('full-screen');
+      body.classList.add('scroll-locked');
+
+      // Blocca lo scroll per 0.1s per creare una piccola pausa
+      setTimeout(() => {
+        body.classList.remove('scroll-locked');
+      }, 100);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Full Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Section ID",
+      "default": "full-image"
+    },
+
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image (Mobile)"
+    },
+
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "select",
+      "id": "margin_block",
+      "label": "Space above/below",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "40px", "label": "Small - 40px" }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "select",
+      "id": "margin_block_mobile",
+      "label": "Space above/below (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "20px", "label": "Small - 20px" }
+      ],
+      "default": "0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Image",
+      "category": "Media Sections"
+    }
+  ]
+}
+{% endschema %}

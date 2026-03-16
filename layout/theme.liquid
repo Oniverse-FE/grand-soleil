@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <!--favicon-->
+  <link rel="icon" type="image/x-icon" href="{{ 'favicon.png' |  asset_url }}">
+  <!--favicon-->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  {% if request.page_type == 'article' %}
+   Grand Soleil | {{ page_title }}
+  {% else %}
+    {{ page_title }}
+  {% endif %}
+</title>
+  {{ content_for_header }}
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/wze0vnc.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <link href="{{ 'output.css' | asset_url }}" rel="stylesheet" />
+
+  {% if template contains 'gsp' %}
+    {{ 'grand-soleil-plus.css' | asset_url | stylesheet_tag }}
+  {% else %}
+    {{ 'grand-soleil.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+
+</head>
+  {% section 'header' %}
+  <body class="bg-ebony loading-active">
+    {{ content_for_layout }}
+  </body>
+</html>

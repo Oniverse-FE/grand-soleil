@@ -1,0 +1,215 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 pt-16 lg:pt-40 gap-4 lg:gap-8 text-white">
+  <!-- title -->
+  <div>
+    <h8 class="h8 text-[26px] leading-[32px] uppercase md:hidden lg:hidden">
+      {{ section.settings.vdcenter-services-title }}
+    </h8>
+    <h6 class="text-[42px] leading-12 uppercase hidden md:block lg:block">
+      {{ section.settings.vdcenter-services-title }}
+    </h6>
+  </div>
+
+  <!-- services -->
+  <div class="flex flex-col lg:flex-row gap-2.5 lg:gap-4">
+    {% for i in (1..3) %}
+      {% assign key_type = "vdcenter-services-service" | append: i | append: "-type" %}
+      {% assign key_list = "vdcenter-services-service" | append: i | append: "-list" %}
+      {% assign type = section.settings[key_type] %}
+      {% assign list = section.settings[key_list] %}
+
+      <div class="flex flex-col w-full">
+        <!-- toggle -->
+        <div id="service-type-{{ i }}" 
+             class="flex flex-row px-4 py-2.5 bg-antracite rounded-[4px] justify-between items-center body-medium cursor-pointer service-toggle" 
+             data-index="{{ i }}">
+          <div class="flex justify-start">
+            {{ type }}
+          </div>
+          <div class="flex justify-center items-center">
+            <svg class="size-6 icon-plus" data-index="{{ i }}" viewBox="0 0 24 24" fill="none">
+              <path d="M4 12H20" stroke="white" stroke-linecap="round"/>
+              <path d="M12 20V4" stroke="white" stroke-linecap="round"/>
+            </svg>
+            <svg class="size-6 icon-minus hidden" data-index="{{ i }}" viewBox="0 0 24 24" fill="none">
+              <path d="M4 12H20" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- collapsible list -->
+        <div class="bg-antracite text-white text-[16px] -mt-1 service-list rounded-b-[4px]" id="service-list-{{ i }}">
+          <div class="service-list-inner px-0 py-0">
+            {{ list | newline_to_br }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .service-list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+
+  .service-list.open {
+    max-height: 600px; /* sufficiente per contenuto */
+    opacity: 1;
+  }
+
+  /* Wrapper interno per padding fluido */
+  .service-list-inner {
+    padding: 0; /* inizialmente nascosto */
+    visibility: hidden;
+  }
+
+  .service-list.open .service-list-inner {
+    padding: 6px 16px 20px 16px; /* padding visibile solo quando open */
+    visibility: visible;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .service-list.open .service-list-inner {
+      padding: 6px 16px 20px 16px; /* padding maggiore su desktop */
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggles = document.querySelectorAll('.service-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const index = toggle.dataset.index;
+      const list = document.getElementById(`service-list-${index}`);
+      const plusIcon = document.querySelector(`.icon-plus[data-index="${index}"]`);
+      const minusIcon = document.querySelector(`.icon-minus[data-index="${index}"]`);
+      const serviceType = document.getElementById(`service-type-${index}`);
+
+      if (list.classList.contains('open')) {
+        // Chiusura fluida
+        list.style.maxHeight = list.scrollHeight + "px"; // altezza corrente
+        list.offsetHeight; // forza reflow
+        requestAnimationFrame(() => {
+          list.style.maxHeight = "0px";
+        });
+
+        plusIcon.classList.remove('hidden');
+        minusIcon.classList.add('hidden');
+        serviceType.classList.add('rounded-[4px]');
+        serviceType.classList.remove('rounded-t-[4px]');
+        list.classList.remove('rounded-b-[4px]');
+
+        list.addEventListener('transitionend', function handleClose(e) {
+          if (e.propertyName === 'max-height') {
+            list.classList.remove('open');
+            list.style.maxHeight = null; // reset max-height
+            list.removeEventListener('transitionend', handleClose);
+          }
+        });
+
+      } else {
+        // Apertura fluida
+        list.classList.add('open');
+        list.style.maxHeight = "0px"; // parte da 0
+        list.offsetHeight; // forza reflow
+        requestAnimationFrame(() => {
+          list.style.maxHeight = list.scrollHeight + "px";
+        });
+
+        plusIcon.classList.add('hidden');
+        minusIcon.classList.remove('hidden');
+        serviceType.classList.remove('rounded-[4px]');
+        serviceType.classList.add('rounded-t-[4px]');
+        list.classList.add('rounded-b-[4px]');
+
+        list.addEventListener('transitionend', function handleOpen(e) {
+          if (e.propertyName === 'max-height') {
+            list.style.maxHeight = 'none'; // lascia altezza naturale
+            list.removeEventListener('transitionend', handleOpen);
+          }
+        });
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "VD Center Services",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "vdcenter-services-title",
+      "label": "Title",
+      "default": "SERVIZI"
+    },
+
+    {
+      "type": "header",
+      "content": "First Service"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service1-type",
+      "label": "Service type",
+      "default": "Attracco"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service1-list",
+      "label": "Service list",
+      "default": "• Carico/scarico\n• Assistenza attracco"
+    },
+
+    {
+      "type": "header",
+      "content": "Second Service"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service2-type",
+      "label": "Service type",
+      "default": "Ormeggio a secco"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service2-list",
+      "label": "Service list",
+      "default": "• Posizionamento\n• Copertura\n• Sorveglianza"
+    },
+
+    {
+      "type": "header",
+      "content": "Third Service"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service3-type",
+      "label": "Service type",
+      "default": "Partenza"
+    },
+    {
+      "type": "textarea",
+      "id": "vdcenter-services-service3-list",
+      "label": "Service list",
+      "default": "• Controllo\n• Rifornimento\n• Avviamento"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VD Center Services",
+      "category": "VD Centers Sections"
+    }
+  ]
+}
+{% endschema %}

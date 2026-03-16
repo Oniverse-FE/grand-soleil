@@ -1,0 +1,125 @@
+{%- liquid
+  # Logica per l'inversione dell'ordine su Desktop
+  assign desktop_direction = 'md:flex-row'
+  if section.settings.image_position == 'right'
+    assign desktop_direction = 'md:flex-row-reverse'
+  endif
+-%}
+
+<div class="px-4 md:px-[128px] py-12 md:py-[200px] bg_gs bg_gsp">
+  <div class="flex flex-col {{ desktop_direction }} overflow-hidden rounded-[16px] shadow-lg bg-truffle_gs bg-beige_gsp min-h-[400px]">
+    
+    <div class="w-full md:w-1/2 h-72 md:h-auto">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: 
+          class: 'w-full h-full object-cover block',
+          loading: 'lazy',
+          alt: section.settings.image.alt | escape
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full object-cover bg-gray-200' }}
+      {%- endif -%}
+    </div>
+
+    <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16">
+      
+      {%- if section.settings.pretitle != blank -%}
+        <p class="pretitle-md_gs pretitle-md_gsp text-color_gs text-color_gsp mb-4">
+          {{ section.settings.pretitle }}
+        </p>
+      {%- endif -%}
+      
+      {%- if section.settings.title != blank -%}
+        <h2 class="heading-lg_gs heading-ld_gsp text-color_gs text-color_gsp mb-6">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      
+      {%- if section.settings.content != blank -%}
+        <div class="body-lg_gs body-lg_gsp text-color_gs text-color_gsp mb-8 lg:mb-10">
+          {{ section.settings.content }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="flex justify-start">
+          <a href="{{ section.settings.button_link }}" 
+             class="inline-flex items-center justify-center px-8 py-4 w-auto transition-all duration-300 hover:opacity-90 link-lg_gs link-lg_gsp cta-truffle_gsp cta-blue_gs text-05090D_gs text-FAF9F7_gsp">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {%- endif -%}
+      
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Box Testo e Immagine",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Posizione Immagine (Desktop)",
+      "options": [
+        { "value": "left", "label": "Immagine a Sinistra" },
+        { "value": "right", "label": "Immagine a Destra" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Contenuto"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Immagine"
+    },
+    {
+      "type": "text",
+      "id": "pretitle",
+      "label": "Pre-titolo",
+      "default": "HIGHLIGHT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titolo",
+      "default": "Titolo della Sezione"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Descrizione",
+      "default": "<p>Inserisci qui un testo descrittivo coinvolgente per raccontare i tuoi prodotti o il tuo brand.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Chiamata all'azione (CTA)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Testo Bottone",
+      "default": "Scopri di più"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link Bottone"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Box Testo e Immagine"
+    }
+  ]
+}
+{% endschema %}

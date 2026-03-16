@@ -1,0 +1,37 @@
+<div class="flex md:px-12 px-4 lg:px-24 pt-[96px] lg:pt-[165px]">
+    {% assign current_path = request.path %}
+    {% assign breadcrumb_item = '' %}
+
+
+    {% for link in linklists.vandutch-center.links %}
+        {% assign link_path = link.url | remove: shop.url %}
+    {% if link_path == current_path or link_path == request.url %}
+        {% assign breadcrumb_item = link.title %}
+    {% endif %}
+    {% endfor %}
+
+    <nav class="text-sm lg:text-[16px] leading-5 lg:leading-[22px] text-white/60 body-regular " aria-label="Breadcrumb">
+    <ol class="list-reset flex flex-wrap gap-1 whitespace-normal">
+        {% assign vd_page = pages['vandutch-center'] %}
+        <li><a href="{{ vd_page.url }}" class="hover:underline">{{ linklists.vandutch-center.title }}</a></li>
+        {% if breadcrumb_item != '' %}
+        <li><span >/</span></li>
+        <li>{{ breadcrumb_item }}</li>
+        {% endif %}
+    </ol>
+    </nav>
+</div>
+{% schema %}
+{
+    "name": "VD Centers Breadcrumb",
+    "settings": [
+        
+    ],
+    "presets": [
+        {
+            "name": "VanDutch Center Breadcrumb",
+            "category": "VD Centers Sections"
+        }
+    ]
+}
+{% endschema %}

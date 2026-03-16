@@ -1,0 +1,167 @@
+<div class="flex flex-col py-6 lg:py-[48px] px-4 md:px-12 lg:px-24 gap-3 lg:gap-6 text-white">
+  <!-- Titolo -->
+  <div class="flex justify-start h7 uppercase text-4xl leading-[42px] lg:text-[56px] lg:leading-[62px]">
+    {{ section.settings.text-intro-title }}
+  </div>
+
+  <!-- Testo su 12 colonne -->
+  <div class="grid grid-cols-12 gap-4 lg:gap-4 ">
+    <!-- Prima parte testo -->
+    <div class="col-span-12 md:col-span-5 lg:col-span-5">
+      {{ section.settings.text-intro-text1 | newline_to_br }}
+    </div>
+
+    <!-- Colonna vuota -->
+    <div class="hidden lg:block lg:col-span-1"></div>
+
+    <!-- Seconda parte testo -->
+    <div class="col-span-12 lg:col-span-5">
+      {{ section.settings.text-intro-text2 | newline_to_br }}
+    </div>
+
+    <!-- Colonna 12 rimane libera -->
+  </div>
+
+  <!-- CTA buttons -->
+  <div class="flex flex-col w-full lg:w-[406px] gap-4">
+    <div class="flex w-full">
+      {% if section.settings.first-cta-visible == true %}
+        <a href="{{ section.settings.first-cta-link }}" target="_blank" class="w-full font-semibold rounded-4xl text-center py-3.5 px-5 lg:px-7 {% if section.settings.first-cta-transparent == true %}bg-transparent{% endif %}" style="{% if section.settings.first-cta-transparent != true %}background-color:{{ section.settings.first-cta-bg-color }};{% endif %}color:{{ section.settings.first-cta-color }};border: 1px solid {{ section.settings.first-cta-border-color }};backdrop-filter: blur(40px);">
+          {{ section.settings.first-cta-label }}
+        </a>
+      {% endif %}
+    </div>
+    <div class="flex w-full">
+      {% if section.settings.second-cta-visible == true %}
+        <a href="{{ section.settings.second-cta-link }}" class="w-full font-semibold rounded-4xl text-center py-3.5 px-5 lg:px-7 {% if section.settings.second-cta-transparent == true %}bg-transparent{% endif %}" style="{% if section.settings.second-cta-transparent != true %}background-color:{{ section.settings.second-cta-bg-color }};{% endif %}color:{{ section.settings.second-cta-color }};border: 1px solid {{ section.settings.second-cta-border-color }};backdrop-filter: blur(40px);">
+          {{ section.settings.second-cta-label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Only Text intro",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "text-intro-title",
+      "label": "Title",
+      "default": "master summer edition"
+    },
+    {
+      "type": "textarea",
+      "id": "text-intro-text1",
+      "label": "Col 1",
+      "default": "VanDutch Yachts enjoyed participating in the Masters Summer Edition from 20 to 22 June 2024, in the heart of Amsterdam. Held in the iconic location of the Hotel de l’Europe, this incredible event celebrated the arrival of summer welcoming a mix of international guests, influential locals, CEOs, family business owners, VIPs, and visionaries. "
+    },
+    {
+      "type": "textarea",
+      "id": "text-intro-text2",
+      "label": "Col 2"
+    },
+    {
+      "type": "header",
+      "content": "First CTA Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "first-cta-visible",
+      "label": "First CTA button visible",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "first-cta-label",
+      "label": "First CTA Label",
+      "default": "Scarica la brochure"
+    },
+    {
+      "type": "url",
+      "id": "first-cta-link",
+      "label": "First CTA Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "first-cta-transparent",
+      "label": "First CTA button background transparent",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "first-cta-bg-color",
+      "label": "First CTA button background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "first-cta-color",
+      "label": "First CTA button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "first-cta-border-color",
+      "label": "First CTA button border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Second CTA Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "second-cta-visible",
+      "label": "Second CTA button visible",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "second-cta-label",
+      "label": "Second CTA Label",
+      "default": "Richiedi informazioni"
+    },
+    {
+      "type": "url",
+      "id": "second-cta-link",
+      "label": "Second CTA link"
+    },
+    {
+      "type": "checkbox",
+      "id": "second-cta-transparent",
+      "label": "Second CTA button background transparent",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "second-cta-bg-color",
+      "label": "Second CTA button background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "second-cta-color",
+      "label": "Second CTA button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "second-cta-border-color",
+      "label": "Second CTA button border color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Only Text Intro",
+      "category": "News Sections"
+    }
+  ]
+}
+{% endschema %}

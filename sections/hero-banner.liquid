@@ -1,0 +1,458 @@
+<div class="relative flex flex-col h-dvh w-full overflow-hidden">
+  <div class="flex flex-col flex-1 relative">
+    {% assign index = 0 %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}
+          {% render block %}
+        {% when 'content' %}
+          <div
+            class="hero-slide {% if forloop.first %}active{% else %}hidden{% endif %} flex flex-col justify-end h-full w-full absolute top-0 left-0 transition-all duration-[1600ms] ease-in-out"
+            data-index="{{ index }}"
+          >
+            <!-- Sfondo -->
+            <div class="absolute inset-0 -z-10">
+              {% if block.settings.content-media %}
+                <video autoplay loop muted playsinline class="w-full h-full object-cover lg:hidden">
+                  <source src="{{ block.settings.content-video-mobile | file_url }}" type="video/mp4" />
+                </video>
+                <video autoplay loop muted playsinline class="w-full h-full object-cover hidden lg:inline">
+                  <source src="{{ block.settings.content-video-desktop | file_url }}" type="video/mp4" />
+                </video>
+              {% else %}
+                <img src="{{ block.settings.content-image-mobile | img_url: 'master' }}" alt="{{ block.settings.content-title }}" class="w-full h-full object-cover lg:hidden" />
+                <img src="{{ block.settings.content-image-desktop | img_url: 'master' }}" alt="{{ block.settings.content-title }}" class="w-full h-full object-cover hidden lg:inline" />
+              {% endif %}
+              <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#10101080] to-[#101010] z-10"></div>
+            </div>
+
+            <!-- Contenuto -->
+            <div class="relative z-20 px-4 md:px-6 lg:px-24 space-y-4" style="color:{{ block.settings.content-title-color }}">
+              {% if block.settings.content-title != blank %}
+                <h6 class="font-bold text-[42px] md:text-[72px] lg:text-[72px] leading-12 md:leading-16 lg:leading-16">
+                  {{ block.settings.content-title }}
+                </h6>
+              {% endif %}
+
+              <!-- CTA -->
+              <div class="z-20 flex flex-col md:flex-row lg:flex-row justify-center md:justify-start lg:justify-start text-center gap-4 font-semibold text-[16px] leading-3.5">
+                {% if block.settings.button_1_label and block.settings.button_1_url %}
+                  <a href="{{ block.settings.button_1_url }}" aria-label="{{ block.settings.aria_label_btn1 }}"
+                     class="btn-custom w-full md:w-[201px] lg:w-[201px] px-7 py-3.5 rounded-[50px] {% if block.settings.button-1-transparent %}btn-transparent{% endif %}"
+                     style="
+                       --btn-bg: {{ block.settings.button-1-bg-color }};
+                       color: {{ block.settings.button-1-text-color }};
+                       border: 1px solid {{ block.settings.button-1-border-color }};
+                     ">
+                    <span>{{ block.settings.button_1_label }}</span>
+                  </a>
+                {% endif %}
+
+                {% if block.settings.button_2_label and block.settings.button_2_url %}
+                  <a href="{{ block.settings.button_2_url }}" aria-label="{{ block.settings.aria_label_btn2 }}"
+                     class="btn-custom w-full md:w-[201px] lg:w-[206px] px-7 py-3.5 rounded-[50px] {% if block.settings.button-2-transparent %}btn-transparent{% endif %}"
+                     style="
+                       --btn-bg: {{ block.settings.button-2-bg-color }};
+                       color: {{ block.settings.button-2-text-color }};
+                       border: 1px solid {{ block.settings.button-2-border-color }};
+                     ">
+                    <span>{{ block.settings.button_2_label }}</span>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% assign index = index | plus: 1 %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <!-- Stepper -->
+  <div class="flex justify-start items-start px-4 py-10 md:px-6 lg:px-24 lg:py-12 gap-2 relative z-20">
+    {% for block in section.blocks %}
+      <div class="stepper h-1 rounded overflow-hidden transition-all duration-300 ease-in-out bg-white/30 w-[24px] max-w-[56px]">
+        <div class="stepper-bar h-full bg-white transition-all duration-[12000ms] ease-linear" style="width: 0%" data-step="{{ forloop.index0 }}"></div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Frecce -->
+  <div class="flex absolute bottom-10 lg:bottom-25 right-4 md:right-6 lg:right-24 gap-2 lg:gap-4 z-21 translate-y-1/2 lg:translate-y-0">
+    <button class="prev-slide p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="next-slide p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* === Stepper === */
+  .stepper-active { width: 56px !important; }
+  .stepper-inactive { width: 24px !important; }
+
+  /* === SLIDE ORIZZONTALE === */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1s ease-in-out, opacity 0.8s ease-in-out;
+  }
+  .hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 10;
+  }
+  .hero-slide.hidden {
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 0;
+  }
+
+  /* === CTA Buttons (solo sfondo cambia opacità all'hover) === */
+  .btn-custom {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    background: var(--btn-bg, transparent); /* colore pieno base */
+    transition: none;
+    z-index: 0;
+  }
+
+  .btn-custom span{
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .btn-custom::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--btn-bg, transparent);
+    border-radius: inherit;
+    z-index: 1;
+    opacity: 0;
+    transition: none;
+    pointer-events: none;
+  }
+
+  .btn-custom:hover::after,
+  .btn-custom:focus::after {
+    opacity: 0.75;
+  }
+
+  .btn-custom.btn-transparent {
+    background: transparent;
+  }
+  .btn-custom.btn-transparent::after {
+    display: none;
+  }
+
+  .btn-custom,
+  .btn-custom:hover,
+  .btn-custom:focus {
+    transform: none;
+    box-shadow: none;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  const steppers = document.querySelectorAll('.stepper-bar');
+  const nextBtn = document.querySelector('.next-slide');
+  const prevBtn = document.querySelector('.prev-slide');
+  let current = 0;
+  let timer;
+  let isAnimating = false; // flag per bloccare click rapidi
+
+  /* ------------------------------
+     RESET STEPPER ANIMATIONS
+  ------------------------------ */
+  function resetSteppers() {
+    steppers.forEach(bar => {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      void bar.offsetWidth; // forza reflow
+      bar.style.transition = 'width 12s linear';
+    });
+  }
+
+  /* ------------------------------
+     ANIMA SOLO LO STEPPER ATTIVO
+  ------------------------------ */
+  function animateStepper(index) {
+    resetSteppers();
+    if (steppers[index]) steppers[index].style.width = '100%';
+  }
+
+  /* ------------------------------
+     CAMBIA LA LARGHEZZA DELLO STEPPER (active/inactive)
+  ------------------------------ */
+  function updateStepperWidths(index) {
+    steppers.forEach((bar, i) => {
+      const parent = bar.parentElement;
+      parent.style.transition = 'width 0.4s ease-in-out';
+      parent.style.width = (i === index) ? '56px' : '24px';
+    });
+  }
+
+  /* ------------------------------
+     MOSTRA SLIDE SPECIFICA
+  ------------------------------ */
+  function showSlide(index) {
+    if (index === current || isAnimating) return; // blocca se già in animazione
+    isAnimating = true;
+
+    const currentSlide = slides[current];
+    const nextSlide = slides[index];
+
+    // preparazione slide successiva
+    nextSlide.classList.remove('hidden');
+    nextSlide.style.transform = 'translateX(100%)';
+    nextSlide.style.opacity = '1';
+    nextSlide.style.zIndex = '15';
+
+    currentSlide.style.zIndex = '10';
+
+    void nextSlide.offsetWidth;
+
+    // animazioni
+    nextSlide.style.transform = 'translateX(0)';
+    currentSlide.style.transform = 'translateX(-100%)';
+
+    setTimeout(() => {
+      currentSlide.classList.add('hidden');
+      currentSlide.style.transform = 'translateX(100%)';
+      nextSlide.classList.add('active');
+
+      isAnimating = false; // sblocca dopo animazione
+    }, 1600);
+
+    animateStepper(index);
+    updateStepperWidths(index);
+
+    current = index;
+  }
+
+  /* ------------------------------
+     CONTROLLI NEXT / PREV
+  ------------------------------ */
+  function nextSlideFn() {
+    const next = (current + 1) % slides.length;
+    showSlide(next);
+  }
+
+  function prevSlideFn() {
+    const prev = (current - 1 + slides.length) % slides.length;
+    showSlide(prev);
+  }
+
+  /* ------------------------------
+     TIMER AUTOMATICO
+  ------------------------------ */
+  function startTimer() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      nextSlideFn();
+      startTimer();
+    }, 12000);
+  }
+
+  /* ------------------------------
+     CLICK SU FRECCE
+  ------------------------------ */
+  nextBtn?.addEventListener('click', () => {
+    nextSlideFn();
+    startTimer();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    prevSlideFn();
+    startTimer();
+  });
+
+  /* ------------------------------
+     CLICK SUGLI STEPPER
+  ------------------------------ */
+  steppers.forEach((bar, index) => {
+    bar.parentElement.addEventListener('click', () => {
+      showSlide(index);
+      startTimer();
+    });
+  });
+
+  /* ------------------------------
+     🎉 CAMBIO SLIDE QUANDO LO STEPPER FINISCE
+  ------------------------------ */
+  steppers.forEach((bar, index) => {
+    bar.addEventListener('transitionend', (event) => {
+      if (event.propertyName === 'width' && index === current) {
+        nextSlideFn();
+        startTimer();
+      }
+    });
+  });
+
+  /* ------------------------------
+     INIT
+  ------------------------------ */
+  animateStepper(current);
+  updateStepperWidths(current);
+  startTimer();
+});
+</script>
+
+{% schema %}
+{
+    "name": "Hero Banner",
+    "settings": [
+        
+    ],
+    "blocks": [
+        {
+            "type": "content",
+            "name": "content",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "content-media",
+                    "label": "Select if you want to show the video instead of the image",
+                    "default": false
+                },
+                {
+                    "type": "image_picker",
+                    "id": "content-image-mobile",
+                    "label": "Content image - MOBILE"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "content-image-desktop",
+                    "label": "Content image - DESKTOP"
+                },
+                {
+                    "type":"video",
+                    "id": "content-video-mobile",
+                    "label": "Content video - MOBILE"
+                },
+                {
+                    "type":"video",
+                    "id": "content-video-desktop",
+                    "label": "Content video - DESKTOP"
+                },
+                {
+                    "type": "text",
+                    "id": "content-title",
+                    "label": "Content title",
+                    "default": "Titolo banner"
+                },
+                {
+                    "type": "color",
+                    "id": "content-title-color",
+                    "label": "Content title color",
+                    "default": "#000000"
+                },
+                {
+                    "type": "text",
+                    "id": "button_1_label",
+                    "label": "Testo primo bottone",
+                    "default": "Scopri di più"
+                },
+                {
+                    "type": "url",
+                    "id": "button_1_url",
+                    "label": "Link primo bottone"
+                },
+                {
+                    "type": "text",
+                    "id": "aria_label_btn1",
+                    "label": "Alt text link"
+                },
+                {
+                    "type": "text",
+                    "id": "button_2_label",
+                    "label": "Testo secondo bottone",
+                    "default": "Contattaci"
+                },
+                {
+                    "type": "url",
+                    "id": "button_2_url",
+                    "label": "Link secondo bottone"
+                },
+                {
+                    "type": "text",
+                    "id": "aria_label_btn2",
+                    "label": "Alt text link"
+                },
+                {
+                    "type": "color",
+                    "id": "button-1-bg-color",
+                    "label": "Background color on first button",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "id": "button-1-text-color",
+                    "label": "Text color on first button",
+                    "default": "#000000"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "button-1-transparent",
+                    "label": "Trasparent background on first button",
+                    "default": false
+                },
+                {
+                    "type": "color",
+                    "id": "button-2-bg-color",
+                    "label": "Background color on second button",
+                    "default": "#000000"
+                },
+                {
+                    "type": "color",
+                    "id": "button-2-text-color",
+                    "label": "Text color on second button",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "button-2-transparent",
+                    "label": "Trasparent background on second button",
+                    "default": true
+                },
+                {
+                    "type": "color",
+                    "id": "button-1-border-color",
+                    "label": "Border color for the first button",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "id": "button-2-border-color",
+                    "label": "Border color for the second button",
+                    "default": "#ffffff"
+                }
+
+            ]
+        }
+    ],"presets": [
+        {
+            "name": "Hero Banner",
+            "category": "Media Sections"
+        }
+    ]
+}
+{% endschema %}

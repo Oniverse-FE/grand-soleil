@@ -1,0 +1,270 @@
+<!-- Wrapper -->
+<div class="flex flex-col pt-4 lg:pt-6 pb-6 lg:pb-0 relative">
+  <div class="main-media-wrapper">
+    <div id="main-media-container" class="w-full h-[192px] lg:h-[524px] relative overflow-hidden rounded-md"></div>
+  </div>
+
+  <!-- Thumbnails Scroll -->
+  <div class="flex items-center mt-4 relative">
+    <!-- Freccia sinistra -->
+    <button id="thumb-prev" class="arrow-btn absolute left-4 lg:left-24 z-10 hidden" style="width:40px; height:40px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" viewBox="0 0 9 18" fill="none">
+        <path d="M8 17.3672L1.41421 10.7814C0.633164 10.0004 0.633165 8.73402 1.41421 7.95297L8 1.36719" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div id="thumbnail-container" class="flex gap-[8px] overflow-x-auto no-scrollbar"></div>
+
+    <!-- Freccia destra -->
+    <button id="thumb-next" class="arrow-btn absolute right-4 lg:right-24 z-10" style="width:40px; height:40px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="18" viewBox="0 0 9 18" fill="none">
+        <path d="M1 17.3672L7.58579 10.7814C8.36684 10.0004 8.36683 8.73402 7.58579 7.95297L0.999999 1.36719" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Export Media Data to JS -->
+<script>
+  window.vdcenterMediaBlocks = {{ section.blocks | map: "settings" | json }};
+</script>
+
+<!-- Slider Logic -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const blocks = window.vdcenterMediaBlocks || [];
+  let currentIndex = 0;
+
+  const mainEl = document.getElementById("main-media-container");
+  const thumbsEl = document.getElementById("thumbnail-container");
+
+  const btnPrev = document.getElementById("thumb-prev");
+  const btnNext = document.getElementById("thumb-next");
+
+  // Render media principale
+  const renderMedia = (block, classes = "") => {
+    const type = block['vdcenter-slider-content-block-type'];
+    const desktop = block['vdcenter-slider-content-block-desktop-image'];
+    const mobile = block['vdcenter-slider-content-block-mobile-image'];
+
+    if (type === "video") {
+      return `
+        <video class="hidden lg:block w-full h-full object-cover ${classes}" autoplay muted loop playsinline src="${desktop}"></video>
+        <video class="block lg:hidden w-full h-full object-cover ${classes}" autoplay muted loop playsinline src="${mobile}"></video>
+      `;
+    } else {
+      return `
+        <img src="${desktop}" alt="" class="hidden lg:block w-full h-full object-cover ${classes}" />
+        <img src="${mobile}" alt="" class="block lg:hidden w-full h-full object-cover ${classes}" />
+      `;
+    }
+  };
+
+  // Aggiorna media principale
+  const updateMainMedia = () => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "absolute inset-0 w-full-img h-full opacity-0 transition-opacity duration-400";
+    wrapper.innerHTML = renderMedia(blocks[currentIndex]);
+
+    mainEl.appendChild(wrapper);
+
+    requestAnimationFrame(() => {
+      wrapper.style.opacity = "1";
+    });
+
+    if (mainEl.children.length > 1) {
+      const old = mainEl.children[0];
+      setTimeout(() => old.remove(), 400);
+    }
+  };
+
+  // Aggiorna thumbnails
+  const updateThumbnails = () => {
+    thumbsEl.innerHTML = '';
+    blocks.forEach((block, index) => {
+      const thumbDiv = document.createElement("div");
+      let thumbClasses = "w-[107px] h-[64px] lg:w-[190px] lg:h-[100px] flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer";
+      thumbDiv.className = thumbClasses;
+
+      const imgUrl = block['vdcenter-slider-content-block-desktop-image'] || block['vdcenter-slider-content-block-mobile-image'] || "";
+
+      // Thumbnail sempre immagine statica
+      thumbDiv.innerHTML = `
+        <img src="${imgUrl}" alt="" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="overlay absolute inset-0 transition-opacity"></div>
+      `;
+
+      thumbDiv.addEventListener("click", () => {
+        currentIndex = index;
+        updateMainMedia();
+        updateThumbnails();
+      });
+
+      const overlay = thumbDiv.querySelector(".overlay");
+      if (index === currentIndex) {
+        overlay.style.background = "rgba(16, 16, 16, 0.5)";
+        overlay.style.opacity = "1";
+      } else {
+        overlay.style.opacity = "0";
+      }
+
+      thumbsEl.appendChild(thumbDiv);
+    });
+
+    btnPrev.style.display = thumbsEl.scrollLeft > 0 ? "flex" : "none";
+    btnNext.style.display = thumbsEl.scrollLeft + thumbsEl.clientWidth < thumbsEl.scrollWidth ? "flex" : "none";
+  };
+
+  const updateUI = () => {
+    updateMainMedia();
+    updateThumbnails();
+  };
+
+  updateUI();
+
+  // swipe mobile
+  let touchStartX = null;
+  mainEl.addEventListener("touchstart", e => {
+    touchStartX = e.changedTouches[0].clientX;
+  });
+
+  mainEl.addEventListener("touchend", e => {
+    if (touchStartX === null) return;
+    const diffX = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diffX) > 50) {
+      currentIndex = (currentIndex + (diffX < 0 ? 1 : blocks.length - 1)) % blocks.length;
+      updateUI();
+    }
+    touchStartX = null;
+  });
+
+  btnPrev.addEventListener("click", () => {
+    thumbsEl.scrollBy({ left: -200, behavior: "smooth" });
+    setTimeout(updateThumbnails, 300);
+  });
+
+  btnNext.addEventListener("click", () => {
+    thumbsEl.scrollBy({ left: 200, behavior: "smooth" });
+    setTimeout(updateThumbnails, 300);
+  });
+
+  thumbsEl.addEventListener("scroll", updateThumbnails);
+});
+</script>
+
+<style>
+.arrow-btn {
+  border-radius: 50px;
+  background: var(--Blur-VD-Blur, rgba(16, 16, 16, 0.60));
+  backdrop-filter: blur(48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  z-index: 10;
+}
+.main-media-wrapper {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+@media (min-width: 769px) {
+  .main-media-wrapper {
+    margin-left: 96px;
+    margin-right: 96px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-media-wrapper {
+        margin-left: 48px !important;
+        margin-right: 48px !important;
+    }
+}
+#main-media-container {
+  position: relative;
+}
+#main-media-container > * {
+  position: absolute;
+  inset: 0;
+}
+.w-full-img {
+  width: 100%;
+}
+#thumbnail-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 769px) {
+  #thumbnail-container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    #thumbnail-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+#thumbnail-container::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.overlay {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
+
+{% schema %}
+{
+  "name": "VDCenter Media Slide",
+  "max_blocks": 6,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "media-block",
+      "name": "Media Block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Media Settings"
+        },
+        {
+          "type": "select",
+          "id": "vdcenter-slider-content-block-type",
+          "label": "Media Type",
+          "options": [
+            { "value": "image", "label": "Image" },
+            { "value": "video", "label": "Video" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "vdcenter-slider-content-block-desktop-image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "vdcenter-slider-content-block-mobile-image",
+          "label": "Mobile Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VDCenter Media Slide",
+      "category": "VD Centers Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+<div class="empty-{{ section.id }} bg-transparent"></div>
+
+<style>
+    /* Altezza mobile */
+    .empty-{{ section.id }} {
+        height: {{ section.settings.mobile-height }}px;
+    }
+
+    /* Altezza desktop */
+    @media screen and (min-width: 1024px) {
+        .empty-{{ section.id }} {
+            height: {{ section.settings.desktop-height }}px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Empty space",
+    "settings": [
+        {
+            "type": "number",
+            "id": "mobile-height",
+            "label": "Mobile height (px)",
+            "default": 50
+        },
+        {
+            "type": "number",
+            "id": "desktop-height",
+            "label": "Desktop height (px)",
+            "default": 50
+        }
+    ],
+    "presets": [
+        {
+            "name": "Empty space",
+            "category": "Common sections"
+        }
+    ]
+}
+{% endschema %}

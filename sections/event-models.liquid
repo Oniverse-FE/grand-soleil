@@ -1,0 +1,213 @@
+<div class="flex flex-col gap-4 lg:gap-10">
+    <!-- titolo con frecce -->
+    <div class="flex px-4 md:px-12 lg:px-24 justify-between items-center">
+        <h2 class="font-size font-bold uppercase text-white">
+            {{ section.settings.event-model-title }}
+        </h2>
+        <div id="arrow-container" class="relative justify-end bottom-0 lg:flex flex gap-2 lg:gap-4">
+            <button id="prev-models" class="prev-models p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button id="next-models" class="next-models p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- slider modelli -->
+    <div id="model-slider" class="flex gap-3 lg:gap-[15px] overflow-x-auto overflow-y-hidden lg:overflow-x-auto lg:flex-nowrap hide-scrollbar first-item-padding last-item-padding pt-4">
+        {% for block in section.blocks %}
+        {% case block.type %}
+            {% when '@app' %}
+                {% render block %}
+            {% when 'event-model-card' %}
+            <div class="flex flex-col relative flex-shrink-0 w-[300px] h-[188px] lg:w-[511px] lg:h-[387px] rounded-2xl bg-antracite p-4">
+                <a href="{{ block.settings.event-model-link }}" class="h-full w-full block">
+                    <div class="flex flex-col justify-center items-center h-full w-full">
+                        <div class="flex text-[128px] lg:text-[266px] z-0 w-[108px] font-black justify-center items-center tk-mongoose" style="color:{{ block.settings.event-model-title-color }};">
+                            {{ block.settings.event-model-title }}
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 z-10 flex justify-center items-end p-4">
+                        <img src="{{ block.settings.event-model-image | img_url: 'master' }}" alt="{{ block.settings.event-model-title }}" class="w-[214px] lg:w-[408px] h-auto">
+                    </div>
+                </a>
+            </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    #model-slider {
+        scroll-behavior: smooth;
+        overflow-y: hidden;
+    }
+
+    .font-size {
+        font-size: 26px !important;
+        line-height: 32px !important;
+    }
+
+    @media (min-width: 1024px) {
+        .font-size {
+            font-size: 42px !important;
+            line-height: 48px !important;
+        }
+    }
+
+    #prev-models,
+    #next-models {
+        background: transparent;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+
+    #prev-models:hover:not(:disabled),
+    #next-models:hover:not(:disabled) {
+        color: #fff;
+    }
+
+    #prev-models:disabled,
+    #next-models:disabled {
+        opacity: 1;
+        cursor: not-allowed;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .first-item-padding {
+        padding-left: 16px;
+    }
+    @media (min-width: 1024px) {
+        .first-item-padding {
+            padding-left: 96px;
+        }
+    }
+
+    .last-item-padding {
+        padding-right: 16px;
+    }
+    @media (min-width: 1024px) {
+        .last-item-padding {
+            padding-right: 96px;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById("model-slider");
+    const prevBtn = document.getElementById("prev-models");
+    const nextBtn = document.getElementById("next-models");
+    const arrowContainer = document.getElementById("arrow-container");
+
+    const scrollAmount = 300;
+
+    function updateButtons() {
+        prevBtn.disabled = slider.scrollLeft <= 0;
+        nextBtn.disabled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+    }
+
+    prevBtn.addEventListener("click", () => {
+        let target = slider.scrollLeft - scrollAmount;
+        if (target < 0) target = 0;
+        slider.scrollTo({ left: target, behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+        let target = slider.scrollLeft + scrollAmount;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (target > maxScroll) target = maxScroll;
+        slider.scrollTo({ left: target, behavior: "smooth" });
+    });
+
+    slider.addEventListener("scroll", updateButtons);
+
+    updateButtons();
+
+    function checkArrowsVisibility() {
+        const modelCards = slider.querySelectorAll('.flex.flex-col.relative.flex-shrink-0');
+        if (window.innerWidth >= 1024) {
+            arrowContainer.style.display = modelCards.length <= 2 ? "none" : "flex";
+        } else {
+            arrowContainer.style.display = "flex";
+        }
+    }
+    function checkArrowsVisibility() {
+        const modelCards = slider.querySelectorAll('.flex.flex-col.relative.flex-shrink-0');
+        if (window.innerWidth >= 1780) {
+            arrowContainer.style.display = modelCards.length <= 3 ? "none" : "flex";
+        } else {
+            arrowContainer.style.display = "flex";
+        }
+    }
+
+    checkArrowsVisibility();
+    window.addEventListener("resize", checkArrowsVisibility);
+});
+</script>
+
+{% schema %}
+{
+    "name": "Event Models",
+    "settings": [
+        {
+            "type": "text",
+            "id": "event-model-title",
+            "label": "Title",
+            "default": "Modelli in esposizione"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "event-model-card",
+            "name": "Event model",
+            "settings": [
+                {
+                "type": "header",
+                "content": "Model Settings"
+                },
+            {
+                    "type": "text",
+                    "id": "event-model-title",
+                    "label": "Model title",
+                    "default": "32"
+                },
+                {
+                    "type": "color",
+                    "id": "event-model-title-color",
+                    "label": "Model title color",
+                    "default": "#F76C00"
+                },
+                {
+                    "type": "url",
+                    "id": "event-model-link",
+                    "label": "Select model page"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "event-model-image",
+                    "label": "Model image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Event Models",
+            "category": "Event sections"
+        }
+    ]
+}
+{% endschema %}

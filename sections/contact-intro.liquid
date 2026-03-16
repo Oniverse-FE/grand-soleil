@@ -1,0 +1,1345 @@
+<div class="flex flex-col gap-3 lg:gap-4 text-white px-4 md:px-12 lg:px-24 py-30 lg:py-40 pt-[96px] lg:pt-[165px]">
+    
+    <div class="flex flex-col lg:flex-row justify-between w-full gap-20">
+        <div class="flex flex-col gap-8 lg:gap-10 w-full lg:w-5/12">
+            <div class="flex flex-col lg:sticky lg:top-[165px] lg:overflow-y-auto pr-4">
+                <div class="flex h6 uppercase text-[36px] leading-[42px] md:text-[56px] md:leading-[62px] mb-6 only-tablet">
+                    {{ section.settings.contact-intro-title }}
+                </div>
+            <div class="flex body-regular text-[16px] leading-[22px] md:text-[18px] md:leading-[24px] w-full mb-6 only-tablet">
+                {{ section.settings.contact-intro-text }}
+            </div>
+            <div class="flex flex-col gap-2">
+                {% for block in section.blocks %}
+                <div class="flex justify-between bg-antracite rounded-[10px] py-2.5 px-4 w-full gap-12">
+                    <div class="body-regular text-[14px] leading-[20px] lg:text-[16px] lg:leading-[22px]">
+                        {{ block.settings.contact-line-type }}
+                    </div>
+                    <div class="text-right body-medium text-[14px] leading-[20px] lg:text-[16px] lg:leading-[22px]">
+                        {{ block.settings.contact-line-value }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 lg:h-full lg:overflow-y-auto lg:mt-[86px]">
+        {% form 'customer', id: 'contact_form' %}
+
+        <div id="contact-form-box"
+            class="flex flex-col overflow-y-auto overflow-visible rounded-xl lg:px-8 lg:py-8 py-6 px-4 gap-10"
+            style="background-color: {{ section.settings.contact-form-bg-color }}; color: {{ section.settings.contact-form-text-color }}">
+
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-6">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between">
+                                <div class="body-medium text-xl">{{ section.settings.contact-form-title }}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end text-[12px] leading-[18px] md:text-[14px] md:leading-[20px] body-regular">
+                            {{ section.settings.contact-form-required-text }}
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required
+                                == true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="text" id="contact-form-first-name" name="contact[first_name]"
+                                placeholder="{{- section.settings.contact-fname-placeholder }}" {% if
+                                section.settings.contact-fname-required==true %} required {% endif %}>
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required
+                                == true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="text" id="contact-form-last-name" name="contact[last_name]"
+                                placeholder="{{- section.settings.contact-lname-placeholder }}" {% if
+                                section.settings.contact-lname-required==true %} required {% endif %}>
+                        </div>
+
+                        <div class="flex flex-col gap-1 relative">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.contact-country-label}}{% if
+                                section.settings.contact-country-required == true
+                                %}*{% endif %}
+                            </div>
+                            <input
+                            class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 py-1 border-white pr-10 country-input"
+                            type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
+                            placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                            autocomplete="off" required>
+                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                            <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                            <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                            </svg>
+                            </div>
+                            <ul
+                            class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">
+                                {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required ==
+                                true %}*{%
+                                endif %}
+                            </div>
+                            <input class="body-regular placeholder-[#D6CBC9] text-white text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                type="email" id="contact-form-mail" name="contact[email]"
+                                placeholder="{{- section.settings.contact-mail-placeholder }}" {% if
+                                section.settings.contact-mail-required==true %} required {% endif %}>
+                        </div>
+                </div>
+                <div class="body-regular text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex text-[#D6CBC9]">
+                        {{ section.settings.contact-boat-q-label }}{% if section.settings.contact-boat-q-required ==
+                        true %}*{%
+                        endif %}
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="boat-y" name="contact[boat-question]" value="vd" data-target="boat-y-fields" onclick="toggleRadio(this)">
+                                <label for="boat-y">{{ section.settings.contact-boat-q-affermative-label }}</label>
+                            </div>
+                            <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-4 lg:my-2 w-full">
+                                <div class="flex flex-col gap-1 w-full">
+                                    <div class="flex text-[#D6CBC9] body-regular text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 py-1 border-white"
+                                        type="text" id="boat-y-model" name="contact[boat-y-model]"
+                                        placeholder="{{ section.settings.contact-form-boat-q-model-placeholder }}">
+                                </div>
+                                <div class="flex flex-col gap-1 relative w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-boat-q-port-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 py-1 border-white pr-10 country-input"
+                                        type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
+                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
+                                        <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                                        <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                        <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                        </svg>
+                                        </div>
+                                        <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="boat-o" name="contact[boat-question]" value="other" data-target="boat-o-fields" onclick="toggleRadio(this)">
+                                <label for="boat-o">{{ section.settings.contact-boat-q-other-label }}</label>
+                            </div>
+                            <div id="boat-o-fields" class="hidden flex flex-col md:flex-row gap-4 my-2 w-full">
+                                <div class="flex flex-col gap-1 w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] py-1 border-b-1 border-white"
+                                        type="text" id="boat-o-model" name="contact[boat-o-model]"
+                                        placeholder="{{ section.settings.contact-form-boat-q-model-placeholder}}">
+                                </div>
+                                <div class="flex flex-col gap-1 relative w-full">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-boat-q-port-label}}</div>
+                                    <input
+                                        class="body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] py-1 border-b-1 border-white pr-10 country-input"
+                                        type="text" name="contact[boat-o-port-country]" id="boat-o-port-country"
+                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
+                                        <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                                        <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                        <svg class="country-arrow transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                        </svg>
+                                        </div>
+                                        <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio"
+                                class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                id="boat-n" name="contact[boat-question]" value="no" data-target="" onclick="toggleRadio(this)">
+                            <label for="boat-n">{{ section.settings.contact-boat-q-negative-label }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-regular text-white text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex text-[#D6CBC9]">
+                        {{ section.settings.contact-buy-q-label }}{% if section.settings.contact-buy-q-required == true
+                        %}*{% endif
+                        %}
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio"
+                                class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                id="buy-y" name="contact[buy-question]" value="y" data-target="y" onclick="toggleRadio(this)">
+                            <label for="buy-y"> {{ section.settings.contact-buy-q-affermative-label }}</label>
+                        </div>
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio"
+                                class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                id="buy-n" name="contact[buy-question]" value="no" data-target="no" onclick="toggleRadio(this)">
+                            <label for="buy-y"> {{ section.settings.contact-buy-q-negative-label }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-regular text-[#D6CBC9] text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex ">
+                        {{ section.settings.contact-boat-sel-label }}{% if section.settings.contact-boat-sel-required ==
+                        true %}*{%
+                        endif %}
+                    </div>
+                    {% assign options = section.settings.options | split: ',' %}
+                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
+                        {% for option in options %}
+                        {% assign clean_option = option | strip %}
+                        <label
+                            class="flex gap-1 py-1.5 px-3 bg-[#f8f8f8] border-1 border-white cursor-pointer relative text-white transition-all body-regular text-[16px] leading-[22px] bg-antracite rounded-4xl">
+                            <input type="checkbox" class="multi-checkbox" value="{{ clean_option }}" hidden>
+                            {{ clean_option }}
+                            <span class=" hidden cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-black">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+
+                    <input type="hidden" name="contact[boat-selection]" id="contact-form-boat-selection" {% if
+                        section.settings.contact-boat-sel-required %} required {% endif %}>
+                </div>
+
+                <div
+                    class="body-regular text-[#D6CBC9] text-[16px] leading-[22px] flex flex-col gap-4 border-b-1 border-white textarea-wrapper">
+                    <div class="flex">
+                        {{ section.settings.contact-message-label }}{% if section.settings.contact-message-required ==
+                        true %}*{%
+                        endif %}
+                    </div>
+                    <textarea id="contact-form-message" class="overflow-y-hidden resize-none min-h-[20px]"
+                        name="contact[message]" placeholder="{{ section.settings.contact-message-placeholder }}" {% if
+                        section.settings.contact-message-required==true %} required {% endif %}
+                        maxlength="{{ section.settings.contact-message-max-lenght | default: 250 }}"></textarea>
+                    <div class="char-counter flex justify-end" id="contact-message-counter">0 / {{
+                        section.settings.contact-message-max-lenght | default: 250 }}</div>
+                </div>
+
+                <div class="body-regular text-white text-[16px] leading-[22px] flex flex-col gap-4">
+                    <div class="flex text-[#D6CBC9]">
+                        {{ section.settings.contact-contact-q-label }}{% if section.settings.contact-contact-q-required
+                        == true
+                        %}*{% endif %}
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio"
+                                class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                id="contact-mail" name="contact[contact-question]" value="mail" data-target="mail" onclick="toggleRadio(this)">
+                            <label for="contact-mail"> {{ section.settings.contact-contact-q-mail-label }}</label>
+                        </div>
+
+                        <div>
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="contact-phone" name="contact[contact-question]" value="phone"
+                                    data-target="phone" onclick="toggleRadio(this)">
+                                <label for="contact-phone"> {{ section.settings.contact-contact-q-phone-label }}</label>
+                            </div>
+                            <div id="phone-fields-phone" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
+                                <div class="flex flex-col gap-1 w-full md:w-[67px]">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-contact-q-prefix-label }}</div>
+                                    <input
+                                        class="input-field body-regular text-white placeholder-[#D6CBC9] text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                        type="text" id="phone-prefix-phone" name="contact[phone-prefix-phone]"
+                                        placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
+                                </div>
+                                <div class="flex flex-col gap-1 w-full relative">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-contact-q-phone-label }}</div>
+                                    <input
+                                        class="input-field body-regular text-white placeholder-[#D6CBC9] text-[16px] leading-[22px] py-1 border-b-1 border-white"
+                                        type="tel" id="phone-number-phone" name="contact[phone-number-phone]"
+                                        placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio"
+                                    class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                                    id="contact-both" name="contact[contact-question]" value="both" data-target="both" onclick="toggleRadio(this)">
+                                <label for="contact-both"> {{ section.settings.contact-contact-q-both-label }}</label>
+                            </div>
+                            <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-6 w-full">
+                                <div class="flex flex-col gap-1 w-full md:w-[67px]">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-contact-q-prefix-label }}</div>
+                                    <input
+                                        class="input-field body-regular text-white text-[16px] placeholder-[#D6CBC9] leading-[22px] border-b-1 border-white py-1"
+                                        type="text" id="phone-prefix-both" name="contact[phone-prefix-both]"
+                                        placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
+                                </div>
+                                <div class="flex flex-col gap-1 w-full relative">
+                                    <div class="flex body-regular text-[#D6CBC9] text-[12px] leading-[18px]">{{
+                                        section.settings.contact-form-contact-q-phone-label }}</div>
+                                    <input
+                                        class="input-field body-regular text-white placeholder-[#D6CBC9] text-[16px] leading-[22px] border-b-1 border-white py-1"
+                                        type="tel" id="phone-number-both" name="contact[phone-number-both]"
+                                        placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6 text-[18px] lg:py-6">
+                <div class="flex items-center h-auto gap-4">
+                    <input style="aspect-ratio:1/1" type="checkbox"
+                        class="w-6 h-6 rounded-sm appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
+                        id="contact-form-marketingConsent">
+                    <label class="mt-[24px] lg:mt-0 w-auto" id="contact-form-profilingLabel">
+                        {{ section.settings.contact-form-markConsLabel }}
+                        <u><a id="contact-form-shortMarketing">{{ section.settings.contact-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
+                    </label>
+                </div>
+                <div class="flex items-center h-auto gap-4">
+                    <input style="aspect-ratio:1/1" type="checkbox"
+                        class="appearance-none w-6 h-6 rounded-sm border-1 border-white bg-transparent checked:bg-white transition-all duration-200 disabled:border-[#ACACAC]"
+                        id="contact-form-profilingConsent" disabled>
+                    <label class="text-white transition-colors duration-200" id="contact-form-profilingLabel">
+                        {{ section.settings.contact-form-profConsLabel }}
+                        <u><a id="contact-form-shortProfiling">{{ section.settings.contact-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
+                    </label>
+                </div>
+                <u><a href="{{ section.settings.contact-privacy-url }}">{{ section.settings.contact-form-privacy-label |
+                    default: "Privacy
+                    Policy" }}</a></u>
+            </div>
+  
+
+            <div class="flex body-medium justify-center tk-aktiv-grotesk mt-[26px] lg:mt-0">
+                <button id="contact-form-submit" aria-label="{{ section.settings.contact-form-submit-button-text }}"
+                    type="submit" class="contact-submit-btn w-full px-7 py-3.5 rounded-4xl text-[16px] font-semibold w-[300px]"
+                    style="color:{{ section.settings.contact-form-button-text-color }};background-color:{{ section.settings.contact-form-button-background-color }};">
+                    {{ section.settings.contact-form-submit-button-text }}
+                </button>
+            </div>
+
+            <input type="hidden" name="contact[tags]" id="CustomerTags">
+            <input type="hidden" name="contact[note]" id="CustomerNote">
+            <input type="hidden" id="eventHandle" value="">
+            <input type="hidden" id="eventTitle" value="">
+
+
+        </div>
+        {% endform %}
+        </div>
+    </div>
+</div>
+<div id="thankyou-popup" class="fixed inset-0 top-0 left-0 flex justify-center items-center w-screen h-screen bg-black/50 z-50 hidden transition-opacity duration-300">
+    <div class="popup-content fixed inset-0 flex items-center justify-center">
+        <div class="flex flex-col w-full max-w-[720px] h-fit items-center justify-start lg:justify-center bg-[#292929] text-white py-6 px-6 gap-6 lg:mx-0 lg:px-14 lg:py-10 lg:gap-10 rounded-xl">
+            <div class="flex flex-row justify-between w-full">
+                <div class="hidden lg:flex size-6"></div>
+                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">
+                    {{ section.settings.contact-form-ty-title }}
+                </h6>
+                <button id="contact-form-ty-close" aria-label="Chiudi">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                            fill="white" />
+                    </svg>
+                </button>
+            </div>
+            <div class="text-start lg:text-center">
+                {{ section.settings.contact-form-ty-text }}
+            </div>
+            <div>
+                <button class="w-[310px] lg:w-[234px] py-3.5 px-7 body-semibold text-[16px] leading-[14px] bg-white text-black rounded-4xl" id="contact-form-ty-close-btn">
+                    {{ section.settings.contact-form-ty-btn-label }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contact-form-marketing-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+        <div class="flex flex-row justify-between">
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-marketing-title }}
+            </h6>
+            <button id="contact-form-marketing-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div>
+            {{ section.settings.contact-form-marketing-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{
+                    section.settings.contact-form-privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
+    </div>
+</div>
+
+<div id="contact-form-profiling-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+        <div class="flex justify-between">
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-profiling-title }}
+            </h6>
+            <button id="contact-form-profiling-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div>
+            {{ section.settings.contact-form-profiling-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{
+                    section.settings.privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
+    </div>
+</div>
+<style>
+    #countryList::-webkit-scrollbar{
+        display: none;
+    }
+    #contact-form-profilingConsent:disabled + #contact-form-profilingLabel {
+    color: #ACACAC;
+    }
+    #countryList{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #contact-form-box input[type="text"]:focus,
+    #contact-form-box input[type="email"]:focus,
+    #contact-form-box input[type="tel"]:focus {
+        outline: none;
+        border-bottom: 1px solid #F76C00;
+    }
+
+    #contact-form-box .textarea-wrapper:focus-within {
+        border-bottom: 1px solid #F76C00;
+    }
+
+    #contact-form-box textarea:focus {
+        outline: none;
+    }
+    .country-arrow.open svg {
+        transform: rotate(180deg);
+    }
+    #contact-form-box .error {
+        border-bottom: 1px solid #FF575C !important;
+    }
+    .error-message {
+        color: #FF575C;
+        font-size: 12px;
+        margin-top: 4px;
+        line-height: 18px;
+    }
+    @media (max-width: 1024px) {
+        .popup-content{
+            margin-inline: 16px !important;
+        }
+    }
+    .contact-submit-btn {
+        transition: all 0.3s ease;
+    }
+
+    .contact-submit-btn:hover {
+        filter: brightness(1.1);
+        opacity: 75%;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .only-tablet{
+           width: 427px !important; 
+        }
+    }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact_form') ||
+        document.querySelector('form[action*="/contact"]') ||
+        document.querySelector('form[action*="/customer"]');
+
+    if (!form) return;
+
+    const $ = sel => form.querySelector(sel);
+
+    const tagsInput = document.getElementById('CustomerTags');
+    const noteInput = document.getElementById('CustomerNote');
+    const submitButton = document.getElementById('contact-form-submit');
+    if (submitButton) submitButton.disabled = false;
+
+    const lang = window.location.pathname.includes('/it/') ? 'it' : 'en';
+
+    // ===== ERROR HANDLING =====
+    const errorMessages = {
+        'contact[first_name]': { it: 'Inserisci il tuo nome', en: 'Enter your first name' },
+        'contact[last_name]': { it: 'Inserisci il tuo cognome', en: 'Enter your last name' },
+        'contact[email]': { it: 'Inserisci un’email valida', en: 'Enter a valid email' },
+        'contact[phone]': { it: 'Inserisci un numero di telefono valido', en: 'Enter a valid phone number' },
+        'contact[boat-y-port-country]': { it: 'Seleziona un paese', en: 'Select the country' },
+        'contact[boat-selection]': { it: 'Seleziona almeno una barca se richiesta', en: 'Select at least one boat if required' },
+        'contact[country]': { it: 'Seleziona un paese', en: 'Select a country' }
+    };
+
+    function createErrorMessageNode(text) {
+        const el = document.createElement('div');
+        el.className = 'error-message';
+        el.textContent = text;
+        return el;
+    }
+
+    function clearFieldError(input) {
+        if (!input) return;
+        input.classList.remove('error');
+        const next = input.nextElementSibling;
+        if (next && next.classList.contains('error-message')) next.remove();
+
+        if (input.name === 'contact[country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const flagContainer = container?.querySelector('.country-flag');
+            if (flagContainer) {
+                flagContainer.classList.remove('hidden');
+                flagContainer.style.opacity = 1;
+            }
+        }
+
+        if (input.name === 'contact[boat-y-port-country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (arrowContainer) {
+                arrowContainer.classList.remove('hidden');
+                arrowContainer.style.opacity = 1;
+            }
+        }
+    }
+
+    function setFieldError(input, key) {
+        if (!input) return;
+        clearFieldError(input);
+        input.classList.add('error');
+        const msgText = (errorMessages[key] ? errorMessages[key][lang] : (lang === 'it' ? 'Campo obbligatorio' : 'Required field'));
+        const msg = createErrorMessageNode(msgText);
+        input.insertAdjacentElement('afterend', msg);
+
+        if (key === 'contact[country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const flagContainer = container?.querySelector('.country-flag');
+            if (flagContainer) {
+                flagContainer.style.transition = 'opacity 0.3s';
+                flagContainer.style.opacity = 0;
+                setTimeout(() => flagContainer.classList.add('hidden'), 300);
+            }
+        }
+
+        if (key === 'contact[boat-y-port-country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (arrowContainer) {
+                arrowContainer.classList.add('hidden'); 
+                arrowContainer.style.opacity = 0;
+                input.addEventListener('click', function handleClick() {
+                    arrowContainer.classList.remove('hidden');
+                    setTimeout(() => { arrowContainer.style.opacity = 1; }, 10);
+                    input.removeEventListener('click', handleClick);
+                });
+            }
+        }
+    }
+
+    function validateEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+    function validatePhone(value) {
+        if (!value) return false;
+        const cleaned = value.trim();
+        const basic = /^[+]?[\d\s().-]{6,}$/;
+        if (!basic.test(cleaned)) return false;
+        const digits = cleaned.replace(/\D/g, '');
+        return digits.length >= 5;
+    }
+
+    // ===== MULTI-CHECKBOX BARCHE =====
+    form.querySelectorAll('[data-name="contact[boat-selection]"] label').forEach(label => {
+        const checkbox = label.querySelector("input[type=checkbox]");
+        const icon = label.querySelector("span");
+        label.addEventListener('click', e => {
+            e.preventDefault();
+            if (!checkbox) return;
+            checkbox.checked = !checkbox.checked;
+            if (checkbox.checked) {
+                label.classList.add("bg-white", "text-black");
+                label.classList.remove("bg-antracite", "text-white");
+                icon?.classList.remove("hidden");
+            } else {
+                label.classList.add("bg-antracite", "text-white");
+                label.classList.remove("bg-white", "text-black");
+                icon?.classList.add("hidden");
+            }
+            const hiddenBoat = $('#contact-form-boat-selection');
+            if (hiddenBoat) {
+                const selected = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
+                hiddenBoat.value = selected.join(', ');
+                hiddenBoat.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+    });
+
+    // ===== PULIZIA ERRORI INPUT =====
+    form.querySelectorAll('input, textarea').forEach(input => input.addEventListener('input', () => clearFieldError(input)));
+
+    // ===== LOGICA CAMPI CONDIZIONALI =====
+    function setupConditionalFields() {
+        const radioGroups = ['contact[contact-question]', 'contact[boat-question]', 'contact[buy-question]'];
+        radioGroups.forEach(name => {
+            const radios = document.querySelectorAll(`input[name="${name}"]`);
+            radios.forEach(radio => {
+                radio.dataset.wasChecked = radio.checked ? "true" : "false";
+                radio.addEventListener('change', () => {
+                    radios.forEach(r => {
+                        const targetId = r.dataset.target;
+                        if (targetId) {
+                            const target = document.getElementById(targetId);
+                            if (target) {
+                                target.classList.add('hidden');
+                                target.querySelectorAll('input, textarea').forEach(i => i.value = '');
+                            }
+                        }
+                    });
+                    if (radio.checked && radio.dataset.target) {
+                        const target = document.getElementById(radio.dataset.target);
+                        if (target) target.classList.remove('hidden');
+                    }
+
+                    const both = document.getElementById('phone-fields-both');
+                    const phoneOnly = document.getElementById('phone-fields-phone');
+                    if (!both || !phoneOnly) return;
+
+                    if (radio.value === 'both' && radio.checked) {
+                        both.classList.remove('hidden');
+                        phoneOnly.classList.add('hidden');
+                    } else if (radio.value === 'phone' && radio.checked) {
+                        phoneOnly.classList.remove('hidden');
+                        both.classList.add('hidden');
+                    } else {
+                        both.classList.add('hidden');
+                        phoneOnly.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('click', e => {
+            const radio = e.target;
+            if (radio.matches && radio.matches('input[type="radio"]')) {
+                if (radio.checked && radio.dataset.wasChecked === "true") {
+                    radio.checked = false;
+                    radio.dataset.wasChecked = "false";
+                    radio.dispatchEvent(new Event('change', { bubbles: true }));
+                } else {
+                    const group = document.querySelectorAll(`input[name="${radio.name}"]`);
+                    group.forEach(r => r.dataset.wasChecked = "false");
+                    radio.dataset.wasChecked = "true";
+                }
+            }
+        });
+
+        radioGroups.forEach(name => {
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            if (checked) checked.dispatchEvent(new Event('change'));
+        });
+    }
+    setupConditionalFields();
+
+    // ===== MARKETING / PROFILING CHECKBOX =====
+    const marketingCheckbox = document.getElementById('contact-form-marketingConsent');
+    const profilingCheckbox = document.getElementById('contact-form-profilingConsent');
+    if (profilingCheckbox) profilingCheckbox.disabled = true;
+
+    if (marketingCheckbox && profilingCheckbox) {
+        marketingCheckbox.addEventListener('change', function() {
+            profilingCheckbox.disabled = !this.checked;
+            if (!this.checked) profilingCheckbox.checked = false;
+        });
+    }
+
+    // ===== SUBMIT CON VALIDAZIONE =====
+    if (submitButton) {
+        submitButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            form.querySelectorAll('.error-message').forEach(el => el.remove());
+            form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+            let hasError = false;
+            const requiredInputs = Array.from(form.querySelectorAll('[required]'));
+
+            requiredInputs.forEach(input => {
+                const name = input.name;
+                const value = (input.value || '').trim();
+                if (!value) { hasError = true; setFieldError(input, name); return; }
+                if (name === 'contact[email]' && !validateEmail(value)) { hasError = true; setFieldError(input, name); }
+                if (name === 'contact[phone]' && !validatePhone(value)) { hasError = true; setFieldError(input, name); }
+            });
+
+            const countryInput = form.querySelector('input[name="contact[country]"]');
+            if (countryInput && !countryInput.value.trim()) { hasError = true; setFieldError(countryInput, 'contact[country]'); }
+
+            if (hasError) {
+                const firstError = form.querySelector('.error, .error-message');
+                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            const tags = ['contact'];
+            if (marketingCheckbox?.checked) tags.push('marketing');
+            if (profilingCheckbox?.checked) tags.push('profiling');
+
+            const boats = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
+            boats.forEach(b => tags.push(b.replace(/\s+/g, '-')));
+            if (tagsInput) tagsInput.value = [...new Set(tags)].join(',');
+
+            const noteLines = [];
+            if (countryInput?.value) noteLines.push("Country: " + countryInput.value);
+            if (boats.length) noteLines.push("Selected Boats: " + boats.join(", "));
+            const messageValue = (form.querySelector('#contact-form-message') || form.querySelector('textarea[name="contact[message]"]'))?.value;
+            if (messageValue) noteLines.push("Message: " + messageValue);
+            if (noteInput) noteInput.value = noteLines.join("\n");
+
+            const formData = new FormData(form);
+            fetch(form.action, { method: "POST", body: formData, headers: { "Accept": "application/json" } })
+                .then(response => {
+                    if (response.ok) {
+                        showThankYouPopup();
+                        form.reset();
+                        if (tagsInput) tagsInput.value = 'contact';
+                        if (noteInput) noteInput.value = '';
+                        document.querySelectorAll('.country-flag').forEach(f => f.innerHTML = '');
+                        if (profilingCheckbox) profilingCheckbox.disabled = true;
+                    } else {
+                        return response.json().then(err => alert("Errore: " + JSON.stringify(err)));
+                    }
+                }).catch(err => { console.error(err); alert("Si è verificato un errore durante l'invio."); });
+        });
+    }
+
+    // ===== POPUP RINGRAZIAMENTO (fixato) =====
+    function setupThankYouPopup() {
+      const thankYouPopup = document.getElementById("thankyou-popup");
+      const closeTyBtns = [
+        document.getElementById("contact-form-ty-close"),
+        document.getElementById("contact-form-ty-close-btn")
+      ];
+
+      // Mostra popup
+      window.showThankYouPopup = function () {
+        if (!thankYouPopup) return;
+        thankYouPopup.classList.remove("hidden");
+        thankYouPopup.classList.add(
+          "flex",
+          "items-center",
+          "justify-center",
+          "backdrop-blur-xl",
+          "bg-[#101010]/60"
+        );
+        document.body.style.overflow = "hidden";
+      };
+
+      // Nascondi popup
+      function hideThankYouPopup() {
+        if (!thankYouPopup) return;
+        thankYouPopup.classList.add("hidden");
+        thankYouPopup.classList.remove(
+          "flex",
+          "items-center",
+          "justify-center",
+          "backdrop-blur-xl",
+          "bg-[#101010]/60"
+        );
+        document.body.style.overflow = "";
+      }
+
+      // Chiudi cliccando sui pulsanti
+      closeTyBtns.forEach((btn) => {
+        if (btn) {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            hideThankYouPopup();
+          });
+        } else {
+          const observer = new MutationObserver(() => {
+            const newBtn = document.getElementById("contact-form-ty-close") || document.getElementById("contact-form-ty-close-btn");
+            if (newBtn) {
+              newBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                hideThankYouPopup();
+              });
+              observer.disconnect();
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+      });
+
+      // Chiudi cliccando fuori dal contenuto
+      if (thankYouPopup) {
+        thankYouPopup.addEventListener("click", (e) => {
+          const content = thankYouPopup.querySelector(".popup-content");
+          if (content && !content.contains(e.target)) hideThankYouPopup();
+        });
+      }
+    }
+    setupThankYouPopup();
+
+    // ===== TEXTAREA AUTOSIZE + COUNTER =====
+    (function setupTextAreaCounter() {
+        const textarea = form.querySelector('#contact-form-message') || form.querySelector('textarea[name="contact[message]"]');
+        const counter = document.getElementById('contact-message-counter') || form.querySelector('.char-counter');
+        if (!textarea || !counter) return;
+        const maxLength = parseInt(textarea.getAttribute('maxlength')) || 250;
+        const update = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+            counter.textContent = `${textarea.value.length} / ${maxLength}`;
+        };
+        textarea.addEventListener('input', update);
+        update();
+    })();
+
+    // ===== COUNTRY DROPDOWN E FLAG LOGICA =====
+    let allCountries = [];
+    fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json')
+        .then(res => res.json())
+        .then(data => allCountries = data.map(c => ({ name: c.name.common, code: c.cca2.toLowerCase() })))
+        .catch(err => console.error(err));
+
+    const countryInputs = document.querySelectorAll('.country-input');
+    countryInputs.forEach(input => {
+        const container = input.closest('.flex.flex-col.gap-1.relative');
+        if (!container) return;
+        const ul = container.querySelector('.countryList');
+        const flagContainer = container.querySelector('.country-flag');
+        const arrowContainer = container.querySelector('.country-arrow');
+
+        input.addEventListener('click', e => {
+            e.stopPropagation();
+            clearFieldError(input);
+            toggleDropdown(true, ul, input, flagContainer, arrowContainer);
+        });
+        input.addEventListener('input', () => { clearFieldError(input); filterCountries(input, ul, flagContainer); });
+        input.addEventListener('blur', () => setTimeout(() => { if (ul && !ul.classList.contains('hidden')) toggleDropdown(false, ul, input, flagContainer, arrowContainer); }, 150));
+    });
+
+    function setFlag(country, code, flagContainer) {
+        if (!flagContainer) return;
+        flagContainer.innerHTML = `<img src="https://flagcdn.com/w40/${code}.png" alt="Flag of ${country}" class="w-5 h-4 rounded-sm object-cover">`;
+        flagContainer.style.opacity = 1;
+        flagContainer.classList.remove('hidden');
+    }
+
+    function toggleDropdown(show, ul, input, flagContainer, arrowContainer) {
+        if (!ul) return;
+        if (show) { ul.classList.remove('hidden'); if (input) filterCountries(input, ul, flagContainer); arrowContainer?.classList.add('open'); }
+        else { ul.classList.add('hidden'); arrowContainer?.classList.remove('open'); }
+    }
+
+    function filterCountries(input, ul, flagContainer) {
+        if (!input || !ul) return;
+        const filter = input.value.toLowerCase();
+        ul.innerHTML = '';
+        const countriesToShow = !filter.trim() ? allCountries.slice(0, 250) : allCountries.filter(c => c.name.toLowerCase().includes(filter));
+        countriesToShow.forEach(c => {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 m-2 hover:bg-black bg-antracite cursor-pointer flex items-center gap-2 rounded-lg';
+            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" alt="Flag of ${c.name}" class="w-5 h-4 rounded-sm object-cover"><span>${c.name}</span>`;
+            li.addEventListener('mousedown', e => {
+                e.preventDefault();
+                input.value = c.name;
+                setFlag(c.name, c.code, flagContainer);
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                toggleDropdown(false, ul, input, flagContainer, input.closest('.flex.flex-col.gap-1.relative')?.querySelector('.country-arrow'));
+                input.focus();
+            });
+            ul.appendChild(li);
+        });
+        if (countriesToShow.length === 0) {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 m-2 text-sm text-gray-400';
+            li.textContent = lang === 'it' ? 'Nessun paese trovato' : 'No countries found';
+            ul.appendChild(li);
+        }
+    }
+
+    document.addEventListener('click', e => {
+        const isCountryInput = e.target.closest('.country-input');
+        document.querySelectorAll('.countryList').forEach(list => {
+            const container = list.closest('.flex.flex-col.gap-1.relative');
+            const input = container?.querySelector('.country-input');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (!isCountryInput || input !== isCountryInput) toggleDropdown(false, list, input, container?.querySelector('.country-flag'), arrowContainer);
+        });
+    });
+});
+</script>
+
+{% schema %}
+{
+"name": "Contact intro",
+"settings": [
+{
+"type": "text",
+"id": "contact-intro-title",
+"label": "Title",
+"default": "Contatti"
+},
+{
+"type": "textarea",
+"id": "contact-intro-text",
+"label": "Description",
+"default": "Siamo sempre al tuo fianco, che tu stia scoprendo VanDutch o sia già parte della nostra community. Il nostro team è pronto ad assisterti con discrezione, competenza e attenzione ai dettagli per richieste generali, informazioni su modelli, eventi o servizi. Contattaci direttamente o rivolgiti al VanDutch Center più vicino. Ogni richiesta è gestita con cura per garantire un’esperienza su misura a ogni armatore."
+},
+{
+"type": "color",
+"id": "contact-form-bg-color",
+"label": "Contact form bg color",
+"default": "#292929"
+},
+{
+"type": "color",
+"id": "contact-form-text-color",
+"label": "Contact form text color",
+"default": "#ffffff"
+},
+{
+"type": "text",
+"id": "contact-form-title",
+"label": "Contact form title",
+"default": "Ask to VanDutch"
+},
+{
+"type": "text",
+"id": "contact-form-required-text",
+"label": "Form 'required' text",
+"default": "* indicates required fields"
+},
+{
+"type": "text",
+"id": "contact-fname-label",
+"label": "First Name Label",
+"default": "First name"
+},
+{
+"type": "checkbox",
+"id": "contact-fname-required",
+"label": "First Name Required",
+"default": true
+},
+{
+"type": "text",
+"id": "contact-fname-placeholder",
+"label": "First Name Placeholder",
+"default": "Insert your first name"
+},
+{
+"type": "text",
+"id": "contact-lname-label",
+"label": "Last Name Label",
+"default": "Last name"
+},
+{
+"type": "checkbox",
+"id": "contact-lname-required",
+"label": "Last Name Required",
+"default": true
+},
+{
+"type": "text",
+"id": "contact-lname-placeholder",
+"label": "Last Name Placeholder",
+"default": "Insert your last name"
+},
+{
+"type": "text",
+"id": "contact-country-label",
+"label": "Contry Label",
+"default": "Country"
+},
+{
+"type": "checkbox",
+"id": "contact-country-required",
+"label": "Country Required",
+"default": true
+},
+{
+"type": "text",
+"id": "contact-country-placeholder",
+"label": "Country Placeholder",
+"default": "Select your country"
+},
+{
+"type": "text",
+"id": "contact-mail-label",
+"label": "Mail Label",
+"default": "Email"
+},
+{
+"type": "checkbox",
+"id": "contact-mail-required",
+"label": "Mail Required",
+"default": true
+},
+{
+"type": "text",
+"id": "contact-mail-placeholder",
+"label": "Mail Placeholder",
+"default": "example@domain.com"
+},
+{
+"type": "text",
+"id": "contact-date-label",
+"label": "Date Label",
+"default": "Appointment day"
+},
+{
+"type": "checkbox",
+"id": "contact-date-required",
+"label": "Date Required",
+"default": true
+},
+{
+"type": "text",
+"id": "contact-date-placeholder",
+"label": "Date Placeholder",
+"default": "Select a date"
+},
+{
+"type": "text",
+"id": "contact-boat-q-label",
+"label": "Boat Question Label",
+"default": "Have you already got a boat?"
+},
+{
+"type": "checkbox",
+"id": "contact-boat-q-required",
+"label": "Boat question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "contact-boat-q-affermative-label",
+"label": "Boat question affermative label",
+"default": "Yes, by VanDutch Yacths"
+},
+{
+"type": "text",
+"id": "contact-boat-q-other-label",
+"label": "Boat question other label",
+"default": "Yes, by other brands"
+},
+{
+"type": "text",
+"id": "contact-boat-q-negative-label",
+"label": "Boat question negative label",
+"default": "No"
+},
+{
+"type": "text",
+"id": "contact-buy-q-label",
+"label": "Buy Question Label",
+"default": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?"
+},
+{
+"type": "checkbox",
+"id": "contact-buy-q-required",
+"label": "Buy question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "contact-buy-q-affermative-label",
+"label": "Buy question affermative label",
+"default": "Yes"
+},
+{
+"type": "text",
+"id": "contact-buy-q-negative-label",
+"label": "Buy question negative label",
+"default": "No"
+},
+{
+"type": "text",
+"id": "contact-boat-sel-label",
+"label": "Boat Selection Label",
+"default": "For which boats would you like more information?"
+},
+{
+"type": "checkbox",
+"id": "contact-boat-sel-required",
+"label": "Boat Selection Required",
+"default": false
+},
+{
+"type": "textarea",
+"id": "options",
+"label": "Boat (separeted by comma)",
+"default": "VD32, VD40, VD48, VD56, VD75"
+},
+{
+"type": "text",
+"id": "contact-message-label",
+"label": "Message Label",
+"default": "Any specific request?"
+},
+{
+"type": "checkbox",
+"id": "contact-message-required",
+"label": "Message Required",
+"default": false
+},
+{
+"type": "text",
+"id": "contact-message-placeholder",
+"label": "Message Placeholder",
+"default": "Write your request here"
+},
+{
+"type": "number",
+"id": "contact-message-max-lenght",
+"label" : "Message max lenght"
+},
+{
+"type": "text",
+"id": "contact-contact-q-label",
+"label": "Contact Question Label",
+"default": "Contact preferences"
+},
+{
+"type": "checkbox",
+"id": "contact-contact-q-required",
+"label": "Contact question Required",
+"default": false
+},
+{
+"type": "text",
+"id": "contact-contact-q-mail-label",
+"label": "Contact question mail label",
+"default": "Email"
+},
+{
+"type": "text",
+"id": "contact-contact-q-phone-label",
+"label": "Contact question phone label",
+"default": "Phone"
+},
+{
+"type": "text",
+"id": "contact-contact-q-both-label",
+"label": "Contact question both label",
+"default": "Both"
+},
+{
+"type":"text",
+"id": "contact-form-markConsLabel",
+"label": "Marketing consent text",
+"default": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms."
+},
+{
+"type":"text",
+"id": "contact-form-profConsLabel",
+"label": "Profiling consent text",
+"default": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us. "
+},
+{
+"type": "url",
+"id": "contact-form-privacy-page",
+"label": "Privacy Policy Page URL"
+},
+{
+"type": "text",
+"id": "contact-form-privacy-label",
+"label": "Privacy Policy link label",
+"default": "Privacy Policy"
+},
+{
+"type": "text",
+"id": "contact-form-marketing-title",
+"label": "Direct marketing short title",
+"default": "DIRECT MARKETING CONSENT"
+},
+{
+"type": "text",
+"id": "contact-form-marketing-text",
+"label": "Direct marketing short text",
+"default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy: "
+},
+{
+"type": "text",
+"id": "contact-form-profiling-title",
+"label": "Profiling short title",
+"default": "PROFILING CONSENT"
+},
+{
+"type": "text",
+"id": "contact-form-profiling-text",
+"label": "Profiling short text",
+"default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "
+},
+{
+"type": "text",
+"id": "contact-form-submit-button-text",
+"label": "Submit button label",
+"default": "Send request"
+},
+{
+"type": "color",
+"id": "contact-form-button-text-color",
+"label": "Submit button text color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "contact-form-button-background-color",
+"label": "Submit button background color",
+"default": "#ACACAC"
+},
+{
+"type": "text",
+"id": "contact-form-boat-q-model-label",
+"label": "Boat question - Model label",
+"default" : "Model"
+},
+{
+"type": "text",
+"id": "contact-form-boat-q-model-placeholder",
+"label": "Boat question - Model placeholder",
+"default" : "Insert the model"
+},
+{
+"type": "text",
+"id": "contact-form-boat-q-port-label",
+"label": "Boat question - Port label",
+"default" : "Mooring country"
+},
+{
+"type": "text",
+"id": "contact-form-boat-q-port-placeholder",
+"label": "Boat question - Port placeholder",
+"default" : "Select the country"
+},
+{
+"type": "text",
+"id": "contact-form-contact-q-prefix-label",
+"label": "Contact question - Prefix label",
+"default": "Prefix"
+},
+{
+"type": "text",
+"id": "contact-form-contact-q-prefix-placeholder",
+"label": "Contact question - Prefix placeholder",
+"default": "+39"
+},
+{
+"type": "text",
+"id": "contact-form-contact-q-phone-label",
+"label": "Contact question - Number label",
+"default": "Phone"
+},
+{
+"type": "text",
+"id": "contact-form-contact-q-phone-placeholder",
+"label": "Contact question - Number placeholder",
+"default": "XXXXXXXXXX"
+},
+{
+"type": "text",
+"id": "contact-form-ty-title",
+"label" : "Thank you popup title",
+"default": "Thank you!"
+},
+{
+"type": "textarea",
+"id": "contact-form-ty-text",
+"label": "Thank you popup text",
+"default": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications."
+},
+{
+"type": "text",
+"id": "contact-form-ty-btn-label",
+"label": "Thank you button label",
+"default": "Close"
+}
+],
+"blocks": [
+{
+"name": "Contact",
+"type": "contact",
+"settings": [
+{
+"type": "text",
+"id": "contact-line-type",
+"label": "Type ('Phone','Mail',..)",
+"default": "Type"
+},
+{
+"type": "text",
+"id": "contact-line-value",
+"label": "Value",
+"default": "Value"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Contact intro",
+"category" : "Contact sections"
+}
+]
+}
+{% endschema %}

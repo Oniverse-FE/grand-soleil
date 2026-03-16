@@ -1,0 +1,172 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 ">
+    <!-- Banner container -->
+    <div class="flex newsletter-banner flex-col bg-white w-full justify-center py-4 lg:py-6 px-4 lg:px-12 gap-6 rounded-[10px] pt-4" 
+         style="--margin-top-mobile: {{ section.settings.margin_top_mobile }}px; --margin-top-desktop: {{ section.settings.margin_top }}px">
+         
+        <!-- Title + Close + Description -->
+        <div class="flex flex-col justify-center gap-4">
+            <!-- Title + Close -->
+            <div class="flex justify-between">
+                <!-- empty div (desktop only) -->
+                <div class="size-6 hidden lg:flex"></div>
+                
+                <!-- Title -->
+                <div class="h6 w-fit text-[26px] leading-[32px] lg:text-[42px] lg:leading[48px] uppercase">
+                    {{ section.settings.newsletter-banner-title }}
+                </div>
+                
+                <!-- Close button -->
+                <div class="size-6 cursor-pointer" id="banner-newsletter-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.92969 4.92871L19.0718 19.0708" stroke="black" stroke-linecap="round"/>
+                      <path d="M19.0703 4.92871L4.92818 19.0708" stroke="black" stroke-linecap="round"/>
+                    </svg>
+                </div>     
+            </div>
+            
+            <!-- Description -->
+            <div class="flex body-regular text-sm leading-5 lg:text-[16px] lg:leading-[22px] lg:px-[306px] lg:text-center">
+                {{ section.settings.newsletter-banner-description }}
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="flex justify-center w-full">
+            <button id="banner-newsletter-form" 
+                class="w-full lg:w-fit py-3.5 px-7 rounded-4xl body-semibold text-[16px] leading-[14px] 
+                {% if section.settings.newsletter-banner-cta-bg-transparent == true %}bg-transparent{% endif %}" 
+                style="{% if section.settings.newsletter-banner-cta-bg-transparent == false %}background-color:{{ section.settings.newsletter-banner-cta-bg-color }};{% endif %}
+                       color:{{ section.settings.newsletter-banner-cta-color }};
+                       border: 1px solid {{ section.settings.newsletter-banner-border-color }}">
+                {{ section.settings.newsletter-banner-cta-label }}
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.newsletter-banner {
+    margin-top: var(--margin-top-mobile);
+}
+@media screen and (min-width: 768px) {
+    .newsletter-banner {
+        margin-top: var(--margin-top-desktop);
+    }
+}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const closeBtn = document.getElementById("banner-newsletter-close");
+    const ctaBtn = document.getElementById("banner-newsletter-form");
+    const banner = document.querySelector(".newsletter-banner");
+
+    // Se il banner è già stato visto in questa sessione → non mostrarlo
+    if (sessionStorage.getItem("newsletterBannerSeen") === "true") {
+      banner?.remove();
+      return;
+    }
+
+    // appena mostrato → segna come visto
+    sessionStorage.setItem("newsletterBannerSeen", "true");
+
+    // chiusura manuale
+    closeBtn?.addEventListener("click", function () {
+      if (banner) {
+        banner.style.display = "none";
+      }
+    });
+
+    // click CTA → opzionale nascondere subito
+    ctaBtn?.addEventListener("click", function () {
+      // se vuoi nasconderlo subito al click CTA, decommenta:
+      // banner.style.display = "none";
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Newsletter banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "newsletter-banner-title",
+      "label": "Title",
+      "default": "RIMANI IN CONTATTO"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter-banner-description",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et vehicula ligula. Nunc nec tempor nibh. Morbi blandit vehicula ante vel."
+    },
+    {
+      "type": "header",
+      "content": "CTA Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter-banner-cta-bg-transparent",
+      "label": "CTA transparent",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "newsletter-banner-cta-bg-color",
+      "label": "CTA bg color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "newsletter-banner-cta-color",
+      "label": "CTA text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "newsletter-banner-cta-border-color",
+      "label": "CTA border color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "newsletter-banner-cta-label",
+      "label": "CTA label",
+      "default": "Unisciti alla newsletter"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top Desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Margin Top Mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter banner",
+      "category": "Partnership Sections"
+    }
+  ]
+}
+{% endschema %}

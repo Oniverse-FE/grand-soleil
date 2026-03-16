@@ -1,0 +1,277 @@
+<div class="w-full key-padding" style="--padding-top-desktop: {{ section.settings.padding_top }}; --padding-bottom-desktop: {{ section.settings.padding_bottom }};  --padding-top-mobile: {{ section.settings.padding_top_mobile }};   --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }};">
+  <!-- Pulsanti prev/next su mobile -->
+  <div class="flex lg:hidden justify-end gap-2 z-20 px-4 md:px-12 pb-4">
+    <button class="prev-features p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="next-features p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Lista box scrollabile su mobile -->
+  <div id="scroll-container-{{ section.id }}" class="flex lg:hidden px-4 md:px-12 gap-2 lg:gap-4 overflow-x-auto no-scrollbar">
+    {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'feature' %}
+      <div class="w-[327px] flex-shrink-0 h-auto p-4 gap-4 bg-antracite rounded-lg items-center justify-center flex">
+        <div class="text-4xl leading-[42px]" style="color:{{ section.settings.feature-number-color }};">
+          <h6>{{ block.settings.feature-number }}</h6>
+        </div>
+        <div class="font-semibold text-[16px] leading-[22px] w-full" style="color:{{ section.settings.feature-text-color }};">
+          {{ block.settings.feature-text }}
+        </div>
+      </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  {% assign total_blocks = section.blocks | size %}
+
+  <!-- Grid su desktop -->
+  <div class="hidden lg:grid px-24 gap-4"
+    style="
+      {% if total_blocks == 3 %}
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      {% else %}
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      {% endif %}
+      grid-auto-rows: auto;
+    ">
+    {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'feature' %}
+      <div class="flex h-auto p-6 gap-4 bg-antracite rounded-lg items-center justify-center">
+        <div class="text-[42px] leading-[48px]" style="color:{{ section.settings.feature-number-color }};">
+          <h6>{{ block.settings.feature-number }}</h6>
+        </div>
+        <div class="font-semibold text-[18px] leading-6 w-full" style="color:{{ section.settings.feature-text-color }};">
+          {{ block.settings.feature-text }}
+        </div>
+      </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.key-padding {
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
+}
+
+@media screen and (min-width: 768px) {
+  .key-padding {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
+  }
+}
+
+/* Scroll libero */
+#scroll-container-{{ section.id }} {
+  /* scroll-snap-type: x mandatory; rimosso */
+}
+
+#scroll-container-{{ section.id }} > * {
+  
+}
+
+/* Nascondi scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari e Opera */
+}
+
+/* Cursor durante drag */
+.cursor-grabbing {
+  cursor: grabbing !important;
+}
+</style>
+
+<script>
+(function () {
+  const slider = document.getElementById('scroll-container-{{ section.id }}');
+  if (!slider) return;
+
+  const container = slider.parentElement || document;
+  const prevBtn = container.querySelector('.prev-features');
+  const nextBtn = container.querySelector('.next-features');
+
+  // Calcola scrollAmount basato sulla larghezza primo elemento + gap
+  const firstItem = slider.querySelector(':scope > *');
+  let scrollAmount = Math.round(slider.clientWidth * 0.8);
+  if (firstItem) {
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const gapStr = getComputedStyle(slider).gap || '0px';
+    const gapPx = parseFloat(gapStr) || 0;
+    scrollAmount = Math.round(itemWidth + gapPx);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const move = Math.min(scrollAmount, slider.scrollLeft);
+      slider.scrollBy({ left: -move, behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const remainingScroll = slider.scrollWidth - slider.clientWidth - slider.scrollLeft;
+      const move = Math.min(scrollAmount, remainingScroll);
+      slider.scrollBy({ left: move, behavior: 'smooth' });
+    });
+  }
+
+  // Drag con pointer events
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  slider.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    slider.setPointerCapture(e.pointerId);
+    slider.classList.add('cursor-grabbing');
+    startX = e.clientX;
+    scrollLeft = slider.scrollLeft;
+    slider.style.userSelect = 'none';
+  });
+
+  slider.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const walk = e.clientX - startX;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  const endDrag = (e) => {
+    if (!isDown) return;
+    isDown = false;
+    try { slider.releasePointerCapture(e.pointerId); } catch {}
+    slider.classList.remove('cursor-grabbing');
+    slider.style.removeProperty('user-select');
+  };
+
+  slider.addEventListener('pointerup', endDrag);
+  slider.addEventListener('pointercancel', endDrag);
+  slider.addEventListener('pointerleave', endDrag);
+
+  // Disabilita i bottoni se scroll agli estremi
+  const updateButtons = () => {
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = slider.scrollLeft <= 0;
+    nextBtn.disabled = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth - 1;
+  };
+  slider.addEventListener('scroll', updateButtons);
+  updateButtons();
+
+})();
+</script>
+
+
+{% schema %}
+{
+  "name": "Key features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Id section",
+      "default": "key-features"
+    },
+    {
+      "type": "color",
+      "id": "feature-number-color",
+      "label": "Feature number color",
+      "default": "#F76C00"
+    },
+    {
+      "type": "color",
+      "id": "feature-text-color",
+      "label": "Feature text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Space top",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "72px", "label": "Small - 72px" },
+        { "value": "128px", "label": "Medium - 128px" },
+        { "value": "160px", "label": "Big - 160px" }
+      ],
+      "default": "72px"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Space bottom",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "72px", "label": "Small - 72px" },
+        { "value": "128px", "label": "Medium - 128px" },
+        { "value": "280px", "label": "Big - 280px" }
+      ],
+      "default": "128px"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Space top (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "48px", "label": "Small - 48px" },
+        { "value": "72px", "label": "Medium - 72px" },
+        { "value": "128px", "label": "Big - 128px" }
+      ],
+      "default": "48px"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Space bottom (mobile)",
+      "options": [
+        { "value": "0", "label": "0" },
+        { "value": "40px", "label": "Small - 40px" },
+        { "value": "48px", "label": "Medium - 48px" },
+        { "value": "72px", "label": "Big - 72px" }
+      ],
+      "default": "48px"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Feature",
+      "type": "feature",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature-number",
+          "label": "Number of the feature",
+          "default": "01."
+        },
+        {
+          "type": "textarea",
+          "id": "feature-text",
+          "label": "Text of the feature",
+          "default": "Cockpit con bar integrato, dotato di frigorifero ad alta capacità, ice maker e lavello a scomparsa"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Key feature",
+      "category": "PDP Sections"
+    }
+  ]
+}
+{% endschema %}

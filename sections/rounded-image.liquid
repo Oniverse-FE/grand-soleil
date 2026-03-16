@@ -1,0 +1,29 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 pt-6 lg:pt-10">
+    <img src="{{ section.settings.rounded-image | img_url: 'master' }}" alt="{{ section.settings.rounded-image-alt }}"
+         class="w-full h-[192px] lg:h-[524px] object-cover rounded-[10px] cursor-pointer z-10"
+         id="short-desktop-img">
+</div>
+{% schema %}
+{
+    "name": "Rounded Image",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "rounded-image",
+            "label": "Pick the image"
+        },
+        {
+            "type": "text",
+            "id": "rounded-image-alt",
+            "label": "Image alt",
+            "default": "Alt"
+        }
+        ],
+        "presets": [
+            {
+                "name": "Rounded Image",
+                "category": "Media Sections"
+            }
+        ]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+{
+  "blocks": {
+    "image_text_cta": {
+      "name": "Image + Text + CTA",
+      "settings": {
+        "image": { "label": "Image" },
+        "heading": {
+          "label": "Heading",
+          "default": "A bold heading for your product"
+        },
+        "cta_link": { "label": "CTA Link" }
+      }
+    }
+  },
+  "general": {
+    "cta": {
+      "learn_more": "Learn more"
+    }
+  }
+}

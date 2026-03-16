@@ -1,0 +1,219 @@
+<div class="flex flex-col pl-0 gap-4 lg:gap-12 overflow-x-hidden mb-32 lg:mb-[280px]">
+    <div class="pl-4 md:pl-12 lg:pl-24 lg:flex flex-row relative justify-between w-full">
+        <div class="flex flex-col gap-3 lg:gap-4 max-w-[512px]">
+            <div class="text-white uppercase text-4xl md:text-[56px] lg:text-[56px] font-bold leading-[42px] md:leading-[62px] lg:leading-[62px]">
+                <h6>{{ section.settings.vd-center-section-title }}</h6>
+            </div>
+            <div class="body-regular text-[16px] lg:text-[18px] leading-[22px] lg:leading-[24px] text-white">
+                {{ section.settings.vd-center-section-text }}
+            </div>
+        </div>
+        <div class="relative lg:absolute justify-end right-4 md:right-12 lg:right-24 bottom-0 lg:flex flex gap-2 lg:gap-4 mt-10 lg:mt-0">
+            <button class="prev-vd-center p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round" />
+                </svg>
+            </button>
+            <button class="next-vd-center p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="scroll-container"
+        class="pl-mobile pl-tablet pl-desk vdcenter-slider flex flex-nowrap overflow-x-auto overflow-y-hidden gap-3 lg:gap-4 scrollbar-hide cursor-grab active:cursor-grabbing">
+        {% for block in section.blocks %}
+        {% case block.type %}
+        {% when '@app' %}
+        {% render block %}
+        {% when 'card' %}
+        <div class="flex-shrink-0 relative h-[410px] lg:h-[510px] w-[328px] lg:w-[408px] rounded-[10px]">
+            <a href="{{ block.settings.vd-center-block-link }}" aria-label="{{ block.settings.vd-center-block-title }} {{ block.settings.vd-center-block-city }}" class="w-full h-full">
+                <div class="w-[328px] lg:w-[408px] h-full rounded-[10px] overflow-hidden relative">
+                    <img id="vd-center-{{ block.id }}" src="{{ block.settings.vd-center-block-image | img_url: 'master' }}" alt="{{ block.settings.vd-center-block-title }} {{ block.settings.vd-center-block-city }}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/32 to-transparent z-10"></div>
+                </div>
+            </a>
+            <a href="{{ block.settings.vd-center-block-link }}" class="absolute bottom-0 left-0 bg-transparent flex flex-col gap-1 lg:gap-2 w-full h-[80px] lg:h-[108px] px-4 lg:px-6 pb-4 z-20">
+                <div class="flex w-full body-regular text-white text-sm md:text-[18px] lg:text-[16px] md:leading-[24px] leading-[18px] lg:leading-[22px]">
+                    {{ block.settings.vd-center-block-title }}
+                </div>
+                <div class="text-white uppercase text-4xl md:text-[56px] lg:text-[56px] font-bold leading-[42px] md:leading-[62px] lg:leading-[62px]">
+                    <h6>{{ block.settings.vd-center-block-city }}</h6>
+                </div>
+            </a>
+        </div>
+        {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.pl-desk {
+    padding-left: 96px;
+    padding-right: 96px;
+}
+
+@media (max-width: 768px) {
+    .pl-mobile {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .pl-tablet {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+.vdcenter-slider a .overflow-hidden img {
+    transition: transform 0.5s ease;
+}
+
+.vdcenter-slider a:hover .overflow-hidden img {
+    transform: scale(1.05);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('scroll-container');
+    const prev = document.querySelector('.prev-vd-center');
+    const next = document.querySelector('.next-vd-center');
+
+    const getCardWidth = () => {
+        const card = slider.querySelector('div');
+        if (!card) return 300;
+        const style = getComputedStyle(slider);
+        const gap = parseFloat(style.gap) || 0;
+        return card.offsetWidth + gap;
+    };
+
+    if (prev) {
+        prev.addEventListener('click', () => {
+            const move = Math.min(getCardWidth(), slider.scrollLeft);
+            slider.scrollBy({ left: -move, behavior: 'smooth' });
+        });
+    }
+
+    if (next) {
+        next.addEventListener('click', () => {
+            const remainingScroll = slider.scrollWidth - slider.clientWidth - slider.scrollLeft;
+            const move = Math.min(getCardWidth(), remainingScroll);
+            slider.scrollBy({ left: move, behavior: 'smooth' });
+        });
+    }
+
+    // --- Gestione drag SOLO desktop ---
+    if (window.matchMedia('(pointer: fine)').matches) {
+        let isDown = false;
+        let startX = 0;
+        let scrollStart = 0;
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isDragging = false;
+            startX = e.clientX;
+            scrollStart = slider.scrollLeft;
+            slider.classList.add('cursor-grabbing');
+            e.preventDefault();
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('cursor-grabbing');
+            setTimeout(() => { isDragging = false; }, 50);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('cursor-grabbing');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            const moveX = startX - e.clientX;
+            if (Math.abs(moveX) > 5) {
+                isDragging = true;
+            }
+            slider.scrollLeft = scrollStart + moveX;
+        });
+
+        // blocca click se trascinato
+        slider.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                }
+            });
+        });
+    }
+});
+</script>
+
+{% schema %}
+{
+"name": "Home VD-center",
+"settings": [
+{
+"type": "text",
+"id": "vd-center-section-title",
+"label": "Title of the section",
+"default": "TROVA IL TUO VANDUTCH CENTER"
+},
+{
+"type": "textarea",
+"id": "vd-center-section-text",
+"label": "Text of the section",
+"default": "Naviga nelle località più rinomate, vivi le esperienze e gli eventi VanDutch più memorabili, con accesso a servizi speciali personalizzati e team dedicati che si prenderanno cura di te, dei tuoi ospiti e del tuo yacht."
+}
+],
+"blocks": [
+{
+"type": "card",
+"name": "Card",
+"settings": [
+{
+"type": "image_picker",
+"id": "vd-center-block-image",
+"label": "Select an image for this VD Center"
+},
+{
+"type": "text",
+"id": "vd-center-block-title",
+"label": "Title above the city",
+"default": "VanDutch Center"
+},
+{
+"type": "text",
+"id": "vd-center-block-city",
+"label": "City of the VD center"
+},
+{
+"type": "url",
+"id": "vd-center-block-link",
+"label": "Link to VD Center page"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Home VD-center",
+"category": "Custom Sections"
+}
+]
+}
+{% endschema %}

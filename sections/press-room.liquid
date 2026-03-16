@@ -1,0 +1,385 @@
+<div class="flex flex-col px-4 md:px-12 lg:px-24 gap-8 lg:gap-16 text-white mb-[144px] lg:mb-[280px]">
+  <!-- title -->
+  <div class="h7 justify-start text-4xl leading-[42px] lg:text-[56px] lg:leading-[62px] uppercase">
+    {{ section.settings.pressroom-title }}
+  </div>
+
+  <!-- search bar + articles -->
+  <div class="flex flex-col gap-14 lg:gap-14">
+    <!-- search bar -->
+    <div class="relative search-wrapper" id="search-wrapper-press">
+      <input id="press-search" type="text" placeholder="{{ section.settings.pressroom-search-placeholder }}"
+        class="w-full p-2 pb-2 pr-10 border-b border-white bg-transparent body-regular text-sm leading-5" />
+
+      <!-- ICONA LENTE -->
+      <div class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" id="press-icon-search">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="10" cy="10" r="5.5" stroke="white" />
+          <path d="M19.1464 20.8536L13.1464 14.8536" stroke="white" />
+        </svg>
+      </div>
+
+      <!-- ICONA X -->
+      <div id="press-icon-clear" class="absolute right-2 top-1/2 -translate-y-1/2 hidden cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4.92871 4.92969L19.0708 19.0718" stroke="white" stroke-linecap="round"/>
+          <path d="M19.0713 4.92969L4.92915 19.0718" stroke="white" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- articles list -->
+    <div class="flex flex-col gap-4 lg:gap-8">
+      <div id="press-grid">
+        <div id="press-counter" class="text-white/60 text-[12px] lg:text-[14px]"></div>
+
+        <div id="press-cards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {% assign all_articles = blogs['press-room'].articles | sort: "created_at" | reverse %}
+          {% for article in all_articles %}
+            {% assign file_link = article.metafields.custom.article_file | file_url %}
+            <a href="{{ file_link }}" target="_blank" class="flex flex-col gap-2 lg:gap-4 pb-6 lg:pb-8 bg-antracite rounded-[10px] w-full article-card">
+              <div class="flex w-full">
+                {% if article.image %}
+                  <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" class="article-image">
+                {% endif %}
+              </div>
+              <div class="flex flex-col gap-6 lg:gap-10 px-4 lg:px-8 h-full">
+                <div class="flex flex-col justify-start gap-2">
+                  <div class="flex body-medium text-[12px] leading-[18px] lg:text-sm lg:leading-5 items-center capitalize">
+                    <img 
+                      src="{{ article.metafields.custom.article_flag | img_url: width: 16 }}"
+                      alt="{{ article.title }}"
+                      class="size-4 rounded-full mr-2">
+                    {{ article.metafields.custom.pressroom_magazine }}
+                  </div>
+                  <div class="h8 lg:font-bold text-[26px] leading-8 lg:text-[36px] lg:leading-[42px] lg:line-clamp-3 uppercase">
+                    {{ article.title }}
+                  </div>
+                  <div class="body-regular text-sm leading-5 lg:text-[16px] lg:leading-[22px] line-clamp-3">
+                    {{ article.content | strip_html }}
+                  </div>
+                </div>
+                {% if file_link %}
+                  <div class="flex mt-auto font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px] group-press animation-press w-fit">
+                    <span class="relative flex flex-row gap-1 pb-1">
+                      {{ section.settings.pressroom-read-more }}
+                      <span class="underline-press cta-underline-press"></span>
+                    </span>
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+
+        <!-- Messaggio se nessun articolo trovato -->
+        <div id="no-results-passati" class="hidden flex flex-col text-white gap-5 lg:gap-6">
+          <p class="body-regular text-[16px] leading-[22px] lg:text-[18px] leading-[24px]">
+            {{ section.settings.no-event-label }}
+          </p>
+          <a href="#" id="reset-past-search" class="font-semibold text-[16px] lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px] pb-1 border-b-[1px] border-white w-fit">
+            {{ section.settings.all-event-label }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center gap-4 text-white text-sm lg:text-base mt-8" id="press-pagination"></div>
+  </div>
+</div>
+
+<style>
+  #search-wrapper-press input[type="text"]:focus {
+    outline: none !important;
+    border-bottom: 1px solid #F76C00;
+  }
+
+  .article-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  #press-search::placeholder {
+    color: #D6CBC9; 
+    opacity: 1; 
+  }
+
+  #press-search {
+    color: white;
+  }
+
+  #press-counter {
+    margin-bottom: 32px;
+  }
+
+  /* Pagination */
+  .pagination-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  .pagination-btn:hover {
+    opacity: 1;
+  }
+  .pagination-btn.active {
+    font-weight: bold;
+    opacity: 1;
+  }
+  .pagination-btn.disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+  .pagination-btn svg path {
+    stroke: #FFFFFF;
+    opacity: 1;
+  }
+  .pagination-btn.disabled svg path {
+    stroke: #888888;
+  }
+@media screen and (max-width: 1024px) {
+  #no-results-passati {
+    margin-top: -32px;
+  }
+}
+.group-press span {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+    overflow: hidden;
+}
+.underline-press {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: white;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 2s ease;
+}
+.cta-underline-press {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    opacity: 1;
+    background-color: white;
+    transform: translateX(0%);
+    transition: transform 2s ease;
+}
+.group-press:hover .underline-press {
+    transform: translateX(100%);
+}
+.group-press:hover .cta-underline-press {
+    animation: enter-line 1.2s ease forwards;
+    animation-delay: 0.8s;
+    opacity: 1;
+}
+@keyframes enter-line {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const allCards = Array.from(document.querySelectorAll('.article-card'));
+    const pagination = document.getElementById('press-pagination');
+    const counter = document.getElementById('press-counter');
+    const searchInput = document.getElementById('press-search');
+    const clearIcon = document.getElementById('press-icon-clear');
+    const searchIcon = document.getElementById('press-icon-search');
+    const noResults = document.getElementById('no-results-passati');
+    const resetSearchLink = document.getElementById('reset-past-search');
+
+    const perPage = 9;
+    let filteredArticles = [...allCards];
+    let currentPage = 1;
+
+    function updateCounter(visibleCount, totalCount) {
+      counter.textContent = `${visibleCount} {{ section.settings.pressroom-outof }} ${totalCount} {{ section.settings.pressroom-art }}`;
+    }
+
+    function setEqualHeights(cards) {
+      cards.forEach(card => card.style.height = 'auto');
+      const maxHeight = Math.max(...cards.map(card => card.offsetHeight));
+      cards.forEach(card => card.style.height = maxHeight + 'px');
+    }
+
+    function renderPage(page) {
+      currentPage = page;
+      const start = (page - 1) * perPage;
+      const end = start + perPage;
+      const visibleCards = filteredArticles.slice(start, end);
+
+      if (filteredArticles.length === 0) {
+        // Nessun articolo trovato
+        noResults.classList.remove('hidden');
+        counter.textContent = '';
+        allCards.forEach(card => card.style.display = 'none');
+      } else {
+        noResults.classList.add('hidden');
+        filteredArticles.forEach((card, idx) => {
+          card.style.display = (idx >= start && idx < end) ? 'flex' : 'none';
+        });
+        setEqualHeights(visibleCards);
+        updateCounter(visibleCards.length, filteredArticles.length);
+      }
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      pagination.innerHTML = '';
+      const totalPages = Math.ceil(filteredArticles.length / perPage);
+      if (totalPages <= 1) return;
+
+      const createButton = (content, page, disabled = false) => {
+        const btn = document.createElement('button');
+        btn.classList.add('pagination-btn');
+        if (page === currentPage) btn.classList.add('active');
+        if (disabled) btn.classList.add('disabled');
+        btn.innerHTML = content;
+        if (!disabled) btn.addEventListener('click', () => renderPage(page));
+        return btn;
+      };
+
+      const prevArrow = `<svg xmlns="http://www.w3.org/2000/svg" class="mr-4 size-6" viewBox="0 0 24 24" fill="none"><path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="#FFFFFF" stroke-linecap="round"/></svg>`;
+      const nextArrow = `<svg xmlns="http://www.w3.org/2000/svg" class="ml-4 size-6" viewBox="0 0 24 24" fill="none"><path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="#FFFFFF" stroke-linecap="round"/></svg>`;
+
+      pagination.appendChild(createButton(prevArrow, currentPage - 1, currentPage === 1));
+      for (let i = 1; i <= totalPages; i++) {
+        pagination.appendChild(createButton(i, i));
+      }
+      pagination.appendChild(createButton(nextArrow, currentPage + 1, currentPage === totalPages));
+    }
+
+    function filterArticles(query) {
+      filteredArticles = allCards.filter(card => {
+        const title = card.querySelector('div.h8').textContent.toLowerCase();
+        const body = card.querySelector('div.body-regular').textContent.toLowerCase();
+        return title.includes(query) || body.includes(query);
+      });
+      renderPage(1);
+    }
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      const hasText = query.length > 0;
+      clearIcon.classList.toggle('hidden', !hasText);
+      searchIcon.classList.toggle('hidden', hasText);
+      filterArticles(query);
+    });
+
+    clearIcon.addEventListener('click', function () {
+      searchInput.value = '';
+      clearIcon.classList.add('hidden');
+      searchIcon.classList.remove('hidden');
+      filteredArticles = [...allCards];
+      renderPage(1);
+    });
+
+    resetSearchLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      searchInput.value = '';
+      clearIcon.classList.add('hidden');
+      searchIcon.classList.remove('hidden');
+      filteredArticles = [...allCards];
+      renderPage(1);
+    });
+
+    renderPage(1);
+
+    window.addEventListener('resize', () => {
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const visibleCards = filteredArticles.slice(start, end);
+      setEqualHeights(visibleCards);
+    });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Press Room",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "pressroom-title",
+      "label": "Title",
+      "default": "press room"
+    },
+
+    {
+      "type": "header",
+      "content": "Search & Labels"
+    },
+    {
+      "type": "text",
+      "id": "pressroom-search-placeholder",
+      "label": "Search bar placeholder",
+      "default": "Cerca un articolo"
+    },
+    {
+      "type": "text",
+      "id": "pressroom-outof",
+      "label": "Out of label",
+      "default": "out of"
+    },
+    {
+      "type": "text",
+      "id": "pressroom-art",
+      "label": "Articles label",
+      "default": "items"
+    },
+
+    {
+      "type": "header",
+      "content": "CTA & Messages"
+    },
+    {
+      "type": "text",
+      "id": "pressroom-read-more",
+      "label": "CTA read more",
+      "default": "read"
+    },
+    {
+      "type": "text",
+      "id": "no-event-label",
+      "label": "No event title",
+      "default": "Nessuna news trovata"
+    },
+    {
+      "type": "text",
+      "id": "all-event-label",
+      "label": "No event description",
+      "default": "Vedi tutte le news"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Room",
+      "category": "Blog Sections"
+    }
+  ]
+}
+{% endschema %}

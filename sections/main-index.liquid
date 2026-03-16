@@ -1,0 +1,6 @@
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'image_text_cta' %}
+      {% render block %}
+  {% endcase %}
+{% endfor %}

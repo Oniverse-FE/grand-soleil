@@ -1,0 +1,579 @@
+<div id="header" class="fixed top-0 md:top-6 lg:top-8 left-0 w-full flex z-30 justify-center items-center">
+  <div id="header-overlay" class="absolute w-auto inset-0 backdrop-blur-xl bg-[#101010]/60 z-0 lg:px-6 lg:py-4 lg:rounded-xl lg:mx-24 md:px-6 md:py-6 md:rounded-xl md:mx-12"></div>
+
+  <div id="standard-header" class="relative flex justify-between items-center px-4 h-16 w-full lg:mx-24 md:mx-[72px]">
+    <div class="flex items-center size-9 text-white">
+      <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+      </svg>
+      <svg id="menu-close-mobile" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </div>
+
+    <div class="flex justify-center w-auto">
+     <a href="{{ routes.root_url }}" alt="Home"><img src="{{ 'logo-gs-white.svg' | asset_url }}" alt="title-logo" class="w-28 h-auto"></a>
+    </div>
+
+    <div class="flex size-9 p-3.5"></div>
+  </div>
+
+  <div id="product-header" class="lg:px-24 px-4 py-4 flex justify-between w-full hidden ">
+    <div class="flex flex-col">
+      <div class="relative inline-block text-left" id="dropdown-wrapper">
+        {% assign current_url = request.path %}
+        {% assign current_link = nil %}
+
+        {% for link in linklists.modelli.links %}
+          {% assign link_path = link.url | remove: shop.url %}
+          {% if link_path == current_url %}
+            {% assign current_link = link %}
+          {% endif %}
+        {% endfor %}
+
+        <button id="dropdown-toggle" class="inline-flex items-center justify-between w-full rounded-md gap-4 px-4 py-2 lg:px-6 lg:py-3 text-[16px] lg:text-[18px] body-medium text-white">
+          {{ current_link.title | replace: "Vandutch ","VD" }}
+          <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+            <svg id="dropdown-arrow" class="h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
+        </button>
+
+        <div id="dropdown-menu" class="hidden z-50 w-auto transition-all duration-500 opacity-0">
+          <div id="dropdown-links" class="flex flex-col">
+            {% for link in linklists.modelli.links %}
+              {% assign link_path = link.url | remove: shop.url %}
+              {% unless link_path == current_url %}
+                <a href="{{ link.url }}"
+                   class="block px-4 py-2 lg:px-6 lg:py-3 text-[16px] lg:text-[18px] text-white opacity-0 transition-all duration-300 delay-{{ forloop.index0 | times: 100 }}">
+                  {{ link.title | replace: "Vandutch ", "VD" }}
+                </a>
+              {% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex z-50 justify-center">
+       <a href="{{ section.settings.contact-link }}" class="h-10 w-fit px-7 py-3.5 rounded-full font-semibold text-[16px] leading-2 {% if section.settings.contact-bg-transparent == true%}bg-transparent{% endif %}" style="{% if section.settings.contact-bg-transparent == false %}background-color:{{ section.settings.contact-bg-color }};{% endif %}border: 1px solid {{ section.settings.contact-border-color }};">
+        {{ section.settings.contact-label }}
+      </a>
+    </div>
+  </div>
+
+  <div id="navbar" class="flex"></div>
+</div>
+
+<div id="menu-main-container" class="fixed top-0 left-0 md:top-0 lg:top-0 h-full z-40 bg-[#101010]/60 backdrop-blur-xl opacity-0 pointer-events-none transform transition-transform duration-500 ease-in-out tk-aktiv-grotesk">
+  <div class="relative justify-between items-center px-6 md:px-6 lg:px-[105px] h-16 mt-8 w-full hidden md:flex lg:flex">
+    <div class="flex items-center size-9 text-white">
+      <svg id="menu-close-desktop" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </div>
+    <div class="flex justify-center w-auto">
+        <img src="{{ 'white-logo.svg' | asset_url }}" alt="title-logo" class="w-28 h-auto">
+    </div>
+    <div class="hidden md:flex size-9 p-3.5 lg:hidden"></div>
+  </div>
+    <div id="menu-panels-wrapper" class="flex h-full transition-transform duration-500 ease-in-out" >
+
+    <div id="menu-panel" class="w-full bg-transparent px-6 md:px-6 lg:px-[105px] flex flex-col" style="color:{{ section.settings.header-text-color }}">
+      <div id="standard-header-mobile" class="md:hidden lg:hidden relative flex justify-between items-center h-16 w-full lg:mx-24 md:mx-[72px]">
+    <div class="flex items-center size-9 text-white">
+      <svg id="menu-mobile-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </div>
+
+    <div class="flex justify-center w-auto">
+     <a href="{{ routes.root_url }}" alt="Home"><img src="{{ 'white-logo.svg' | asset_url }}" alt="title-logo" class="w-28 h-auto"></a>
+    </div>
+
+    <div class="flex size-9 p-3.5"></div>
+  </div>
+      <div class="flex-1 overflow-y-scroll hide-scrollbar">
+      <div class="flex flex-col mb-[52px] md:mb-[100px] lg:mb-[75px] mt-[55px] md:mt-[80px] lg:mt-[72px] gap-8 md:gap-10 items-end body-medium text-[20px] md:text-[24px] lg:text-[24px]">
+             {% comment %}
+  Lista di sotto-pagine e la loro sezione padre
+  Ogni elemento è un array [url_pagina, titolo_menu]
+{% endcomment %}
+{% assign page_map =
+  "/pages/partnership-with-mercedes-amg-petronas-f1-team|Partnership,/pages/partnership-with-luna-rossa-prada-pirelli|Partnership,/pages/vandutch-center-amsterdam|VanDutch Centers,/pages/vandutch-center-miami|VanDutch Centers,/pages/vandutch-center-saint-tropez|VanDutch Centers,/pages/vandutch-center-balearics|VanDutch Centers,/pages/vandutch-center-lake-garda|VanDutch Centers,/pages/news|News,/pages/vandutch-32|Models,/pages/vandutch-40|Models,/pages/vandutch-48|Models,/pages/vandutch-56|Models,/pages/vandutch-75|Models,/it/pages/vandutch-32|Modelli,/it/pages/vandutch-40|Modelli,/it/pages/vandutch-48|Modelli,/it/pages/vandutch-56|Modelli,/it/pages/vandutch-75|Modelli,/news/|News" | split: "," %}
+
+{% for link in linklists.header.links %}
+  <div class="flex items-center gap-2">
+    {% assign show_dot = false %}
+
+    {%- comment -%}Mostro il pallino se siamo sulla pagina principale{% endcomment -%}
+    {% if request.path == link.url %}
+      {% assign show_dot = true %}
+    {% endif %}
+
+    {%- comment -%}Controllo se la pagina corrente corrisponde a un pattern{% endcomment -%}
+    {% for item in page_map %}
+      {% assign parts = item | split: "|" %}
+      {% assign page_prefix = parts[0] %}
+      {% assign section_title = parts[1] %}
+
+      {%- comment -%}Se l'URL corrente inizia con il prefisso, mostro il pallino{% endcomment -%}
+      {% if request.path contains page_prefix and link.title == section_title %}
+        {% assign show_dot = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if show_dot %}
+      {% render 'dot' %}
+    {% endif %}
+      <a href="{{ link.url }}" {% if link.title == "Modelli" or link.title == "Models" %}id="models-link"{% endif %} class="{% if section.settings.header-link-caps %}uppercase{% endif %}">{{ link.title }}</a>
+          </div>
+        {% endfor %}
+      
+      </div>
+
+      <div class="block h-[1px] bg-gradient-to-r from-white/90 from-[50%] via-[100%] to-white/90 to-[50%] tk-aktiv-grotesk-thin lg:ml-[105px] mb-[16px]"></div>
+
+
+      <div class="flex flex-col gap-4 items-end text-[16px] lg:text-[18px] pb-10 md:pb-30">
+        {% for link in linklists.mini-header.links %}
+          <a href="{{ link.url }}" class="{% if section.settings.mini-header-link-caps %}uppercase{% endif %}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    </div>
+
+    <div id="models-panel" class="w-full bg-transparent px-4 md:px-12 lg:px-[105px] flex flex-col" style="color:{{ section.settings.header-text-color }}">
+         <div id="standard-header-mobile" class="md:hidden lg:hidden relative flex justify-between items-center h-16 w-full lg:mx-24 md:mx-[72px]">
+    <div class="flex items-center size-9 text-white">
+      <svg id="menu-mobile-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </div>
+
+    <div class="flex justify-center w-auto">
+     <a href="{{ routes.root_url }}" alt="Home"><img src="{{ 'white-logo.svg' | asset_url }}" alt="title-logo" class="w-28 h-auto"></a>
+    </div>
+
+    <div class="flex size-9 p-3.5"></div>
+  </div>
+      
+
+      <div class="md:mb-[140px] lg:mb-[100px] flex flex-1 flex-col lg:flex-row md:flex-row overflow-y-scroll hide-scrollbar gap-8">
+        <div class="flex justify-start items-center h-12">
+          <div id="models-back" class="cursor-pointer mt-10 md:mt-[79px] lg:mt-[72px]">
+            <img src="{{ 'back.svg' | asset_url }}" alt="back" class="size-6">
+          </div>
+        </div>
+        <div class="flex flex-col w-full md:mt-[75px] gap-8 md:gap-32 lg:mt-[50px] lg:gap-14 models">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when '@app' %}
+                {% render block %}
+              {% when 'models' %}
+                <div class="relative h-[218px] md:h-[266px] lg:h-[351px] w-full tk-mongoose font-bold">
+                  <a href="{{ block.settings.model-link }}" class="h-full w-full block">
+                    <div class="flex flex-col justify-center items-center inset-0 h-[186px] lg:h-[326px] w-full">
+                      <div class="flex text-[180px] md:text-[210px] lg:text-[320px] z-0 w-[108px] font-black md:mb-44 lg:mb-[90px]" style="color:{{ block.settings.model-title-color }};">
+                        {{ block.settings.model-title }}
+                      </div>
+                      <div class="flex h-40 w-[108px]"></div>
+                    </div>
+                    <div class="absolute inset-0 z-10 flex justify-center items-end">
+                      <img src="{{ block.settings.model-image | img_url: 'master' }}" alt="{{ block.settings.model-title }}" class="w-[270px] md:w-[415px] lg:w-[450px] h-auto">
+                    </div>
+                  </a>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<style>
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Regole per il container principale del menu */
+#menu-main-container {
+  width: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#menu-main-container.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.models > :last-child {
+  margin-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+
+#menu-panel,
+#models-panel {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 1024px) {
+  #menu-main-container {
+    width: 60%;
+    transform: translateX(-100%);
+  }
+
+  #menu-main-container.is-open {
+    transform: translateX(0);
+  }
+}
+.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 1025px) {
+  .models > :last-child {
+    margin-bottom: 100px !important;
+  }
+}
+</style>
+<script>
+  const menuOpen = document.getElementById("menu-open");
+  const menuCloseMobile = document.getElementById("menu-mobile-close");
+  const menuCloseDesktop = document.getElementById("menu-close-desktop");
+  const modelsCloseDesktop = document.getElementById("models-close-desktop");
+
+  const menuMainContainer = document.getElementById("menu-main-container");
+  const menuPanelsWrapper = document.getElementById("menu-panels-wrapper");
+  const modelsLink = document.getElementById("models-link");
+  const modelsBack = document.getElementById("models-back");
+  const toggle = document.getElementById('dropdown-toggle');
+  const menu = document.getElementById('dropdown-menu');
+  const links = menu.querySelectorAll('a');
+  const arrow = document.getElementById('dropdown-arrow');
+  const header = document.getElementById("header");
+
+  let isOpen = false;
+
+  document.addEventListener('click', function (e) {
+    const wrapper = document.getElementById('dropdown-wrapper');
+    const isInside = wrapper.contains(e.target);
+    const isToggle = toggle.contains(e.target);
+
+    if (isToggle && isOpen) {
+      closeModels();
+    } else if (isInside) {
+      openModels();
+    } else {
+      closeModels();
+    }
+  });
+
+  function openModels() {
+    isOpen = true;
+    menu.classList.remove('hidden');
+
+    setTimeout(() => {
+      menu.classList.add('opacity-100', 'translate-y-0');
+      menu.classList.remove('opacity-0', '-translate-y-2');
+      arrow.classList.add('rotate-180');
+
+      links.forEach((link, i) => {
+        setTimeout(() => {
+          link.classList.add('opacity-100', 'translate-y-0');
+          link.classList.remove('opacity-0', '-translate-y-2');
+        }, i * 100);
+      });
+    }, 10);
+  }
+
+  function closeModels() {
+    isOpen = false;
+    menu.classList.remove('opacity-100', 'translate-y-0');
+    menu.classList.add('opacity-0', '-translate-y-2');
+    arrow.classList.remove('rotate-180');
+
+    links.forEach((link) => {
+      link.classList.remove('opacity-100', 'translate-y-0');
+      link.classList.add('opacity-0', '-translate-y-2');
+    });
+
+    setTimeout(() => {
+      menu.classList.add('hidden');
+    }, 300);
+  }
+
+  function openMenu() {
+    menuMainContainer.classList.add("is-open");
+    menuOpen.classList.add("hidden");
+
+    // Blocca scroll del body
+    document.documentElement.style.overflow = "hidden";
+
+    if (window.innerWidth < 767) {
+      if(menuCloseMobile) menuCloseMobile.classList.remove("hidden");
+    } else {
+      if(menuCloseDesktop) menuCloseDesktop.classList.remove("hidden");
+      // Nascondi header su desktop
+      if (window.innerWidth >= 1024) {
+        header.classList.add("hidden");
+      }
+    }
+  }
+
+  function closeMenu() {
+    menuMainContainer.classList.remove("is-open");
+    menuOpen.classList.remove("hidden");
+
+    // Riabilita lo scroll
+    document.documentElement.style.overflow = "";
+
+    if(menuCloseMobile) menuCloseMobile.classList.add("hidden");
+    if(menuCloseDesktop) menuCloseDesktop.classList.add("hidden");
+    if(modelsCloseDesktop) modelsCloseDesktop.classList.add("hidden");
+
+    // Mostra header su desktop
+    if (window.innerWidth >= 1024) {
+      header.classList.remove("hidden");
+    }
+
+    setTimeout(() => {
+      menuPanelsWrapper.style.transform = "translateX(0)";
+      menuMainContainer.classList.remove("models-active");
+    }, 500);
+  }
+
+  function showModelsPanel() {
+    menuPanelsWrapper.style.transform = "translateX(-100%)";
+
+    if (window.innerWidth >= 767) {
+      menuMainContainer.classList.add("models-active");
+      if(modelsCloseDesktop) modelsCloseDesktop.classList.remove("hidden");
+    }
+  }
+
+  function showMainMenu() {
+    menuPanelsWrapper.style.transform = "translateX(0)";
+
+    if (window.innerWidth >= 767) {
+      menuMainContainer.classList.remove("models-active");
+      if(modelsCloseDesktop) modelsCloseDesktop.classList.add("hidden");
+      if(menuCloseDesktop) menuCloseDesktop.classList.remove("hidden");
+    }
+  }
+
+  menuOpen.addEventListener("click", openMenu);
+
+  if(menuCloseMobile) {
+    menuCloseMobile.addEventListener("click", closeMenu);
+  }
+
+  if(menuCloseDesktop) {
+    menuCloseDesktop.addEventListener("click", closeMenu);
+  }
+
+  if(modelsCloseDesktop) {
+    modelsCloseDesktop.addEventListener("click", closeMenu);
+  }
+
+  if(modelsLink) {
+    modelsLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      showModelsPanel();
+    });
+  }
+
+  if(modelsBack) {
+    modelsBack.addEventListener("click", showMainMenu);
+  }
+
+  window.addEventListener('resize', () => {
+    if (menuMainContainer.classList.contains("is-open")) {
+      if (window.innerWidth < 767) {
+        if(menuCloseMobile) menuCloseMobile.classList.remove("hidden");
+        if(menuCloseDesktop) menuCloseDesktop.classList.add("hidden");
+        if(modelsCloseDesktop) modelsCloseDesktop.classList.add("hidden");
+
+        if (menuPanelsWrapper.style.transform === "translateX(-100%)") {
+          menuPanelsWrapper.style.transform = "translateX(0)";
+        }
+        menuMainContainer.classList.remove("models-active");
+
+      } else {
+        if(menuCloseMobile) menuCloseMobile.classList.add("hidden");
+
+        if (menuPanelsWrapper.style.transform === "translateX(-100%)") {
+          if(modelsCloseDesktop) modelsCloseDesktop.classList.remove("hidden");
+          if(menuCloseDesktop) menuCloseDesktop.classList.add("hidden");
+          menuMainContainer.classList.add("models-active");
+        } else {
+          if(menuCloseDesktop) menuCloseDesktop.classList.remove("hidden");
+          if(modelsCloseDesktop) modelsCloseDesktop.classList.add("hidden");
+          menuMainContainer.classList.remove("models-active");
+        }
+      }
+    } else {
+      // Se il menu non è aperto, assicura che l'header sia visibile su desktop
+      if (window.innerWidth >= 1024) {
+        header.classList.remove("hidden");
+      }
+    }
+  });
+
+  // Chiudi menu cliccando fuori dall'area menu
+  document.addEventListener("click", (e) => {
+    if (
+      menuMainContainer.classList.contains("is-open") &&
+      !menuMainContainer.contains(e.target) &&
+      !menuOpen.contains(e.target)
+    ) {
+      closeMenu();
+    }
+  });
+</script>
+{% assign pdp_handles = section.settings.pdp-page-handles | split: "," %}
+{% assign current_handle = request.path | split: "/" | last | strip %}
+{% if pdp_handles contains current_handle %}
+<script>
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+    const overlay = document.getElementById("header-overlay");
+    const standard = document.getElementById("standard-header");
+    const standard = document.getElementById("standard-header-mobile");
+    const product = document.getElementById("product-header");
+    const triggerHeight = window.innerHeight;
+
+    if (window.scrollY >= triggerHeight) {
+      header.classList.remove("lg:top-8");
+      header.classList.remove("md:top-6");
+      overlay.classList.remove("lg:rounded-xl");
+      overlay.classList.remove("md:rounded-xl");
+      overlay.classList.remove("lg:mx-24");
+      overlay.classList.remove("md:mx-12");
+      standard.classList.add("hidden");
+      product.classList.remove("hidden");
+    } else {
+      header.classList.add("lg:top-8");
+      header.classList.add("md:top-6");
+      overlay.classList.add("lg:rounded-xl");
+      overlay.classList.add("md:rounded-xl");
+      overlay.classList.add("lg:mx-24");
+      overlay.classList.add("md:mx-12");
+      standard.classList.remove("hidden");
+      product.classList.add("hidden");
+    }
+  });
+</script>
+{% endif %}
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+          "type": "textarea",
+          "id": "pdp-page-handles",
+          "label": "PDP page's handle (separate by comma)",
+          "default": "vandutch-32,vandutch-40,vandutch-48,vandutch-56,vandutch-75"
+        },
+        {
+          "type": "checkbox",
+          "id": "contact-bg-transparent",
+          "label": "Contact button transparent background",
+          "default": false
+        },
+        {
+            "type": "color",
+            "id": "contact-bg-color",
+            "label": "Contact button background color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "contact-border-color",
+            "label": "Contact button border color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "text",
+            "id": "contact-label",
+            "label": "Contact button label",
+            "default": "Contattaci"
+        },
+        {
+            "type": "url",
+            "id": "contact-link",
+            "label": "Contact button link"
+        },
+        {
+            "type": "checkbox",
+            "id": "header-link-caps",
+            "label": "Header large menù link in uppercase",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "mini-header-link-caps",
+            "label": "Header small menù link in uppercase",
+            "default": false
+        },
+        {
+          "type": "color",
+          "id": "header-text-color",
+          "label": "Header text color",
+          "default": "#ffffff"
+        }
+    ],"blocks": [
+        {
+          "type": "models",
+          "name": "Models",
+          "settings": [
+            {
+            "type": "text",
+            "id": "model-title",
+            "label": "Model title",
+            "default": "32"
+        },
+        {
+          "type": "color",
+          "id": "model-title-color",
+          "label": "Model title color",
+          "default": "#F76C00"
+        },
+        {
+            "type": "url",
+            "id": "model-link",
+            "label": "Link to the model page"
+        },
+        {
+            "type": "image_picker",
+            "id": "model-image",
+            "label": "Model image"
+        }
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Header"
+      }
+    ]
+}
+{% endschema %}

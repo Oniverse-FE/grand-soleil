@@ -1,0 +1,104 @@
+<div class="flex px-4 md:px-12 lg:px-[96px] pt-[96px] lg:pt-[124px]" style="position:absolute; z-index:20;">
+    {% assign current_path = request.path %}
+    {% assign selected_label = '' %}
+    {% assign menu_links = linklists.modelli.links %}
+    {% assign dropdown_id = 'dropdown-menu-' | append: section.id %}
+    {% assign button_id = 'menu-button-' | append: section.id %}
+
+    {% for link in menu_links %}
+        {% if link.url == current_path or link.url == request.url %}
+            {% assign selected_label = link.title %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="relative inline-block text-left">
+        <!-- Bottone selezionato -->
+        <button type="button" 
+                class="inline-flex gap-4 items-center justify-between w-auto rounded-[10px] text-white text-sm font-medium focus:outline-none transition-colors duration-200 px-4 py-2 {% if selected_label != '' %}bg-[rgba(0,0,0,0.60)] backdrop-blur-xl{% endif %}" 
+                id="{{ button_id }}" 
+                aria-expanded="false" 
+                aria-haspopup="true">
+            <div class="body-medium text-[16px] leading-[22px] text-white">
+                {{ selected_label }}
+            </div>
+            <svg class="h-6 w-6 transition-transform duration-200 text-white" 
+                 xmlns="http://www.w3.org/2000/svg" 
+                 viewBox="0 0 24 24" 
+                 fill="none" 
+                 stroke="currentColor" 
+                 stroke-width="1" 
+                 stroke-linecap="round" 
+                 stroke-linejoin="round"
+                 id="{{ button_id }}-icon">
+                <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" />
+            </svg>
+        </button>
+
+        <!-- Dropdown panel sotto il bottone -->
+        <div class="origin-top-left absolute top-full mt-2 hidden z-20 w-full" id="{{ dropdown_id }}">
+            <div class="bg-[rgba(0,0,0,0.60)] backdrop-blur-xl rounded-md flex flex-col gap-6 p-4 min-w-full text-white" 
+                 role="menu" 
+                 aria-orientation="vertical" 
+                 aria-labelledby="{{ button_id }}">
+                {% for link in menu_links %}
+                    {% unless link.url == current_path or link.url == request.url %}
+                        <a href="{{ link.url }}" 
+                           class="block body-medium text-[16px] leading-[22px] text-white rounded" 
+                           role="menuitem">
+                             {{ link.title | replace: "Vandutch ", "VD" }}
+                        </a>
+                    {% endunless %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("{{ button_id }}");
+    const dropdown = document.getElementById("{{ dropdown_id }}");
+    const icon = document.getElementById("{{ button_id }}-icon");
+
+    if (button && dropdown && icon) {
+        // Sostituisci "Vandutch" con "VD" nel testo selezionato
+        let labelDiv = button.querySelector("div");
+        if (labelDiv.textContent.includes("Vandutch")) {
+            labelDiv.textContent = labelDiv.textContent.replace(/Vandutch /g, "VD");
+        }
+
+        button.addEventListener("click", () => {
+            const isHidden = dropdown.classList.toggle("hidden");
+            button.setAttribute("aria-expanded", !isHidden);
+
+            // Ruota l'icona senza toccare il background selezionato
+            if (!isHidden) {
+                icon.classList.add("rotate-180");
+            } else {
+                icon.classList.remove("rotate-180");
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add("hidden");
+                icon.classList.remove("rotate-180");
+                button.setAttribute("aria-expanded", false);
+            }
+        });
+    }
+});
+</script>
+
+{% schema %}
+{
+    "name": "Models Selector",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Models Selector",
+            "category": "PDP Sections"
+        }
+    ]
+}
+{% endschema %}

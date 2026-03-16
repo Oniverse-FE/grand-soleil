@@ -1,0 +1,98 @@
+<div class="claim flex flex-col py-[258px] md:py-[424px] lg:py-[556px] px-4 md:px-12 lg:px-24">
+    <div class="claim-container">
+        <h5 class="responsive-claim" style="color:{{ section.settings.text1-color }}"> {{
+                section.settings.text1-text }} </h5>
+        <h5 class="responsive-claim" style="color:{{ section.settings.text2-color }}"> {{
+                section.settings.text2-text }} </h5>
+    </div>
+    <div class="flex mt-3 lg:mt-0 text-white gap-4">
+        <img src="{{ 'line.svg' | asset_url }}" alt="line" class="flex w-8 h-auto">
+        <p class="flex tk-aktiv-grotesk text-[18px] lg:text-[24px] font-normal leading-[24px] lg:leading-[30px]">
+            {{ section.settings.brand-text }}
+        </p>
+    </div>
+</div>
+<style>
+.claim-container{
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+@media screen and (min-width: 1499px){
+   .claim-container{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+} 
+}
+.responsive-claim {
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 86px;
+}
+
+@media screen and (min-width: 768px) {
+  .responsive-claim {
+    font-size: 150px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 156px;
+  }
+}
+</style>
+{% schema %}
+{
+    "name": "Claim",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Colors Settings"
+        },
+        {
+            "type": "color",
+            "id": "text1-color",
+            "label": "Color for the text on the left",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "text2-color",
+            "label": "Color for the text on the right",
+            "default": "#F76C00"
+        },
+        {
+            "type": "header",
+            "content": "Claim Settings"
+        },
+        {
+            "type": "text",
+            "id":"text1-text",
+            "label": "First text",
+            "default":"NAVIGA CON STILE."
+        },
+        {
+            "type": "text",
+            "id":"text2-text",
+            "label": "Second text",
+            "default":"VIVI SENZA LIMITI."
+        },
+        {
+            "type": "header",
+            "content": "Brand text"
+        },
+        {
+            "type": "text",
+            "id":"brand-text",
+            "label": "Third text",
+            "default":"VANDUTCH YACHTS"
+        }
+        ],
+        "presets":[
+        {
+            "name": "Claim",
+            "category": "Custom Sections"
+        }
+    ]
+}
+{% endschema %}
