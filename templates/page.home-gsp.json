@@ -28,6 +28,97 @@
         "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto."
       }
     },
+    "multi_card_9ekjXf": {
+      "type": "multi-card",
+      "blocks": {
+        "title_fnDn6w": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "Grand Soleil Plus: l’apice dell’haute couture nautica"
+          }
+        },
+        "text_area_LTimnh": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "Grand Soleil Plus è l’universo oltre i 60 piedi dove la visione dell’armatore diviene opera unica. Nel nostro atelier di Fano, il dialogo si trasforma in eccellenza attraverso una costruzione 100% in-house: non realizziamo yacht, ma interpretazioni sartoriali di performance e stile, nate da 50 anni di storia di Cantiere del Pardo. Un percorso creativo esclusivo per plasmare un’imbarcazione che sia l’espressione più pura, intima e irripetibile della vostra vocazione in mare.",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_kD9phx": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Pillar.png",
+            "card_title": "Esperienza Haute Couture",
+            "card_subtitle": "Un dialogo intimo per trasformare la vostra visione in una realtà nautica irripetibile.",
+            "link": ""
+          }
+        },
+        "card_cDBj4C": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Pillar_130475ee-1eea-4f84-bbf5-f3a76e36b0ed.png",
+            "card_title": "Atelier Fano",
+            "card_subtitle": "Eccellenza 100% in-house e controllo totale su ogni singolo dettaglio costruttivo.",
+            "link": ""
+          }
+        },
+        "card_96iywz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Pillar_30b92959-9a72-4910-afeb-3294f09a05c8.png",
+            "card_title": "Supporto VIP Globale",
+            "card_subtitle": "Assistenza dedicata 24/7 per garantire una tranquillità assoluta in ogni mare del mondo.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_fnDn6w",
+        "text_area_LTimnh",
+        "card_kD9phx",
+        "card_cDBj4C",
+        "card_96iywz"
+      ],
+      "name": "Multi Cards Editorial",
+      "settings": {
+        "id": "editorial-cards"
+      }
+    },
+    "editorial_section_3E6LXU": {
+      "type": "editorial-section",
+      "blocks": {
+        "title_pqhdDm": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "Shanti: l'arte della velocità su misura"
+          }
+        },
+        "text_area_mtGPET": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "Shanti non è semplicemente un’ammiraglia; è un manifesto vivente della vocazione performance. Questo esemplare di Grand Soleil 72 Plus rappresenta l’espressione più pura della filosofia Plus, dove l’eccellenza costruttiva dell’atelier di Fano incontra la visione di un armatore che non accetta compromessi sulla velocità. Shanti è un’opera 'haute couture' concepita per personificare dinamismo, reattività e un controllo millimetrico.",
+            "editorial-label": "Scopri il progetto Shanti",
+            "editorial-url": ""
+          }
+        },
+        "image_BaMXgQ": {
+          "type": "image",
+          "settings": {
+            "editor-image": "shopify://shop_images/0_3-HERO_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "title_pqhdDm",
+        "text_area_mtGPET",
+        "image_BaMXgQ"
+      ],
+      "name": "Editorial content",
+      "settings": {
+        "id": "content"
+      }
+    },
     "text_and_image_WmYNYT": {
       "type": "text-and-image",
       "name": "Image and Text",
@@ -53,7 +144,7 @@
         "main_title": "Sailing story",
         "link_text": "Vedi tutte le sailing story",
         "link_url": "",
-        "main_image": "shopify://shop_images/Sailing_story_card.png",
+        "main_image": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
         "subtitle": "EPISODIO 1",
         "inner_title": "To the Max",
         "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
@@ -111,6 +202,8 @@
   "order": [
     "product_image_MeRpGm",
     "subtitle_text_bgKxpn",
+    "multi_card_9ekjXf",
+    "editorial_section_3E6LXU",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
     "event_slider_yWwQkM",
