@@ -9,17 +9,6 @@
  */
 {
   "sections": {
-    "product_image_MeRpGm": {
-      "type": "product-image",
-      "name": "Full Image",
-      "settings": {
-        "id": "full-image",
-        "image_desktop": "shopify://shop_images/Sailing_story_card.png",
-        "image_mobile": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
-        "margin_block": "0",
-        "margin_block_mobile": "0"
-      }
-    },
     "subtitle_text_bgKxpn": {
       "type": "subtitle-text",
       "name": "Subtile & Text Scroll",
@@ -109,7 +98,6 @@
     }
   },
   "order": [
-    "product_image_MeRpGm",
     "subtitle_text_bgKxpn",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
