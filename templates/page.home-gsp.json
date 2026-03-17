@@ -9,16 +9,46 @@
  */
 {
   "sections": {
-    "product_image_MeRpGm": {
-      "type": "product-image",
-      "name": "Full Image",
-      "settings": {
-        "id": "full-image",
-        "image_desktop": "shopify://shop_images/Sailing_story_card.png",
-        "image_mobile": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
-        "margin_block": "0",
-        "margin_block_mobile": "0"
-      }
+    "hero_banner_kYmAaY": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_BNB6cL": {
+          "type": "content",
+          "settings": {
+            "content-media": true,
+            "content-video-mobile": "shopify://files/videos/GrandSoleil.mp4",
+            "content-video-desktop": "shopify://files/videos/GrandSoleil.mp4",
+            "content-subtitle": "Nuovo modello",
+            "content-title": "Nuovo Grand Soleil PLUS 80",
+            "content-title-color": "#faf9f7",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        },
+        "content_mA3bPy": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
+            "content-image-desktop": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
+            "content-subtitle": "Nuovo modello",
+            "content-title": "Nuovo Grand Soleil PLUS 80",
+            "content-title-color": "#faf9f7",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_BNB6cL",
+        "content_mA3bPy"
+      ],
+      "name": "Hero Banner Final",
+      "settings": {}
     },
     "subtitle_text_bgKxpn": {
       "type": "subtitle-text",
@@ -200,7 +230,7 @@
     }
   },
   "order": [
-    "product_image_MeRpGm",
+    "hero_banner_kYmAaY",
     "subtitle_text_bgKxpn",
     "multi_card_9ekjXf",
     "editorial_section_3E6LXU",
