@@ -206,7 +206,23 @@
         "pt_tab": 80,
         "pb_tab": 80,
         "pt_mob": 24,
-        "pb_mob": 32
+        "pb_mob": 24
+      }
+    },
+    "news_list_ynrNdG": {
+      "type": "news-list",
+      "name": "News Slider",
+      "settings": {
+        "news-slider-title": "LEGGI IL BLOG",
+        "content": "",
+        "news-cta-label": "Leggi l'articolo",
+        "news-slider-cta-all-label": "Vedi tutto",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "event_slider_yWwQkM": {
@@ -223,8 +239,8 @@
         "pb_desk": 96,
         "pt_tab": 80,
         "pb_tab": 80,
-        "pt_mob": 32,
-        "pb_mob": 32
+        "pt_mob": 24,
+        "pb_mob": 24
       }
     },
     "text_image_with_background_pHwXNp": {
@@ -239,12 +255,12 @@
         "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
         "button_label": "Scopri tutti i servizi",
         "button_link": "",
-        "pt_desk": 120,
-        "pb_desk": 120,
-        "pt_tab": 80,
-        "pb_tab": 80,
-        "pt_mob": 48,
-        "pb_mob": 48
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "find_dealer_LkPTw9": {
@@ -270,6 +286,7 @@
     "editorial_section_3E6LXU",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
+    "news_list_ynrNdG",
     "event_slider_yWwQkM",
     "text_image_with_background_pHwXNp",
     "find_dealer_LkPTw9"
