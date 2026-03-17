@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+        "dual_entrance_z3qFxw": {
+      "type": "dual-entrance",
+      "blocks": {
+        "column_hhhndN": {
+          "type": "column",
+          "settings": {
+            "video_url": "shopify://files/videos/GrandSoleil.mp4",
+            "inner_image": "shopify://shop_images/g8.svg",
+            "button_label": "Entra",
+            "link": "shopify://pages/grand-soleil"
+          }
+        },
+        "column_FrTCgM": {
+          "type": "column",
+          "settings": {
+            "video_url": "shopify://files/videos/GrandSoleil.mp4",
+            "inner_image": "shopify://shop_images/logo.svg",
+            "button_label": "Entra",
+            "link": "shopify://pages/grand-soleil-plus"
+          }
+        }
+      },
+      "block_order": [
+        "column_hhhndN",
+        "column_FrTCgM"
+      ],
+      "name": "Entrance Per-Block CTA",
+      "settings": {}
+    }
+  },
+  "order": [
+    "dual_entrance_z3qFxw"
+  ]
+}

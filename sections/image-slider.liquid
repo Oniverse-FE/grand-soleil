@@ -1,443 +1,245 @@
-<div id="{{ section.settings.id }}" class="relative flex flex-col {% if section.settings.image-slider-title %} gap-4 lg:gap-6 {% endif %}">
-  {% if section.settings.image-slider-title %}
+<div id="{{ section.settings.id }}" class="section-container-{{ section.id }} bg_gs bg_gsp relative flex flex-col {% if section.settings.image-slider-title != blank %} gap-4 lg:gap-6 {% endif %}">
+  
+  {% if section.settings.image-slider-title != blank %}
     <div class="flex flex-row relative w-full justify-between px-4 md:px-12 lg:px-24">
-      <div class="flex h6 justify-start text-white uppercase text-[26px] leading-[30px] md:text-[42px] md:leading-[42px] lg:text-[42px] lg:leading-[42px]">
+      <div class="flex h6 justify-start heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp">
         {{ section.settings.image-slider-title }}
       </div>
-  {% endif %}
-      <div class="flex justify-end gap-2 lg:gap-4 z-20">
-          <button class="prev-{{ section.id }} p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-                <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-              </svg>
-          </button>
-          <button class="next-{{ section.id }} p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-                <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-              </svg>
-          </button>
-      </div>
-  {% if section.settings.image-slider-title %}
     </div>
   {% endif %}
   
   <div id="scroll-container-{{ section.id }}" 
-       class="pl-mobile pl-tablet pl-desk flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 cursor-grab lg:cursor-grab scrollbar-hide w-full max-w-full">
+       class="slider-container-{{ section.id }} flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 cursor-grab scrollbar-hide w-full max-w-full">
        
     {% for block in section.blocks %}
-      {% case block.type %}
-        {% when '@app' %}
-          {% render block %}
-        {% when 'image-slider-image' %}
-          <div class="w-image flex-shrink-0 relative rounded-[10px]" style="--width-image-desktop: {{ section.settings.width-desktop }}; --width-image-mobile: {{ section.settings.width-mobile }}; --height-image-desktop: {{ section.settings.height-desktop }}; --height-image-mobile: {{ section.settings.height-mobile }}">
-            <img src="{{ block.settings.image-slider-image | img_url: 'master' }}"
-                 alt="{{ block.settings.image-slider-image-alt }}"
-                 data-title="{{ block.settings.image-slider-image-title }}"
-                 data-subtitle="{{ block.settings.image-slider-image-subtitle }}"
-                 class="w-image h-full rounded-[10px] object-cover" 
-                 style="--width-image-desktop: {{ section.settings.width-desktop }}; --width-image-mobile: {{ section.settings.width-mobile }}; --height-image-desktop: {{ section.settings.height-desktop }}; --height-image-mobile: {{ section.settings.height-mobile }}">
-                 
-            {% if block.settings.image-slider-overlay %}
-              <div class="absolute inset-0 rounded-[10px]" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-            {% endif %}
-            
-            {% if block.settings.image-slider-image-title %}
-              <div class="flex absolute bottom-2 lg:bottom-3 left-6 lg:left-8 text-white uppercase h6 text-4xl leading-[42px] md:text-[42px] md:leading-[48px] lg:text-[42px] lg:leading-[48px]">
-                {{ block.settings.image-slider-image-title }}
-              </div>
-            {% endif %}
+      <div class="slider-item-{{ section.id }} relative">
+        <img src="{{ block.settings.image-slider-image | img_url: 'master' }}"
+             alt="{{ block.settings.image-slider-image-alt }}"
+             data-title="{{ block.settings.image-slider-image-title }}"
+             class="w-image-el pointer-events-none">
+             
+        {% if block.settings.image-slider-overlay %}
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+        {% endif %}
+        
+        {% if block.settings.image-slider-image-title != blank %}
+          <div class="flex absolute bottom-4 left-6 lg:left-8 heading-sm_gs heading-sm_gsp text-color_gs text-EBEFF2_gsp">
+            {{ block.settings.image-slider-image-title }}
           </div>
-      {% endcase %}
+        {% endif %}
+      </div>
     {% endfor %}
   </div>
-</div>
 
-<div id="lightbox-{{ section.id }}" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
-  <div class="lightbox relative w-full flex flex-col gap-4">
-    <button id="modal-close-{{ section.id }}" type="button"
-            class="self-end absolute top-[236px] lg:top-[56px] right-4 lg:right-28 rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M4.92969 19.0713L19.0718 4.92915" stroke="white" stroke-linecap="round"/>
-        <path d="M4.92969 4.92871L19.0718 19.0708" stroke="white" stroke-linecap="round"/>
-      </svg>
-    </button>
-  <div class="lightbox relative w-full items-center justify-center">
-  <img id="lightbox-img-{{ section.id }}" src="" class="w-full h-full object-contain" alt="Enlarged image">
-  </div>
-    <div id="lightbox-text-{{ section.id }}" class="absolute bottom-64 lg:bottom-10 text-center text-white">
-      <h2 id="lightbox-title-{{ section.id }}" class="uppercase mb-2"></h2>
-      <p id="lightbox-subtitle-{{ section.id }}" class="text-sm hidden lg:text-lg"></p>
-    </div>
-    <div id="lightbox-arrow-{{ section.id }}">
-    <button id="modal-prev-{{ section.id }}"
-            class="flex absolute left-[0px] lg:left-[112px] lg:bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-      </svg>
-    </button>
+  <div class="flex flex-row justify-between items-center px-4 md:px-12 lg:px-24 mt-6 lg:mt-10">
+      <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp">
+          <span id="current-slide-{{ section.id }}">01</span>
+          <span class="mx-2">-</span>
+          <span id="total-slides-{{ section.id }}">0{{ section.blocks.size }}</span>
+      </div>
 
-    <button id="modal-next-{{ section.id }}"
-            class="flex absolute right-[0px] lg:right-[112px] lg:bottom-[60px] rounded-full lg:bg-[var(--Blur-VD-Blur,rgba(16,16,16,0.60))] lg:backdrop-blur-[48px] lg:p-4 z-50">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-      </svg>
-    </button>
-    </div>
+      <div class="flex gap-2 lg:gap-4">
+          <button class="prev-{{ section.id }} pt-3 flex justify-center items-center transition">
+              {% if template contains 'gsp' %}{% render 'gs-arrow-left-black' %}{% else %}{% render 'gs-arrow-left-white' %}{% endif %}
+          </button>
+          <button class="next-{{ section.id }} pb-3 flex justify-center items-center transition">
+              {% if template contains 'gsp' %}{% render 'gs-arrow-right-black' %}{% else %}{% render 'gs-arrow-right-white' %}{% endif %}
+          </button>
+      </div>
   </div>
 </div>
 
 <style>
-.pl-desk { padding-left: 96px; padding-right: 96px; }
-.w-image { width: var(--width-image-desktop); height: var(--height-image-desktop); }
+  .section-container-{{ section.id }} {
+    padding-top: {{ section.settings.pt_mobile }}px;
+    padding-bottom: {{ section.settings.pb_mobile }}px;
+  }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    .pl-tablet {
-        padding-left: 48px;
-        padding-right: 48px;
+  @media screen and (min-width: 768px) {
+    .section-container-{{ section.id }} {
+      padding-top: {{ section.settings.pt_tablet }}px;
+      padding-bottom: {{ section.settings.pb_tablet }}px;
     }
-}
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-
-body.no-scroll { overflow: hidden; position: fixed; width: 100%; }
-#scroll-container-{{ section.id }} { user-select: none; }
-#lightbox-{{ section.id }} { display: none; }
-#lightbox-{{ section.id }}.visible { display: flex; }
-#lightbox-{{ section.id }} img { width: 100%; height: 100%; object-fit: cover; }
-#lightbox-text-{{ section.id }} { max-width: 100%; }
-
-@media (max-width: 798px) {
-  .pl-mobile { padding-left: 16px; padding-right: 16px; }
-  .w-image { width: var(--width-image-mobile); height: var(--height-image-mobile); }
-  #lightbox-{{ section.id }} {
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-   /*padding: 16px !important;*/
   }
 
-  #modal-close-{{ section.id }} {
-    position: relative !important;
-    top: 0 !important;
-    right: 0 !important;
-    /*margin-bottom: 16px;*/
-    z-index: 10;
+  @media screen and (min-width: 1024px) {
+    .section-container-{{ section.id }} {
+      padding-top: {{ section.settings.pt_desktop }}px;
+      padding-bottom: {{ section.settings.pb_desktop }}px;
+    }
   }
 
-  #lightbox-img-{{ section.id }} {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 70vh !important;
-    object-fit: contain !important;
-    border-radius: 10px !important;
+  .slider-container-{{ section.id }} {
+      scroll-snap-type: x mandatory;
+      user-select: none;
+      display: flex;
   }
 
-  #lightbox-text-{{ section.id }} {
-    position: relative !important;
-    bottom: auto !important;
-    /*margin-bottom: 16px;*/
-    text-align: center;
+  .slider-item-{{ section.id }} {
+      flex: 0 0 auto;
+      width: {{ section.settings.width-mobile }};
+      aspect-ratio: 4 / 5;
+      scroll-snap-align: start;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
   }
 
-  #lightbox-arrow-{{ section.id }}{
-    display:flex !important;
-    justify-content:space-between !important;
+  .w-image-el {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
   }
 
+  .slider-container-{{ section.id }}::before,
+  .slider-container-{{ section.id }}::after {
+      content: "";
+      flex: 0 0 auto;
+  }
+  .slider-container-{{ section.id }}::before { width: 16px; }
+  .slider-container-{{ section.id }}::after { width: 16px; }
 
-  #modal-prev-{{ section.id }},
-  #modal-next-{{ section.id }} {
-    position: relative ;
-    display: inline-flex ;
+  @media (min-width: 1024px) {
+      .slider-item-{{ section.id }} {
+          width: {{ section.settings.width-desktop }};
+          aspect-ratio: 4 / 3;
+      }
+      .slider-container-{{ section.id }}::before { width: 64px; }
+      .slider-container-{{ section.id }}::after { width: 64px; }
   }
 
+  .arrow-disabled {
+    opacity: 0.2;
+    pointer-events: none;
+    cursor: default;
+  }
 
-  #lightbox-{{ section.id }} .arrows-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px; 
-  }
-}
-  
-@media (max-width: 1023px) and (orientation: landscape) {
-  #modal-close-{{ section.id }} {
-    position: absolute !important;
-    top: 24px !important;
-    right: 16px !important;
-    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
-    backdrop-filter: blur(48px) !important;
-    padding: 8px;
-    border-radius: 9999px !important;
-  }
-  #lightbox-{{ section.id }} {
-    padding: 0 !important;
-  }
-  #lightbox-img-{{ section.id }} {
-    max-height: 100vh !important;
-    border-radius: 0 !important;
-  }
-  #modal-prev-{{ section.id }},
-  #modal-next-{{ section.id }} {
-    bottom: 99px !important;
-    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
-    backdrop-filter: blur(48px) !important;
-    padding: 8px;
-    border-radius: 9999px !important;
-  }
-  .lightbox{
-    height: 100% !important;
-  }
-  #lightbox-text-{{ section.id }}{
-    position: absolute !important;
-    bottom: 30px !important;
-    border-radius:10px !important;
-    left:45% !important;
-  }
-  #lightbox-title-{{ section.id }}{
-    margin:0 !important;
-    padding: 4px 16px 4px 16px!important;
-  }
-  #modal-prev-{{ section.id }}{ left: 16px !important; }
-  #modal-next-{{ section.id }}{ right: 16px !important; }
-  #lightbox-{{ section.id }} img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
-}
-@media (max-width: 667px) and (orientation: landscape) {
-#lightbox-text-{{ section.id }}{
-    display:none;
-}
- #modal-prev-{{ section.id }},
-  #modal-next-{{ section.id }} {
-    bottom: 77px !important;
-  }
-}
-@media (min-width: 1025px) {
-  #modal-close-{{ section.id }} {
-    position: absolute !important;
-    top: 24px !important;
-    right: 16px !important;
-    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
-    backdrop-filter: blur(48px) !important;
-    padding: 16px;
-    border-radius: 9999px !important;
-  }
-  #modal-prev-{{ section.id }},
-  #modal-next-{{ section.id }} {
-    bottom: 37px !important;
-    background: var(--Blur-VD-Blur, rgba(16,16,16,0.60)) !important;
-    backdrop-filter: blur(48px) !important;
-    padding: 16px;
-    border-radius: 9999px !important;
-  }
-  .lightbox{
-    height: 100%;
-  }
-  #lightbox-text-{{ section.id }}{
-    bottom: 37px !important;
-    border-radius:10px !important;
-    left:50% !important;
-  }
-  #lightbox-title-{{ section.id }}{
-    margin:0 !important;
-    padding: 8px 16px 8px 16px!important;
-  }
-  #modal-prev-{{ section.id }}{ left: 16px !important; }
-  #modal-next-{{ section.id }}{ right: 16px !important; }
-  #lightbox-{{ section.id }} img { width: 100% !important; height: auto !important; object-fit: cover !important; }
-}
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  #lightbox-{{ section.id }}.visible { display: flex; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('scroll-container-{{ section.id }}');
+    if (!slider) return;
+
     const images = Array.from(slider.querySelectorAll('img'));
-    const lightbox = document.getElementById('lightbox-{{ section.id }}');
-    const lightboxImg = document.getElementById('lightbox-img-{{ section.id }}');
-    const titleEl = document.getElementById('lightbox-title-{{ section.id }}');
-    const subtitleEl = document.getElementById('lightbox-subtitle-{{ section.id }}');
-    const closeBtn = document.getElementById('modal-close-{{ section.id }}');
-    const prevBtn = document.getElementById('modal-prev-{{ section.id }}');
-    const nextBtn = document.getElementById('modal-next-{{ section.id }}');
-    const prevBtnSlider = document.querySelector('.prev-{{ section.id }}');
-    const nextBtnSlider = document.querySelector('.next-{{ section.id }}');
+    const currentNumEl = document.getElementById('current-slide-{{ section.id }}');
+    const prevBtn = document.querySelector('.prev-{{ section.id }}');
+    const nextBtn = document.querySelector('.next-{{ section.id }}');
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let currentIndex = 0;
-    let scrollPosition = 0;
+    const formatNum = (num) => num.toString().padStart(2, '0');
+    const getGap = () => window.innerWidth >= 1024 ? 16 : 8; 
 
-    const showLightbox = (index) => {
-        scrollPosition = window.scrollY; // salva scroll corrente
-        const img = images[index];
-        lightboxImg.src = img.src;
-        titleEl.textContent = img.dataset.title || '';
-        subtitleEl.textContent = img.dataset.subtitle || '';
-        lightbox.classList.add('visible');
-        document.body.classList.add('no-scroll');
-        document.body.style.top = `-${scrollPosition}px`; // blocca scroll
-        currentIndex = index;
+    const updateSliderUI = () => {
+        const scrollLeft = slider.scrollLeft;
+        const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+        const firstItem = slider.querySelector('.slider-item-{{ section.id }}');
+        
+        if (!firstItem) return;
+
+        // 1. Aggiorna Contatore
+        const index = Math.round(scrollLeft / (firstItem.offsetWidth + getGap()));
+        currentNumEl.textContent = formatNum(Math.max(0, Math.min(index, images.length - 1)) + 1);
+
+        // 2. Gestione Stato Frecce (Disabilita all'inizio e alla fine)
+        // Usiamo un margine di tolleranza di 5px per evitare problemi con arrotondamenti browser
+        if (scrollLeft <= 5) {
+            prevBtn.classList.add('arrow-disabled');
+        } else {
+            prevBtn.classList.remove('arrow-disabled');
+        }
+
+        if (scrollLeft >= maxScrollLeft - 5) {
+            nextBtn.classList.add('arrow-disabled');
+        } else {
+            nextBtn.classList.remove('arrow-disabled');
+        }
     };
 
-    const closeLightbox = () => {
-        lightbox.classList.remove('visible');
-        document.body.classList.remove('no-scroll');
-        document.body.style.top = '';
-        window.scrollTo(0, scrollPosition); // ripristina scroll
-    };
+    // Inizializza lo stato al caricamento
+    updateSliderUI();
 
-    const showPrev = () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showLightbox(currentIndex);
-    };
+    slider.addEventListener('scroll', updateSliderUI);
 
-    const showNext = () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showLightbox(currentIndex);
-    };
-
-    const scrollAmount = slider.clientWidth * 0.8;
-
-    prevBtnSlider.addEventListener('click', () => {
-        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    nextBtn.addEventListener('click', () => {
+        const firstItem = slider.querySelector('.slider-item-{{ section.id }}');
+        slider.scrollBy({ left: firstItem.offsetWidth + getGap(), behavior: 'smooth' });
     });
 
-    nextBtnSlider.addEventListener('click', () => {
-        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    prevBtn.addEventListener('click', () => {
+        const firstItem = slider.querySelector('.slider-item-{{ section.id }}');
+        slider.scrollBy({ left: -(firstItem.offsetWidth + getGap()), behavior: 'smooth' });
     });
 
-    slider.addEventListener('mousedown', e => {
-        e.preventDefault();
+    // Drag to scroll
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', (e) => {
         isDown = true;
-        slider.classList.add('active');
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
     });
-
     slider.addEventListener('mouseleave', () => isDown = false);
     slider.addEventListener('mouseup', () => isDown = false);
-    slider.addEventListener('mousemove', e => {
+    slider.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1; 
+        const walk = (x - startX) * 2;
         slider.scrollLeft = scrollLeft - walk;
     });
-
-    images.forEach((img, idx) => {
-        img.addEventListener('click', () => showLightbox(idx));
-        img.addEventListener('dragstart', e => e.preventDefault());
-    });
-
-    closeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        closeLightbox();
-    });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-    });
-
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
 });
 </script>
 
 {% schema %}
 {
   "name": "Slider",
+  "max_blocks": 9,
   "settings": [
-    {
-      "type": "text",
-      "id": "id",
-      "label": "Id section",
-      "default": "slider"
-    },
-    {
-      "type": "text",
-      "id": "image-slider-title",
-      "label": "Title (optional)"
-    },
+    { "type": "text", "id": "id", "label": "Id section", "default": "slider" },
+    { "type": "text", "id": "image-slider-title", "label": "Title (optional)" },
+    { "type": "header", "content": "Section Padding" },
+    { "type": "range", "id": "pt_mobile", "label": "Top Mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "pt_tablet", "label": "Top Tablet", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "pt_desktop", "label": "Top Desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "pb_mobile", "label": "Bottom Mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "pb_tablet", "label": "Bottom Tablet", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "pb_desktop", "label": "Bottom Desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "header", "content": "Widths" },
     {
       "type": "select",
       "id": "width-desktop",
-      "label": "Width image desktop",
+      "label": "Width desktop",
       "options": [
-        { "value": "511px", "label": "Small - 511px" },
-        { "value": "932px", "label": "Big - 932px" }
+        { "value": "511px", "label": "Small" },
+        { "value": "932px", "label": "Big" }
       ],
       "default": "932px"
     },
     {
       "type": "select",
       "id": "width-mobile",
-      "label": "Width image mobile",
+      "label": "Width mobile",
       "options": [
-        { "value": "327px", "label": "Small - 327px" },
-        { "value": "324px", "label": "Big - 324px" }
+        { "value": "327px", "label": "Small" },
+        { "value": "100%", "label": "Full Width" }
       ],
-      "default": "324px"
-    },
-    {
-      "type": "select",
-      "id": "height-desktop",
-      "label": "Height image desktop",
-      "options": [
-        { "value": "337px", "label": "Small - 337px" },
-        { "value": "621px", "label": "Big - 621px" }
-      ],
-      "default": "621px"
-    },
-    {
-      "type": "select",
-      "id": "height-mobile",
-      "label": "Height image mobile",
-      "options": [
-        { "value": "216px", "label": "Small - 216px" },
-        { "value": "240px", "label": "Big - 240px" }
-      ],
-      "default": "216px"
+      "default": "327px"
     }
   ],
   "blocks": [
     {
       "type": "image-slider-image",
-      "name": "Image slider image",
-      "limit": 5,
+      "name": "Image",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image-slider-image",
-          "label": "Select an image"
-        },
-        {
-          "type": "text",
-          "id": "image-slider-image-alt",
-          "label": "Alt text of the image selected",
-          "default": "ALT TEXT"
-        },
-        {
-          "type": "text",
-          "id": "image-slider-image-title",
-          "label": "Image title ( optional )",
-          "default": "Title"
-        },
-        {
-          "type": "checkbox",
-          "id": "image-slider-overlay",
-          "label": "Show gradient",
-          "default": false
-        }
+        { "type": "image_picker", "id": "image-slider-image", "label": "Image" },
+        { "type": "text", "id": "image-slider-image-alt", "label": "Alt text" },
+        { "type": "text", "id": "image-slider-image-title", "label": "Title" },
+        { "type": "checkbox", "id": "image-slider-overlay", "label": "Overlay Gradient", "default": false }
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Slider",
-      "category": "Media Sections"
-    }
-  ]
+  "presets": [ { "name": "Slider", "category": "Media Sections" } ]
 }
 {% endschema %}

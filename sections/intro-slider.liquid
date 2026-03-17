@@ -1,0 +1,157 @@
+<div id="{{ section.settings.id }}" class="bg_gs bg_gsp intro-{{ section.id }} px-4 md:px-10 lg:px-[64px] xl:px-[128px]">
+    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-10 lg:gap-12">
+        
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when '@app' %}
+                    {% render block %}
+
+                {% when 'intro-title' %}
+                    <div class="flex flex-col w-full lg:w-1/2 max-w-[721px]" {{ block.shopify_attributes }}>
+                        {% if block.settings.intro-title-text != blank %}
+                            <h2 class="responsive-title heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp pb-4"> 
+                                {{ block.settings.intro-title-text }} 
+                            </h2>
+                        {% endif %}
+                        {% if block.settings.small-title != blank %}
+                            <h3 class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp"> 
+                                {{ block.settings.small-title }} 
+                            </h3>
+                        {% endif %}
+                    </div>
+
+                {% when 'intro-text-area' %}
+                    <div class="flex flex-col w-full lg:w-1/2 max-w-[511px] tk-aktiv-grotesk" {{ block.shopify_attributes }}>
+                        {% if block.settings.intro-text-area-title != blank %}
+                            <div class="pb-4">
+                                <h6 class="text-[26px] leading-[32px] lg:text-[42px] lg:leading-[48px] uppercase text-color_gs text-color_gsp"> 
+                                    {{ block.settings.intro-text-area-title }} 
+                                </h6>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="body-regular text-[16px] lg:text-[18px] leading-[22px] lg:leading-6 text-color_gs text-color_gsp">
+                            {{ block.settings.intro-text-area-text | newline_to_br }}
+                        </div>
+
+                        {% if section.settings.first-cta-visible or section.settings.second-cta-visible %}
+                            <div class="pt-8 flex flex-col w-full gap-4">
+                                {% if section.settings.first-cta-visible %}
+                                    <a href="{{ section.settings.first-cta-link }}" class="w-full text-center font-semibold rounded-4xl py-3.5 px-5 lg:px-7 border transition-all" 
+                                       style="background-color: {% if section.settings.brochure-transparent %}transparent{% else %}{{ section.settings.brochure-bg-color }}{% endif %}; 
+                                              color: {{ section.settings.brochure-color }}; 
+                                              border-color: {{ section.settings.brochure-border-color }}; 
+                                              backdrop-filter: blur(40px);">
+                                        {{ section.settings.first-cta-label }}
+                                    </a>
+                                {% endif %}
+
+                                {% if section.settings.second-cta-visible %}
+                                    <a href="{{ section.settings.second-cta-link }}" class="w-full text-center font-semibold rounded-4xl py-3.5 px-5 lg:px-7 border transition-all" 
+                                       style="background-color: {% if section.settings.info-transparent %}transparent{% else %}{{ section.settings.info-bg-color }}{% endif %}; 
+                                              color: {{ section.settings.info-color }}; 
+                                              border-color: {{ section.settings.info-border-color }}; 
+                                              backdrop-filter: blur(40px);">
+                                        {{ section.settings.second-cta-label }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+  .intro-{{ section.id }} {
+    padding-top: {{ section.settings.pt_mobile }}px;
+    padding-bottom: {{ section.settings.pb_mobile }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .intro-{{ section.id }} {
+      padding-top: {{ section.settings.pt_tablet }}px;
+      padding-bottom: {{ section.settings.pb_tablet }}px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .intro-{{ section.id }} {
+      padding-top: {{ section.settings.pt_desktop }}px;
+      padding-bottom: {{ section.settings.pb_desktop }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+    "name": "Intro - Split Text",
+    "settings": [
+        {
+            "type": "text",
+            "id": "id",
+            "label": "Id section",
+            "default": "intro"
+        },
+        {
+            "type": "header",
+            "content": "Buttons Configuration"
+        },
+        { "type": "checkbox", "id": "first-cta-visible", "label": "First cta visible", "default": false },
+        { "type": "text", "id": "first-cta-label", "label": "first CTA Label", "default": "Scarica la brochure" },
+        { "type": "url", "id": "first-cta-link", "label": "First cta link" },
+        { "type": "checkbox", "id": "brochure-transparent", "label": "First button background transparent", "default": false },
+        { "type": "color", "id": "brochure-bg-color", "label": "First button background color", "default": "#ffffff" },
+        { "type": "color", "id": "brochure-color", "label": "First button text color", "default": "#000000" },
+        { "type": "color", "id": "brochure-border-color", "label": "First button border color", "default": "#ffffff" },
+        { "type": "checkbox", "id": "second-cta-visible", "label": "Second cta visible", "default": false },
+        { "type": "text", "id": "second-cta-label", "label": "Second CTA Label", "default": "Richiedi informazioni" },
+        { "type": "url", "id": "second-cta-link", "label": "Second cta link" },
+        { "type": "checkbox", "id": "info-transparent", "label": "Second button background transparent", "default": true },
+        { "type": "color", "id": "info-bg-color", "label": "Second button background color", "default": "#000000" },
+        { "type": "color", "id": "info-color", "label": "Second button text color", "default": "#ffffff" },
+        { "type": "color", "id": "info-border-color", "label": "Second button border color", "default": "#ffffff" },
+        {
+            "type": "header",
+            "content": "Padding Top"
+        },
+        { "type": "range", "id": "pt_mobile", "label": "Top Mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 48 },
+        { "type": "range", "id": "pt_tablet", "label": "Top Tablet", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 72 },
+        { "type": "range", "id": "pt_desktop", "label": "Top Desktop", "min": 0, "max": 400, "step": 4, "unit": "px", "default": 128 },
+        {
+            "type": "header",
+            "content": "Padding Bottom"
+        },
+        { "type": "range", "id": "pb_mobile", "label": "Bottom Mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 48 },
+        { "type": "range", "id": "pb_tablet", "label": "Bottom Tablet", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 72 },
+        { "type": "range", "id": "pb_desktop", "label": "Bottom Desktop", "min": 0, "max": 400, "step": 4, "unit": "px", "default": 128 }
+    ],
+    "blocks": [
+        {
+            "type": "intro-title",
+            "name": "Intro title",
+            "limit": 1,
+            "settings": [
+                { "type": "text", "id":"intro-title-text", "label": "Big title", "default": "VANDUTCH 32: COMPATTO, ICONICO, INCONFONDIBILE" },
+                { "type": "text", "id":"small-title", "label": "Small title" }
+            ]
+        },
+        {
+            "type": "intro-text-area",
+            "name": "Intro Text area",
+            "limit": 1,
+            "settings": [
+                { "type": "text", "id": "intro-text-area-title", "label": "Intro title", "default": "IL LUSSO INCONTRA LA VERSATILITÀ" },
+                { "type": "textarea", "id": "intro-text-area-text", "label": "Intro text", "default": "Descrizione..." }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Intro - Slider", "category": "Text sections",
+            "blocks": [ { "type":"intro-title" }, { "type":"intro-text-area" } ]
+        }
+    ]
+}
+{% endschema %}

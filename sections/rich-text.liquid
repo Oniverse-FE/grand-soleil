@@ -1,0 +1,151 @@
+<div class="bg_gs bg_gsp rich-text-{{ section.id }} flex flex-col px-4 md:px-8 lg:px-10 xl:px-[128px] gap-10 lg:gap-12">
+    <div class="flex flex-col gap-3 lg:gap-6 
+        {% if section.settings.alignment_mobile == 'center' %} items-center text-center {% else %} items-start text-left {% endif %}
+        {% if section.settings.alignment_desktop == 'center' %} md:items-center md:text-center {% else %} md:items-start md:text-left {% endif %}">
+        
+        {%- if section.settings.rt_subtitle != blank -%}
+          <div class="flex pretitle-sm_gs pretitle-sm_gsp md:pretitle-lg_gs md:pretitle-lg_gsp text-blue_gs text-truffle_gsp">
+              {{ section.settings.rt_subtitle }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.rt_title != blank -%}
+          <div class="flex heading-md_gs heading-md_gsp md:title_gs md:title_gsp text-color_gs text-color_gsp">
+              {{ section.settings.rt_title }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.rt_text1 != blank -%}
+          <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp lg:max-w-[872px]">
+              {{ section.settings.rt_text1 | newline_to_br }}
+          </div>
+        {%- endif -%}
+     </div>
+</div>
+
+<style>
+    /* Mobile (Base) */
+  .rich-text-{{ section.id }} {
+    padding-top: {{ section.settings.pt_mobile }}px;
+    padding-bottom: {{ section.settings.pb_mobile }}px;
+  }
+
+  /* Tablet (768px+) */
+  @media screen and (min-width: 768px) {
+    .rich-text-{{ section.id }} {
+      padding-top: {{ section.settings.pt_tablet }}px;
+      padding-bottom: {{ section.settings.pb_tablet }}px;
+    }
+  }
+
+  /* Desktop (1024px+) */
+  @media screen and (min-width: 1024px) {
+    .rich-text-{{ section.id }} {
+      padding-top: {{ section.settings.pt_desktop }}px;
+      padding-bottom: {{ section.settings.pb_desktop }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "rt_subtitle",
+      "label": "Subtitle",
+      "default": "IL RITORNO DI UN MITO"
+    },
+    {
+      "type": "text",
+      "id": "rt_title",
+      "label": "Title",
+      "default": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO"
+    },
+    {
+      "type": "textarea",
+      "id": "rt_text1",
+      "label": "Text area"
+    },
+    {
+      "type": "header",
+      "content": "Alignment"
+    },
+    {
+      "type": "select",
+      "id": "alignment_mobile",
+      "label": "Mobile Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "alignment_desktop",
+      "label": "Desktop Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "pt_mobile",
+      "label": "Top Mobile",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pt_tablet",
+      "label": "Top Tablet",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60
+    },
+    {
+      "type": "range",
+      "id": "pt_desktop",
+      "label": "Top Desktop",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Padding Bottom"
+    },
+    {
+      "type": "range",
+      "id": "pb_mobile",
+      "label": "Bottom Mobile",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pb_tablet",
+      "label": "Bottom Tablet",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60
+    },
+    {
+      "type": "range",
+      "id": "pb_desktop",
+      "label": "Bottom Desktop",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text",
+      "category": "Text sections"
+    }
+  ]
+}
+{% endschema %}
