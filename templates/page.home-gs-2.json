@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_kYmAaY": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_BNB6cL": {
+          "type": "content",
+          "settings": {
+            "content-media": true,
+            "content-video-mobile": "shopify://files/videos/GrandSoleil.mp4",
+            "content-video-desktop": "shopify://files/videos/GrandSoleil.mp4",
+            "content-subtitle": "Nuovo modello",
+            "content-title": "Nuovo Grand Soleil PLUS 80",
+            "content-title-color": "#faf9f7",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        },
+        "content_mA3bPy": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
+            "content-image-desktop": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
+            "content-subtitle": "Nuovo modello",
+            "content-title": "Nuovo Grand Soleil PLUS 80",
+            "content-title-color": "#faf9f7",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_BNB6cL",
+        "content_mA3bPy"
+      ],
+      "name": "Hero Banner Final",
+      "settings": {}
+    },
+    "subtitle_text_bgKxpn": {
+      "type": "animation-text",
+      "name": "Animation text",
+      "settings": {
+        "simple-intro-title": "DUE ANIME, UN’UNICA ICONA",
+        "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto.",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 128,
+        "pb_mob": 128
+      }
+    },
+    "text_and_image_WmYNYT": {
+      "type": "text-and-image",
+      "name": "Image and Text",
+      "settings": {
+        "imgandtext-image-left": false,
+        "mobile_reverse": false,
+        "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "imgandtext-title": "Grand Soleil Cup",
+        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
+        "imgandtext-cta_label1": "Scopri la GS Cup",
+        "imgandtext-cta_url1": "#",
+        "imgandtext-cta_label2": "TitleScopri la GS Cup",
+        "imgandtext-cta_url2": "#",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 64,
+        "pb_mob": 64
+      }
+    },
+    "sailing_story_wwLe3R": {
+      "type": "sailing-story",
+      "name": "Sailing story",
+      "settings": {
+        "main_title": "Sailing story",
+        "link_text": "Vedi tutte le sailing story",
+        "link_url": "",
+        "main_image": "shopify://shop_images/Sailing_story_card_b8327b19-eb65-4733-8602-962b38a4ef24.png",
+        "subtitle": "EPISODIO 1",
+        "inner_title": "To the Max",
+        "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
+        "cta_text": "Leggi la sailing story",
+        "cta_url": "",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 24,
+        "pb_mob": 24
+      }
+    },
+    "news_list_ynrNdG": {
+      "type": "news-list",
+      "name": "News Slider",
+      "settings": {
+        "news-slider-title": "LEGGI IL BLOG",
+        "content": "",
+        "news-cta-label": "Leggi l'articolo",
+        "news-slider-cta-all-label": "Vedi tutto",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "event_slider_yWwQkM": {
+      "type": "event-slider",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-date": "Data",
+        "event-slider-location": "Luogo",
+        "event-slider-cta2-label": "Discover more",
+        "font_size_desk": "42px",
+        "font_size_mob": "36px",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 24,
+        "pb_mob": 24
+      }
+    },
+    "text_image_with_background_pHwXNp": {
+      "type": "text-image-with-background",
+      "name": "Box Testo e Immagine",
+      "settings": {
+        "image_position": "right",
+        "mobile_reverse": false,
+        "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+        "pretitle": "SERVICE & AFTER SALE",
+        "title": "Valore che dura nel tempo",
+        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
+        "button_label": "Scopri tutti i servizi",
+        "button_link": "",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "find_dealer_LkPTw9": {
+      "type": "find-dealer",
+      "name": "Find a dealer",
+      "settings": {
+        "fd-content_alignment_mobile": "center",
+        "fd-content_alignment": "center",
+        "fd-cta_position": "center",
+        "fd-title": "Trova un dealer",
+        "fd-text1": "L’esperienza dei nostri dealers è insostituibile. Trova il quello più vicino a te per saperne di più ed entrare nel mondo Grand Soleil Yachts.",
+        "fd-cta_label": "Contatta il dealer",
+        "fd-cta_link": "#",
+        "fd-cta_label2": "Chiedi informazioni",
+        "fd-cta_link2": "#"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_kYmAaY",
+    "subtitle_text_bgKxpn",
+    "text_and_image_WmYNYT",
+    "sailing_story_wwLe3R",
+    "news_list_ynrNdG",
+    "event_slider_yWwQkM",
+    "text_image_with_background_pHwXNp",
+    "find_dealer_LkPTw9"
+  ]
+}
