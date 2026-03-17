@@ -52,10 +52,16 @@
     },
     "subtitle_text_bgKxpn": {
       "type": "animation-text",
-      "name": "Subtile & Text Scroll",
+      "name": "Animation text",
       "settings": {
         "simple-intro-title": "DUE ANIME, UN’UNICA ICONA",
-        "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto."
+        "simple-intro-text": "Da 50 anni, il nostro DNA vincente si fonde con l’ineguagliabile maestria artigianale per creare yacht a vela che uniscono performance da regata e comfort assoluto.",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 128,
+        "pb_mob": 128
       }
     },
     "multi_card_9ekjXf": {
@@ -112,7 +118,13 @@
       ],
       "name": "Multi Cards Editorial",
       "settings": {
-        "id": "editorial-cards"
+        "id": "editorial-cards",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "editorial_section_3E6LXU": {
@@ -146,7 +158,13 @@
       ],
       "name": "Editorial content",
       "settings": {
-        "id": "content"
+        "id": "content",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 64,
+        "pb_mob": 64
       }
     },
     "text_and_image_WmYNYT": {
@@ -154,17 +172,20 @@
       "name": "Image and Text",
       "settings": {
         "imgandtext-image-left": false,
+        "mobile_reverse": false,
         "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "imgandtext-title": "Grand Soleil Cup",
+        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
         "imgandtext-cta_label1": "Scopri la GS Cup",
         "imgandtext-cta_url1": "#",
         "imgandtext-cta_label2": "TitleScopri la GS Cup",
         "imgandtext-cta_url2": "#",
-        "imgandtext-title": "Grand Soleil Cup",
-        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
-        "padding_top": 40,
-        "padding_bottom": 96,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 56
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 64,
+        "pb_mob": 64
       }
     },
     "sailing_story_wwLe3R": {
@@ -179,7 +200,13 @@
         "inner_title": "To the Max",
         "text": "<p>Nel primo episodio, Max Sirena rivela il motivo della scelta del Grand Soleil 44 come barca a vela per il suo tempo libero.</p>",
         "cta_text": "Leggi la sailing story",
-        "cta_url": ""
+        "cta_url": "",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 24,
+        "pb_mob": 32
       }
     },
     "event_slider_yWwQkM": {
@@ -187,18 +214,17 @@
       "name": "Future events",
       "settings": {
         "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-cta1-bg-color": "#ffffff",
-        "event-slider-cta1-color": "#ffffff",
-        "event-slider-cta1-border-color": "#ffffff",
-        "event-slider-cta1-label": "Book an appointment",
-        "event-slider-cta1-bg-transparent": true,
-        "event-slider-cta2-bg-color": "#ffffff",
-        "event-slider-cta2-color": "#000000",
-        "event-slider-cta2-border-color": "#ffffff",
+        "event-slider-date": "Data",
+        "event-slider-location": "Luogo",
         "event-slider-cta2-label": "Discover more",
-        "event-slider-cta2-bg-transparent": false,
         "font_size_desk": "42px",
-        "font_size_mob": "36px"
+        "font_size_mob": "36px",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 32,
+        "pb_mob": 32
       }
     },
     "text_image_with_background_pHwXNp": {
@@ -206,18 +232,26 @@
       "name": "Box Testo e Immagine",
       "settings": {
         "image_position": "right",
+        "mobile_reverse": false,
         "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
         "pretitle": "SERVICE & AFTER SALE",
         "title": "Valore che dura nel tempo",
         "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
         "button_label": "Scopri tutti i servizi",
-        "button_link": ""
+        "button_link": "",
+        "pt_desk": 120,
+        "pb_desk": 120,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 48,
+        "pb_mob": 48
       }
     },
     "find_dealer_LkPTw9": {
       "type": "find-dealer",
       "name": "Find a dealer",
       "settings": {
+        "fd-content_alignment_mobile": "center",
         "fd-content_alignment": "center",
         "fd-cta_position": "center",
         "fd-title": "Trova un dealer",

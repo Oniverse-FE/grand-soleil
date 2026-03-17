@@ -64,16 +64,12 @@
       "settings": {
         "imgandtext-image-left": false,
         "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
+        "imgandtext-title": "Grand Soleil Cup",
+        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
         "imgandtext-cta_label1": "Scopri la GS Cup",
         "imgandtext-cta_url1": "#",
         "imgandtext-cta_label2": "TitleScopri la GS Cup",
-        "imgandtext-cta_url2": "#",
-        "imgandtext-title": "Grand Soleil Cup",
-        "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
-        "padding_top": 40,
-        "padding_bottom": 96,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 56
+        "imgandtext-cta_url2": "#"
       }
     },
     "sailing_story_wwLe3R": {
@@ -96,16 +92,7 @@
       "name": "Future events",
       "settings": {
         "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-cta1-bg-color": "#ffffff",
-        "event-slider-cta1-color": "#ffffff",
-        "event-slider-cta1-border-color": "#ffffff",
-        "event-slider-cta1-label": "Book an appointment",
-        "event-slider-cta1-bg-transparent": true,
-        "event-slider-cta2-bg-color": "#ffffff",
-        "event-slider-cta2-color": "#000000",
-        "event-slider-cta2-border-color": "#ffffff",
         "event-slider-cta2-label": "Discover more",
-        "event-slider-cta2-bg-transparent": false,
         "font_size_desk": "42px",
         "font_size_mob": "36px"
       }
