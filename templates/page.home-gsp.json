@@ -51,7 +51,7 @@
       "settings": {}
     },
     "subtitle_text_bgKxpn": {
-      "type": "subtitle-text",
+      "type": "animation-text",
       "name": "Subtile & Text Scroll",
       "settings": {
         "simple-intro-title": "DUE ANIME, UN’UNICA ICONA",

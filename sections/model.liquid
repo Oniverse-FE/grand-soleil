@@ -1,0 +1,220 @@
+<div id="modelSection-{{ section.id }}" 
+     class="flex flex-col {% if section.settings.model-left == true %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} 
+            gap-8 lg:gap-[80px] xl:gap-[80px] 
+            px-4 md:px-12 lg:px-24 overflow-x-hidden 
+            h-75vh items-center justify-center space-model lg:mb-[124px] xl:mb-0">
+  
+  <div class="relative h-[218px] lg:h-[400px] w-full max-w-[616px] tk-mongoose font-bold 
+              {% if section.settings.model-left == true %}items-start justify-start{% else %}items-end justify-self-end{% endif %}">
+    <div class="flex {% if section.settings.model-left != true %}lg:justify-end{% endif %}">
+      <div class="flex flex-col justify-center lg:justify-start inset-0 h-[186px] lg:h-[400px] w-full lg:w-[516px] xl:w-[616px]">
+        <div id="modelTitle-{{ section.id }}" 
+             class="flex text-[180px] leading-44 lg:text-[320px] lg:leading-80 font-black z-0 w-full lg:w-[516px] xl:w-[616px] lg:px-[105px] justify-center"
+             style="color:{{ section.settings.model-title-color }};">
+          {{ section.settings.model }}
+        </div>
+      </div>
+      <div class="absolute inset-0 z-10 flex justify-center 
+                  {% if section.settings.model-left == true %}lg:justify-start{% else %}lg:justify-end{% endif %} items-end">
+        <a href="{{ section.settings.model-link }}" aria-label="{{ section.settings.model-link-label }}">
+          <img
+            id="modelImage-{{ section.id }}"
+            src="{{ section.settings.model-image | img_url: 'master' }}"
+            alt="{{ section.settings.model }}"
+            class="w-[270px] lg:w-[610px] h-auto {% if section.settings.model-left == false %}scale-x-[-1]{% endif %}">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col lg:gap[70px] lg:w-[516px] xl:w-[616px] lg:h-[400px] md:justify-start justify-center">
+    <div class="flex flex-col lg:w-[406]">
+      <div class="flex text-white">
+        <h6 class="text-4xl lg:text-[42px] leading-10 lg:leading-12 uppercase">
+          {{ section.settings.model-title }}
+        </h6>
+      </div>
+      <div class="flex w-full text-white body-regular text-[16px] lg:text-[18px] leading-5 lg:leading-6 text-start mt-3 mb-7 lg:mb-8">
+        {{ section.settings.model-text }}
+      </div>
+      <div class="flex text-white uppercase body-semibold text-[14px] lg:text-[16px] group animation w-fit">
+        <a href="{{ section.settings.model-link }}" aria-label="{{ section.settings.model-link-label }}">
+          <span class="mb-[6px]">{{ section.settings.model-link-label }}</span>
+          <span class="underline cta-underline"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (max-width: 400px) {
+    .space-model {
+      margin-bottom: 200px;
+    }
+  }
+  .group a {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap:4px;
+      overflow: hidden;
+  }
+  .underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: white;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: transform 2s ease;
+  }
+  .cta-underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      opacity: 1;
+      background-color: white;
+      transform: translateX(0%);
+      transition: transform 2s ease;
+  }
+  .group:hover .underline {
+      transform: translateX(100%);
+  }
+  .group:hover .cta-underline {
+      animation: enter-line 1.2s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 1;
+  }
+  @keyframes enter-line {
+      0% {
+          transform: translateX(-100%);
+      }
+      100% {
+          transform: translateX(0);
+      }
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sectionId = "{{ section.id }}";
+  const section = document.getElementById(`modelSection-${sectionId}`);
+  const image = document.getElementById(`modelImage-${sectionId}`);
+  const title = document.getElementById(`modelTitle-${sectionId}`);
+  const isModelLeft = {{ section.settings.model-left | json }};
+
+  if (!image || !title) return;
+
+  ScrollTrigger.matchMedia({
+    "(min-width: 1024px)": function() {
+      gsap.set(title, { x: 0, opacity: 1 }); 
+      gsap.set(image, { x: isModelLeft ? -500 : 500, opacity: 1, force3D: true });
+
+      gsap.to(image, {
+        x: 0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "center center",
+          scrub: 1, // rallentato rispetto a prima
+          invalidateOnRefresh: true
+        }
+      });
+    },
+
+    "(max-width: 1023px)": function() {
+      gsap.set(image, { x: isModelLeft ? -150 : 150, opacity: 1, force3D: true });
+      gsap.set(title, { x: isModelLeft ? 150 : -150, opacity: 1, force3D: true });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 60%",  // inizia quando la sezione si avvicina al centro
+          end: "bottom 40%", // termina quando la sezione è centrata
+          scrub: true,
+          invalidateOnRefresh: true
+        }
+      });
+
+      tl.to(image, { x: isModelLeft ? 150 : -150, ease: "none" }, 0)
+        .to(title, { x: isModelLeft ? -150 : 150, ease: "none" }, 0);
+    }
+  });
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+  ScrollTrigger.refresh();
+});
+</script>
+
+{% schema %}
+{
+    "name": "VD Model",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "model-left",
+            "label": "Image on the left",
+            "default": false
+        },
+        {
+            "type": "url",
+            "id": "model-link",
+            "label": "Link to the model page"
+        },
+        {
+            "type": "color",
+            "id": "model-title-color",
+            "label": "Color of the model title",
+            "default": "#F76C00"
+        },
+        {
+            "type": "text",
+            "id": "model",
+            "label": "Model",
+            "default": "32"
+        },
+        {
+            "type": "image_picker",
+            "id": "model-image",
+            "label": "Pick an image for the model"
+        },
+        {
+            "type": "text",
+            "id": "model-title",
+            "label": "Model section title",
+            "default": "VERSATILITÀ SENZA COMPROMESSI"
+        },
+        {
+            "type": "textarea",
+            "id": "model-text",
+            "label": "Model section text",
+            "default": "Compatto, potente, inconfondibile. Il VanDutch 32 unisce eleganza e prestazioni in un day boat perfetto per ogni avventura. Linee scolpite, dettagli di lusso e tecnologia avanzata per un’esperienza di navigazione pura, senza compromessi."
+        },
+        {
+            "type": "text",
+            "id": "model-link-label",
+            "label": "Link Label",
+            "default": "SCOPRI IL vandutch 32"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Model",
+            "category": "Custom Sections"
+        }
+    ]
+}
+
+{% endschema %}

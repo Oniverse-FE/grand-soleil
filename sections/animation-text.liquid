@@ -1,0 +1,166 @@
+<div id="reveal-section-{{ section.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="reveal-padding bg_gs bg_gsp flex flex-col justify-start gap-3 lg:gap-6 px-4 md:px-10 lg:px-[198px]">
+    
+    {% if section.settings.simple-intro-title != blank %}
+      <div class="flex pretitle-xs_gs pretitle-xs_gsp md:pretitle-lg_gs md:pretitle-lg_gsp text-blue_gs text-truffle_gsp">
+          {{ section.settings.simple-intro-title }}
+      </div>
+    {% endif %}
+
+    <div id="reveal-text-{{ section.id }}" class="reveal-container quote-sm_gs quote-sm_gsp md:quote-lg_gs md:quote-lg_gsp text-color_gs text-color_gsp">
+         {{ section.settings.simple-intro-text }}
+    </div>
+</div>
+
+<style>
+/* Padding Dinamico */
+.reveal-padding {
+    padding-top: var(--pt-mob);
+    padding-bottom: var(--pb-mob);
+}
+
+@media screen and (min-width: 768px) {
+    .reveal-padding {
+        padding-top: var(--pt-tab);
+        padding-bottom: var(--pb-tab);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .reveal-padding {
+        padding-top: var(--pt-desk);
+        padding-bottom: var(--pb-desk);
+    }
+}
+
+/* Effetto Reveal */
+.reveal-word {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  margin-right: 0.25em;
+  display: inline-block;
+}
+.reveal-word.active {
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const container = document.getElementById("reveal-text-{{ section.id }}");
+  if (!container) return;
+
+  const text = container.innerText.trim();
+  const words = text.split(/\s+/);
+  container.innerHTML = ""; 
+
+  const wordSpans = words.map(word => {
+    const span = document.createElement("span");
+    span.classList.add("reveal-word");
+    span.innerText = word;
+    container.appendChild(span);
+    return span;
+  });
+
+  const handleScroll = () => {
+    const rect = container.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    const start = windowHeight * 0.8;
+    const end = windowHeight * 0.2;
+    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+    
+    const wordsToLight = Math.floor(progress * wordSpans.length);
+    
+    wordSpans.forEach((span, index) => {
+      if (index <= wordsToLight && progress > 0) {
+        span.classList.add("active");
+      } else {
+        span.classList.remove("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll(); 
+});
+</script>
+
+{% schema %}
+{
+  "name": "Animation text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contenuti"
+    },
+    {
+      "type": "text",
+      "id": "simple-intro-title",
+      "label": "Sottotitolo (Intro)"
+    },
+    {
+      "type": "textarea",
+      "id": "simple-intro-text",
+      "label": "Testo Principale"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop (1024px+)"
+    },
+    {
+      "type": "range",
+      "id": "pt_desk",
+      "label": "Padding Superiore Desktop",
+      "min": 0, "max": 300, "step": 4, "unit": "px", "default": 200
+    },
+    {
+      "type": "range",
+      "id": "pb_desk",
+      "label": "Padding Inferiore Desktop",
+      "min": 0, "max": 300, "step": 4, "unit": "px", "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Padding Tablet (768px - 1023px)"
+    },
+    {
+      "type": "range",
+      "id": "pt_tab",
+      "label": "Padding Superiore Tablet",
+      "min": 0, "max": 260, "step": 4, "unit": "px", "default": 160
+    },
+    {
+      "type": "range",
+      "id": "pb_tab",
+      "label": "Padding Inferiore Tablet",
+      "min": 0, "max": 260, "step": 4, "unit": "px", "default": 160
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile (0px - 767px)"
+    },
+    {
+      "type": "range",
+      "id": "pt_mob",
+      "label": "Padding Superiore Mobile",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pb_mob",
+      "label": "Padding Inferiore Mobile",
+      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 128
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animation text",
+      "category": "Home Page"
+    }
+  ]
+}
+{% endschema %}

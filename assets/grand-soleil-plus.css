@@ -214,6 +214,538 @@
     font-style: normal;
 }
 
+.md\:title_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 56px;
+    line-height: 62px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:heading-lg_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:quote-lg_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.md\:heading-md_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:quote-md_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.md\:heading-sm_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:quote-sm_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.md\:subtitle_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:subtitle-rg_gsp{
+    @media (width >= 48rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:pretitle-lg_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:pretitle-md_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:pretitle-sm_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:pretitle-xs_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.md\:body-lg_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:body-md_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:body-sm_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:caption_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:link-xl_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:link-lg_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:link-md_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:link-sm_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:menu-lg_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:menu-md_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:menu-sm_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.md\:menu-xs_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500; 
+    font-style: normal;
+    }
+}
+
+.md\:menu-model_gsp{
+    @media (width >= 48rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500; 
+    font-style: normal;
+    }
+}
+
+.lg\:title_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 56px;
+    line-height: 62px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:heading-lg_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:quote-lg_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.lg\:heading-md_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:quote-md_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.lg\:heading-sm_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:quote-sm_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300; 
+    font-style: normal;
+    }
+}
+
+.lg\:subtitle_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 300; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:subtitle-rg_gsp{
+    @media (width >= 64rem) {
+     font-family: "Geist", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:pretitle-lg_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:pretitle-md_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:pretitle-sm_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:pretitle-xs_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500; 
+    font-style: normal;
+    text-transform: uppercase;
+    }
+}
+
+.lg\:body-lg_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:body-md_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:body-sm_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:caption_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:link-xl_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:link-lg_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:link-md_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 14px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:link-sm_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 12px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:menu-lg_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:menu-md_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:menu-sm_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400; 
+    font-style: normal;
+    }
+}
+
+.lg\:menu-xs_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500; 
+    font-style: normal;
+    }
+}
+
+.lg\:menu-model_gsp{
+    @media (width >= 64rem) {
+    font-family: "helvetica-neue-lt-pro", sans-serif; 
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500; 
+    font-style: normal;
+    }
+}
+
 .group-hover\:cta-hover_dual-entrance {
     &:is(:where(.group):hover *) {
     @media (hover: hover) {
@@ -297,6 +829,10 @@ color:#282624;
 
 .text-FAF9F7_gsp{
 color:#FAF9F7;
+}
+
+.text-EBEFF2_gsp{
+color:#EBEFF2;
 }
 
 .bg-beige_gsp{

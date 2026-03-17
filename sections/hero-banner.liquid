@@ -36,19 +36,19 @@
           <div class="absolute inset-0 bg-black/30"></div>
         </div>
 
-        <div class="relative z-20 px-6 max-w-5xl mx-auto">
-          <p class="pretitle-md_gs pretitle-md_gsp mb-[20px]" style="color:{{ block.settings.content-title-color }}">
+        <div class="relative z-20 px-4 max-w-5xl mx-auto">
+          <p class="pretitle-xs_gs pretitle-xs_gsp lg:pretitle-md_gs lg:pretitle-md_gsp mb-4 lg:mb-[20px]" style="color:{{ block.settings.content-title-color }}">
             {{ block.settings.content-subtitle }}
           </p>
-          <h2 class="slide-title title_gs title_gsp mb-10" style="color:{{ block.settings.content-title-color }}">
+          <h2 class="slide-title heading-md_gs heading-md_gsp lg:title_gs lg:title_gsp mb-10" style="color:{{ block.settings.content-title-color }}">
             {{ block.settings.content-title }}
           </h2>
           <div class="slide-actions flex flex-col md:flex-row items-center justify-center gap-[13px]">
             {% if block.settings.button_1_label != blank %}
-              <a href="{{ block.settings.button_1_url }}" class="btn-hero link-lg_gs link-lg_gsp cta-blur-dark_gs cta-blur-light_gsp ">{{ block.settings.button_1_label }}</a>
+              <a href="{{ block.settings.button_1_url }}" class="btn-hero link-lg_gs link-lg_gsp cta-blur_gs cta-blur-light_gsp w-full lg:w-fit">{{ block.settings.button_1_label }}</a>
             {% endif %}
             {% if block.settings.button_2_label != blank %}
-              <a href="{{ block.settings.button_2_url }}" class="btn-hero link-lg_gs link-lg_gsp cta-border-light_gsp cta-border-light_gs">{{ block.settings.button_2_label }}</a>
+              <a href="{{ block.settings.button_2_url }}" class="btn-hero link-lg_gs link-lg_gsp cta-border-light_gsp cta-border-light_gs w-full lg:w-fit">{{ block.settings.button_2_label }}</a>
             {% endif %}
           </div>
         </div>
@@ -56,18 +56,23 @@
     {% endfor %}
   </div>
 
-  {% comment %} PAGINAZIONE {% endcomment %}
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 h-10 px-6 py-2 stepper-hero_gs stepper-hero_gsp">
+{% comment %} PAGINAZIONE {% endcomment %}
+  <div class="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 h-10 px-6 py-2 stepper-hero_gs stepper-hero_gsp">
     {% for block in section.blocks %}
       <button class="pagination-dot relative flex items-center justify-center p-0 bg-transparent border-none cursor-pointer" data-index="{{ forloop.index0 }}" style="width: 24px; height: 24px;">
-        <svg class="hidden_gs view_gsp progress-svg absolute inset-0 w-6 h-6 -rotate-90 opacity-0 transition-opacity duration-300" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="11" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"></circle>
+        
+      {% if template contains 'gsp' %}
+        <svg class="progress-svg absolute inset-0 w-6 h-6 -rotate-90 opacity-0 transition-opacity duration-300" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11" fill="none" stroke="rgba(40,38,36,0.2)" stroke-width="2"></circle>
+          <circle class="progress-ring-fill" cx="12" cy="12" r="11" fill="none" stroke="#282624" stroke-width="2" stroke-dasharray="70" stroke-dashoffset="70" stroke-linecap="round"></circle>
+        </svg>
+      {% else %}
+        {% comment %} Cerchio per template GS (Azzurro #4DBAFA) {% endcomment %}
+        <svg class="progress-svg absolute inset-0 w-6 h-6 -rotate-90 opacity-0 transition-opacity duration-300" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11" fill="none" stroke="rgba(201, 191, 178, 0.72)" stroke-width="2"></circle>
           <circle class="progress-ring-fill" cx="12" cy="12" r="11" fill="none" stroke="#4DBAFA" stroke-width="2" stroke-dasharray="70" stroke-dashoffset="70" stroke-linecap="round"></circle>
         </svg>
-        <svg class="hidden_gsp view_gs progress-svg absolute inset-0 w-6 h-6 -rotate-90 opacity-0 transition-opacity duration-300" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="11" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"></circle>
-          <circle class="progress-ring-fill" cx="12" cy="12" r="11" fill="none" stroke="#4DBAFA" stroke-width="2" stroke-dasharray="70" stroke-dashoffset="70" stroke-linecap="round"></circle>
-        </svg>
+      {% endif %}
 
         <div class="dot-inner relative z-10 flex items-center justify-center">
           {% if block.settings.content-media %}
@@ -192,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% schema %}
 {
-  "name": "Hero Banner Final",
+  "name": "Hero Banner",
   "blocks": [
     {
       "type": "content",
@@ -213,6 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     }
   ],
-  "presets": [{ "name": "Hero Banner Final" }]
+  "presets": [{ "name": "Hero Banner" }]
 }
 {% endschema %}

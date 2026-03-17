@@ -1,27 +1,30 @@
-<div id="{{ section.settings.id }}" class="bg_gs bg_gsp flex flex-col py-[104px] md:py-20 lg:py-[96px] px-4 md:px-8 lg:px-[128px]">
+<div id="{{ section.settings.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="editorial-padding bg_gs bg_gsp flex flex-col px-4 md:px-8 lg:px-[128px]">
     
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-[64px] mb-10 lg:mb-16">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-[64px]">
         
         {% for block in section.blocks %}
             {% case block.type %}
                 
                 {% when 'title' %}
-                    <div class="w-full md:w-[582px] lg:w-[828px] flex flex-row md:flex-col {{ block.settings.title_alignment }}">
-                        <h2 class="heading-lg_gsp heading-lg_gs text-color_gs text-color_gsp">
+                    <div class="w-full md:w-[582px] lg:w-[828px] flex flex-row md:flex-col {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
+                        <h2 class="heading-md_gsp heading-md_gs md:heading-lg_gsp md:heading-lg_gs text-color_gs text-color_gsp">
                             {{ block.settings.editorial-title }}
                         </h2>
                     </div>
 
                 {% when 'text-area' %}
-                    <div class="w-full w-full md:w-[585px] lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk">
-                        <div class="body-lg_gs body-lg_gsp text-color-gs text-color_gsp">
-                            {{ block.settings.editor-text }}
+                    <div class="w-full md:w-[585px] lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk" {{ block.shopify_attributes }}>
+                        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color-gs text-color_gsp">
+                            {{ block.settings.editor-text | newline_to_br }}
                         </div>
                         
                         {% if block.settings.editorial-label != blank %}
                             <div class="flex justify-start">
                                 <a href="{{ block.settings.editorial-url }}" 
-                                   aria-label="{{ block.settings.aria_label_btn }}" 
                                    class="inline-flex px-8 py-4 text-center link-lg_gs link-lg_gsp cta-truffle_gsp cta-white_gs transition-all">
                                    {{ block.settings.editorial-label }}
                                 </a>
@@ -38,25 +41,20 @@
             {% case block.type %}
                 {% when 'video' %}
                     {% if block.settings.editor-video %}
-                        <div class="w-full rounded-[16px] overflow-hidden relative aspect-video" data-block-type="video">
-                            <div class="w-full h-full [&>iframe]:w-full [&>iframe]:h-full">
+                        <div class="w-full rounded-[16px] overflow-hidden relative aspect-[4/5] md:aspect-video" data-block-type="video" {{ block.shopify_attributes }}>
+                            <div class="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:absolute [&>iframe]:inset-0">
                                 {{ block.settings.editor-video }}
-                            </div>
-                            <div id="play-button-video" class="absolute inset-0 flex items-center justify-center cursor-pointer z-10 hidden">
-                                <div class="w-[80px] h-[80px] flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md">
-                                    {% render 'play-icon' %}
-                                </div>
                             </div>
                         </div>
                     {% endif %}
 
                 {% when 'image' %}
                     {% if block.settings.editor-image != blank %}
-                        <div class="w-full rounded-[16px] overflow-hidden">
+                        <div class="w-full rounded-[16px] overflow-hidden aspect-[4/5] md:aspect-video" {{ block.shopify_attributes }}>
                             {{ block.settings.editor-image | image_url: width: 2000 | image_tag: 
-                                class: 'w-full h-auto object-cover rounded-[16px]',
+                                class: 'w-full h-full object-cover rounded-[16px]',
                                 loading: 'lazy',
-                                alt: block.settings.alt_image 
+                                alt: block.settings.editor-image.alt 
                             }}
                         </div>
                     {% endif %}
@@ -65,9 +63,27 @@
     </div>
 </div>
 
-<script>
-// Mantieni lo script originale per Vimeo
-</script>
+<style>
+/* Logica Padding Responsive */
+.editorial-padding {
+    padding-top: var(--pt-mob);
+    padding-bottom: var(--pb-mob);
+}
+
+@media screen and (min-width: 768px) {
+    .editorial-padding {
+        padding-top: var(--pt-tab);
+        padding-bottom: var(--pb-tab);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .editorial-padding {
+        padding-top: var(--pt-desk);
+        padding-bottom: var(--pb-desk);
+    }
+}
+</style>
 
 {% schema %}
 {
@@ -78,6 +94,54 @@
             "id": "id",
             "label": "Id section",
             "default": "content"
+        },
+        {
+            "type": "header",
+            "content": "Padding Desktop (1024px+)"
+        },
+        {
+            "type": "range",
+            "id": "pt_desk",
+            "label": "Padding Superiore Desktop",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96
+        },
+        {
+            "type": "range",
+            "id": "pb_desk",
+            "label": "Padding Inferiore Desktop",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Padding Tablet (768px - 1023px)"
+        },
+        {
+            "type": "range",
+            "id": "pt_tab",
+            "label": "Padding Superiore Tablet",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+        },
+        {
+            "type": "range",
+            "id": "pb_tab",
+            "label": "Padding Inferiore Tablet",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+        },
+        {
+            "type": "header",
+            "content": "Padding Mobile (0px - 767px)"
+        },
+        {
+            "type": "range",
+            "id": "pt_mob",
+            "label": "Padding Superiore Mobile",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 104
+        },
+        {
+            "type": "range",
+            "id": "pb_mob",
+            "label": "Padding Inferiore Mobile",
+            "min": 0, "max": 200, "step": 4, "unit": "px", "default": 104
         }
     ],
     "blocks": [
@@ -143,6 +207,7 @@
     "presets": [
         {
             "name": "Editorial content",
+            "category": "Home Page",
             "blocks": [
                 { "type": "title" },
                 { "type": "text-area" },

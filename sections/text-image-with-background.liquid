@@ -4,10 +4,20 @@
   if section.settings.image_position == 'right'
     assign desktop_direction = 'md:flex-row-reverse'
   endif
+
+  # Logica per l'inversione dell'ordine su Mobile
+  assign mobile_direction = 'flex-col'
+  if section.settings.mobile_reverse
+    assign mobile_direction = 'flex-col-reverse'
+  endif
 -%}
 
-<div class="px-4 md:px-[128px] py-12 md:py-[200px] bg_gs bg_gsp">
-  <div class="flex flex-col {{ desktop_direction }} overflow-hidden rounded-[16px] shadow-lg bg-truffle_gs bg-beige_gsp min-h-[400px]">
+<div style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="box-text-img-padding px-4 md:px-12 lg:px-[128px] bg_gs bg_gsp">
+  
+  <div class="flex {{ mobile_direction }} {{ desktop_direction }} overflow-hidden rounded-[16px] shadow-lg bg-truffle_gs bg-beige_gsp min-h-[400px]">
     
     <div class="w-full md:w-1/2 h-72 md:h-auto">
       {%- if section.settings.image != blank -%}
@@ -21,22 +31,22 @@
       {%- endif -%}
     </div>
 
-    <div class="w-full md:w-1/2 flex flex-col justify-start p-8 md:p-16">
+    <div class="w-full md:w-1/2 flex flex-col justify-center px-6 py-10 md:p-12 lg:p-16">
       
       {%- if section.settings.pretitle != blank -%}
-        <p class="pretitle-md_gs pretitle-md_gsp text-blue_gs text-color_gsp mb-4">
+        <p class="pretitle-xs_gs pretitle-xs_gsp md:pretitle-md_gs md:pretitle-md_gsp text-blue_gs text-color_gsp mb-4">
           {{ section.settings.pretitle }}
         </p>
       {%- endif -%}
       
       {%- if section.settings.title != blank -%}
-        <h2 class="heading-lg_gs heading-lg_gsp text-color_gs text-color_gsp mb-6">
+        <h2 class="heading-md_gs heading-md_gsp md:heading-lg_gs md:heading-lg_gsp text-color_gs text-color_gsp mb-6">
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
       
       {%- if section.settings.content != blank -%}
-        <div class="body-lg_gs body-lg_gsp text-color_gs text-color_gsp mb-8 lg:mb-10">
+        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp mb-8 lg:mb-10">
           {{ section.settings.content }}
         </div>
       {%- endif -%}
@@ -44,7 +54,7 @@
       {%- if section.settings.button_label != blank -%}
         <div class="flex justify-start">
           <a href="{{ section.settings.button_link }}" 
-             class="inline-flex items-center justify-center px-8 py-4 w-auto transition-all duration-300 hover:opacity-90 link-lg_gs link-lg_gsp cta-truffle_gsp cta-blue_gs text-05090D_gs text-FAF9F7_gsp">
+             class="inline-flex items-center justify-center px-8 py-4 w-full md:w-fit text-center transition-all duration-300 hover:opacity-90 link-lg_gs link-lg_gsp cta-truffle_gsp cta-blue_gs">
             {{ section.settings.button_label }}
           </a>
         </div>
@@ -55,13 +65,34 @@
   </div>
 </div>
 
+<style>
+.box-text-img-padding {
+    padding-top: var(--pt-mob);
+    padding-bottom: var(--pb-mob);
+}
+
+@media screen and (min-width: 768px) {
+    .box-text-img-padding {
+        padding-top: var(--pt-tab);
+        padding-bottom: var(--pb-tab);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .box-text-img-padding {
+        padding-top: var(--pt-desk);
+        padding-bottom: var(--pb-desk);
+    }
+}
+</style>
+
 {% schema %}
 {
   "name": "Box Testo e Immagine",
   "settings": [
     {
       "type": "header",
-      "content": "Layout"
+      "content": "Layout Desktop"
     },
     {
       "type": "select",
@@ -72,6 +103,16 @@
         { "value": "right", "label": "Immagine a Destra" }
       ],
       "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Layout Mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_reverse",
+      "label": "Testo PRIMA dell'immagine (Mobile)",
+      "default": false
     },
     {
       "type": "header",
@@ -101,10 +142,6 @@
       "default": "<p>Inserisci qui un testo descrittivo coinvolgente per raccontare i tuoi prodotti o il tuo brand.</p>"
     },
     {
-      "type": "header",
-      "content": "Chiamata all'azione (CTA)"
-    },
-    {
       "type": "text",
       "id": "button_label",
       "label": "Testo Bottone",
@@ -114,11 +151,60 @@
       "type": "url",
       "id": "button_link",
       "label": "Link Bottone"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop (1024px+)"
+    },
+    {
+      "type": "range",
+      "id": "pt_desk",
+      "label": "Padding Superiore Desktop",
+      "min": 0, "max": 300, "step": 4, "unit": "px", "default": 120
+    },
+    {
+      "type": "range",
+      "id": "pb_desk",
+      "label": "Padding Inferiore Desktop",
+      "min": 0, "max": 300, "step": 4, "unit": "px", "default": 120
+    },
+    {
+      "type": "header",
+      "content": "Padding Tablet (768px - 1023px)"
+    },
+    {
+      "type": "range",
+      "id": "pt_tab",
+      "label": "Padding Superiore Tablet",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+    },
+    {
+      "type": "range",
+      "id": "pb_tab",
+      "label": "Padding Inferiore Tablet",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile (0px - 767px)"
+    },
+    {
+      "type": "range",
+      "id": "pt_mob",
+      "label": "Padding Superiore Mobile",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pb_mob",
+      "label": "Padding Inferiore Mobile",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 48
     }
   ],
   "presets": [
     {
-      "name": "Box Testo e Immagine"
+      "name": "Box Testo e Immagine",
+      "category": "Home Page"
     }
   ]
 }

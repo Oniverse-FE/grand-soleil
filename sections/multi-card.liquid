@@ -1,18 +1,22 @@
-<div id="{{ section.settings.id }}" class="bg_gs bg_gsp flex flex-col py-[104px] md:py-20 lg:py-[96px] px-4 md:px-8 lg:px-[128px]">
+<div id="{{ section.settings.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="editorial-cards-padding bg_gs bg_gsp flex flex-col px-4 md:px-8 lg:px-[128px]">
     
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-[64px] mb-10 lg:mb-16">
         {% for block in section.blocks %}
             {% case block.type %}
                 {% when 'title' %}
-                    <div class="w-full lg:w-[828px]">
-                        <h2 class="heading-lg_gsp heading-lg_gs text-color_gs text-color_gsp">
+                    <div class="w-full lg:w-[828px]" {{ block.shopify_attributes }}>
+                        <h2 class="heading-md_gsp heading-md_gs md:heading-lg_gsp md:heading-lg_gs text-color_gs text-color_gsp">
                             {{ block.settings.editorial-title }}
                         </h2>
                     </div>
                 {% when 'text-area' %}
-                    <div class="w-full lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk">
-                        <div class="body-lg_gs body-lg_gsp text-color-gs text-color_gsp">
-                            {{ block.settings.editor-text }}
+                    <div class="w-full lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk" {{ block.shopify_attributes }}>
+                        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color-gs text-color_gsp">
+                            {{ block.settings.editor-text | newline_to_br }}
                         </div>
                         {% if block.settings.editorial-label != blank %}
                             <a href="{{ block.settings.editorial-url }}" class="inline-flex px-8 py-4 w-fit link-lg_gs link-lg_gsp cta-truffle_gsp cta-white_gs transition-all">
@@ -35,7 +39,7 @@
             
             {% for block in section.blocks %}
                 {% if block.type == 'card' %}
-                    <div class="snap-center shrink-0 w-[85vw] md:w-full">
+                    <div class="snap-center shrink-0 w-[85vw] md:w-full" {{ block.shopify_attributes }}>
                         <div class="relative group overflow-hidden rounded-[16px] aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/5]">
                             {% if block.settings.image != blank %}
                                 {{ block.settings.image | image_url: width: 1200 | image_tag: 
@@ -50,10 +54,10 @@
 
                             <div class="absolute bottom-0 left-0 p-4 md:p-6 w-full z-10">
                                 {% if block.settings.card_title != blank %}
-                                    <h3 class="heading-sm_gsp heading-sm_gs text-color-gs text-FAF9F7_gsp mb-2">{{ block.settings.card_title }}</h3>
+                                    <h3 class="subtitle_gs subtitle_gsp md:heading-sm_gsp md:heading-sm_gs text-color-gs text-FAF9F7_gsp mb-2">{{ block.settings.card_title }}</h3>
                                 {% endif %}
                                 {% if block.settings.card_subtitle != blank %}
-                                    <p class="body-md_gsp body-md_gs text-color-gs text-FAF9F7_gsp">{{ block.settings.card_subtitle }}</p>
+                                    <p class="body-sm_gsp body-sm_gs md:body-md_gsp md:body-md_gs text-color-gs text-FAF9F7_gsp">{{ block.settings.card_subtitle }}</p>
                                 {% endif %}
                             </div>
                             
@@ -74,12 +78,10 @@
 
             <div class="flex gap-[14px] items-center">
                 <button id="btn-prev-{{ section.id }}" 
-                        onclick="document.getElementById('slider-{{ section.id }}').scrollBy({left: -window.innerWidth * 0.8, behavior: 'smooth'})" 
                         class="pt-3 transition-opacity duration-300 opacity-30 pointer-events-none">
                     {% render 'gs-arrow-left-black' %}
                 </button>
                 <button id="btn-next-{{ section.id }}" 
-                        onclick="document.getElementById('slider-{{ section.id }}').scrollBy({left: window.innerWidth * 0.8, behavior: 'smooth'})" 
                         class="pb-3 transition-opacity duration-300">
                     {% render 'gs-arrow-right-black' %}
                 </button>
@@ -90,12 +92,25 @@
 </div>
 
 <style>
-    /* Nasconde la scrollbar su tutti i browser */
+    .editorial-cards-padding {
+        padding-top: var(--pt-mob);
+        padding-bottom: var(--pb-mob);
+    }
+    @media screen and (min-width: 768px) {
+        .editorial-cards-padding {
+            padding-top: var(--pt-tab);
+            padding-bottom: var(--pb-tab);
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .editorial-cards-padding {
+            padding-top: var(--pt-desk);
+            padding-bottom: var(--pb-desk);
+        }
+    }
+
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    
-    /* Forza l'altezza su mobile per evitare salti */
-    #slider-{{ section.id }} { scroll-behavior: smooth; }
 </style>
 
 <script>
@@ -106,30 +121,27 @@
         const btnNext = document.getElementById('btn-next-{{ section.id }}');
         
         if (slider && counter) {
-            slider.addEventListener('scroll', () => {
-                // Calcolo indice corrente
-                const cardWidth = slider.querySelector('.snap-center').offsetWidth + 16; // width + gap
+            const updateSlider = () => {
+                const card = slider.querySelector('.snap-center');
+                if(!card) return;
+                
+                const cardWidth = card.offsetWidth + 12; // width + gap (gap-3 = 12px)
                 const index = Math.round(slider.scrollLeft / cardWidth) + 1;
                 
-                // Update Counter con zero padding
-                counter.innerText = index < 10 ? '0' + index : index;
+                counter.innerText = index.toString().padStart(2, '0');
 
-                // Update Stato Frecce
-                const isAtStart = slider.scrollLeft <= 20;
-                const isAtEnd = slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 20;
+                btnPrev.style.opacity = slider.scrollLeft <= 10 ? "0.3" : "1";
+                btnPrev.style.pointerEvents = slider.scrollLeft <= 10 ? "none" : "auto";
+                
+                const isAtEnd = slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10;
+                btnNext.style.opacity = isAtEnd ? "0.3" : "1";
+                btnNext.style.pointerEvents = isAtEnd ? "none" : "auto";
+            };
 
-                if (isAtStart) {
-                    btnPrev.classList.add('opacity-30', 'pointer-events-none');
-                } else {
-                    btnPrev.classList.remove('opacity-30', 'pointer-events-none');
-                }
-
-                if (isAtEnd) {
-                    btnNext.classList.add('opacity-30', 'pointer-events-none');
-                } else {
-                    btnNext.classList.remove('opacity-30', 'pointer-events-none');
-                }
-            });
+            slider.addEventListener('scroll', updateSlider);
+            
+            btnPrev.onclick = () => slider.scrollBy({left: -window.innerWidth * 0.8, behavior: 'smooth'});
+            btnNext.onclick = () => slider.scrollBy({left: window.innerWidth * 0.8, behavior: 'smooth'});
         }
     });
 </script>
@@ -143,6 +155,54 @@
             "id": "id",
             "label": "Id section",
             "default": "editorial-cards"
+        },
+        {
+            "type": "header",
+            "content": "Padding Desktop (1024px+)"
+        },
+        {
+            "type": "range",
+            "id": "pt_desk",
+            "label": "Padding Superiore Desktop",
+            "min": 0, "max": 300, "step": 4, "unit": "px", "default": 96
+        },
+        {
+            "type": "range",
+            "id": "pb_desk",
+            "label": "Padding Inferiore Desktop",
+            "min": 0, "max": 300, "step": 4, "unit": "px", "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Padding Tablet (768px - 1023px)"
+        },
+        {
+            "type": "range",
+            "id": "pt_tab",
+            "label": "Padding Superiore Tablet",
+            "min": 0, "max": 260, "step": 4, "unit": "px", "default": 80
+        },
+        {
+            "type": "range",
+            "id": "pb_tab",
+            "label": "Padding Inferiore Tablet",
+            "min": 0, "max": 260, "step": 4, "unit": "px", "default": 80
+        },
+        {
+            "type": "header",
+            "content": "Padding Mobile (0px - 767px)"
+        },
+        {
+            "type": "range",
+            "id": "pt_mob",
+            "label": "Padding Superiore Mobile",
+            "min": 0, "max": 200, "step": 2, "unit": "px", "default": 104
+        },
+        {
+            "type": "range",
+            "id": "pb_mob",
+            "label": "Padding Inferiore Mobile",
+            "min": 0, "max": 200, "step": 2, "unit": "px", "default": 104
         }
     ],
     "blocks": [
@@ -183,7 +243,7 @@
         {
             "type": "card",
             "name": "Card Item",
-            "limit": 3,
+            "limit": 4,
             "settings": [
                 {
                     "type": "image_picker",
@@ -213,6 +273,7 @@
     "presets": [
         {
             "name": "Multi Cards Editorial",
+            "category": "Home Page",
             "blocks": [
                 { "type": "title" },
                 { "type": "text-area" },
