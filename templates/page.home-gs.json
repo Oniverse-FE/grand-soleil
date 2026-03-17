@@ -9,6 +9,47 @@
  */
 {
   "sections": {
+    "hero_banner_xtyMmH": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_UddHWC": {
+          "type": "content",
+          "settings": {
+            "content-media": true,
+            "content-video-mobile": "shopify://files/videos/GrandSoleil.mp4",
+            "content-video-desktop": "shopify://files/videos/GrandSoleil.mp4",
+            "content-subtitle": "Nuovo modello",
+            "content-title": "Nuovo Grand Soleil 60 Long Cruise",
+            "content-title-color": "#ebeff2",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        },
+        "content_UQRx9z": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/0_3-HERO_1.png",
+            "content-image-desktop": "shopify://shop_images/0_3-HERO_1.png",
+            "content-subtitle": "Nuova",
+            "content-title": "Nuovo Grand Soleil 60 Long Cruise",
+            "content-title-color": "#ebeff2",
+            "button_1_label": "Scopri",
+            "button_1_url": "",
+            "button_2_label": "Contatti",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_UddHWC",
+        "content_UQRx9z"
+      ],
+      "name": "Hero Banner Final",
+      "settings": {}
+    },
     "subtitle_text_bgKxpn": {
       "type": "subtitle-text",
       "name": "Subtile & Text Scroll",
@@ -98,6 +139,7 @@
     }
   },
   "order": [
+    "hero_banner_xtyMmH",
     "subtitle_text_bgKxpn",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
