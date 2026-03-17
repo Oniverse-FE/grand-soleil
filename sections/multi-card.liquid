@@ -15,7 +15,7 @@
                     </div>
                 {% when 'text-area' %}
                     <div class="w-full lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk" {{ block.shopify_attributes }}>
-                        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color-gs text-color_gsp">
+                        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp">
                             {{ block.settings.editor-text | newline_to_br }}
                         </div>
                         {% if block.settings.editorial-label != blank %}
@@ -148,7 +148,7 @@
 
 {% schema %}
 {
-    "name": "Multi Cards Editorial",
+    "name": "Multi Cards",
     "settings": [
         {
             "type": "text",
@@ -272,7 +272,7 @@
     ],
     "presets": [
         {
-            "name": "Multi Cards Editorial",
+            "name": "Multi Cards",
             "category": "Home Page",
             "blocks": [
                 { "type": "title" },
