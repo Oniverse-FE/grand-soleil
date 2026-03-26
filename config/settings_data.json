@@ -85,16 +85,190 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "card_cCCVJ3": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS Plus 65",
+              "description": "",
+              "link": "",
+              "visibility": "gsp"
+            }
+          },
+          "card_JJz4qz": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS Plus 65",
+              "description": "",
+              "link": "",
+              "visibility": "gsp"
+            }
+          },
+          "card_f98JjJ": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS Plus 65",
+              "description": "",
+              "link": "",
+              "visibility": "gsp"
+            }
+          },
+          "text_QD8gqj": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "",
+              "title_gamme": "Esclusività su misura",
+              "link_gamme": "",
+              "url_gamme": "",
+              "visibility": "gsp"
+            }
+          },
+          "chip_pmXWUb": {
+            "type": "chip",
+            "settings": {
+              "title": "Blue",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "chip_rdmeyg": {
+            "type": "chip",
+            "settings": {
+              "title": "Long Cruise",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "chip_B6jzgi": {
+            "type": "chip",
+            "settings": {
+              "title": "Performance",
+              "link": "",
+              "visibility": "both"
+            }
+          },
+          "text_wFnfUh": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "#blue",
+              "title_gamme": "Natura allo stato puro",
+              "link_gamme": "",
+              "url_gamme": "",
+              "visibility": "gs"
+            }
+          },
+          "card_EwxpJV": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Long Cruise",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_wVQf6Y": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Long Cruise",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_KMJeXP": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Long Cruise",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "text_y6kF6y": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "#long-cruise",
+              "title_gamme": "Comfort in ogni situazione",
+              "link_gamme": "Scopri Long Cruise",
+              "url_gamme": "",
+              "visibility": "gs"
+            }
+          },
+          "card_Q8iagr": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 52",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_g9XyAQ": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_MqxPbA": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "text_UegwHE": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "#performance",
+              "title_gamme": "Prestazioni al massimo livello",
+              "link_gamme": "Scopri Performance",
+              "url_gamme": "",
+              "visibility": "gs"
+            }
+          }
+        },
+        "block_order": [
+          "card_cCCVJ3",
+          "card_JJz4qz",
+          "card_f98JjJ",
+          "text_QD8gqj",
+          "chip_pmXWUb",
+          "chip_rdmeyg",
+          "chip_B6jzgi",
+          "text_wFnfUh",
+          "card_EwxpJV",
+          "card_wVQf6Y",
+          "card_KMJeXP",
+          "text_y6kF6y",
+          "card_Q8iagr",
+          "card_g9XyAQ",
+          "card_MqxPbA",
+          "text_UegwHE"
+        ],
         "custom_css": [],
         "settings": {
           "logo_gs": "shopify://shop_images/g8.svg",
           "logo_gsp": "shopify://shop_images/GS_plus_black.svg",
-          "logo_width": 100,
+          "logo_width": 150,
           "menu_gs": "main-menu",
           "menu_gsp": "main-menu-gsp",
           "menu_gs_secondary": "main-menu",
           "menu_gsp_secondary": "main-menu-gsp",
-          "right_label": "DISCOVER",
+          "right_label": "Yachts",
           "toggle_label_gs": "Grand Soleil",
           "toggle_label_gsp": "Grand Soleil Plus"
         }
