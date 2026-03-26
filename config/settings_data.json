@@ -85,71 +85,18 @@
       },
       "header": {
         "type": "header",
-        "blocks": {
-          "models_8eTtbT": {
-            "type": "models",
-            "settings": {
-              "model-title": "32",
-              "model-title-color": "#f76c00",
-              "model-link": "shopify://pages/vandutch-32",
-              "model-image": "shopify://shop_images/V32.png"
-            }
-          },
-          "models_RqLUqB": {
-            "type": "models",
-            "settings": {
-              "model-title": "40",
-              "model-title-color": "#f76c00",
-              "model-link": "shopify://pages/vandutch-40",
-              "model-image": "shopify://shop_images/V40.png"
-            }
-          },
-          "models_ciKXjg": {
-            "type": "models",
-            "settings": {
-              "model-title": "48",
-              "model-title-color": "#f76c00",
-              "model-link": "shopify://pages/vandutch-48",
-              "model-image": "shopify://shop_images/V48.png"
-            }
-          },
-          "models_EVzBNg": {
-            "type": "models",
-            "settings": {
-              "model-title": "56",
-              "model-title-color": "#f76c00",
-              "model-link": "shopify://pages/vandutch-56",
-              "model-image": "shopify://shop_images/V56.png"
-            }
-          },
-          "models_NPKeJy": {
-            "type": "models",
-            "settings": {
-              "model-title": "75",
-              "model-title-color": "#f76c00",
-              "model-link": "shopify://pages/vandutch-75",
-              "model-image": "shopify://shop_images/V75.png"
-            }
-          }
-        },
-        "block_order": [
-          "models_8eTtbT",
-          "models_RqLUqB",
-          "models_ciKXjg",
-          "models_EVzBNg",
-          "models_NPKeJy"
-        ],
         "custom_css": [],
         "settings": {
-          "pdp-page-handles": "vandutch-32,vandutch-40,vandutch-48,vandutch-56,vandutch-75",
-          "contact-bg-transparent": false,
-          "contact-bg-color": "#ffffff",
-          "contact-border-color": "#ffffff",
-          "contact-label": "Contact us",
-          "contact-link": "shopify://pages/contacts",
-          "header-link-caps": true,
-          "mini-header-link-caps": false,
-          "header-text-color": "#ffffff"
+          "logo_gs": "shopify://shop_images/g8.svg",
+          "logo_gsp": "shopify://shop_images/GS_plus_black.svg",
+          "logo_width": 100,
+          "menu_gs": "main-menu",
+          "menu_gsp": "main-menu-gsp",
+          "menu_gs_secondary": "main-menu",
+          "menu_gsp_secondary": "main-menu-gsp",
+          "right_label": "DISCOVER",
+          "toggle_label_gs": "Grand Soleil",
+          "toggle_label_gsp": "Grand Soleil Plus"
         }
       },
       "animation": {
