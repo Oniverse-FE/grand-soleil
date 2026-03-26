@@ -150,17 +150,57 @@
               "visibility": "both"
             }
           },
-          "text_wFnfUh": {
+          "text_UegwHE": {
             "type": "text",
             "settings": {
-              "id_gamme": "#blue",
-              "title_gamme": "Natura allo stato puro",
-              "link_gamme": "",
+              "id_gamme": "#performance",
+              "title_gamme": "Prestazioni al massimo livello",
+              "link_gamme": "Scopri Performance",
               "url_gamme": "",
               "visibility": "gs"
             }
           },
-          "card_EwxpJV": {
+          "card_MqxPbA": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_g9XyAQ": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 42",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "card_Q8iagr": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/img.png",
+              "title": "GS 52",
+              "description": "Performance",
+              "link": "",
+              "visibility": "gs"
+            }
+          },
+          "text_y6kF6y": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "#long-cruise",
+              "title_gamme": "Comfort in ogni situazione",
+              "link_gamme": "Scopri Long Cruise",
+              "url_gamme": "",
+              "visibility": "gs"
+            }
+          },
+          "card_KMJeXP": {
             "type": "card",
             "settings": {
               "image": "shopify://shop_images/img.png",
@@ -180,7 +220,7 @@
               "visibility": "gs"
             }
           },
-          "card_KMJeXP": {
+          "card_EwxpJV": {
             "type": "card",
             "settings": {
               "image": "shopify://shop_images/img.png",
@@ -190,53 +230,23 @@
               "visibility": "gs"
             }
           },
-          "text_y6kF6y": {
+          "text_wFnfUh": {
             "type": "text",
             "settings": {
-              "id_gamme": "#long-cruise",
-              "title_gamme": "Comfort in ogni situazione",
-              "link_gamme": "Scopri Long Cruise",
+              "id_gamme": "#blue",
+              "title_gamme": "Natura allo stato puro",
+              "link_gamme": "",
               "url_gamme": "",
               "visibility": "gs"
             }
           },
-          "card_Q8iagr": {
-            "type": "card",
-            "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 52",
-              "description": "Performance",
-              "link": "",
-              "visibility": "gs"
-            }
-          },
-          "card_g9XyAQ": {
+          "card_HJYKVa": {
             "type": "card",
             "settings": {
               "image": "shopify://shop_images/img.png",
               "title": "GS 42",
-              "description": "Performance",
+              "description": "Blue",
               "link": "",
-              "visibility": "gs"
-            }
-          },
-          "card_MqxPbA": {
-            "type": "card",
-            "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
-              "description": "Performance",
-              "link": "",
-              "visibility": "gs"
-            }
-          },
-          "text_UegwHE": {
-            "type": "text",
-            "settings": {
-              "id_gamme": "#performance",
-              "title_gamme": "Prestazioni al massimo livello",
-              "link_gamme": "Scopri Performance",
-              "url_gamme": "",
               "visibility": "gs"
             }
           }
@@ -249,15 +259,16 @@
           "chip_pmXWUb",
           "chip_rdmeyg",
           "chip_B6jzgi",
-          "text_wFnfUh",
-          "card_EwxpJV",
-          "card_wVQf6Y",
-          "card_KMJeXP",
-          "text_y6kF6y",
-          "card_Q8iagr",
-          "card_g9XyAQ",
+          "text_UegwHE",
           "card_MqxPbA",
-          "text_UegwHE"
+          "card_g9XyAQ",
+          "card_Q8iagr",
+          "text_y6kF6y",
+          "card_KMJeXP",
+          "card_wVQf6Y",
+          "card_EwxpJV",
+          "text_wFnfUh",
+          "card_HJYKVa"
         ],
         "custom_css": [],
         "settings": {
