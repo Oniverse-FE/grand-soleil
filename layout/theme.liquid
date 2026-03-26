@@ -29,7 +29,9 @@
   {% endif %}
 
 </head>
-  {% section 'header' %}
+  {% unless template == 'index' %}
+    {% section 'header' %}
+  {% endunless %}
   <body class="bg-ebony loading-active">
     {{ content_for_layout }}
   </body>

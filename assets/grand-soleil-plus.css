@@ -210,7 +210,7 @@
     font-family: "helvetica-neue-lt-pro", sans-serif; 
     font-size: 24px;
     line-height: 24px;
-    font-weight: 500; 
+    font-weight: 400; 
     font-style: normal;
 }
 
@@ -889,4 +889,21 @@ color:#EBEFF2;
 
 .bg-141312_gsp{
     background-color: #141312;
+}
+
+.header-gsp{
+    border-radius: 16px;
+    border: 0.5px solid rgba(250, 249, 247, 0.64);
+    background: rgba(235, 239, 242, 0.70);
+    backdrop-filter: blur(48px);
+    color: #141312;
+}
+
+.header-content_gsp{
+    background: rgba(235, 239, 242, 0.70);
+}
+
+.menu-toggle_gsp {
+    border-radius: 50px;
+    background: #FAF9F7;
 }
