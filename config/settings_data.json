@@ -86,6 +86,16 @@
       "header": {
         "type": "header",
         "blocks": {
+          "text_QD8gqj": {
+            "type": "text",
+            "settings": {
+              "id_gamme": "",
+              "title_gamme": "Esclusività su misura",
+              "link_gamme": "",
+              "url_gamme": "",
+              "visibility": "gsp"
+            }
+          },
           "card_cCCVJ3": {
             "type": "card",
             "settings": {
@@ -113,16 +123,6 @@
               "title": "GS Plus 65",
               "description": "",
               "link": "",
-              "visibility": "gsp"
-            }
-          },
-          "text_QD8gqj": {
-            "type": "text",
-            "settings": {
-              "id_gamme": "",
-              "title_gamme": "Esclusività su misura",
-              "link_gamme": "",
-              "url_gamme": "",
               "visibility": "gsp"
             }
           },
@@ -252,10 +252,10 @@
           }
         },
         "block_order": [
+          "text_QD8gqj",
           "card_cCCVJ3",
           "card_JJz4qz",
           "card_f98JjJ",
-          "text_QD8gqj",
           "chip_pmXWUb",
           "chip_rdmeyg",
           "chip_B6jzgi",
