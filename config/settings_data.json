@@ -95,7 +95,7 @@
             "type": "chip",
             "settings": {
               "title": "Blue",
-              "id_target": "",
+              "id_target": "blue",
               "visibility": "gs"
             }
           },
@@ -103,7 +103,7 @@
             "type": "chip",
             "settings": {
               "title": "Long Cruise",
-              "id_target": "",
+              "id_target": "long-cruise",
               "visibility": "gs"
             }
           },
@@ -111,14 +111,14 @@
             "type": "chip",
             "settings": {
               "title": "Performance",
-              "id_target": "",
-              "visibility": "both"
+              "id_target": "performance",
+              "visibility": "gs"
             }
           },
           "text_UegwHE": {
             "type": "text",
             "settings": {
-              "id_gamme": "#performance",
+              "id_gamme": "performance",
               "title_gamme": "Prestazioni al massimo livello",
               "link_gamme": "Scopri Performance",
               "url_gamme": "",
@@ -158,7 +158,7 @@
           "text_y6kF6y": {
             "type": "text",
             "settings": {
-              "id_gamme": "#long-cruise",
+              "id_gamme": "long-cruise",
               "title_gamme": "Comfort in ogni situazione",
               "link_gamme": "Scopri Long Cruise",
               "url_gamme": "",
@@ -198,7 +198,7 @@
           "text_wFnfUh": {
             "type": "text",
             "settings": {
-              "id_gamme": "#blue",
+              "id_gamme": "blue",
               "title_gamme": "Natura allo stato puro",
               "link_gamme": "",
               "url_gamme": "",
