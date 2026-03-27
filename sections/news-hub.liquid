@@ -1,127 +1,64 @@
-<div class="flex flex-col px-4 md:px-12 lg:px-24 gap-6 lg:gap-16 text-white pt-[32px] lg:pt-[40px]">
-    <div class="lg:mb-0 h7 justify-start text-4xl leading-[42px] md:text-[56px] md:leading-[62px] uppercase">
+<div class="flex flex-col px-4 md:px-10 lg:px-[128px] gap-8 lg:gap-[96px] bg_gs">
+    
+    <div class="heading-md_gs md:title_gs text-color_gs md:text-center">
         {{ section.settings.news-hub-title }}
     </div>
 
-    <div class="flex flex-col gap-14 lg:gap-20">
-        <!-- Search Bar -->
-        <div class="relative search-wrapper" id="search-wrapper-news">
-            <input id="news-search-{{ section.id }}" type="text" placeholder="{{ section.settings.news-hub-search-placeholder }}" autocomplete="off"
-                class="w-full p-2 pb-2 pr-10 border-b border-white bg-transparent body-regular text-sm leading-5 placeholder-[#D6CBC9]" />
-            <div class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" id="news-icon-search">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <circle cx="10" cy="10" r="5.5" stroke="white" />
-                    <path d="M19.1464 20.8536C19.3417 21.0488 19.6583 21.0488 19.8536 20.8536C20.0488 20.6583 20.0488 20.3417 19.8536 20.1464L19.1464 20.8536ZM13.1464 14.8536L19.1464 20.8536L19.8536 20.1464L13.8536 14.1464L13.1464 14.8536Z" fill="white" />
-                </svg>
-            </div>
-            <div id="news-icon-clear" class="absolute right-2 top-1/2 -translate-y-1/2 hidden cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M4.92871 4.92969L19.0708 19.0718" stroke="white" stroke-linecap="round"/>
-                    <path d="M19.0713 4.92969L4.92915 19.0718" stroke="white" stroke-linecap="round"/>
-                </svg>
-            </div>
+    <div class="w-full overflow-hidden">
+        <div id="news-filter-chips" class="flex flex-nowrap justify-start md:justify-center overflow-x-auto gap-3 pb-8 md:pb-[56px] no-scrollbar outline-none">
+            <button class="chip-filter active px-6 py-2 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="all">
+                {{ section.settings.chip_all-news }}
+            </button>
+            {% assign tags = section.settings.filter-tags | split: ',' %}
+            {% for tag in tags %}
+                {% assign clean_tag = tag | strip %}
+                {% if clean_tag != blank %}
+                    <button class="chip-filter px-6 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="{{ clean_tag | downcase }}">
+                        {{ clean_tag }}
+                    </button>
+                {% endif %}
+            {% endfor %}
         </div>
-
-        <!-- News list -->
-        <div class="flex flex-col gap-4 lg:gap-8">
-            <div id="news-grid">
-                <div class="text-white/60 text-[12px] lg:text-[14px] mb-6 lg:mb-8" id="news-counter"></div>
-                <div id="news-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="news-grid-container" class="flex flex-col gap-12 lg:gap-16">
+        <div id="news-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             </div>
-            <div id="no-results-passati" class="hidden flex flex-col text-white mt-4 gap-5 lg:gap-6">
-                <p class="body-regular text-[16px] leading-[22px] lg:text-[18px] leading-[24px]">{{ section.settings.no-event-label }}</p>
-                <a href="#" id="news-reset-search" class="font-semibold text-[16px] leading-[22px] lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px] pb-1 border-b-[1px] border-white w-fit">
-                    {{ section.settings.all-event-label }}
-                </a>
-            </div>
-        </div>
 
-        <!-- Pagination -->
-        <div class="flex justify-center gap-4 text-white text-sm lg:text-base mt-8" id="news-pagination"></div>
+        <div id="news-pagination" class="flex justify-center gap-6 text-white mt-4 mb-16"></div>
+    </div>
     </div>
 </div>
 
 <style>
-    .pagination-btn {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        opacity: 0.6;
-        transition: opacity 0.3s ease;
-        display: flex;
-        align-items: center;
+
+    .aspect-4-3 {
+        position: relative;
+        padding-top: 75%; 
     }
-    .pagination-btn:hover {
-        opacity: 1;
+    .aspect-4-3 img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
     }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Stato Attivo delle Chips */
+    .chip-filter.active {
+        background-color: #EBEFF2;
+        color: #05090D;
+        border: 0.5px solid #EBEFF2;
+    }
+    .chip-filter {
+        border: 0.5px solid #EBEFF2;
+    }
+
     .pagination-btn.active {
-        font-weight: bold;
         opacity: 1;
+        font-weight: 700;
+        border-bottom: 2px solid white;
     }
-    .pagination-btn.disabled {
-        cursor: default;
-        opacity: 0.3;
-    }
-    .pagination-btn svg path {
-        stroke: #FFFFFF;
-        opacity: 1;
-    }
-    .pagination-btn.disabled svg path {
-        stroke: #888888;
-    }
-    #search-wrapper-news input[type="text"]:focus {
-        outline: none !important;
-        border-bottom: 1px solid #F76C00;
-    }
-    @media (min-width: 1024px) and (max-width: 1279px) {
-        #news-cards {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
-    }
-    .group-allnews span {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-.underline-allnews {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background-color: white;
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: transform 2s ease;
-}
-.cta-underline-allnews {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    opacity: 1;
-    background-color: white;
-    transform: translateX(0%);
-    transition: transform 2s ease;
-}
-.group-allnews:hover .underline-allnews {
-    transform: translateX(100%);
-}
-.group-allnews:hover .cta-underline-allnews {
-    animation: enter-line 1.2s ease forwards;
-    animation-delay: 0.8s;
-    opacity: 1;
-}
-@keyframes enter-line {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
 </style>
 
 <script>
@@ -131,130 +68,86 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             url: "{{ article.url }}",
             title: {{ article.title | json }},
-            date: "{{ article.metafields.custom.news_data | date: "%d.%m.%Y" }}",
-            image: {{ article.image | image_url: width: 600 | json }},
-            description: {{ article.content | strip_html | json }}
+            date: "{{ article.published_at | date: "%d.%m.%Y" }}",
+            image: {{ article.image | image_url: width: 800 | json }},
+            tags: [{% for tag in article.tags %}"{{ tag | downcase }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+            displayTag: "{{ article.tags[0] }}"
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
 
     const perPage = 9;
-    let filteredArticles = [...allArticles];
+    let currentTag = 'all';
     let currentPage = 1;
 
     const newsCards = document.getElementById('news-cards');
     const pagination = document.getElementById('news-pagination');
-    const counter = document.getElementById('news-counter');
-    const noResults = document.getElementById('no-results-passati');
-    const searchInput = document.getElementById('news-search-{{ section.id }}');
-    const clearIcon = document.getElementById('news-icon-clear');
-    const searchIcon = document.getElementById('news-icon-search');
-    const resetSearchLink = document.getElementById('news-reset-search');
+    const chips = document.querySelectorAll('.chip-filter');
+    const noResults = document.getElementById('no-results');
 
-    const currentUrl = window.location.pathname.toLowerCase();
-    const ofWord = currentUrl.includes("/it/") ? "di" : "of";
+    function render() {
+        const filtered = allArticles.filter(a => 
+            currentTag === 'all' || a.tags.includes(currentTag)
+        );
 
-    function renderPage(page) {
-        currentPage = page;
-        const start = (page - 1) * perPage;
-        const end = start + perPage;
-        const items = filteredArticles.slice(start, end);
+        const start = (currentPage - 1) * perPage;
+        const items = filtered.slice(start, start + perPage);
 
-        if (filteredArticles.length === 0) {
-            counter.textContent = '';
+        if (filtered.length === 0) {
+            newsCards.innerHTML = '';
             noResults.classList.remove('hidden');
         } else {
-            counter.textContent = `${items.length} ${ofWord} ${filteredArticles.length} news`;
             noResults.classList.add('hidden');
+            newsCards.innerHTML = items.map(article => `
+                <a href="${article.url}" class="group flex flex-col">
+                    <div class="aspect-4-3 overflow-hidden rounded-[16px] w-full">
+                        ${article.image ? `<img src="${article.image}" alt="${article.title}" class="transition-transform">` : ''}
+                    </div>
+                    <div class="flex flex-wrap gap-[6px] mt-4">
+                        <span class="link-sm-gs md:link-md_gs article-data_gs text-data_gs py-[6px] px-3">${article.date}</span>
+                        ${article.displayTag ? `<span class="link-sm-gs md:link-md_gs text-color_gs py-[6px] px-3 uppercase">${article.displayTag}</span>` : ''}
+                    </div>
+                    <h3 class="mt-4 subtitle_gs md:heading-sm_gs text-color_gs">
+                        ${article.title}
+                    </h3>
+                </a>
+            `).join('');
         }
-
-        newsCards.innerHTML = items.map(article => `
-            <a href="${article.url}">
-                <div class="flex flex-col gap-2 lg:gap-4 pb-6 lg:pb-8 bg-antracite rounded-[10px] w-full h-[390px] lg:h-[549px]">
-                    <div class="flex h-[144px] lg:h-[178px] w-full">
-                        ${article.image ? `<img src="${article.image}" alt="${article.title}" class="rounded-t-[10px] h-[144px] lg:h-[178px] w-full object-cover">` : ''}
-                    </div>
-                    <div class="flex flex-col px-4 lg:px-8 h-full gap-4">
-                        <div class="flex flex-col justify-start gap-2">
-                            <div class="body-medium text-[12px] leading-[18px] lg:text-sm lg:leading-5">${article.date}</div>
-                            <div class="h8 lg:font-bold text-[26px] leading-8 lg:text-[42px] lg:leading-12 line-clamp-2 lg:line-clamp-3 uppercase">${article.title}</div>
-                            <div class="mb-[16px] lg:mb-[40px] body-regular text-sm leading-5 lg:text-[16px] lg:leading-[22px] line-clamp-3">${article.description}</div>
-                        </div>
-                        <div class="mt-auto font-semibold text-sm leading-5 lg:text-[16px] lg:leading-[22px] uppercase text-white body-semibold text-[14px] lg:text-[16px] group-allnews animation-allnews w-fit">
-                            <span class="relative flex flex-row gap-1 pb-1">
-                                {{ section.settings.news-cta-read-more }}
-                                <span class="underline-allnews cta-underline-allnews"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        `).join('');
-
-        renderPagination();
+        renderPagination(filtered.length);
     }
 
-    function renderPagination() {
+    function renderPagination(totalItems) {
         pagination.innerHTML = '';
-        const totalPages = Math.ceil(filteredArticles.length / perPage);
+        const totalPages = Math.ceil(totalItems / perPage);
         if (totalPages <= 1) return;
 
-        const createButton = (content, page, disabled = false) => {
-            const btn = document.createElement('button');
-            btn.classList.add('pagination-btn');
-            if (page === currentPage) btn.classList.add('active');
-            if (disabled) btn.classList.add('disabled');
-
-            btn.innerHTML = content;
-            if (!disabled) btn.addEventListener('click', () => renderPage(page));
-            return btn;
-        };
-
-        const prevArrow = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 size-6" viewBox="0 0 24 24" fill="none">
-                <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="#FFFFFF" stroke-linecap="round"/>
-            </svg>`;
-        const nextArrow = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 size-6" viewBox="0 0 24 24" fill="none">
-                <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="#FFFFFF" stroke-linecap="round"/>
-            </svg>`;
-
-        pagination.appendChild(createButton(prevArrow, currentPage - 1, currentPage === 1));
         for (let i = 1; i <= totalPages; i++) {
-            pagination.appendChild(createButton(i, i));
+            const btn = document.createElement('button');
+            btn.className = `pagination-btn opacity-40 hover:opacity-100 transition-opacity pb-1 text-lg ${i === currentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = (e) => {
+                e.preventDefault();
+                currentPage = i;
+                render();
+                window.scrollTo({top: document.getElementById('news-grid-container').offsetTop - 120, behavior: 'smooth'});
+            };
+            pagination.appendChild(btn);
         }
-        pagination.appendChild(createButton(nextArrow, currentPage + 1, currentPage === totalPages));
     }
 
-    function clearSearch() {
-        searchInput.value = '';
-        filteredArticles = [...allArticles];
-        renderPage(1);
-        clearIcon.classList.add('hidden');
-        searchIcon.classList.remove('hidden');
-    }
-
-    searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase();
-        filteredArticles = allArticles.filter(article =>
-            article.title.toLowerCase().includes(query) || article.description.toLowerCase().includes(query)
-        );
-        renderPage(1);
-        clearIcon.classList.toggle('hidden', query.length === 0);
-        searchIcon.classList.toggle('hidden', query.length > 0);
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentTag = chip.dataset.tag.toLowerCase();
+            currentPage = 1;
+            render();
+        });
     });
 
-    clearIcon.addEventListener('click', clearSearch);
-
-    resetSearchLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        clearSearch();
-    });
-
-    renderPage(1);
+    render();
 });
 </script>
-
 
 {% schema %}
 {
@@ -263,38 +156,25 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       "type": "text",
       "id": "news-hub-title",
-      "label": "Title",
+      "label": "Titolo Sezione",
       "default": "TUTTE LE NOVITÀ DEL MONDO VANDUTCH"
     },
     {
       "type": "text",
-      "id": "news-cta-read-more",
-      "label": "CTA read more",
-      "default": "read more"
+      "id": "chip_all-news",
+      "label": "Chip all news",
+      "default": "All News"
     },
     {
-      "type": "text",
-      "id": "news-hub-search-placeholder",
-      "label": "Search bar placeholder",
-      "default": "Cerca una news"
-    },
-    {
-      "type": "text",
-      "id": "no-event-label",
-      "label": "Testo quando non ci sono risultati",
-      "default": "Nessuna news trovata"
-    },
-    {
-      "type": "text",
-      "id": "all-event-label",
-      "label": "Testo link 'tutte le news'",
-      "default": "Vedi tutte le news"
+      "type": "textarea",
+      "id": "filter-tags",
+      "label": "Tag per i Filtri (separati da virgola)",
+      "default": "Eventi, Press, Lifestyle"
     }
   ],
   "presets": [
     {
-      "name": "News Hub",
-      "category": "News Sections"
+      "name": "News Hub"
     }
   ]
 }

@@ -11,9 +11,9 @@
 </script>
 
 <div class="fixed top-0 md:top-6 left-0 w-full flex justify-center items-center pointer-events-none z-[9999]">
-  <header id="main-header" class="w-full md:max-w-[704px] lg:max-w-[768px] md:mx-6 md:mx-auto pointer-events-auto transition-all duration-500 ease-in-out overflow-hidden md:rounded-[24px] md:shadow-lg">
+  <header id="main-header" class="w-full md:max-w-[704px] lg:max-w-[768px] md:mx-6 md:mx-auto pointer-events-auto transition-all duration-500 ease-in-out overflow-hidden md:rounded-[24px] md:shadow-lg border-b md:border border-[var(--border-color)]">
     
-    <div class="px-6 py-5 flex justify-between items-center relative z-10">
+    <div class="px-6 py-5 flex justify-between items-center relative z-[1001]">
       <div class="flex-1">
         <button id="burger-trigger" class="flex flex-col gap-1 group outline-none cursor-pointer">
           <span class="w-[20px] h-[1px] bg-current rounded-[4px] transition-all duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-0.5"></span>
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div id="dropdown-wrapper" class="overflow-y-auto max-h-0 transition-all duration-700 ease-in-out">
+    <div id="dropdown-wrapper" class="overflow-y-auto max-h-0 transition-all duration-700 ease-in-out relative z-[1000]">
       
       <div id="menu-overlay" class="hidden px-8 py-8 flex flex-col gap-10 md:min-h-[500px]">
         <div class="main-nav-wrapper">
@@ -112,7 +112,7 @@
             {% endfor %}
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 pb-20">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 pb-10">
             {% assign active_section_id = "" %}
             {% for block in section.blocks %}
               {% case block.type %}
@@ -134,7 +134,7 @@
                     </div>
                     {% if block.settings.image != blank %}
                       <div class="aspect-[4/3] overflow-hidden rounded-[8px] bg-[#80808020] mt-auto">
-                        <img src="{{ block.settings.image | image_url: width: 600 }}" class="w-full h-full object-cover transition-transform" loading="lazy">
+                        <img src="{{ block.settings.image | image_url: width: 600 }}" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" loading="lazy">
                       </div>
                     {% endif %}
                   </a>
@@ -147,9 +147,11 @@
           <div class="relative w-full h-[59px] rounded-full p-1 flex items-center bg-[#EBEFF2]">
             <input type="radio" id="toggle-gs" name="theme-toggle" value="gs" class="peer/gs hidden">
             <label for="toggle-gs" class="flex-1 text-center z-10 cursor-pointer transition-colors peer-checked/gs:text-[#EBEFF2] font-medium text-[#101C26]">{{ section.settings.toggle_label_gs }}</label>
+            
             <input type="radio" id="toggle-gsp" name="theme-toggle" value="gsp" class="peer/gsp hidden">
             <label for="toggle-gsp" class="flex-1 text-center z-10 cursor-pointer text-[#05090D] transition-colors peer-checked/gsp:text-[#FAF9F7] font-medium">{{ section.settings.toggle_label_gsp }}</label>
-            <div id="toggle-slider" class="absolute top-1 left-1 w-[calc(50%-4px)] h-[51px] bg-[#101C26] rounded-full transition-all duration-500 peer-checked/gsp:translate-x-full peer-checked/gsp:bg-[#282624]"></div>
+            
+            <div id="toggle-slider" class="absolute top-1 left-1 w-[calc(50%-4px)] h-[51px] bg-[#101C26] rounded-full transition-all duration-500 pointer-events-none peer-checked/gsp:translate-x-full peer-checked/gsp:bg-[#282624]"></div>
           </div>
         </div>
       </div>
@@ -168,6 +170,11 @@
 
   #main-header { background-color: var(--bg-color); color: var(--text-color); border-color: var(--border-color); backdrop-filter: blur(20px); transition: background-color var(--transition-speed); }
 
+  @media (max-width: 767px) {
+    #main-header.is-open { height: 100vh !important; max-width: 100% !important; top: 0 !important; border-radius: 0 !important; margin: 0 !important; }
+    #dropdown-wrapper { height: calc(100vh - 70px); }
+  }
+
   .submenu-trigger.active { transform: rotate(45deg); }
   .submenu.open { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
 
@@ -181,18 +188,13 @@
 
   .logo-gsp { opacity: 0; pointer-events: none; }
   .logo-gs { opacity: 1; }
-
-  /* Quando il tema è GSP */
   .gsp .logo-gsp { opacity: 1; pointer-events: auto; }
   .gsp .logo-gs { opacity: 0; pointer-events: none; }
-
-  /* Quando il tema è GS */
-  .gs .logo-gs { opacity: 1; pointer-events: auto; }
-  .gs .logo-gsp { opacity: 0; pointer-events: none; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('main-header');
   const dropdown = document.getElementById('dropdown-wrapper');
   const menuLeft = document.getElementById('menu-overlay');
   const menuRight = document.getElementById('right-panel');
@@ -201,6 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('panel-overlay');
   const radios = document.querySelectorAll('input[name="theme-toggle"]');
   const pageTheme = '{{ current_theme }}';
+
+  // --- SINCRONIZZAZIONE INIZIALE ---
+  // Imposta il radio button corretto in base al tema della pagina al caricamento
+  const initialRadio = document.querySelector(`input[name="theme-toggle"][value="${pageTheme}"]`);
+  if (initialRadio) initialRadio.checked = true;
 
   // --- FISARMONICA ---
   document.querySelectorAll('.menu-item-has-children').forEach(item => {
@@ -240,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- LOGICA DI CHIUSURA (FIX SECONDO CLICK) ---
+  // --- LOGICA DI CHIUSURA ---
   const updateThemeUI = (theme) => { 
     document.documentElement.className = theme; 
     document.body.className = theme; 
@@ -250,51 +257,60 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdown.style.maxHeight = '0px';
     overlay.classList.remove('active');
     burgerBtn.classList.remove('active');
-    
-    // Aspetta la fine dell'animazione CSS (700ms) prima di resettare le classi hidden
+    header.classList.remove('is-open');
+    document.body.style.overflow = '';
+
     setTimeout(() => {
       menuLeft.classList.add('hidden');
       menuRight.classList.add('hidden');
+      
+      // Ripristina tema e toggle alla chiusura
       updateThemeUI(pageTheme);
       const r = document.querySelector(`input[name="theme-toggle"][value="${pageTheme}"]`);
       if(r) r.checked = true;
     }, 700);
   };
 
-  // --- TRIGGER APERTURA/CHIUSURA ---
+  // --- TRIGGER APERTURA ---
+  const openMenu = (side) => {
+    const isMobile = window.innerWidth < 768;
+    
+    if (side === 'left') {
+        menuRight.classList.add('hidden');
+        menuLeft.classList.remove('hidden');
+    } else {
+        menuLeft.classList.add('hidden');
+        menuRight.classList.remove('hidden');
+    }
+
+    setTimeout(() => {
+      header.classList.add('is-open');
+      dropdown.style.maxHeight = isMobile ? '100vh' : '85vh';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if(side === 'left') burgerBtn.classList.add('active');
+    }, 10);
+  }
+
   burgerBtn.addEventListener('click', () => {
-    // Se il menu sinistro è già aperto, chiudi tutto
     if(!menuLeft.classList.contains('hidden') && dropdown.style.maxHeight !== '0px') {
       closeAll();
     } else {
-      // Altrimenti apri a sinistra e nascondi destra
-      menuRight.classList.add('hidden');
-      menuLeft.classList.remove('hidden');
-      setTimeout(() => {
-        dropdown.style.maxHeight = '85vh';
-        burgerBtn.classList.add('active');
-        overlay.classList.add('active');
-      }, 10);
+      openMenu('left');
     }
   });
 
   openRight.addEventListener('click', () => {
-    // Se il menu destro è già aperto, chiudi tutto
     if(!menuRight.classList.contains('hidden') && dropdown.style.maxHeight !== '0px') {
       closeAll();
     } else {
-      // Altrimenti apri a destra e nascondi sinistra
-      menuLeft.classList.add('hidden');
-      menuRight.classList.remove('hidden');
-      setTimeout(() => {
-        dropdown.style.maxHeight = '85vh';
-        overlay.classList.add('active');
-        burgerBtn.classList.remove('active');
-      }, 10);
+      openMenu('right');
     }
   });
 
   overlay.addEventListener('click', closeAll);
+  
+  // Cambio tema dinamico nel pannello
   radios.forEach(radio => radio.addEventListener('change', (e) => updateThemeUI(e.target.value)));
 });
 </script>
