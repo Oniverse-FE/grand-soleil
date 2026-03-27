@@ -1,905 +1,234 @@
-<!-- Footer start -->
-<footer class="w-full px-4 py-10 lg:px-24 md:px-12 lg:py-14 bg-slate-grey" style="background-color: #4D565A;">
-    <div id="footer" class="flex flex-col gap-[2px] lg:gap-[104px]">
+<footer class="w-full px-4 pt-[64px] pb-6 lg:px-[128px] md:px-8 lg:pt-[64px] bg_gs bg_gsp">
+    <div id="footer" class="flex flex-col gap-[64px] lg:gap-20">
 
-        <!-- Griglia principale a 12 colonne -->
-        <div class="flex flex-col lg:flex-row gap-x-[16px]">
+        <div class="flex justify-center w-full">
+            {% if template contains 'gsp' %}
+                {% if section.settings.logo_gsp != blank %}
+                    <img src="{{ section.settings.logo_gsp | image_url: width: 500 }}" alt="Logo Grand Soleil Yachts" class="w-full lg:max-w-[550px] h-auto object-contain">
+                {% endif %}
+            {% else %}
+                {% if section.settings.logo_gs != blank %}
+                    <img src="{{ section.settings.logo_gs | image_url: width: 500 }}" alt="Logo Grand Soleil Yachts" class="w-full lg:max-w-[550px] h-auto object-contain">
+                {% endif %}
+            {% endif %}
+        </div>
 
-            <!-- Newsletter form: 4 colonne -->
-            <div class="tk-aktiv-grotesk flex flex-col bg-transparent lg:w-4/12">
+        <div class="flex flex-col lg:flex-row gap-x-8">
+
+            <div class="tk-aktiv-grotesk flex flex-col bg-transparent lg:w-4/12 mb-12 lg:mb-0">
                 {% for block in section.blocks %}
-                    {% case block.type %}
-                        {% when 'newsletter' %}
-                            <div class="flex flex-col w-full  gap-6 lg:gap-10">
-                                <div class="flex flex-col gap-4 lg:gap-8">
-                                    <div class="flex body-semibold text-[24px] lg:text-[26px] leading-[30px] lg:leading-[32px] mb-2 lg:mb-4 text-white">
-                                        {{ block.settings.newsletter-title }}
-                                    </div>
-                                    <div class="flex body-regular text-[14px] leading-[20px] lg:text-[16px] lg:leading-[22px] text-white">
-                                        {{ block.settings.newsletter-text }}
-                                    </div>
-                                    <div class="flex body-regular text-[12px] leading-[18px] text-white">
-                                        {{ block.settings.newsletter-fields-required }}
-                                    </div>
-                                    <div class="flex flex-col gap-1">
-                                        <div class="flex text-xs text-[#D6CBC9]">E-mail*</div>
-                                        <div id="newsletter-input-mail" class="flex w-full text-white">
-                                            <input type="email" name="contact[email]" id="newsletter-mail"
-                                                class="border-b-white border-b-1 font-normal text-white w-full bg-transparent body-regular text-[16px] leading-[22px] py-1"
-                                                {% if block.settings.newsletter-is-required %} required
-                                                placeholder="{{ block.settings.newsletter-mail-placeholder }} *" {% endif %}
-                                                placeholder="{{ block.settings.newsletter-mail-placeholder }}">
-                                        </div>
-                                    </div>
+                    {% if block.type == 'newsletter' %}
+                        <div class="flex flex-col w-full gap-6 lg:gap-8">
+                            <div class="flex flex-col gap-4">
+                                <div class="heading-sm_gsp heading-sm_gs md:heading-md_gsp md:heading-md_gs text-color_gs text-color_gsp">
+                                    {{ block.settings.newsletter-title }}
                                 </div>
-                                <div class="flex body-medium">
-                                    <button id="newsletter-submit" type="button" aria-label="{{ block.settings.newsletter-title }}"
-                                        class="font-semibold leading-none px-7 py-3.5 rounded-4xl"
-                                        style="color:{{ block.settings.newsletter-button-text-color }};background-color:{{ block.settings.newsletter-button-background-color }};">
-                                        {{ block.settings.newsletter-submit-button-text }}
+                                <div class="body-sm_gs body-sm_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp">
+                                    {{ block.settings.newsletter-text }}
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-[48px]">
+                                <button id="newsletter-submit" type="button" aria-label="{{ block.settings.newsletter-title }}"
+                                    class="cta-blue_gs cta-truffle_gsp link-lg_gs link-lg_gsp px-6 py-4 rounded-[50px] w-full md:w-[205px]">
+                                    {{ block.settings.newsletter-submit-button-text }}
+                                </button>
+                                {% if template contains 'gsp' %}
+                                <div class="flex flex-row gap-6">
+                                    <img src="{{ 'instagram_gsp.png' | asset_url }}" alt="Instagram" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'youtube_gsp.png' | asset_url }}" alt="Youtube" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'facebook_gsp.png' | asset_url }}" alt="Facebook" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'linkedin_gsp.png' | asset_url }}" alt="Linkedin" class="w-4 h-4 object-contain">
+                                </div>
+                                {% else %}
+                                <div class="flex flex-row gap-6">
+                                    <img src="{{ 'instagram.png' | asset_url }}" alt="Instagram" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'youtube.png' | asset_url }}" alt="Youtube" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'facebook.png' | asset_url }}" alt="Facebook" class="w-4 h-4 object-contain">
+                                    <img src="{{ 'linkedin.png' | asset_url }}" alt="Linkedin" class="w-4 h-4 object-contain">
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="hidden lg:block lg:w-1/12"></div>
+
+            <div class="flex flex-col lg:flex-row lg:flex-nowrap gap-0 lg:gap-8 lg:w-7/12">
+                {% for block in section.blocks %}
+                    {% if block.type == 'footer-menu' %}
+                        
+                        {% for i in (1..3) %}
+                            {% assign menu_key = 'footer-menu-' | append: i %}
+                            {% assign current_menu = block.settings[menu_key] %}
+                            
+                            {% if current_menu != blank %}
+                                <div class="footer-accordion-item w-full lg:w-1/3">
+                                    <button class="footer-accordion-trigger flex justify-between items-center w-full py-3 lg:py-0 lg:mb-4 lg:cursor-default lg:pointer-events-none">
+                                        <span class="pretitle-sm_gs pretitle-sm_gsp md:pretitle-md_gs md:pretitle-md_gsp text-color_gs text-color_gsp">
+                                            {{ current_menu.title }}
+                                        </span>
+                                        <span class="lg:hidden transition-transform duration-300 accordion-icon text-color_gs text-color_gsp">
+                                            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 0V14M0 7H14"/></svg>
+                                        </span>
                                     </button>
+
+                                    <div class="footer-accordion-content overflow-hidden max-h-0 lg:max-h-none transition-all duration-300 ease-in-out">
+                                        <div class="pb-6 lg:pb-0 flex flex-col gap-3">
+                                            {% for link in current_menu.links %}
+                                                <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp flex items-center">
+                                                    {{ link.title | link_to: link.url }}
+                                                    {% if link.title == "Lingua" or link.title == "Language" %}
+                                                        <div class="flex ml-3 gap-2">
+                                                            <a href="/it"><img src="{{ 'it.png' | asset_url }}" class="w-4"></a>
+                                                            <a href="/en"><img src="{{ 'en.png' | asset_url }}" class="w-4"></a>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                    {% endcase %}
+                            {% endif %}
+                        {% endfor %}
+
+                    {% endif %}
                 {% endfor %}
             </div>
-
-            <!-- Gap: 2 colonne -->
-            <div class="h-10 lg:h-0 lg:w-2/12"></div>
-
-            <!-- Contenuto menu a destra: 5 colonne -->
-            <div class="flex flex-row gap-6 lg:gap-32 lg:w-5/12 tk-aktiv-grotesk">
-
-                {% for block in section.blocks %}
-                    {% case block.type %}
-                        {% when 'footer-menu' %}
-
-                            <!-- Left menu -->
-                            <div id="footer-menu-l" class="flex flex-col w-1/2">
-                                {% for i in (1..2) %}
-                                    {% assign left_menu_key = "footer-left-menu-" | append: i %}
-                                    {% assign left_menu = block.settings[left_menu_key] %}
-                                    <div class="flex flex-col mb-7 lg:mb-8">
-                                        <div class="flex mb-4 text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]" style="color:{{ left_menu.title-color | default: block.settings.footer-menu-title-color }};">
-                                            {{ left_menu.title }}
-                                        </div>
-                                        {% for link in left_menu.links %}
-                                            {% assign caps_key = "footer-menu-link-caps-l" | append: i %}
-                                            <div class="flex mb-[12px] text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]"
-                                                 style="color:{{ block.settings.footer-menu-link-color }}; {% if block.settings[caps_key] %} text-transform: uppercase;{% endif %}">
-                                                {% case link.title %}
-                                                    {% when 'Instagram' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'instagram.png' | asset_url }}" alt="Instagram" class="w-4">
-                                                        </div>
-                                                    {% when 'YouTube' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'youtube.png' | asset_url }}" alt="Youtube" class="w-4">
-                                                        </div>
-                                                    {% when 'Facebook' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'facebook.png' | asset_url }}" alt="Facebook" class="w-4">
-                                                        </div>
-                                                    {% when 'LinkedIn' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'linkedin.png' | asset_url }}" alt="Linkedin" class="w-4">
-                                                        </div>
-                                                {% endcase %}
-                                                {{ link.title | link_to: link.url }}
-                                                {% if link.title == "Lingua" or link.title == "Language" %}
-                                                    <div class="flex ml-1">
-                                                        <a href="/it" aria-label="Italiano" class="flex justify-center items-center ml-1">
-                                                            <img src="{{ 'it.png' | asset_url }}" alt="Italiano" class="w-4 mr-2">
-                                                        </a>
-                                                        <a href="/en" aria-label="English" class="flex justify-center items-center ml-1">
-                                                            <img src="{{ 'en.png' | asset_url }}" alt="English" class="w-4">
-                                                        </a>
-                                                    </div>
-                                                {% endif %}
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endfor %}
-                            </div>
-
-                            <!-- Right menu -->
-                            <div id="footer-menu-r" class="flex flex-col w-1/2">
-                                {% for i in (1..3) %}
-                                    {% assign right_menu_key = "footer-right-menu-" | append: i %}
-                                    {% assign right_menu = block.settings[right_menu_key] %}
-                                    <div class="flex flex-col mb-7 lg:mb-8">
-                                        <div class="flex mb-4 text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]" style="color:{{ block.settings.footer-menu-title-color }};">
-                                            {{ right_menu.title }}
-                                        </div>
-                                        {% for link in right_menu.links %}
-                                            {% assign caps_key = "footer-menu-link-caps-r" | append: i %}
-                                            <div class="flex mb-[12px] text-[16px] leading-[22px] lg:text-[18px] lg:leading-[24px]"
-                                                 style="color:{{ block.settings.footer-menu-link-color }}; {% if block.settings[caps_key] %} text-transform: uppercase;{% endif %}">
-                                                {% case link.title %}
-                                                    {% when 'Instagram' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'instagram.png' | asset_url }}" alt="Instagram" class="w-4">
-                                                        </div>
-                                                    {% when 'YouTube' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'youtube.png' | asset_url }}" alt="Youtube" class="w-4">
-                                                        </div>
-                                                    {% when 'Facebook' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'facebook.png' | asset_url }}" alt="Facebook" class="w-4">
-                                                        </div>
-                                                    {% when 'LinkedIn' %}
-                                                        <div class="flex justify-center items-center mr-2">
-                                                            <img src="{{ 'linkedin.png' | asset_url }}" alt="Linkedin" class="w-4">
-                                                        </div>
-                                                {% endcase %}
-                                                {{ link.title | link_to: link.url }}
-                                                {% if link.title == "Lingua" or link.title == "Language" %}
-                                                    {%- assign current_path = request.path -%}
-                                                    {%- if current_path contains '/it/' -%}
-                                                        {%- assign clean_path = current_path | remove_first: '/it' -%}
-                                                    {%- else -%}
-                                                        {%- assign clean_path = current_path -%}
-                                                    {%- endif -%}
-                                                    <div class="flex ml-1">
-                                                        <a href="/it{{ clean_path }}" aria-label="Italiano" class="flex justify-center items-center ml-1">
-                                                            <img src="{{ 'it.png' | asset_url }}" alt="Italiano" class="w-4 mr-2">
-                                                        </a>
-                                                        <a href="{{ clean_path }}" aria-label="English" class="flex justify-center items-center ml-1">
-                                                            <img src="{{ 'en.png' | asset_url }}" alt="English" class="w-4">
-                                                        </a>
-                                                    </div>
-                                                {% endif %}
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endfor %}
-                            </div>
-
-                    {% endcase %}
-                {% endfor %}
-            </div>
-            <div class="h-0 lg:h-0 lg:w-1/12"></div>
         </div>
 
-        <!-- Bottom bar -->
-        <div class="flex flex-col gap-10 lg:gap-0 lg:flex-row">
-            <div class="flex flex-col bg-transparent lg:w-[50.5%]">
-                <a href="{{ section.settings.bar-button-url }}" aria-label="{{ section.settings.bar-button-url }}"
-                    class="flex font-semibold rounded-full py-3.5 px-7 w-fit leading-none tk-aktiv-grotesk"
-                    style="background-color:{% if section.settings.bar-button-bg-trasparent %}transparent{% else %}{{ section.settings.bar-button-bg-color }}{% endif %}; color:{{ section.settings.bar-button-text-color }};">
-                    {{ section.settings.bar-button-text }}
-                </a>
+        <div class="flex flex-col md:flex-row justify-between gap-4">
+            <div class="caption_gs caption_gsp text-color_gs text-color_gsp">
+                {{ section.settings.bar-text }}
             </div>
-            <div class="flex gap-32 lg:w-[49.5%] tk-aktiv-grotesk">
-                <div class="flex bg-trasparent tk-aktiv-grotesk-thin md:max-w-[700px] max-w-[300px] text-white text-xs">
-                    {{ section.settings.bar-text }}
+            {% if section.settings['footer-menu-lang'] != blank %}
+                <div class="flex items-center gap-2">
+                    <a href="/it"><img src="{{ 'it.png' | asset_url }}" class="w-4"></a>
+                    <a href="/"><img src="{{ 'en.png' | asset_url }}" class="w-4"></a>
                 </div>
-            </div>
+            {% endif %}
         </div>
-
     </div>
 
-    <!-- UNICO contenitore con overlay -->
-    <div id="form-wrapper"
-        class="fixed top-0 left-0 flex justify-center items-end md:items-center w-full h-full z-50 opacity-0 pointer-events-none transition-all duration-700 ease-out"
-        style="background-color: rgba(0,0,0,0.5); backdrop-filter: blur(48px);">
-
+    <div id="form-wrapper" class="fixed inset-0 flex justify-center items-end md:items-center z-[100] opacity-0 pointer-events-none transition-all duration-700" style="background: rgba(0,0,0,0.6); backdrop-filter: blur(40px);">
         {% form 'customer', id: 'newsletter_form' %}
-
-        <!-- Box form animato da sotto -->
-        <div id="form-box-news"
-             class="flex flex-col max-h-[80vh] overflow-y-auto opacity-0 translate-y-full transition-all duration-[800ms] max-w-[720px] w-full bg-white rounded-xl lg:px-10 py-8 px-4 gap-10"
-             style="background-color: {{ section.settings.newsletter-form-bg-color }}; color: {{ section.settings.newsletter-form-text-color }}">
-
-            <!-- Header con titolo e X e testo-->
-            <div class="flex flex-col gap-6">
-                <div class="flex justify-between">
-                    <div class="body-medium text-xl">{{ section.settings.newsletter-form-title }}</div>
-                    <div id="newsletter-form-close" class="cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </div>
+            <div id="form-box-news" class="bg-[#292929] text-white p-8 lg:p-12 rounded-xl max-w-2xl w-full mx-4 translate-y-20 transition-transform duration-500">
+                <div class="flex justify-between mb-8">
+                    <h3 class="text-2xl font-bold">{{ section.settings.newsletter-form-title }}</h3>
+                    <button type="button" id="newsletter-form-close" class="text-2xl">✕</button>
                 </div>
-                <div class="text-[16px]">{{ section.settings.newsletter-form-text }}</div>
-            </div>
-            <!-- Input mail -->
-            <div class=" flex flex-col">
-                <div class="hidden lg:block flex text-xs text-[#D6CBC9]">Email*</div>
-                <input type="email" id="form-newsletter-mail" name="contact[email]"
-                    class="w-full bg-transparent text-sm py-3 border-b border-white" {% if
-                    section.settings.newsletter-mail-is-required==true %} required placeholder="Email*" {% endif %}
-                    placeholder="Email" />
-            </div>
-
-            <!-- Join choice -->
-            <div class="flex flex-col text-lg gap-6">
-                <label>{{ section.settings.join-label }}</label>
-                <div class="flex flex-col gap-4 text-[16px]">
-                    <div class="flex gap-2">
-                        <input type="radio" id="join-vd" name="join_choice"
-                            value="{{ section.settings.join-vd-label | escape }}"
-                            class="appearance-none h-5 w-5 border-1 border-white rounded-full bg-transparent checked:bg-white transition-all duration-200">
-                        <label for="join-vd">{{ section.settings.join-vd-label }}</label>
-                    </div>
-                    <div class="flex gap-2">
-                        <input type="radio" id="join-ent" name="join_choice"
-                            value="{{ section.settings.join-ent-label | escape }}"
-                            class="appearance-none h-5 w-5 border-1 border-white rounded-full bg-transparent checked:bg-white transition-all duration-200">
-                        <label for="join-ent">{{ section.settings.join-ent-label }}</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex text-[14px]">
-                {{ section.settings.newsletter-form-required-text }}
-            </div>
-
-            <!-- Consensi -->
-            <div class="flex flex-col gap-6 text-[18px]">
-                <div class="flex items-center h-auto gap-4">
-                    <input style="aspect-ratio:1/1" type="checkbox"
-                        class="w-6 h-6 rounded-sm appearance-none border-1 border-white bg-transparent checked:bg-white transition-all duration-200"
-                        id="marketingConsent">
-                    <label class="w-auto">
-                        {{ section.settings.newsletter-markConsLabel }}
-                        <u><a id="shortMarketing">{{ section.settings.newsletter-privacy-label | default: "Privacy
-                                Policy" }}</a></u>
-                    </label>
-                </div>
-                <div class="flex items-center h-auto gap-4">
-                    <input style="aspect-ratio:1/1" type="checkbox"
-                        class="appearance-none w-6 h-6 rounded-sm border-1 border-white bg-transparent checked:bg-white transition-all duration-200 disabled:border-[#ACACAC]"
-                        id="profilingConsent" disabled>
-                    <label class="text-white transition-colors duration-200" id="profilingLabel">
-                        {{ section.settings.newsletter-profConsLabel }}
-                        <u><a id="shortProfiling">{{ section.settings.newsletter-privacy-label | default: "Privacy
-                                Policy" }}</a></u>
-                    </label>
-                </div>
-            </div>
-
-            <u><a href="{{ section.settings.newsletter-privacy-url.url }}">{{ section.settings.privacy_label | default:
-                    "Privacy Policy" }}</a></u>
-
-            <div class="flex body-medium justify-center tk-aktiv-grotesk">
-                <button id="newsletter-form-submit"
-                    aria-label="{{ section.settings.newsletter-form-submit-button-text }}" type="submit"
-                    class="w-full px-7 py-3.5 rounded-4xl text-[16px] font-semibold w-[300px]"
-                    style="color:{{ section.settings.newsletter-form-button-text-color }};background-color:{{ section.settings.newsletter-form-button-background-color }};">
+                <input type="email" name="contact[email]" id="form-newsletter-mail" class="w-full bg-transparent border-b border-white py-3 mb-8 outline-none focus:border-blue-400" placeholder="Email*">
+                <button type="submit" class="w-full py-4 rounded-full font-bold transition-opacity hover:opacity-90" style="background:{{ section.settings.newsletter-form-button-background-color | default: '#fff' }}; color:{{ section.settings.newsletter-form-button-text-color | default: '#000' }};">
                     {{ section.settings.newsletter-form-submit-button-text }}
                 </button>
             </div>
-
-            <!-- Hidden tags gestito dallo script -->
-            <input type="hidden" id="contactTags" name="contact[tags]" value="">
-        </div>
         {% endform %}
     </div>
-
-    <div id="marketing-overlay"
-        class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
-        <div
-            class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
-            <div class="flex flex-row justify-between">
-                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.newsletter-marketing-title
-                    }}</h6>
-                <button id="marketing-close" aria-label="Chiudi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
-                            fill="white" />
-                    </svg>
-                </button>
-            </div>
-            <div>
-                {{ section.settings.newsletter-marketing-text }} <u><a
-                        href="{{ section.settings.newsletter-privacy-url.url }}">{{ section.settings.privacy_label |
-                        default: "Privacy Policy" }}</a></u>
-            </div>
-        </div>
-    </div>
-
-    <div id="profiling-overlay"
-        class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-black/70 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ">
-        <div
-            class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
-            <div class="flex justify-between">
-                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.newsletter-profiling-title
-                    }}</h6>
-                <button id="profiling-close" aria-label="Chiudi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
-                            fill="white" />
-                    </svg>
-                </button>
-            </div>
-            <div>
-                {{ section.settings.newsletter-profiling-text }} <u><a
-                        href="{{ section.settings.newsletter-privacy-url.url}}">{{ section.settings.privacy_label |
-                        default: "Privacy Policy" }}</a></u>
-            </div>
-        </div>
-    </div>
-    <!-- Popup nascosto -->
-    <!-- Overlay -->
-    <div id="newsletter-thankyou-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-        <div
-            class="flex flex-col w-full max-w-[720px] h-fit items-center justify-center bg-[#292929] text-white px-14 py-10 gap-10 rounded-xl">
-            <div class="flex flex-row justify-between w-full">
-                <div class="flex size-6"></div>
-                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">
-                    {{ section.settings.newsletter-form-ty-title }}
-                </h6>
-                <button id="app-newsletter-ty-close" aria-label="Chiudi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
-                            fill="white" />
-                    </svg>
-                </button>
-            </div>
-            <div class="text-center">
-                {{ section.settings.newsletter-form-ty-text }}
-            </div>
-            <div>
-                <button
-                    class="w-full lg:w-[234px] py-3.5 px-7 body-semibold text-[16px] leading-[14px] bg-white text-black rounded-4xl"
-                    id="app-newsletter-ty-close-btn">
-                    {{ section.settings.newsletter-form-ty-btn-label }}
-                </button>
-            </div>
-        </div>
-    </div>
 </footer>
+
 <style>
-    .text-disabled {
-        color: #ACACAC;
-        cursor: not-allowed;
+    /* Animazione rotazione icona */
+    .footer-accordion-item.active .accordion-icon {
+        transform: rotate(45deg);
     }
 
-
-    #newsletter-mail::placeholder {
-        color: #D6CBC9 !important;
-    }
-
-    #form-box-news::-webkit-scrollbar {
-        display: none;
-    }
-
-    #form-box-news input[type="email"]:focus {
-        outline: none !important;
-        /* niente bordo blu default */
-        border-bottom: 1px solid #F76C00 !important;
-        /* bordo arancione al focus */
-    }
-
-    #newsletter-input-mail input[type="email"]:focus {
-        outline: none !important;
-        /* niente bordo blu default */
-        border-bottom: 1px solid #F76C00 !important;
-        /* bordo arancione al focus */
-    }
-
-    #form-box-news {
-        -ms-overflow-style: none;
-        /* IE e Edge vecchi */
-        scrollbar-width: none;
-        /* Firefox */
+    /* Forza apertura su Desktop */
+    @media (min-width: 1024px) {
+        .footer-accordion-content {
+            max-height: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
     }
 </style>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const formWrapper = document.getElementById("form-wrapper");
-    const formBox = document.getElementById("form-box-news");
-    const submitBtn = document.getElementById("newsletter-submit");
-    const submitFormBtn = document.getElementById("newsletter-form-submit");
-    const formClose = document.getElementById("newsletter-form-close");
-    const footer = document.getElementById("footer");
-    const mail = document.getElementById("newsletter-mail");
-    const formMail = document.getElementById("form-newsletter-mail");
+        // 1. LOGICA ACCORDION MOBILE
+        const accordionItems = document.querySelectorAll('.footer-accordion-item');
+        
+        accordionItems.forEach(item => {
+            const trigger = item.querySelector('.footer-accordion-trigger');
+            const content = item.querySelector('.footer-accordion-content');
 
-    const shortMarketing = document.getElementById("shortMarketing");
-    const marketingOverlay = document.getElementById("marketing-overlay");
-    const marketingClose = document.getElementById("marketing-close");
+            trigger.addEventListener('click', () => {
+                if (window.innerWidth >= 1024) return;
 
-    const shortProfiling = document.getElementById("shortProfiling");
-    const profilingOverlay = document.getElementById("profiling-overlay");
-    const profilingClose = document.getElementById("profiling-close");
-
-    const marketingConsent = document.getElementById("marketingConsent");
-    const profilingConsent = document.getElementById("profilingConsent");
-    const profilingLabel = document.getElementById("profilingLabel");
-
-    const hiddenTags = document.querySelector('#contactTags');
-    const radios = document.querySelectorAll("input[name='join_choice']");
-    const footerForm = document.getElementById('newsletter_form');
-
-    /** ---------------------------
-     * Profilazione abilitata solo se marketing è spuntato
-     ---------------------------- */
-    function updateProfilingState() {
-        if (marketingConsent.checked) {
-            profilingConsent.disabled = false;
-            profilingConsent.classList.remove("cursor-not-allowed");
-            profilingLabel.classList.remove("text-[#ACACAC]", "cursor-not-allowed");
-            profilingLabel.classList.add("text-white");
-        } else {
-            profilingConsent.checked = false;
-            profilingConsent.disabled = true;
-            profilingConsent.classList.add("cursor-not-allowed");
-            profilingLabel.classList.remove("text-white");
-            profilingLabel.classList.add("text-[#ACACAC]", "cursor-not-allowed");
-        }
-    }
-    updateProfilingState();
-    marketingConsent.addEventListener("change", updateProfilingState);
-
-    /** ---------------------------
-     * Overlay marketing/profiling
-     ---------------------------- */
-    function openOverlay(overlay) {
-        overlay.classList.remove("opacity-0", "pointer-events-none");
-        overlay.classList.add("opacity-100");
-        hideNewsletterForm();
-    }
-
-    function closeOverlay(overlay) {
-        overlay.classList.remove("opacity-100");
-        overlay.classList.add("opacity-0");
-        showNewsletterForm();
-        setTimeout(() => overlay.classList.add("pointer-events-none"), 800);
-    }
-
-    shortMarketing?.addEventListener("click", () => openOverlay(marketingOverlay));
-    marketingClose?.addEventListener("click", () => closeOverlay(marketingOverlay));
-    shortProfiling?.addEventListener("click", () => openOverlay(profilingOverlay));
-    profilingClose?.addEventListener("click", () => closeOverlay(profilingOverlay));
-
-    /** ---------------------------
-     * Apertura/chiusura form principale con animazione COD1
-     ---------------------------- */
-    function showNewsletterForm() {
-        // Overlay
-        formWrapper.classList.remove("opacity-0", "pointer-events-none");
-        formWrapper.classList.add("opacity-100");
-
-        // Modale
-        formBox.classList.remove("opacity-0", "translate-y-full");
-        formBox.classList.add("opacity-100", "translate-y-0");
-
-        // Sfondo blur
-        footer?.classList.add("blur-xs");
-        document.body.classList.add("overflow-hidden");
-    }
-
-    function hideNewsletterForm() {
-        // Overlay
-        formWrapper.classList.remove("opacity-100");
-        formWrapper.classList.add("opacity-0");
-
-        // Modale
-        formBox.classList.remove("opacity-100", "translate-y-0");
-        formBox.classList.add("opacity-0", "translate-y-full");
-
-        // Sfondo blur
-        footer?.classList.remove("blur-xs");
-        document.body.classList.remove("overflow-hidden");
-
-        setTimeout(() => formWrapper.classList.add("pointer-events-none"), 800);
-    }
-
-    // Chiudi popup ringraziamento
-    document.getElementById("app-newsletter-ty-close").addEventListener("click", () => {
-        document.getElementById("newsletter-thankyou-popup").classList.add("hidden");
-        hideNewsletterForm();
-    });
-    document.getElementById("app-newsletter-ty-close-btn").addEventListener("click", () => {
-        document.getElementById("newsletter-thankyou-popup").classList.add("hidden");
-        hideNewsletterForm();
-    });
-
-    // Apertura form dal pulsante
-    submitBtn?.addEventListener("click", () => {
-        showNewsletterForm();
-        if (mail.value !== "") {
-            formMail.value = mail.value;
-        }
-    });
-
-    // Chiudi form X
-    formClose?.addEventListener("click", hideNewsletterForm);
-
-    // Click esterno
-    formWrapper?.addEventListener("click", (event) => {
-        if (!formBox.contains(event.target)) hideNewsletterForm();
-    });
-
-    // ESC
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") hideNewsletterForm();
-    });
-
-    /** ---------------------------
-     * Invio form con AJAX + gestione tags
-     ---------------------------- */
-    submitFormBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        if (!footerForm.checkValidity()) {
-            footerForm.reportValidity();
-            return;
-        }
-
-        // COSTRUZIONE TAGS
-        const tags = ["newsletter"];
-        if (marketingConsent?.checked) tags.push("marketing");
-        if (profilingConsent?.checked) tags.push("profiling");
-        radios.forEach(radio => {
-            if (radio.checked) tags.push(radio.value.replace(/\s+/g, "-"));
-        });
-
-        hiddenTags.value = [...new Set(tags.map(t => t.trim()))].join(",");
-
-        // INVIO AJAX
-        const footerFormData = new FormData(footerForm);
-
-        fetch(footerForm.action, {
-            method: "POST",
-            body: footerFormData,
-            headers: { "Accept": "application/json" },
-            redirect: "follow"
-        })
-        .then(response => {
-            if (response.ok) {
-                formBox?.classList.add("hidden");
-                document.getElementById("newsletter-thankyou-popup").classList.remove("hidden");
-            } else {
-                return response.json().then(err => {
-                    console.error("Shopify error:", err);
-                    alert("Error: " + JSON.stringify(err));
+                const isActive = item.classList.contains('active');
+                
+                // Chiudi gli altri (opzionale: commenta se vuoi che restino aperti più menu)
+                accordionItems.forEach(other => {
+                    other.classList.remove('active');
+                    other.querySelector('.footer-accordion-content').style.maxHeight = null;
                 });
-            }
-        })
-        .catch(err => {
-            console.error("Net error:", err);
-            alert("An error has occurred");
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
         });
+
+        // 2. LOGICA MODALE NEWSLETTER
+        const wrapper = document.getElementById("form-wrapper");
+        const box = document.getElementById("form-box-news");
+        const openBtn = document.getElementById("newsletter-submit");
+        const closeBtn = document.getElementById("newsletter-form-close");
+
+        openBtn?.addEventListener("click", () => {
+            wrapper.classList.remove("opacity-0", "pointer-events-none");
+            box.classList.remove("translate-y-20");
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeModale = () => {
+            wrapper.classList.add("opacity-0", "pointer-events-none");
+            box.classList.add("translate-y-20");
+            document.body.style.overflow = '';
+        };
+
+        closeBtn?.addEventListener("click", closeModale);
+        wrapper.addEventListener("click", (e) => { if(e.target === wrapper) closeModale(); });
     });
-});
 </script>
 
 {% schema %}
 {
-"name": "Footer",
-"settings": [
-{
-"type": "text",
-"id": "newsletter-form-ty-title",
-"label": "Thank you popup title",
-"default": "Thank you!"
-},
-{
-"type": "textarea",
-"id": "newsletter-form-ty-text",
-"label": "Thank you popup text",
-"default": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications."
-},
-{
-"type": "text",
-"id": "newsletter-form-ty-btn-label",
-"label": "Thank you popup btn label",
-"default": "Close"
-},
-{
-"type": "text",
-"id": "bar-button-text",
-"label": "Button text in the footer bar",
-"default": "Trova un VD Center"
-},
-{
-"type": "url",
-"id": "bar-button-url",
-"label": "Button link in the footer bar"
-},
-{
-"type": "color",
-"id": "bar-button-bg-color",
-"label": "Button background color in the footer bar",
-"default": "#ffffff"
-},
-{
-"type": "color",
-"id": "bar-button-text-color",
-"label": "Button color in the footer bar",
-"default": "#000000"
-},
-{
-"type": "checkbox",
-"id": "bar-button-bg-trasparent",
-"label":"Trasparent button background in the footer bar",
-"default": false
-},
-{
-"type": "text",
-"id": "bar-text",
-"label": "Text in the footer bar",
-"default": "©2024 CANTIERE DEL PARDO S.p.A. • ITALY • P.IVA 03869300404 • Cap. Soc. € 5.261.600,00 i.v. • All Rights Reserved"
-},
-{
-"type": "color",
-"id": "newsletter-form-bg-color",
-"label": "Newsletter form background color",
-"default": "#292929"
-},
-{
-"type": "color",
-"id": "newsletter-form-text-color",
-"label": "Newsletter form text color",
-"default": "#ffffff"
-},
-{
-"type": "text",
-"id": "newsletter-form-title",
-"label": "Newsletter form title",
-"default": "Get in touch"
-},
-{
-"type": "text",
-"id": "newsletter-form-text",
-"label": "Newsletter form text",
-"default": "Please fill out the form below to subscribe to our newsletter"
-},
-{
-"type": "text",
-"id": "join-label",
-"label": "Newsletter question text",
-"default": "Why would you like to join?*"
-},
-{
-"type": "text",
-"id": "join-vd-label",
-"label": "Newsletter question option 1 text",
-"default": "VanDutch Owner"
-},
-{
-"type": "text",
-"id": "join-ent-label",
-"label": "Newsletter question option 2 text",
-"default": "Enthusiast"
-},
-{
-"type": "text",
-"id": "newsletter-form-required-text",
-"label": "Newsletter 'required' text",
-"default": "* indicates required fields"
-},
-{
-"type": "checkbox",
-"id" : "newsletter-mail-is-required",
-"label": "Required",
-"default": true
-},
-{
-"type": "text",
-"id": "newsletter-markConsLabel",
-"label": "Newsletter marketing consent text",
-"default": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services."
-},
-{
-"type": "text",
-"id": "newsletter-profConsLabel",
-"label": "Newsletter profiling consent text",
-"default": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us."
-},
-{
-"type": "text",
-"id": "newsletter-privacy_label",
-"label": "Newsletter privacy label"
-},
-{
-"type": "text",
-"id": "newsletter-marketing-title",
-"label": "Newsletter marketing short title",
-"default": "Direct marketing consent"
-},
-{
-"type": "text",
-"id": "newsletter-profiling-title",
-"label": "Newsletter profiling short title",
-"default": "Profiling consent"
-},
-{
-"type": "text",
-"id": "newsletter-marketing-text",
-"label": "Newsletter marketing short text",
-"default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning VanDutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be collected until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:"
-},
-{
-"type": "text",
-"id": "newsletter-profiling-text",
-"label": "Newsletter profiling short text",
-"default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the «VanDutch Yachts» boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the restriction of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "
-},
-{
-"type": "page",
-"id": "newsletter-privacy-url",
-"label": "Newsletter privacy url"
-},
-{
-"type": "text",
-"id": "newsletter-form-submit-button-text",
-"label": "Newsletter button text",
-"default": "Subscribe"
-},
-{
-"type": "color",
-"id": "newsletter-form-button-text-color",
-"label": "Newsletter button text color",
-"default": "#000000"
-},
-{
-"type": "color",
-"id": "newsletter-form-button-background-color",
-"label": "Newsletter button background color",
-"default": "#ACACAC"
-}
-
-],
-"blocks": [
-{
-"type": "newsletter",
-"limit": 1,
-"name": "Newsletter",
-"settings": [
-
-{
-"type": "text",
-"id": "newsletter-title",
-"label": "Newsletter title",
-"default": "Iscriviti alla newsletter"
-},
-{
-"type": "text",
-"id": "newsletter-text",
-"label": "Newsletter text",
-"default": "Non perderti nessun aggiornamento sul mondo VanDutch. Iscriviti alla newsletter!"
-},
-{
-"type": "text",
-"id": "newsletter-mail-placeholder",
-"label": "Mail field placeholder",
-"default": "E-mail"
-},
-{
-"type": "text",
-"id" : "newsletter-fields-required",
-"label": "Text required fields",
-"default": "*campi obbligatori",
-},
-{
-"type": "checkbox",
-"id" : "newsletter-is-required",
-"label": "Required",
-"default": true
-},
-{
-"type": "text",
-"id": "newsletter-submit-button-text",
-"label": "Newsletter button text",
-"default": "Come on board"
-},
-{
-"type": "color",
-"id": "newsletter-button-text-color",
-"label": "Newsletter button text color",
-"default": "#000000"
-},
-{
-"type": "color",
-"id": "newsletter-button-background-color",
-"label": "Newsletter button background color",
-"default": "#ffffff"
-}
-]
-},
-{
-"type": "footer-menu",
-"name":"Menu nel footer",
-"settings": [
-{
-"type": "color",
-"id": "footer-menu-title-color",
-"label": "Title's text-color in footer menu",
-"default": "#D6CBC9"
-},
-{
-"type": "color",
-"id": "footer-menu-link-color",
-"label": "Link text-color in footer menu",
-"default": "#ffffff"
-},
-{
-"type": "link_list",
-"id": "footer-left-menu-1",
-"label": "First menu on the left side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-l1",
-"label": "First menu on the left - CAPS LOCK"
-},
-{
-"type": "link_list",
-"id": "footer-left-menu-2",
-"label": "Second menu on the left side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-l2",
-"label": "Second menu on the left - CAPS LOCK"
-},
-{
-"type": "link_list",
-"id": "footer-left-menu-3",
-"label": "Third menu on the left side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-l3",
-"label": "Third menu on the left - CAPS LOCK"
-},
-{
-"type": "link_list",
-"id": "footer-right-menu-1",
-"label": "First menu on the right side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-r1",
-"label": "First menu on the right - CAPS LOCK"
-},
-{
-"type": "link_list",
-"id": "footer-right-menu-2",
-"label": "Second menu on the right side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-r2",
-"label": "Second menu on the right - CAPS LOCK"
-},
-{
-"type": "link_list",
-"id": "footer-right-menu-3",
-"label": "Third menu on the right side",
-"default": "footer"
-},
-{
-"type": "checkbox",
-"id":"footer-menu-link-caps-r3",
-"label": "Third menu on the right - CAPS LOCK"
-}
-]
-}
-],
-"default": {
-"blocks":[
-{
-"type":"newsletter"
-},
-{
-"type":"footer-menu"
-}
-]
-}
+  "name": "Footer",
+  "settings": [
+    { "type": "image_picker", "id": "logo_gs", "label": "Logo GS" },
+    { "type": "image_picker", "id": "logo_gsp", "label": "Logo GSP" },
+    { "type": "text", "id": "bar-text", "label": "Footer Copyright", "default": "©2026 CANTIERE DEL PARDO S.p.A." },
+    { "type": "text", "id": "newsletter-form-title", "label": "Titolo Modale", "default": "Get in touch" },
+    { "type": "text", "id": "newsletter-form-submit-button-text", "label": "Bottone Modale", "default": "Subscribe" }
+  ],
+  "blocks": [
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "newsletter-title", "label": "Titolo", "default": "Newsletter" },
+        { "type": "text", "id": "newsletter-text", "label": "Testo", "default": "Iscriviti per aggiornamenti." },
+        { "type": "text", "id": "newsletter-mail-placeholder", "label": "Placeholder", "default": "E-mail" },
+        { "type": "text", "id": "newsletter-submit-button-text", "label": "Testo Bottone", "default": "Iscriviti" },
+        { "type": "color", "id": "newsletter-button-background-color", "label": "Sfondo Bottone", "default": "#ffffff" },
+        { "type": "color", "id": "newsletter-button-text-color", "label": "Colore Testo Bottone", "default": "#000000" }
+      ]
+    },
+    {
+      "type": "footer-menu",
+      "name": "Menu Footer",
+      "limit": 1,
+      "settings": [
+        { "type": "color", "id": "footer-menu-title-color", "label": "Colore Titoli", "default": "#D6CBC9" },
+        { "type": "color", "id": "footer-menu-link-color", "label": "Colore Link", "default": "#ffffff" },
+        { "type": "link_list", "id": "footer-menu-1", "label": "Menu 1" },
+        { "type": "link_list", "id": "footer-menu-2", "label": "Menu 2" },
+        { "type": "link_list", "id": "footer-menu-3", "label": "Menu 3" }
+      ]
+    }
+  ]
 }
 {% endschema %}

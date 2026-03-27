@@ -5,15 +5,13 @@
 
 <script>
   (function() {
-    // Imposta il tema iniziale basato sulla pagina Shopify corrente
     const initialTheme = '{{ current_theme }}';
     document.documentElement.className = initialTheme;
   })();
 </script>
 
-<div class="fixed top-4 md:top-6 left-0 w-full flex justify-center items-center pointer-events-none z-[9999]">
-  <header id="main-header" 
-          class="w-full md:max-w-[704px] lg:max-w-[768px] mx-6 md:mx-auto pointer-events-auto transition-all duration-500 ease-in-out overflow-hidden rounded-[24px] border border-transparent shadow-lg">
+<div class="fixed top-0 md:top-6 left-0 w-full flex justify-center items-center pointer-events-none z-[9999]">
+  <header id="main-header" class="w-full md:max-w-[704px] lg:max-w-[768px] md:mx-6 md:mx-auto pointer-events-auto transition-all duration-500 ease-in-out overflow-hidden md:rounded-[24px] md:shadow-lg">
     
     <div class="px-6 py-5 flex justify-between items-center relative z-10">
       <div class="flex-1">
@@ -26,10 +24,14 @@
       <div class="flex-none flex justify-center items-center">
         <a href="/" class="block relative" style="width: {{ section.settings.logo_width }}px;">
           {% if section.settings.logo_gs != blank %}
-            <img src="{{ section.settings.logo_gs | image_url: width: 300 }}" alt="Logo GS" class="logo-gs h-auto w-full transition-opacity duration-500">
+            <img src="{{ section.settings.logo_gs | image_url: width: 300 }}" 
+                alt="Logo GS" 
+                class="logo-gs h-auto w-full transition-opacity duration-500">
           {% endif %}
           {% if section.settings.logo_gsp != blank %}
-            <img src="{{ section.settings.logo_gsp | image_url: width: 300 }}" alt="Logo GSP" class="logo-gsp h-auto w-full transition-opacity duration-500 absolute inset-0">
+            <img src="{{ section.settings.logo_gsp | image_url: width: 300 }}" 
+                alt="Logo GSP" 
+                class="logo-gsp h-auto w-full transition-opacity duration-500 absolute inset-0">
           {% endif %}
         </a>
       </div>
@@ -43,16 +45,41 @@
 
     <div id="dropdown-wrapper" class="overflow-y-auto max-h-0 transition-all duration-700 ease-in-out">
       
-      <div id="menu-overlay" class="hidden px-8 py-8 flex flex-col gap-10  md:h-[720px]">
+      <div id="menu-overlay" class="hidden px-8 py-8 flex flex-col gap-10 md:min-h-[500px]">
         <div class="main-nav-wrapper">
-          <ul class="nav-links gs-only space-y-5 menu-md_gs">
+          <ul class="nav-links gs-only space-y-4 menu-md_gs">
             {% for link in linklists[section.settings.menu_gs].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              <li class="menu-item-has-children">
+                <div class="flex justify-between items-center cursor-pointer group">
+                  <a href="{{ link.url }}" class="flex-1">{{ link.title }}</a>
+                  {% if link.links != blank %}<span class="submenu-trigger text-2xl transition-transform duration-300 px-4">+</span>{% endif %}
+                </div>
+                {% if link.links != blank %}
+                  <ul class="submenu overflow-hidden max-h-0 transition-all duration-500 ease-in-out pl-4 space-y-2 pt-0">
+                    {% for childlink in link.links %}
+                      <li><a href="{{ childlink.url }}" class="opacity-70 hover:opacity-100 body-sm_gs">{{ childlink.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
             {% endfor %}
           </ul>
-          <ul class="nav-links gsp-only space-y-5 menu-md_gsp">
+
+          <ul class="nav-links gsp-only space-y-4 menu-md_gsp">
             {% for link in linklists[section.settings.menu_gsp].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              <li class="menu-item-has-children">
+                <div class="flex justify-between items-center cursor-pointer group">
+                  <a href="{{ link.url }}" class="flex-1">{{ link.title }}</a>
+                  {% if link.links != blank %}<span class="submenu-trigger text-2xl transition-transform duration-300 px-4">+</span>{% endif %}
+                </div>
+                {% if link.links != blank %}
+                  <ul class="submenu overflow-hidden max-h-0 transition-all duration-500 ease-in-out pl-4 space-y-2 pt-0">
+                    {% for childlink in link.links %}
+                      <li><a href="{{ childlink.url }}" class="opacity-70 hover:opacity-100 body-sm_gsp">{{ childlink.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
             {% endfor %}
           </ul>
         </div>
@@ -60,12 +87,12 @@
         <div class="secondary-nav-wrapper border-t border-[var(--border-color)] pt-8">
           <ul class="flex flex-row flex-wrap gap-x-4 gs-only menu-xs_gs">
             {% for link in linklists[section.settings.menu_gs_secondary].links %}
-              <li><a href="{{ link.url }}" class="underline transition-opacity">{{ link.title }}</a></li>
+              <li><a href="{{ link.url }}" class="underline">{{ link.title }}</a></li>
             {% endfor %}
           </ul>
           <ul class="flex flex-row flex-wrap gap-x-6 gap-y-3 gsp-only menu-xs_gsp">
             {% for link in linklists[section.settings.menu_gsp_secondary].links %}
-              <li><a href="{{ link.url }}" class="underline transition-opacity">{{ link.title }}</a></li>
+              <li><a href="{{ link.url }}" class="underline">{{ link.title }}</a></li>
             {% endfor %}
           </ul>
         </div>
@@ -73,39 +100,37 @@
 
       <div id="right-panel" class="hidden flex-col">
         <div class="px-6">
-          <div class="flex flex-wrap gap-2 py-8 items-center gs-only">
+          <div class="chips-container flex flex-wrap gap-2 items-center">
             {% for block in section.blocks %}
               {% if block.type == 'chip' %}
-                <a href="{{ block.settings.link }}" 
-                   class="custom-chip px-6 py-4 rounded-[50px] link-md_gs link-md_gsp {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" 
+                <button data-target="{{ block.settings.id_target }}"
+                   class="custom-chip px-6 py-3 rounded-[50px] transition-all duration-300 link-md_gs link-md_gsp {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" 
                    {{ block.shopify_attributes }}>
                   {{ block.settings.title }}
-                </a>
+                </button>
               {% endif %}
             {% endfor %}
           </div>
-          <div class="grid grid-cols-2 gap-x-4 gap-y-8">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 pb-20">
+            {% assign active_section_id = "" %}
             {% for block in section.blocks %}
               {% case block.type %}
                 {% when 'text' %}
-                  <div id="{{ block.settings.id_gamme }}" class="col-span-2 pt-4 pb-2 flex flex-col gap-2 {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" {{ block.shopify_attributes }}>
+                  {% assign active_section_id = block.settings.id_gamme %}
+                  <div id="{{ block.settings.id_gamme }}" data-observer-target="{{ block.settings.id_gamme }}" class="scroll-section col-span-1 md:col-span-2 pt-16 pb-2 flex flex-col gap-2 {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" {{ block.shopify_attributes }}>
                     <div class="menu-md_gs menu-md_gsp">{{ block.settings.title_gamme }}</div>
                     {% if block.settings.link_gamme != blank %}
                       <a href="{{ block.settings.url_gamme }}" class="body-sm_gs body-sm_gsp underline underline-offset-4">{{ block.settings.link_gamme }}</a>
                     {% endif %}
                   </div>
                 {% when 'card' %}
-                  <a href="{{ block.settings.link }}" 
-                     class="col-span-1 p-4 rounded-[16px] custom-card group flex flex-col {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" 
-                     {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.link }}" data-observer-target="{{ active_section_id }}" class="scroll-section col-span-1 p-4 rounded-[16px] custom-card group flex flex-col {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" {{ block.shopify_attributes }}>
                     <div class="flex flex-row justify-between items-start pb-6">
                       <div class="flex flex-col gap-1">
                         <h4 class="menu-model_gsp menu-model_gs">{{ block.settings.title }}</h4>
                         <p class="menu-model_gsp menu-model_gs">{{ block.settings.description }}</p>
                       </div>
-                      <span class="bg-[#05090D] p-3 rounded-full shrink-0">
-                        <svg width="14" height="15" viewBox="0 0 16 17" fill="none"><path d="M0.749779 15.5994L14.8919 1.45725L1.45689 0.750146L5.69953 4.99279" stroke="#EBEFF2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      </span>
                     </div>
                     {% if block.settings.image != blank %}
                       <div class="aspect-[4/3] overflow-hidden rounded-[8px] bg-[#80808020] mt-auto">
@@ -118,15 +143,13 @@
           </div>
         </div>
 
-        <div class="px-6 py-6 border-t border-transparent mt-auto sticky bottom-0 bg-inherit">
-          <div class="relative w-full h-[59px] rounded-full p-1 flex items-center bg-[#EBEFF2] transition-colors duration-500">
+        <div class="px-6 py-6 border-t border-transparent mt-auto sticky bottom-0 bg-inherit z-30">
+          <div class="relative w-full h-[59px] rounded-full p-1 flex items-center bg-[#EBEFF2]">
             <input type="radio" id="toggle-gs" name="theme-toggle" value="gs" class="peer/gs hidden">
             <label for="toggle-gs" class="flex-1 text-center z-10 cursor-pointer transition-colors peer-checked/gs:text-[#EBEFF2] font-medium text-[#101C26]">{{ section.settings.toggle_label_gs }}</label>
-
             <input type="radio" id="toggle-gsp" name="theme-toggle" value="gsp" class="peer/gsp hidden">
             <label for="toggle-gsp" class="flex-1 text-center z-10 cursor-pointer text-[#05090D] transition-colors peer-checked/gsp:text-[#FAF9F7] font-medium">{{ section.settings.toggle_label_gsp }}</label>
-            
-            <div id="toggle-slider" class="absolute top-1 left-1 w-[calc(50%-4px)] h-[51px] bg-[#101C26] rounded-full shadow transition-all duration-500 peer-checked/gsp:translate-x-full peer-checked/gsp:bg-[#282624]"></div>
+            <div id="toggle-slider" class="absolute top-1 left-1 w-[calc(50%-4px)] h-[51px] bg-[#101C26] rounded-full transition-all duration-500 peer-checked/gsp:translate-x-full peer-checked/gsp:bg-[#282624]"></div>
           </div>
         </div>
       </div>
@@ -138,63 +161,38 @@
 
 <style>
   :root { --transition-speed: 0.4s; }
-  
-  /* Logiche visibilità */
-  .gs .gsp-only { display: none !important; }
-  .gsp .gs-only { display: none !important; }
+  .gs .gsp-only, .gsp .gs-only { display: none !important; }
 
-  /* Gestione Loghi dinamici */
-  .logo-gs, .logo-gsp { transition: opacity var(--transition-speed) ease; }
-  .gs .logo-gsp { opacity: 0; pointer-events: none; }
-  .gsp .logo-gs { opacity: 0; pointer-events: none; }
-  .gs .logo-gs { opacity: 1; }
-  .gsp .logo-gsp { opacity: 1; }
+  html.gs, body.gs { --bg-color: #101C26; --text-color: #EBEFF2; --border-color: rgba(235, 239, 242, 0.2); --card: #101C26; }
+  html.gsp, body.gsp { --bg-color: #FAF9F7; --text-color: #141312; --border-color: rgba(20, 19, 18, 0.1); --card: #D4CCC1; }
 
-  /* Variabili Colore */
-  html.gs, body.gs {
-    --bg-color: #101C26;
-    --text-color: #EBEFF2;
-    --border-color: rgba(235, 239, 242, 0.2);
-    --card: #101C26;
-  }
-  html.gsp, body.gsp {
-    --bg-color: #FAF9F7;
-    --text-color: #141312;
-    --border-color: rgba(20, 19, 18, 0.1);
-    --card: #D4CCC1;
-  }
+  #main-header { background-color: var(--bg-color); color: var(--text-color); border-color: var(--border-color); backdrop-filter: blur(20px); transition: background-color var(--transition-speed); }
 
-  #main-header {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--border-color);
-    backdrop-filter: blur(20px);
-    transition: background-color var(--transition-speed), border-color var(--transition-speed), color var(--transition-speed);
-  }
+  .submenu-trigger.active { transform: rotate(45deg); }
+  .submenu.open { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
 
-  .custom-chip {
-    border: 1px solid var(--border-color);
-    color: inherit;
-    transition: all 0.3s ease;
-  }
-  .custom-chip:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-  }
-
-  .custom-card {
-    color: inherit;
-    background-color: var(--card);
-    border: 1px solid var(--border-color);
-  }
-
+  .chips-container { position: sticky; top: 0; z-index: 40; background-color: var(--bg-color); padding: 24px 0 16px 0; transition: background-color var(--transition-speed); }
+  .custom-chip { border: 1px solid var(--border-color); color: inherit; background: transparent; }
+  .custom-chip.is-active { background-color: var(--text-color); color: var(--bg-color); border-color: var(--text-color); }
+  .custom-card { background-color: var(--card); border: 1px solid var(--border-color); }
   #panel-overlay.active { opacity: 1; pointer-events: auto; }
+  #dropdown-wrapper::-webkit-scrollbar { display: none; }
+  #dropdown-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .logo-gsp { opacity: 0; pointer-events: none; }
+  .logo-gs { opacity: 1; }
+
+  /* Quando il tema è GSP */
+  .gsp .logo-gsp { opacity: 1; pointer-events: auto; }
+  .gsp .logo-gs { opacity: 0; pointer-events: none; }
+
+  /* Quando il tema è GS */
+  .gs .logo-gs { opacity: 1; pointer-events: auto; }
+  .gs .logo-gsp { opacity: 0; pointer-events: none; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const html = document.documentElement;
-  const body = document.body;
   const dropdown = document.getElementById('dropdown-wrapper');
   const menuLeft = document.getElementById('menu-overlay');
   const menuRight = document.getElementById('right-panel');
@@ -202,37 +200,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const openRight = document.getElementById('panel-open');
   const overlay = document.getElementById('panel-overlay');
   const radios = document.querySelectorAll('input[name="theme-toggle"]');
-  
-  // Il tema "reale" della pagina Shopify corrente
   const pageTheme = '{{ current_theme }}';
 
-  // Sincronizza il toggle grafico
-  const syncToggle = (theme) => {
-    const radioToSelect = document.querySelector(`input[name="theme-toggle"][value="${theme}"]`);
-    if (radioToSelect) radioToSelect.checked = true;
-  };
-  
-  syncToggle(pageTheme);
-
-  const updateThemeUI = (theme) => {
-    html.className = theme;
-    body.className = theme;
-  };
-
-  const toggleDropdown = (type) => {
-    const isLeftOpen = !menuLeft.classList.contains('hidden');
-    const isRightOpen = !menuRight.classList.contains('hidden');
-    const isOpen = dropdown.style.maxHeight !== '0px' && dropdown.style.maxHeight !== '';
-
-    if (isOpen && ((type === 'left' && isLeftOpen) || (type === 'right' && isRightOpen))) {
-      closeAll();
-    } else {
-      menuLeft.classList.toggle('hidden', type !== 'left');
-      menuRight.classList.toggle('hidden', type !== 'right');
-      burgerBtn.classList.toggle('active', type === 'left');
-      dropdown.style.maxHeight = '85vh';
-      overlay.classList.add('active');
+  // --- FISARMONICA ---
+  document.querySelectorAll('.menu-item-has-children').forEach(item => {
+    const trigger = item.querySelector('.submenu-trigger');
+    const submenu = item.querySelector('.submenu');
+    if(trigger) {
+      item.querySelector('.flex').addEventListener('click', (e) => {
+        const isPlus = e.target.classList.contains('submenu-trigger');
+        if(isPlus || e.currentTarget.querySelector('a').getAttribute('href') === '#') {
+          e.preventDefault();
+          trigger.classList.toggle('active');
+          submenu.classList.toggle('open');
+        }
+      });
     }
+  });
+
+  // --- INTERSECTION OBSERVER ---
+  const observedElements = document.querySelectorAll('.scroll-section');
+  const chips = document.querySelectorAll('.custom-chip');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const targetId = entry.target.getAttribute('data-observer-target');
+        if (targetId) chips.forEach(chip => chip.classList.toggle('is-active', chip.getAttribute('data-target') === targetId));
+      }
+    });
+  }, { root: dropdown, threshold: [0.1, 0.5], rootMargin: "-20% 0px -70% 0px" });
+
+  observedElements.forEach(el => observer.observe(el));
+
+  // --- NAV CLICK ---
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const target = document.getElementById(chip.getAttribute('data-target'));
+      if (target) dropdown.scrollTo({ top: target.offsetTop - 110, behavior: 'smooth' });
+    });
+  });
+
+  // --- LOGICA DI CHIUSURA (FIX SECONDO CLICK) ---
+  const updateThemeUI = (theme) => { 
+    document.documentElement.className = theme; 
+    document.body.className = theme; 
   };
 
   const closeAll = () => {
@@ -240,20 +251,51 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.remove('active');
     burgerBtn.classList.remove('active');
     
-    // RESET: Torna al tema della pagina originale alla chiusura del menu
+    // Aspetta la fine dell'animazione CSS (700ms) prima di resettare le classi hidden
     setTimeout(() => {
+      menuLeft.classList.add('hidden');
+      menuRight.classList.add('hidden');
       updateThemeUI(pageTheme);
-      syncToggle(pageTheme);
-    }, 400); 
+      const r = document.querySelector(`input[name="theme-toggle"][value="${pageTheme}"]`);
+      if(r) r.checked = true;
+    }, 700);
   };
 
-  burgerBtn.addEventListener('click', () => toggleDropdown('left'));
-  openRight.addEventListener('click', () => toggleDropdown('right'));
-  overlay.addEventListener('click', closeAll);
-
-  radios.forEach(radio => {
-    radio.addEventListener('change', (e) => updateThemeUI(e.target.value));
+  // --- TRIGGER APERTURA/CHIUSURA ---
+  burgerBtn.addEventListener('click', () => {
+    // Se il menu sinistro è già aperto, chiudi tutto
+    if(!menuLeft.classList.contains('hidden') && dropdown.style.maxHeight !== '0px') {
+      closeAll();
+    } else {
+      // Altrimenti apri a sinistra e nascondi destra
+      menuRight.classList.add('hidden');
+      menuLeft.classList.remove('hidden');
+      setTimeout(() => {
+        dropdown.style.maxHeight = '85vh';
+        burgerBtn.classList.add('active');
+        overlay.classList.add('active');
+      }, 10);
+    }
   });
+
+  openRight.addEventListener('click', () => {
+    // Se il menu destro è già aperto, chiudi tutto
+    if(!menuRight.classList.contains('hidden') && dropdown.style.maxHeight !== '0px') {
+      closeAll();
+    } else {
+      // Altrimenti apri a destra e nascondi sinistra
+      menuLeft.classList.add('hidden');
+      menuRight.classList.remove('hidden');
+      setTimeout(() => {
+        dropdown.style.maxHeight = '85vh';
+        overlay.classList.add('active');
+        burgerBtn.classList.remove('active');
+      }, 10);
+    }
+  });
+
+  overlay.addEventListener('click', closeAll);
+  radios.forEach(radio => radio.addEventListener('change', (e) => updateThemeUI(e.target.value)));
 });
 </script>
 
@@ -268,32 +310,32 @@ document.addEventListener('DOMContentLoaded', () => {
     { "type": "header", "content": "Menu Burger" },
     { "type": "link_list", "id": "menu_gs", "label": "Menu GS" },
     { "type": "link_list", "id": "menu_gsp", "label": "Menu GSP" },
-    { "type": "link_list", "id": "menu_gs_secondary", "label": "Menu Secondario GS (Orizzontale)"},
-    { "type": "link_list", "id": "menu_gsp_secondary", "label": "Menu Secondario GSP (Orizzontale)"},
+    { "type": "link_list", "id": "menu_gs_secondary", "label": "Menu Secondario GS"},
+    { "type": "link_list", "id": "menu_gsp_secondary", "label": "Menu Secondario GSP"},
     { "type": "header", "content": "Pannello Destra" },
     { "type": "text", "id": "right_label", "label": "Etichetta Bottone", "default": "DISCOVER" },
-    { "type": "header", "content": "Etichette Toggle" },
     { "type": "text", "id": "toggle_label_gs", "label": "Testo GS", "default": "GS MODE" },
     { "type": "text", "id": "toggle_label_gsp", "label": "Testo GSP", "default": "GSP MODE" }
   ],
   "blocks": [
     {
       "type": "chip",
-      "name": "Chip (Link)",
+      "name": "Chip (Ancora)",
       "settings": [
-        { "type": "text", "id": "title", "label": "Titolo", "default": "Design" },
-        { "type": "url", "id": "link", "label": "Link" },
-        {
-          "type": "select",
-          "id": "visibility",
-          "label": "Mostra in:",
-          "options": [
-            { "value": "both", "label": "Entrambi" },
-            { "value": "gs", "label": "Solo GS" },
-            { "value": "gsp", "label": "Solo GSP" }
-          ],
-          "default": "both"
-        }
+        { "type": "text", "id": "title", "label": "Titolo Chip", "default": "Design" },
+        { "type": "text", "id": "id_target", "label": "ID Destinazione" },
+        { "type": "select", "id": "visibility", "label": "Mostra in:", "options": [{"value": "both", "label": "Entrambi"}, {"value": "gs", "label": "Solo GS"}, {"value": "gsp", "label": "Solo GSP"}], "default": "both" }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text (Gamme)",
+      "settings": [
+        { "type": "text", "id": "id_gamme", "label": "ID Unico Sezione" },
+        { "type": "text", "id": "title_gamme", "label": "Titolo", "default": "Prestazioni" },
+        { "type": "text", "id": "link_gamme", "label": "Testo Link" },
+        { "type": "url", "id": "url_gamme", "label": "URL Link" },
+        { "type": "select", "id": "visibility", "label": "Mostra in:", "options": [{"value": "both", "label": "Entrambi"}, {"value": "gs", "label": "Solo GS"}, {"value": "gsp", "label": "Solo GSP"}], "default": "both" }
       ]
     },
     {
@@ -301,41 +343,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "name": "Card Progetto",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Immagine" },
-        { "type": "text", "id": "title", "label": "Titolo", "default": "Project Title" },
-        { "type": "text", "id": "description", "label": "Descrizione", "default": "Short description." },
+        { "type": "text", "id": "title", "label": "Titolo" },
+        { "type": "text", "id": "description", "label": "Descrizione" },
         { "type": "url", "id": "link", "label": "Link" },
-        {
-          "type": "select",
-          "id": "visibility",
-          "label": "Mostra in:",
-          "options": [
-            { "value": "both", "label": "Entrambi" },
-            { "value": "gs", "label": "Solo GS" },
-            { "value": "gsp", "label": "Solo GSP" }
-          ],
-          "default": "both"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        { "type": "text", "id": "id_gamme", "label": "Id" },
-        { "type": "text", "id": "title_gamme", "label": "Titolo", "default": "Prestazioni al massimo livello" },
-        { "type": "text", "id": "link_gamme", "label": "Label" },
-        { "type": "url", "id": "url_gamme", "label": "Link" },
-        {
-          "type": "select",
-          "id": "visibility",
-          "label": "Mostra in:",
-          "options": [
-            { "value": "both", "label": "Entrambi" },
-            { "value": "gs", "label": "Solo GS" },
-            { "value": "gsp", "label": "Solo GSP" }
-          ],
-          "default": "both"
-        }
+        { "type": "select", "id": "visibility", "label": "Mostra in:", "options": [{"value": "both", "label": "Entrambi"}, {"value": "gs", "label": "Solo GS"}, {"value": "gsp", "label": "Solo GSP"}], "default": "both" }
       ]
     }
   ]

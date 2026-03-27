@@ -1,0 +1,155 @@
+<div id="{{ section.settings.id_section }}" class="w-full relative overflow-hidden px-[16px] py-[64px] lg:px-[64px] xl:px-[128px] lg:py-[160px] bg_gs bg_gsp">
+
+  <!-- Text and content -->
+  <div class="w-full h-auto flex flex-col items-center gap-4 lg:gap-6 text-center mb-[56px] md:mb-[64px]">
+    {% if section.settings.subtitle != blank %}
+    <p class="mb-subtitle heading-md_gs heading-md_gsp text-color_gs text-color_gsp lg:max-w-[872px]" style="color: {{ section.settings.subtitle_section }}">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    {% if section.settings.main_title != blank %}
+      <p class="heading-md_gs heading-md_gsp text-color_gs text-color_gsp lg:max-w-[872px]">
+        {{ section.settings.main_title }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.content != blank %}
+      <p class="text-color_gs text-color_gsp lg:w-[872px] mx-auto body-lg_gs body-lg_gsp">
+        {{ section.settings.content }}
+      </p>
+    {% endif %}
+  </div>
+
+  {% assign image_blocks = section.blocks | where: "type", "image" %}
+  {% if image_blocks.size > 0 %}
+    <!-- Slider -->
+    <div class="internal-hero-slider relative w-full h-[204px] lg:h-[820px] mt-8 lg:mt-20">
+      {% for block in image_blocks %}
+        <div class="internal-hero-slide absolute top-0 left-0 w-full h-full transition-opacity duration-700 opacity-0 {% if forloop.first %}opacity-100{% endif %}">
+          <img 
+            src="{{ block.settings.image | img_url: 'master' }}" 
+            alt="{{ block.settings.alt_image }}" 
+            class="w-full h-full object-cover rounded-[16px] lg:rounded-[16px] aspect-[4/3]" 
+          />
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.internal-hero-slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.internal-hero-slide');
+    const nextBtn = slider.querySelector('.internal-next-slide');
+    const prevBtn = slider.querySelector('.internal-prev-slide');
+    const paginationContainer = slider.querySelector('.internal-swiper-pagination');
+    let current = 0;
+
+    if (slides.length > 1) {
+      function createPagination() {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+        slides.forEach((_, i) => {
+          const dot = document.createElement('div');
+          dot.className = 'dot rounded-full mx-1 cursor-pointer transition-all';
+          if (i === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => showSlide(i));
+          paginationContainer.appendChild(dot);
+        });
+      }
+
+      function updatePagination() {
+        if (!paginationContainer) return;
+        const dots = paginationContainer.children;
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].classList.toggle('active', i === current);
+        }
+      }
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? '1' : '0';
+        });
+        current = index;
+        updatePagination();
+      }
+
+      function nextSlide() {
+        const next = (current + 1) % slides.length;
+        showSlide(next);
+      }
+
+      function prevSlide() {
+        const prev = (current - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      }
+
+      nextBtn?.addEventListener('click', nextSlide);
+      prevBtn?.addEventListener('click', prevSlide);
+
+      createPagination();
+      showSlide(current);
+    } else {
+      slides[0].style.opacity = '1';
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Text & Gallery",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Basic Settings"
+    },
+    {
+      "type": "text",
+      "id": "id_section",
+      "label": "Section ID"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Title & Description"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Description"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt_image", "label": "Alt Text" }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Text & Gallery",
+      "category": "PDP"
+    }
+  ]
+}
+{% endschema %}

@@ -35,4 +35,7 @@
   <body class="bg-ebony loading-active">
     {{ content_for_layout }}
   </body>
+    {% unless template == 'index' %}
+    {% section 'footer' %}
+  {% endunless %}
 </html>

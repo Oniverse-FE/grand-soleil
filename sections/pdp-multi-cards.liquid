@@ -1,0 +1,219 @@
+{% comment %} 
+  Rimosso px-4 md:px-8 lg:px-[128px] dal contenitore principale per permettere lo scroll a filo 
+{% endcomment %}
+<div id="{{ section.settings.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="editorial-cards-padding bg_gs bg_gsp flex flex-col w-full overflow-hidden">
+    
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-[64px] mb-10 lg:mb-16 px-4 md:px-8 lg:px-[128px]">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'title' %}
+                    <div class="w-full lg:w-[828px]" {{ block.shopify_attributes }}>
+                        <h2 class="heading-md_gsp heading-md_gs md:heading-lg_gsp md:heading-lg_gs text-color_gs text-color_gsp">
+                            {{ block.settings.editorial-title }}
+                        </h2>
+                    </div>
+                {% when 'text-area' %}
+                    <div class="w-full lg:w-[542px] flex flex-col gap-6 tk-aktiv-grotesk" {{ block.shopify_attributes }}>
+                        <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp">
+                            {{ block.settings.editor-text | newline_to_br }}
+                        </div>
+                        {% if block.settings.editorial-label != blank %}
+                            <a href="{{ block.settings.editorial-url }}" class="inline-flex px-8 py-4 w-fit link-lg_gs link-lg_gsp cta-truffle_gsp cta-white_gs transition-all">
+                                {{ block.settings.editorial-label }}
+                            </a>
+                        {% endif %}
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+
+    {% assign card_count = 0 %}
+    {% for block in section.blocks %}
+        {% if block.type == 'card' %}{% assign card_count = card_count | plus: 1 %}{% endif %}
+    {% endfor %}
+
+    <div class="relative w-full">
+        <div id="slider-{{ section.id }}" 
+             class="flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 lg:flex-nowrap pb-4">
+            
+            {% comment %} Spacer iniziale per simulare il padding sinistro dello slider {% endcomment %}
+            <div class="shrink-0 w-4 md:w-8 lg:w-[128px]"></div>
+
+            {% for block in section.blocks %}
+                {% if block.type == 'card' %}
+                    <div class="snap-center shrink-0 w-[80vw] md:w-[45vw] lg:w-[calc(40%-32px)]" {{ block.shopify_attributes }}>
+                        <div class="relative group overflow-hidden rounded-[16px] aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/5]">
+                            {% if block.settings.image != blank %}
+                                {{ block.settings.image | image_url: width: 1200 | image_tag: 
+                                    class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105',
+                                    loading: 'lazy'
+                                }}
+                            {% else %}
+                                <div class="absolute inset-0 bg-[#f4f4f4]"></div>
+                            {% endif %}
+
+                            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(20, 19, 18, 0.00) 50%, #141312 100%)"></div>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full z-10 pointer-events-none">
+                                {% if block.settings.card_title != blank %}
+                                    {% comment %} Forzato colore bianco con !important o classe text-white {% endcomment %}
+                                    <h3 class="subtitle_gs md:heading-sm_gs !text-white mb-2" style="color: #FAF9F7 !important;">{{ block.settings.card_title }}</h3>
+                                {% endif %}
+                                {% if block.settings.card_subtitle != blank %}
+                                    <p class="body-sm_gs md:body-md_gs !text-white opacity-90" style="color: #FAF9F7 !important;">{{ block.settings.card_subtitle }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            {% if block.settings.link != blank %}
+                                <a href="{{ block.settings.link }}" class="absolute inset-0 z-20" aria-label="{{ block.settings.card_title }}"></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} Spacer finale per simulare il padding destro {% endcomment %}
+            <div class="shrink-0 w-4 md:w-8 lg:w-[128px]"></div>
+        </div>
+
+        {% if card_count > 1 %}
+        <div class="flex items-center justify-between mt-8 px-4 md:px-8 lg:px-[128px]">
+            <div class="body-sm_gs text-color_gs">
+                <span id="current-index-{{ section.id }}">01</span> - 0{{ card_count }}
+            </div>
+
+<div class="flex gap-[14px] items-center">
+                <button id="btn-prev-{{ section.id }}" 
+                        class="pt-3 transition-opacity duration-300 opacity-30 pointer-events-none">
+                    {% render 'gs-arrow-left-white' %}
+                </button>
+                <button id="btn-next-{{ section.id }}" 
+                        class="pb-3 transition-opacity duration-300">
+                    {% render 'gs-arrow-right-white' %}
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .editorial-cards-padding { padding-top: var(--pt-mob); padding-bottom: var(--pb-mob); }
+    @media screen and (min-width: 768px) { .editorial-cards-padding { padding-top: var(--pt-tab); padding-bottom: var(--pb-tab); } }
+    @media screen and (min-width: 1024px) { .editorial-cards-padding { padding-top: var(--pt-desk); padding-bottom: var(--pb-desk); } }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Impedisce ai bottoni di scorrere insieme allo slider */
+    #slider-{{ section.id }} {
+        -webkit-overflow-scrolling: touch;
+        scroll-padding: 0 128px; /* Supporta l'allineamento dello snap con lo spacer */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('slider-{{ section.id }}');
+        const counter = document.getElementById('current-index-{{ section.id }}');
+        const btnPrev = document.getElementById('btn-prev-{{ section.id }}');
+        const btnNext = document.getElementById('btn-next-{{ section.id }}');
+        
+        if (slider && counter) {
+            const updateSlider = () => {
+                const cards = slider.querySelectorAll('.snap-center');
+                if(cards.length === 0) return;
+                
+                const scrollLeft = slider.scrollLeft;
+                const cardWidth = cards[0].offsetWidth;
+                
+                // Correzione calcolo indice per via dello spacer iniziale
+                const index = Math.round((scrollLeft - 100) / cardWidth) + 1;
+                counter.innerText = Math.max(1, Math.min(index, {{ card_count }})).toString().padStart(2, '0');
+
+                btnPrev.style.opacity = scrollLeft <= 50 ? "0.3" : "1";
+                btnPrev.style.pointerEvents = scrollLeft <= 50 ? "none" : "auto";
+                
+                const isAtEnd = scrollLeft + slider.offsetWidth >= slider.scrollWidth - 50;
+                btnNext.style.opacity = isAtEnd ? "0.3" : "1";
+                btnNext.style.pointerEvents = isAtEnd ? "none" : "auto";
+            };
+
+            slider.addEventListener('scroll', updateSlider);
+            
+            btnPrev.onclick = () => {
+                const card = slider.querySelector('.snap-center');
+                slider.scrollBy({left: -(card.offsetWidth), behavior: 'smooth'});
+            };
+            btnNext.onclick = () => {
+                const card = slider.querySelector('.snap-center');
+                slider.scrollBy({left: card.offsetWidth, behavior: 'smooth'});
+            };
+            setTimeout(updateSlider, 100);
+        }
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Multi Cards Slider",
+    "settings": [
+        { "type": "text", "id": "id", "label": "Id section", "default": "editorial-cards" },
+        { "type": "header", "content": "Padding Desktop" },
+        { "type": "range", "id": "pt_desk", "label": "Superiore", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 96 },
+        { "type": "range", "id": "pb_desk", "label": "Inferiore", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 96 },
+        { "type": "header", "content": "Padding Tablet" },
+        { "type": "range", "id": "pt_tab", "label": "Superiore", "min": 0, "max": 260, "step": 4, "unit": "px", "default": 80 },
+        { "type": "range", "id": "pb_tab", "label": "Inferiore", "min": 0, "max": 260, "step": 4, "unit": "px", "default": 80 },
+        { "type": "header", "content": "Padding Mobile" },
+        { "type": "range", "id": "pt_mob", "label": "Superiore", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 104 },
+        { "type": "range", "id": "pb_mob", "label": "Inferiore", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 104 }
+    ],
+    "blocks": [
+        {
+            "type": "title",
+            "name": "Title",
+            "limit": 1,
+            "settings": [{ "type": "text", "id":"editorial-title", "label": "Title" }]
+        },
+        {
+            "type": "text-area",
+            "name": "Text area",
+            "limit": 1,
+            "settings": [
+                { "type": "textarea", "id": "editor-text", "label": "Editor content text" },
+                { "type": "text", "id": "editorial-label", "label": "Button text" },
+                { "type": "url", "id": "editorial-url", "label": "Button link" }
+            ]
+        },
+        {
+            "type": "card",
+            "name": "Card Item",
+            "limit": 5,
+            "settings": [
+                { "type": "image_picker", "id": "image", "label": "Card Image" },
+                { "type": "text", "id": "card_title", "label": "Card Title", "default": "Titolo Card" },
+                { "type": "text", "id": "card_subtitle", "label": "Card Subtitle", "default": "Sottotitolo descrittivo" },
+                { "type": "url", "id": "link", "label": "Card Link" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Multi Cards Slider",
+            "blocks": [
+                { "type": "title" },
+                { "type": "text-area" },
+                { "type": "card" },
+                { "type": "card" },
+                { "type": "card" },
+                { "type": "card" },
+                { "type": "card" }
+            ]
+        }
+    ]
+}
+{% endschema %}
