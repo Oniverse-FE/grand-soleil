@@ -91,11 +91,11 @@
               "visibility": "gsp"
             }
           },
-          "chip_pmXWUb": {
+          "chip_B6jzgi": {
             "type": "chip",
             "settings": {
-              "title": "Blue",
-              "id_target": "blue",
+              "title": "Performance",
+              "id_target": "performance",
               "visibility": "gs"
             }
           },
@@ -107,11 +107,11 @@
               "visibility": "gs"
             }
           },
-          "chip_B6jzgi": {
+          "chip_pmXWUb": {
             "type": "chip",
             "settings": {
-              "title": "Performance",
-              "id_target": "performance",
+              "title": "Blue",
+              "id_target": "blue",
               "visibility": "gs"
             }
           },
@@ -131,7 +131,7 @@
               "image": "shopify://shop_images/img.png",
               "title": "GS 42",
               "description": "Performance",
-              "link": "",
+              "link": "shopify://products/gs40",
               "visibility": "gs"
             }
           },
@@ -141,7 +141,7 @@
               "image": "shopify://shop_images/img.png",
               "title": "GS 42",
               "description": "Performance",
-              "link": "",
+              "link": "shopify://products/gs40",
               "visibility": "gs"
             }
           },
@@ -221,9 +221,9 @@
           "card_cCCVJ3",
           "card_JJz4qz",
           "card_f98JjJ",
-          "chip_pmXWUb",
-          "chip_rdmeyg",
           "chip_B6jzgi",
+          "chip_rdmeyg",
+          "chip_pmXWUb",
           "text_UegwHE",
           "card_MqxPbA",
           "card_g9XyAQ",
