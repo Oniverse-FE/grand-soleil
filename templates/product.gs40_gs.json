@@ -1,0 +1,567 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_FHwwWU": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_zyg8E8": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/0_3-HERO_1.png",
+            "content-image-desktop": "shopify://shop_images/0_3-HERO_1.png",
+            "content-subtitle": "",
+            "content-title": "",
+            "content-title-color": "#ffffff",
+            "button_1_label": "",
+            "button_1_url": "",
+            "button_2_label": "",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_zyg8E8"
+      ],
+      "name": "Hero Banner",
+      "settings": {}
+    },
+    "rich_text_ppGgwa": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "IL RITORNO DI UN MITO",
+        "rt_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
+        "rt_text1": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela. Questo 52 piedi non è un semplice yacht, ma una dichiarazione d'intenti: è la sintesi perfetta tra l'armonia delle forme, che si traduce in stabilità e performance, e l'innovazione tecnologica. Nasce per un armatore esigente, competente e appassionato, che rifiuta di scegliere tra il brivido della regata e il piacere del fast cruising. Sviluppato sul collaudato binomio tra l'architettura navale di Matteo Polli e il design di Nauta, il GS52P è l'essenza della gamma Performance. Lo scafo, costruito interamente in sandwich e composito, è studiato per offrire volumi e un'abitabilità sorprendenti senza incidere sul peso, garantendo quella rigidità strutturale che si traduce in reattività immediata. È una macchina da vento progettata per chi ama sentire la barca, per chi cerca l'accelerazione in uscita di virata e il controllo assoluto alle andature portanti, senza mai rinunciare a un'eleganza e a un comfort che solo il Made in Italy sa offrire.",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "full_image_tqFBzW": {
+      "type": "full-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/img.png",
+        "image_mobile": "shopify://shop_images/img.png",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
+    },
+    "animation_text_H4fCbf": {
+      "type": "animation-text",
+      "name": "Animation text",
+      "settings": {
+        "simple-intro-title": "Performance",
+        "simple-intro-text": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela.",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 128,
+        "pb_mob": 128
+      }
+    },
+    "intro_slider_X3xXex": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_anGtHB": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "L'eleganza della velocità: un design senza tempo",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_LHpLyg": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Il profilo del Grand Soleil 52 Performance è un equilibrio magistrale tra potenza ed eleganza. Le linee esterne, firmate da Nauta Design, comunicano sportività da ogni angolazione, con una tuga filante e pulita che si integra perfettamente nel design aggressivo dello scafo. Ma è sotto la superficie che si cela il cuore della performance: l'architettura navale di Matteo Polli è ottimizzata per l'eccellenza idrodinamica. Le sezioni di poppa, potenti e svasate, garantiscono stabilità di forma, potenza alle andature portanti e un controllo eccezionale. L'ingresso di prua fine e verticale assicura un passaggio sull'onda morbido, efficiente e asciutto, massimizzando la velocità di bolina. Questi non sono semplici tratti stilistici, ma scelte ingegneristiche che si traducono in benefici tangibili per l'armatore: angoli di bolina più stretti, reattività immediata al timone e una stabilità che infonde sicurezza anche nelle condizioni più impegnative. La costruzione in sandwich e infusione garantisce la massima rigidità e leggerezza, permettendo allo scafo di convertire ogni raffica in pura accelerazione."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_anGtHB",
+        "intro_text_area_LHpLyg"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_L8iGY6": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_QNU3Eb": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_mzjNri": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_tMTYXA": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_yYmNNC": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_Gr8KK6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_PXTBjC": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_XhEwGP": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_4CBYAD": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_VWxQUR": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_QNU3Eb",
+        "image_slider_image_mzjNri",
+        "image_slider_image_tMTYXA",
+        "image_slider_image_yYmNNC",
+        "image_slider_image_Gr8KK6",
+        "image_slider_image_PXTBjC",
+        "image_slider_image_XhEwGP",
+        "image_slider_image_4CBYAD",
+        "image_slider_image_VWxQUR"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "text_gallery_VNXjx6": {
+      "type": "text-gallery",
+      "blocks": {
+        "image_fg3fY4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_2252a203-be56-4d37-98a1-a6d40d498656.png",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_fg3fY4"
+      ],
+      "name": "Text & Gallery",
+      "settings": {
+        "id_section": "",
+        "main_title": "Il pozzetto da regata: ergonomia e controllo totale",
+        "subtitle": "",
+        "content": "La coperta del GS52P è un capolavoro di ergonomia funzionale, concepita per adattarsi allo stile di navigazione dell'armatore. Nella versione \"Performance\", il layout \"easy sailing\" è ottimizzato per la crociera veloce e la gestione con equipaggio ridotto: quattro winch posizionati a poppa, fiocco autovirante di serie e un punto fisso per la scotta randa lasciano il pozzetto centrale libero e sicuro, perfetto per gli ospiti. Per l'armatore che cerca il massimo vantaggio competitivo, la versione \"Race\" trasforma il ponte in una piattaforma da regata pura: sei winch, rotaie longitudinali per il fiocco, trasto randa recessato e un bompresso maggiorato di 90 cm per vele asimmetriche più potenti. In entrambe le versioni, la scelta di recessare tutte le manovre garantisce linee pulite e movimenti sicuri. Le panche dal design innovativo e le doppie timonerie offrono una visibilità perfetta e una sensibilità totale, permettendo un controllo istintivo. Questo design si traduce in efficienza: manovre più rapide, minor fatica per l'equipaggio e un vantaggio tattico decisivo."
+      }
+    },
+    "intro_slider_NXFyW9": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_cz8qQ3": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "Comfort sportivo: l'eleganza del Made in Italy",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_3J84KU": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Sottocoperta, il Grand Soleil 52 Performance smentisce il luogo comune che performance significhi sacrificare il comfort. Nauta Design ha creato interni che stupiscono per volumi, luminosità e soluzioni di stivaggio, ottimizzando ogni spazio senza compromettere la distribuzione dei pesi, cruciale per la performance. Il layout standard prevede tre cabine e tre bagni, una configurazione che offre privacy e un'abitabilità \"non comune\" su questa dimensione. L'ampia dinette, cuore della vita a bordo, presenta una zona carteggio a prua e una cucina a C ergonomica e attrezzata per lunghe permanenze (con 172 litri di capacità frigo). La cabina armatoriale a prua è una vera suite con bagno dedicato e box doccia. A poppa, una cabina vip e una matrimoniale, entrambe servite da bagni privati, completano la zona notte. La costruzione leggera e la scelta di materiali pregiati come il rovere, il rovere grigio o il teak, abbinati a paglioli a contrasto, creano un'atmosfera di lusso sportivo e raffinato: l'ambiente perfetto per rilassarsi dopo una regata o durante una crociera veloce."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_cz8qQ3",
+        "intro_text_area_3J84KU"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_RCqcXw": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_4UDaa6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_Ch9jyP": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_nRL6Rk": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_VALm4Y": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jbd48r": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_JEezzX": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_4xteFq": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_8C3zzi": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_hNrMqk": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_4UDaa6",
+        "image_slider_image_Ch9jyP",
+        "image_slider_image_nRL6Rk",
+        "image_slider_image_VALm4Y",
+        "image_slider_image_jbd48r",
+        "image_slider_image_JEezzX",
+        "image_slider_image_4xteFq",
+        "image_slider_image_8C3zzi",
+        "image_slider_image_hNrMqk"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "pdp_multi_cards_CbG6MH": {
+      "type": "pdp-multi-cards",
+      "blocks": {
+        "title_Gaf8M6": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "I dettagli che generano la performance"
+          }
+        },
+        "text_area_gmtHcx": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "Dalla carena alla costruzione, ogni elemento del GS52P è ottimizzato per un unico obiettivo: la velocità pura.",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_rj3fVW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+            "card_title": "Architettura navale firmata Matteo Polli",
+            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "link": ""
+          }
+        },
+        "card_EmiiRJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+            "card_title": "Architettura navale firmata Matteo Polli",
+            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "link": ""
+          }
+        },
+        "card_BWg8Lg": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+            "card_title": "Architettura navale firmata Matteo Polli",
+            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "link": ""
+          }
+        },
+        "card_grK6hC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+            "card_title": "Architettura navale firmata Matteo Polli",
+            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "link": ""
+          }
+        },
+        "card_AAjMgB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
+            "card_title": "Architettura navale firmata Matteo Polli",
+            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_Gaf8M6",
+        "text_area_gmtHcx",
+        "card_rj3fVW",
+        "card_EmiiRJ",
+        "card_BWg8Lg",
+        "card_grK6hC",
+        "card_AAjMgB"
+      ],
+      "name": "Multi Cards Slider",
+      "settings": {
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "tech_spec_gFwMPj": {
+      "type": "tech-spec",
+      "name": "Technical Spec Right Col",
+      "settings": {
+        "id": "tech-spec",
+        "tech-spec-title": "SPECIFICHE TECNICHE",
+        "brochure-visible": true,
+        "brochure-cta-label": "Scarica la brochure",
+        "brochure-link": "",
+        "info-cta-visible": true,
+        "info-cta-label": "Richiedi informazioni",
+        "info-cta-link": "",
+        "padding_top": "72px",
+        "padding_bottom": "128px",
+        "padding_top_mobile": "48px",
+        "padding_bottom_mobile": "48px"
+      }
+    },
+    "find_dealer_mzgD4K": {
+      "type": "find-dealer",
+      "name": "Find a dealer",
+      "settings": {
+        "fd-content_alignment_mobile": "center",
+        "fd-content_alignment": "center",
+        "fd-cta_position": "center",
+        "fd-title": "Il vostro prossimo traguardo: Grand Soleil 52P",
+        "fd-text1": "Più che una barca, è una dichiarazione di intenti. Il punto d'incontro tra la vostra ambizione sportiva e il piacere di navigare. Scegliere il Grand Soleil 52 Performance significa rifiutare i compromessi. Significa possedere l'eredità di un nome leggendario, evoluta nell'arma da regata e fast cruiser definitivo.",
+        "fd-cta_label": "Trova un dealer",
+        "fd-cta_link": "#",
+        "fd-cta_label2": "informazioni",
+        "fd-cta_link2": "#"
+      }
+    },
+    "text_image_with_background_EEb9Tf": {
+      "type": "text-image-with-background",
+      "name": "Box Testo e Immagine",
+      "settings": {
+        "image_position": "right",
+        "mobile_reverse": false,
+        "image": "shopify://shop_images/Pillar.png",
+        "pretitle": "SERVICE & AFTER SALE",
+        "title": "Valore che dura nel tempo",
+        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
+        "button_label": "Scopri tutti i servizi",
+        "button_link": "",
+        "pt_desk": 120,
+        "pb_desk": 120,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 48,
+        "pb_mob": 48
+      }
+    }
+  },
+  "order": [
+    "hero_banner_FHwwWU",
+    "rich_text_ppGgwa",
+    "full_image_tqFBzW",
+    "animation_text_H4fCbf",
+    "intro_slider_X3xXex",
+    "image_slider_L8iGY6",
+    "text_gallery_VNXjx6",
+    "intro_slider_NXFyW9",
+    "image_slider_RCqcXw",
+    "pdp_multi_cards_CbG6MH",
+    "tech_spec_gFwMPj",
+    "find_dealer_mzgD4K",
+    "text_image_with_background_EEb9Tf"
+  ]
+}
