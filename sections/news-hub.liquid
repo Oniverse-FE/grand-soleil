@@ -13,7 +13,7 @@
             {% for tag in tags %}
                 {% assign clean_tag = tag | strip %}
                 {% if clean_tag != blank %}
-                    <button class="chip-filter px-6 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="{{ clean_tag | downcase }}">
+                    <button class="chip-filter px-6 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="{{ clean_tag }}">
                         {{ clean_tag }}
                     </button>
                 {% endif %}
