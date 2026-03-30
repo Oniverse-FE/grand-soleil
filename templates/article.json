@@ -13,6 +13,24 @@
       "type": "main-article",
       "settings": {}
     },
+    "empty_space_6P9eA7": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 88,
+        "desktop-height": 184
+      }
+    },
+    "back_button_JacrcE": {
+      "type": "back-button",
+      "name": "Back button",
+      "settings": {
+        "back_url": "shopify://blogs/news",
+        "label": "Torna indietro",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "rich_text_GCtfpJ": {
       "type": "rich-text",
       "name": "Rich text",
@@ -24,9 +42,9 @@
         "rt-cta_link": "",
         "alignment_mobile": "left",
         "alignment_desktop": "left",
-        "pt_mobile": 88,
-        "pt_tablet": 160,
-        "pt_desktop": 184,
+        "pt_mobile": 0,
+        "pt_tablet": 0,
+        "pt_desktop": 0,
         "pb_mobile": 40,
         "pb_tablet": 60,
         "pb_desktop": 80
@@ -213,6 +231,8 @@
   },
   "order": [
     "main",
+    "empty_space_6P9eA7",
+    "back_button_JacrcE",
     "rich_text_GCtfpJ",
     "rounded_image_YpALxK",
     "rich_text_FxTkWF",
