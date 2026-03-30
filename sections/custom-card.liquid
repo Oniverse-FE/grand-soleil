@@ -1,0 +1,116 @@
+<section class="py-12 px-6 lg:py-20 bg-EBEFF2_gs bg-truffle_gsp">
+  <div class="max-w-7xl mx-auto">
+    
+    {% comment %} Header della Sezione {% endcomment %}
+    {% if section.settings.title != blank or section.settings.text != blank %}
+      <div class="text-center mb-[56px] md:mb-[72px] lg:mb-[96px]">
+        {% if section.settings.title != blank %}
+          <h2 class="heading-sm_gs heading-sm_gsp md:heading-lg_gs  md:heading-lg_gsp text-data_gs text-FAF9F7_gsp pb-6 lg:pb-10">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp mx-auto text-data_gs text-FAF9F7_gsp">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% comment %} Grid Responsiva: 1 col (mobile), 2 col (tablet), 3 col (desktop) {% endcomment %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      {% for block in section.blocks %}
+        <div class="group bg_gs bg-beige_gsp rounded-[8px] p-4 transition-transform duration-300" {{ block.shopify_attributes }}>
+          
+          {% comment %} Header della Card: Titolo e Freccia sulla stessa riga {% endcomment %}
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="menu-model_gs menu-model_gsp text-color_gs tex-color_gsp">
+              {{ block.settings.card_title }}
+            </h3>
+            <span class="transition-transform duration-300 group-hover:translate-x-1 bg-[#282624] rounded-full p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <g clip-path="url(#clip0_3323_3339)">
+                        <path d="M5.07107 21.2169L19.2132 7.07481L5.77817 6.3677L10.0208 10.6103" stroke="#FAF9F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_3323_3339">
+                        <rect width="24" height="24" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </span>
+          </div>
+
+          {% comment %} Immagine della Card {% endcomment %}
+          {% if block.settings.image != blank %}
+            <div class="overflow-hidden rounded-xl aspect-video">
+              <img 
+                src="{{ block.settings.image | image_url: width: 800 }}" 
+                alt="{{ block.settings.card_title }}"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              >
+            </div>
+          {% else %}
+            {% comment %} Placeholder se l'immagine manca {% endcomment %}
+            <div class="bg-gray-200 rounded-xl aspect-video flex items-center justify-center">
+              {{ 'image' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
+            </div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titolo Sezione",
+      "default": "I nostri servizi"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Testo Sezione",
+      "default": "<p>Esplora le nostre soluzioni su misura per te.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Titolo Card",
+          "default": "Titolo della Card"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Immagine Card"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cards",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -910,3 +910,7 @@ background-color:#EBEFF2;
 .text-data_gs{
     color: #05090D;
 }
+
+.tech-spec_gs{
+    border-bottom: 0.5px solid  #EBEFF2;
+}

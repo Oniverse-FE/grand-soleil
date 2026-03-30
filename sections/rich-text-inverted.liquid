@@ -1,0 +1,157 @@
+{%- liquid
+  # Mappatura allineamento testo responsive
+  assign align_mobile = section.settings.rti-content_alignment_mobile
+  assign align_desktop = section.settings.rti-content_alignment
+  assign text_classes = 'text-' | append: align_mobile | append: ' md:text-' | append: align_desktop
+
+  # Mappatura allineamento flex per i contenitori (Mobile)
+  case align_mobile
+    when 'left'
+      assign flex_mobile = 'items-start'
+    when 'center'
+      assign flex_mobile = 'items-center'
+    when 'right'
+      assign flex_mobile = 'items-end'
+  endcase
+
+  # Mappatura allineamento flex per i contenitori (Desktop)
+  case align_desktop
+    when 'left'
+      assign flex_desktop = 'md:items-start'
+    when 'center'
+      assign flex_desktop = 'md:items-center'
+    when 'right'
+      assign flex_desktop = 'md:items-end'
+  endcase
+
+  assign flex_classes = flex_mobile | append: ' ' | append: flex_desktop
+-%}
+
+<div class="bg-white_gs bg-truffle_gsp flex flex-col py-[64px] md:py-[128px] lg:py-[160px] px-4 md:px-10 lg:px-[64px] {{ text_classes }}">
+    
+    <div class="flex flex-col gap-4 md:gap-6 {{ flex_classes }}">
+        <div class="w-full md:max-w-[640px] lg:max-w-[652px] heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-05090D_gs text-FAF9F7_gsp">
+            {{ section.settings.rti-title }}
+        </div>
+        
+        {%- if section.settings.rti-text1 != blank -%}
+            <div class="w-full md:max-w-[640px] lg:max-w-[652px] body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-05090D_gs text-FAF9F7_gsp">
+                {{ section.settings.rti-text1 | newline_to_br }}
+            </div>
+        {%- endif -%}
+    </div>
+
+    <div class="flex flex-col gap-4 mt-8 md:mt-[48px]">
+        <div class="flex flex-wrap w-full gap-4 justify-{{ section.settings.rti-cta_position }}">
+            {% if section.settings.rti-cta_link != blank %}
+              <a id="cta-1-{{ section.id }}"
+                  href="{{ section.settings.rti-cta_link }}"
+                  class="cta-button w-full text-center lg:w-fit px-7 py-3.5 link-lg_gs link-lg_gsp cta-white_gsp cta-101C26_gs transition-all duration-300">
+                {{ section.settings.rti-cta_label }}
+              </a>
+            {% endif %}
+            
+            {% if section.settings.rti-cta_link2 != blank %}
+              <a id="cta-2-{{ section.id }}"
+                  href="{{ section.settings.rti-cta_link2 }}"
+                  class="cta-button w-full text-center lg:w-fit px-6 py-4 link-lg_gs link-lg_gsp cta-border-light_gsp cta-border-dark_gs transition-all duration-300">
+                {{ section.settings.rti-cta_label2 }}
+              </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rich text inverted",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Allineamento Mobile"
+    },
+    {
+      "type": "select",
+      "id": "rti-content_alignment_mobile",
+      "label": "Allineamento Testo Mobile",
+      "options": [
+        { "label": "Sinistra", "value": "left" },
+        { "label": "Centro", "value": "center" },
+        { "label": "Destra", "value": "right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Allineamento Desktop"
+    },
+    {
+      "type": "select",
+      "id": "rti-content_alignment",
+      "label": "Allineamento Testo Desktop",
+      "options": [
+        { "label": "Sinistra", "value": "left" },
+        { "label": "Centro", "value": "center" },
+        { "label": "Destra", "value": "right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "rti-cta_position",
+      "label": "Posizione Bottoni (CTA)",
+      "options": [
+        { "label": "Sinistra", "value": "start" },
+        { "label": "Centro", "value": "center" },
+        { "label": "Destra", "value": "end" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Contenuti Sezione"
+    },
+    {
+      "type": "text",
+      "id": "rti-title",
+      "label": "Titolo",
+      "default": "Find a dealer"
+    },
+    {
+      "type": "textarea",
+      "id": "rti-text1",
+      "label": "Area di testo"
+    },
+    {
+      "type": "header",
+      "content": "Bottoni CTA"
+    },
+    {
+      "type": "text",
+      "id": "rti-cta_label",
+      "label": "Label Bottone 1"
+    },
+    {
+      "type": "url",
+      "id": "rti-cta_link",
+      "label": "Link Bottone 1"
+    },
+    {
+      "type": "text",
+      "id": "rti-cta_label2",
+      "label": "Label Bottone 2"
+    },
+    {
+      "type": "url",
+      "id": "rti-cta_link2",
+      "label": "Link Bottone 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text inverted",
+      "category": "Text sections"
+    }
+  ]
+}
+{% endschema %}

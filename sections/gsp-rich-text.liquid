@@ -1,0 +1,135 @@
+<div id="img-text-{{ section.id }}" class="bg_gs bg_gsp">
+    {% if section.settings.title != blank %}
+    <div class="flex justify-center pb-[56px] md:pb-[64px] lg:pb-[80px] px-4">
+        <h2 class="flex heading-sm_gsp heading-sm_gs md:heading-md_gsp md:heading-md_gs text-color_gs text-color_gsp">
+            {{ section.settings.title }}
+        </h2>
+    </div>
+    {% endif %}
+
+    <div class="flex w-full {% if section.settings.mobile_reverse %}flex-col-reverse{% else %}flex-col{% endif %}  {% if section.settings.imgandtext-image-left %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} text-white overflow-hidden">
+
+        <div class="w-full lg:w-1/2 block leading-[0]">
+            <picture class="block w-full h-full">
+            {% if section.settings.imgandtext-image-mobile != blank %}
+                <source media="(max-width: 767px)" srcset="{{ section.settings.imgandtext-image-mobile | image_url: width: 1000 }}">
+            {% endif %}
+            <img src="{{ section.settings.imgandtext-image-desktop | image_url: width: 2000 }}" 
+                alt="{{ section.settings.imgandtext-title | escape }}" 
+                class="w-full h-full aspect-video object-cover block"
+                loading="lazy">
+            </picture>
+        </div>
+
+        <div class="flex flex-col justify-center w-full lg:w-1/2 pt-8 px-4 pb-[56px] md:pt-10 md:px-10 lg:px-[128px] lg:p-24 gap-4">
+            <h2 class="flex subtitle_gsp subtitle-md_gs md:heading-sm_gsp md:heading-sm_gs text-color_gs text-color_gsp">
+                {{ section.settings.imgandtext-title }}
+            </h2>
+            
+            <div class="body-md_gsp body-md_gs md:body-lg_gsp md:body-lg_gs text-color_gs text-color_gsp">
+                {{ section.settings.imgandtext-text | newline_to_br }}
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 mt-4">
+            {% if section.settings.imgandtext-cta_url1 != blank %}
+                <a href="{{ section.settings.imgandtext-cta_url1 }}" class="link-lg_gs link-lg_gsp px-6 py-4 cta-blue_gs cta-truffle_gsp text-center">
+                    {{ section.settings.imgandtext-cta_label1 }}
+                </a>
+            {% endif %}
+            {% if section.settings.imgandtext-cta_url2 != blank %}
+                <a href="{{ section.settings.imgandtext-cta_url2 }}" class="link-lg_gs link-lg_gsp px-6 py-4 cta-border-light_gs cta-border-dark_gsp text-center">
+                    {{ section.settings.imgandtext-cta_label2 }}
+                </a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "GSP - Image and Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titolo",
+      "default": "Il tuo Titolo"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "imgandtext-image-left",
+      "label": "Immagine a sinistra (Desktop)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_reverse",
+      "label": "Testo PRIMA dell'immagine (Mobile)",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Immagini"
+    },
+    {
+      "type": "image_picker",
+      "id": "imgandtext-image-desktop",
+      "label": "Immagine Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "imgandtext-image-mobile",
+      "label": "Immagine Mobile (Opzionale)"
+    },
+    {
+      "type": "header",
+      "content": "Testi e CTA"
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-title",
+      "label": "Titolo",
+      "default": "Il tuo Titolo"
+    },
+    {
+      "type": "textarea",
+      "id": "imgandtext-text",
+      "label": "Testo",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-cta_label1",
+      "label": "Label CTA 1",
+      "default": "Scopri di più"
+    },
+    {
+      "type": "url",
+      "id": "imgandtext-cta_url1",
+      "label": "URL CTA 1"
+    },
+    {
+      "type": "text",
+      "id": "imgandtext-cta_label2",
+      "label": "Label CTA 2",
+      "default": "Contattaci"
+    },
+    {
+      "type": "url",
+      "id": "imgandtext-cta_url2",
+      "label": "URL CTA 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GSP - Image and Text",
+      "category": "Home Page"
+    }
+  ]
+}
+{% endschema %}
