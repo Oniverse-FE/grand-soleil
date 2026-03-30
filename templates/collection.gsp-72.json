@@ -71,6 +71,57 @@
         "pt_mob": 96,
         "pb_mob": 96
       }
+    },
+    "custom_card_qyP9zq": {
+      "type": "custom-card",
+      "blocks": {
+        "card_cKMpaU": {
+          "type": "card",
+          "settings": {
+            "card_title": "GS Plus 72 Shanti",
+            "image": "shopify://shop_images/0_3-HERO_1.png"
+          }
+        },
+        "card_pkbcGA": {
+          "type": "card",
+          "settings": {
+            "card_title": "GS Plus 72 PantaRei",
+            "image": "shopify://shop_images/0_3-HERO_1.png"
+          }
+        },
+        "card_N7YtqL": {
+          "type": "card",
+          "settings": {
+            "card_title": "GS Plus 72 Pippopluto",
+            "image": "shopify://shop_images/0_3-HERO_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_cKMpaU",
+        "card_pkbcGA",
+        "card_N7YtqL"
+      ],
+      "name": "Cards",
+      "settings": {
+        "title": "SCOpri tutti i Grand Soleil Plus 72",
+        "text": "<p>Ecco come questa piattaforma d'eccellenza è stata interpretata dai nostri armatori, dando vita a imbarcazioni leggendarie che sono diventate l'estensione della loro visione del mare.</p>"
+      }
+    },
+    "rich_text_collection_WJHXCU": {
+      "type": "rich-text-collection",
+      "name": "Rich text collection",
+      "settings": {
+        "rtc-content_alignment_mobile": "left",
+        "rtc-content_alignment": "center",
+        "rtc-cta_position": "center",
+        "rtc-title": "Il primo passo per realizzare la vostra visione della velocità e dell'eleganza",
+        "rtc-text1": "Commissionare un Grand Soleil 72 Plus non significa acquistare uno yacht, ma iniziare un viaggio su misura. Nell’atelier di Fano, tecnologia da regata e artigianato italiano trasformano la vostra visione in realtà. Non un modello, ma una tela bianca di 72 piedi, progettata per performance e stile unici. Un'opportunità per creare uno yacht che navighi in modo sublime perché costruito attorno alla vostra specifica vocazione.",
+        "rtc-cta_label": "Trova un dealer",
+        "rtc-cta_link": "#",
+        "rtc-cta_label2": "Chiedi informazioni",
+        "rtc-cta_link2": "#"
+      }
     }
   },
   "order": [
@@ -78,6 +129,8 @@
     "text",
     "empty_space_tXwEwA",
     "image",
-    "text_and_image_WXqtyW"
+    "text_and_image_WXqtyW",
+    "custom_card_qyP9zq",
+    "rich_text_collection_WJHXCU"
   ]
 }
