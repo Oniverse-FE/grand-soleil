@@ -3,7 +3,7 @@
     
     {% comment %} Header della Sezione {% endcomment %}
     {% if section.settings.title != blank or section.settings.text != blank %}
-      <div class="text-center mb-[56px] md:mb-[72px] lg:mb-[96px]">
+      <div class="lg:text-center mb-[56px] md:mb-[72px] lg:mb-[96px]">
         {% if section.settings.title != blank %}
           <h2 class="heading-sm_gs heading-sm_gsp md:heading-lg_gs  md:heading-lg_gsp text-data_gs text-FAF9F7_gsp pb-6 lg:pb-10">
             {{ section.settings.title }}
@@ -18,14 +18,14 @@
     {% endif %}
 
     {% comment %} Grid Responsiva: 1 col (mobile), 2 col (tablet), 3 col (desktop) {% endcomment %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       
       {% for block in section.blocks %}
         <div class="group bg_gs bg-beige_gsp rounded-[8px] p-4 transition-transform duration-300" {{ block.shopify_attributes }}>
           
           {% comment %} Header della Card: Titolo e Freccia sulla stessa riga {% endcomment %}
           <div class="flex justify-between items-center mb-6">
-            <h3 class="menu-model_gs menu-model_gsp text-color_gs tex-color_gsp">
+            <h3 class="menu-model_gs menu-model_gsp text-color_gs text-color_gsp">
               {{ block.settings.card_title }}
             </h3>
             <span class="transition-transform duration-300 group-hover:translate-x-1 bg-[#282624] rounded-full p-3">
@@ -44,7 +44,7 @@
 
           {% comment %} Immagine della Card {% endcomment %}
           {% if block.settings.image != blank %}
-            <div class="overflow-hidden rounded-xl aspect-video">
+            <div class="overflow-hidden rounded-[8px] aspect-[16/9]">
               <img 
                 src="{{ block.settings.image | image_url: width: 800 }}" 
                 alt="{{ block.settings.card_title }}"
