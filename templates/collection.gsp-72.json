@@ -9,17 +9,75 @@
  */
 {
   "sections": {
+    "empty_space_zB4cKq": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 48,
+        "desktop-height": 104
+      }
+    },
     "text": {
       "type": "rich-text",
-      "settings": {}
+      "settings": {
+        "rt_subtitle": "L’Essenza del Su Misura Performance",
+        "rt_title": "GRAND SOLEIL PLUS 72",
+        "rt_text1": "Il Grand Soleil 72 Plus rappresenta l'apice della visione sartoriale del cantiere, un superyacht concepito per elevare la vocazione performance a una dimensione superiore di esclusività. Questa imbarcazione da 72 piedi non è semplicemente un modello di serie, ma un manifesto tecnologico e stilistico che incarna \"L'Arte della Velocità Elegante\". Progettato per armatori che ricercano un legame viscerale con il mare, il progetto fonde un'architettura navale d'avanguardia con la capacità di riflettere, in ogni dettaglio, l'identità unica del suo committente.",
+        "rt-cta_label": "Scopri tutti i GS Plus 72",
+        "rt-cta_link": "#",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "empty_space_tXwEwA": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 16,
+        "desktop-height": 16
+      }
     },
     "image": {
       "type": "rounded-image",
-      "settings": {}
+      "settings": {
+        "rounded-image": "shopify://shop_images/img.png",
+        "rounded-image-alt": "Alt"
+      }
+    },
+    "text_and_image_WXqtyW": {
+      "type": "text-and-image",
+      "name": "Image and Text",
+      "settings": {
+        "imgandtext-image-left": false,
+        "mobile_reverse": true,
+        "imgandtext-image-desktop": "shopify://shop_images/img.png",
+        "imgandtext-image-mobile": "shopify://shop_images/img.png",
+        "imgandtext-title": "",
+        "imgandtext-text": "La filosofia del Grand Soleil 72 Plus poggia su un equilibrio perfetto tra leggerezza e potenza. Grazie all'impiego di materiali compositi avanzati e a un processo di costruzione interamente gestito in-house nel polo produttivo di Fano, ogni scafo garantisce rigidità strutturale e una reattività straordinaria, assicurando prestazioni eccellenti anche nelle condizioni di vento più leggero. È un'imbarcazione pensata per chi ama il piacere della conduzione pura, offrendo una sensibilità al timone e una precisione di manovra che derivano direttamente dal mondo delle regate d'altura, senza mai rinunciare al lusso discreto e funzionale tipico della Linea Plus.\n\nAll'interno del nostro cantiere, il Grand Soleil 72 Plus viene forgiato come un'opera singola. Il layout di coperta e gli ambienti sottocoperta sono il risultato di un dialogo costante tra le necessità tecniche della navigazione d'alto livello e il desiderio di un comfort assoluto. Che sia configurato per massimizzare l'efficienza in regata o per offrire una dimora sofisticata durante le lunghe navigazioni oceaniche, ogni esemplare di Grand Soleil 72 Plus è una creatura a sé stante.",
+        "imgandtext-cta_label1": "Scopri di più",
+        "imgandtext-cta_url1": "",
+        "imgandtext-cta_label2": "Contattaci",
+        "imgandtext-cta_url2": "",
+        "pt_desk": 160,
+        "pb_desk": 160,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 96,
+        "pb_mob": 96
+      }
     }
   },
   "order": [
+    "empty_space_zB4cKq",
     "text",
-    "image"
+    "empty_space_tXwEwA",
+    "image",
+    "text_and_image_WXqtyW"
   ]
 }
