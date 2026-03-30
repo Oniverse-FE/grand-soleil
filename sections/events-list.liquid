@@ -1,248 +1,244 @@
-<div class="bg_gs bg_gsp flex flex-col px-4 md:px-12 lg:px-24 pt-[96px] lg:pt-[165px] mb-[144px] lg:mb-[280px]">
+{% comment %} 
+  Utilizziamo "blog.articles" per fare in modo che Shopify filtri 
+  automaticamente gli articoli in base al tag presente nell'URL.
+{% endcomment %}
+{% paginate blog.articles by 5 %}
 
-    <h6 class="text-4xl leading-[42px] md:text-[56px] md:leading-[62px] text-white uppercase mb-[24px] lg:mb-[80px]">
-        {{ section.settings.event-section-title }}
-    </h6>
-
-    <div class="relative flex justify-center self-center rounded-[10px] bg-antracite body-medium text-[12px] leading-[18px] lg:text-sm lg:leading-5 md:w-[427px] lg:w-[342px] w-full mb-[32px] lg:mb-[64px] overflow-hidden">
-        <div id="toggle-slider" class="absolute top-0 left-0 h-full w-1/2 bg-white rounded-[10px] transition-all duration-300"></div>
-        <button id="future-toggle" class="toggle-btn w-1/2 relative z-10 py-2 font-semibold text-black transition-colors duration-300">
-            {{ section.settings.future-event-label }}
-        </button>
-        <button id="past-toggle" class="toggle-btn w-1/2 relative z-10 py-2 font-semibold text-white transition-colors duration-300">
-            {{ section.settings.past-event-label }}
-        </button>
+<div id="events-{{ section.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="events-padding bg_gs bg_gsp flex flex-col px-4 md:px-12 lg:px-[128px]">
+    
+    <div class="events-title heading-md_gs md:title_gs text-color_gs text-left md:text-center pb-10 lg:pb-[96px]">
+        {{ section.settings.event-slider-title }}
     </div>
 
-    <div class="relative search-wrapper hidden" id="search-wrapper-futuri">
-        <input id="future-search" type="text" placeholder="{{ section.settings.event-search-placeholder }}"
-            class="w-full p-2 pb-2 pr-10 border-b border-white text-white bg-transparent body-regular text-sm focus:outline-none focus:border-[#F76C00]" />
-        <div class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" id="future-icon-search">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><circle cx="10" cy="10" r="5.5"/><path d="M19 19l-5-5"/></svg>
-        </div>
-        <div id="future-icon-clear" class="absolute right-2 top-1/2 -translate-y-1/2 hidden cursor-pointer">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
-        </div>
-    </div>
+    {% comment %} --- CHIPS FILTRI PER TAG --- {% endcomment %}
+    {% if blog.all_tags.size > 0 %}
+    <div class="flex flex-wrap justify-start md:justify-center gap-2 mb-8 lg:mb-[56px]">
+        
+        {% comment %} Chip "Tutti gli eventi" {% endcomment %}
+        <a href="{{ blog.url }}" 
+           class="chip-gs px-4 py-2 rounded-full transition-all no-underline 
+           {% unless current_tags %}
+              bg-white_gs text-data_gs link-lg_gs
+           {% else %}
+              cta-border-light_gs text-color_gs link-lg_gs
+           {% endunless %}">
+           {{ section.settings.chip_all }}
+        </a>
 
-    <div class="relative search-wrapper hidden" id="search-wrapper-passati">
-        <input id="past-search" type="text" placeholder="{{ section.settings.event-search-placeholder }}"
-            class="w-full p-2 pb-2 pr-10 border-b border-white text-white bg-transparent body-regular text-sm focus:outline-none focus:border-[#F76C00]" />
-        <div class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" id="past-icon-search">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><circle cx="10" cy="10" r="5.5"/><path d="M19 19l-5-5"/></svg>
-        </div>
-        <div id="past-icon-clear" class="absolute right-2 top-1/2 -translate-y-1/2 hidden cursor-pointer">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
-        </div>
-    </div>
-
-    {% assign now_timestamp = 'now' | date: '%s' %}
-    <div id="future-event-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-[56px] lg:mt-[80px] text-white hidden">
-        {% for article in blogs['events'].articles %}
-            {% assign end_date_timestamp = article.metafields.custom.event_end_date | date: '%s' %}
-            {% if end_date_timestamp >= now_timestamp %}
-                <a href="{{ article.url }}" class="evento-card block group" data-title="{{ article.title | downcase }}">
-                    <div class="flex flex-col rounded-[10px] bg-antracite p-6 lg:p-8 h-full min-h-[320px] justify-between hover:bg-[#2a2a2a] transition-colors">
-                        <div class="flex flex-col gap-6">
-                            <h3 class="text-3xl lg:text-[40px] leading-tight uppercase font-medium">{{ article.title }}</h3>
-                            <div class="flex flex-col gap-1 text-[16px] lg:text-[18px] opacity-90">
-                                <span>{{ article.metafields.custom.event_start_date | date: "%d/%m/%Y" }} - {{ article.metafields.custom.event_end_date | date: "%d/%m/%Y" }}</span>
-                                <span class="uppercase">{{ article.metafields.custom.event_location }}</span>
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                            <span class="inline-block w-full text-center rounded-full py-4 bg-white text-black font-bold uppercase text-sm tracking-wider group-hover:bg-[#D6CBC9] transition-colors">
-                                {{ section.settings.future-event-book-label }}
-                            </span>
-                        </div>
-                    </div>
+        {% for tag in blog.all_tags %}
+            {% if current_tags contains tag %}
+                {% comment %} Tag attivo: cliccandolo si resetta il filtro {% endcomment %}
+                <a href="{{ blog.url }}" class="chip-gs px-4 py-2 rounded-full link-lg_gs bg-white_gs text-data_gs no-underline border-none">
+                    {{ tag }} 
+                </a>
+            {% else %}
+                {% comment %} Tag non attivo {% endcomment %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="chip-gs px-4 py-2 cta-border-light_gs text-color_gs rounded-full link-lg_gs no-underline">
+                    {{ tag }}
                 </a>
             {% endif %}
         {% endfor %}
     </div>
+    {% endif %}
 
-    <div id="past-event-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-[56px] lg:mt-[80px] text-white hidden">
-        {% for article in blogs['events'].articles %}
-            {% assign end_date_timestamp = article.metafields.custom.event_end_date | date: '%s' %}
-            {% if end_date_timestamp < now_timestamp %}
-                {% assign has_cta = article.metafields.custom.cta_card %}
-                <div class="evento-card block" data-title="{{ article.title | downcase }}">
-                    <div class="flex flex-col rounded-[10px] bg-antracite p-6 lg:p-8 h-full min-h-[280px] justify-between border border-transparent hover:border-gray-500 transition-all">
-                        <div class="flex flex-col gap-4">
-                            <h3 class="text-3xl lg:text-[36px] leading-tight uppercase font-medium">{{ article.title }}</h3>
-                            <div class="text-[16px] lg:text-[18px] opacity-70">
-                                <p>{{ article.metafields.custom.event_end_date | date: "%d/%m/%Y" }}</p>
-                                <p class="uppercase">{{ article.metafields.custom.event_location }}</p>
+    <div class="flex flex-col w-full justify-center items-start gap-6 lg:gap-8 text-color_gs text-color_gsp">
+        
+        {% for article in blog.articles %}
+            <div class="flex flex-col lg:flex-row gap-4 xl:gap-10 w-full cursor-pointer bg-dark_gs bg-beige_gsp p-6 md:p-8 lg:p-10 transition-all hover:opacity-90"
+                 onclick="window.location.href='{{ article.url }}'">
+
+                <div class="flex flex-col md:flex-row items-start w-full justify-between">
+                    <div class="flex flex-col gap-6 mb-10 md:mb-0">
+                        <div class="flex heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp">
+                            {{ article.title }}
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 mb-2">
+                                {% for tag in article.tags %}
+                                    <span class="text-[10px] uppercase tracking-widest opacity-60">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="flex flex-row gap-2 lg:gap-2.5">
+                                <div class="flex flex-row body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp items-center justify-center">
+                                    {{ section.settings.event-slider-date }}:
+                                    {%- assign start = article.metafields.custom.event_start_date | date: "%d" -%}
+                                    {%- assign end = article.metafields.custom.event_end_date | date: "%d %B %Y" -%}
+                                    {{ start }} - {{ end }}
+                                </div>
+                            </div>
+
+                            <div class="flex flex-row gap-2 lg:gap-2.5">
+                                <div class="flex flex-row body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp justify-center items-center">
+                                    {{ section.settings.event-slider-location }}: {{ article.metafields.custom.event_location }}
+                                </div>
                             </div>
                         </div>
-                        {% if has_cta %}
-                        <a href="{{ article.metafields.custom.link_news }}" class="mt-6 inline-block w-full text-center rounded-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all uppercase text-xs font-bold">
-                            {{ has_cta }}
-                        </a>
-                        {% endif %}
+                    </div>
+
+                    <div class="w-full flex flex-col gap-4 lg:flex-row lg:justify-end lg:items-center">
+                        <div class="flex w-full md:w-auto">
+                            <a href="{{ article.url }}" class="w-full md:min-w-[207px] text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6 no-underline"> 
+                                {{ section.settings.event-slider-cta2-label }}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            {% endif %}
+            </div>
+        {% else %}
+            {% comment %} Fallback se non ci sono articoli nel filtro selezionato {% endcomment %}
+            <div class="w-full text-center py-20 opacity-50 body-md_gs">
+                Nessun evento disponibile per questa categoria.
+            </div>
         {% endfor %}
-    </div>
 
-    <div id="no-results-futuri" class="hidden text-white mt-10">
-        <p class="text-lg mb-4">{{ section.settings.no-event-label }}</p>
-        <button id="reset-future-search" class="uppercase border-b border-white pb-1 font-bold">{{ section.settings.all-event-label }}</button>
-    </div>
+        {% if paginate.pages > 1 %}
+            <div class="flex flex-row justify-center items-center w-full gap-6 mt-8 lg:mt-12">
+                {% if paginate.previous %}
+                    <a href="{{ paginate.previous.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70">
+                        {% render 'gs-arrow-left-white' %}
+                    </a>
+                {% endif %}
 
-    <div id="no-events-futuri" class="hidden text-white mt-10">
-        <h2 class="text-3xl uppercase mb-2">{{ section.settings.title-no-event }}</h2>
-        <p class="opacity-80">{{ section.settings.text-no-event }}</p>
-    </div>
+                <div class="body-md_gs body-md_gsp">
+                    {{ paginate.current_page }} / {{ paginate.pages }}
+                </div>
 
+                {% if paginate.next %}
+                    <a href="{{ paginate.next.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70">
+                        {% render 'gs-arrow-right-white' %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const futureToggle = document.getElementById("future-toggle");
-    const pastToggle = document.getElementById("past-toggle");
-    const toggleSlider = document.getElementById("toggle-slider");
-    
-    const futureWrapper = document.getElementById("search-wrapper-futuri");
-    const pastWrapper = document.getElementById("search-wrapper-passati");
-    const futureList = document.getElementById("future-event-list");
-    const pastList = document.getElementById("past-event-list");
-    
-    const noResultsFuturi = document.getElementById("no-results-futuri");
-    const noEventsFuturi = document.getElementById("no-events-futuri");
-    const futureSearch = document.getElementById("future-search");
-    const pastSearch = document.getElementById("past-search");
+{% endpaginate %}
 
-    function updateView(mode) {
-        if (mode === 'future') {
-            toggleSlider.style.left = "0";
-            futureToggle.classList.replace("text-white", "text-black");
-            pastToggle.classList.replace("text-black", "text-white");
-            
-            futureList.classList.remove("hidden");
-            pastList.classList.add("hidden");
-            futureWrapper.classList.remove("hidden");
-            pastWrapper.classList.add("hidden");
-        } else {
-            toggleSlider.style.left = "50%";
-            pastToggle.classList.replace("text-white", "text-black");
-            futureToggle.classList.replace("text-black", "text-white");
-            
-            pastList.classList.remove("hidden");
-            futureList.classList.add("hidden");
-            pastWrapper.classList.remove("hidden");
-            futureWrapper.classList.add("hidden");
-        }
+<style>
+.events-padding {
+    padding-top: var(--pt-mob);
+    padding-bottom: var(--pb-mob);
+}
+.chip-gs {
+    border-width: 1px;
+}
+.chip-gs:hover {
+    background-color: #EBEFF2;
+    color: #05090D;
+}
+@media screen and (min-width: 768px) {
+    .events-padding {
+        padding-top: var(--pt-tab);
+        padding-bottom: var(--pb-tab);
     }
-
-    function filter(input, listId, noResultsId) {
-        const query = input.value.toLowerCase();
-        const items = document.querySelectorAll(`#${listId} .evento-card`);
-        let visible = 0;
-        
-        items.forEach(item => {
-            const match = item.dataset.title.includes(query);
-            item.classList.toggle("hidden", !match);
-            if(match) visible++;
-        });
-        
-        document.getElementById(noResultsId).classList.toggle("hidden", visible > 0 || query === "");
+}
+@media screen and (min-width: 1024px) {
+    .events-padding {
+        padding-top: var(--pt-desk);
+        padding-bottom: var(--pb-desk);
     }
-
-    futureToggle.addEventListener("click", () => updateView('future'));
-    pastToggle.addEventListener("click", () => updateView('past'));
-    
-    futureSearch.addEventListener("input", () => filter(futureSearch, "future-event-list", "no-results-futuri"));
-    pastSearch.addEventListener("input", () => filter(pastSearch, "past-event-list", "no-results-passati"));
-
-    // Inizializzazione: se non ci sono eventi futuri, mostra i passati
-    if (futureList.querySelectorAll('.evento-card').length === 0) {
-        noEventsFuturi.classList.remove("hidden");
-        updateView('past');
-    } else {
-        updateView('future');
-    }
-});
-</script>
+}
+</style>
 
 {% schema %}
 {
-"name": "Lista eventi",
+"name": "Events",
 "settings": [
 {
-    "type": "text",
-    "id": "event-section-title",
-    "label": "Section title",
-    "default": "le nostre attività"
+"type": "header",
+"content": "Contenuti"
 },
 {
-    "type": "text",
-    "id": "future-event-label",
-    "label": "Future event label",
-    "default": "Prossimi eventi"
+"type": "text",
+"id": "chip_all",
+"label": "Testo Chip Tutti",
+"default": "Tutti gli eventi"
 },
 {
-    "type": "text",
-    "id": "past-event-label",
-    "label": "Past event label",
-    "default": "Eventi passati"
+"type": "text",
+"id": "event-slider-title",
+"label": "Titolo Sezione",
+"default": "ARCHIVIO EVENTI"
 },
 {
-    "type": "text",
-    "id": "event-search-placeholder",
-    "label": "Search bar placeholder",
-    "default": "Cerca un evento"
+"type": "text",
+"id": "event-slider-date",
+"label": "Label Data",
+"default": "Data"
 },
 {
-    "type": "text",
-    "id": "future-event-discover-label",
-    "label": "Future event discover label",
-    "default": "discover more"
+"type": "text",
+"id": "event-slider-location",
+"label": "Label Luogo",
+"default": "Luogo"
 },
 {
-    "type": "text",
-    "id": "future-event-calendar-label",
-    "label": "Future event calendar label",
-    "default": "add to calendar"
+"type": "text",
+"id": "event-slider-cta2-label",
+"label": "Label Bottone",
+"default": "Discover more"
 },
 {
-    "type": "text",
-    "id": "future-event-book-label",
-    "label": "Future event book label",
-    "default": "Book an appointment"
+"type": "header",
+"content": "Padding Desktop (1024px+)"
 },
 {
-    "type": "text",
-    "id": "past-event-discover-label",
-    "label": "Past event discover label",
-    "default": "Discover what happened"
+"type": "range",
+"id": "pt_desk",
+"label": "Padding Superiore Desktop",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 96
 },
 {
-    "type": "text",
-    "id": "no-event-label",
-    "label": "No event label",
-    "default": "I'm sorry, there are no events that match your search."
+"type": "range",
+"id": "pb_desk",
+"label": "Padding Inferiore Desktop",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 96
 },
 {
-    "type": "text",
-    "id": "all-event-label",
-    "label": "All event label",
-    "default": "Discover all events"
+"type": "header",
+"content": "Padding Tablet (768px - 1023px)"
 },
 {
-    "type": "text",
-    "id": "title-no-event",
-    "label": "No event title",
-    "default": "No events in future"
+"type": "range",
+"id": "pt_tab",
+"label": "Padding Superiore Tablet",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
 },
 {
-    "type": "text",
-    "id": "text-no-event",
-    "label": "no event desc",
-    "default": "I'm sorry, there are no events that match your search."
+"type": "range",
+"id": "pb_tab",
+"label": "Padding Inferiore Tablet",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+},
+{
+"type": "header",
+"content": "Padding Mobile (0px - 767px)"
+},
+{
+"type": "range",
+"id": "pt_mob",
+"label": "Padding Superiore Mobile",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 32
+},
+{
+"type": "range",
+"id": "pb_mob",
+"label": "Padding Inferiore Mobile",
+"min": 0, "max": 200, "step": 4, "unit": "px", "default": 32
 }
 ],
-"presets": [{ "name": "Lista Eventi" }]
+"presets": [
+{
+"name": "Events",
+"category" : "Event sections"
+}
+]
 }
 {% endschema %}
