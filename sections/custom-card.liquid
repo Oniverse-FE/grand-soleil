@@ -1,11 +1,11 @@
 <section class="py-12 px-6 lg:py-20 bg-EBEFF2_gs bg-truffle_gsp">
-  <div class="max-w-7xl mx-auto">
+  <div class="mx-auto">
     
     {% comment %} Header della Sezione {% endcomment %}
     {% if section.settings.title != blank or section.settings.text != blank %}
       <div class="lg:text-center mb-[56px] md:mb-[72px] lg:mb-[96px]">
         {% if section.settings.title != blank %}
-          <h2 class="heading-sm_gs heading-sm_gsp md:heading-lg_gs  md:heading-lg_gsp text-data_gs text-FAF9F7_gsp pb-6 lg:pb-10">
+          <h2 class="heading-sm_gs heading-sm_gsp md:heading-lg_gs md:heading-lg_gsp text-data_gs text-FAF9F7_gsp pb-6 lg:pb-10">
             {{ section.settings.title }}
           </h2>
         {% endif %}
@@ -17,18 +17,24 @@
       </div>
     {% endif %}
 
-    {% comment %} Grid Responsiva: 1 col (mobile), 2 col (tablet), 3 col (desktop) {% endcomment %}
+    {% comment %} Grid Responsiva {% endcomment %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       
       {% for block in section.blocks %}
-        <div class="group bg_gs bg-beige_gsp rounded-[8px] p-4 transition-transform duration-300" {{ block.shopify_attributes }}>
+        {%- assign card_link = block.settings.card_link -%}
+        
+        <div class="group relative bg_gs bg-beige_gsp rounded-[8px] p-4 transition-all duration-300 hover:shadow-lg" {{ block.shopify_attributes }}>
           
-          {% comment %} Header della Card: Titolo e Freccia sulla stessa riga {% endcomment %}
+          {%- if card_link != blank -%}
+            <a href="{{ card_link }}" class="absolute inset-0 z-10 aria-hidden:true"></a>
+          {%- endif -%}
+
+          {% comment %} Header della Card {% endcomment %}
           <div class="flex justify-between items-center mb-6">
-            <h3 class="menu-model_gs menu-model_gsp text-color_gs text-color_gsp">
+            <h3 class="menu-model_gs menu-model_gsp text-color_gs text-color_gsp pr-2">
               {{ block.settings.card_title }}
             </h3>
-            <span class="transition-transform duration-300 group-hover:translate-x-1 bg-[#282624] rounded-full p-3 mr-4">
+            <span class="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 bg-[#282624] rounded-full p-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <g clip-path="url(#clip0_3323_3339)">
                         <path d="M5.07107 21.2169L19.2132 7.07481L5.77817 6.3677L10.0208 10.6103" stroke="#FAF9F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -48,14 +54,13 @@
               <img 
                 src="{{ block.settings.image | image_url: width: 800 }}" 
                 alt="{{ block.settings.card_title }}"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform"
                 loading="lazy"
               >
             </div>
           {% else %}
-            {% comment %} Placeholder se l'immagine manca {% endcomment %}
-            <div class="bg-gray-200 rounded-xl aspect-video flex items-center justify-center">
-              {{ 'image' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
+            <div class="bg-gray-200 rounded-[8px] aspect-[16/9] flex items-center justify-center">
+              {{ 'image' | placeholder_svg_tag: 'w-12 h-12 opacity-20' }}
             </div>
           {% endif %}
 
@@ -93,6 +98,11 @@
           "id": "card_title",
           "label": "Titolo Card",
           "default": "Titolo della Card"
+        },
+        {
+          "type": "url",
+          "id": "card_link",
+          "label": "Link Card"
         },
         {
           "type": "image_picker",
