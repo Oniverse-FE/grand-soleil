@@ -25,20 +25,10 @@
         "mobile-height": 85,
         "desktop-height": 185
       }
-    },
-    "news_hub_jnyew7": {
-      "type": "news-hub",
-      "name": "News Hub",
-      "settings": {
-        "news-hub-title": "TUTTE LE NOVITÀ DEL MONDO VANDUTCH",
-        "chip_all-news": "All News",
-        "filter-tags": "News Grand Soleil, News Grand Soleil Plus"
-      }
     }
   },
   "order": [
     "generic_breadcrumb_RLAXXr",
-    "empty_space_rmJ8hk",
-    "news_hub_jnyew7"
+    "empty_space_rmJ8hk"
   ]
 }
