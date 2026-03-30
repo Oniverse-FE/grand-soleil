@@ -135,56 +135,56 @@
         "text_9BMjUe": {
           "type": "text",
           "settings": {
-            "field_width": "full",
+            "field_width": "half",
             "form-textfield-type": "text",
             "form-textfield-type-code": "first_name",
-            "form-textfield-label": "",
-            "form-textfield-placeholder": "",
-            "form-textfield-required": false
+            "form-textfield-label": "Nome",
+            "form-textfield-placeholder": "Mario",
+            "form-textfield-required": true
           }
         },
         "text_WBkcNt": {
           "type": "text",
           "settings": {
-            "field_width": "full",
+            "field_width": "half",
             "form-textfield-type": "text",
-            "form-textfield-type-code": "first_name",
-            "form-textfield-label": "",
-            "form-textfield-placeholder": "",
-            "form-textfield-required": false
+            "form-textfield-type-code": "last_name",
+            "form-textfield-label": "Cognome",
+            "form-textfield-placeholder": "Rossi",
+            "form-textfield-required": true
           }
         },
         "text_HjTPYP": {
           "type": "text",
           "settings": {
-            "field_width": "full",
+            "field_width": "third",
             "form-textfield-type": "text",
-            "form-textfield-type-code": "first_name",
-            "form-textfield-label": "",
-            "form-textfield-placeholder": "",
+            "form-textfield-type-code": "phone",
+            "form-textfield-label": "Prefisso",
+            "form-textfield-placeholder": "+39",
             "form-textfield-required": false
           }
         },
         "text_DhN3Ue": {
           "type": "text",
           "settings": {
-            "field_width": "full",
-            "form-textfield-type": "text",
-            "form-textfield-type-code": "first_name",
-            "form-textfield-label": "",
-            "form-textfield-placeholder": "",
-            "form-textfield-required": false
+            "field_width": "two-thirds",
+            "form-textfield-type": "tel",
+            "form-textfield-type-code": "phone",
+            "form-textfield-label": "Telefono",
+            "form-textfield-placeholder": "123456789",
+            "form-textfield-required": true
           }
         },
         "text_9RG44j": {
           "type": "text",
           "settings": {
             "field_width": "full",
-            "form-textfield-type": "text",
-            "form-textfield-type-code": "first_name",
-            "form-textfield-label": "",
-            "form-textfield-placeholder": "",
-            "form-textfield-required": false
+            "form-textfield-type": "email",
+            "form-textfield-type-code": "email",
+            "form-textfield-label": "Mail",
+            "form-textfield-placeholder": "mario.rossi@mail.com",
+            "form-textfield-required": true
           }
         }
       },
