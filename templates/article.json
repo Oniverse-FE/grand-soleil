@@ -58,15 +58,16 @@
         "rounded-image-alt": "Alt"
       }
     },
-    "rich_text_FxTkWF": {
-      "type": "rich-text",
-      "name": "Rich text",
+    "rich_text_article_PMYrX9": {
+      "type": "rich-text-article",
+      "name": "Rich text artaicle",
       "settings": {
-        "rt_subtitle": "THE GRAND SOLEIL 44 DOMINATES IN IRC",
-        "rt_title": "",
-        "rt_text1": "The Grand Soleil 44 confirms itself as the boat to beat. After triumphing in four consecutive ORC World Championships (2021, 2022, 2023, and 2024), the Grand Soleil 44 now conquers the IRC world as well: two yachts took first and fourth place respectively in the 2025 Mediterranean IRC Championship, which concluded with the prestigious Rolex Middle Sea Race.  An outstanding result that demonstrates the model’s design excellence and versatility, created by Matteo Polli for the hull lines and Nauta Design for the interiors. The boats are in almost standard configuration, confirming one key fact: the Grand Soleil 44 is competitive out of the box, without the need for extreme customizations or optimizations.",
-        "rt-cta_label": "",
-        "rt-cta_link": "",
+        "rta_subtitle": "",
+        "rta_h1title": "",
+        "rta_title": "THE GRAND SOLEIL 44 DOMINATES IN IRC",
+        "rta_text1": "The Grand Soleil 44 confirms itself as the boat to beat. After triumphing in four consecutive ORC World Championships (2021, 2022, 2023, and 2024), the Grand Soleil 44 now conquers the IRC world as well: two yachts took first and fourth place respectively in the 2025 Mediterranean IRC Championship, which concluded with the prestigious Rolex Middle Sea Race.  An outstanding result that demonstrates the model’s design excellence and versatility, created by Matteo Polli for the hull lines and Nauta Design for the interiors. The boats are in almost standard configuration, confirming one key fact: the Grand Soleil 44 is competitive out of the box, without the need for extreme customizations or optimizations.",
+        "rta-cta_label": "",
+        "rta-cta_link": "",
         "alignment_mobile": "left",
         "alignment_desktop": "center",
         "pt_mobile": 40,
@@ -235,7 +236,7 @@
     "back_button_JacrcE",
     "rich_text_GCtfpJ",
     "rounded_image_YpALxK",
-    "rich_text_FxTkWF",
+    "rich_text_article_PMYrX9",
     "image_slider_8XDMBB",
     "generic_form_WchtGP"
   ]
