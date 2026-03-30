@@ -914,3 +914,9 @@ background-color:#EBEFF2;
 .tech-spec_gs{
     border-bottom: 0.5px solid  #EBEFF2;
 }
+
+.bg-form_gs{
+    border-radius: 16px;
+    border: 1px solid rgba(235, 239, 242, 0.64);
+    background:  #0B1319;
+}
