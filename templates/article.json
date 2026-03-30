@@ -192,8 +192,8 @@
       ],
       "name": "Generic form",
       "settings": {
-        "generic-form-title": "Facci una domanda",
-        "generic-form-text": "Facci una domanda",
+        "generic-form-title": "Rimani in contatto",
+        "generic-form-text": "Non perdere neanche un evento Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!",
         "form-markConsLabel": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services.",
         "form-profConsLabel": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us.",
         "form-privacy-label": "",
