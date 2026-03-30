@@ -1,98 +1,10 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "blog_breadcrumb_QrEkRn": {
-      "type": "blog-breadcrumb",
-      "name": "Blog Breadcrumb",
-      "settings": {
-        "intermediate-page": "news",
-        "related-blog": "news"
-      }
-    },
-    "rounded_image_EHbcGL": {
-      "type": "rounded-image",
-      "name": "Rounded Image",
-      "settings": {
-        "rounded-image": "shopify://shop_images/Cannes-Yachting-Festival.jpg",
-        "rounded-image-alt": "Alt"
-      }
-    },
-    "vdcenter_info_Ygwfyf": {
-      "type": "vdcenter-info",
-      "blocks": {
-        "info_row_KDwiHw": {
-          "type": "info-row",
-          "settings": {
-            "vdcenter-page-info-type": "Location",
-            "vdcenter-page-info-value": "Cannes, France"
-          }
-        }
-      },
-      "block_order": [
-        "info_row_KDwiHw"
-      ],
-      "name": "Info tab",
-      "settings": {
-        "vdcenter-page-title": "Cannes Yachting festival",
-        "vdcenter-page-text1": "",
-        "intro-type": false,
-        "vdcenter-page-position1": "2025-09-09",
-        "vdcenter-page-position2": "2025-09-14",
-        "vdcenter-info-contact-bg-transparent": false,
-        "vdcenter-info-contact-bg-color": "#ffffff",
-        "vdcenter-info-contact-text-color": "#101010",
-        "vdcenter-info-contact-border-color": "#101010",
-        "vdcenter-info-contact-label": "Book an appointment",
-        "vdcenter-info-maps-bg-transparent": false,
-        "vdcenter-info-maps-bg-color": "#ffffff",
-        "vdcenter-info-maps-text-color": "#101010",
-        "vdcenter-info-maps-border-color": "#101010",
-        "vdcenter-info-maps-label": "Add to calendar"
-      }
-    },
-    "event_models_wr943x": {
-      "type": "event-models",
-      "blocks": {
-        "event_model_card_mdrQeM": {
-          "type": "event-model-card",
-          "settings": {
-            "event-model-title": "32",
-            "event-model-title-color": "#f76c00",
-            "event-model-link": "vandutch-32",
-            "event-model-image": "shopify://shop_images/vd32.png"
-          }
-        }
-      },
-      "block_order": [
-        "event_model_card_mdrQeM"
-      ],
-      "name": "Event Models",
-      "settings": {
-        "event-model-title": "Modelli in esposizione"
-      }
-    },
-    "empty_space_TbCMTt": {
-      "type": "empty-space",
-      "name": "Empty space",
-      "settings": {
-        "mobile-height": 144,
-        "desktop-height": 280
-      }
+    "main": {
+      "type": "main-article"
     }
   },
   "order": [
-    "blog_breadcrumb_QrEkRn",
-    "rounded_image_EHbcGL",
-    "vdcenter_info_Ygwfyf",
-    "event_models_wr943x",
-    "empty_space_TbCMTt"
+    "main"
   ]
 }
