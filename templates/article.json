@@ -42,9 +42,9 @@
         "rt-cta_link": "",
         "alignment_mobile": "left",
         "alignment_desktop": "left",
-        "pt_mobile": 0,
-        "pt_tablet": 0,
-        "pt_desktop": 0,
+        "pt_mobile": 40,
+        "pt_tablet": 56,
+        "pt_desktop": 56,
         "pb_mobile": 40,
         "pb_tablet": 60,
         "pb_desktop": 80
