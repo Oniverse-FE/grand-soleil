@@ -22,6 +22,14 @@
         "toggle_label_gsp": "GSP MODE"
       }
     },
+    "empty_space_976eN7": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 88,
+        "desktop-height": 184
+      }
+    },
     "press_room_NbiFMR": {
       "type": "press-room",
       "name": "Press Room",
@@ -34,10 +42,38 @@
         "no-event-label": "Nessuna news trovata",
         "all-event-label": "Vedi tutte le news"
       }
+    },
+    "empty_space_z4dBKG": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 40,
+        "desktop-height": 96
+      }
+    },
+    "generic_form_LNNnnq": {
+      "type": "generic-form",
+      "name": "Generic form Black",
+      "settings": {
+        "generic-form-title": "Facci una domanda",
+        "generic-form-text": "Compila il modulo.",
+        "form-markConsLabel": "",
+        "form-profConsLabel": "",
+        "form-marketing-title": "Marketing",
+        "form-marketing-text": "",
+        "form-profiling-title": "Profiling",
+        "form-profiling-text": "",
+        "form-button-background-color": "#ffffff",
+        "form-button-text-color": "#000000",
+        "form-submit-button-text": "Invia"
+      }
     }
   },
   "order": [
     "header",
-    "press_room_NbiFMR"
+    "empty_space_976eN7",
+    "press_room_NbiFMR",
+    "empty_space_z4dBKG",
+    "generic_form_LNNnnq"
   ]
 }
