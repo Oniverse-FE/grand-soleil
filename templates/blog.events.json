@@ -34,10 +34,92 @@
         "pt_mob": 132,
         "pb_mob": 40
       }
+    },
+    "generic_form_j7P9yL": {
+      "type": "generic-form",
+      "blocks": {
+        "text_bYnUgg": {
+          "type": "text",
+          "settings": {
+            "field_width": "half",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "first_name",
+            "form-textfield-label": "Nome",
+            "form-textfield-placeholder": "Mario",
+            "form-textfield-required": true
+          }
+        },
+        "text_Pb7NWp": {
+          "type": "text",
+          "settings": {
+            "field_width": "half",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "last_name",
+            "form-textfield-label": "Cognome",
+            "form-textfield-placeholder": "Rossi",
+            "form-textfield-required": true
+          }
+        },
+        "text_nctgjk": {
+          "type": "text",
+          "settings": {
+            "field_width": "third",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "first_name",
+            "form-textfield-label": "Prefisso",
+            "form-textfield-placeholder": "+39",
+            "form-textfield-required": true
+          }
+        },
+        "text_dd8LCe": {
+          "type": "text",
+          "settings": {
+            "field_width": "two-thirds",
+            "form-textfield-type": "tel",
+            "form-textfield-type-code": "phone",
+            "form-textfield-label": "Telefono",
+            "form-textfield-placeholder": "1234567890",
+            "form-textfield-required": true
+          }
+        },
+        "text_mk6jGb": {
+          "type": "text",
+          "settings": {
+            "field_width": "full",
+            "form-textfield-type": "email",
+            "form-textfield-type-code": "email",
+            "form-textfield-label": "Email",
+            "form-textfield-placeholder": "mario.rossi@mail.com",
+            "form-textfield-required": true
+          }
+        }
+      },
+      "block_order": [
+        "text_bYnUgg",
+        "text_Pb7NWp",
+        "text_nctgjk",
+        "text_dd8LCe",
+        "text_mk6jGb"
+      ],
+      "name": "Generic form Black",
+      "settings": {
+        "generic-form-title": "Rimani in contatto",
+        "generic-form-text": "Non perdere neanche un evento Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!",
+        "form-markConsLabel": "Con il tuo consenso, potremo inviare comunicazioni commerciali e questionari di gradimento sui nostri prodotti e servizi via email e sms.",
+        "form-profConsLabel": "Con il tuo consenso, potremo inviare comunicazioni commerciali personalizzate in base alle tue preferenze, scelte di acquisto, le tue richieste e interazioni con noi.",
+        "form-marketing-title": "Marketing",
+        "form-marketing-text": "",
+        "form-profiling-title": "Profiling",
+        "form-profiling-text": "",
+        "form-button-background-color": "#ffffff",
+        "form-button-text-color": "#000000",
+        "form-submit-button-text": "Iscriviti"
+      }
     }
   },
   "order": [
     "generic_breadcrumb_RLAXXr",
-    "events_list_mheT69"
+    "events_list_mheT69",
+    "generic_form_j7P9yL"
   ]
 }
