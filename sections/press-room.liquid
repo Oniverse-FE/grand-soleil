@@ -1,4 +1,4 @@
-<div class="flex flex-col px-4 md:px-10 lg:px-[64px] xl:px-[128px] gap-8 lg:gap-[96px] bg_gs">
+<div class="flex flex-col px-4 md:px-10 lg:px-[64px] xl:px-[128px] gap-10 lg:gap-[96px] bg_gs">
   
   <div class="heading-md_gs md:title_gs text-color_gs md:text-center uppercase">
     {{ section.settings.pressroom-title }}
@@ -6,7 +6,7 @@
 
   <div class="flex flex-col gap-14 lg:gap-14">
     <div id="press-grid-container" class="flex flex-col gap-12 lg:gap-16">
-        <div id="press-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+        <div id="press-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10">
             {% assign all_articles = blogs['press-room'].articles | sort: "created_at" | reverse %}
             {% for article in all_articles %}
                 {% assign file_link = article.metafields.custom.article_file | file_url %}
@@ -17,7 +17,7 @@
                         {% endif %}
                     </div>
                     
-                    <div class="flex flex-wrap gap-[6px] mt-4">
+                    <div class="flex flex-wrap">
                         <div class="flex link-sm_gs text-color_gs items-center uppercase py-4">
                             {% if article.metafields.custom.article_flag %}
                                 <img src="{{ article.metafields.custom.article_flag | img_url: width: 16 }}" alt="flag" class="size-4 rounded-full mr-2">
@@ -26,16 +26,16 @@
                         </div>
                     </div>
 
-                    <h3 class="mt-4 subtitle_gs md:heading-sm_gs text-color_gs line-clamp-3">
+                    <h3 class="subtitle_gs md:heading-sm_gs text-color_gs line-clamp-3">
                         {{ article.title }}
                     </h3>
                 </a>
             {% endfor %}
         </div>
 
-        <div id="no-results-passati" class="hidden text-center py-20">
-            <p class="text-lg text-white opacity-60">{{ section.settings.no-event-label }}</p>
-            <a href="#" id="reset-past-search" class="inline-block mt-4 font-semibold uppercase text-white pb-1 border-b border-white">
+        <div id="no-results-passati" class="hidden text-center">
+            <p class="body-md_gs text-color_gs">{{ section.settings.no-event-label }}</p>
+            <a href="#" id="reset-past-search" class="inline-block mt-4 cta-blue_gs link-lg_gs">
                 {{ section.settings.all-event-label }}
             </a>
         </div>
