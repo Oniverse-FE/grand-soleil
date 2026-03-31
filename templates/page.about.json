@@ -9,6 +9,258 @@
  */
 {
   "sections": {
+    "rich_text_TT4N3z": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "IL RITORNO DI UN MITO",
+        "rt_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
+        "rt_text1": "Le nostre vittorie sui campi di regata del mondo sono la prova tangibile della nostra superiorità progettuale e costruttiva. Per Grand Soleil, la performance non è uno slogan di marketing, ma un fatto dimostrato da un palmares unico al mondo. La nostra storia è scritta sui campi di regata più prestigiosi: dai Campionati del Mondo IMS e ORC, vinti ripetutamente, alle grandi classiche d'altura come la Fastnet Race, la Rolex Giraglia e la Middle Sea Race. Il DNA vincente è impresso nel progetto di ogni barca che lascia il cantiere. Questa ossessione per la competizione si traduce in ricerca e sviluppo ai massimi livelli. Le innovazioni idrodinamiche testate nelle condizioni più estreme, la rigidità strutturale necessaria per sopportare le sollecitazioni della regata e l'efficienza dei piani di coperta diventano un patrimonio fondamentale anche per l'armatore crocierista. Scegliere un Grand Soleil della linea storica significa navigare su uno yacht che è intrinsecamente più veloce, più bilanciato, più sicuro e più reattivo. È la garanzia che, anche nella crociera più rilassata, si sta conducendo un purosangue dell'ingegneria nautica.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 88,
+        "pt_tablet": 160,
+        "pt_desktop": 184,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "rounded_image_n6LpmU": {
+      "type": "rounded-image",
+      "name": "Rounded Image",
+      "settings": {
+        "rounded-image": "shopify://shop_images/cover.png",
+        "rounded-image-alt": "Alt"
+      }
+    },
+    "intro_slider_PdzaCf": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_yXNyA4": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "VANDUTCH 32: COMPATTO, ICONICO, INCONFONDIBILE",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_YQydKG": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "La firma della Linea Grand Soleil risiede nel suo inimitabile \"Dual DNA\". Non chiediamo ai nostri armatori di scegliere tra velocità e comfort, ma offriamo la sintesi perfetta di entrambi. Questa duplice anima è il nostro più grande punto di forza. Da un lato, pulsa un cuore da regata. È il DNA vincente che spinge i nostri progettisti a cercare l'idrodinamica più evoluta, piani velici potenti ma gestibili e tecnologie costruttive all'avanguardia. È l'anima \"Where Speed Meets Style\", dedicata a chi cerca la reattività, l'emozione della conduzione e la precisione in manovra. Dall'altro lato, un'anima dedicata alla crociera d'eccellenza, \"Comfort Beyond Distance\". Questa è la vocazione per il comfort, per la qualità della vita a bordo, per la sicurezza in ogni condizione di mare e per l'autonomia necessaria ad affrontare le lunghe navigazioni. Queste due anime non sono in competizione, ma si rafforzano a vicenda. Un'imbarcazione performante è anche più sicura e reattiva; un'imbarcazione costruita con cura artigianale è solida in regata e silenziosa in crociera. Questa è l'essenza della Linea Grand Soleil."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_yXNyA4",
+        "intro_text_area_YQydKG"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_U74ykJ": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_VjgEt9": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_xB3LeL": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_UnAAUb": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_VjgEt9",
+        "image_slider_image_xB3LeL",
+        "image_slider_image_UnAAUb"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "intro_slider_hNGFDa": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_PnzVCE": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "VANDUTCH 32: COMPATTO, ICONICO, INCONFONDIBILE",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_kDpXPQ": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "La firma della Linea Grand Soleil risiede nel suo inimitabile \"Dual DNA\". Non chiediamo ai nostri armatori di scegliere tra velocità e comfort, ma offriamo la sintesi perfetta di entrambi. Questa duplice anima è il nostro più grande punto di forza. Da un lato, pulsa un cuore da regata. È il DNA vincente che spinge i nostri progettisti a cercare l'idrodinamica più evoluta, piani velici potenti ma gestibili e tecnologie costruttive all'avanguardia. È l'anima \"Where Speed Meets Style\", dedicata a chi cerca la reattività, l'emozione della conduzione e la precisione in manovra. Dall'altro lato, un'anima dedicata alla crociera d'eccellenza, \"Comfort Beyond Distance\". Questa è la vocazione per il comfort, per la qualità della vita a bordo, per la sicurezza in ogni condizione di mare e per l'autonomia necessaria ad affrontare le lunghe navigazioni. Queste due anime non sono in competizione, ma si rafforzano a vicenda. Un'imbarcazione performante è anche più sicura e reattiva; un'imbarcazione costruita con cura artigianale è solida in regata e silenziosa in crociera. Questa è l'essenza della Linea Grand Soleil."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_PnzVCE",
+        "intro_text_area_kDpXPQ"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_m3z8xf": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_xiJrLc": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_C36dBM": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_98rjjU": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/img.png",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_xiJrLc",
+        "image_slider_image_C36dBM",
+        "image_slider_image_98rjjU"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "rich_text_article_WrpcRw": {
+      "type": "rich-text-article",
+      "name": "Rich text artaicle",
+      "settings": {
+        "rta_subtitle": "",
+        "rta_h1title": "",
+        "rta_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
+        "rta_text1": "Le nostre vittorie sui campi di regata del mondo sono la prova tangibile della nostra superiorità progettuale e costruttiva. Per Grand Soleil, la performance non è uno slogan di marketing, ma un fatto dimostrato da un palmares unico al mondo. La nostra storia è scritta sui campi di regata più prestigiosi: dai Campionati del Mondo IMS e ORC, vinti ripetutamente, alle grandi classiche d'altura come la Fastnet Race, la Rolex Giraglia e la Middle Sea Race. Il DNA vincente è impresso nel progetto di ogni barca che lascia il cantiere. Questa ossessione per la competizione si traduce in ricerca e sviluppo ai massimi livelli. Le innovazioni idrodinamiche testate nelle condizioni più estreme, la rigidità strutturale necessaria per sopportare le sollecitazioni della regata e l'efficienza dei piani di coperta diventano un patrimonio fondamentale anche per l'armatore crocierista. Scegliere un Grand Soleil della linea storica significa navigare su uno yacht che è intrinsecamente più veloce, più bilanciato, più sicuro e più reattivo. È la garanzia che, anche nella crociera più rilassata, si sta conducendo un purosangue dell'ingegneria nautica.",
+        "rta-cta_label": "Scopri la Hall of Fame",
+        "rta-cta_link": "#",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "mosaic_N7HwH9": {
+      "type": "mosaic",
+      "name": "Mosaic",
+      "settings": {
+        "layout_mode": "two_images",
+        "image_1": "shopify://shop_images/Pillar_30b92959-9a72-4910-afeb-3294f09a05c8.png",
+        "image_2": "shopify://shop_images/img.png",
+        "image_3": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png"
+      }
+    },
     "news_list_ynrNdG": {
       "type": "news-list",
       "name": "News Slider",
@@ -23,24 +275,6 @@
         "pb_tab": 96,
         "pt_mob": 48,
         "pb_mob": 104
-      }
-    },
-    "event_slider_yWwQkM": {
-      "type": "event-slider",
-      "name": "Future events",
-      "settings": {
-        "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-date": "Data",
-        "event-slider-location": "Luogo",
-        "event-slider-cta2-label": "Discover more",
-        "font_size_desk": "42px",
-        "font_size_mob": "36px",
-        "pt_desk": 96,
-        "pb_desk": 96,
-        "pt_tab": 80,
-        "pb_tab": 80,
-        "pt_mob": 24,
-        "pb_mob": 24
       }
     },
     "text_image_with_background_pHwXNp": {
@@ -63,26 +297,33 @@
         "pb_mob": 104
       }
     },
-    "find_dealer_LkPTw9": {
-      "type": "find-dealer",
-      "name": "Find a dealer",
+    "rich_text_inverted_CA9MBR": {
+      "type": "rich-text-inverted",
+      "name": "Rich text inverted",
       "settings": {
-        "fd-content_alignment_mobile": "center",
-        "fd-content_alignment": "center",
-        "fd-cta_position": "center",
-        "fd-title": "Trova un dealer",
-        "fd-text1": "L’esperienza dei nostri dealers è insostituibile. Trova il quello più vicino a te per saperne di più ed entrare nel mondo Grand Soleil Yachts.",
-        "fd-cta_label": "Contatta il dealer",
-        "fd-cta_link": "#",
-        "fd-cta_label2": "Chiedi informazioni",
-        "fd-cta_link2": "#"
+        "rti-content_alignment_mobile": "center",
+        "rti-content_alignment": "center",
+        "rti-cta_position": "center",
+        "rti-title": "Il vostro prossimo traguardo: Grand Soleil 52P",
+        "rti-text1": "Più che una barca, è una dichiarazione di intenti. Il punto d'incontro tra la vostra ambizione sportiva e il piacere di navigare. Scegliere il Grand Soleil 52 Performance significa rifiutare i compromessi. Significa possedere l'eredità di un nome leggendario, evoluta nell'arma da regata e fast cruiser definitivo.",
+        "rti-cta_label": "Trova un dealer",
+        "rti-cta_link": "#",
+        "rti-cta_label2": "Chiedi informazioni",
+        "rti-cta_link2": "#"
       }
     }
   },
   "order": [
+    "rich_text_TT4N3z",
+    "rounded_image_n6LpmU",
+    "intro_slider_PdzaCf",
+    "image_slider_U74ykJ",
+    "intro_slider_hNGFDa",
+    "image_slider_m3z8xf",
+    "rich_text_article_WrpcRw",
+    "mosaic_N7HwH9",
     "news_list_ynrNdG",
-    "event_slider_yWwQkM",
     "text_image_with_background_pHwXNp",
-    "find_dealer_LkPTw9"
+    "rich_text_inverted_CA9MBR"
   ]
 }
