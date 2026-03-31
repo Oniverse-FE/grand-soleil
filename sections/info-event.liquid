@@ -1,0 +1,207 @@
+<div class="info-padding w-full px-4 md:px-10 lg:px-[64px] xl:px-[128px] bg_gs bg_gsp" 
+     style="--padding-top-tablet: {{ section.settings.pt_tab }}px; --padding-bottom-tablet: {{ section.settings.pb_tab }}px;
+            --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;--padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+            --padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-top-desktop: {{ section.settings.padding_top }}px;" >
+  <div class="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-4 justify-between"> 
+
+    <!-- text part -->
+    <div class="flex flex-col gap-3 lg:gap-4 text-color_gs text-color_gsp md:w-[437px] lg:w-full lg:col-span-5">
+      <!-- title -->
+      <div class="flex heading-md_gs heading-md_gsp md:title_gs md:title_gsp text-color_gs text-color_gsp">
+        {{ section.settings.gs-page-title }}
+      </div>
+      <!-- text -->
+      <div class="flex body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp">
+        {{ section.settings.gs-page-text1 | newline_to_br }}
+      </div>
+    </div>
+
+    <!-- empty column (desktop only) -->
+    <div class="hidden lg:block col-span-1"></div>
+
+    <!-- info part -->
+    <div class="flex flex-col gap-[56px] lg:col-span-6">
+      <!-- div info-->
+      <div class="flex flex-col gap-6 text-color_gs text-color_gsp">
+
+        <!-- general info -->
+        <div class="flex flex-col gap-2 lg:col-span-6">
+          {% for block in section.blocks %}
+          {% case block.type %}
+          {% when '@app' %}
+          {% render block %}
+          {% when 'info-row' %}
+          <div
+            class="flex flex-col md:flex-row w-full py-3 justify-between" style="border-bottom: 0.5px solid #EBEFF2;">
+            <div class="pretitle-xs_gs pretitle-xs_gsp md:pretitle-sm_gs md:pretitle-sm_gsp text-color_gs text-color_gsp">
+              {{ block.settings.gs-page-info-type }}
+            </div>
+            <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp">
+              {{ block.settings.gs-page-info-value }}
+            </div>
+          </div>
+          {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- div buttons -->
+      {% if section.settings.gs-info-contact-link != blank %}
+        <div class="flex justify-center w-full">
+          <a href="{{ section.settings.gs-info-contact-link }}"
+            id="gs-info-contact"
+            class="booking-cta cta-blue_gs text-center cta-truffle_gsp px-7 py-3.5 w-full flex-1 link-lg_gs link-lg_gsp transition-all duration-300">
+            {{ section.settings.gs-info-contact-label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  .info-padding {
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+  }
+  @media screen and (min-width: 768px) {
+  .info-padding {
+    padding-top: var(--pt-tab);
+    padding-bottom: var(--pb-tab);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .info-padding {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "VD Center Info",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Info"
+    },
+    {
+      "type": "text",
+      "id": "gs-page-title",
+      "label": "Title",
+      "default": "vandutch center amsterdam"
+    },
+    {
+      "type": "textarea",
+      "id": "gs-page-text1",
+      "label": "Text 1",
+      "default": "Dopo aver consolidato una presenza internazionale, VanDutch Yachts è tornato alle origini, nella multiculturale Amsterdam, città in cui il brand è nato nel 2008. A pochi minuti dall’aeroporto di Schiphol, tra laghi interni e canali cittadini, l’ufficio di VanDutch Amsterdam offre un accesso privilegiato al fascino autentico della nautica del Nord Europa."
+    },
+    {
+      "type": "checkbox",
+      "id": "intro-type",
+      "label": "Is the section used in a VD Center Page?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "gs-info-contact-label",
+      "label": "Button label",
+      "default": "Contatta un centro"
+    },
+    {
+      "type": "url",
+      "id": "gs-info-contact-link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    },
+    {
+      "type": "range",
+      "id": "pt_tab",
+      "label": "Top padding tablet",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "pb_tab",
+      "label": "Bottom padding tablet",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Info Row",
+      "type": "info-row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "gs-page-info-type",
+          "label": "Type",
+          "default": "Type"
+        },
+        {
+          "type": "text",
+          "id": "gs-page-info-value",
+          "label": "Value",
+          "default": "Value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info tab",
+      "category": "Events - article"
+    }
+  ]
+}
+{% endschema %}

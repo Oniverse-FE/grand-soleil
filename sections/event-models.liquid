@@ -1,213 +1,214 @@
-<div class="flex flex-col gap-4 lg:gap-10">
-    <!-- titolo con frecce -->
-    <div class="flex px-4 md:px-12 lg:px-24 justify-between items-center">
-        <h2 class="font-size font-bold uppercase text-white">
-            {{ section.settings.event-model-title }}
-        </h2>
-        <div id="arrow-container" class="relative justify-end bottom-0 lg:flex flex gap-2 lg:gap-4">
-            <button id="prev-models" class="prev-models p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-                </svg>
-            </button>
-            <button id="next-models" class="next-models p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-                </svg>
-            </button>
-        </div>
-    </div>
+<section class="models-padding px-4 md:px-10 lg:px-[64px] xl:px-[128px] bg_gs bg_gsp"
+     style="--padding-top-tablet: {{ section.settings.pt_tab }}px; --padding-bottom-tablet: {{ section.settings.pb_tab }}px;
+            --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;--padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+            --padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-top-desktop: {{ section.settings.padding_top }}px;">
+  <div class="mx-auto">
+    
+    {% comment %} Header della Sezione {% endcomment %}
+    {% if section.settings.title != blank or section.settings.text != blank %}
+      <div class="text-center mb-[32px] md:mb-[56px]">
+        {% if section.settings.title != blank %}
+          <h2 class="heading-sm_gs heading-sm_gsp md:heading-lg_gs md:heading-lg_gsp text-color_gs text-color_gsp">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp mx-auto text-color_gs text-color_gsp pt-6 lg:pt-10">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
-    <!-- slider modelli -->
-    <div id="model-slider" class="flex gap-3 lg:gap-[15px] overflow-x-auto overflow-y-hidden lg:overflow-x-auto lg:flex-nowrap hide-scrollbar first-item-padding last-item-padding pt-4">
-        {% for block in section.blocks %}
-        {% case block.type %}
-            {% when '@app' %}
-                {% render block %}
-            {% when 'event-model-card' %}
-            <div class="flex flex-col relative flex-shrink-0 w-[300px] h-[188px] lg:w-[511px] lg:h-[387px] rounded-2xl bg-antracite p-4">
-                <a href="{{ block.settings.event-model-link }}" class="h-full w-full block">
-                    <div class="flex flex-col justify-center items-center h-full w-full">
-                        <div class="flex text-[128px] lg:text-[266px] z-0 w-[108px] font-black justify-center items-center tk-mongoose" style="color:{{ block.settings.event-model-title-color }};">
-                            {{ block.settings.event-model-title }}
-                        </div>
-                    </div>
-                    <div class="absolute inset-0 z-10 flex justify-center items-end p-4">
-                        <img src="{{ block.settings.event-model-image | img_url: 'master' }}" alt="{{ block.settings.event-model-title }}" class="w-[214px] lg:w-[408px] h-auto">
-                    </div>
-                </a>
+    {% comment %} Grid Responsiva {% endcomment %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      
+      {% for block in section.blocks %}
+        {%- assign card_link = block.settings.card_link -%}
+        
+        <div class="group relative bg-dark_gs bg-beige_gsp rounded-[8px] p-4 transition-all duration-300 hover:shadow-lg" {{ block.shopify_attributes }}>
+          
+          {%- if card_link != blank -%}
+            <a href="{{ card_link }}" class="absolute inset-0 z-10 aria-hidden:true"></a>
+          {%- endif -%}
+
+          {% comment %} Header della Card {% endcomment %}
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="menu-model_gs menu-model_gsp text-color_gs text-color_gsp pr-2">
+              {{ block.settings.models_title }} <br>
+              {{ block.settings.gamma_models }}
+            </h3>
+            <span class="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 bg-[#282624] rounded-full p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <g clip-path="url(#clip0_3323_3339)">
+                        <path d="M5.07107 21.2169L19.2132 7.07481L5.77817 6.3677L10.0208 10.6103" stroke="#FAF9F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_3323_3339">
+                        <rect width="24" height="24" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </span>
+          </div>
+
+          {% comment %} Immagine della Card {% endcomment %}
+          {% if block.settings.image != blank %}
+            <div class="overflow-hidden rounded-[8px] aspect-[16/9]">
+              <img 
+                src="{{ block.settings.image | image_url: width: 800 }}" 
+                alt="{{ block.settings.card_title }}"
+                class="w-full h-full object-cover transition-transform"
+                loading="lazy"
+              >
             </div>
-            {% endcase %}
-        {% endfor %}
+          {% else %}
+            <div class="bg-gray-200 rounded-[8px] aspect-[16/9] flex items-center justify-center">
+              {{ 'image' | placeholder_svg_tag: 'w-12 h-12 opacity-20' }}
+            </div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+
     </div>
-</div>
+  </div>
+</section>
 
 <style>
-    #model-slider {
-        scroll-behavior: smooth;
-        overflow-y: hidden;
-    }
-
-    .font-size {
-        font-size: 26px !important;
-        line-height: 32px !important;
-    }
-
-    @media (min-width: 1024px) {
-        .font-size {
-            font-size: 42px !important;
-            line-height: 48px !important;
-        }
-    }
-
-    #prev-models,
-    #next-models {
-        background: transparent;
-        border: 1px solid white;
-        cursor: pointer;
-    }
-
-    #prev-models:hover:not(:disabled),
-    #next-models:hover:not(:disabled) {
-        color: #fff;
-    }
-
-    #prev-models:disabled,
-    #next-models:disabled {
-        opacity: 1;
-        cursor: not-allowed;
-    }
-
-    .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .first-item-padding {
-        padding-left: 16px;
-    }
-    @media (min-width: 1024px) {
-        .first-item-padding {
-            padding-left: 96px;
-        }
-    }
-
-    .last-item-padding {
-        padding-right: 16px;
-    }
-    @media (min-width: 1024px) {
-        .last-item-padding {
-            padding-right: 96px;
-        }
-    }
+  .models-padding {
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+  }
+  @media screen and (min-width: 768px) {
+  .models-padding {
+    padding-top: var(--pt-tab);
+    padding-bottom: var(--pb-tab);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .models-padding {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
+  }
+}
 </style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.getElementById("model-slider");
-    const prevBtn = document.getElementById("prev-models");
-    const nextBtn = document.getElementById("next-models");
-    const arrowContainer = document.getElementById("arrow-container");
-
-    const scrollAmount = 300;
-
-    function updateButtons() {
-        prevBtn.disabled = slider.scrollLeft <= 0;
-        nextBtn.disabled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
-    }
-
-    prevBtn.addEventListener("click", () => {
-        let target = slider.scrollLeft - scrollAmount;
-        if (target < 0) target = 0;
-        slider.scrollTo({ left: target, behavior: "smooth" });
-    });
-
-    nextBtn.addEventListener("click", () => {
-        let target = slider.scrollLeft + scrollAmount;
-        const maxScroll = slider.scrollWidth - slider.clientWidth;
-        if (target > maxScroll) target = maxScroll;
-        slider.scrollTo({ left: target, behavior: "smooth" });
-    });
-
-    slider.addEventListener("scroll", updateButtons);
-
-    updateButtons();
-
-    function checkArrowsVisibility() {
-        const modelCards = slider.querySelectorAll('.flex.flex-col.relative.flex-shrink-0');
-        if (window.innerWidth >= 1024) {
-            arrowContainer.style.display = modelCards.length <= 2 ? "none" : "flex";
-        } else {
-            arrowContainer.style.display = "flex";
-        }
-    }
-    function checkArrowsVisibility() {
-        const modelCards = slider.querySelectorAll('.flex.flex-col.relative.flex-shrink-0');
-        if (window.innerWidth >= 1780) {
-            arrowContainer.style.display = modelCards.length <= 3 ? "none" : "flex";
-        } else {
-            arrowContainer.style.display = "flex";
-        }
-    }
-
-    checkArrowsVisibility();
-    window.addEventListener("resize", checkArrowsVisibility);
-});
-</script>
 
 {% schema %}
 {
-    "name": "Event Models",
-    "settings": [
+  "name": "Models",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titolo Sezione",
+      "default": "I nostri servizi"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Testo Sezione",
+      "default": "<p>Esplora le nostre soluzioni su misura per te.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    },
+    {
+      "type": "range",
+      "id": "pt_tab",
+      "label": "Top padding tablet",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "pb_tab",
+      "label": "Bottom padding tablet",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding desktop",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 144
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
         {
-            "type": "text",
-            "id": "event-model-title",
-            "label": "Title",
-            "default": "Modelli in esposizione"
-        }
-    ],
-    "blocks": [
+          "type": "text",
+          "id": "models_title",
+          "label": "Models",
+          "default": "Titolo della Card"
+        },
         {
-            "type": "event-model-card",
-            "name": "Event model",
-            "settings": [
-                {
-                "type": "header",
-                "content": "Model Settings"
-                },
-            {
-                    "type": "text",
-                    "id": "event-model-title",
-                    "label": "Model title",
-                    "default": "32"
-                },
-                {
-                    "type": "color",
-                    "id": "event-model-title-color",
-                    "label": "Model title color",
-                    "default": "#F76C00"
-                },
-                {
-                    "type": "url",
-                    "id": "event-model-link",
-                    "label": "Select model page"
-                },
-                {
-                    "type": "image_picker",
-                    "id": "event-model-image",
-                    "label": "Model image"
-                }
-            ]
-        }
-    ],
-    "presets": [
+          "type": "text",
+          "id": "gamma_models",
+          "label": "Gamma",
+          "default": "Titolo della Card"
+        },
         {
-            "name": "Event Models",
-            "category": "Event sections"
+          "type": "url",
+          "id": "card_link",
+          "label": "Link Card"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Immagine Card"
         }
-    ]
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Models",
+      "category": "Events - article",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
 }
 {% endschema %}
