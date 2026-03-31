@@ -11,10 +11,33 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "logo_width": 100,
+        "menu_gs": "",
+        "menu_gsp": "",
+        "menu_gs_secondary": "",
+        "menu_gsp_secondary": "",
+        "right_label": "DISCOVER",
+        "toggle_label_gs": "GS MODE",
+        "toggle_label_gsp": "GSP MODE"
+      }
+    },
+    "press_room_NbiFMR": {
+      "type": "press-room",
+      "name": "Press Room",
+      "settings": {
+        "pressroom-title": "press room",
+        "pressroom-search-placeholder": "Cerca un articolo",
+        "pressroom-outof": "out of",
+        "pressroom-art": "items",
+        "pressroom-read-more": "read",
+        "no-event-label": "Nessuna news trovata",
+        "all-event-label": "Vedi tutte le news"
+      }
     }
   },
   "order": [
-    "header"
+    "header",
+    "press_room_NbiFMR"
   ]
 }
