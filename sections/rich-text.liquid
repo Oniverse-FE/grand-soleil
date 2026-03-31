@@ -21,11 +21,22 @@
           </div>
         {%- endif -%}
         {% if section.settings.rt-cta_link != blank %}
-              <a id="cta-1-{{ section.id }}"
-                  href="{{ section.settings.rt-cta_link }}"
-                  class="cta-button w-full text-center lg:w-fit px-7 py-3.5 link-lg_gs link-lg_gsp cta-truffle_gsp cta-101C26_gs transition-all duration-300">
-                {{ section.settings.rt-cta_label }}
-              </a>
+          {%- liquid 
+            # Definiamo le classi base e quelle condizionali
+            assign base_classes = "cta-button w-full text-center lg:w-fit px-7 py-3.5 transition-all duration-300"
+            
+            if section.settings.enable_alt_style
+              assign custom_classes = "cta-blue_gs link-lg_gs link-lg_gsp cta-truffle_gsp" 
+            else
+              assign custom_classes = "link-lg_gs link-lg_gsp cta-truffle_gsp cta-101C26_gs"
+            endif
+          -%}
+
+          <a id="cta-1-{{ section.id }}"
+            href="{{ section.settings.rt-cta_link }}"
+            class="{{ base_classes }} {{ custom_classes }}">
+            {{ section.settings.rt-cta_label }}
+          </a>
         {% endif %}
      </div>
 </div>
@@ -88,6 +99,12 @@
       "type": "url",
       "id": "rt-cta_link",
       "label": "Link Bottone 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_alt_style",
+      "label": "Attiva stile alternativo CTA",
+      "default": false
     },
     {
       "type": "header",

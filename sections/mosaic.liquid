@@ -1,0 +1,86 @@
+<div class="bg_gs bg_gsp">
+  <div class="mx-auto px-4 max-w-[1050px] lg:max-w-[1050px] md:max-w-[940px] grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+
+    <div class="w-full">
+      {% if section.settings.image_1 != blank %}
+        {{ section.settings.image_1 | image_url: width: 1000 | image_tag: 
+          class: 'w-full h-full object-cover aspect-[4/5] rounded-[16px]', 
+          loading: 'lazy' 
+        }}
+      {% else %}
+        <div class="w-full aspect-[4/5] flex items-center justify-center">
+          {{ 'image' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="flex flex-col gap-[24px]">
+      {% if section.settings.layout_mode == 'two_images' %}
+        
+        <div class="h-full flex flex-col gap-[24px]">
+          {% if section.settings.image_2 != blank %}
+            {{ section.settings.image_2 | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover flex-1 rounded-[16px]', loading: 'lazy' }}
+          {% else %}
+            <div class="w-full flex-1 min-h-[200px]"></div>
+          {% endif %}
+
+          {% if section.settings.image_3 != blank %}
+            {{ section.settings.image_3 | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover flex-1 rounded-[16px]', loading: 'lazy' }}
+          {% else %}
+            <div class="w-full flex-1 min-h-[200px]"></div>
+          {% endif %}
+        </div>
+
+      {% else %}
+        
+        {% if section.settings.image_2 != blank %}
+          {{ section.settings.image_2 | image_url: width: 1000 | image_tag: 
+            class: 'w-full h-full object-cover aspect-[4/5] rounded-[16px]', 
+            loading: 'lazy' 
+          }}
+        {% else %}
+          <div class="w-full aspect-[4/5]"></div>
+        {% endif %}
+        
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mosaic",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout Colonna Destra",
+      "options": [
+        { "value": "one_image", "label": "Singola (50%)" },
+        { "value": "two_images", "label": "Due immagini (25% + 25%)" }
+      ],
+      "default": "two_images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Immagine Principale (Sinistra)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Immagine Destra 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Immagine Destra 2 (Solo per layout 2 immagini)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mosaic"
+    }
+  ]
+}
+{% endschema %}
