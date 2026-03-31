@@ -1,16 +1,16 @@
-<div id="news-slider-{{ section.id }}" 
+<div id="sailing-stories-slider-{{ section.id }}" 
      style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
             --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
             --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
-     class="news-padding bg_gs bg_gsp flex flex-col lg:flex-row overflow-hidden gap-[56px] lg:gap-[118px] pl-4 md:pl-10 lg:pl-[64px] xl:pl-[128px]">
+     class="sailing-padding bg_gs bg_gsp flex flex-col lg:flex-row overflow-hidden gap-[56px] lg:gap-[118px] pl-4 md:pl-10 lg:pl-[64px] xl:pl-[128px]">
 
-  {% assign news_blog = blogs['news'] %}
-  {% assign total_news = news_blog.articles_count %}
+  {% assign sailing_blog = blogs['sailing-stories'] %}
+  {% assign total_sailing = sailing_blog.articles_count %}
 
   {% comment %} Colonna Testi Sinistra {% endcomment %}
   <div class="flex flex-col justify-start items-start lg:w-[35%] gap-4 z-20 bg-inherit">
       <div class="text-left flex heading-lg_gs heading-lg_gsp text-color_gs text-color_gsp">
-          {{ section.settings.news-slider-title }}
+          {{ section.settings.sailing-slider-title }}
       </div>
 
       {% if section.settings.content %}
@@ -18,25 +18,25 @@
           {{ section.settings.content }}
       </div>
       {% endif %}
-
-    {%- if section.settings.news-slider-cta-all-label != blank -%}
+       
+      {%- if section.settings.sailing-slider-cta-all-label != blank -%}
       <div class="flex flex-col gap-4 lg:flex-row mt-4">
-          <a href="{{ news_blog.url }}"
-             class="cta-all-news link-lg_gsp link-ld_gs text-center cta-blue_gs cta-truffle_gsp px-6 py-4">
-             {{ section.settings.news-slider-cta-all-label }}
+          <a href="{{ sailing_blog.url }}"
+             class="cta-all-sailing link-lg_gsp link-ld_gs text-center cta-blue_gs cta-truffle_gsp px-6 py-4">
+             {{ section.settings.sailing-slider-cta-all-label }}
           </a>
       </div>
-    {% endif %}
+      {% endif %}
   </div>
 
-  {% comment %} Slider News {% endcomment %}
+  {% comment %} Slider sailing {% endcomment %}
   <div class="flex-1 lg:w-[65%] mb-[32px] lg:mb-[60px] relative">
     
-    <div id="news-container-{{ section.id }}"
+    <div id="sailing-container-{{ section.id }}"
          class="flex flex-row gap-4 overflow-x-auto scroll-smooth px-4 lg:px-0 no-scrollbar">
 
-      {% for article in news_blog.articles limit: 5 %}
-          <div class="news-card flex-shrink-0 group relative overflow-hidden rounded-[10px] cursor-pointer shadow-lg"
+      {% for article in sailing_blog.articles limit: 5 %}
+          <div class="sailing-card flex-shrink-0 group relative overflow-hidden rounded-[10px] cursor-pointer shadow-lg"
                onclick="window.location.href='{{ article.url }}'">
               
               <div class="aspect-[4/5] w-full overflow-hidden">
@@ -57,8 +57,8 @@
                       <h3 class="heading-sm_gs heading-sm_gsp text-color_gs text-EBEFF2_gsp">
                           {{ article.title }}
                       </h3>
-                      <div class="cta-news-item link-lg_gs link-lg_gsp text-color_gs text-EBEFF2_gsp underline opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 mb-[20px] md:mb-0">
-                         {{ section.settings.news-cta-label }}
+                      <div class="cta-sailing-item link-lg_gs link-lg_gsp text-color_gs text-EBEFF2_gsp underline opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 mb-[20px] md:mb-0">
+                         {{ section.settings.sailing-cta-label }}
                       </div>
                   </div>
               </div>
@@ -70,14 +70,14 @@
     <div class="flex items-center justify-between mt-8 px-4 md:pr-10 lg:pr-[64px] xl:pr-[128px]">
         
         <div class="body-md_gs body-md_gsp text-color_gs text-color_gsp">
-            <span id="current-index-{{ section.id }}">01</span> - <span>0{{ total_news | at_most: 5 }}</span>
+            <span id="current-index-{{ section.id }}">01</span> - <span>0{{ total_sailing | at_most: 5 }}</span>
         </div>
 
         <div class="flex gap-[14px]">
-            <button id="prev-news-{{ section.id }}" class="arrow-btn pt-3 flex items-center justify-center disabled:opacity-20 disabled:pointer-events-none">
+            <button id="prev-sailing-{{ section.id }}" class="arrow-btn pt-3 flex items-center justify-center disabled:opacity-20 disabled:pointer-events-none">
                 {% if template contains 'gsp' %}{% render 'gs-arrow-left-black' %}{% else %}{% render 'gs-arrow-left-white' %}{% endif %}
             </button>
-            <button id="next-news-{{ section.id }}" class="arrow-btn pb-3 flex items-center justify-center disabled:opacity-20 disabled:pointer-events-none">
+            <button id="next-sailing-{{ section.id }}" class="arrow-btn pb-3 flex items-center justify-center disabled:opacity-20 disabled:pointer-events-none">
                 {% if template contains 'gsp' %}{% render 'gs-arrow-right-black' %}{% else %}{% render 'gs-arrow-right-white' %}{% endif %}
             </button>
         </div>
@@ -86,18 +86,18 @@
 </div>
 
 <style>
-.news-padding {
+.sailing-padding {
     padding-top: var(--pt-mob);
     padding-bottom: var(--pb-mob);
 }
 @media screen and (min-width: 768px) {
-    .news-padding {
+    .sailing-padding {
         padding-top: var(--pt-tab);
         padding-bottom: var(--pb-tab);
     }
 }
 @media screen and (min-width: 1024px) {
-    .news-padding {
+    .sailing-padding {
         padding-top: var(--pt-desk);
         padding-bottom: var(--pb-desk);
     }
@@ -106,25 +106,25 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-.news-card { width: 100%; }
-@media (min-width: 1024px) { .news-card { width: calc((100% / 2) - 12px); } }
-@media (min-width: 1920px) { .news-card { width: calc((100% / 3) - 16px); } }
+.sailing-card { width: 100%; }
+@media (min-width: 1024px) { .sailing-card { width: calc((100% / 2) - 12px); } }
+@media (min-width: 1920px) { .sailing-card { width: calc((100% / 3) - 16px); } }
 
 .arrow-btn { width: 44px; height: 44px; cursor: pointer; transition: opacity 0.3s; }
 
 @media(max-width:1024px) {
-  .cta-news-item { opacity: 1; transform: none; }
+  .cta-sailing-item { opacity: 1; transform: none; }
   .arrow-btn { width: 40px; height: 40px; }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('news-container-{{ section.id }}');
+    const container = document.getElementById('sailing-container-{{ section.id }}');
     const currentIndexEl = document.getElementById('current-index-{{ section.id }}');
-    const prevBtn = document.getElementById('prev-news-{{ section.id }}');
-    const nextBtn = document.getElementById('next-news-{{ section.id }}');
-    const cards = container?.querySelectorAll('.news-card');
+    const prevBtn = document.getElementById('prev-sailing-{{ section.id }}');
+    const nextBtn = document.getElementById('next-sailing-{{ section.id }}');
+    const cards = container?.querySelectorAll('.sailing-card');
 
     if (!container || !cards.length) return;
 
@@ -159,13 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 {% schema %}
 {
-"name": "News Slider",
+"name": "Sailing stories Slider",
 "settings": [
 { "type": "header", "content": "Contenuti" },
-{ "type": "text","id": "news-slider-title", "label": "Title", "default": "LEGGI IL BLOG" },
+{ "type": "text","id": "sailing-slider-title", "label": "Title", "default": "LEGGI IL BLOG" },
 { "type": "textarea", "id": "content", "label": "Content" },
-{ "type": "text", "id": "news-cta-label", "label": "Card CTA Label", "default": "Leggi l'articolo" },
-{ "type": "text", "id": "news-slider-cta-all-label", "label": "All News Label", "default": "Vedi tutto" },
+{ "type": "text", "id": "sailing-cta-label", "label": "Card CTA Label", "default": "Leggi l'articolo" },
+{ "type": "text", "id": "sailing-slider-cta-all-label", "label": "All sailing Label", "default": "Vedi tutto" },
 { "type": "header", "content": "Padding Desktop (1024px+)" },
 { "type": "range", "id": "pt_desk", "label": "Padding Superiore Desktop", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 200 },
 { "type": "range", "id": "pb_desk", "label": "Padding Inferiore Desktop", "min": 0, "max": 300, "step": 4, "unit": "px", "default": 200 },
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 { "type": "range", "id": "pb_mob", "label": "Padding Inferiore Mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 104 }
 ],
 "presets": [
-{ "name": "News Slider", "category": "Home Page" }
+{ "name": "Sailing stories Slider", "category": "Sailing stories" }
 
 ]
 }

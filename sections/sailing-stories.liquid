@@ -1,0 +1,234 @@
+<div class="flex flex-col px-4 md:px-10 lg:px-[64px] xl:px-[128px] gap-10 lg:gap-[96px] bg_gs">
+  
+  <div class="heading-md_gs md:title_gs text-color_gs md:text-center uppercase">
+    {{ section.settings.sailing-stories-title }}
+  </div>
+
+  <div class="flex flex-col gap-14 lg:gap-14">
+    <div id="press-grid-container" class="flex flex-col gap-12 lg:gap-16">
+        <div id="press-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10">
+            {% assign all_articles = blogs['press-room'].articles | sort: "published_at" | reverse %}
+            {% for article in all_articles %}
+                <a href="{{ article.url }}" class="group flex flex-col article-card">
+                    <div class="aspect-4-3 overflow-hidden rounded-[16px] w-full bg-antracite">
+                        {% if article.image %}
+                            <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}" class="transition-transform group-hover:scale-105 duration-500 w-full h-full object-cover">
+                        {% endif %}
+                    </div>
+                    
+                    <div class="flex flex-wrap mt-4">
+                        {% comment %} Badge Data con Sfondo Bianco {% endcomment %}
+                        <div class="date-badge-gs link-md_gs link-md_gsp text-black bg-EBEFF2_gs px-3 py-[6px] rounded-[50px] max-w-[100px] uppercase">
+                            {{ article.published_at | date: "%d.%m.%Y" }}
+                        </div>
+                    </div>
+
+                    <h3 class="subtitle_gs md:heading-sm_gs text-color_gs line-clamp-3 mt-3">
+                        {{ article.title }}
+                    </h3>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div id="no-results-passati" class="hidden text-center">
+            <p class="body-md_gs text-color_gs">{{ section.settings.no-event-label }}</p>
+            <a href="#" id="reset-past-search" class="inline-block mt-4 cta-blue_gs link-lg_gs">
+                {{ section.settings.all-event-label }}
+            </a>
+        </div>
+
+        <div id="press-pagination" class="flex justify-center gap-6 text-white mt-4 mb-16"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .aspect-4-3 {
+        position: relative;
+        padding-top: 75%;
+        overflow: hidden;
+    }
+    
+    /* Overlay sfumato scuro opzionale sulle immagini */
+    .aspect-4-3::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(5, 9, 13, 0.00) 50%, rgba(5, 9, 13, 0.40) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .aspect-4-3 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* Pagination Styling */
+    .pagination-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .pagination-btn.active {
+        opacity: 1;
+        font-weight: 700;
+        border-bottom: 2px solid white;
+    }
+    .pagination-btn:not(.active) {
+        opacity: 0.4;
+    }
+    .pagination-btn:hover {
+        opacity: 1;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const allCards = Array.from(document.querySelectorAll('.article-card'));
+    const pagination = document.getElementById('press-pagination');
+    const searchInput = document.getElementById('press-search');
+    const clearIcon = document.getElementById('press-icon-clear');
+    const searchIcon = document.getElementById('press-icon-search');
+    const noResults = document.getElementById('no-results-passati');
+    const resetSearchLink = document.getElementById('reset-past-search');
+
+    const perPage = 12; 
+    let filteredArticles = [...allCards];
+    let currentPage = 1;
+
+    function render() {
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+        const itemsToShow = filteredArticles.slice(start, end);
+
+        allCards.forEach(card => card.classList.add('hidden'));
+
+        if (filteredArticles.length === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+            itemsToShow.forEach(card => card.classList.remove('hidden'));
+        }
+        
+        renderPagination(filteredArticles.length);
+    }
+
+    function renderPagination(totalItems) {
+        pagination.innerHTML = '';
+        const totalPages = Math.ceil(totalItems / perPage);
+        if (totalPages <= 1) return;
+
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.className = `pagination-btn pb-1 text-lg ${i === currentPage ? 'active' : ''}`;
+            btn.innerText = i;
+            btn.onclick = (e) => {
+                e.preventDefault();
+                currentPage = i;
+                render();
+                window.scrollTo({
+                    top: document.getElementById('press-grid-container').offsetTop - 120, 
+                    behavior: 'smooth'
+                });
+            };
+            pagination.appendChild(btn);
+        }
+    }
+
+    function filterArticles(query) {
+        filteredArticles = allCards.filter(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const date = card.querySelector('.date-badge-gs').textContent.toLowerCase();
+            return title.includes(query) || date.includes(query);
+        });
+        currentPage = 1;
+        render();
+    }
+
+    if(searchInput) {
+        searchInput.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+            if(clearIcon) clearIcon.classList.toggle('hidden', query.length === 0);
+            if(searchIcon) searchIcon.classList.toggle('hidden', query.length > 0);
+            filterArticles(query);
+        });
+    }
+
+    if(clearIcon) {
+        clearIcon.addEventListener('click', function () {
+            searchInput.value = '';
+            clearIcon.classList.add('hidden');
+            searchIcon.classList.remove('hidden');
+            filteredArticles = [...allCards];
+            currentPage = 1;
+            render();
+        });
+    }
+
+    if(resetSearchLink) {
+        resetSearchLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(searchInput) searchInput.value = '';
+            if(clearIcon) clearIcon.click();
+        });
+    }
+
+    render();
+});
+</script>
+
+{% schema %}
+{
+  "name": "Sailing stories",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "text",
+      "id": "sailing-stories-title",
+      "label": "Title",
+      "default": "Sailing stories"
+    },
+    {
+      "type": "header",
+      "content": "Search & Labels"
+    },
+    {
+      "type": "text",
+      "id": "sailing-stories-search-placeholder",
+      "label": "Search bar placeholder",
+      "default": "Cerca un articolo"
+    },
+    {
+      "type": "text",
+      "id": "no-event-label",
+      "label": "No event title",
+      "default": "Nessuna news trovata"
+    },
+    {
+      "type": "text",
+      "id": "all-event-label",
+      "label": "No event description",
+      "default": "Vedi tutte le news"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sailing stories",
+      "category": "Blog Sections"
+    }
+  ]
+}
+{% endschema %}
