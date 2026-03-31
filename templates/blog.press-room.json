@@ -53,12 +53,76 @@
     },
     "generic_form_LNNnnq": {
       "type": "generic-form",
+      "blocks": {
+        "text_mFQeQG": {
+          "type": "text",
+          "settings": {
+            "field_width": "half",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "first_name",
+            "form-textfield-label": "Name*",
+            "form-textfield-placeholder": "Mario",
+            "form-textfield-required": true
+          }
+        },
+        "text_kV839E": {
+          "type": "text",
+          "settings": {
+            "field_width": "half",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "last_name",
+            "form-textfield-label": "Cognome",
+            "form-textfield-placeholder": "Rossi",
+            "form-textfield-required": true
+          }
+        },
+        "text_wp4YRG": {
+          "type": "text",
+          "settings": {
+            "field_width": "third",
+            "form-textfield-type": "text",
+            "form-textfield-type-code": "first_name",
+            "form-textfield-label": "Prefisso",
+            "form-textfield-placeholder": "+39",
+            "form-textfield-required": true
+          }
+        },
+        "text_EFea6F": {
+          "type": "text",
+          "settings": {
+            "field_width": "two-thirds",
+            "form-textfield-type": "tel",
+            "form-textfield-type-code": "phone",
+            "form-textfield-label": "Telefono",
+            "form-textfield-placeholder": "1234567890",
+            "form-textfield-required": true
+          }
+        },
+        "text_RU8qQh": {
+          "type": "text",
+          "settings": {
+            "field_width": "full",
+            "form-textfield-type": "email",
+            "form-textfield-type-code": "email",
+            "form-textfield-label": "Email",
+            "form-textfield-placeholder": "mario.rossi@mail.com",
+            "form-textfield-required": true
+          }
+        }
+      },
+      "block_order": [
+        "text_mFQeQG",
+        "text_kV839E",
+        "text_wp4YRG",
+        "text_EFea6F",
+        "text_RU8qQh"
+      ],
       "name": "Generic form Black",
       "settings": {
-        "generic-form-title": "Facci una domanda",
-        "generic-form-text": "Compila il modulo.",
-        "form-markConsLabel": "",
-        "form-profConsLabel": "",
+        "generic-form-title": "Rimani in contatto",
+        "generic-form-text": "Non perdere neanche una novità Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!4",
+        "form-markConsLabel": "Con il tuo consenso, potremo inviare comunicazioni commerciali e questionari di gradimento sui nostri prodotti e servizi via email e sms.",
+        "form-profConsLabel": "Con il tuo consenso, potremo inviare comunicazioni commerciali personalizzate in base alle tue preferenze, scelte di acquisto, le tue richieste e interazioni con noi.",
         "form-marketing-title": "Marketing",
         "form-marketing-text": "",
         "form-profiling-title": "Profiling",
