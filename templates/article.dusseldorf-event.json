@@ -31,23 +31,49 @@
         "padding_bottom": 0
       }
     },
-    "rich_text_GCtfpJ": {
-      "type": "rich-text",
-      "name": "Rich text",
+    "info_event_nfQiBW": {
+      "type": "info-event",
+      "blocks": {
+        "info_row_HNJ44z": {
+          "type": "info-row",
+          "settings": {
+            "gs-page-info-type": "DATA",
+            "gs-page-info-value": "17-25 Gennaio 2025"
+          }
+        },
+        "info_row_wjzQYe": {
+          "type": "info-row",
+          "settings": {
+            "gs-page-info-type": "LUOGO",
+            "gs-page-info-value": "Düsseldorf Messe - Hall 06"
+          }
+        },
+        "info_row_aTQ3pP": {
+          "type": "info-row",
+          "settings": {
+            "gs-page-info-type": "STAND",
+            "gs-page-info-value": "16.5 t – 36376 lb "
+          }
+        }
+      },
+      "block_order": [
+        "info_row_HNJ44z",
+        "info_row_wjzQYe",
+        "info_row_aTQ3pP"
+      ],
+      "name": "Info tab",
       "settings": {
-        "rt_subtitle": "",
-        "rt_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
-        "rt_text1": "",
-        "rt-cta_label": "",
-        "rt-cta_link": "",
-        "alignment_mobile": "left",
-        "alignment_desktop": "left",
-        "pt_mobile": 40,
-        "pt_tablet": 56,
-        "pt_desktop": 56,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80
+        "gs-page-title": "BOOT DÜSSELDORF",
+        "gs-page-text1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae sem vel justo vestibulum aliquet. Sed non sagittis lectus, quis sollicitudin odio.",
+        "intro-type": true,
+        "gs-info-contact-label": "Prenota appuntamento",
+        "gs-info-contact-link": "#",
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 56,
+        "pt_tab": 56,
+        "pb_tab": 56,
+        "padding_top": 56,
+        "padding_bottom_desktop": 56
       }
     },
     "rounded_image_YpALxK": {
@@ -58,203 +84,82 @@
         "rounded-image-alt": "Alt"
       }
     },
-    "rich_text_article_PMYrX9": {
-      "type": "rich-text-article",
-      "name": "Rich text artaicle",
-      "settings": {
-        "rta_subtitle": "",
-        "rta_h1title": "",
-        "rta_title": "THE GRAND SOLEIL 44 DOMINATES IN IRC",
-        "rta_text1": "The Grand Soleil 44 confirms itself as the boat to beat. After triumphing in four consecutive ORC World Championships (2021, 2022, 2023, and 2024), the Grand Soleil 44 now conquers the IRC world as well: two yachts took first and fourth place respectively in the 2025 Mediterranean IRC Championship, which concluded with the prestigious Rolex Middle Sea Race.  An outstanding result that demonstrates the model’s design excellence and versatility, created by Matteo Polli for the hull lines and Nauta Design for the interiors. The boats are in almost standard configuration, confirming one key fact: the Grand Soleil 44 is competitive out of the box, without the need for extreme customizations or optimizations.",
-        "rta-cta_label": "",
-        "rta-cta_link": "",
-        "alignment_mobile": "left",
-        "alignment_desktop": "center",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80
-      }
-    },
-    "image_slider_8XDMBB": {
-      "type": "image-slider",
+    "event_models_6fnNeK": {
+      "type": "event-models",
       "blocks": {
-        "image_slider_image_VHQ7xj": {
-          "type": "image-slider-image",
+        "card_97cURg": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
           }
         },
-        "image_slider_image_gCWnEe": {
-          "type": "image-slider-image",
+        "card_Ag4JPL": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
           }
         },
-        "image_slider_image_f6LKRr": {
-          "type": "image-slider-image",
+        "card_mHGint": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
           }
         },
-        "image_slider_image_Y8q8jr": {
-          "type": "image-slider-image",
+        "card_CKXRhH": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
           }
         },
-        "image_slider_image_tx9tTx": {
-          "type": "image-slider-image",
+        "card_jiDA3E": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "models_title": "GS 52",
+            "gamma_models": "",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_jP7YqP": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
           }
         }
       },
       "block_order": [
-        "image_slider_image_VHQ7xj",
-        "image_slider_image_gCWnEe",
-        "image_slider_image_f6LKRr",
-        "image_slider_image_Y8q8jr",
-        "image_slider_image_tx9tTx"
+        "card_97cURg",
+        "card_Ag4JPL",
+        "card_mHGint",
+        "card_CKXRhH",
+        "card_jiDA3E",
+        "card_jP7YqP"
       ],
-      "name": "Slider",
+      "name": "Models",
       "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
-      }
-    },
-    "generic_form_WchtGP": {
-      "type": "generic-form",
-      "blocks": {
-        "text_9BMjUe": {
-          "type": "text",
-          "settings": {
-            "field_width": "half",
-            "form-textfield-type": "text",
-            "form-textfield-type-code": "first_name",
-            "form-textfield-label": "Nome",
-            "form-textfield-placeholder": "Mario",
-            "form-textfield-required": true
-          }
-        },
-        "text_WBkcNt": {
-          "type": "text",
-          "settings": {
-            "field_width": "half",
-            "form-textfield-type": "text",
-            "form-textfield-type-code": "last_name",
-            "form-textfield-label": "Cognome",
-            "form-textfield-placeholder": "Rossi",
-            "form-textfield-required": true
-          }
-        },
-        "text_HjTPYP": {
-          "type": "text",
-          "settings": {
-            "field_width": "third",
-            "form-textfield-type": "text",
-            "form-textfield-type-code": "phone",
-            "form-textfield-label": "Prefisso",
-            "form-textfield-placeholder": "+39",
-            "form-textfield-required": false
-          }
-        },
-        "text_DhN3Ue": {
-          "type": "text",
-          "settings": {
-            "field_width": "two-thirds",
-            "form-textfield-type": "tel",
-            "form-textfield-type-code": "phone",
-            "form-textfield-label": "Telefono",
-            "form-textfield-placeholder": "123456789",
-            "form-textfield-required": true
-          }
-        },
-        "text_9RG44j": {
-          "type": "text",
-          "settings": {
-            "field_width": "full",
-            "form-textfield-type": "email",
-            "form-textfield-type-code": "email",
-            "form-textfield-label": "Mail",
-            "form-textfield-placeholder": "mario.rossi@mail.com",
-            "form-textfield-required": true
-          }
-        }
-      },
-      "block_order": [
-        "text_9BMjUe",
-        "text_WBkcNt",
-        "text_HjTPYP",
-        "text_DhN3Ue",
-        "text_9RG44j"
-      ],
-      "name": "Generic form",
-      "settings": {
-        "generic-form-title": "Rimani in contatto",
-        "generic-form-text": "Non perdere neanche un evento Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!",
-        "form-markConsLabel": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services.",
-        "form-profConsLabel": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us.",
-        "form-marketing-title": "Direct marketing consent",
-        "form-marketing-text": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning VanDutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be collected until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:",
-        "form-profiling-title": "Profiling consent",
-        "form-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the «VanDutch Yachts» boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the restriction of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
-        "form-button-background-color": "#acacac",
-        "form-button-text-color": "#000000",
-        "form-submit-button-text": "Iscriviti"
-      }
-    },
-    "vdcenter_info_hgxA3i": {
-      "type": "vdcenter-info",
-      "name": "Info tab",
-      "settings": {
-        "vdcenter-page-title": "vandutch center amsterdam",
-        "vdcenter-page-text1": "Dopo aver consolidato una presenza internazionale, VanDutch Yachts è tornato alle origini, nella multiculturale Amsterdam, città in cui il brand è nato nel 2008. A pochi minuti dall’aeroporto di Schiphol, tra laghi interni e canali cittadini, l’ufficio di VanDutch Amsterdam offre un accesso privilegiato al fascino autentico della nautica del Nord Europa.",
-        "intro-type": true,
-        "vdcenter-page-position1": "Jachthaven 1, 2172JX",
-        "vdcenter-page-position2": "Sassenheim, Paesi Bassi, EU",
-        "vdcenter-page-address1": "",
-        "vdcenter-page-address2": "",
-        "vdcenter-info-contact-bg-transparent": false,
-        "vdcenter-info-contact-bg-color": "#ffffff",
-        "vdcenter-info-contact-text-color": "#101010",
-        "vdcenter-info-contact-border-color": "#101010",
-        "vdcenter-info-contact-label": "Contatta un centro",
-        "vdcenter-info-contact-link": "",
-        "vdcenter-info-maps-bg-transparent": false,
-        "vdcenter-info-maps-hidden": false,
-        "vdcenter-info-maps-bg-color": "#ffffff",
-        "vdcenter-info-maps-text-color": "#101010",
-        "vdcenter-info-maps-border-color": "#101010",
-        "vdcenter-info-maps-label": "Contatta un centro",
-        "vdcenter-info-maps-link": "",
-        "margin_top_mobile": 24,
-        "margin_top": 144
+        "title": "Modelli in esposizione",
+        "text": "",
+        "padding_top_mobile": 96,
+        "padding_bottom_mobile": 96,
+        "pt_tab": 128,
+        "pb_tab": 128,
+        "padding_top": 160,
+        "padding_bottom_desktop": 160
       }
     }
   },
@@ -262,11 +167,8 @@
     "main",
     "empty_space_6P9eA7",
     "back_button_JacrcE",
-    "vdcenter_info_hgxA3i",
-    "rich_text_GCtfpJ",
+    "info_event_nfQiBW",
     "rounded_image_YpALxK",
-    "rich_text_article_PMYrX9",
-    "image_slider_8XDMBB",
-    "generic_form_WchtGP"
+    "event_models_6fnNeK"
   ]
 }
