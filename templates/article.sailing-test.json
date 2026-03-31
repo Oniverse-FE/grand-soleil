@@ -37,11 +37,12 @@
       "settings": {
         "rt_subtitle": "",
         "rt_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
-        "rt_text1": "",
+        "rt_text1": "Sara Nocella naviga un pezzo di storia: BLU, il suo Grand Soleil 34, è il primissimo yacht costruito da Cantiere del Pardo nel 1973. Più che una barca, rappresenta l’origine di un’eredità: il modello che ha dato inizio allo spirito Grand Soleil, unendo eleganza, artigianalità e l’inconfondibile carattere Made in Italy. Attraverso l’esperienza di Sara, il GS34 rivela la sua natura senza tempo: uno yacht che continua a ispirare passione e autenticità, proprio come faceva oltre cinquant’anni fa. Un tributo alla tradizione, alla vela e al legame profondo che unisce un’armatrice alla barca iconica da cui tutto è cominciato.",
         "rt-cta_label": "",
         "rt-cta_link": "",
+        "enable_alt_style": false,
         "alignment_mobile": "left",
-        "alignment_desktop": "left",
+        "alignment_desktop": "center",
         "pt_mobile": 40,
         "pt_tablet": 56,
         "pt_desktop": 56,
@@ -58,94 +59,20 @@
         "rounded-image-alt": "Alt"
       }
     },
-    "rich_text_article_PMYrX9": {
-      "type": "rich-text-article",
-      "name": "Rich text artaicle",
+    "news_list_MqRfT8": {
+      "type": "news-list",
+      "name": "News Slider",
       "settings": {
-        "rta_subtitle": "",
-        "rta_h1title": "",
-        "rta_title": "THE GRAND SOLEIL 44 DOMINATES IN IRC",
-        "rta_text1": "The Grand Soleil 44 confirms itself as the boat to beat. After triumphing in four consecutive ORC World Championships (2021, 2022, 2023, and 2024), the Grand Soleil 44 now conquers the IRC world as well: two yachts took first and fourth place respectively in the 2025 Mediterranean IRC Championship, which concluded with the prestigious Rolex Middle Sea Race.  An outstanding result that demonstrates the model’s design excellence and versatility, created by Matteo Polli for the hull lines and Nauta Design for the interiors. The boats are in almost standard configuration, confirming one key fact: the Grand Soleil 44 is competitive out of the box, without the need for extreme customizations or optimizations.",
-        "rta-cta_label": "",
-        "rta-cta_link": "",
-        "alignment_mobile": "left",
-        "alignment_desktop": "center",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80
-      }
-    },
-    "image_slider_8XDMBB": {
-      "type": "image-slider",
-      "blocks": {
-        "image_slider_image_VHQ7xj": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_gCWnEe": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_f6LKRr": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_Y8q8jr": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_tx9tTx": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "image_slider_image_VHQ7xj",
-        "image_slider_image_gCWnEe",
-        "image_slider_image_f6LKRr",
-        "image_slider_image_Y8q8jr",
-        "image_slider_image_tx9tTx"
-      ],
-      "name": "Slider",
-      "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
+        "news-slider-title": "SCOPRI LE ALTRE SAILING STORIES",
+        "content": "",
+        "news-cta-label": "",
+        "news-slider-cta-all-label": "",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "generic_form_WchtGP": {
@@ -236,8 +163,7 @@
     "back_button_JacrcE",
     "rich_text_GCtfpJ",
     "rounded_image_YpALxK",
-    "rich_text_article_PMYrX9",
-    "image_slider_8XDMBB",
+    "news_list_MqRfT8",
     "generic_form_WchtGP"
   ]
 }
