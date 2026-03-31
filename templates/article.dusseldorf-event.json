@@ -228,12 +228,41 @@
         "form-button-text-color": "#000000",
         "form-submit-button-text": "Iscriviti"
       }
+    },
+    "vdcenter_info_hgxA3i": {
+      "type": "vdcenter-info",
+      "name": "Info tab",
+      "settings": {
+        "vdcenter-page-title": "vandutch center amsterdam",
+        "vdcenter-page-text1": "Dopo aver consolidato una presenza internazionale, VanDutch Yachts è tornato alle origini, nella multiculturale Amsterdam, città in cui il brand è nato nel 2008. A pochi minuti dall’aeroporto di Schiphol, tra laghi interni e canali cittadini, l’ufficio di VanDutch Amsterdam offre un accesso privilegiato al fascino autentico della nautica del Nord Europa.",
+        "intro-type": true,
+        "vdcenter-page-position1": "Jachthaven 1, 2172JX",
+        "vdcenter-page-position2": "Sassenheim, Paesi Bassi, EU",
+        "vdcenter-page-address1": "",
+        "vdcenter-page-address2": "",
+        "vdcenter-info-contact-bg-transparent": false,
+        "vdcenter-info-contact-bg-color": "#ffffff",
+        "vdcenter-info-contact-text-color": "#101010",
+        "vdcenter-info-contact-border-color": "#101010",
+        "vdcenter-info-contact-label": "Contatta un centro",
+        "vdcenter-info-contact-link": "",
+        "vdcenter-info-maps-bg-transparent": false,
+        "vdcenter-info-maps-hidden": false,
+        "vdcenter-info-maps-bg-color": "#ffffff",
+        "vdcenter-info-maps-text-color": "#101010",
+        "vdcenter-info-maps-border-color": "#101010",
+        "vdcenter-info-maps-label": "Contatta un centro",
+        "vdcenter-info-maps-link": "",
+        "margin_top_mobile": 24,
+        "margin_top": 144
+      }
     }
   },
   "order": [
     "main",
     "empty_space_6P9eA7",
     "back_button_JacrcE",
+    "vdcenter_info_hgxA3i",
     "rich_text_GCtfpJ",
     "rounded_image_YpALxK",
     "rich_text_article_PMYrX9",
