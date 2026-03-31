@@ -1,0 +1,180 @@
+<section id="img-text-multi-{{ section.id }}" 
+     style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
+            --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
+     class="img-text-padding bg_gs bg_gsp text-white px-4 md:px-12 lg:px-[96px]">
+
+    {%- if section.settings.main_title != blank -%}
+      <div class="w-full mb-10 lg:mb-16">
+        <h2 class="heading-lg_gs heading-lg_gsp text-color_gs text-color_gsp {% if section.settings.center_title %}text-center{% endif %}">
+            {{ section.settings.main_title }}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    <div class="flex flex-col">
+      {%- for block in section.blocks -%}
+        <div class="flex flex-col py-10 lg:py-16 border-b border-white/10 last:border-0 first:pt-0 last:pb-0
+                    {% if block.settings.img_left %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} 
+                    gap-8 lg:gap-0 items-center" {{ block.shopify_attributes }}>
+            
+            <div class="w-full lg:w-[calc(6/12*100%)]">
+                <picture>
+                  {%- if block.settings.image_mobile != blank -%}
+                    <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 800 }}">
+                  {%- endif -%}
+                  <img src="{{ block.settings.image_desktop | image_url: width: 1600 }}" 
+                       alt="{{ block.settings.title | escape }}" 
+                       class="rounded-[16px] w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[4/3] object-cover"
+                       loading="lazy">
+                </picture>
+            </div>
+
+            <div class="hidden lg:block lg:w-[calc(1/12*100%)]"></div>
+
+            <div class="flex flex-col justify-center w-full lg:w-[calc(5/12*100%)]">
+                <h3 class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp mb-4 text-color_gs text-color_gsp">
+                    {{ block.settings.title }}
+                </h3>
+                
+                <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp mb-8 text-color_gs text-color_gsp">
+                    {{ block.settings.text | newline_to_br }}
+                </div>
+
+                {%- if block.settings.cta_url != blank -%}
+                  <div class="flex flex-col md:flex-row gap-4">
+                      <a href="{{ block.settings.cta_url }}" class="link-lg_gs px-6 py-4 cta-blue_gs text-center">
+                          {{ block.settings.cta_label }}
+                      </a>
+                  </div>
+                {%- endif -%}
+            </div>
+        </div>
+      {%- endfor -%}
+    </div>
+</section>
+
+<style>
+.img-text-padding {
+    padding-top: var(--pt-mob);
+    padding-bottom: var(--pb-mob);
+}
+@media screen and (min-width: 1024px) {
+    .img-text-padding {
+        padding-top: var(--pt-desk);
+        padding-bottom: var(--pb-desk);
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "List image & text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Titolo Sezione"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Titolo Principale",
+      "default": "Le nostre eccellenze"
+    },
+    {
+      "type": "checkbox",
+      "id": "center_title",
+      "label": "Centra il titolo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spaziatura Desktop (1024px+)"
+    },
+    {
+      "type": "range",
+      "id": "pt_desk",
+      "label": "Padding Superiore",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+    },
+    {
+      "type": "range",
+      "id": "pb_desk",
+      "label": "Padding Inferiore",
+      "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Spaziatura Mobile"
+    },
+    {
+      "type": "range",
+      "id": "pt_mob",
+      "label": "Padding Superiore",
+      "min": 0, "max": 160, "step": 4, "unit": "px", "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pb_mob",
+      "label": "Padding Inferiore",
+      "min": 0, "max": 160, "step": 4, "unit": "px", "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Elemento",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "img_left",
+          "label": "Immagine a sinistra (Desktop)",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Immagine Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Immagine Mobile (Opzionale)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titolo",
+          "default": "Titolo del blocco"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testo descrittivo",
+          "default": "Scrivi qui una breve descrizione."
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Label Bottone",
+          "default": "Scopri di più"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Link Bottone"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "List image & text",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
