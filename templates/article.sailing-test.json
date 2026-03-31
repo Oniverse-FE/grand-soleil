@@ -58,6 +58,22 @@
         "rounded-image": "shopify://shop_images/img.png",
         "rounded-image-alt": "Alt"
       }
+    },
+    "sailing_list_N4VCW7": {
+      "type": "sailing-list",
+      "name": "Sailing stories Slider",
+      "settings": {
+        "sailing-slider-title": "SCOPRI LE ALTRE SAILING STORIES",
+        "content": "",
+        "sailing-cta-label": "Leggi l'articolo",
+        "sailing-slider-cta-all-label": "",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
     }
   },
   "order": [
@@ -65,6 +81,7 @@
     "empty_space_6P9eA7",
     "back_button_JacrcE",
     "rich_text_GCtfpJ",
-    "rounded_image_YpALxK"
+    "rounded_image_YpALxK",
+    "sailing_list_N4VCW7"
   ]
 }
