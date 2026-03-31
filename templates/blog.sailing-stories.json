@@ -30,19 +30,6 @@
         "desktop-height": 184
       }
     },
-    "press_room_NbiFMR": {
-      "type": "press-room",
-      "name": "Press Room",
-      "settings": {
-        "pressroom-title": "press room",
-        "pressroom-search-placeholder": "Cerca un articolo",
-        "pressroom-outof": "out of",
-        "pressroom-art": "items",
-        "pressroom-read-more": "read",
-        "no-event-label": "Nessuna news trovata",
-        "all-event-label": "Vedi tutte le news"
-      }
-    },
     "empty_space_z4dBKG": {
       "type": "empty-space",
       "name": "Empty space",
@@ -131,12 +118,22 @@
         "form-button-text-color": "#000000",
         "form-submit-button-text": "Iscriviti"
       }
+    },
+    "sailing_stories_aF3X8r": {
+      "type": "sailing-stories",
+      "name": "Sailing stories",
+      "settings": {
+        "sailing-stories-title": "Sailing stories",
+        "sailing-stories-search-placeholder": "Cerca un articolo",
+        "no-event-label": "Nessuna news trovata",
+        "all-event-label": "Vedi tutte le news"
+      }
     }
   },
   "order": [
     "header",
     "empty_space_976eN7",
-    "press_room_NbiFMR",
+    "sailing_stories_aF3X8r",
     "empty_space_z4dBKG",
     "generic_form_LNNnnq"
   ]
