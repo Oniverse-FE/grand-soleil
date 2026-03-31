@@ -277,6 +277,46 @@
         "pb_mob": 104
       }
     },
+    "list_image_text_NAaFPC": {
+      "type": "list-image-text",
+      "blocks": {
+        "item_nMxQHR": {
+          "type": "item",
+          "settings": {
+            "img_left": false,
+            "image_desktop": "shopify://shop_images/img.png",
+            "title": "Gamma performance",
+            "text": "\"Where Speed Meets Style.\" È l'incarnazione del nostro DNA da regata. Yacht progettati per massimizzare le prestazioni, la reattività al timone e l'adrenalina pura, senza mai rinunciare all'eleganza e al comfort che contraddistinguono il brand. Per chi cerca il brivido della velocità e ama sentire la barca rispondere a ogni minima regolazione. Disponibile anche in versione Race per dominare i campi di regata.",
+            "cta_label": "Scopri di più",
+            "cta_url": "#"
+          }
+        },
+        "item_NLTGjM": {
+          "type": "item",
+          "settings": {
+            "img_left": false,
+            "image_desktop": "shopify://shop_images/0_3-HERO_1.png",
+            "title": "Gamma long Cruise",
+            "text": "\"Comfort Beyond Distance.\" È l'anima blue water, pensata per chi concepisce la barca come una vera e propria casa sul mare. Volumi generosi, autonomia impareggiabile, soluzioni di stivaggio intelligenti e un comfort assoluto definiscono questa gamma. L'eccellenza costruttiva e le doti marine garantiscono navigazioni sicure e confortevoli su qualsiasi distanza, per vivere il mare senza confini.",
+            "cta_label": "Scopri di più",
+            "cta_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "item_nMxQHR",
+        "item_NLTGjM"
+      ],
+      "name": "List image & text",
+      "settings": {
+        "main_title": "Due interpretazioni dell'eccellenza Grand Soleil",
+        "center_title": true,
+        "pt_desk": 80,
+        "pb_desk": 80,
+        "pt_mob": 40,
+        "pb_mob": 40
+      }
+    },
     "text_image_with_background_pHwXNp": {
       "type": "text-image-with-background",
       "name": "Box Testo e Immagine",
@@ -323,6 +363,7 @@
     "rich_text_article_WrpcRw",
     "mosaic_N7HwH9",
     "news_list_ynrNdG",
+    "list_image_text_NAaFPC",
     "text_image_with_background_pHwXNp",
     "rich_text_inverted_CA9MBR"
   ]
