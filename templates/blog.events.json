@@ -28,11 +28,11 @@
         "event-slider-location": "Luogo",
         "event-slider-cta2-label": "Discover more",
         "pt_desk": 184,
-        "pb_desk": 96,
+        "pb_desk": 0,
         "pt_tab": 160,
-        "pb_tab": 96,
-        "pt_mob": 132,
-        "pb_mob": 40
+        "pb_tab": 0,
+        "pt_mob": 88,
+        "pb_mob": 0
       }
     },
     "generic_form_j7P9yL": {
