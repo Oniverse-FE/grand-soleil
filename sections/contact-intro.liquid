@@ -19,58 +19,69 @@
                         <div class="flex justify-start caption text-color_gs text-color_gsp">
                             {{ section.settings.contact-form-required-text }}
                         </div>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6">
-                            <div class="flex flex-col gap-1">
-                                <div class="flex caption text-color_gs text-color_gsp">
-                                    {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required == true %}*{% endif %}
-                                </div>
-                                <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                    type="text" id="contact-form-first-name" name="contact[first_name]"
-                                    placeholder="{{- section.settings.contact-fname-placeholder }}" {% if section.settings.contact-fname-required==true %} required {% endif %}>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex caption text-color_gs text-color_gsp">
+                                {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required
+                                == true %}*{%
+                                endif %}
                             </div>
+                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                type="text" id="contact-form-first-name" name="contact[first_name]"
+                                placeholder="{{- section.settings.contact-fname-placeholder }}" {% if
+                                section.settings.contact-fname-required==true %} required {% endif %}>
+                        </div>
 
-                            <div class="flex flex-col gap-1">
-                                <div class="flex caption text-color_gs text-color_gsp">
-                                    {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required == true %}*{% endif %}
-                                </div>
-                                <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                    type="text" id="contact-form-last-name" name="contact[last_name]"
-                                    placeholder="{{- section.settings.contact-lname-placeholder }}" {% if section.settings.contact-lname-required==true %} required {% endif %}>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex caption text-color_gs text-color_gsp">
+                                {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required
+                                == true %}*{%
+                                endif %}
                             </div>
+                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                type="text" id="contact-form-last-name" name="contact[last_name]"
+                                placeholder="{{- section.settings.contact-lname-placeholder }}" {% if
+                                section.settings.contact-lname-required==true %} required {% endif %}>
+                        </div>
 
-                            <div class="flex flex-col gap-1 relative">
-                                <div class="flex caption text-color_gs text-color_gsp">
-                                    {{ section.settings.contact-country-label}}{% if section.settings.contact-country-required == true %}*{% endif %}
-                                </div>
-                                <input
-                                class="caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
-                                type="text" name="contact[country]" id="contact-form-country-main"
-                                placeholder="{{ section.settings.contact-country-placeholder }}"
-                                autocomplete="off" required>
-                                <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
-                                <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
-                                <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
-                                </svg>
-                                </div>
-                                <ul class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50"></ul>
+                        <div class="flex flex-col gap-1 relative">
+                            <div class="flex caption text-color_gs text-color_gsp">
+                                {{ section.settings.contact-country-label}}{% if
+                                section.settings.contact-country-required == true
+                                %}*{% endif %}
                             </div>
+                            <input
+                            class="caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
+                            type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
+                            placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                            autocomplete="off" required>
+                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                            <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                            <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                            </svg>
+                            </div>
+                            <ul
+                            class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                            </ul>
+                        </div>
 
-                            <div class="flex flex-col gap-1">
-                                <div class="flex caption text-color_gs text-color_gsp">
-                                    {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required == true %}*{% endif %}
-                                </div>
-                                <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                    type="email" id="contact-form-mail" name="contact[email]"
-                                    placeholder="{{- section.settings.contact-mail-placeholder }}" {% if section.settings.contact-mail-required==true %} required {% endif %}>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex caption text-color_gs text-color_gsp">
+                                {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required ==
+                                true %}*{%
+                                endif %}
                             </div>
+                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                type="email" id="contact-form-mail" name="contact[email]"
+                                placeholder="{{- section.settings.contact-mail-placeholder }}" {% if
+                                section.settings.contact-mail-required==true %} required {% endif %}>
                         </div>
                 </div>
-
                 <div class="caption text-color_gs text-color_gsp  flex flex-col gap-4">
                     <div class="flex ">
-                        {{ section.settings.contact-boat-q-label }}{% if section.settings.contact-boat-q-required == true %}*{% endif %}
+                        {{ section.settings.contact-boat-q-label }}{% if section.settings.contact-boat-q-required ==
+                        true %}*{%
+                        endif %}
                     </div>
 
                     <div class="flex flex-col gap-2">
@@ -83,23 +94,30 @@
                             </div>
                             <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-4 lg:my-2 w-full">
                                 <div class="flex flex-col gap-1 w-full">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-boat-q-model-label }}</div>
-                                    <input class="caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 py-1 border-white"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 py-1 border-white"
                                         type="text" id="boat-y-model" name="contact[boat-y-model]"
                                         placeholder="{{ section.settings.contact-form-boat-q-model-placeholder }}">
                                 </div>
                                 <div class="flex flex-col gap-1 relative w-full">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-boat-q-port-label }}</div>
-                                    <input class="caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 py-1 border-white pr-10 country-input"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-boat-q-port-label }}</div>
+                                    <input
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 py-1 border-white pr-10 country-input"
                                         type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
-                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}" autocomplete="off">
+                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
                                         <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
                                         <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
                                         <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
                                         </svg>
                                         </div>
-                                        <ul class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50"></ul>
+                                        <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                        </ul>
                                 </div>
                             </div>
                         </div>
@@ -113,23 +131,30 @@
                             </div>
                             <div id="boat-o-fields" class="hidden flex flex-col md:flex-row gap-4 my-2 w-full">
                                 <div class="flex flex-col gap-1 w-full">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-boat-q-model-label }}</div>
-                                    <input class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-boat-q-model-label }}</div>
+                                    <input
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white"
                                         type="text" id="boat-o-model" name="contact[boat-o-model]"
                                         placeholder="{{ section.settings.contact-form-boat-q-model-placeholder}}">
                                 </div>
                                 <div class="flex flex-col gap-1 relative w-full">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-boat-q-port-label}}</div>
-                                    <input class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white pr-10 country-input"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-boat-q-port-label}}</div>
+                                    <input
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white pr-10 country-input"
                                         type="text" name="contact[boat-o-port-country]" id="boat-o-port-country"
-                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}" autocomplete="off">
+                                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                                        autocomplete="off">
                                         <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
                                         <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
                                         <svg class="country-arrow transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
                                         </svg>
                                         </div>
-                                        <ul class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50"></ul>
+                                        <ul
+                                        class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
+                                        </ul>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +169,9 @@
                 </div>
                 <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
                     <div class="flex text-[#D6CBC9]">
-                        {{ section.settings.contact-buy-q-label }}{% if section.settings.contact-buy-q-required == true %}*{% endif %}
+                        {{ section.settings.contact-buy-q-label }}{% if section.settings.contact-buy-q-required == true
+                        %}*{% endif
+                        %}
                     </div>
                     <div class="flex flex-col gap-2">
                         <div class="flex gap-2 justify-start items-center">
@@ -157,20 +184,22 @@
                             <input type="radio"
                                 class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-transparent transition-all duration-200"
                                 id="buy-n" name="contact[buy-question]" value="no" data-target="no" onclick="toggleRadio(this)">
-                            <label for="buy-n"> {{ section.settings.contact-buy-q-negative-label }}</label>
+                            <label for="buy-y"> {{ section.settings.contact-buy-q-negative-label }}</label>
                         </div>
                     </div>
                 </div>
                 <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
                     <div class="flex ">
-                        {{ section.settings.contact-boat-sel-label }}{% if section.settings.contact-boat-sel-required == true %}*{% endif %}
+                        {{ section.settings.contact-boat-sel-label }}{% if section.settings.contact-boat-sel-required ==
+                        true %}*{%
+                        endif %}
                     </div>
                     {% assign options = section.settings.options | split: ',' %}
                     <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
                         {% for option in options %}
                         {% assign clean_option = option | strip %}
                         <label
-                            class="flex gap-1 py-1.5 px-3 bg-antracite border-1 border-white cursor-pointer relative text-white transition-all caption text-color_gs text-color_gsp rounded-4xl">
+                            class="flex gap-1 py-1.5 px-3 bg-transparent border-1 border-white cursor-pointer relative text-white transition-all caption text-color_gs text-color_gsp  bg-antracite rounded-4xl">
                             <input type="checkbox" class="multi-checkbox" value="{{ clean_option }}" hidden>
                             {{ clean_option }}
                             <span class=" hidden cursor-pointer">
@@ -183,27 +212,35 @@
                         {% endfor %}
                     </div>
 
-                    <input type="hidden" name="contact[boat-selection]" id="contact-form-boat-selection" {% if section.settings.contact-boat-sel-required %} required {% endif %}>
+                    <input type="hidden" name="contact[boat-selection]" id="contact-form-boat-selection" {% if
+                        section.settings.contact-boat-sel-required %} required {% endif %}>
                 </div>
 
-                <div class="caption text-color_gs text-color_gsp  flex flex-col gap-4">
+                <div
+                    class="caption text-color_gs text-color_gsp  flex flex-col gap-4">
                     <div class="flex">
-                        {{ section.settings.contact-message-label }}{% if section.settings.contact-message-required == true %}*{% endif %}
+                        {{ section.settings.contact-message-label }}{% if section.settings.contact-message-required ==
+                        true %}*{%
+                        endif %}
                     </div>
                     <div class="textarea-wrapper">
                         <textarea id="contact-form-message" class="overflow-y-hidden resize-none min-h-[20px]"
-                            name="contact[message]" placeholder="{{ section.settings.contact-message-placeholder }}" {% if section.settings.contact-message-required==true %} required {% endif %}
+                            name="contact[message]" placeholder="{{ section.settings.contact-message-placeholder }}" {% if
+                            section.settings.contact-message-required==true %} required {% endif %}
                             maxlength="{{ section.settings.contact-message-max-lenght | default: 250 }}">
                         </textarea>
                         <div class="char-counter flex justify-end" id="contact-message-counter">
                             0 / {{ section.settings.contact-message-max-lenght | default: 250 }}
                         </div>
                     </div>
+
                 </div>
 
                 <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
                     <div class="flex text-[#D6CBC9]">
-                        {{ section.settings.contact-contact-q-label }}{% if section.settings.contact-contact-q-required == true %}*{% endif %}
+                        {{ section.settings.contact-contact-q-label }}{% if section.settings.contact-contact-q-required
+                        == true
+                        %}*{% endif %}
                     </div>
                     <div class="flex flex-col gap-2">
                         <div class="flex gap-2 justify-start items-center">
@@ -223,14 +260,18 @@
                             </div>
                             <div id="phone-fields-phone" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
                                 <div class="flex flex-col gap-1 w-full md:w-[67px]">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-contact-q-prefix-label }}</div>
-                                    <input class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-contact-q-prefix-label }}</div>
+                                    <input
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
                                         type="text" id="phone-prefix-phone" name="contact[phone-prefix-phone]"
                                         placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
                                 </div>
                                 <div class="flex flex-col gap-1 w-full relative">
-                                    <div class="flex caption text-color_gs text-color_gsp">{{ section.settings.contact-form-contact-q-phone-label }}</div>
-                                    <input class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
+                                        section.settings.contact-form-contact-q-phone-label }}</div>
+                                    <input
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
                                         type="tel" id="phone-number-phone" name="contact[phone-number-phone]"
                                         placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
                                 </div>
@@ -246,14 +287,18 @@
                             </div>
                             <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-6 w-full">
                                 <div class="flex flex-col gap-1 w-full md:w-[67px]">
-                                    <div class="flex caption text-color_gs text-color_gsp leading-[18px]">{{ section.settings.contact-form-contact-q-prefix-label }}</div>
-                                    <input class="input-field caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 border-white py-1"
+                                    <div class="flex caption text-color_gs text-color_gsp leading-[18px]">{{
+                                        section.settings.contact-form-contact-q-prefix-label }}</div>
+                                    <input
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 border-white py-1"
                                         type="text" id="phone-prefix-both" name="contact[phone-prefix-both]"
                                         placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
                                 </div>
                                 <div class="flex flex-col gap-1 w-full relative">
-                                    <div class="flex bcaption text-color_gs text-color_gsp ">{{ section.settings.contact-form-contact-q-phone-label }}</div>
-                                    <input class="input-field caption text-color_gs text-color_gsp opacity-[50%] border-b-1 border-white py-1"
+                                    <div class="flex bcaption text-color_gs text-color_gsp ">{{
+                                        section.settings.contact-form-contact-q-phone-label }}</div>
+                                    <input
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] border-b-1 border-white py-1"
                                         type="tel" id="phone-number-both" name="contact[phone-number-both]"
                                         placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
                                 </div>
@@ -262,7 +307,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="flex flex-col gap-6 text-[18px] lg:py-6">
                 <div class="flex items-center h-auto gap-4">
                     <input style="aspect-ratio:1/1" type="checkbox"
@@ -270,7 +314,10 @@
                         id="contact-form-marketingConsent">
                     <label class="mt-[24px] lg:mt-0 w-auto" id="contact-form-profilingLabel">
                         {{ section.settings.contact-form-markConsLabel }}
-                        <u><a id="contact-form-shortMarketing" class="cursor-pointer">{{ section.settings.contact-form-privacy-label | default: "Privacy Policy" }}</a></u>
+                        <u><a id="contact-form-shortMarketing">{{ section.settings.contact-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
                     </label>
                 </div>
                 <div class="flex items-center h-auto gap-4">
@@ -279,42 +326,57 @@
                         id="contact-form-profilingConsent" disabled>
                     <label class="text-white transition-colors duration-200" id="contact-form-profilingLabel">
                         {{ section.settings.contact-form-profConsLabel }}
-                        <u><a id="contact-form-shortProfiling" class="cursor-pointer">{{ section.settings.contact-form-privacy-label | default: "Privacy Policy" }}</a></u>
+                        <u><a id="contact-form-shortProfiling">{{ section.settings.contact-form-privacy-label | default:
+                                "Privacy
+                                Policy"
+                                }}</a></u>
                     </label>
                 </div>
-                <u><a href="{{ section.settings.contact-privacy-url }}">{{ section.settings.contact-form-privacy-label | default: "Privacy Policy" }}</a></u>
+                <u><a href="{{ section.settings.contact-privacy-url }}">{{ section.settings.contact-form-privacy-label |
+                    default: "Privacy
+                    Policy" }}</a></u>
             </div>
+  
 
             <div class="flex ink-lg_gs link-lg_gsp justify-end mt-[26px] lg:mt-0">
                 <button id="contact-form-submit" aria-label="{{ section.settings.contact-form-submit-button-text }}"
-                    type="submit" class="contact-submit-btn w-[98px] px-7 py-3.5 bg-[#76787B] text-[#05090D] rounded-[50px]">
+                    type="submit" class="contact-submit-btn w-[98px] px-7 py-3.5 w-[98px] py-3.5 px-7 link-lg_gs link-lg_gsp bg-[#76787B] text-[#05090D] rounded-[50px]">
                     {{ section.settings.contact-form-submit-button-text }}
                 </button>
             </div>
 
             <input type="hidden" name="contact[tags]" id="CustomerTags">
             <input type="hidden" name="contact[note]" id="CustomerNote">
+            <input type="hidden" id="eventHandle" value="">
+            <input type="hidden" id="eventTitle" value="">
+
+
         </div>
         {% endform %}
         </div>
     </div>
 </div>
-
 <div id="thankyou-popup" class="fixed inset-0 top-0 left-0 flex justify-center items-center w-screen h-screen bg-black/50 z-50 hidden transition-opacity duration-300">
     <div class="popup-content fixed inset-0 flex items-center justify-center">
         <div class="flex flex-col w-full max-w-[720px] h-fit items-center justify-start lg:justify-center bg-[#292929] text-white py-6 px-6 gap-6 lg:mx-0 lg:px-14 lg:py-10 lg:gap-10 rounded-xl">
             <div class="flex flex-row justify-between w-full">
                 <div class="hidden lg:flex size-6"></div>
-                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-ty-title }}</h6>
+                <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">
+                    {{ section.settings.contact-form-ty-title }}
+                </h6>
                 <button id="contact-form-ty-close" aria-label="Chiudi">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z" fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                            fill="white" />
                     </svg>
                 </button>
             </div>
-            <div class="text-start lg:text-center">{{ section.settings.contact-form-ty-text }}</div>
+            <div class="text-start lg:text-center">
+                {{ section.settings.contact-form-ty-text }}
+            </div>
             <div>
-                <button class="w-full lg:w-[98px] py-3.5 px-7 text-[#05090D] rounded-[50px] bg-white" id="contact-form-ty-close-btn">
+                <button class="w-full lg:w-[98px] py-3.5 px-7 w-[98px] py-3.5 px-7 link-lg_gsp link-lg_gsp text-[#05090D] rounded-[50px]" id="contact-form-ty-close-btn">
                     {{ section.settings.contact-form-ty-btn-label }}
                 </button>
             </div>
@@ -322,98 +384,232 @@
     </div>
 </div>
 
-<div id="contact-form-marketing-overlay" class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
-    <div class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+<div id="contact-form-marketing-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
         <div class="flex flex-row justify-between">
-            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-marketing-title }}</h6>
-            <button id="contact-form-marketing-close" aria-label="Chiudi"><svg width="24" height="24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-marketing-title }}
+            </h6>
+            <button id="contact-form-marketing-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
         </div>
-        <div>{{ section.settings.contact-form-marketing-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{ section.settings.contact-form-privacy-label }}</a></u></div>
+        <div>
+            {{ section.settings.contact-form-marketing-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{
+                    section.settings.contact-form-privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
     </div>
 </div>
 
-<div id="contact-form-profiling-overlay" class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
-    <div class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
+<div id="contact-form-profiling-overlay"
+    class="fixed top-0 left-0 flex justify-center items-end lg:items-center w-full h-full bg-[#101010]/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div
+        class="flex flex-col max-h-[80vh] overflow-y-auto md:overflow-visible bg-[#292929] text-white px-10 py-8 w-xl gap-10 rounded-xl">
         <div class="flex justify-between">
-            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-profiling-title }}</h6>
-            <button id="contact-form-profiling-close" aria-label="Chiudi"><svg width="24" height="24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+            <h6 class="tk-aktiv-grotesk h6 text-[20px] body-medium">{{ section.settings.contact-form-profiling-title }}
+            </h6>
+            <button id="contact-form-profiling-close" aria-label="Chiudi">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.14645 19.1464C3.95118 19.3417 3.95118 19.6583 4.14645 19.8536C4.34171 20.0488 4.65829 20.0488 4.85355 19.8536L12 12.7071L19.1464 19.8536C19.3417 20.0488 19.6583 20.0488 19.8536 19.8536C20.0488 19.6583 20.0488 19.3417 19.8536 19.1464L12.7071 12L19.8536 4.85355C20.0488 4.65829 20.0488 4.34171 19.8536 4.14645C19.6583 3.95118 19.3417 3.95118 19.1464 4.14645L12 11.2929L4.85355 4.14645C4.65829 3.95118 4.34171 3.95118 4.14645 4.14645C3.95118 4.34171 3.95118 4.65829 4.14645 4.85355L11.2929 12L4.14645 19.1464Z"
+                        fill="white" />
+                </svg>
+            </button>
         </div>
-        <div>{{ section.settings.contact-form-profiling-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{ section.settings.contact-form-privacy-label }}</a></u></div>
+        <div>
+            {{ section.settings.contact-form-profiling-text }} <u><a href="{{ section.settings.contact-form-privacy-page }}">{{
+                    section.settings.privacy-label | default:
+                    "Privacy Policy" }}</a></u>
+        </div>
     </div>
 </div>
-
 <style>
-    #countryList::-webkit-scrollbar{ display: none; }
-    #contact-form-profilingConsent:disabled + #contact-form-profilingLabel { color: #ACACAC; }
-    #countryList{ -ms-overflow-style: none; scrollbar-width: none; }
-    #contact-form-box input:focus, #contact-form-box textarea:focus { outline: none; border: 0.5px solid #EBEFF2; }
-    #contact-form-box .textarea-wrapper:focus-within { border: 0.5px solid #EBEFF2; }
-    .country-arrow.open svg { transform: rotate(180deg); }
-    #contact-form-box .error { border: 0.5px solid #FF575C !important; }
-    #contact-form-box input { border-radius: 50px; border: 0.5px solid #EBEFF2; background-color: transparent !important; color: #EBEFF2 !important; padding: 8px 16px; }
-    #contact-form-box .textarea-wrapper { border-radius: 16px; border: 0.5px solid #EBEFF2; background-color: transparent !important; color: #EBEFF2 !important; padding: 16px; }
-    .error-message { color: #FF575C; font-size: 12px; margin-top: 4px; line-height: 18px; }
-    .contact-submit-btn { transition: all 0.3s ease; }
-    .contact-submit-btn:hover { filter: brightness(1.1); opacity: 75%; }
+    #countryList::-webkit-scrollbar{
+        display: none;
+    }
+    #contact-form-profilingConsent:disabled + #contact-form-profilingLabel {
+    color: #ACACAC;
+    }
+    #countryList{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #contact-form-box input[type="text"]:focus,
+    #contact-form-box input[type="email"]:focus,
+    #contact-form-box input[type="tel"]:focus {
+        outline: none;
+        border: 0.5px solid #EBEFF2;
+    }
+
+    #contact-form-box .textarea-wrapper:focus-within {
+        border: 0.5px solid #EBEFF2;
+    }
+
+    #contact-form-box textarea:focus {
+        outline: none;
+    }
+    .country-arrow.open svg {
+        transform: rotate(180deg);
+    }
+    #contact-form-box .error {
+        border: 0.5px solid #FF575C !important;
+    }
+
+    #contact-form-box input{    
+        border-radius: 50px;
+        border: 0.5px solid #EBEFF2;
+        background-color: transparent !important;
+        color: #EBEFF2 !important;
+        padding: 8px 16px;
+    }
+    #contact-form-box  .textarea-wrapper {    
+        border-radius: 16px;
+        border: 0.5px solid #EBEFF2;
+        background-color: transparent !important;
+        color: #EBEFF2 !important;
+        padding: 16px;
+    }
+    .error-message {
+        color: #FF575C;
+        font-size: 12px;
+        margin-top: 4px;
+        line-height: 18px;
+    }
+    @media (max-width: 1024px) {
+        .popup-content{
+            margin-inline: 16px !important;
+        }
+    }
+    .contact-submit-btn {
+        transition: all 0.3s ease;
+    }
+
+    .contact-submit-btn:hover {
+        filter: brightness(1.1);
+        opacity: 75%;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .only-tablet{
+           width: 427px !important; 
+        }
+    }
 </style>
-
 <script>
-// FUNZIONE ORIGINALE toggleRadio
-function toggleRadio(radio) {
-    const name = radio.name;
-    const radios = document.querySelectorAll(`input[name="${name}"]`);
-    
-    radios.forEach(r => {
-        const targetId = r.getAttribute('data-target');
-        if (targetId) {
-            const target = document.getElementById(targetId);
-            if (target) {
-                target.classList.add('hidden');
-                // Pulisce i campi se nascosti
-                target.querySelectorAll('input').forEach(i => i.value = '');
-            }
-        }
-        // Logica specifica per i campi telefono
-        if (name === 'contact[contact-question]') {
-            const both = document.getElementById('phone-fields-both');
-            const phone = document.getElementById('phone-fields-phone');
-            if (both) both.classList.add('hidden');
-            if (phone) phone.classList.add('hidden');
-        }
-    });
-
-    const targetId = radio.getAttribute('data-target');
-    if (targetId) {
-        const target = document.getElementById(targetId);
-        if (target) target.classList.remove('hidden');
-    }
-
-    // Logica specifica per mostrare i prefissi telefono
-    if (radio.value === 'both') {
-        const target = document.getElementById('phone-fields-both');
-        if (target) target.classList.remove('hidden');
-    } else if (radio.value === 'phone') {
-        const target = document.getElementById('phone-fields-phone');
-        if (target) target.classList.remove('hidden');
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contact_form') || document.querySelector('form[action*="/contact"]');
+    const form = document.getElementById('contact_form') ||
+        document.querySelector('form[action*="/contact"]') ||
+        document.querySelector('form[action*="/customer"]');
+
     if (!form) return;
 
-    // --- COPIA ESATTA DELLA TUA LOGICA JS ORIGINALE ---
+    const $ = sel => form.querySelector(sel);
+
     const tagsInput = document.getElementById('CustomerTags');
     const noteInput = document.getElementById('CustomerNote');
     const submitButton = document.getElementById('contact-form-submit');
+    if (submitButton) submitButton.disabled = false;
+
     const lang = window.location.pathname.includes('/it/') ? 'it' : 'en';
 
-    // Gestione Multi-checkbox barche
+    // ===== ERROR HANDLING =====
+    const errorMessages = {
+        'contact[first_name]': { it: 'Inserisci il tuo nome', en: 'Enter your first name' },
+        'contact[last_name]': { it: 'Inserisci il tuo cognome', en: 'Enter your last name' },
+        'contact[email]': { it: 'Inserisci un’email valida', en: 'Enter a valid email' },
+        'contact[phone]': { it: 'Inserisci un numero di telefono valido', en: 'Enter a valid phone number' },
+        'contact[boat-y-port-country]': { it: 'Seleziona un paese', en: 'Select the country' },
+        'contact[boat-selection]': { it: 'Seleziona almeno una barca se richiesta', en: 'Select at least one boat if required' },
+        'contact[country]': { it: 'Seleziona un paese', en: 'Select a country' }
+    };
+
+    function createErrorMessageNode(text) {
+        const el = document.createElement('div');
+        el.className = 'error-message';
+        el.textContent = text;
+        return el;
+    }
+
+    function clearFieldError(input) {
+        if (!input) return;
+        input.classList.remove('error');
+        const next = input.nextElementSibling;
+        if (next && next.classList.contains('error-message')) next.remove();
+
+        if (input.name === 'contact[country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const flagContainer = container?.querySelector('.country-flag');
+            if (flagContainer) {
+                flagContainer.classList.remove('hidden');
+                flagContainer.style.opacity = 1;
+            }
+        }
+
+        if (input.name === 'contact[boat-y-port-country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (arrowContainer) {
+                arrowContainer.classList.remove('hidden');
+                arrowContainer.style.opacity = 1;
+            }
+        }
+    }
+
+    function setFieldError(input, key) {
+        if (!input) return;
+        clearFieldError(input);
+        input.classList.add('error');
+        const msgText = (errorMessages[key] ? errorMessages[key][lang] : (lang === 'it' ? 'Campo obbligatorio' : 'Required field'));
+        const msg = createErrorMessageNode(msgText);
+        input.insertAdjacentElement('afterend', msg);
+
+        if (key === 'contact[country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const flagContainer = container?.querySelector('.country-flag');
+            if (flagContainer) {
+                flagContainer.style.transition = 'opacity 0.3s';
+                flagContainer.style.opacity = 0;
+                setTimeout(() => flagContainer.classList.add('hidden'), 300);
+            }
+        }
+
+        if (key === 'contact[boat-y-port-country]') {
+            const container = input.closest('.flex.flex-col.gap-1.relative');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (arrowContainer) {
+                arrowContainer.classList.add('hidden'); 
+                arrowContainer.style.opacity = 0;
+                input.addEventListener('click', function handleClick() {
+                    arrowContainer.classList.remove('hidden');
+                    setTimeout(() => { arrowContainer.style.opacity = 1; }, 10);
+                    input.removeEventListener('click', handleClick);
+                });
+            }
+        }
+    }
+
+    function validateEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+    function validatePhone(value) {
+        if (!value) return false;
+        const cleaned = value.trim();
+        const basic = /^[+]?[\d\s().-]{6,}$/;
+        if (!basic.test(cleaned)) return false;
+        const digits = cleaned.replace(/\D/g, '');
+        return digits.length >= 5;
+    }
+
+    // ===== MULTI-CHECKBOX BARCHE =====
     form.querySelectorAll('[data-name="contact[boat-selection]"] label').forEach(label => {
+        const checkbox = label.querySelector("input[type=checkbox]");
+        const icon = label.querySelector("span");
         label.addEventListener('click', e => {
             e.preventDefault();
-            const checkbox = label.querySelector("input[type=checkbox]");
-            const icon = label.querySelector("span");
+            if (!checkbox) return;
             checkbox.checked = !checkbox.checked;
             if (checkbox.checked) {
                 label.classList.add("bg-transparent", "text-black");
@@ -424,17 +620,236 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.classList.remove("bg-transparent", "text-black");
                 icon?.classList.add("hidden");
             }
-            const selected = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
-            document.getElementById('contact-form-boat-selection').value = selected.join(', ');
+            const hiddenBoat = $('#contact-form-boat-selection');
+            if (hiddenBoat) {
+                const selected = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
+                hiddenBoat.value = selected.join(', ');
+                hiddenBoat.dispatchEvent(new Event('change', { bubbles: true }));
+            }
         });
     });
 
-    // Validazione e invio
-    form.addEventListener('submit', function(e) {
-        // Qui andrebbe la tua logica di validazione fetch originale
-    });
+    // ===== PULIZIA ERRORI INPUT =====
+    form.querySelectorAll('input, textarea').forEach(input => input.addEventListener('input', () => clearFieldError(input)));
 
-    // --- LOGICA COUNTRY DROPDOWN (RIPRISTINATA) ---
+    // ===== LOGICA CAMPI CONDIZIONALI =====
+    function setupConditionalFields() {
+        const radioGroups = ['contact[contact-question]', 'contact[boat-question]', 'contact[buy-question]'];
+        radioGroups.forEach(name => {
+            const radios = document.querySelectorAll(`input[name="${name}"]`);
+            radios.forEach(radio => {
+                radio.dataset.wasChecked = radio.checked ? "true" : "false";
+                radio.addEventListener('change', () => {
+                    radios.forEach(r => {
+                        const targetId = r.dataset.target;
+                        if (targetId) {
+                            const target = document.getElementById(targetId);
+                            if (target) {
+                                target.classList.add('hidden');
+                                target.querySelectorAll('input, textarea').forEach(i => i.value = '');
+                            }
+                        }
+                    });
+                    if (radio.checked && radio.dataset.target) {
+                        const target = document.getElementById(radio.dataset.target);
+                        if (target) target.classList.remove('hidden');
+                    }
+
+                    const both = document.getElementById('phone-fields-both');
+                    const phoneOnly = document.getElementById('phone-fields-phone');
+                    if (!both || !phoneOnly) return;
+
+                    if (radio.value === 'both' && radio.checked) {
+                        both.classList.remove('hidden');
+                        phoneOnly.classList.add('hidden');
+                    } else if (radio.value === 'phone' && radio.checked) {
+                        phoneOnly.classList.remove('hidden');
+                        both.classList.add('hidden');
+                    } else {
+                        both.classList.add('hidden');
+                        phoneOnly.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('click', e => {
+            const radio = e.target;
+            if (radio.matches && radio.matches('input[type="radio"]')) {
+                if (radio.checked && radio.dataset.wasChecked === "true") {
+                    radio.checked = false;
+                    radio.dataset.wasChecked = "false";
+                    radio.dispatchEvent(new Event('change', { bubbles: true }));
+                } else {
+                    const group = document.querySelectorAll(`input[name="${radio.name}"]`);
+                    group.forEach(r => r.dataset.wasChecked = "false");
+                    radio.dataset.wasChecked = "true";
+                }
+            }
+        });
+
+        radioGroups.forEach(name => {
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            if (checked) checked.dispatchEvent(new Event('change'));
+        });
+    }
+    setupConditionalFields();
+
+    // ===== MARKETING / PROFILING CHECKBOX =====
+    const marketingCheckbox = document.getElementById('contact-form-marketingConsent');
+    const profilingCheckbox = document.getElementById('contact-form-profilingConsent');
+    if (profilingCheckbox) profilingCheckbox.disabled = true;
+
+    if (marketingCheckbox && profilingCheckbox) {
+        marketingCheckbox.addEventListener('change', function() {
+            profilingCheckbox.disabled = !this.checked;
+            if (!this.checked) profilingCheckbox.checked = false;
+        });
+    }
+
+    // ===== SUBMIT CON VALIDAZIONE =====
+    if (submitButton) {
+        submitButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            form.querySelectorAll('.error-message').forEach(el => el.remove());
+            form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+            let hasError = false;
+            const requiredInputs = Array.from(form.querySelectorAll('[required]'));
+
+            requiredInputs.forEach(input => {
+                const name = input.name;
+                const value = (input.value || '').trim();
+                if (!value) { hasError = true; setFieldError(input, name); return; }
+                if (name === 'contact[email]' && !validateEmail(value)) { hasError = true; setFieldError(input, name); }
+                if (name === 'contact[phone]' && !validatePhone(value)) { hasError = true; setFieldError(input, name); }
+            });
+
+            const countryInput = form.querySelector('input[name="contact[country]"]');
+            if (countryInput && !countryInput.value.trim()) { hasError = true; setFieldError(countryInput, 'contact[country]'); }
+
+            if (hasError) {
+                const firstError = form.querySelector('.error, .error-message');
+                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            const tags = ['contact'];
+            if (marketingCheckbox?.checked) tags.push('marketing');
+            if (profilingCheckbox?.checked) tags.push('profiling');
+
+            const boats = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(cb => cb.value);
+            boats.forEach(b => tags.push(b.replace(/\s+/g, '-')));
+            if (tagsInput) tagsInput.value = [...new Set(tags)].join(',');
+
+            const noteLines = [];
+            if (countryInput?.value) noteLines.push("Country: " + countryInput.value);
+            if (boats.length) noteLines.push("Selected Boats: " + boats.join(", "));
+            const messageValue = (form.querySelector('#contact-form-message') || form.querySelector('textarea[name="contact[message]"]'))?.value;
+            if (messageValue) noteLines.push("Message: " + messageValue);
+            if (noteInput) noteInput.value = noteLines.join("\n");
+
+            const formData = new FormData(form);
+            fetch(form.action, { method: "POST", body: formData, headers: { "Accept": "application/json" } })
+                .then(response => {
+                    if (response.ok) {
+                        showThankYouPopup();
+                        form.reset();
+                        if (tagsInput) tagsInput.value = 'contact';
+                        if (noteInput) noteInput.value = '';
+                        document.querySelectorAll('.country-flag').forEach(f => f.innerHTML = '');
+                        if (profilingCheckbox) profilingCheckbox.disabled = true;
+                    } else {
+                        return response.json().then(err => alert("Errore: " + JSON.stringify(err)));
+                    }
+                }).catch(err => { console.error(err); alert("Si è verificato un errore durante l'invio."); });
+        });
+    }
+
+    // ===== POPUP RINGRAZIAMENTO (fixato) =====
+    function setupThankYouPopup() {
+      const thankYouPopup = document.getElementById("thankyou-popup");
+      const closeTyBtns = [
+        document.getElementById("contact-form-ty-close"),
+        document.getElementById("contact-form-ty-close-btn")
+      ];
+
+      // Mostra popup
+      window.showThankYouPopup = function () {
+        if (!thankYouPopup) return;
+        thankYouPopup.classList.remove("hidden");
+        thankYouPopup.classList.add(
+          "flex",
+          "items-center",
+          "justify-center",
+          "backdrop-blur-xl",
+          "bg-[#101010]/60"
+        );
+        document.body.style.overflow = "hidden";
+      };
+
+      // Nascondi popup
+      function hideThankYouPopup() {
+        if (!thankYouPopup) return;
+        thankYouPopup.classList.add("hidden");
+        thankYouPopup.classList.remove(
+          "flex",
+          "items-center",
+          "justify-center",
+          "backdrop-blur-xl",
+          "bg-[#101010]/60"
+        );
+        document.body.style.overflow = "";
+      }
+
+      // Chiudi cliccando sui pulsanti
+      closeTyBtns.forEach((btn) => {
+        if (btn) {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            hideThankYouPopup();
+          });
+        } else {
+          const observer = new MutationObserver(() => {
+            const newBtn = document.getElementById("contact-form-ty-close") || document.getElementById("contact-form-ty-close-btn");
+            if (newBtn) {
+              newBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                hideThankYouPopup();
+              });
+              observer.disconnect();
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+      });
+
+      // Chiudi cliccando fuori dal contenuto
+      if (thankYouPopup) {
+        thankYouPopup.addEventListener("click", (e) => {
+          const content = thankYouPopup.querySelector(".popup-content");
+          if (content && !content.contains(e.target)) hideThankYouPopup();
+        });
+      }
+    }
+    setupThankYouPopup();
+
+    // ===== TEXTAREA AUTOSIZE + COUNTER =====
+    (function setupTextAreaCounter() {
+        const textarea = form.querySelector('#contact-form-message') || form.querySelector('textarea[name="contact[message]"]');
+        const counter = document.getElementById('contact-message-counter') || form.querySelector('.char-counter');
+        if (!textarea || !counter) return;
+        const maxLength = parseInt(textarea.getAttribute('maxlength')) || 250;
+        const update = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+            counter.textContent = `${textarea.value.length} / ${maxLength}`;
+        };
+        textarea.addEventListener('input', update);
+        update();
+    })();
+
+    // ===== COUNTRY DROPDOWN E FLAG LOGICA =====
     let allCountries = [];
     fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json')
         .then(res => res.json())
@@ -443,55 +858,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const countryInputs = document.querySelectorAll('.country-input');
     countryInputs.forEach(input => {
-        const container = input.closest('.relative');
+        const container = input.closest('.flex.flex-col.gap-1.relative');
+        if (!container) return;
         const ul = container.querySelector('.countryList');
         const flagContainer = container.querySelector('.country-flag');
         const arrowContainer = container.querySelector('.country-arrow');
 
         input.addEventListener('click', e => {
             e.stopPropagation();
-            ul.classList.remove('hidden');
-            arrowContainer?.classList.add('open');
-            filterCountries(input, ul, flagContainer);
+            clearFieldError(input);
+            toggleDropdown(true, ul, input, flagContainer, arrowContainer);
         });
-
-        input.addEventListener('input', () => filterCountries(input, ul, flagContainer));
+        input.addEventListener('input', () => { clearFieldError(input); filterCountries(input, ul, flagContainer); });
+        input.addEventListener('blur', () => setTimeout(() => { if (ul && !ul.classList.contains('hidden')) toggleDropdown(false, ul, input, flagContainer, arrowContainer); }, 150));
     });
 
+    function setFlag(country, code, flagContainer) {
+        if (!flagContainer) return;
+        flagContainer.innerHTML = `<img src="https://flagcdn.com/w40/${code}.png" alt="Flag of ${country}" class="w-5 h-4 rounded-sm object-cover">`;
+        flagContainer.style.opacity = 1;
+        flagContainer.classList.remove('hidden');
+    }
+
+    function toggleDropdown(show, ul, input, flagContainer, arrowContainer) {
+        if (!ul) return;
+        if (show) { ul.classList.remove('hidden'); if (input) filterCountries(input, ul, flagContainer); arrowContainer?.classList.add('open'); }
+        else { ul.classList.add('hidden'); arrowContainer?.classList.remove('open'); }
+    }
+
     function filterCountries(input, ul, flagContainer) {
+        if (!input || !ul) return;
         const filter = input.value.toLowerCase();
         ul.innerHTML = '';
-        const filtered = allCountries.filter(c => c.name.toLowerCase().includes(filter)).slice(0, 50);
-        
-        filtered.forEach(c => {
+        const countriesToShow = !filter.trim() ? allCountries.slice(0, 250) : allCountries.filter(c => c.name.toLowerCase().includes(filter));
+        countriesToShow.forEach(c => {
             const li = document.createElement('li');
             li.className = 'px-4 py-2 m-2 hover:bg-black bg-antracite cursor-pointer flex items-center gap-2 rounded-lg';
-            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-4"><span>${c.name}</span>`;
+            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" alt="Flag of ${c.name}" class="w-5 h-4 rounded-sm object-cover"><span>${c.name}</span>`;
             li.addEventListener('mousedown', e => {
                 e.preventDefault();
                 input.value = c.name;
-                flagContainer.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-4">`;
-                ul.classList.add('hidden');
-                input.closest('.relative').querySelector('.country-arrow')?.classList.remove('open');
+                setFlag(c.name, c.code, flagContainer);
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                toggleDropdown(false, ul, input, flagContainer, input.closest('.flex.flex-col.gap-1.relative')?.querySelector('.country-arrow'));
+                input.focus();
             });
             ul.appendChild(li);
         });
+        if (countriesToShow.length === 0) {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 m-2 text-sm text-gray-400';
+            li.textContent = lang === 'it' ? 'Nessun paese trovato' : 'No countries found';
+            ul.appendChild(li);
+        }
     }
 
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.countryList').forEach(ul => ul.classList.add('hidden'));
-        document.querySelectorAll('.country-arrow').forEach(a => a.classList.remove('open'));
-    });
-
-    // Gestione Overlays Privacy
-    document.getElementById('contact-form-shortMarketing').onclick = () => document.getElementById('contact-form-marketing-overlay').style.opacity = '1', document.getElementById('contact-form-marketing-overlay').style.pointerEvents = 'auto';
-    document.getElementById('contact-form-shortProfiling').onclick = () => document.getElementById('contact-form-profiling-overlay').style.opacity = '1', document.getElementById('contact-form-profiling-overlay').style.pointerEvents = 'auto';
-    
-    [document.getElementById('contact-form-marketing-close'), document.getElementById('contact-form-profiling-close')].forEach(btn => {
-        if(btn) btn.onclick = () => {
-            btn.closest('[id*="overlay"]').style.opacity = '0';
-            btn.closest('[id*="overlay"]').style.pointerEvents = 'none';
-        }
+    document.addEventListener('click', e => {
+        const isCountryInput = e.target.closest('.country-input');
+        document.querySelectorAll('.countryList').forEach(list => {
+            const container = list.closest('.flex.flex-col.gap-1.relative');
+            const input = container?.querySelector('.country-input');
+            const arrowContainer = container?.querySelector('.country-arrow');
+            if (!isCountryInput || input !== isCountryInput) toggleDropdown(false, list, input, container?.querySelector('.country-flag'), arrowContainer);
+        });
     });
 });
 </script>
@@ -618,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', function () {
 "type": "text",
 "id": "contact-boat-q-affermative-label",
 "label": "Boat question affermative label",
-"default": "Yes, by Grand Soleil Yacths"
+"default": "Yes, by VanDutch Yacths"
 },
 {
 "type": "text",
@@ -636,7 +1065,7 @@ document.addEventListener('DOMContentLoaded', function () {
 "type": "text",
 "id": "contact-buy-q-label",
 "label": "Buy Question Label",
-"default": "Are you interested in buying a Grand Soleil's Yacht in the next 6–12 months?"
+"default": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?"
 },
 {
 "type": "checkbox",
