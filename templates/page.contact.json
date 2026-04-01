@@ -69,11 +69,122 @@
         "rounded-image": "shopify://shop_images/cover_289a5160-6e92-4b8e-84dd-eaa00cecb16e.png",
         "rounded-image-alt": "Alt"
       }
+    },
+    "contact_intro_CagJrQ": {
+      "type": "contact-intro",
+      "name": "Contact intro",
+      "settings": {
+        "contact-intro-title": "Contatti",
+        "contact-intro-text": "Siamo sempre al tuo fianco, che tu stia scoprendo VanDutch o sia già parte della nostra community. Il nostro team è pronto ad assisterti con discrezione, competenza e attenzione ai dettagli per richieste generali, informazioni su modelli, eventi o servizi. Contattaci direttamente o rivolgiti al VanDutch Center più vicino. Ogni richiesta è gestita con cura per garantire un’esperienza su misura a ogni armatore.",
+        "contact-form-bg-color": "#292929",
+        "contact-form-text-color": "#ffffff",
+        "contact-form-title": "Ask to VanDutch",
+        "contact-form-required-text": "* indicates required fields",
+        "contact-fname-label": "First name",
+        "contact-fname-required": true,
+        "contact-fname-placeholder": "Insert your first name",
+        "contact-lname-label": "Last name",
+        "contact-lname-required": true,
+        "contact-lname-placeholder": "Insert your last name",
+        "contact-country-label": "Country",
+        "contact-country-required": true,
+        "contact-country-placeholder": "Select your country",
+        "contact-mail-label": "Email",
+        "contact-mail-required": true,
+        "contact-mail-placeholder": "example@domain.com",
+        "contact-date-label": "Appointment day",
+        "contact-date-required": true,
+        "contact-date-placeholder": "Select a date",
+        "contact-boat-q-label": "Have you already got a boat?",
+        "contact-boat-q-required": false,
+        "contact-boat-q-affermative-label": "Yes, by VanDutch Yacths",
+        "contact-boat-q-other-label": "Yes, by other brands",
+        "contact-boat-q-negative-label": "No",
+        "contact-buy-q-label": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?",
+        "contact-buy-q-required": false,
+        "contact-buy-q-affermative-label": "Yes",
+        "contact-buy-q-negative-label": "No",
+        "contact-boat-sel-label": "For which boats would you like more information?",
+        "contact-boat-sel-required": false,
+        "options": "VD32, VD40, VD48, VD56, VD75",
+        "contact-message-label": "Any specific request?",
+        "contact-message-required": false,
+        "contact-message-placeholder": "Write your request here",
+        "contact-contact-q-label": "Contact preferences",
+        "contact-contact-q-required": false,
+        "contact-contact-q-mail-label": "Email",
+        "contact-contact-q-phone-label": "Phone",
+        "contact-contact-q-both-label": "Both",
+        "contact-form-markConsLabel": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms.",
+        "contact-form-profConsLabel": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us.",
+        "contact-form-privacy-page": "",
+        "contact-form-privacy-label": "Privacy Policy",
+        "contact-form-marketing-title": "DIRECT MARKETING CONSENT",
+        "contact-form-marketing-text": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and contact data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "contact-form-profiling-title": "PROFILING CONSENT",
+        "contact-form-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "contact-form-submit-button-text": "Send request",
+        "contact-form-button-text-color": "#000000",
+        "contact-form-button-background-color": "#ACACAC",
+        "contact-form-boat-q-model-label": "Model",
+        "contact-form-boat-q-model-placeholder": "Insert the model",
+        "contact-form-boat-q-port-label": "Mooring country",
+        "contact-form-boat-q-port-placeholder": "Select the country",
+        "contact-form-contact-q-prefix-label": "Prefix",
+        "contact-form-contact-q-prefix-placeholder": "+39",
+        "contact-form-contact-q-phone-label": "Phone",
+        "contact-form-contact-q-phone-placeholder": "XXXXXXXXXX",
+        "contact-form-ty-title": "Thank you!",
+        "contact-form-ty-text": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
+        "contact-form-ty-btn-label": "Close"
+      }
+    },
+    "list_image_text_KYBD3H": {
+      "type": "list-image-text",
+      "blocks": {
+        "item_AeJPrQ": {
+          "type": "item",
+          "settings": {
+            "img_left": false,
+            "image_desktop": "shopify://shop_images/cover.png",
+            "title": "Bespoke da sempre",
+            "text": "Un team appassionato, esperto ed estremamente competente può assisterti nel tuo viaggio nell’acquisto di Grand Soleil Yachts; condividendo le tue preferenze creeremo la soluzione più adatta a te.",
+            "cta_label": "Trova un dealer",
+            "cta_url": "#"
+          }
+        },
+        "item_ryeDx4": {
+          "type": "item",
+          "settings": {
+            "img_left": false,
+            "image_desktop": "shopify://shop_images/cover_289a5160-6e92-4b8e-84dd-eaa00cecb16e.png",
+            "title": "ENTRA NEL MONDO GRAND SOLEIL",
+            "text": "Goditi l’esperienza, entra a far parte della community di Grand Soleil Yachts. Il Grand Soleil Club ti dà accesso alle anteprime delle ultime news su nuovi prodotti ed eventi unici.",
+            "cta_label": "Entra nel GS Club",
+            "cta_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "item_AeJPrQ",
+        "item_ryeDx4"
+      ],
+      "name": "List image & text",
+      "settings": {
+        "main_title": "",
+        "center_title": true,
+        "pt_desk": 80,
+        "pb_desk": 80,
+        "pt_mob": 40,
+        "pb_mob": 40
+      }
     }
   },
   "order": [
     "empty_space_HFxPy4",
     "info_event_TCaAX7",
-    "rounded_image_n6LpmU"
+    "rounded_image_n6LpmU",
+    "contact_intro_CagJrQ",
+    "list_image_text_KYBD3H"
   ]
 }
