@@ -25,7 +25,7 @@
                         <div class="flex caption text-color_gs text-color_gsp">
                             {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required == true %}*{% endif %}
                         </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 "
                             type="text" id="contact-form-first-name" name="contact[first_name]"
                             placeholder="{{- section.settings.contact-fname-placeholder }}" {% if section.settings.contact-fname-required==true %} required {% endif %}>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="flex caption text-color_gs text-color_gsp">
                             {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required == true %}*{% endif %}
                         </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 "
                             type="text" id="contact-form-last-name" name="contact[last_name]"
                             placeholder="{{- section.settings.contact-lname-placeholder }}" {% if section.settings.contact-lname-required==true %} required {% endif %}>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="flex caption text-color_gs text-color_gsp">
                             {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required == true %}*{% endif %}
                         </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 "
                             type="email" id="contact-form-mail" name="contact[email]"
                             placeholder="{{- section.settings.contact-mail-placeholder }}" {% if section.settings.contact-mail-required==true %} required {% endif %}>
                     </div>
@@ -123,7 +123,7 @@
                                     <div class="flex caption text-color_gs text-color_gsp">{{
                                         section.settings.contact-form-boat-q-model-label }}</div>
                                     <input
-                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white"
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 "
                                         type="text" id="boat-o-model" name="contact[boat-o-model]"
                                         placeholder="{{ section.settings.contact-form-boat-q-model-placeholder}}">
                                 </div>
@@ -131,7 +131,7 @@
                                     <div class="flex caption text-color_gs text-color_gsp">{{
                                         section.settings.contact-form-boat-q-port-label}}</div>
                                     <input
-                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1 border-b-1 border-white pr-10 country-input"
+                                        class="caption text-color_gs text-color_gsp opacity-[50%]  py-1  pr-10 country-input"
                                         type="text" name="contact[boat-o-port-country]" id="boat-o-port-country"
                                         placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
                                         autocomplete="off">
@@ -188,12 +188,12 @@
                         {% for option in options %}
                         {% assign clean_option = option | strip %}
                         <label
-                            class="flex gap-1 py-1.5 px-3 bg-transparent border-1 border-white cursor-pointer relative text-white transition-all caption text-color_gs text-color_gsp  bg-antracite rounded-4xl">
+                            class="flex gap-1 py-1.5 px-3 bg-transparent border-1 border-white cursor-pointer relative text-white transition-all caption text-color_gs text-color_gsp rounded-4xl">
                             <input type="checkbox" class="multi-checkbox" value="{{ clean_option }}" hidden>
                             {{ clean_option }}
                             <span class=" hidden cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-color_gs text-color_gsp">
+                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-color_gs text-color_gsp pt-1.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </span>
@@ -252,7 +252,7 @@
                                     <div class="flex caption text-color_gs text-color_gsp">{{
                                         section.settings.contact-form-contact-q-prefix-label }}</div>
                                     <input
-                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 "
                                         type="text" id="phone-prefix-phone" name="contact[phone-prefix-phone]"
                                         placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
                                 </div>
@@ -260,7 +260,7 @@
                                     <div class="flex caption text-color_gs text-color_gsp">{{
                                         section.settings.contact-form-contact-q-phone-label }}</div>
                                     <input
-                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1 "
                                         type="tel" id="phone-number-phone" name="contact[phone-number-phone]"
                                         placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
                                 </div>
@@ -268,18 +268,18 @@
                         </div>
 
                         <div>
-                            <div class="flex gap-2 justify-start items-end">
+                            <div class="flex gap-2 justify-start items-center">
                                 <input type="radio"
                                     class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-transparent transition-all duration-200"
                                     id="contact-both" name="contact[contact-question]" value="both" data-target="both" onclick="toggleRadio(this)">
                                 <label for="contact-both"> {{ section.settings.contact-contact-q-both-label }}</label>
                             </div>
-                            <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-6 w-full">
+                            <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
                                 <div class="flex flex-col gap-1 w-full md:w-[67px]">
-                                    <div class="flex caption text-color_gs text-color_gsp leading-[18px]">{{
+                                    <div class="flex caption text-color_gs text-color_gsp">{{
                                         section.settings.contact-form-contact-q-prefix-label }}</div>
                                     <input
-                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%]  border-b-1 border-white py-1"
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] py-1"
                                         type="text" id="phone-prefix-both" name="contact[phone-prefix-both]"
                                         placeholder="{{ section.settings.contact-form-contact-q-prefix-placeholder }}">
                                 </div>
@@ -287,7 +287,7 @@
                                     <div class="flex bcaption text-color_gs text-color_gsp ">{{
                                         section.settings.contact-form-contact-q-phone-label }}</div>
                                     <input
-                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%] border-b-1 border-white py-1"
+                                        class="input-field caption text-color_gs text-color_gsp opacity-[50%]  py-1"
                                         type="tel" id="phone-number-both" name="contact[phone-number-both]"
                                         placeholder="{{ section.settings.contact-form-contact-q-phone-placeholder }}">
                                 </div>
@@ -459,6 +459,18 @@
     }
 
         #contact-form-box input[type="radio"]:checked{
+        background-color: #EBEFF2 !important;
+    }
+
+        #contact-form-box input[type="checkbox"]{
+        border-radius: 999;
+        border: 0.5px solid #EBEFF2;
+        background-color: transparent !important;
+        color: #EBEFF2 !important;
+        padding: 8px;
+    }
+
+        #contact-form-box input[type="checkbox"]:checked{
         background-color: #EBEFF2 !important;
     }
 
@@ -1048,7 +1060,7 @@ document.addEventListener('DOMContentLoaded', function () {
 "type": "text",
 "id": "contact-boat-q-affermative-label",
 "label": "Boat question affermative label",
-"default": "Yes, by VanDutch Yacths"
+"default": "Yes, by Grand Soleil Yacths"
 },
 {
 "type": "text",
@@ -1066,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', function () {
 "type": "text",
 "id": "contact-buy-q-label",
 "label": "Buy Question Label",
-"default": "Are you interested in buying a VanDutch's Yacht in the next 6–12 months?"
+"default": "Are you interested in buying a Grand Soleil's Yacht in the next 6–12 months?"
 },
 {
 "type": "checkbox",
