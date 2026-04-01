@@ -50,6 +50,52 @@
       "name": "Hero Banner Final",
       "settings": {}
     },
+    "model_CFL9V3": {
+      "type": "model",
+      "blocks": {
+        "tab_qj8Ynn": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tutti i modelli",
+            "tab_collection": "all-models"
+          }
+        },
+        "tab_mwxwBh": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Performance",
+            "tab_collection": "performance"
+          }
+        },
+        "tab_WwghW8": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Long Cruise",
+            "tab_collection": "long-cruise"
+          }
+        },
+        "tab_w4Kz6Y": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Blue",
+            "tab_collection": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "tab_qj8Ynn",
+        "tab_mwxwBh",
+        "tab_WwghW8",
+        "tab_w4Kz6Y"
+      ],
+      "name": "Gamma Section V2",
+      "settings": {
+        "bg_color_section": "#EBEFF2",
+        "cta_gamma_product": "Scopri il modello",
+        "cta_gamma_dealer": "Trova concessionario",
+        "tab_collections": "Le Nostre Collezioni"
+      }
+    },
     "subtitle_text_bgKxpn": {
       "type": "animation-text",
       "name": "Animation text",
@@ -178,6 +224,7 @@
   },
   "order": [
     "hero_banner_kYmAaY",
+    "model_CFL9V3",
     "subtitle_text_bgKxpn",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
