@@ -15,67 +15,56 @@
             class="flex flex-col overflow-y-auto overflow-visible lg:px-10 lg:py-10 py-6 px-4 gap-10 bg-dark_gs bg-beige_gsp text-color_gs text-color_gsp">
 
             <div class="flex flex-col gap-12">
-                <div class="flex flex-col gap-6">
-                        <div class="flex justify-start caption text-color_gs text-color_gsp">
-                            {{ section.settings.contact-form-required-text }}
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <div class="flex caption text-color_gs text-color_gsp">
-                                {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required
-                                == true %}*{%
-                                endif %}
-                            </div>
-                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                type="text" id="contact-form-first-name" name="contact[first_name]"
-                                placeholder="{{- section.settings.contact-fname-placeholder }}" {% if
-                                section.settings.contact-fname-required==true %} required {% endif %}>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="md:col-span-2 flex justify-start caption text-color_gs text-color_gsp">
+                        {{ section.settings.contact-form-required-text }}
+                    </div>
 
-                        <div class="flex flex-col gap-1">
-                            <div class="flex caption text-color_gs text-color_gsp">
-                                {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required
-                                == true %}*{%
-                                endif %}
-                            </div>
-                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                type="text" id="contact-form-last-name" name="contact[last_name]"
-                                placeholder="{{- section.settings.contact-lname-placeholder }}" {% if
-                                section.settings.contact-lname-required==true %} required {% endif %}>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.contact-fname-label}}{% if section.settings.contact-fname-required == true %}*{% endif %}
                         </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                            type="text" id="contact-form-first-name" name="contact[first_name]"
+                            placeholder="{{- section.settings.contact-fname-placeholder }}" {% if section.settings.contact-fname-required==true %} required {% endif %}>
+                    </div>
 
-                        <div class="flex flex-col gap-1 relative">
-                            <div class="flex caption text-color_gs text-color_gsp">
-                                {{ section.settings.contact-country-label}}{% if
-                                section.settings.contact-country-required == true
-                                %}*{% endif %}
-                            </div>
-                            <input
-                            class="caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
-                            type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
-                            placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
-                            autocomplete="off" required>
-                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.contact-lname-label}}{% if section.settings.contact-lname-required == true %}*{% endif %}
+                        </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                            type="text" id="contact-form-last-name" name="contact[last_name]"
+                            placeholder="{{- section.settings.contact-lname-placeholder }}" {% if section.settings.contact-lname-required==true %} required {% endif %}>
+                    </div>
+
+                    <div class="flex flex-col gap-1 relative">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.contact-country-label}}{% if section.settings.contact-country-required == true %}*{% endif %}
+                        </div>
+                        <input
+                        class="caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
+                        type="text" name="contact[boat-y-port-country]" id="boat-y-port-country"
+                        placeholder="{{ section.settings.contact-form-boat-q-port-placeholder}}"
+                        autocomplete="off" required>
+                        <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
                             <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
-                            <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
-                            </svg>
+                                <svg class="transform transition-transform duration-300" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                </svg>
                             </div>
-                            <ul
-                            class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50">
-                            </ul>
+                        <ul class="countryList absolute top-full mt-1 bg-antracite border border-gray-300 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-50"></ul>
                         </div>
 
-                        <div class="flex flex-col gap-1">
-                            <div class="flex caption text-color_gs text-color_gsp">
-                                {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required ==
-                                true %}*{%
-                                endif %}
-                            </div>
-                            <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
-                                type="email" id="contact-form-mail" name="contact[email]"
-                                placeholder="{{- section.settings.contact-mail-placeholder }}" {% if
-                                section.settings.contact-mail-required==true %} required {% endif %}>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.contact-mail-label}}{% if section.settings.contact-mail-required == true %}*{% endif %}
                         </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1 border-b-1 border-white"
+                            type="email" id="contact-form-mail" name="contact[email]"
+                            placeholder="{{- section.settings.contact-mail-placeholder }}" {% if section.settings.contact-mail-required==true %} required {% endif %}>
+                    </div>
                 </div>
                 <div class="caption text-color_gs text-color_gsp  flex flex-col gap-4">
                     <div class="flex ">
@@ -204,7 +193,7 @@
                             {{ clean_option }}
                             <span class=" hidden cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-black">
+                                    stroke-width="1.5" stroke="currentColor" class="size-5 text-color_gs text-color_gsp">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </span>
@@ -224,7 +213,7 @@
                         endif %}
                     </div>
                     <div class="textarea-wrapper">
-                        <textarea id="contact-form-message" class="overflow-y-hidden resize-none min-h-[20px]"
+                        <textarea id="contact-form-message" class="overflow-y-hidden resize-none min-h-[20px] caption text-color_gs text-color_gs opacity-[50%]"
                             name="contact[message]" placeholder="{{ section.settings.contact-message-placeholder }}" {% if
                             section.settings.contact-message-required==true %} required {% endif %}
                             maxlength="{{ section.settings.contact-message-max-lenght | default: 250 }}">
@@ -279,7 +268,7 @@
                         </div>
 
                         <div>
-                            <div class="flex gap-2 justify-start items-center">
+                            <div class="flex gap-2 justify-start items-end">
                                 <input type="radio"
                                     class="size-5 rounded-full appearance-none border-1 border-white bg-transparent checked:bg-transparent transition-all duration-200"
                                     id="contact-both" name="contact[contact-question]" value="both" data-target="both" onclick="toggleRadio(this)">
@@ -459,6 +448,18 @@
     }
     #contact-form-box .error {
         border: 0.5px solid #FF575C !important;
+    }
+
+    #contact-form-box input[type="radio"]{
+        border-radius: 999;
+        border: 0.5px solid #EBEFF2;
+        background-color: transparent !important;
+        color: #EBEFF2 !important;
+        padding: 8px;
+    }
+
+        #contact-form-box input[type="radio"]:checked{
+        background-color: #EBEFF2 !important;
     }
 
     #contact-form-box input{    
