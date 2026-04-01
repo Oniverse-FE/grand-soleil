@@ -1,220 +1,185 @@
-<div id="modelSection-{{ section.id }}" 
-     class="flex flex-col {% if section.settings.model-left == true %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} 
-            gap-8 lg:gap-[80px] xl:gap-[80px] 
-            px-4 md:px-12 lg:px-24 overflow-x-hidden 
-            h-75vh items-center justify-center space-model lg:mb-[124px] xl:mb-0">
-  
-  <div class="relative h-[218px] lg:h-[400px] w-full max-w-[616px] tk-mongoose font-bold 
-              {% if section.settings.model-left == true %}items-start justify-start{% else %}items-end justify-self-end{% endif %}">
-    <div class="flex {% if section.settings.model-left != true %}lg:justify-end{% endif %}">
-      <div class="flex flex-col justify-center lg:justify-start inset-0 h-[186px] lg:h-[400px] w-full lg:w-[516px] xl:w-[616px]">
-        <div id="modelTitle-{{ section.id }}" 
-             class="flex text-[180px] leading-44 lg:text-[320px] lg:leading-80 font-black z-0 w-full lg:w-[516px] xl:w-[616px] lg:px-[105px] justify-center"
-             style="color:{{ section.settings.model-title-color }};">
-          {{ section.settings.model }}
+<div class="gamma-section w-full py-12 lg:py-[80px] bg-EBEFF2_gs bg_gsp">
+  <div class="max-w-[1440px] mx-auto px-4 flex flex-col items-center">
+    
+    <h2 class="subtitle_gs mb-6 uppercase text-center w-full">
+      {{ section.settings.tab_collections }}
+    </h2>
+
+    <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-3 mb-8 w-full overflow-x-auto no-scrollbar pb-2">
+      {% for block in section.blocks %}
+        {% if block.type == 'tab' %}
+          <div class="tab-gamma px-6 py-3 rounded-[50px] cursor-pointer transition-all duration-300 group border whitespace-nowrap" 
+               style="border-color: #05090D"
+               data-collection-handle="{{ block.settings.tab_collection | default: '' }}">
+            <span class="text-[#05090D] uppercase  group-hover:text-[#EBEFF2] transition-colors">
+              {{ block.settings.tab_title }}
+            </span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="relative w-full max-w-4xl mb-10 border-b border-gray-300">
+      <div class="model-names-container flex justify-start md:justify-center gap-8 pb-4 relative overflow-x-auto no-scrollbar">
+          </div>
+      <div class="absolute bottom-0 h-[2px] bg-[#05090D] transition-all duration-500 ease-in-out z-10" id="model-indicator"></div>
+    </div>
+
+    <div class="w-full lg:max-w-[1200px] flex flex-col relative">
+      
+      <div class="relative w-full aspect-video overflow-hidden rounded-[16px] shadow-xl bg-[#D1D5DB]">
+        <div class="slider-track w-full h-full relative">
+          {% for block in section.blocks %}
+            {% if block.type == 'tab' %}
+              {% assign collection = collections[block.settings.tab_collection] %}
+              {% for product in collection.products %}
+                <div class="product-slide absolute inset-0 opacity-0 transition-opacity duration-500" 
+                     data-collection="{{ collection.handle }}" 
+                     data-title="{{ product.title }}"
+                     data-url="{{ product.url }}">
+                  <img src="{{ product.featured_image | img_url: '1400x' }}" 
+                       alt="{{ product.title }}" 
+                       class="w-full h-full object-cover">
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"></div>
+      </div>
+
+      <div class="lg:absolute lg:bottom-0 lg:left-0 w-full p-6 lg:p-12 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0">
+        
+        <div class="text-[#05090D] lg:text-[#EBEFF2]">
+          <h3 id="current-model-name" class="text-3xl md:text-5xl  uppercase tracking-tighter"></h3>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <a href="#" id="cta-main" class="px-8 py-4 bg-[#05090D] lg:bg-[#EBEFF2] text-white lg:text-[#05090D] rounded-full  hover:opacity-90 transition-all uppercase text-center text-sm tracking-widest pointer-events-auto">
+            {{ section.settings.cta_gamma_product }}
+          </a>
+          <a href="#" id="cta-dealer-link" class="px-8 py-4 border-2 border-[#05090D] lg:border-[#EBEFF2] text-[#05090D] lg:text-[#EBEFF2] rounded-full  hover:bg-[#05090D] hover:text-white lg:hover:bg-[#EBEFF2] lg:hover:text-[#05090D] transition-all uppercase text-center text-sm tracking-widest pointer-events-auto">
+             {{ section.settings.cta_gamma_dealer }}
+          </a>
         </div>
       </div>
-      <div class="absolute inset-0 z-10 flex justify-center 
-                  {% if section.settings.model-left == true %}lg:justify-start{% else %}lg:justify-end{% endif %} items-end">
-        <a href="{{ section.settings.model-link }}" aria-label="{{ section.settings.model-link-label }}">
-          <img
-            id="modelImage-{{ section.id }}"
-            src="{{ section.settings.model-image | img_url: 'master' }}"
-            alt="{{ section.settings.model }}"
-            class="w-[270px] lg:w-[610px] h-auto {% if section.settings.model-left == false %}scale-x-[-1]{% endif %}">
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <div class="flex flex-col lg:gap[70px] lg:w-[516px] xl:w-[616px] lg:h-[400px] md:justify-start justify-center">
-    <div class="flex flex-col lg:w-[406]">
-      <div class="flex text-white">
-        <h6 class="text-4xl lg:text-[42px] leading-10 lg:leading-12 uppercase">
-          {{ section.settings.model-title }}
-        </h6>
-      </div>
-      <div class="flex w-full text-white body-regular text-[16px] lg:text-[18px] leading-5 lg:leading-6 text-start mt-3 mb-7 lg:mb-8">
-        {{ section.settings.model-text }}
-      </div>
-      <div class="flex text-white uppercase body-semibold text-[14px] lg:text-[16px] group animation w-fit">
-        <a href="{{ section.settings.model-link }}" aria-label="{{ section.settings.model-link-label }}">
-          <span class="mb-[6px]">{{ section.settings.model-link-label }}</span>
-          <span class="underline cta-underline"></span>
-        </a>
-      </div>
     </div>
   </div>
 </div>
 
 <style>
-  @media (max-width: 400px) {
-    .space-model {
-      margin-bottom: 200px;
-    }
-  }
-  .group a {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap:4px;
-      overflow: hidden;
-  }
-  .underline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      background-color: white;
-      opacity: 0;
-      transform: translateX(-100%);
-      transition: transform 2s ease;
-  }
-  .cta-underline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      opacity: 1;
-      background-color: white;
-      transform: translateX(0%);
-      transition: transform 2s ease;
-  }
-  .group:hover .underline {
-      transform: translateX(100%);
-  }
-  .group:hover .cta-underline {
-      animation: enter-line 1.2s ease forwards;
-      animation-delay: 0.8s;
-      opacity: 1;
-  }
-  @keyframes enter-line {
-      0% {
-          transform: translateX(-100%);
-      }
-      100% {
-          transform: translateX(0);
-      }
-  }
+.tab-gamma.active-tab { background-color: #05090D !important; }
+.tab-gamma.active-tab span { color: #EBEFF2 !important; }
+
+.model-name {
+  color: #05090D;
+  opacity: 0.4;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.model-name.active { opacity: 1; }
+
+.product-slide.active { opacity: 1; z-index: 10; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Forza il puntatore attivo sulle CTA anche se il contenitore padre avesse restrizioni */
+#cta-main, #cta-dealer-link { pointer-events: auto !important; }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll('.tab-gamma');
+  const slides = document.querySelectorAll('.product-slide');
+  const modelContainer = document.querySelector('.model-names-container');
+  const indicator = document.getElementById('model-indicator');
+  const nameDisplay = document.getElementById('current-model-name');
+  const ctaMain = document.getElementById('cta-main');
 
-  const sectionId = "{{ section.id }}";
-  const section = document.getElementById(`modelSection-${sectionId}`);
-  const image = document.getElementById(`modelImage-${sectionId}`);
-  const title = document.getElementById(`modelTitle-${sectionId}`);
-  const isModelLeft = {{ section.settings.model-left | json }};
+  function updateIndicator(element) {
+    if(!element) return;
+    indicator.style.width = `${element.offsetWidth}px`;
+    indicator.style.left = `${element.offsetLeft}px`;
+  }
 
-  if (!image || !title) return;
+  function setActiveSlide(title) {
+    slides.forEach(slide => {
+      if(slide.dataset.title === title) {
+        slide.classList.add('active');
+        nameDisplay.textContent = slide.dataset.title;
+        ctaMain.href = slide.dataset.url;
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
 
-  ScrollTrigger.matchMedia({
-    "(min-width: 1024px)": function() {
-      gsap.set(title, { x: 0, opacity: 1 }); 
-      gsap.set(image, { x: isModelLeft ? -500 : 500, opacity: 1, force3D: true });
+  function handleTabClick(tab) {
+    const handle = tab.dataset.collectionHandle;
+    tabs.forEach(t => t.classList.remove('active-tab'));
+    tab.classList.add('active-tab');
 
-      gsap.to(image, {
-        x: 0,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          end: "center center",
-          scrub: 1, // rallentato rispetto a prima
-          invalidateOnRefresh: true
-        }
-      });
-    },
+    modelContainer.innerHTML = '';
+    const filteredSlides = Array.from(slides).filter(s => s.dataset.collection === handle);
 
-    "(max-width: 1023px)": function() {
-      gsap.set(image, { x: isModelLeft ? -150 : 150, opacity: 1, force3D: true });
-      gsap.set(title, { x: isModelLeft ? 150 : -150, opacity: 1, force3D: true });
+    filteredSlides.forEach((slide, index) => {
+      const div = document.createElement('div');
+      div.className = 'model-name';
+      div.textContent = slide.dataset.title;
+      div.onclick = () => {
+        document.querySelectorAll('.model-name').forEach(m => m.classList.remove('active'));
+        div.classList.add('active');
+        updateIndicator(div);
+        setActiveSlide(slide.dataset.title);
+      };
+      modelContainer.appendChild(div);
+      
+      if(index === 0) {
+        div.classList.add('active');
+        setTimeout(() => updateIndicator(div), 150);
+        setActiveSlide(slide.dataset.title);
+      }
+    });
+  }
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 60%",  // inizia quando la sezione si avvicina al centro
-          end: "bottom 40%", // termina quando la sezione è centrata
-          scrub: true,
-          invalidateOnRefresh: true
-        }
-      });
-
-      tl.to(image, { x: isModelLeft ? 150 : -150, ease: "none" }, 0)
-        .to(title, { x: isModelLeft ? -150 : 150, ease: "none" }, 0);
-    }
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => handleTabClick(tab));
   });
 
-  if (document.fonts?.ready) {
-    document.fonts.ready.then(() => ScrollTrigger.refresh());
-  }
-  ScrollTrigger.refresh();
+  if(tabs.length > 0) handleTabClick(tabs[0]);
+
+  window.addEventListener('resize', () => {
+    const activeModel = document.querySelector('.model-name.active');
+    updateIndicator(activeModel);
+  });
 });
 </script>
 
 {% schema %}
 {
-    "name": "VD Model",
-    "settings": [
-        {
-            "type": "checkbox",
-            "id": "model-left",
-            "label": "Image on the left",
-            "default": false
-        },
-        {
-            "type": "url",
-            "id": "model-link",
-            "label": "Link to the model page"
-        },
-        {
-            "type": "color",
-            "id": "model-title-color",
-            "label": "Color of the model title",
-            "default": "#F76C00"
-        },
-        {
-            "type": "text",
-            "id": "model",
-            "label": "Model",
-            "default": "32"
-        },
-        {
-            "type": "image_picker",
-            "id": "model-image",
-            "label": "Pick an image for the model"
-        },
-        {
-            "type": "text",
-            "id": "model-title",
-            "label": "Model section title",
-            "default": "VERSATILITÀ SENZA COMPROMESSI"
-        },
-        {
-            "type": "textarea",
-            "id": "model-text",
-            "label": "Model section text",
-            "default": "Compatto, potente, inconfondibile. Il VanDutch 32 unisce eleganza e prestazioni in un day boat perfetto per ogni avventura. Linee scolpite, dettagli di lusso e tecnologia avanzata per un’esperienza di navigazione pura, senza compromessi."
-        },
-        {
-            "type": "text",
-            "id": "model-link-label",
-            "label": "Link Label",
-            "default": "SCOPRI IL vandutch 32"
-        }
-    ],
-    "presets": [
-        {
-            "name": "Model",
-            "category": "Custom Sections"
-        }
-    ]
+  "name": "Gamma Section V2",
+  "settings": [
+    { "type": "color", "id": "bg_color_section", "label": "Sfondo Sezione", "default": "#EBEFF2" },
+    {"type": "text","id":"cta_gamma_product","label":"Testo CTA Modello","default":"Scopri il modello"},
+    {"type": "text","id":"cta_gamma_dealer","label":"Testo CTA Dealer","default":"Trova concessionario"},
+    {"type": "text","id": "tab_collections","label": "Titolo Sezione","default": "Le Nostre Collezioni"}
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Collezione",
+      "settings":[
+        {"type": "text","id": "tab_title","label": "Nome Visualizzato","default": "Gamma"},
+        {"type": "collection","id": "tab_collection","label": "Seleziona Collezione"}
+      ]
+    }
+  ],
+  "presets":[{"name":"Gamma Section V2"}]
 }
-
 {% endschema %}
