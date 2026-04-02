@@ -151,6 +151,7 @@
     font-size: 18px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
 }
 
 .link-lg_gsp{
@@ -158,6 +159,7 @@
     font-size: 16px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
 }
 
 .link-md_gsp{
@@ -165,6 +167,7 @@
     font-size: 14px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
 }
 
 .link-sm_gsp{
@@ -172,6 +175,7 @@
     font-size: 12px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
 }
 
 .menu-lg_gsp{
@@ -400,6 +404,7 @@
     font-size: 18px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -409,6 +414,7 @@
     font-size: 16px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -418,6 +424,7 @@
     font-size: 14px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -427,6 +434,7 @@
     font-size: 12px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -666,6 +674,7 @@
     font-size: 18px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -675,6 +684,7 @@
     font-size: 16px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -684,6 +694,7 @@
     font-size: 14px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
@@ -693,6 +704,7 @@
     font-size: 12px;
     font-weight: 400; 
     font-style: normal;
+    line-height: 1;
     }
 }
 
