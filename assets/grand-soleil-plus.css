@@ -927,3 +927,9 @@ color:#EBEFF2;
 .bg-rich-text-coll_gsp{
     background: #EFECE8;
 }
+
+.bg-modelli_gsp{
+    border-radius: 16px;
+    background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
+    backdrop-filter: blur(48px);
+}

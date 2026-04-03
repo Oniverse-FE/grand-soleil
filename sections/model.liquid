@@ -1,17 +1,16 @@
-<div class="gamma-section w-full py-12 lg:py-[80px] bg-EBEFF2_gs bg_gsp">
+<div class="gamma-section w-full py-12 lg:py-[80px] bg_gs bg-truffle_gsp">
   <div class="max-w-[1440px] mx-auto px-4 flex flex-col items-center">
     
-    <h2 class="subtitle_gs mb-6 uppercase text-center w-full">
+    <h2 class="subtitle_gs subtitle_gsp mb-6 text-center w-full text-color_gs text-FAF9F7_gsp">
       {{ section.settings.tab_collections }}
     </h2>
 
     <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-3 mb-8 w-full overflow-x-auto no-scrollbar pb-2">
       {% for block in section.blocks %}
         {% if block.type == 'tab' %}
-          <div class="tab-gamma px-6 py-3 rounded-[50px] cursor-pointer transition-all duration-300 group border whitespace-nowrap" 
-               style="border-color: #05090D"
+          <div class="tab-gamma px-6 py-3 cursor-pointer transition-all duration-300 group whitespace-nowrap cta-border-light_gs cta-border-light_gsp" 
                data-collection-handle="{{ block.settings.tab_collection | default: '' }}">
-            <span class="text-[#05090D] uppercase  group-hover:text-[#EBEFF2] transition-colors">
+            <span class="transition-colors">
               {{ block.settings.tab_title }}
             </span>
           </div>
@@ -48,17 +47,17 @@
         <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"></div>
       </div>
 
-      <div class="lg:absolute lg:bottom-0 lg:left-0 w-full p-6 lg:p-12 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0">
+      <div class="lg:absolute lg:bottom-0 lg:left-0 w-full lg:p-6 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0 bg-modelli_gs bg-modelli_gsp">
         
-        <div class="text-[#05090D] lg:text-[#EBEFF2]">
-          <h3 id="current-model-name" class="text-3xl md:text-5xl  uppercase tracking-tighter"></h3>
+        <div class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-FAF9F7_gsp">
+          <h3 id="current-model-name" class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-FAF9F7_gsp tracking-tighter"></h3>
         </div>
         
         <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a href="#" id="cta-main" class="px-8 py-4 bg-[#05090D] lg:bg-[#EBEFF2] text-white lg:text-[#05090D] rounded-full  hover:opacity-90 transition-all uppercase text-center text-sm tracking-widest pointer-events-auto">
+          <a href="#" id="cta-main" class="px-8 py-4 cta-blue_gs cta-truffle_gsp transition-all text-center link-lg_gs link-lg_gsp  pointer-events-auto">
             {{ section.settings.cta_gamma_product }}
           </a>
-          <a href="#" id="cta-dealer-link" class="px-8 py-4 border-2 border-[#05090D] lg:border-[#EBEFF2] text-[#05090D] lg:text-[#EBEFF2] rounded-full  hover:bg-[#05090D] hover:text-white lg:hover:bg-[#EBEFF2] lg:hover:text-[#05090D] transition-all uppercase text-center text-sm tracking-widest pointer-events-auto">
+          <a href="#" id="cta-dealer-link" class="px-8 py-4 cta-border-light_gs cta-border-light_gsp transition-all link-lg_gs link-lg_gsp text-center pointer-events-auto">
              {{ section.settings.cta_gamma_dealer }}
           </a>
         </div>
@@ -69,20 +68,15 @@
 </div>
 
 <style>
-.tab-gamma.active-tab { background-color: #05090D !important; }
-.tab-gamma.active-tab span { color: #EBEFF2 !important; }
 
 .model-name {
-  color: #05090D;
-  opacity: 0.4;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+font-family: "Helvetica Neue";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+color:#EBEFF2;
 }
-.model-name.active { opacity: 1; }
 
 .product-slide.active { opacity: 1; z-index: 10; }
 

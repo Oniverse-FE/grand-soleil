@@ -27,12 +27,8 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
-    --text-3xl: 1.875rem;
-    --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
-    --text-5xl: 3rem;
-    --text-5xl--line-height: 1;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
@@ -1174,10 +1170,6 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
   .border-\[0\.5px\] {
     border-style: var(--tw-border-style);
     border-width: 0.5px;
@@ -1205,9 +1197,6 @@
   .border-none {
     --tw-border-style: none;
     border-style: none;
-  }
-  .border-\[\#05090D\] {
-    border-color: #05090D;
   }
   .border-\[\#BEBEBE\] {
     border-color: #BEBEBE;
@@ -1626,10 +1615,6 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
@@ -2041,13 +2026,6 @@
       }
     }
   }
-  .group-hover\:text-\[\#EBEFF2\] {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        color: #EBEFF2;
-      }
-    }
-  }
   .group-hover\:opacity-0 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -2134,13 +2112,6 @@
       }
     }
   }
-  .hover\:bg-\[\#05090D\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #05090D;
-      }
-    }
-  }
   .hover\:bg-\[\#EBEFF2\] {
     &:hover {
       @media (hover: hover) {
@@ -2183,13 +2154,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-black);
-      }
-    }
-  }
-  .hover\:text-white {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white);
       }
     }
   }
@@ -2708,12 +2672,6 @@
       text-align: right;
     }
   }
-  .md\:text-5xl {
-    @media (width >= 48rem) {
-      font-size: var(--text-5xl);
-      line-height: var(--tw-leading, var(--text-5xl--line-height));
-    }
-  }
   .md\:text-\[14px\] {
     @media (width >= 48rem) {
       font-size: 14px;
@@ -2848,9 +2806,19 @@
       grid-column: span 6 / span 6;
     }
   }
+  .lg\:m-12 {
+    @media (width >= 64rem) {
+      margin: calc(var(--spacing) * 12);
+    }
+  }
   .lg\:mx-0 {
     @media (width >= 64rem) {
       margin-inline: calc(var(--spacing) * 0);
+    }
+  }
+  .lg\:mx-6 {
+    @media (width >= 64rem) {
+      margin-inline: calc(var(--spacing) * 6);
     }
   }
   .lg\:my-2 {
@@ -3526,16 +3494,6 @@
       border-bottom-right-radius: 0;
     }
   }
-  .lg\:border-\[\#EBEFF2\] {
-    @media (width >= 64rem) {
-      border-color: #EBEFF2;
-    }
-  }
-  .lg\:bg-\[\#EBEFF2\] {
-    @media (width >= 64rem) {
-      background-color: #EBEFF2;
-    }
-  }
   .lg\:bg-\[var\(--Blur-VD-Blur\,rgba\(16\,16\,16\,0\.60\)\)\] {
     @media (width >= 64rem) {
       background-color: var(--Blur-VD-Blur,rgba(16,16,16,0.60));
@@ -3559,6 +3517,11 @@
   .lg\:p-4 {
     @media (width >= 64rem) {
       padding: calc(var(--spacing) * 4);
+    }
+  }
+  .lg\:p-6 {
+    @media (width >= 64rem) {
+      padding: calc(var(--spacing) * 6);
     }
   }
   .lg\:p-10 {
@@ -3953,39 +3916,11 @@
       font-weight: var(--font-weight-bold);
     }
   }
-  .lg\:text-\[\#05090D\] {
-    @media (width >= 64rem) {
-      color: #05090D;
-    }
-  }
-  .lg\:text-\[\#EBEFF2\] {
-    @media (width >= 64rem) {
-      color: #EBEFF2;
-    }
-  }
   .lg\:backdrop-blur-\[48px\] {
     @media (width >= 64rem) {
       --tw-backdrop-blur: blur(48px);
       -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
       backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    }
-  }
-  .lg\:hover\:bg-\[\#EBEFF2\] {
-    @media (width >= 64rem) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: #EBEFF2;
-        }
-      }
-    }
-  }
-  .lg\:hover\:text-\[\#05090D\] {
-    @media (width >= 64rem) {
-      &:hover {
-        @media (hover: hover) {
-          color: #05090D;
-        }
-      }
     }
   }
   .xl\:w-\[430px\] {
@@ -4054,76 +3989,76 @@
     }
   }
 }
-.title_gsp {
-  font-family: "Geist", sans-serif;
+.title_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 56px;
-  line-height: 62px;
-  font-weight: 300;
+  line-height: 60px;
+  font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
 }
-.heading-lg_gsp {
-  font-family: "Geist", sans-serif;
+.heading-lg_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 48px;
-  line-height: 54px;
-  font-weight: 300;
+  line-height: 52px;
+  font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
 }
-.quote-lg_gsp {
-  font-family: "Geist", sans-serif;
+.quote-lg_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 48px;
-  line-height: 54px;
-  font-weight: 300;
+  line-height: 52px;
+  font-weight: 500;
   font-style: normal;
 }
-.heading-md_gsp {
-  font-family: "Geist", sans-serif;
+.heading-md_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 32px;
-  line-height: 38px;
-  font-weight: 300;
+  line-height: 36px;
+  font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
 }
-.quote-md_gsp {
-  font-family: "Geist", sans-serif;
+.quote-md_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 32px;
-  line-height: 38px;
-  font-weight: 300;
+  line-height: 36px;
+  font-weight: 500;
   font-style: normal;
 }
-.heading-sm_gsp {
-  font-family: "Geist", sans-serif;
+.heading-sm_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 24px;
-  line-height: 30px;
-  font-weight: 300;
+  line-height: 28px;
+  font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
 }
-.quote-sm_gsp {
-  font-family: "Geist", sans-serif;
+.quote-sm_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 24px;
-  line-height: 30px;
-  font-weight: 300;
+  line-height: 28px;
+  font-weight: 500;
   font-style: normal;
 }
-.subtitle_gsp {
-  font-family: "Geist", sans-serif;
+.subtitle_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 18px;
-  line-height: 24px;
-  font-weight: 300;
+  line-height: 22px;
+  font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
 }
-.subtitle-rg_gsp {
-  font-family: "Geist", sans-serif;
+.subtitle-rg_gs {
+  font-family: "roc-grotesk", sans-serif;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 22px;
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
 }
-.pretitle-lg_gsp {
+.pretitle-lg_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -4131,7 +4066,7 @@
   font-style: normal;
   text-transform: uppercase;
 }
-.pretitle-md_gsp {
+.pretitle-md_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 16px;
   line-height: 22px;
@@ -4139,7 +4074,7 @@
   font-style: normal;
   text-transform: uppercase;
 }
-.pretitle-sm_gsp {
+.pretitle-sm_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -4147,7 +4082,7 @@
   font-style: normal;
   text-transform: uppercase;
 }
-.pretitle-xs_gsp {
+.pretitle-xs_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 12px;
   line-height: 18px;
@@ -4155,185 +4090,185 @@
   font-style: normal;
   text-transform: uppercase;
 }
-.body-lg_gsp {
+.body-lg_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal;
 }
-.body-md_gsp {
+.body-md_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
   font-style: normal;
 }
-.body-sm_gsp {
+.body-sm_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
   font-style: normal;
 }
-.caption_gsp {
+.caption_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 12px;
   line-height: 18px;
   font-weight: 400;
   font-style: normal;
 }
-.link-xl_gsp {
+.link-xl_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
 }
-.link-lg_gsp {
+.link-lg_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
 }
-.link-md_gsp {
+.link-md_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
 }
-.link-sm_gsp {
+.link-sm_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 12px;
   font-weight: 400;
   font-style: normal;
   line-height: 1;
 }
-.menu-lg_gsp {
+.menu-lg_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 32px;
   line-height: 38px;
   font-weight: 400;
   font-style: normal;
 }
-.menu-md_gsp {
+.menu-md_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 24px;
   line-height: 30px;
   font-weight: 400;
   font-style: normal;
 }
-.menu-sm_gsp {
+.menu-sm_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal;
 }
-.menu-xs_gsp {
+.menu-xs_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 16px;
   line-height: 22px;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
-.menu-model_gsp {
+.menu-model_gs {
   font-family: "helvetica-neue-lt-pro", sans-serif;
   font-size: 24px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal;
 }
-.md\:title_gsp {
+.md\:title_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 56px;
-    line-height: 62px;
-    font-weight: 300;
+    line-height: 60px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:heading-lg_gsp {
+.md\:heading-lg_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 48px;
-    line-height: 54px;
-    font-weight: 300;
+    line-height: 52px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:quote-lg_gsp {
+.md\:quote-lg_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 48px;
-    line-height: 54px;
-    font-weight: 300;
+    line-height: 52px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.md\:heading-md_gsp {
+.md\:heading-md_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 32px;
-    line-height: 38px;
-    font-weight: 300;
+    line-height: 36px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:quote-md_gsp {
+.md\:quote-md_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 32px;
-    line-height: 38px;
-    font-weight: 300;
+    line-height: 36px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.md\:heading-sm_gsp {
+.md\:heading-sm_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 24px;
-    line-height: 30px;
-    font-weight: 300;
+    line-height: 28px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:quote-sm_gsp {
+.md\:quote-sm_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 24px;
-    line-height: 30px;
-    font-weight: 300;
+    line-height: 28px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.md\:subtitle_gsp {
+.md\:subtitle_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 18px;
-    line-height: 24px;
-    font-weight: 300;
+    line-height: 22px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:subtitle-rg_gsp {
+.md\:subtitle-rg_gs {
   @media (width >= 48rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 22px;
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.md\:pretitle-lg_gsp {
+.md\:pretitle-lg_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4343,7 +4278,7 @@
     text-transform: uppercase;
   }
 }
-.md\:pretitle-md_gsp {
+.md\:pretitle-md_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4353,7 +4288,7 @@
     text-transform: uppercase;
   }
 }
-.md\:pretitle-sm_gsp {
+.md\:pretitle-sm_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4363,7 +4298,7 @@
     text-transform: uppercase;
   }
 }
-.md\:pretitle-xs_gsp {
+.md\:pretitle-xs_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4373,7 +4308,7 @@
     text-transform: uppercase;
   }
 }
-.md\:body-lg_gsp {
+.md\:body-lg_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4382,7 +4317,7 @@
     font-style: normal;
   }
 }
-.md\:body-md_gsp {
+.md\:body-md_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4391,7 +4326,7 @@
     font-style: normal;
   }
 }
-.md\:body-sm_gsp {
+.md\:body-sm_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4400,7 +4335,7 @@
     font-style: normal;
   }
 }
-.md\:caption_gsp {
+.md\:caption_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4409,7 +4344,7 @@
     font-style: normal;
   }
 }
-.md\:link-xl_gsp {
+.md\:link-xl_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4418,7 +4353,7 @@
     line-height: 1;
   }
 }
-.md\:link-lg_gsp {
+.md\:link-lg_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4427,7 +4362,7 @@
     line-height: 1;
   }
 }
-.md\:link-md_gsp {
+.md\:link-md_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4436,7 +4371,7 @@
     line-height: 1;
   }
 }
-.md\:link-sm_gsp {
+.md\:link-sm_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4445,7 +4380,7 @@
     line-height: 1;
   }
 }
-.md\:menu-lg_gsp {
+.md\:menu-lg_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 32px;
@@ -4454,7 +4389,7 @@
     font-style: normal;
   }
 }
-.md\:menu-md_gsp {
+.md\:menu-md_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 24px;
@@ -4463,7 +4398,7 @@
     font-style: normal;
   }
 }
-.md\:menu-sm_gsp {
+.md\:menu-sm_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4472,112 +4407,112 @@
     font-style: normal;
   }
 }
-.md\:menu-xs_gsp {
+.md\:menu-xs_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
   }
 }
-.md\:menu-model_gsp {
+.md\:menu-model_gs {
   @media (width >= 48rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 24px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
   }
 }
-.lg\:title_gsp {
+.lg\:title_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 56px;
-    line-height: 62px;
-    font-weight: 300;
+    line-height: 60px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:heading-lg_gsp {
+.lg\:heading-lg_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 48px;
-    line-height: 54px;
-    font-weight: 300;
+    line-height: 52px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:quote-lg_gsp {
+.lg\:quote-lg_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 48px;
-    line-height: 54px;
-    font-weight: 300;
+    line-height: 52px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.lg\:heading-md_gsp {
+.lg\:heading-md_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 32px;
-    line-height: 38px;
-    font-weight: 300;
+    line-height: 36px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:quote-md_gsp {
+.lg\:quote-md_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 32px;
-    line-height: 38px;
-    font-weight: 300;
+    line-height: 36px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.lg\:heading-sm_gsp {
+.lg\:heading-sm_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 24px;
-    line-height: 30px;
-    font-weight: 300;
+    line-height: 28px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:quote-sm_gsp {
+.lg\:quote-sm_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 24px;
-    line-height: 30px;
-    font-weight: 300;
+    line-height: 28px;
+    font-weight: 500;
     font-style: normal;
   }
 }
-.lg\:subtitle_gsp {
+.lg\:subtitle_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 18px;
-    line-height: 24px;
-    font-weight: 300;
+    line-height: 22px;
+    font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:subtitle-rg_gsp {
+.lg\:subtitle-rg_gs {
   @media (width >= 64rem) {
-    font-family: "Geist", sans-serif;
+    font-family: "roc-grotesk", sans-serif;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 22px;
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;
   }
 }
-.lg\:pretitle-lg_gsp {
+.lg\:pretitle-lg_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4587,7 +4522,7 @@
     text-transform: uppercase;
   }
 }
-.lg\:pretitle-md_gsp {
+.lg\:pretitle-md_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4597,7 +4532,7 @@
     text-transform: uppercase;
   }
 }
-.lg\:pretitle-sm_gsp {
+.lg\:pretitle-sm_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4607,7 +4542,7 @@
     text-transform: uppercase;
   }
 }
-.lg\:pretitle-xs_gsp {
+.lg\:pretitle-xs_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4617,7 +4552,7 @@
     text-transform: uppercase;
   }
 }
-.lg\:body-lg_gsp {
+.lg\:body-lg_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4626,7 +4561,7 @@
     font-style: normal;
   }
 }
-.lg\:body-md_gsp {
+.lg\:body-md_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4635,7 +4570,7 @@
     font-style: normal;
   }
 }
-.lg\:body-sm_gsp {
+.lg\:body-sm_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4644,7 +4579,7 @@
     font-style: normal;
   }
 }
-.lg\:caption_gsp {
+.lg\:caption_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4653,7 +4588,7 @@
     font-style: normal;
   }
 }
-.lg\:link-xl_gsp {
+.lg\:link-xl_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4662,7 +4597,7 @@
     line-height: 1;
   }
 }
-.lg\:link-lg_gsp {
+.lg\:link-lg_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
@@ -4671,7 +4606,7 @@
     line-height: 1;
   }
 }
-.lg\:link-md_gsp {
+.lg\:link-md_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 14px;
@@ -4680,7 +4615,7 @@
     line-height: 1;
   }
 }
-.lg\:link-sm_gsp {
+.lg\:link-sm_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 12px;
@@ -4689,7 +4624,7 @@
     line-height: 1;
   }
 }
-.lg\:menu-lg_gsp {
+.lg\:menu-lg_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 32px;
@@ -4698,7 +4633,7 @@
     font-style: normal;
   }
 }
-.lg\:menu-md_gsp {
+.lg\:menu-md_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 24px;
@@ -4707,7 +4642,7 @@
     font-style: normal;
   }
 }
-.lg\:menu-sm_gsp {
+.lg\:menu-sm_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 18px;
@@ -4716,21 +4651,21 @@
     font-style: normal;
   }
 }
-.lg\:menu-xs_gsp {
+.lg\:menu-xs_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
   }
 }
-.lg\:menu-model_gsp {
+.lg\:menu-model_gs {
   @media (width >= 64rem) {
     font-family: "helvetica-neue-lt-pro", sans-serif;
     font-size: 24px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
   }
 }
@@ -4738,8 +4673,8 @@
   &:is(:where(.group):hover *) {
     @media (hover: hover) {
       border-radius: 50px;
-      border: 0.5px solid var(--gsp-Stroke-Stroke, rgba(235, 239, 242, 0.64));
-      background: var(--gsp-blur-gsp-blur-dark-70, rgba(16, 28, 38, 0.70));
+      border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+      background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
       backdrop-filter: blur(48px);
       color: #EBEFF2;
     }
@@ -4747,75 +4682,76 @@
 }
 .cta_dual-entrance {
   border-radius: 50px;
-  border: 0.5px solid var(--gsp-Stroke-Stroke, rgba(235, 239, 242, 0.64));
-  background: var(--gsp-blur-gsp-blur-light-80, rgba(235, 239, 242, 0.80));
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: var(--gs-blur-gs-blur-light-80, rgba(235, 239, 242, 0.80));
   backdrop-filter: blur(48px);
   color: #05090D;
 }
 .play-pause {
   border-radius: 50px;
-  border: 0.5px solid var(--gsp-Stroke-Stroke, rgba(235, 239, 242, 0.64));
-  background: var(--gsp-blur-gsp-blur-dark-70, rgba(16, 28, 38, 0.70));
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
   backdrop-filter: blur(48px);
 }
-.bg_gsp {
-  background: #FAF9F7;
+.bg_gs {
+  background: #101C26;
 }
-.cta-border-dark_gsp {
-  border-radius: 50px;
-  border: 0.5px solid #141312;
-  color: #141312;
-}
-.cta-border-light_gsp {
-  border-radius: 50px;
-  border: 0.5px solid #FAF9F7;
-  color: #EBEFF2;
-}
-.cta-truffle_gsp {
-  border-radius: 50px;
-  border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+.bg-truffle_gs {
   background: #282624;
-  color: #FAF9F7;
 }
-.cta-blur-light_gsp {
-  border-radius: 50px;
-  border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
-  background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
-  backdrop-filter: blur(48px);
-  color: #141312;
+.text-blue_gs {
+  color: #4DBAFA;
 }
-.cta-blur-dark_gsp {
+.cta-border-light_gs {
   border-radius: 50px;
-  border: 0.5px solid var(--gsp-Stroke-Stroke, rgba(235, 239, 242, 0.64));
-  background: var(--gsp-blur-gsp-blur-dark-70, rgba(16, 28, 38, 0.70));
+  border: 0.5px solid #EBEFF2;
+  color: #EBEFF2;
+}
+.cta-border-dark_gs {
+  border-radius: 50px;
+  border: 0.5px solid #05090D;
+  color: #05090D;
+}
+.cta-blue_gs {
+  border-radius: 50px;
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: #4DBAFA;
+  color: #05090D;
+}
+.cta-blur_gs {
+  border-radius: 50px;
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
   backdrop-filter: blur(48px);
   color: #EBEFF2;
 }
-.cta-white_gsp {
+.cta-101C26_gs {
   border-radius: 50px;
-  border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
-  background: #FAF9F7;
-  color: #141312;
-}
-.text-color_gsp {
-  color: #141312;
-}
-.text-truffle_gsp {
-  color: #282624;
-}
-.text-FAF9F7_gsp {
-  color: #FAF9F7;
-}
-.text-EBEFF2_gsp {
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: var(--GS-Primary-Mirage, #101C26);
   color: #EBEFF2;
 }
-.bg-beige_gsp {
+.text-05090D_gs {
+  color: #05090D;
+}
+.cta-dark_gs {
+  border-radius: 50px;
+  background: #05090D;
+  color: #EBEFF2;
+}
+.text-color_gs {
+  color: #EBEFF2;
+}
+.bg-EBEFF2_gs {
+  background-color: #EBEFF2;
+}
+.bg-dark_gs {
   border-radius: 16px;
-  border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
-  background: #D4CCC1;
+  border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+  background: var(--GS-Shades-Bunker, #0B1319);
 }
-.bg-truffle_gsp {
-  background: #282624;
+.bg-white_gs {
+  background: #EBEFF2;
 }
 .reveal-container {
   display: flex;
@@ -4828,50 +4764,57 @@
 .reveal-word {
   position: relative;
   display: inline-block;
-  color: rgba(20, 19, 18, 0.48);
+  color: rgba(235, 239, 242, 0.40);
   transition: color 0.4s ease;
 }
 .reveal-word.active {
-  color: #141312;
+  color: #ffffff;
 }
 @media (max-width: 768px) {
   .reveal-container {
     column-gap: 0.2em;
   }
 }
-.stepper-hero_gsp {
+.stepper-hero_gs {
   border-radius: 50px;
-  background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
+  background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
   backdrop-filter: blur(48px);
 }
-.hidden_gs {
+.hidden_gsp {
   display: none;
 }
-.view_gsp {
+.view_gs {
   display: block;
 }
-.bg-141312_gsp {
-  background-color: #141312;
-}
-.header-gsp {
+.header-gs {
   border-radius: 16px;
-  border: 0.5px solid rgba(250, 249, 247, 0.64);
-  background: rgba(235, 239, 242, 0.70);
+  border: 0.5px solid rgba(235, 239, 242, 0.64);
+  background: rgba(16, 28, 38, 0.70);
   backdrop-filter: blur(48px);
-  color: #141312;
+  color: #EBEFF2;
 }
-.header-content_gsp {
-  background: rgba(235, 239, 242, 0.70);
+.header-content_gs {
+  background: rgba(16, 28, 38, 0.70);
 }
-.menu-toggle_gsp {
+.menu-toggle_gs, .article-data_gs {
   border-radius: 50px;
-  background: #FAF9F7;
+  background: #EBEFF2;
 }
-.tech-spec_gsp {
-  border-bottom: 0.5px solid #141312;
+.text-data_gs {
+  color: #05090D;
 }
-.bg-rich-text-coll_gsp {
-  background: #EFECE8;
+.tech-spec_gs {
+  border-bottom: 0.5px solid #EBEFF2;
+}
+.bg-form_gs {
+  border-radius: 16px;
+  border: 1px solid rgba(235, 239, 242, 0.64);
+  background: #0B1319;
+}
+.bg-modelli_gs {
+  border-radius: 16px;
+  background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
+  backdrop-filter: blur(48px);
 }
 @property --tw-translate-x {
   syntax: "*";
