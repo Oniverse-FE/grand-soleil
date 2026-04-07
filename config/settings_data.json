@@ -55,7 +55,7 @@
             "type": "text",
             "settings": {
               "id_gamme": "",
-              "title_gamme": "Esclusività su misura",
+              "title_gamme": "Exclusivity tailored to your needs",
               "link_gamme": "",
               "url_gamme": "",
               "visibility": "gsp"
@@ -119,7 +119,7 @@
             "type": "text",
             "settings": {
               "id_gamme": "performance",
-              "title_gamme": "Prestazioni al massimo livello",
+              "title_gamme": "Top-level performance",
               "link_gamme": "Discover Performance",
               "url_gamme": "",
               "visibility": "gs"
@@ -159,7 +159,7 @@
             "type": "text",
             "settings": {
               "id_gamme": "long-cruise",
-              "title_gamme": "Comfort in ogni situazione",
+              "title_gamme": "Comfort in every situation",
               "link_gamme": "Discover Long Cruise",
               "url_gamme": "",
               "visibility": "gs"
