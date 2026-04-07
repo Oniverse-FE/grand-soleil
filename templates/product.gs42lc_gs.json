@@ -163,19 +163,180 @@
         "width-mobile": "327px"
       }
     },
+    "intro_slider_Mgnnej": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_p8fHtP": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "PERFORMANCE AND STABLE SHAPES",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_xxR89e": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Descrizione... Thanks to its increased hull volume, the Grand Soleil 42 Long Cruise offers exceptional stability. The well-proportioned sail plan maximizes high-performance sailing standards, ensuring an unforgettable sailing experience. Like the rest of the Long Cruise range, the Grand Soleil 42 Long Cruise is designed to offer unparalleled comfort and luxury on board, providing an extraordinary yachting experience.\n\nAll maneuvering are arranged below deck at the helmsman’s station, where it is possible to choose whether or not to have dedicated seating. When dedicated seats are present, a natural storage space is also created. The two winches on each side (electric as an option) positioned near the two helm wheels make long sailing trips easy and pleasant, even with a smaller crew. Maneuvering is also simplified by the furling mainsail in the mast (opt) and the self-tacking jib with hanging rail (std). The carbon rollbar, when present, frees the large cockpit from clutter, leaving space for complete relaxation and also acts as a support for the bimini and sprayhood."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_p8fHtP",
+        "intro_text_area_xxR89e"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_6LQGUr": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_U9Mfmm": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-42-LC-gallery-01_desktop-4.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_twckNr": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-42-LC-gallery-02_desktop-4.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_npF74m": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-42-LC-gallery-03_desktop-4.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_yUNFM3": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-42-LC-gallery-04_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_U9Mfmm",
+        "image_slider_image_twckNr",
+        "image_slider_image_npF74m",
+        "image_slider_image_yUNFM3"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "rich_text_KAH3iz": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "",
+        "rt_title": "rollbar version",
+        "rt_text1": "The Grand Soleil 42 Long Cruise is also available in the version with carbon rollbar, designed for those who want a blanket that is as free and functional as possible. The rollbar allows you to clear the cockpit of all maneuvers, improving liveability and safety, and acts as a support for biminis and sprayhoods, transforming the external area into a space dedicated to total relaxation.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "full_image_TK6nte": {
+      "type": "full-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/GS-42-LC-gallery-01_desktop-5.jpg",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
+    },
+    "rich_text_9KLqWX": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "",
+        "rt_title": "STYLISH DESIGN TRAITS",
+        "rt_text1": "",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
     "pdp_multi_cards_CbG6MH": {
       "type": "pdp-multi-cards",
       "blocks": {
         "title_Gaf8M6": {
           "type": "title",
           "settings": {
-            "editorial-title": "INTERIORS"
+            "editorial-title": "LAYOUT 2 CABINS"
           }
         },
         "text_area_gmtHcx": {
           "type": "text-area",
           "settings": {
-            "editor-text": "Built entirely in sandwich plate with composite wood compartmentalisation bulkheads, the Grand Soleil 52 Performance has been studied down to the smallest detail to make the most of its space and offer living areas large for a yacht this size, without affecting the weight. The large dinette features the chart area in the bow, big storage compartments and an ergonomic and fully equipped C-shaped galley (with 3 fridge-freezers offering 172 litres of storage space), to ensure a pleasant stay on board even for long periods.\nThe interior layout includes three cabins and three bathrooms: the master cabin in the bow with a large bathroom and shower stall, the double cabin in the stern with a dedicated bathroom, and the vip double cabin (std.) with a bathroom, shower stall, and the possibility of direct access from the dinette. The vip cabin can also have twin beds (opt.).\n\nOwners can choose among different essences, such as oak, grey oak or teak; in all cases, chromatic elegance is ensured by the contrasting floorboards.",
+            "editor-text": "Below deck, every detail is designed to ensure the highest level of comfort worthy of a true Long Cruise yacht. The large hull windows give the interiors a bright and airy atmosphere. The attention to detail and the well-planned layout create the perfect setting for extended cruising. On the starboard side, the saloon features a three-seater sofa, with the central seat convertible into a chart table. The galley is fully equipped to provide maximum comfort and generous storage space.\n\nThe owner’s cabin has been designed to offer optimal storage capacity, with three lockers, two drawers under the bed, shelves and bookcases along the sides, and a large wardrobe.\n\nThe Grand Soleil 42 Long Cruise offers two interior layouts to suit different needs on board. In the two-cabin version (opt.) shown here, the starboard aft cabin is fitted with two single V-shaped berths. In the 2-cabin layout, the galley is more spacious and offers increased storage capacity, thanks to the absence of the second aft cabin featured in the 3-cabin configuration.",
             "editorial-label": "",
             "editorial-url": ""
           }
@@ -183,7 +344,25 @@
         "card_rj3fVW": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-52-interiors-teak-EN-01_desktop-1.jpg",
+            "image": "shopify://shop_images/interiors-01.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_aAX8mU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/interiors-02.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_eAUDY9": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/interiors-03.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -192,7 +371,7 @@
         "card_EmiiRJ": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-52-interiors-teak-EN-02_desktop-1.jpg",
+            "image": "shopify://shop_images/interiors-04.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -201,7 +380,7 @@
         "card_BWg8Lg": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-52-interiors-teak-EN-03_desktop-1.jpg",
+            "image": "shopify://shop_images/interiors-05.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -210,7 +389,7 @@
         "card_grK6hC": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-52-interiors-teak-EN-04_desktop-1.jpg",
+            "image": "shopify://shop_images/interiors-06.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -221,6 +400,8 @@
         "title_Gaf8M6",
         "text_area_gmtHcx",
         "card_rj3fVW",
+        "card_aAX8mU",
+        "card_eAUDY9",
         "card_EmiiRJ",
         "card_BWg8Lg",
         "card_grK6hC"
@@ -547,6 +728,11 @@
     "rich_text_ppGgwa",
     "intro_slider_FyKTW6",
     "image_slider_L8iGY6",
+    "intro_slider_Mgnnej",
+    "image_slider_6LQGUr",
+    "rich_text_KAH3iz",
+    "full_image_TK6nte",
+    "rich_text_9KLqWX",
     "pdp_multi_cards_CbG6MH",
     "rich_text_fycJJg",
     "image_slider_7tF4tQ",
