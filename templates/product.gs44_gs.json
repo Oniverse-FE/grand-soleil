@@ -56,6 +56,53 @@
         "pb_desktop": 80
       }
     },
+    "intro_slider_FyKTW6": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_n7fJ6z": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "FROM PERFORMANCE TO RACE",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_YGnqPP": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "The Grand Soleil 44 is available in two models. The first, the Performance model, has a sail plan and deck setup that allows you to sail easily and simply. The second, the Race version, has a competitive character and identity. Both versions ooze the timeless style and elegance that are the hallmarks of the entire Grand Soleil range."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_n7fJ6z",
+        "intro_text_area_YGnqPP"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
     "image_slider_L8iGY6": {
       "type": "image-slider",
       "blocks": {
@@ -63,33 +110,6 @@
           "type": "image-slider-image",
           "settings": {
             "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-01_desktop-2.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_mzjNri": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-02_desktop-2.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_tMTYXA": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-03_desktop-2.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_yYmNNC": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-04_desktop.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -107,10 +127,77 @@
       },
       "block_order": [
         "image_slider_image_QNU3Eb",
-        "image_slider_image_mzjNri",
-        "image_slider_image_tMTYXA",
-        "image_slider_image_yYmNNC",
         "image_slider_image_Gr8KK6"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "image_slider_EAJajA": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_Y6pC9Q": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-01_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_D9YfCT": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-02_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_iwwpgU": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-03_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_C3QEGe": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-04_desktop.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_Kz7TX7": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-05_desktop.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_Y6pC9Q",
+        "image_slider_image_D9YfCT",
+        "image_slider_image_iwwpgU",
+        "image_slider_image_C3QEGe",
+        "image_slider_image_Kz7TX7"
       ],
       "name": "Slider",
       "settings": {
@@ -658,7 +745,9 @@
   "order": [
     "hero_banner_FHwwWU",
     "rich_text_ppGgwa",
+    "intro_slider_FyKTW6",
     "image_slider_L8iGY6",
+    "image_slider_EAJajA",
     "pdp_multi_cards_CbG6MH",
     "intro_slider_X3xXex",
     "image_slider_7tF4tQ",
