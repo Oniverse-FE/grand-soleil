@@ -426,20 +426,12 @@
     "tech_spec_gFwMPj": {
       "type": "tech-spec",
       "blocks": {
-        "tech_spec_item_DgcCGY": {
-          "type": "tech-spec-item",
-          "name": "Overall length",
-          "settings": {
-            "label": "Overall length",
-            "value": "11.3 m – 37.07 ft"
-          }
-        },
         "tech_spec_item_8Drwyc": {
           "type": "tech-spec-item",
           "name": "Hull length",
           "settings": {
             "label": "Hull length",
-            "value": "9.99 m – 32.8 ft"
+            "value": "13.40 m – 43.96 ft "
           }
         },
         "tech_spec_item_mY8ptH": {
@@ -447,7 +439,7 @@
           "name": "Max beam",
           "settings": {
             "label": "Max beam",
-            "value": "3.70 m – 12 ft"
+            "value": "4.27 m – 14.01 ft"
           }
         },
         "tech_spec_item_4jQ9LR": {
@@ -455,143 +447,15 @@
           "name": "Displacement",
           "settings": {
             "label": "Displacement",
-            "value": "3500 kg – 7716 lb (lightship)"
+            "value": "10.3 t approx – 20600 lb approx "
           }
         },
-        "tech_spec_item_pcg3ef": {
+        "tech_spec_item_CXFKwq": {
           "type": "tech-spec-item",
-          "name": "Draft std.",
+          "name": "Engines",
           "settings": {
-            "label": "Draft std.",
-            "value": "2.2 m – 7.2 ft"
-          }
-        },
-        "tech_spec_item_iN4xft": {
-          "type": "tech-spec-item",
-          "name": "Shallow keel",
-          "settings": {
-            "label": "Shallow keel",
-            "value": "1.8 m – 5.9 ft"
-          }
-        },
-        "tech_spec_item_kjkWWb": {
-          "type": "tech-spec-item",
-          "name": "Std. Construction",
-          "settings": {
-            "label": "Std. Construction",
-            "value": "Termoplastic resin + NLcomp tachnology (hull available only in white)"
-          }
-        },
-        "tech_spec_item_4cGwUt": {
-          "type": "tech-spec-item",
-          "name": "Opt. Construction",
-          "settings": {
-            "label": "Opt. Construction",
-            "value": "Vinylester resin (paintable hull with various color options)"
-          }
-        },
-        "tech_spec_item_iAjHFm": {
-          "type": "tech-spec-item",
-          "name": "Std. Engine",
-          "settings": {
-            "label": "Std. Engine",
-            "value": "E-propulsion POD DRIVE 6.0 EVO (6KW)"
-          }
-        },
-        "tech_spec_item_giPaCt": {
-          "type": "tech-spec-item",
-          "name": "Range with std. engine",
-          "settings": {
-            "label": "Range with std. engine",
-            "value": "30 NM (at 5kn of speed)60 NM with 2 batt."
-          }
-        },
-        "tech_spec_item_3g7XFH": {
-          "type": "tech-spec-item",
-          "name": "Opt. Engine",
-          "settings": {
-            "label": "Opt. Engine",
-            "value": "Diesel Engine"
-          }
-        },
-        "tech_spec_item_83D6Hr": {
-          "type": "tech-spec-item",
-          "name": "Fuel capacity with engine opt.",
-          "settings": {
-            "label": "Fuel capacity with engine opt.",
-            "value": "55 L – 14.5 gal"
-          }
-        },
-        "tech_spec_item_mycqLV": {
-          "type": "tech-spec-item",
-          "name": "Engine power capacity",
-          "settings": {
-            "label": "Engine power capacity",
-            "value": "8 kw std.+ 8 kw opt."
-          }
-        },
-        "tech_spec_item_Jr9NqJ": {
-          "type": "tech-spec-item",
-          "name": "Solar energy system",
-          "settings": {
-            "label": "Solar energy system",
-            "value": "340 w nominal power"
-          }
-        },
-        "tech_spec_item_e8Gidq": {
-          "type": "tech-spec-item",
-          "name": "Systems power capacity",
-          "settings": {
-            "label": "Systems power capacity",
-            "value": "190 Ah (std.)+ 190 Ah (power pack opt.)"
-          }
-        },
-        "tech_spec_item_W7CWqU": {
-          "type": "tech-spec-item",
-          "name": "Hydrogeneration System",
-          "settings": {
-            "label": "Hydrogeneration System",
-            "value": "240 w at 6 kn of speed"
-          }
-        },
-        "tech_spec_item_79iGHg": {
-          "type": "tech-spec-item",
-          "name": "Square-Top Mainsail Area",
-          "settings": {
-            "label": "Square-Top Mainsail Area",
-            "value": "38 m² – 409 ft²"
-          }
-        },
-        "tech_spec_item_HBaEBD": {
-          "type": "tech-spec-item",
-          "name": "Self-Tacking Jib Area",
-          "settings": {
-            "label": "Self-Tacking Jib Area",
-            "value": "26 m² – 279.86 ft²"
-          }
-        },
-        "tech_spec_item_i6mKQP": {
-          "type": "tech-spec-item",
-          "name": "Genoa Area",
-          "settings": {
-            "label": "Genoa Area",
-            "value": "32 m² – 344 ft²"
-          }
-        },
-        "tech_spec_item_Jt6hVt": {
-          "type": "tech-spec-item",
-          "name": "Code 0 area",
-          "settings": {
-            "label": "Code 0 area",
-            "value": "60 m² – 645.83 ft²"
-          }
-        },
-        "tech_spec_item_NRygrY": {
-          "type": "tech-spec-item",
-          "name": "Gennaker area",
-          "settings": {
-            "label": "Gennaker area",
-            "value": "100 m² – 1076.4 ft²"
+            "label": "Engines",
+            "value": "Volvo Penta 50 hp Saildrive std.60 hp opt. "
           }
         },
         "tech_spec_item_HEEjGJ": {
@@ -599,42 +463,115 @@
           "name": "Water tank",
           "settings": {
             "label": "Water tank",
-            "value": "70 lt – 18.5 gal"
+            "value": "300 l – 79 gal "
           }
         },
-        "tech_spec_item_qb3YH8": {
+        "tech_spec_item_4zpik8": {
           "type": "tech-spec-item",
-          "name": "CE Certification",
+          "name": "Fuel tank",
           "settings": {
-            "label": "CE Certification",
-            "value": "Category B*/C"
+            "label": "Fuel tank",
+            "value": "170 l – 45 gal "
+          }
+        },
+        "tech_spec_item_pcg3ef": {
+          "type": "tech-spec-item",
+          "name": "Draft",
+          "settings": {
+            "label": "Draft",
+            "value": "2.60 m / 8.53 ft std.<br>2.40 m / 7.87 ft & 2.80 m / 9.19 ft opt."
+          }
+        },
+        "tech_spec_item_4hkqx9": {
+          "type": "tech-spec-item",
+          "name": "Berths",
+          "settings": {
+            "label": "Berths",
+            "value": "6/9"
+          }
+        },
+        "tech_spec_item_DgcCGY": {
+          "type": "tech-spec-item",
+          "name": "Overall length (Performance)",
+          "settings": {
+            "label": "Overall length (Performance)",
+            "value": "14.33 m – 47 ft"
+          }
+        },
+        "tech_spec_item_iN4xft": {
+          "type": "tech-spec-item",
+          "name": "Gennaker area (Performance)",
+          "settings": {
+            "label": "Gennaker area (Performance)",
+            "value": "170 m² -1830 ft²"
+          }
+        },
+        "tech_spec_item_kjkWWb": {
+          "type": "tech-spec-item",
+          "name": "Mainsail area (Performance)",
+          "settings": {
+            "label": "Mainsail area (Performance)",
+            "value": "59 m² – 635 ft²"
+          }
+        },
+        "tech_spec_item_4cGwUt": {
+          "type": "tech-spec-item",
+          "name": "Self taking jib (Performance)",
+          "settings": {
+            "label": "Self taking jib (Performance)",
+            "value": "47 m² – 506 ft²"
+          }
+        },
+        "tech_spec_item_iAjHFm": {
+          "type": "tech-spec-item",
+          "name": "Overall length (race)",
+          "settings": {
+            "label": "Overall length (race)",
+            "value": "15 m – 49.21 ft"
+          }
+        },
+        "tech_spec_item_giPaCt": {
+          "type": "tech-spec-item",
+          "name": "Gennaker area (race)",
+          "settings": {
+            "label": "Gennaker area (race)",
+            "value": "195 m² – 2100 ft²"
+          }
+        },
+        "tech_spec_item_3g7XFH": {
+          "type": "tech-spec-item",
+          "name": "Mainsail area (race)",
+          "settings": {
+            "label": "Mainsail area (race)",
+            "value": "66 m² -711 ft²"
+          }
+        },
+        "tech_spec_item_83D6Hr": {
+          "type": "tech-spec-item",
+          "name": "Self taking jib (race)",
+          "settings": {
+            "label": "Self taking jib (race)",
+            "value": "57 m² – 614 ft²"
           }
         }
       },
       "block_order": [
-        "tech_spec_item_DgcCGY",
         "tech_spec_item_8Drwyc",
         "tech_spec_item_mY8ptH",
         "tech_spec_item_4jQ9LR",
+        "tech_spec_item_CXFKwq",
+        "tech_spec_item_HEEjGJ",
+        "tech_spec_item_4zpik8",
         "tech_spec_item_pcg3ef",
+        "tech_spec_item_4hkqx9",
+        "tech_spec_item_DgcCGY",
         "tech_spec_item_iN4xft",
         "tech_spec_item_kjkWWb",
         "tech_spec_item_4cGwUt",
         "tech_spec_item_iAjHFm",
         "tech_spec_item_giPaCt",
         "tech_spec_item_3g7XFH",
-        "tech_spec_item_83D6Hr",
-        "tech_spec_item_mycqLV",
-        "tech_spec_item_Jr9NqJ",
-        "tech_spec_item_e8Gidq",
-        "tech_spec_item_W7CWqU",
-        "tech_spec_item_79iGHg",
-        "tech_spec_item_HBaEBD",
-        "tech_spec_item_i6mKQP",
-        "tech_spec_item_Jt6hVt",
-        "tech_spec_item_NRygrY",
-        "tech_spec_item_HEEjGJ",
-        "tech_spec_item_qb3YH8"
+        "tech_spec_item_83D6Hr"
       ],
       "name": "Technical Spec Right Col",
       "settings": {
@@ -658,7 +595,7 @@
         "intro_title_myk7Wt": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "ABOUT THE GS BLUE:",
+            "intro-title-text": "About the GS 44",
             "small-title": ""
           }
         },
@@ -666,7 +603,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "Project: Matteo Polli YD / Nauta Design / Nlcomp\nBuilder: Cantiere del Pard"
+            "intro-text-area-text": "Naval architecture: Matteo Polli\nDeck and Interior Design: Nauta Design\nShipyard: Cantiere del Pardo\nCE Category: “A” OCEAN"
           }
         }
       },
