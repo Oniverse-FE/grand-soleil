@@ -84,6 +84,44 @@
         "pb_desktop": 128
       }
     },
+    "key_features_EttV7W": {
+      "type": "key-features",
+      "blocks": {
+        "feature_FUxmX8": {
+          "type": "feature",
+          "settings": {
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
+          }
+        },
+        "feature_GKaKF3": {
+          "type": "feature",
+          "settings": {
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
+          }
+        },
+        "feature_bLzEC8": {
+          "type": "feature",
+          "settings": {
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
+          }
+        }
+      },
+      "block_order": [
+        "feature_FUxmX8",
+        "feature_GKaKF3",
+        "feature_bLzEC8"
+      ],
+      "name": "Key feature",
+      "settings": {
+        "padding_top": "72px",
+        "padding_bottom": "128px",
+        "padding_top_mobile": "48px",
+        "padding_bottom_mobile": "48px"
+      }
+    },
     "image_slider_U74ykJ": {
       "type": "image-slider",
       "blocks": {
@@ -357,6 +395,7 @@
     "rich_text_TT4N3z",
     "rounded_image_n6LpmU",
     "intro_slider_PdzaCf",
+    "key_features_EttV7W",
     "image_slider_U74ykJ",
     "intro_slider_hNGFDa",
     "image_slider_m3z8xf",
