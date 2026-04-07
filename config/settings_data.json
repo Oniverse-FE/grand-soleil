@@ -65,7 +65,7 @@
             "type": "card",
             "settings": {
               "image": "shopify://shop_images/img.png",
-              "title": "GS Plus 65",
+              "title": "GS 65",
               "description": "",
               "link": "shopify://collections/gs72-plus",
               "visibility": "gsp"
@@ -75,7 +75,7 @@
             "type": "card",
             "settings": {
               "image": "shopify://shop_images/img.png",
-              "title": "GS Plus 65",
+              "title": "GS 72",
               "description": "",
               "link": "shopify://products/gsp-72-shanti",
               "visibility": "gsp"
