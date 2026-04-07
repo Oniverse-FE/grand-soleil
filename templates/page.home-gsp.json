@@ -64,24 +64,24 @@
         "pb_mob": 128
       }
     },
-    "model_eKXdcE": {
-      "type": "model",
+    "model_home_MiU4jz": {
+      "type": "model-home",
       "blocks": {
-        "tab_UkgyW9": {
+        "tab_NRijqi": {
           "type": "tab",
           "settings": {
             "tab_title": "GS Plus 65",
             "tab_collection": "gs72-plus"
           }
         },
-        "tab_JefcMp": {
+        "tab_46dAr9": {
           "type": "tab",
           "settings": {
             "tab_title": "GS Plus 72",
             "tab_collection": "gsp-72"
           }
         },
-        "tab_Dbzhcq": {
+        "tab_CALmLf": {
           "type": "tab",
           "settings": {
             "tab_title": "GS Plus 80",
@@ -90,16 +90,14 @@
         }
       },
       "block_order": [
-        "tab_UkgyW9",
-        "tab_JefcMp",
-        "tab_Dbzhcq"
+        "tab_NRijqi",
+        "tab_46dAr9",
+        "tab_CALmLf"
       ],
-      "name": "Gamma Section V2",
+      "name": "Gamma Section",
       "settings": {
-        "bg_color_section": "#ebeff2",
-        "cta_gamma_product": "Scopri il modello",
-        "cta_gamma_dealer": "Trova concessionario",
-        "tab_collections": "LINEA GRAND SOLEIL PLUS"
+        "tab_collections": "LINEA GRAND SOLEIL PLUS",
+        "label_discover": "Scopri"
       }
     },
     "multi_card_9ekjXf": {
@@ -320,7 +318,7 @@
   "order": [
     "hero_banner_kYmAaY",
     "subtitle_text_bgKxpn",
-    "model_eKXdcE",
+    "model_home_MiU4jz",
     "multi_card_9ekjXf",
     "editorial_section_3E6LXU",
     "text_and_image_WmYNYT",
