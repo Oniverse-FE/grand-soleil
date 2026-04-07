@@ -31,12 +31,19 @@
               assign custom_classes = "link-lg_gs link-lg_gsp cta-truffle_gsp cta-101C26_gs"
             endif
           -%}
-
+        <div class="flex flex-col md:flex-row gap-4">
           <a id="cta-1-{{ section.id }}"
             href="{{ section.settings.rt-cta_link }}"
             class="{{ base_classes }} {{ custom_classes }}">
             {{ section.settings.rt-cta_label }}
           </a>
+
+          <a id="cta-2-{{ section.id }}"
+            href="{{ section.settings.rt-cta_link_2 }}"
+            class="{{ base_classes }} link-lg_gs link-lg_gsp cta-border-dark_gsp cta-border-light_gs">
+            {{ section.settings.rt-cta_label_2 }}
+          </a>
+        </div>
         {% endif %}
      </div>
 </div>
@@ -99,6 +106,16 @@
       "type": "url",
       "id": "rt-cta_link",
       "label": "Link Bottone 1"
+    },
+        {
+      "type": "text",
+      "id": "rt-cta_label_2",
+      "label": "Label Bottone 2"
+    },
+    {
+      "type": "url",
+      "id": "rt-cta_link_2",
+      "label": "Link Bottone 2"
     },
     {
       "type": "checkbox",
