@@ -269,6 +269,14 @@
         "image_3": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png"
       }
     },
+    "empty_space_n9pxQ6": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 64,
+        "desktop-height": 128
+      }
+    },
     "model_home_rEkRce": {
       "type": "model-home",
       "blocks": {
@@ -339,6 +347,7 @@
     "rounded_image_ijPgTz",
     "rich_text_article_WrpcRw",
     "mosaic_N7HwH9",
+    "empty_space_n9pxQ6",
     "model_home_rEkRce",
     "rich_text_NJ9ddn"
   ]
