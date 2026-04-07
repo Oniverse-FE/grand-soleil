@@ -246,35 +246,13 @@
         "pb_mob": 104
       }
     },
-    "text_gallery_888Jzy": {
-      "type": "text-gallery",
-      "blocks": {
-        "image_zebRpe": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/0_0-HERO.jpg",
-            "alt_image": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_zebRpe"
-      ],
-      "name": "Text & Gallery",
-      "settings": {
-        "id_section": "",
-        "main_title": "THE RACE VERSION",
-        "subtitle": "",
-        "content": "The Race version of the Grand Soleil 52 is designed for owners seeking top-level performance and a strong racing attitude. Compared to the standard configuration, this setup features a deck optimized for competitive sailing, with six winches, longitudinal jib tracks, and a recessed mainsheet traveller with electric controls, seamlessly integrated into the cockpit to ensure efficiency and freedom of movement during maneuvers.\n\nThe bowsprit is extended by 90 cm compared to the standard version, allowing for more effective use of asymmetric sails or gennakers, especially downwind. Completing the Race configuration are textile lifelines, which are lighter and more efficient than traditional ones, and the option to equip the yacht with a carbon mast and boom, reducing overall weight and increasing rig stiffness — key elements for maximizing racing performance."
-      }
-    },
     "rich_text_fycJJg": {
       "type": "rich-text",
       "name": "Rich text",
       "settings": {
-        "rt_subtitle": "AIRY, LIVEABLE, BEAUTIFUL INTERIORS",
-        "rt_title": "",
-        "rt_text1": "The Grand Soleil 44 is the proof that performance doesn’t need to sacrifice comfort at all, thanks to large and beautiful interior spaces, amplified by the brightness that filters through the windows of the hull and the deck. Three cabins and two bathrooms, both with separate shower cubicles, complete the relaxation area. The L-shaped kitchen and dinette with a comfortable U-shaped sofa and table are positioned centrally, offering hospitality to up to eight people. Another three-seater sofa with a chart table adds even more comfort and flexibility for guests onboard.",
+        "rt_subtitle": "",
+        "rt_title": "THE RACE VERSION",
+        "rt_text1": "The Race version of the Grand Soleil 52 is designed for owners seeking top-level performance and a strong racing attitude. Compared to the standard configuration, this setup features a deck optimized for competitive sailing, with six winches, longitudinal jib tracks, and a recessed mainsheet traveller with electric controls, seamlessly integrated into the cockpit to ensure efficiency and freedom of movement during maneuvers.\n\nThe bowsprit is extended by 90 cm compared to the standard version, allowing for more effective use of asymmetric sails or gennakers, especially downwind. Completing the Race configuration are textile lifelines, which are lighter and more efficient than traditional ones, and the option to equip the yacht with a carbon mast and boom, reducing overall weight and increasing rig stiffness — key elements for maximizing racing performance.",
         "rt-cta_label": "",
         "rt-cta_link": "",
         "rt-cta_label_2": "",
@@ -288,6 +266,76 @@
         "pb_mobile": 40,
         "pb_tablet": 60,
         "pb_desktop": 80
+      }
+    },
+    "image_slider_7tF4tQ": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_8wHiWd": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-01_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_gFeVKg": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-02_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6qiqgH": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-03_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jbB4cX": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-04_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6mPGf6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-05_desktop-3.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_8wHiWd",
+        "image_slider_image_gFeVKg",
+        "image_slider_image_6qiqgH",
+        "image_slider_image_jbB4cX",
+        "image_slider_image_6mPGf6"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
       }
     },
     "pdp_multi_cards_KEjtJk": {
@@ -381,66 +429,6 @@
         "pb_tab": 80,
         "pt_mob": 104,
         "pb_mob": 104
-      }
-    },
-    "image_slider_7tF4tQ": {
-      "type": "image-slider",
-      "blocks": {
-        "image_slider_image_gFeVKg": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_04259_1.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_6qiqgH": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_00024.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_jbB4cX": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/gallery-vertical-03-1.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_6mPGf6": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_05251.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "image_slider_image_gFeVKg",
-        "image_slider_image_6qiqgH",
-        "image_slider_image_jbB4cX",
-        "image_slider_image_6mPGf6"
-      ],
-      "name": "Slider",
-      "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
       }
     },
     "tech_spec_gFwMPj": {
@@ -685,10 +673,9 @@
     "intro_slider_FyKTW6",
     "image_slider_L8iGY6",
     "pdp_multi_cards_CbG6MH",
-    "text_gallery_888Jzy",
     "rich_text_fycJJg",
-    "pdp_multi_cards_KEjtJk",
     "image_slider_7tF4tQ",
+    "pdp_multi_cards_KEjtJk",
     "tech_spec_gFwMPj",
     "intro_slider_EqR7Bn",
     "text_gallery_MpUcET"
