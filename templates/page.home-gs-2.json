@@ -50,52 +50,6 @@
       "name": "Hero Banner Final",
       "settings": {}
     },
-    "model_CFL9V3": {
-      "type": "model",
-      "blocks": {
-        "tab_qj8Ynn": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Tutti i modelli",
-            "tab_collection": "all-models"
-          }
-        },
-        "tab_mwxwBh": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Performance",
-            "tab_collection": "performance"
-          }
-        },
-        "tab_WwghW8": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Long Cruise",
-            "tab_collection": "long-cruise"
-          }
-        },
-        "tab_w4Kz6Y": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Blue",
-            "tab_collection": "blue"
-          }
-        }
-      },
-      "block_order": [
-        "tab_qj8Ynn",
-        "tab_mwxwBh",
-        "tab_WwghW8",
-        "tab_w4Kz6Y"
-      ],
-      "name": "Gamma Section V2",
-      "settings": {
-        "bg_color_section": "#EBEFF2",
-        "cta_gamma_product": "Scopri il modello",
-        "cta_gamma_dealer": "Trova concessionario",
-        "tab_collections": "Le Nostre Collezioni"
-      }
-    },
     "subtitle_text_bgKxpn": {
       "type": "animation-text",
       "name": "Animation text",
@@ -108,6 +62,50 @@
         "pb_tab": 160,
         "pt_mob": 128,
         "pb_mob": 128
+      }
+    },
+    "model_home_mjJkLD": {
+      "type": "model-home",
+      "blocks": {
+        "tab_ymqTha": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tutti i modelli",
+            "tab_collection": "all-models"
+          }
+        },
+        "tab_NUT94a": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Performance",
+            "tab_collection": "performance"
+          }
+        },
+        "tab_hiFnKz": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Long Cruise",
+            "tab_collection": "long-cruise"
+          }
+        },
+        "tab_4q6jTa": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Blue",
+            "tab_collection": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "tab_ymqTha",
+        "tab_NUT94a",
+        "tab_hiFnKz",
+        "tab_4q6jTa"
+      ],
+      "name": "Gamma Section",
+      "settings": {
+        "tab_collections": "LINEA GRAND SOLEIL",
+        "label_discover": "Scopri"
       }
     },
     "text_and_image_WmYNYT": {
@@ -224,8 +222,8 @@
   },
   "order": [
     "hero_banner_kYmAaY",
-    "model_CFL9V3",
     "subtitle_text_bgKxpn",
+    "model_home_mjJkLD",
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
     "news_list_ynrNdG",
