@@ -1,0 +1,255 @@
+<div id="form-wrapper" class="fixed inset-0 flex justify-start items-start z-[9999] opacity-0 pointer-events-none transition-all duration-700 w-full lg:w-1/2">
+    
+    {% form 'customer', id: 'newsletter_form', class: 'w-full h-full' %}
+        
+        <div id="form-box-news"
+             class="flex flex-col h-full max-h-screen overflow-y-auto lg:px-[64px] xl:py-[128px] lg:py-[64px] py-6 px-4 gap-10 text-color_gs text-color_gsp bg_gs bg_gsp" 
+             style="opacity:90%"> 
+            
+            <div class="flex flex-col gap-12">
+                <div class="w-full flex flex-row justify-between">
+                    <div class="flex justify-start heading-lg_gs heading-lg_gsp uppercase text-color_gs text-color_gsp">
+                        {{ section.settings.news-form-title }}
+                    </div>
+                    <div class="flex justify-end heading-lg_gs heading-lg_gsp uppercase text-color_gs text-color_gsp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18.5424 4.32715C18.8353 4.03433 19.31 4.03428 19.6029 4.32715C19.8957 4.62002 19.8957 5.09482 19.6029 5.3877L12.9906 11.999L19.6029 18.6113C19.8957 18.9042 19.8957 19.379 19.6029 19.6719C19.31 19.9648 18.8353 19.9648 18.5424 19.6719L11.9301 13.0596L5.46033 19.5303C5.16742 19.8228 4.69255 19.823 4.39978 19.5303C4.10701 19.2375 4.10726 18.7626 4.39978 18.4697L10.8695 11.999L4.39978 5.53027C4.10701 5.2375 4.10726 4.76265 4.39978 4.46973C4.69267 4.17683 5.16743 4.17683 5.46033 4.46973L11.9301 10.9385L18.5424 4.32715Z" fill="#141312"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">  
+                    <div class="md:col-span-2 flex justify-start caption text-color_gs text-color_gsp">
+                        {{ section.settings.news-form-required-text }}
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.news-fname-label}}{% if section.settings.news-fname-required == true %}*{% endif %}
+                        </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
+                            type="text" id="news-form-first-name" name="contact[first_name]"
+                            placeholder="{{- section.settings.news-fname-placeholder }}" {% if section.settings.news-fname-required == true %} required {% endif %}>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.news-lname-label}}{% if section.settings.news-lname-required == true %}*{% endif %}
+                        </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
+                            type="text" id="news-form-last-name" name="contact[last_name]"
+                            placeholder="{{- section.settings.news-lname-placeholder }}" {% if section.settings.news-lname-required == true %} required {% endif %}>
+                    </div>
+
+                    <div class="flex flex-col gap-1 relative">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.news-country-label}}{% if section.settings.news-country-required == true %}*{% endif %}
+                        </div>
+                        <div class="relative w-full">
+                            <input
+                                class="w-full caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
+                                type="text" name="contact[country]" id="news-country-main"
+                                placeholder="{{ section.settings.news-form-boat-q-port-placeholder}}"
+                                autocomplete="off" required>
+                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                            <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <ul class="countryList absolute top-full mt-1 bg-[#1a1a1a] border border-gray-700 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-[6000]"></ul>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex caption text-color_gs text-color_gsp">
+                            {{ section.settings.news-mail-label}}{% if section.settings.news-mail-required == true %}*{% endif %}
+                        </div>
+                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
+                            type="email" id="news-form-mail" name="contact[email]"
+                            placeholder="{{- section.settings.news-mail-placeholder }}" {% if section.settings.news-mail-required == true %} required {% endif %}>
+                    </div>
+                </div>
+
+                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                    <div class="flex">{{ section.settings.news-boat-q-label }}</div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-2 justify-start items-center">
+                                <input type="radio" class="size-5 custom-radio" id="boat-y" name="contact[boat-question]" value="vd" data-target="boat-y-fields">
+                                <label for="boat-y">{{ section.settings.news-boat-q-affermative-label }}</label>
+                            </div>
+                            <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
+                                <div class="flex flex-col gap-1 w-full">
+                                    <input class="w-full py-2 bg-transparent" type="text" name="contact[boat-y-model]" placeholder="Model">
+                                </div>
+                                <div class="flex flex-col gap-1 relative w-full">
+                                    <input class="w-full py-2 bg-transparent country-input" type="text" name="contact[boat-y-port]" placeholder="Port" autocomplete="off">
+                                    <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                                    <ul class="countryList absolute top-full left-0 mt-1 bg-transparent tex-[#000] max-h-40 overflow-y-auto w-full hidden z-[6000]"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 justify-start items-center">
+                            <input type="radio" class="size-5 custom-radio" id="boat-n" name="contact[boat-question]" value="no">
+                            <label for="boat-n">{{ section.settings.news-boat-q-negative-label }}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                    <div class="flex">{{ section.settings.news-boat-sel-label }}</div>
+                    {% assign options = section.settings.options | split: ',' %}
+                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
+                        {% for option in options %}
+                            {% assign clean_option = option | strip %}
+                            <label class="flex gap-1 py-1.5 px-4 chip cursor-pointer rounded-full transition-all">
+                                <input type="checkbox" class="multi-checkbox hidden" value="{{ clean_option }}">
+                                {{ clean_option }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="contact[boat-selection]" id="news-form-boat-selection">
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="flex text-color_gs  text-color_gsp">{{ section.settings.news-message-label }}</div>
+                    <div class="textarea-wrapper rounded-xl p-4">
+                        <textarea id="news-form-message" class="w-full bg-transparent outline-none resize-none min-h-[80px] text-color_gs  text-color_gsp"
+                            name="contact[message]" placeholder="{{ section.settings.news-message-placeholder }}"
+                            maxlength="250"></textarea>
+                        <div class="char-counter text-right text-xs opacity-50" id="news-message-counter">0 / 250</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6 text-sm text-color_gs text-color_gsp">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1" id="news-form-marketingConsent">
+                        <label for="news-form-marketingConsent">{{ section.settings.news-form-markConsLabel }}</label>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1" id="news-form-profilingConsent" disabled>
+                        <label id="news-form-profilingLabel" class="opacity-50" for="news-form-profilingConsent">
+                            {{ section.settings.news-form-profConsLabel }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end pb-10">
+                <button id="news-form-submit" type="submit" 
+                        class="px-10 py-3 transition-transform hover:scale-105">
+                    {{ section.settings.news-form-submit-button-text | default: 'SEND' }}
+                </button>
+            </div>
+
+            <input type="hidden" name="contact[tags]" id="CustomerTags" value="newsletter">
+            <input type="hidden" name="contact[note]" id="CustomerNote">
+        </div>
+    {% endform %}
+</div>
+
+<style>
+    #form-box-news::-webkit-scrollbar { width: 4px; }
+    #form-box-news::-webkit-scrollbar-thumb { background: #ffffff55; border-radius: 10px; }
+
+
+    .country-arrow.open svg { transform: rotate(180deg); }
+    .countryList li:hover { background: #000; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('#newsletter_form');
+    if (!form) return;
+
+    // --- LOGICA PAESI (RIPRISTINATA DALL'ORIGINALE) ---
+    let allCountries = [];
+    fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json')
+        .then(res => res.json())
+        .then(data => {
+            allCountries = data.map(c => ({ name: c.name.common, code: c.cca2.toLowerCase() }));
+        });
+
+    const countryInputs = document.querySelectorAll('.country-input');
+    
+    countryInputs.forEach(input => {
+        const container = input.closest('.relative');
+        const list = container.querySelector('.countryList');
+        const arrow = container.querySelector('.country-arrow');
+        const flagDiv = container.querySelector('.country-flag');
+
+        input.addEventListener('focus', () => {
+            list.classList.remove('hidden');
+            arrow?.classList.add('open');
+            renderCountries('', list, input, flagDiv);
+        });
+
+        input.addEventListener('input', (e) => {
+            renderCountries(e.target.value, list, input, flagDiv);
+        });
+    });
+
+    function renderCountries(filter, list, input, flagDiv) {
+        list.innerHTML = '';
+        const filtered = allCountries.filter(c => 
+            c.name.toLowerCase().includes(filter.toLowerCase())
+        ).slice(0, 50);
+
+        filtered.forEach(c => {
+            const li = document.createElement('li');
+            li.className = 'px-4 py-2 cursor-pointer flex items-center gap-2 text-white';
+            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-3"> ${c.name}`;
+            li.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                input.value = c.name;
+                if(flagDiv) flagDiv.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-3">`;
+                list.classList.add('hidden');
+                input.closest('.relative').querySelector('.country-arrow')?.classList.remove('open');
+            });
+            list.appendChild(li);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('country-input')) {
+            document.querySelectorAll('.countryList').forEach(l => l.classList.add('hidden'));
+            document.querySelectorAll('.country-arrow').forEach(a => a.classList.remove('open'));
+        }
+    });
+
+    // --- ALTRE LOGICHE (RADIO, CHECKBOX, ECC) ---
+    const radios = form.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const group = this.name;
+            form.querySelectorAll(`input[name="${group}"]`).forEach(r => {
+                const target = document.getElementById(r.dataset.target);
+                if (target) target.classList.add('hidden');
+            });
+            const active = document.getElementById(this.dataset.target);
+            if (active) active.classList.remove('hidden');
+        });
+    });
+
+    const boatLabels = form.querySelectorAll('[data-name="contact[boat-selection]"] label');
+    boatLabels.forEach(label => {
+        label.addEventListener('click', function(e) {
+            e.preventDefault();
+            const cb = this.querySelector('input');
+            cb.checked = !cb.checked;
+            this.classList.toggle('label-active', cb.checked);
+            const selected = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(c => c.value);
+            document.getElementById('news-form-boat-selection').value = selected.join(', ');
+        });
+    });
+
+    const mkt = document.getElementById('news-form-marketingConsent');
+    const prof = document.getElementById('news-form-profilingConsent');
+    if(mkt) {
+        mkt.addEventListener('change', () => {
+            prof.disabled = !mkt.checked;
+            document.getElementById('news-form-profilingLabel').style.opacity = mkt.checked ? "1" : "0.5";
+        });
+    }
+});
+</script>
