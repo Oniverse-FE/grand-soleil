@@ -16,10 +16,10 @@
           "type": "content",
           "settings": {
             "content-media": false,
-            "content-image-mobile": "shopify://shop_images/2023_ORC-WC_Wind-Whisper_JSpurdzins-WEB-1.jpg",
-            "content-image-desktop": "shopify://shop_images/2023_ORC-WC_Wind-Whisper_JSpurdzins-WEB-5.jpg",
-            "content-subtitle": "GS 44 RACE | ORC WORLD CHAMPION 2021, 2022, 2023, 2024",
-            "content-title": "BORN TO PERFORM",
+            "content-image-mobile": "shopify://shop_images/GS-52-hero_mobile.jpg",
+            "content-image-desktop": "shopify://shop_images/GS-52-hero_desktop.jpg",
+            "content-subtitle": "",
+            "content-title": "INTENDED TO LAST OVER TIME",
             "content-title-color": "#ffffff",
             "button_1_label": "",
             "button_1_url": "",
@@ -39,8 +39,8 @@
       "name": "Rich text",
       "settings": {
         "rt_subtitle": "",
-        "rt_title": "ONE DESIGN, DUAL PURPOSE",
-        "rt_text1": "The Grand Soleil 44 was a great challenge for Cantiere del Pardo. Designed by Matteo Polli, a designer renowned for his high-performance hull lines, the 44-footer completes the Performance range by showing a well-balanced relationship between size and performance. During navigation maneuvers, the owner and guests can take advantage of all the necessary space, for the comfort of the interiors and for the livability of the deck.",
+        "rt_title": "NEW LIFE TO THE MYTH",
+        "rt_text1": "Inspired by the lines of the Grand Soleil 52 originally designed by German Frers in 1987, this new addition marks the return of a legendary model. At the time, approximately sixty units were produced of a yacht described as “a masterpiece destined to last”. Prophetic words indeed: the new Grand Soleil 52 Performance, starting from the Cantiere del Pardo concept, was designed by the proven duo Matteo Polli and Nauta Design and takes up the elegance of its progenitor (starting with the Navy blue lines of the beautiful line) and the same harmony of shapes which, then as now, translates into stability and performance.\n\n\nIntended for competent and passionate owners who do not want to compromise on comfort and performance, the Grand Soleil 52 is part of the successful Grand Soleil Performance line and is available in two versions, “Performance” and “Race”, to satisfy the needs of the more sporty customers and the needs of people who prefer fast cruising to regatta courses.",
         "rt-cta_label": "",
         "rt-cta_link": "",
         "rt-cta_label_2": "",
@@ -62,7 +62,7 @@
         "intro_title_n7fJ6z": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "FROM PERFORMANCE TO RACE",
+            "intro-title-text": "THE PERFORMANCE VERSION",
             "small-title": ""
           }
         },
@@ -70,7 +70,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "The Grand Soleil 44 is available in two models. The first, the Performance model, has a sail plan and deck setup that allows you to sail easily and simply. The second, the Race version, has a competitive character and identity. Both versions ooze the timeless style and elegance that are the hallmarks of the entire Grand Soleil range."
+            "intro-text-area-text": "The “Performance” version provides an “easy sailing” deck and sail plan with 4 aft winches, mainsail sheet with fixed point, self-tacking jib (std.) and carbon bowsprit (std.). The cockpit is perfectly usable by guests, thanks to the choice of recessing all rigging."
           }
         }
       },
@@ -106,10 +106,37 @@
     "image_slider_L8iGY6": {
       "type": "image-slider",
       "blocks": {
+        "image_slider_image_66XBcn": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-01_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jnPU3T": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-02_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_aKGrEc": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-03_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
         "image_slider_image_QNU3Eb": {
           "type": "image-slider-image",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_00409.jpg",
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-04_desktop-2.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -118,7 +145,7 @@
         "image_slider_image_Gr8KK6": {
           "type": "image-slider-image",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_04259.jpg",
+            "image-slider-image": "shopify://shop_images/GS-52-gallery-05_desktop-2.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -126,6 +153,9 @@
         }
       },
       "block_order": [
+        "image_slider_image_66XBcn",
+        "image_slider_image_jnPU3T",
+        "image_slider_image_aKGrEc",
         "image_slider_image_QNU3Eb",
         "image_slider_image_Gr8KK6"
       ],
