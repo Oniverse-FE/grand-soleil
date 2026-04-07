@@ -64,6 +64,44 @@
         "pb_mob": 128
       }
     },
+    "model_eKXdcE": {
+      "type": "model",
+      "blocks": {
+        "tab_UkgyW9": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "GS Plus 65",
+            "tab_collection": "gs72-plus"
+          }
+        },
+        "tab_JefcMp": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "GS Plus 72",
+            "tab_collection": "gsp-72"
+          }
+        },
+        "tab_Dbzhcq": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "GS Plus 80",
+            "tab_collection": "gsp-80"
+          }
+        }
+      },
+      "block_order": [
+        "tab_UkgyW9",
+        "tab_JefcMp",
+        "tab_Dbzhcq"
+      ],
+      "name": "Gamma Section V2",
+      "settings": {
+        "bg_color_section": "#EBEFF2",
+        "cta_gamma_product": "Scopri il modello",
+        "cta_gamma_dealer": "Trova concessionario",
+        "tab_collections": "Le Nostre Collezioni"
+      }
+    },
     "multi_card_9ekjXf": {
       "type": "multi-card",
       "blocks": {
@@ -282,6 +320,7 @@
   "order": [
     "hero_banner_kYmAaY",
     "subtitle_text_bgKxpn",
+    "model_eKXdcE",
     "multi_card_9ekjXf",
     "editorial_section_3E6LXU",
     "text_and_image_WmYNYT",
