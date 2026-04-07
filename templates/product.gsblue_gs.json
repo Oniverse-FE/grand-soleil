@@ -576,71 +576,11 @@
         "brochure-link": "",
         "info-cta-visible": true,
         "info-cta-label": "Request info",
-        "info-cta-link": "",
+        "info-cta-link": "shopify://pages/contact",
         "padding_top": "72px",
         "padding_bottom": "128px",
         "padding_top_mobile": "48px",
         "padding_bottom_mobile": "48px"
-      }
-    },
-    "find_dealer_mzgD4K": {
-      "type": "find-dealer",
-      "name": "Find a dealer",
-      "settings": {
-        "fd-content_alignment_mobile": "center",
-        "fd-content_alignment": "center",
-        "fd-cta_position": "center",
-        "fd-title": "Il vostro prossimo traguardo: Grand Soleil 52P",
-        "fd-text1": "Più che una barca, è una dichiarazione di intenti. Il punto d'incontro tra la vostra ambizione sportiva e il piacere di navigare. Scegliere il Grand Soleil 52 Performance significa rifiutare i compromessi. Significa possedere l'eredità di un nome leggendario, evoluta nell'arma da regata e fast cruiser definitivo.",
-        "fd-cta_label": "Trova un dealer",
-        "fd-cta_link": "#",
-        "fd-cta_label2": "informazioni",
-        "fd-cta_link2": "#"
-      }
-    },
-    "text_image_with_background_EEb9Tf": {
-      "type": "text-image-with-background",
-      "name": "Box Testo e Immagine",
-      "settings": {
-        "image_position": "right",
-        "mobile_reverse": false,
-        "image": "shopify://shop_images/Pillar.png",
-        "pretitle": "SERVICE & AFTER SALE",
-        "title": "Valore che dura nel tempo",
-        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
-        "button_label": "Scopri tutti i servizi",
-        "button_link": "",
-        "pt_desk": 120,
-        "pb_desk": 120,
-        "pt_tab": 80,
-        "pb_tab": 80,
-        "pt_mob": 48,
-        "pb_mob": 48
-      }
-    },
-    "animation_text_H4fCbf": {
-      "type": "animation-text",
-      "name": "Animation text",
-      "settings": {
-        "simple-intro-title": "Performance",
-        "simple-intro-text": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela.",
-        "pt_desk": 200,
-        "pb_desk": 200,
-        "pt_tab": 160,
-        "pb_tab": 160,
-        "pt_mob": 128,
-        "pb_mob": 128
-      }
-    },
-    "full_image_tqFBzW": {
-      "type": "full-image",
-      "name": "Full Image",
-      "settings": {
-        "id": "full-image",
-        "image_desktop": "shopify://shop_images/img.png",
-        "image_mobile": "shopify://shop_images/img.png",
-        "margin_block": "0",
-        "margin_block_mobile": "0"
       }
     }
   },
@@ -651,10 +591,6 @@
     "pdp_multi_cards_CbG6MH",
     "intro_slider_X3xXex",
     "image_slider_7tF4tQ",
-    "tech_spec_gFwMPj",
-    "find_dealer_mzgD4K",
-    "text_image_with_background_EEb9Tf",
-    "animation_text_H4fCbf",
-    "full_image_tqFBzW"
+    "tech_spec_gFwMPj"
   ]
 }
