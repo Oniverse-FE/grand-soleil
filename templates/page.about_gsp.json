@@ -116,10 +116,10 @@
       ],
       "name": "Key feature",
       "settings": {
-        "padding_top": "72px",
-        "padding_bottom": "128px",
-        "padding_top_mobile": "48px",
-        "padding_bottom_mobile": "48px"
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "image_slider_U74ykJ": {
