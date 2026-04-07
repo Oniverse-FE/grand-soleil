@@ -168,30 +168,39 @@
           "card_KMJeXP": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
+              "image": "shopify://shop_images/DSC_5587.jpg",
+              "title": "GS 42 LC",
               "description": "Long Cruise",
-              "link": "",
+              "link": "shopify://products/gs-42-lc",
               "visibility": "gs"
             }
           },
           "card_wVQf6Y": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
+              "image": "shopify://shop_images/gc_Yacht_Test_GS46LC_2015_1031.jpg",
+              "title": "GS 46 LC",
               "description": "Long Cruise",
-              "link": "",
+              "link": "shopify://products/gs-46-lc",
               "visibility": "gs"
             }
           },
           "card_EwxpJV": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
+              "image": "shopify://shop_images/fTaccola_DJI_0870.jpg",
+              "title": "GS 52 LC",
               "description": "Long Cruise",
-              "link": "",
+              "link": "shopify://products/gs-52-lc",
+              "visibility": "gs"
+            }
+          },
+          "card_LVyGih": {
+            "type": "card",
+            "settings": {
+              "title": "GS 60 LC",
+              "description": "Long Cruise",
+              "link": "shopify://products/gs-60-lc",
               "visibility": "gs"
             }
           },
@@ -232,6 +241,7 @@
           "card_KMJeXP",
           "card_wVQf6Y",
           "card_EwxpJV",
+          "card_LVyGih",
           "text_wFnfUh",
           "card_HJYKVa"
         ],
