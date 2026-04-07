@@ -40,13 +40,24 @@
                             placeholder="{{- section.settings.news-lname-placeholder }}" {% if section.settings.news-lname-required == true %} required {% endif %}>
                     </div>
 
-                    <div class="flex flex-col gap-1">
+                    <div class="flex flex-col gap-1 relative">
                         <div class="flex caption text-color_gs text-color_gsp">
-                            {{ section.settings.news-phone-label}}{% if section.settings.news-phone-required == true %}*{% endif %}
+                            {{ section.settings.news-country-label}}{% if section.settings.news-country-required == true %}*{% endif %}
                         </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
-                            type="tel" id="news-form-phone" name="contact[phone]"
-                            placeholder="{{- section.settings.news-phone-placeholder }}" {% if section.settings.news-phone-required == true %} required {% endif %}>
+                        <div class="relative w-full">
+                            <input
+                                class="w-full caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
+                                type="text" name="contact[country]" id="news-country-main"
+                                placeholder="{{ section.settings.news-form-boat-q-port-placeholder}}"
+                                autocomplete="off" required>
+                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                            <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <ul class="countryList absolute top-full mt-1 bg-[#1a1a1a] border border-gray-700 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-[6000]"></ul>
                     </div>
 
                     <div class="flex flex-col gap-1">
@@ -57,21 +68,6 @@
                             type="email" id="news-form-mail" name="contact[email]"
                             placeholder="{{- section.settings.news-mail-placeholder }}" {% if section.settings.news-mail-required == true %} required {% endif %}>
                     </div>
-                </div>
-
-                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
-                    <div class="flex">{{ section.settings.news-boat-sel-label }}</div>
-                    {% assign options = section.settings.options | split: ',' %}
-                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
-                        {% for option in options %}
-                            {% assign clean_option = option | strip %}
-                            <label class="flex gap-1 py-1.5 px-4 chip cursor-pointer rounded-full transition-all">
-                                <input type="checkbox" class="multi-checkbox hidden" value="{{ clean_option }}">
-                                {{ clean_option }}
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <input type="hidden" name="contact[boat-selection]" id="news-form-boat-selection">
                 </div>
 
                 <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
@@ -97,6 +93,31 @@
                             <input type="radio" class="size-5 custom-radio" id="boat-n" name="contact[boat-question]" value="no">
                             <label for="boat-n">{{ section.settings.news-boat-q-negative-label }}</label>
                         </div>
+                    </div>
+                </div>
+
+                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                    <div class="flex">{{ section.settings.news-boat-sel-label }}</div>
+                    {% assign options = section.settings.options | split: ',' %}
+                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
+                        {% for option in options %}
+                            {% assign clean_option = option | strip %}
+                            <label class="flex gap-1 py-1.5 px-4 chip cursor-pointer rounded-full transition-all">
+                                <input type="checkbox" class="multi-checkbox hidden" value="{{ clean_option }}">
+                                {{ clean_option }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="contact[boat-selection]" id="news-form-boat-selection">
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="flex text-color_gs  text-color_gsp">{{ section.settings.news-message-label }}</div>
+                    <div class="textarea-wrapper rounded-xl p-4">
+                        <textarea id="news-form-message" class="w-full bg-transparent outline-none resize-none min-h-[80px] text-color_gs  text-color_gsp"
+                            name="contact[message]" placeholder="{{ section.settings.news-message-placeholder }}"
+                            maxlength="250"></textarea>
+                        <div class="char-counter text-right text-xs opacity-50" id="news-message-counter">0 / 250</div>
                     </div>
                 </div>
 

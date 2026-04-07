@@ -955,3 +955,50 @@ color:#EBEFF2;
     background-color: #FAF9F7 !important;
     color:#141312 !important;
 }
+
+#form-box-news input[type="text"],
+#form-box-news input[type="email"],
+#form-box-news input[type="tel"] {
+    border-radius: 50px;
+    border: 0.5px solid #141312;
+    background: transparent !important;
+    outline: none;
+    padding: 8px 16px;
+    color: #141312;
+}
+
+.custom-radio {
+    appearance: none;
+    border: 0.5px solid #141312;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+.custom-radio:checked {
+    background-color: #141312 !important;
+}
+
+.textarea-wrapper {
+    border-radius: 16px;
+    border: 0.5px solid #141312;    
+}
+
+.chip{
+    border: 0.5px solid #141312;
+}
+
+.chip:hover{
+    background-color: #141312 !important; 
+    color: #FAF9F7 !important;
+}
+
+.label-active { 
+    background-color: #141312 !important; 
+    color: #FAF9F7 !important; 
+}
+
+#news-form-submit { 
+    border-radius: 50px;
+    border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+    background: var(--System-Disabled, #76787B);
+}

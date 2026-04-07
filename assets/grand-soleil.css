@@ -976,3 +976,49 @@ background-color:#EBEFF2;
     background-color: #05090D !important;
     color:#EBEFF2 !important;
 }
+
+.textarea-wrapper {
+    border-radius: 16px;
+    border: 0.5px solid #EBEFF2;    
+}
+
+#form-box-news input[type="text"],
+#form-box-news input[type="email"],
+#form-box-news input[type="tel"] {
+    border-radius: 50px;
+    border: 0.5px solid #EBEFF2;
+    background: transparent !important;
+    outline: none;
+    padding: 8px 16px;
+    color: #EBEFF2;
+}
+.custom-radio {
+    appearance: none;
+    border: 0.5px solid #EBEFF2;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+.custom-radio:checked {
+    background-color: #EBEFF2 !important;
+}
+
+.chip{
+    border: 0.5px solid #EBEFF2;
+}
+
+.chip:hover{
+    background-color: #EBEFF2 !important; 
+    color: #05090D !important;
+}
+
+.label-active { 
+    background-color: #EBEFF2 !important; 
+    color: #05090D !important; 
+}
+
+#news-form-submit { 
+    border-radius: 50px;
+    border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+    background: var(--System-Disabled, #76787B);
+}
