@@ -1,0 +1,667 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_FHwwWU": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_zyg8E8": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/1-HERO_VERT.jpg",
+            "content-image-desktop": "shopify://shop_images/1-HERO.jpg",
+            "content-subtitle": "",
+            "content-title": "",
+            "content-title-color": "#ffffff",
+            "button_1_label": "",
+            "button_1_url": "",
+            "button_2_label": "",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_zyg8E8"
+      ],
+      "name": "Hero Banner",
+      "settings": {}
+    },
+    "rich_text_ppGgwa": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "BLUE, FOR A GREENER FUTURE",
+        "rt_title": "THE GRAND SOLEIL BLUE",
+        "rt_text1": "Grand Soleil BLUE is the new 33-foot daysailer by Cantiere del Pardo — a yacht designed to simplify sailing and offer a stylish, enjoyable experience on the water.\n Elegant, fast, and incredibly easy to handle even solo, BLUE is perfect for day trips or weekend escapes. A modern weekender that brings sailing back to its purest form: freedom, simplicity, and a direct connection with the water.\n\nBorn from the collaboration between Matteo Polli (naval architecture), Nauta Design (interior and exterior design) Grand Soleil BLUE is built using rComposite®️ technology, patented by the Italian startup nlcomp (pioneers in sustainable materials), moreover is also the first 100% recyclable production sailboat made in Italy. A project where refined design meets environmental responsibility through advanced technologies and low-impact solutions.\n\nEvery design choice reflects a clear vision: to create a beautiful, lightweight, and immediate yacht — ready to enjoy in your free time, with no waiting, no constraints.\nAn invitation to rediscover the true pleasure of sailing, at your own pace.\n\nFor those who prefer, it will also be available with a traditional laminated hull and an internal combustion engine.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "image_slider_L8iGY6": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_QNU3Eb": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-01_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_mzjNri": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-02_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_tMTYXA": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-03_desktop-2.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_yYmNNC": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-04_desktop.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_Gr8KK6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GS-BLUE-gallery-05_desktop.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_QNU3Eb",
+        "image_slider_image_mzjNri",
+        "image_slider_image_tMTYXA",
+        "image_slider_image_yYmNNC",
+        "image_slider_image_Gr8KK6"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "pdp_multi_cards_CbG6MH": {
+      "type": "pdp-multi-cards",
+      "blocks": {
+        "title_Gaf8M6": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "PIONEERING DESIGN UNVEILED"
+          }
+        },
+        "text_area_gmtHcx": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "How this has been achieved? By pursing several groundbreaking design and construction methodologies:",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_rj3fVW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/11-Exterior.jpg",
+            "card_title": "1. Sustainable construction",
+            "card_subtitle": "The Grand Soleil BLUE, built with the Composite® technology developed by Italian startup NIcomp, marks a breakthrough in boat construction through the use of thermoplastic resin, a choice that aims to solve one of the most significant problems in the marine industry: end-of-life disposal.",
+            "link": ""
+          }
+        },
+        "card_EmiiRJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/4-Exterior_Aerials.jpg",
+            "card_title": "2. Thermoplastic sails",
+            "card_subtitle": "The sails are made from thermoplastic materials, further committing to reducing environmental impact, Developed by OneSails, the 4T FORTET™ sails are the world’s first “green sails”.’. Their membranes and assembly process are designed to meet the highest standards in terms of environmental impact and recyclability. Traditional glues, resins, and solvents have been replaced with an innovative hot-melt process, while the base polymer is 100% recyclable through standard waste disposal methods.",
+            "link": ""
+          }
+        },
+        "card_BWg8Lg": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/15-Cockpit.jpg",
+            "card_title": "3. Design for disassembly",
+            "card_subtitle": "A smart design approach allows easy separation of boat accessories and components, similar to end-of-life practices in the automotive industry. This critical process ensures that every part of the Grand Soleil BLUE can be effectively disassembled and recycled, minimizing environmental impact.",
+            "link": ""
+          }
+        },
+        "card_grK6hC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/7-Solar_Pannels.jpg",
+            "card_title": "4. Solar panels",
+            "card_subtitle": "The installation of solar panels provides renewable energy autonomy by recharging the battery bank feeding the electric motor and supports onboard services. With the standard battery pack, the Grand Soleil BLUE can cruise for 30 nautical miles at approximately 5 knots, translating to 6 hours of continuous motor operation or 12 hours with the doubled battery pack. The integrated photovoltaic system, made by Solbian with around 340 W of power, is fully incorporated into the deckhouse, walkable, and features a non-slip finish. This system not only recharges the motor battery but also transfers excess energy to the service battery bank, ensuring optimal charge balancing for overall energy efficiency.",
+            "link": ""
+          }
+        },
+        "card_AAjMgB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/11-E-Propulsion_Battery.jpg",
+            "card_title": "5. Electric propulsion",
+            "card_subtitle": "A 6 kW electric motor with a direct Pod Drive transmission from E-Propulsion. This compact, low-maintenance solution ensures absolute silence onboard and a plug-and-play installation. Ideal for zero-emission navigation, it promotes a more sustainable future by reducing environmental impact.",
+            "link": ""
+          }
+        },
+        "card_YiJ87T": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/9-Boarding_Platform.jpg",
+            "card_title": "6. Hydrogeneration",
+            "card_subtitle": "While sailing, the E-Propulsion Pod Drive motor efficiently recharges the Grand Soleil BLUE’s batteries through hydrogeneration – the flow of water generated by the propeller’s movement as the boat sails. This system ensures a minimum recharge of 240 W even at a speed of about 6 knots.",
+            "link": ""
+          }
+        },
+        "card_9Pe76t": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/2-Deck_Details.jpg",
+            "card_title": "7. Lithium batteries",
+            "card_subtitle": "The Grand Soleil BLUE will be equipped with an 8 kW, 48 V lithium battery bank (LiFePO4) from E-Propulsion, which can be recharged in 7.2 hours. This is the standard configuration, but the storage capacity can be doubled without increasing charging time, as the charger compensates for the larger battery capacity, maintaining the same recharge time.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_Gaf8M6",
+        "text_area_gmtHcx",
+        "card_rj3fVW",
+        "card_EmiiRJ",
+        "card_BWg8Lg",
+        "card_grK6hC",
+        "card_AAjMgB",
+        "card_YiJ87T",
+        "card_9Pe76t"
+      ],
+      "name": "Multi Cards Slider",
+      "settings": {
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "intro_slider_X3xXex": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_anGtHB": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "Convertible interiors. From day to night, with a touch",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_LHpLyg": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "The interiors of the Grand Soleil BLUE reflect the project’s essential and refined vision: bright spaces, clean lines, and natural, functional materials. The layout, understated yet welcoming, is designed to adapt seamlessly to different moments of the day.\n\nThanks to a modular system of cushions and surfaces, the space effortlessly transitions from the Day configuration—perfect for relaxation, reading or socializing—to the Night setup, comfortably accommodating up to four people without compromising on comfort or style.\n\nEvery detail has been carefully crafted to offer an authentic onboard experience, in perfect balance between functionality and Italian design."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_anGtHB",
+        "intro_text_area_LHpLyg"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_7tF4tQ": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_gFeVKg": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/2-Day_Layout_ClosedTable.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6qiqgH": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/3-Night_Layout.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jbB4cX": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-03-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6mPGf6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-05-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_zGMWFt": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-06-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_t44Gtj": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-07-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_gFeVKg",
+        "image_slider_image_6qiqgH",
+        "image_slider_image_jbB4cX",
+        "image_slider_image_6mPGf6",
+        "image_slider_image_zGMWFt",
+        "image_slider_image_t44Gtj"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "tech_spec_gFwMPj": {
+      "type": "tech-spec",
+      "blocks": {
+        "tech_spec_item_DgcCGY": {
+          "type": "tech-spec-item",
+          "name": "Overall length",
+          "settings": {
+            "label": "Overall length",
+            "value": "11.3 m – 37.07 ft"
+          }
+        },
+        "tech_spec_item_8Drwyc": {
+          "type": "tech-spec-item",
+          "name": "Hull length",
+          "settings": {
+            "label": "Hull length",
+            "value": "9.99 m – 32.8 ft"
+          }
+        },
+        "tech_spec_item_mY8ptH": {
+          "type": "tech-spec-item",
+          "name": "Max beam",
+          "settings": {
+            "label": "Max beam",
+            "value": "3.70 m – 12 ft"
+          }
+        },
+        "tech_spec_item_4jQ9LR": {
+          "type": "tech-spec-item",
+          "name": "Displacement",
+          "settings": {
+            "label": "Displacement",
+            "value": "3500 kg – 7716 lb (lightship)"
+          }
+        },
+        "tech_spec_item_pcg3ef": {
+          "type": "tech-spec-item",
+          "name": "Draft std.",
+          "settings": {
+            "label": "Draft std.",
+            "value": "2.2 m – 7.2 ft"
+          }
+        },
+        "tech_spec_item_iN4xft": {
+          "type": "tech-spec-item",
+          "name": "Shallow keel",
+          "settings": {
+            "label": "Shallow keel",
+            "value": "1.8 m – 5.9 ft"
+          }
+        },
+        "tech_spec_item_kjkWWb": {
+          "type": "tech-spec-item",
+          "name": "Std. Construction",
+          "settings": {
+            "label": "Std. Construction",
+            "value": "Termoplastic resin + NLcomp tachnology (hull available only in white)"
+          }
+        },
+        "tech_spec_item_4cGwUt": {
+          "type": "tech-spec-item",
+          "name": "Opt. Construction",
+          "settings": {
+            "label": "Opt. Construction",
+            "value": "Vinylester resin (paintable hull with various color options)"
+          }
+        },
+        "tech_spec_item_iAjHFm": {
+          "type": "tech-spec-item",
+          "name": "Std. Engine",
+          "settings": {
+            "label": "Std. Engine",
+            "value": "E-propulsion POD DRIVE 6.0 EVO (6KW)"
+          }
+        },
+        "tech_spec_item_giPaCt": {
+          "type": "tech-spec-item",
+          "name": "Range with std. engine",
+          "settings": {
+            "label": "Range with std. engine",
+            "value": "30 NM (at 5kn of speed)60 NM with 2 batt."
+          }
+        },
+        "tech_spec_item_3g7XFH": {
+          "type": "tech-spec-item",
+          "name": "Opt. Engine",
+          "settings": {
+            "label": "Opt. Engine",
+            "value": "Diesel Engine"
+          }
+        },
+        "tech_spec_item_83D6Hr": {
+          "type": "tech-spec-item",
+          "name": "Fuel capacity with engine opt.",
+          "settings": {
+            "label": "Fuel capacity with engine opt.",
+            "value": "55 L – 14.5 gal"
+          }
+        },
+        "tech_spec_item_mycqLV": {
+          "type": "tech-spec-item",
+          "name": "Engine power capacity",
+          "settings": {
+            "label": "Engine power capacity",
+            "value": "8 kw std.+ 8 kw opt."
+          }
+        },
+        "tech_spec_item_Jr9NqJ": {
+          "type": "tech-spec-item",
+          "name": "Solar energy system",
+          "settings": {
+            "label": "Solar energy system",
+            "value": "340 w nominal power"
+          }
+        },
+        "tech_spec_item_e8Gidq": {
+          "type": "tech-spec-item",
+          "name": "Systems power capacity",
+          "settings": {
+            "label": "Systems power capacity",
+            "value": "190 Ah (std.)+ 190 Ah (power pack opt.)"
+          }
+        },
+        "tech_spec_item_W7CWqU": {
+          "type": "tech-spec-item",
+          "name": "Hydrogeneration System",
+          "settings": {
+            "label": "Hydrogeneration System",
+            "value": "240 w at 6 kn of speed"
+          }
+        },
+        "tech_spec_item_79iGHg": {
+          "type": "tech-spec-item",
+          "name": "Square-Top Mainsail Area",
+          "settings": {
+            "label": "Square-Top Mainsail Area",
+            "value": "38 m² – 409 ft²"
+          }
+        },
+        "tech_spec_item_HBaEBD": {
+          "type": "tech-spec-item",
+          "name": "Self-Tacking Jib Area",
+          "settings": {
+            "label": "Self-Tacking Jib Area",
+            "value": "26 m² – 279.86 ft²"
+          }
+        },
+        "tech_spec_item_i6mKQP": {
+          "type": "tech-spec-item",
+          "name": "Genoa Area",
+          "settings": {
+            "label": "Genoa Area",
+            "value": "32 m² – 344 ft²"
+          }
+        },
+        "tech_spec_item_Jt6hVt": {
+          "type": "tech-spec-item",
+          "name": "Code 0 area",
+          "settings": {
+            "label": "Code 0 area",
+            "value": "60 m² – 645.83 ft²"
+          }
+        },
+        "tech_spec_item_NRygrY": {
+          "type": "tech-spec-item",
+          "name": "Gennaker area",
+          "settings": {
+            "label": "Gennaker area",
+            "value": "100 m² – 1076.4 ft²"
+          }
+        },
+        "tech_spec_item_HEEjGJ": {
+          "type": "tech-spec-item",
+          "name": "Water tank",
+          "settings": {
+            "label": "Water tank",
+            "value": "70 lt – 18.5 gal"
+          }
+        },
+        "tech_spec_item_qb3YH8": {
+          "type": "tech-spec-item",
+          "name": "CE Certification",
+          "settings": {
+            "label": "CE Certification",
+            "value": "Category B*/C"
+          }
+        }
+      },
+      "block_order": [
+        "tech_spec_item_DgcCGY",
+        "tech_spec_item_8Drwyc",
+        "tech_spec_item_mY8ptH",
+        "tech_spec_item_4jQ9LR",
+        "tech_spec_item_pcg3ef",
+        "tech_spec_item_iN4xft",
+        "tech_spec_item_kjkWWb",
+        "tech_spec_item_4cGwUt",
+        "tech_spec_item_iAjHFm",
+        "tech_spec_item_giPaCt",
+        "tech_spec_item_3g7XFH",
+        "tech_spec_item_83D6Hr",
+        "tech_spec_item_mycqLV",
+        "tech_spec_item_Jr9NqJ",
+        "tech_spec_item_e8Gidq",
+        "tech_spec_item_W7CWqU",
+        "tech_spec_item_79iGHg",
+        "tech_spec_item_HBaEBD",
+        "tech_spec_item_i6mKQP",
+        "tech_spec_item_Jt6hVt",
+        "tech_spec_item_NRygrY",
+        "tech_spec_item_HEEjGJ",
+        "tech_spec_item_qb3YH8"
+      ],
+      "name": "Technical Spec Right Col",
+      "settings": {
+        "id": "tech-spec",
+        "tech-spec-title": "TECHNICAL SPECIFICATION",
+        "brochure-visible": true,
+        "brochure-cta-label": "Download brochure",
+        "brochure-link": "",
+        "info-cta-visible": true,
+        "info-cta-label": "Request info",
+        "info-cta-link": "shopify://pages/contact",
+        "padding_top": "72px",
+        "padding_bottom": "128px",
+        "padding_top_mobile": "48px",
+        "padding_bottom_mobile": "48px"
+      }
+    },
+    "intro_slider_EqR7Bn": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_myk7Wt": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "ABOUT THE GS BLUE:",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_Kb6Q6H": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Project: Matteo Polli YD / Nauta Design / Nlcomp\nBuilder: Cantiere del Pard"
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_myk7Wt",
+        "intro_text_area_Kb6Q6H"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "text_gallery_MpUcET": {
+      "type": "text-gallery",
+      "blocks": {
+        "image_JY3HbX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GSBlue-logos-1440x186.png",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_JY3HbX"
+      ],
+      "name": "Text & Gallery",
+      "settings": {
+        "id_section": "",
+        "main_title": "",
+        "subtitle": "",
+        "content": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_FHwwWU",
+    "rich_text_ppGgwa",
+    "image_slider_L8iGY6",
+    "pdp_multi_cards_CbG6MH",
+    "intro_slider_X3xXex",
+    "image_slider_7tF4tQ",
+    "tech_spec_gFwMPj",
+    "intro_slider_EqR7Bn",
+    "text_gallery_MpUcET"
+  ]
+}
