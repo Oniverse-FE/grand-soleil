@@ -582,6 +582,83 @@
         "padding_top_mobile": "48px",
         "padding_bottom_mobile": "48px"
       }
+    },
+    "intro_slider_EqR7Bn": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_myk7Wt": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "ABOUT THE GS BLUE:",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_Kb6Q6H": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Project: Matteo Polli YD / Nauta Design / Nlcomp\nBuilder: Cantiere del Pard"
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_myk7Wt",
+        "intro_text_area_Kb6Q6H"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "Scarica la brochure",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "Richiedi informazioni",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "rich_text_WcFfkT": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "",
+        "rt_title": "",
+        "rt_text1": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "full_image_et8CmY": {
+      "type": "full-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/GSBlue-logos-1440x186.png",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
     }
   },
   "order": [
@@ -591,6 +668,9 @@
     "pdp_multi_cards_CbG6MH",
     "intro_slider_X3xXex",
     "image_slider_7tF4tQ",
-    "tech_spec_gFwMPj"
+    "tech_spec_gFwMPj",
+    "intro_slider_EqR7Bn",
+    "rich_text_WcFfkT",
+    "full_image_et8CmY"
   ]
 }
