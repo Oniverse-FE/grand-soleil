@@ -237,7 +237,7 @@
         ],
         "custom_css": [],
         "settings": {
-          "logo_gs": "shopify://shop_images/g8.svg",
+          "logo_gs": "shopify://shop_images/Logo.png",
           "logo_gsp": "shopify://shop_images/Logo_b4717aa1-2216-4ba7-a1ca-43a859063d1b.svg",
           "logo_width": 150,
           "menu_gs": "main-menu",
