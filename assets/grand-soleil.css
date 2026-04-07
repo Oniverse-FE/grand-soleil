@@ -938,3 +938,38 @@ background-color:#EBEFF2;
     background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
     backdrop-filter: blur(48px);
 }
+
+.lg\:text-color_gs{
+    @media (width >= 64rem) {
+        color: #EBEFF2;
+    }
+}
+
+.lg\:bg-modelli_gs{
+    @media (width >= 64rem) {
+        border-radius: 16px;
+        background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
+        backdrop-filter: blur(48px);
+    }
+}
+
+.lg\:cta-border-light_gs{
+    @media (width >= 64rem) {
+        border-radius: 50px;
+        border: 0.5px solid #EBEFF2;
+        color: #EBEFF2;
+    }
+}
+  .hover\:cta-border-dark_gs {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #05090D !important;
+        color:#EBEFF2 !important;
+      }
+    }
+  }
+
+.active-tab{
+    background-color: #05090D !important;
+    color:#EBEFF2 !important;
+}

@@ -34,6 +34,8 @@
               {% for product in collection.products %}
                 <div class="product-slide absolute inset-0 opacity-0 transition-opacity duration-500" 
                      data-collection="{{ collection.handle }}" 
+                     data-collection-name="{{ collection.title }}"
+                     data-collection-url="{{ collection.url }}"
                      data-title="{{ product.title }}"
                      data-url="{{ product.url }}">
                   <img src="{{ product.featured_image | img_url: '1400x' }}" 
@@ -47,19 +49,17 @@
         <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"></div>
       </div>
 
-      <div class="lg:absolute lg:bottom-0 lg:left-0 w-full lg:p-6 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0 bg-modelli_gs bg-modelli_gsp">
+      <div class="lg:absolute lg:bottom-4 lg:left-4 lg:right-4 w-auto lg:p-6 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0 bg-modelli_gs bg-modelli_gsp">
         
-        <div class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-FAF9F7_gsp">
+        <div class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-FAF9F7_gsp pt-6 lg:pt-0">
           <h3 id="current-model-name" class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-FAF9F7_gsp tracking-tighter"></h3>
         </div>
         
         <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a href="#" id="cta-main" class="px-8 py-4 cta-blue_gs cta-truffle_gsp transition-all text-center link-lg_gs link-lg_gsp  pointer-events-auto">
-            {{ section.settings.cta_gamma_product }}
-          </a>
-          <a href="#" id="cta-dealer-link" class="px-8 py-4 cta-border-light_gs cta-border-light_gsp transition-all link-lg_gs link-lg_gsp text-center pointer-events-auto">
-             {{ section.settings.cta_gamma_dealer }}
-          </a>
+          <a href="#" id="cta-main" class="px-8 py-4 cta-blue_gs cta-truffle_gsp transition-all text-center link-lg_gs link-lg_gsp pointer-events-auto">
+            </a>
+          <a href="#" id="cta-collection" class="px-8 py-4 cta-border-light_gs cta-border-light_gsp transition-all link-lg_gs link-lg_gsp text-center pointer-events-auto">
+             </a>
         </div>
       </div>
 
@@ -68,23 +68,19 @@
 </div>
 
 <style>
-
 .model-name {
-font-family: "Helvetica Neue";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 22px;
-color:#EBEFF2;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #EBEFF2;
+  cursor: pointer;
+  white-space: nowrap;
 }
-
 .product-slide.active { opacity: 1; z-index: 10; }
-
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* Forza il puntatore attivo sulle CTA anche se il contenitore padre avesse restrizioni */
-#cta-main, #cta-dealer-link { pointer-events: auto !important; }
+#cta-main, #cta-collection { pointer-events: auto !important; }
 </style>
 
 <script>
@@ -94,7 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const modelContainer = document.querySelector('.model-names-container');
   const indicator = document.getElementById('model-indicator');
   const nameDisplay = document.getElementById('current-model-name');
-  const ctaMain = document.getElementById('cta-main');
+  
+  const ctaProduct = document.getElementById('cta-main');
+  const ctaCollection = document.getElementById('cta-collection');
 
   function updateIndicator(element) {
     if(!element) return;
@@ -107,7 +105,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if(slide.dataset.title === title) {
         slide.classList.add('active');
         nameDisplay.textContent = slide.dataset.title;
-        ctaMain.href = slide.dataset.url;
+        
+        // Aggiorna CTA 1: Aggiunto "Scopri" davanti al nome prodotto
+        ctaProduct.textContent = `{{  section.settings.label_discover}} ${slide.dataset.title}`;
+        ctaProduct.href = slide.dataset.url;
+        
+        // Aggiorna CTA 2: Aggiunto "Scopri" davanti al nome collezione
+        ctaCollection.textContent = `{{  section.settings.label_discover}} ${slide.dataset.collectionName}`;
+        ctaCollection.href = slide.dataset.collectionUrl;
       } else {
         slide.classList.remove('active');
       }
@@ -157,12 +162,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 {% schema %}
 {
-  "name": "Gamma Section V2",
+  "name": "Gamma Section",
   "settings": [
-    { "type": "color", "id": "bg_color_section", "label": "Sfondo Sezione", "default": "#EBEFF2" },
-    {"type": "text","id":"cta_gamma_product","label":"Testo CTA Modello","default":"Scopri il modello"},
-    {"type": "text","id":"cta_gamma_dealer","label":"Testo CTA Dealer","default":"Trova concessionario"},
-    {"type": "text","id": "tab_collections","label": "Titolo Sezione","default": "Le Nostre Collezioni"}
+    {"type": "text","id": "tab_collections","label": "Titolo Sezione","default": "Le Nostre Collezioni"},
+    {"type": "text","id": "label_discover","label": "Label Discover","default": "Scopri"}
   ],
   "blocks": [
     {
@@ -174,6 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ]
     }
   ],
-  "presets":[{"name":"Gamma Section V2"}]
+  "presets":[{"name":"Gamma Section", "category": "PDP"}]
 }
 {% endschema %}

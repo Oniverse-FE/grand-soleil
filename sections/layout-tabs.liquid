@@ -1,410 +1,422 @@
-<!-- Tabs -->
-<div id="{{ section.settings.id }}" class="flex flex-col max-h-[1200px] lg:max-h-[721px] tabs-width tabs-padding gap-14 lg:gap-12"
-     style="--padding-top-desktop: {{ section.settings.padding_top }}px; --padding-bottom-desktop: {{ section.settings.padding_bottom }}px; --padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;">
+<div id="{{ section.settings.id }}" 
+     class="top-view-section w-full h-auto flex flex-col items-center justify-center py-8 lg:py-20" 
+     style="background-color: {{ section.settings.bg_color }};">
 
-  <div class="flex flex-col gap-8 px-4 md:px-12 lg:px-24 md:max-w-[427px]">
-    <!-- Tab Buttons -->
-    <div class="flex w-full lg:w-fit rounded-xl body-regular text-[12px] leading-[18px] bg-antracite">
-      <div id="first-tab"
-           class="cursor-pointer body-semibold flex flex-1 rounded-xl px-4 py-2 transition-colors duration-300 bg-white text-black justify-center lg:justify-start lg:items-baseline whitespace-nowrap">
-        <span class="body-semibold">{{ section.settings.first-tab-label }}</span>
-      </div>
-      <div id="second-tab"
-           class="cursor-pointer body-semibold flex flex-1 rounded-xl px-4 py-2 transition-colors duration-300 text-white justify-center items-center whitespace-nowrap">
-        <span class="body-semibold">{{ section.settings.second-tab-label }}</span>
-      </div>
-    </div>
-
-    <!-- Tab Text -->
-    <div class="relative w-full lg:w-[511px] text-white body-regular text-[16px] leading-[22px] pb-14 lg:pb-12">
-      <div id="first-tab-text" class="absolute top-0 transition-opacity duration-500 opacity-100">
-        {{ section.settings.first-tab-text }}
-      </div>
-      <div id="second-tab-text" class="absolute top-0 transition-opacity duration-500 opacity-0 hidden">
-        {{ section.settings.second-tab-text }}
-      </div>
+  <div class="px-[16px] lg:px-[80px] mb-[32px] lg:mb-[60px] w-full flex justify-center">
+    <div class="relative flex items-center bg-[#F2F2F2] rounded-full p-1 border border-[#E0E0E0] w-fit">
+      <span class="category-slider-bg absolute h-[calc(100%-8px)] top-[4px] left-[4px] bg-black rounded-full transition-all duration-300 ease-in-out"></span>
+      {% for block in section.blocks %}
+        {% if block.settings.category_name != blank %}
+          <div class="top-view-tab-categories cursor-pointer relative z-10 px-6 py-2 lg:px-10 lg:py-3 transition-colors duration-300" 
+               data-tab-index="{{ forloop.index0 }}">
+            <p class="text-[14px] lg:text-[18px] font-medium leading-none whitespace-nowrap uppercase tracking-wider">
+              {{ block.settings.category_name }}
+            </p>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 
-  <!-- Images -->
-  <div class="relative w-full overflow-hidden rounded-none lg:rounded-xl z-10">
-
-    <!-- First Tab Image/Slider -->
-    {% assign has_first_slider = false %}
-    {% for block in section.blocks %}
-      {% if block.type == 'image-slider-first-tab' %}
-        {% assign has_first_slider = true %}
-      {% endif %}
-    {% endfor %}
-
-    <div id="first-tab-image-container"
-         class="transition-opacity duration-500 opacity-100 {% unless has_first_slider %}max-h-[1200px] lg:max-h-[721px]{% endunless %} relative">
-      {% if has_first_slider %}
-        <!-- Slider controls -->
-        <div class="flex justify-end z-20 gap-2 lg:gap-4 px-4 md:px-12 lg:px-24 pb-3 lg:pb-6">
-          <button class="first-tab-prev p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-              <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button class="first-tab-next p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-              <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
-
-        <div id="first-tab-scroll" class="px-4 md:px-12 lg:px-24 flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 scroll-smooth touch-auto cursor-grab active:cursor-grabbing scrollbar-hide w-full max-w-full">
-          {% for block in section.blocks %}
-            {% if block.type == 'image-slider-first-tab' %}
-              <div class="flex-shrink-0 relative h-[216px] lg:h-[621px] w-[324px] lg:w-[932px] rounded-[10px]">
-                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alt }}" class="w-full h-full rounded-[10px] object-cover">
-              </div>
+  {% for block in section.blocks %} 
+    <div class="top-view-deck-block w-full {% if forloop.first %}active{% endif %}" data-block-index="{{ forloop.index0 }}">
+      
+      <div class="top-view-cta-wrapper relative w-full px-[16px] lg:px-[80px] mb-8 lg:mb-12 flex justify-center">
+        <div class="inline-flex flex-row items-center justify-center gap-x-8 border-b border-[#BEBEBE] relative no-scrollbar overflow-x-auto">
+          {% for i in (1..7) %}
+            {% capture tab_label %}tab_{{ i }}_label{% endcapture %}
+            {% capture tab_image %}tab_{{ i }}_image{% endcapture %}
+            {% if block.settings[tab_label] != blank and block.settings[tab_image] %}
+              <button type="button" 
+                      class="top-view-cta-toggle pb-3 text-[14px] lg:text-[16px] font-semibold tracking-[-0.28px] whitespace-nowrap transition-colors duration-300" 
+                      data-tab-id="{{ i }}">
+                {{ block.settings[tab_label] }}
+              </button>
             {% endif %}
           {% endfor %}
+          <span class="cta-underline absolute bottom-[-1px] left-0 h-[2px] bg-black transition-all duration-300 ease-in-out"></span>
         </div>
-      {% else %}
-        <!-- Single Image -->
-        <div class="w-full">
-          <!-- Mobile Image Full Width -->
-          <div class="block md:hidden lg:hidden w-full">
-            <img src="{{ section.settings.first-tab-image-mobile | img_url: 'master' }}" 
-                 alt="{{ section.settings.first-tab-label }}"
-                 class="w-full h-auto object-cover transition-opacity duration-500 opacity-100" />
-          </div>
-          <!-- Desktop Image with Side Padding 96px -->
-          <div class="hidden md:flex lg:flex justify-center md:px-[48px] px-[96px]">
-            <div class="w-full flex justify-center">
-              <img src="{{ section.settings.first-tab-image-desktop | img_url: 'master' }}" 
-                   alt="{{ section.settings.first-tab-label }}"
-                   class="block h-auto max-h-[721px] w-auto object-contain transition-opacity duration-500 opacity-100 rounded-2xl" />
+      </div>
+
+      {% for i in (1..7) %}
+        {% capture tab_label %}tab_{{ i }}_label{% endcapture %}
+        {% capture tab_image %}tab_{{ i }}_image{% endcapture %}
+        {% capture tab_content %}tab_{{ i }}_content{% endcapture %}
+        {% if block.settings[tab_label] != blank and block.settings[tab_image] %}
+          <div class="top-view-tab-content {% unless forloop.first %}hidden{% endunless %}" data-content-id="{{ i }}">
+            <div class="w-full flex items-center justify-center">
+              <img src="{{ block.settings[tab_image] | image_url: width: 1440 }}" alt="{{ block.settings[tab_label] }}" class="w-full max-w-[1440px] h-auto block">
             </div>
-          </div>
-        </div>
-      {% endif %}
-    </div>
 
-    <!-- Second Tab Image/Slider -->
-    {% assign has_second_slider = false %}
-    {% for block in section.blocks %}
-      {% if block.type == 'image-slider-second-tab' %}
-        {% assign has_second_slider = true %}
-      {% endif %}
-    {% endfor %}
+            <div class="w-full flex flex-col items-center pt-8 pb-8 lg:pt-16 lg:pb-12 px-[16px] lg:px-[160px]">
+              <p class="text-center text-black text-[14px] leading-[20px] lg:text-[20px] lg:leading-[28px] max-w-[900px]">
+                {{ block.settings[tab_content] }}
+              </p>
+            </div>
 
-    <div id="second-tab-image-container"
-         class="transition-opacity duration-500 opacity-0 hidden {% unless has_second_slider %}max-h-[1200px] lg:max-h-[721px]{% endunless %} relative">
-      {% if has_second_slider %}
-        <!-- Slider controls -->
-        <div class="flex justify-end z-20 gap-2 px-4 md:px-12 lg:px-24 pb-4">
-          <button class="second-tab-prev p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-              <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button class="second-tab-next p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-              <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
-
-        <div id="second-tab-scroll" class="px-4 lg:px-24 flex flex-nowrap overflow-x-auto overflow-y-hidden gap-2 lg:gap-4 scroll-smooth touch-auto cursor-grab active:cursor-grabbing scrollbar-hide w-full max-w-full">
-          {% for block in section.blocks %}
-            {% if block.type == 'image-slider-second-tab' %}
-              <div class="flex-shrink-0 relative h-[216px] lg:h-[621px] w-[324px] lg:w-[932px] rounded-[10px]">
-                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alt }}" class="w-full h-full rounded-[10px] object-cover">
+            <div class="w-full lg:px-[160px] px-[16px] mb-12">
+              <div class="gallery-slider-container flex flex-row gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4">
+                {% for j in (1..10) %}
+                  {% capture gallery_img %}tab_{{ i }}_gallery_image{{ j }}{% endcapture %}
+                  {% if block.settings[gallery_img] %}
+                    <div class="gallery-slide shrink-0 w-[85%] lg:w-[calc(33.333%-11px)] snap-start">
+                      <div class="overflow-hidden rounded-[8px]">
+                        <img src="{{ block.settings[gallery_img] | image_url: width: 800 }}" 
+                             class="w-full object-cover wh-image-slider" 
+                             loading="lazy">
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
               </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% else %}
-        <!-- Single Image -->
-        <div class="w-full">
-          <!-- Mobile Image Full Width -->
-          <div class="block md:hidden lg:hidden w-full">
-            <img src="{{ section.settings.second-tab-image-mobile | img_url: 'master' }}" 
-                 alt="{{ section.settings.second-tab-label }}"
-                 class="w-full h-auto object-cover transition-opacity duration-500 opacity-100" />
-          </div>
-          <!-- Desktop Image with Side Padding 96px -->
-          <div class="hidden md:flex lg:flex justify-center md:px-[48px] px-[96px]">
-            <div class="w-full flex justify-center">
-              <img src="{{ section.settings.second-tab-image-desktop | img_url: 'master' }}" 
-                   alt="{{ section.settings.second-tab-label }}"
-                   class="block h-auto max-h-[721px] w-auto object-contain transition-opacity duration-500 opacity-100 rounded-2xl" />
             </div>
           </div>
-        </div>
-      {% endif %}
+        {% endif %}
+      {% endfor %}
     </div>
-
-  </div>
+  {% endfor %}
 </div>
 
 <style>
-.tabs-padding {
-  padding-top: var(--padding-top-mobile);
-  padding-bottom: var(--padding-bottom-mobile);
+/* Categorie & Labels */
+.top-view-tab-categories { color: #888; }
+.top-view-tab-categories.active-tab { color: #FFFFFF; }
+.top-view-cta-toggle { color: #888; background: transparent; border: none; cursor: pointer; }
+.top-view-cta-toggle.active { color: #000000; }
+
+/* Deck Blocks */
+.top-view-deck-block { display: none; }
+.top-view-deck-block.active { display: block; }
+
+/* Slider Gallery */
+.gallery-slider-container {
+  -webkit-overflow-scrolling: touch;
+}
+.wh-image-slider { 
+  height: 250px !important; 
+  width: 100%;
+}
+@media (min-width: 1024px) { 
+  .wh-image-slider { height: 400px !important; } 
 }
 
-@media screen and (min-width: 1350px) {
-  .tabs-width {
-    max-height: 1000px;
-  }
-}
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hidden { display: none !important; }
 
-@media screen and (min-width: 768px) {
-  .tabs-padding {
-    padding-top: var(--padding-top-desktop);
-    padding-bottom: var(--padding-bottom-desktop);
-  }
-}
-@media (max-width: 1024px) {
-  #scroll-container-{{ section.id }} {
-    scroll-snap-type: none; /* rimuove eventuali snap */
-    -webkit-overflow-scrolling: touch; /* scroll fluido su iOS */
-  }
+/* Forza allineamento centro per contenitore scrollabile */
+.top-view-cta-wrapper div {
+  min-width: fit-content;
 }
 </style>
 
 <script>
-// Selezione elementi principali
-const firstTab = document.getElementById("first-tab");
-const secondTab = document.getElementById("second-tab");
-const firstText = document.getElementById("first-tab-text");
-const secondText = document.getElementById("second-tab-text");
-const firstContainer = document.getElementById("first-tab-image-container");
-const secondContainer = document.getElementById("second-tab-image-container");
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.getElementById("{{ section.settings.id }}");
+  if (!section) return;
 
-// Funzione per attivare i tab
-function activateTab(isFirst) {
-  firstTab.classList.toggle("bg-white", isFirst);
-  firstTab.classList.toggle("text-black", isFirst);
-  firstTab.classList.toggle("text-white", !isFirst);
+  const catTabs = section.querySelectorAll('.top-view-tab-categories');
+  const catSlider = section.querySelector('.category-slider-bg');
+  const deckBlocks = section.querySelectorAll('.top-view-deck-block');
 
-  secondTab.classList.toggle("bg-white", !isFirst);
-  secondTab.classList.toggle("text-black", !isFirst);
-  secondTab.classList.toggle("text-white", isFirst);
+  function updateCategorySlider(activeTab) {
+    if (!activeTab || !catSlider) return;
+    catSlider.style.width = activeTab.offsetWidth + 'px';
+    catSlider.style.left = activeTab.offsetLeft + 'px';
+  }
 
-  firstText.classList.toggle("opacity-100", isFirst);
-  firstText.classList.toggle("opacity-0", !isFirst);
-  secondText.classList.toggle("opacity-100", !isFirst);
-  secondText.classList.toggle("opacity-0", isFirst);
+  function updateUnderline(block) {
+    const activeBtn = block.querySelector('.top-view-cta-toggle.active');
+    const underline = block.querySelector('.cta-underline');
+    if (activeBtn && underline) {
+      underline.style.width = activeBtn.offsetWidth + 'px';
+      underline.style.left = activeBtn.offsetLeft + 'px';
+    }
+  }
 
-  setTimeout(() => {
-    firstText.classList.toggle("hidden", !isFirst);
-    secondText.classList.toggle("hidden", isFirst);
-  }, 500);
+  // Categorie
+  catTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const index = tab.dataset.tabIndex;
+      catTabs.forEach(t => t.classList.remove('active-tab'));
+      tab.classList.add('active-tab');
+      updateCategorySlider(tab);
 
-  firstContainer.classList.toggle("opacity-100", isFirst);
-  firstContainer.classList.toggle("opacity-0", !isFirst);
-  firstContainer.classList.toggle("hidden", !isFirst);
-
-  secondContainer.classList.toggle("opacity-100", !isFirst);
-  secondContainer.classList.toggle("opacity-0", isFirst);
-  secondContainer.classList.toggle("hidden", isFirst);
-}
-
-// Gestione click sui tab
-firstTab.addEventListener("click", () => activateTab(true));
-secondTab.addEventListener("click", () => activateTab(false));
-
-// Funzione unica per slider prev/next + drag
-function setupSlider(containerId, prevBtnClass, nextBtnClass) {
-  const container = document.getElementById(containerId);
-  const prevBtn = document.querySelector(`.${prevBtnClass}`);
-  const nextBtn = document.querySelector(`.${nextBtnClass}`);
-
-  if (!container || !prevBtn || !nextBtn) return;
-
-  // Funzione per calcolare lo scroll visibile dinamicamente
-  const getScrollAmount = () => container.getBoundingClientRect().width;
-
-  // Prev/Next
-  prevBtn.addEventListener("click", () => {
-    const move = Math.min(getScrollAmount(), container.scrollLeft);
-    container.scrollBy({ left: -move, behavior: "smooth" });
+      deckBlocks.forEach(block => {
+        block.classList.toggle('active', block.dataset.blockIndex === index);
+        if (block.classList.contains('active')) {
+           const firstCta = block.querySelector('.top-view-cta-toggle');
+           if (firstCta) firstCta.click();
+        }
+      });
+    });
   });
 
-  nextBtn.addEventListener("click", () => {
-    const remaining = container.scrollWidth - container.clientWidth - container.scrollLeft;
-    const move = Math.min(getScrollAmount(), remaining);
-    container.scrollBy({ left: move, behavior: "smooth" });
+  // Labels
+  deckBlocks.forEach(block => {
+    const btns = block.querySelectorAll('.top-view-cta-toggle');
+    const contents = block.querySelectorAll('.top-view-tab-content');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.add('hidden'));
+        btn.classList.add('active');
+        const target = block.querySelector(`[data-content-id="${btn.dataset.tabId}"]`);
+        if (target) target.classList.remove('hidden');
+        updateUnderline(block);
+      });
+    });
   });
 
-  // Aggiornamento stato bottoni
-  const updateButtons = () => {
-    prevBtn.disabled = container.scrollLeft <= 0;
-    nextBtn.disabled = Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 1;
+  // Init
+  const initAll = () => {
+    const activeCat = section.querySelector('.top-view-tab-categories.active-tab') || catTabs[0];
+    if (activeCat) {
+      activeCat.classList.add('active-tab');
+      updateCategorySlider(activeCat);
+    }
+    deckBlocks.forEach(updateUnderline);
   };
-  container.addEventListener("scroll", updateButtons);
-  updateButtons();
 
-  // Drag scroll
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  container.addEventListener("mousedown", (e) => {
-    isDown = true;
-    container.classList.add("active");
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    e.preventDefault();
-  });
-
-  container.addEventListener("mouseleave", () => { isDown = false; container.classList.remove("active"); });
-  container.addEventListener("mouseup", () => { isDown = false; container.classList.remove("active"); });
-
-  container.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2; // velocità
-    container.scrollLeft = scrollLeft - walk;
-  });
-
-  // Blocca drag immagini
-  container.querySelectorAll("img").forEach(img => img.addEventListener("dragstart", e => e.preventDefault()));
-}
-
-// Inizializza slider prima tab subito
-setupSlider("first-tab-scroll", "first-tab-prev", "first-tab-next");
-
-// Inizializza slider seconda tab solo al click
-secondTab.addEventListener("click", () => {
-  activateTab(false);
-  setupSlider("second-tab-scroll", "second-tab-prev", "second-tab-next");
+  window.addEventListener('resize', initAll);
+  // Ritardo per caricamento font/layout
+  setTimeout(initAll, 400);
 });
 </script>
 
-
 {% schema %}
 {
-  "name": "Tabs Section",
+  "name": "PDP - Top view",
+
   "settings": [
     {
-      "type": "text",
       "id": "id",
-      "label": "Section ID"
-    },
-    {
       "type": "text",
-      "id": "first-tab-label",
-      "label": "First Tab Label"
+      "label": "ID section",
+      "default": "TopView"
     },
     {
-      "type": "textarea",
-      "id": "first-tab-text",
-      "label": "First Tab Text"
-    },
-    {
-      "type": "image_picker",
-      "id": "first-tab-image-mobile",
-      "label": "First Tab Image (Mobile)"
-    },
-    {
-      "type": "image_picker",
-      "id": "first-tab-image-desktop",
-      "label": "First Tab Image (Desktop)"
-    },
-    {
+      "id": "cta_gallery",
       "type": "text",
-      "id": "second-tab-label",
-      "label": "Second Tab Label"
+      "label": "Cta gallery"
     },
     {
-      "type": "textarea",
-      "id": "second-tab-text",
-      "label": "Second Tab Text"
+      "type": "header",
+      "content": "Color - Section"
     },
     {
-      "type": "image_picker",
-      "id": "second-tab-image-mobile",
-      "label": "Second Tab Image (Mobile)"
-    },
-    {
-      "type": "image_picker",
-      "id": "second-tab-image-desktop",
-      "label": "Second Tab Image (Desktop)"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top Desktop",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom Desktop",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "default": 96
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "label": "Padding Top Mobile",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "label": "Padding Bottom Mobile",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "default": 56
+      "id": "bg_color",
+      "type": "color",
+      "label": "Background color"
     }
   ],
+
   "blocks": [
     {
-      "type": "image-slider-first-tab",
-      "name": "First Tab Slider Image",
+      "type": "top_view_block",
+      "name": "Deck Block",
       "settings": [
+
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "type": "header",
+          "content": "Basic"
         },
         {
+          "id": "category_name",
           "type": "text",
-          "id": "alt",
-          "label": "Alt Text"
-        }
-      ]
-    },
-    {
-      "type": "image-slider-second-tab",
-      "name": "Second Tab Slider Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "label": "Category name"
         },
         {
-          "type": "text",
-          "id": "alt",
-          "label": "Alt Text"
-        }
+          "id": "overlay_type",
+          "type": "select",
+          "label": "Overlay",
+          "options": [
+            { "value": "main-deck", "label": "Main Deck" },
+            { "value": "lower-deck", "label": "Lower Deck" },
+            { "value": "flybridge", "label": "Flybridge" }
+          ]
+        },
+
+        {
+          "type": "header",
+          "content": "Tab 1"
+        },
+        { "id": "tab_1_label", "type": "text", "label": "Tab 1 label" },
+        { "id": "tab_1_image", "type": "image_picker", "label": "Tab 1 main image" },
+        { "id": "tab_1_content", "type": "textarea", "label": "Tab 1 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_1_gallery_image1", "type": "image_picker", "label": "Tab 1 gallery image 1" },
+        { "id": "tab_1_gallery_image2", "type": "image_picker", "label": "Tab 1 gallery image 2" },
+        { "id": "tab_1_gallery_image3", "type": "image_picker", "label": "Tab 1 gallery image 3" },
+        { "id": "tab_1_gallery_image4", "type": "image_picker", "label": "Tab 1 gallery image 4" },
+        { "id": "tab_1_gallery_image5", "type": "image_picker", "label": "Tab 1 gallery image 5" },
+        { "id": "tab_1_gallery_image6", "type": "image_picker", "label": "Tab 1 gallery image 6" },
+        { "id": "tab_1_gallery_image7", "type": "image_picker", "label": "Tab 1 gallery image 7" },
+        { "id": "tab_1_gallery_image8", "type": "image_picker", "label": "Tab 1 gallery image 8" },
+        { "id": "tab_1_gallery_image9", "type": "image_picker", "label": "Tab 1 gallery image 9" },
+        { "id": "tab_1_gallery_image10", "type": "image_picker", "label": "Tab 1 gallery image 10" },
+        { "id": "tab_1_gallery_image11", "type": "image_picker", "label": "Tab 1 gallery image 11" },
+        { "id": "tab_1_gallery_image12", "type": "image_picker", "label": "Tab 1 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 2"
+        },
+        { "id": "tab_2_label", "type": "text", "label": "Tab 2 label" },
+        { "id": "tab_2_image", "type": "image_picker", "label": "Tab 2 main image" },
+        { "id": "tab_2_content", "type": "textarea", "label": "Tab 2 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_2_gallery_image1", "type": "image_picker", "label": "Tab 2 gallery image 1" },
+        { "id": "tab_2_gallery_image2", "type": "image_picker", "label": "Tab 2 gallery image 2" },
+        { "id": "tab_2_gallery_image3", "type": "image_picker", "label": "Tab 2 gallery image 3" },
+        { "id": "tab_2_gallery_image4", "type": "image_picker", "label": "Tab 2 gallery image 4" },
+        { "id": "tab_2_gallery_image5", "type": "image_picker", "label": "Tab 2 gallery image 5" },
+        { "id": "tab_2_gallery_image6", "type": "image_picker", "label": "Tab 2 gallery image 6" },
+        { "id": "tab_2_gallery_image7", "type": "image_picker", "label": "Tab 2 gallery image 7" },
+        { "id": "tab_2_gallery_image8", "type": "image_picker", "label": "Tab 2 gallery image 8" },
+        { "id": "tab_2_gallery_image9", "type": "image_picker", "label": "Tab 2 gallery image 9" },
+        { "id": "tab_2_gallery_image10", "type": "image_picker", "label": "Tab 2 gallery image 10" },
+        { "id": "tab_2_gallery_image11", "type": "image_picker", "label": "Tab 2 gallery image 11" },
+        { "id": "tab_2_gallery_image12", "type": "image_picker", "label": "Tab 2 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 3"
+        },
+        { "id": "tab_3_label", "type": "text", "label": "Tab 3 label" },
+        { "id": "tab_3_image", "type": "image_picker", "label": "Tab 3 main image" },
+        { "id": "tab_3_content", "type": "textarea", "label": "Tab 3 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_3_gallery_image1", "type": "image_picker", "label": "Tab 3 gallery image 1" },
+        { "id": "tab_3_gallery_image2", "type": "image_picker", "label": "Tab 3 gallery image 2" },
+        { "id": "tab_3_gallery_image3", "type": "image_picker", "label": "Tab 3 gallery image 3" },
+        { "id": "tab_3_gallery_image4", "type": "image_picker", "label": "Tab 3 gallery image 4" },
+        { "id": "tab_3_gallery_image5", "type": "image_picker", "label": "Tab 3 gallery image 5" },
+        { "id": "tab_3_gallery_image6", "type": "image_picker", "label": "Tab 3 gallery image 6" },
+        { "id": "tab_3_gallery_image7", "type": "image_picker", "label": "Tab 3 gallery image 7" },
+        { "id": "tab_3_gallery_image8", "type": "image_picker", "label": "Tab 3 gallery image 8" },
+        { "id": "tab_3_gallery_image9", "type": "image_picker", "label": "Tab 3 gallery image 9" },
+        { "id": "tab_3_gallery_image10", "type": "image_picker", "label": "Tab 3 gallery image 10" },
+        { "id": "tab_3_gallery_image11", "type": "image_picker", "label": "Tab 3 gallery image 11" },
+        { "id": "tab_3_gallery_image12", "type": "image_picker", "label": "Tab 3 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 4"
+        },
+        { "id": "tab_4_label", "type": "text", "label": "Tab 4 label" },
+        { "id": "tab_4_image", "type": "image_picker", "label": "Tab 4 main image" },
+        { "id": "tab_4_content", "type": "textarea", "label": "Tab 4 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_4_gallery_image1", "type": "image_picker", "label": "Tab 4 gallery image 1" },
+        { "id": "tab_4_gallery_image2", "type": "image_picker", "label": "Tab 4 gallery image 2" },
+        { "id": "tab_4_gallery_image3", "type": "image_picker", "label": "Tab 4 gallery image 3" },
+        { "id": "tab_4_gallery_image4", "type": "image_picker", "label": "Tab 4 gallery image 4" },
+        { "id": "tab_4_gallery_image5", "type": "image_picker", "label": "Tab 4 gallery image 5" },
+        { "id": "tab_4_gallery_image6", "type": "image_picker", "label": "Tab 4 gallery image 6" },
+        { "id": "tab_4_gallery_image7", "type": "image_picker", "label": "Tab 4 gallery image 7" },
+        { "id": "tab_4_gallery_image8", "type": "image_picker", "label": "Tab 4 gallery image 8" },
+        { "id": "tab_4_gallery_image9", "type": "image_picker", "label": "Tab 4 gallery image 9" },
+        { "id": "tab_4_gallery_image10", "type": "image_picker", "label": "Tab 4 gallery image 10" },
+        { "id": "tab_4_gallery_image11", "type": "image_picker", "label": "Tab 4 gallery image 11" },
+        { "id": "tab_4_gallery_image12", "type": "image_picker", "label": "Tab 4 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 5"
+        },
+        { "id": "tab_5_label", "type": "text", "label": "Tab 5 label" },
+        { "id": "tab_5_image", "type": "image_picker", "label": "Tab 5 main image" },
+        { "id": "tab_5_content", "type": "textarea", "label": "Tab 5 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_5_gallery_image1", "type": "image_picker", "label": "Tab 5 gallery image 1" },
+        { "id": "tab_5_gallery_image2", "type": "image_picker", "label": "Tab 5 gallery image 2" },
+        { "id": "tab_5_gallery_image3", "type": "image_picker", "label": "Tab 5 gallery image 3" },
+        { "id": "tab_5_gallery_image4", "type": "image_picker", "label": "Tab 5 gallery image 4" },
+        { "id": "tab_5_gallery_image5", "type": "image_picker", "label": "Tab 5 gallery image 5" },
+        { "id": "tab_5_gallery_image6", "type": "image_picker", "label": "Tab 5 gallery image 6" },
+        { "id": "tab_5_gallery_image7", "type": "image_picker", "label": "Tab 5 gallery image 7" },
+        { "id": "tab_5_gallery_image8", "type": "image_picker", "label": "Tab 5 gallery image 8" },
+        { "id": "tab_5_gallery_image9", "type": "image_picker", "label": "Tab 5 gallery image 9" },
+        { "id": "tab_5_gallery_image10", "type": "image_picker", "label": "Tab 5 gallery image 10" },
+        { "id": "tab_5_gallery_image11", "type": "image_picker", "label": "Tab 5 gallery image 11" },
+        { "id": "tab_5_gallery_image12", "type": "image_picker", "label": "Tab 5 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 6"
+        },
+        { "id": "tab_6_label", "type": "text", "label": "Tab 6 label" },
+        { "id": "tab_6_image", "type": "image_picker", "label": "Tab 6 main image" },
+        { "id": "tab_6_content", "type": "textarea", "label": "Tab 6 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_6_gallery_image1", "type": "image_picker", "label": "Tab 6 gallery image 1" },
+        { "id": "tab_6_gallery_image2", "type": "image_picker", "label": "Tab 6 gallery image 2" },
+        { "id": "tab_6_gallery_image3", "type": "image_picker", "label": "Tab 6 gallery image 3" },
+        { "id": "tab_6_gallery_image4", "type": "image_picker", "label": "Tab 6 gallery image 4" },
+        { "id": "tab_6_gallery_image5", "type": "image_picker", "label": "Tab 6 gallery image 5" },
+        { "id": "tab_6_gallery_image6", "type": "image_picker", "label": "Tab 6 gallery image 6" },
+        { "id": "tab_6_gallery_image7", "type": "image_picker", "label": "Tab 6 gallery image 7" },
+        { "id": "tab_6_gallery_image8", "type": "image_picker", "label": "Tab 6 gallery image 8" },
+        { "id": "tab_6_gallery_image9", "type": "image_picker", "label": "Tab 6 gallery image 9" },
+        { "id": "tab_6_gallery_image10", "type": "image_picker", "label": "Tab 6 gallery image 10" },
+        { "id": "tab_6_gallery_image11", "type": "image_picker", "label": "Tab 6 gallery image 11" },
+        { "id": "tab_6_gallery_image12", "type": "image_picker", "label": "Tab 6 gallery image 12" },
+
+        {
+          "type": "header",
+          "content": "Tab 7"
+        },
+        { "id": "tab_7_label", "type": "text", "label": "Tab 7 label" },
+        { "id": "tab_7_image", "type": "image_picker", "label": "Tab 7 main image" },
+        { "id": "tab_7_content", "type": "textarea", "label": "Tab 7 content" },
+        {
+          "type": "header",
+          "content": "Gallery"
+        },
+        { "id": "tab_7_gallery_image1", "type": "image_picker", "label": "Tab 7 gallery image 1" },
+        { "id": "tab_7_gallery_image2", "type": "image_picker", "label": "Tab 7 gallery image 2" },
+        { "id": "tab_7_gallery_image3", "type": "image_picker", "label": "Tab 7 gallery image 3" },
+        { "id": "tab_7_gallery_image4", "type": "image_picker", "label": "Tab 7 gallery image 4" },
+        { "id": "tab_7_gallery_image5", "type": "image_picker", "label": "Tab 7 gallery image 5" },
+        { "id": "tab_7_gallery_image6", "type": "image_picker", "label": "Tab 7 gallery image 6" },
+        { "id": "tab_7_gallery_image7", "type": "image_picker", "label": "Tab 7 gallery image 7" },
+        { "id": "tab_7_gallery_image8", "type": "image_picker", "label": "Tab 7 gallery image 8" },
+        { "id": "tab_7_gallery_image9", "type": "image_picker", "label": "Tab 7 gallery image 9" },
+        { "id": "tab_7_gallery_image10", "type": "image_picker", "label": "Tab 7 gallery image 10" },
+        { "id": "tab_7_gallery_image11", "type": "image_picker", "label": "Tab 7 gallery image 11" },
+        { "id": "tab_7_gallery_image12", "type": "image_picker", "label": "Tab 7 gallery image 12" }
       ]
     }
   ],
+
   "presets": [
     {
-      "name": "Tabs Section",
-      "category": "Custom"
+      "name": "PDP - Top view",
+      "category": "New PDP"
     }
-  ]
+  ],
+
+  "max_blocks": 3
 }
 {% endschema %}

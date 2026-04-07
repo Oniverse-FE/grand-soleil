@@ -1,0 +1,182 @@
+<div class="gamma-section w-full py-12 lg:py-[80px] bg-EBEFF2_gs bg-truffle_gsp">
+  <div class="max-w-[1440px] mx-auto px-4 flex flex-col items-center">
+    
+    <h2 class="subtitle_gs subtitle_gsp mb-6 text-center w-full text-data_gs text-FAF9F7_gsp">
+      {{ section.settings.tab_collections }}
+    </h2>
+
+    <div class="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-3 mb-8 w-full overflow-x-auto no-scrollbar pb-2">
+      {% for block in section.blocks %}
+        {% if block.type == 'tab' %}
+          <div class="tab-gamma hover:cta-border-dark_gs hover:cta-border-light_gsp px-6 py-3 cursor-pointer transition-all duration-200 group whitespace-nowrap cta-border-dark_gs cta-border-light_gsp" 
+               data-collection-handle="{{ block.settings.tab_collection | default: '' }}">
+            <span class="transition-colors">
+              {{ block.settings.tab_title }}
+            </span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="relative w-full max-w-4xl mb-10 border-b border-gray-300">
+      <div class="model-names-container flex justify-start md:justify-center gap-8 pb-4 relative overflow-x-auto no-scrollbar">
+          </div>
+      <div class="absolute bottom-0 h-[2px] bg-[#05090D] transition-all duration-500 ease-in-out z-10" id="model-indicator"></div>
+    </div>
+
+    <div class="w-full lg:max-w-[1200px] flex flex-col relative">
+      
+      <div class="relative w-full aspect-video overflow-hidden rounded-[16px] shadow-xl bg-[#D1D5DB]">
+        <div class="slider-track w-full h-full relative">
+          {% for block in section.blocks %}
+            {% if block.type == 'tab' %}
+              {% assign collection = collections[block.settings.tab_collection] %}
+              {% for product in collection.products %}
+                <div class="product-slide absolute inset-0 opacity-0 transition-opacity duration-500" 
+                     data-collection="{{ collection.handle }}" 
+                     data-collection-name="{{ collection.title }}"
+                     data-collection-url="{{ collection.url }}"
+                     data-title="{{ product.title }}"
+                     data-url="{{ product.url }}">
+                  <img src="{{ product.featured_image | img_url: '1400x' }}" 
+                       alt="{{ product.title }}" 
+                       class="w-full h-full object-cover">
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"></div>
+      </div>
+
+      <div class="lg:absolute lg:bottom-4 lg:left-4 lg:right-4 w-auto lg:p-6 flex flex-col lg:flex-row justify-between items-start lg:items-end z-30 space-y-6 lg:space-y-0 lg:bg-modelli_gs lg:bg-modelli_gsp">
+        
+        <div class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-data_gs lg:text-color_gs text-FAF9F7_gsp pt-6 lg:pt-0">
+          <h3 id="current-model-name" class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-data_gs lg:text-color_gs text-FAF9F7_gsp tracking-tighter"></h3>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <a href="#" id="cta-main" class="px-8 py-4 cta-blue_gs cta-truffle_gsp transition-all text-center link-lg_gs link-lg_gsp pointer-events-auto">
+            </a>
+          <a href="#" id="cta-collection" class="px-8 py-4 cta-border-dark_gs lg:cta-border-light_gs cta-border-light_gsp transition-all link-lg_gs link-lg_gsp text-center pointer-events-auto">
+             </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.model-name {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #05090D;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.product-slide.active { opacity: 1; z-index: 10; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+#cta-main, #cta-collection { pointer-events: auto !important; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll('.tab-gamma');
+  const slides = document.querySelectorAll('.product-slide');
+  const modelContainer = document.querySelector('.model-names-container');
+  const indicator = document.getElementById('model-indicator');
+  const nameDisplay = document.getElementById('current-model-name');
+  
+  const ctaProduct = document.getElementById('cta-main');
+  const ctaCollection = document.getElementById('cta-collection');
+
+  function updateIndicator(element) {
+    if(!element) return;
+    indicator.style.width = `${element.offsetWidth}px`;
+    indicator.style.left = `${element.offsetLeft}px`;
+  }
+
+  function setActiveSlide(title) {
+    slides.forEach(slide => {
+      if(slide.dataset.title === title) {
+        slide.classList.add('active');
+        nameDisplay.textContent = slide.dataset.title;
+        
+        // Aggiorna CTA 1: Aggiunto "Scopri" davanti al nome prodotto
+        ctaProduct.textContent = `{{  section.settings.label_discover}} ${slide.dataset.title}`;
+        ctaProduct.href = slide.dataset.url;
+        
+        // Aggiorna CTA 2: Aggiunto "Scopri" davanti al nome collezione
+        ctaCollection.textContent = `{{  section.settings.label_discover}} ${slide.dataset.collectionName}`;
+        ctaCollection.href = slide.dataset.collectionUrl;
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
+
+  function handleTabClick(tab) {
+    const handle = tab.dataset.collectionHandle;
+    tabs.forEach(t => t.classList.remove('active-tab'));
+    tab.classList.add('active-tab');
+
+    modelContainer.innerHTML = '';
+    const filteredSlides = Array.from(slides).filter(s => s.dataset.collection === handle);
+
+    filteredSlides.forEach((slide, index) => {
+      const div = document.createElement('div');
+      div.className = 'model-name';
+      div.textContent = slide.dataset.title;
+      div.onclick = () => {
+        document.querySelectorAll('.model-name').forEach(m => m.classList.remove('active'));
+        div.classList.add('active');
+        updateIndicator(div);
+        setActiveSlide(slide.dataset.title);
+      };
+      modelContainer.appendChild(div);
+      
+      if(index === 0) {
+        div.classList.add('active');
+        setTimeout(() => updateIndicator(div), 150);
+        setActiveSlide(slide.dataset.title);
+      }
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => handleTabClick(tab));
+  });
+
+  if(tabs.length > 0) handleTabClick(tabs[0]);
+
+  window.addEventListener('resize', () => {
+    const activeModel = document.querySelector('.model-name.active');
+    updateIndicator(activeModel);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Gamma Section",
+  "settings": [
+    {"type": "text","id": "tab_collections","label": "Titolo Sezione","default": "Le Nostre Collezioni"},
+    {"type": "text","id": "label_discover","label": "Label Discover","default": "Scopri"}
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Collezione",
+      "settings":[
+        {"type": "text","id": "tab_title","label": "Nome Visualizzato","default": "Gamma"},
+        {"type": "collection","id": "tab_collection","label": "Seleziona Collezione"}
+      ]
+    }
+  ],
+  "presets":[{"name":"Gamma Section", "category": "Home page"}]
+}
+{% endschema %}

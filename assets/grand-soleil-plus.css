@@ -933,3 +933,25 @@ color:#EBEFF2;
     background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
     backdrop-filter: blur(48px);
 }
+
+.lg\:bg-modelli_gsp{
+    @media (width >= 64rem) {
+        border-radius: 16px;
+        background: var(--gs-blur-gs-blur-light-70, rgba(235, 239, 242, 0.70));
+        backdrop-filter: blur(48px);
+    }
+}
+
+.hover\:cta-border-light_gsp {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #FAF9F7 !important;
+        color:#141312 !important;
+      }
+    }
+  }
+
+.active-tab{
+    background-color: #FAF9F7 !important;
+    color:#141312 !important;
+}
