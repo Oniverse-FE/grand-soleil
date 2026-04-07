@@ -447,6 +447,7 @@
         },
         "tech_spec_item_83D6Hr": {
           "type": "tech-spec-item",
+          "name": "Fuel capacity with engine opt.",
           "settings": {
             "label": "Fuel capacity with engine opt.",
             "value": "55 L – 14.5 gal"
@@ -454,6 +455,7 @@
         },
         "tech_spec_item_mycqLV": {
           "type": "tech-spec-item",
+          "name": "Engine power capacity",
           "settings": {
             "label": "Engine power capacity",
             "value": "8 kw std.+ 8 kw opt."
@@ -461,6 +463,7 @@
         },
         "tech_spec_item_Jr9NqJ": {
           "type": "tech-spec-item",
+          "name": "Solar energy system",
           "settings": {
             "label": "Solar energy system",
             "value": "340 w nominal power"
@@ -468,72 +471,74 @@
         },
         "tech_spec_item_e8Gidq": {
           "type": "tech-spec-item",
+          "name": "Systems power capacity",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Systems power capacity",
+            "value": "190 Ah (std.)+ 190 Ah (power pack opt.)"
           }
         },
         "tech_spec_item_W7CWqU": {
           "type": "tech-spec-item",
+          "name": "Hydrogeneration System",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Hydrogeneration System",
+            "value": "240 w at 6 kn of speed"
           }
         },
         "tech_spec_item_79iGHg": {
           "type": "tech-spec-item",
+          "name": "Square-Top Mainsail Area",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Square-Top Mainsail Area",
+            "value": "38 m² – 409 ft²"
           }
         },
         "tech_spec_item_HBaEBD": {
           "type": "tech-spec-item",
+          "name": "Self-Tacking Jib Area",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Self-Tacking Jib Area",
+            "value": "26 m² – 279.86 ft²"
           }
         },
         "tech_spec_item_i6mKQP": {
           "type": "tech-spec-item",
+          "name": "Genoa Area",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Genoa Area",
+            "value": "32 m² – 344 ft²"
           }
         },
         "tech_spec_item_Jt6hVt": {
           "type": "tech-spec-item",
+          "name": "Code 0 area",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Code 0 area",
+            "value": "60 m² – 645.83 ft²"
           }
         },
         "tech_spec_item_NRygrY": {
           "type": "tech-spec-item",
+          "name": "Gennaker area",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Gennaker area",
+            "value": "100 m² – 1076.4 ft²"
           }
         },
         "tech_spec_item_HEEjGJ": {
           "type": "tech-spec-item",
+          "name": "Water tank",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Water tank",
+            "value": "70 lt – 18.5 gal"
           }
         },
         "tech_spec_item_qb3YH8": {
           "type": "tech-spec-item",
+          "name": "CE Certification",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
-          }
-        },
-        "tech_spec_item_whQ9Gq": {
-          "type": "tech-spec-item",
-          "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "CE Certification",
+            "value": "Category B*/C"
           }
         }
       },
@@ -560,8 +565,7 @@
         "tech_spec_item_Jt6hVt",
         "tech_spec_item_NRygrY",
         "tech_spec_item_HEEjGJ",
-        "tech_spec_item_qb3YH8",
-        "tech_spec_item_whQ9Gq"
+        "tech_spec_item_qb3YH8"
       ],
       "name": "Technical Spec Right Col",
       "settings": {
