@@ -568,6 +568,50 @@
         "fd-cta_link2": "#"
       }
     },
+    "model_pdp_gs_JYCAzr": {
+      "type": "model-pdp-gs",
+      "blocks": {
+        "tab_B44XhB": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tutti i modelli",
+            "tab_collection": "all-models"
+          }
+        },
+        "tab_fg8kVM": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Performance",
+            "tab_collection": "performance"
+          }
+        },
+        "tab_Ti8HxY": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Long Cruise",
+            "tab_collection": "long-cruise"
+          }
+        },
+        "tab_WXeVtp": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Blue",
+            "tab_collection": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "tab_B44XhB",
+        "tab_fg8kVM",
+        "tab_Ti8HxY",
+        "tab_WXeVtp"
+      ],
+      "name": "Gamma Section",
+      "settings": {
+        "tab_collections": "LINEA GRAND SOLEIL",
+        "label_discover": "Scopri"
+      }
+    },
     "text_image_with_background_EEb9Tf": {
       "type": "text-image-with-background",
       "name": "Box Testo e Immagine",
@@ -603,6 +647,7 @@
     "layout_tabs_w869gk",
     "tech_spec_gFwMPj",
     "find_dealer_mzgD4K",
+    "model_pdp_gs_JYCAzr",
     "text_image_with_background_EEb9Tf"
   ]
 }
