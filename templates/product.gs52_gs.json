@@ -510,7 +510,7 @@
         "intro_title_myk7Wt": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "About the GS 44",
+            "intro-title-text": "About the GS 52",
             "small-title": ""
           }
         },
@@ -518,7 +518,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "Naval architecture: Matteo Polli\nDeck and Interior Design: Nauta Design\nShipyard: Cantiere del Pardo\nCE Category: “A” OCEAN"
+            "intro-text-area-text": "Naval architecture: Matteo Polli\nDeck and interior design: Nauta Design\nShipyard: Cantiere del Pardo\nCE Category: “A” OCEAN"
           }
         }
       },
@@ -550,28 +550,6 @@
         "pb_tablet": 72,
         "pb_desktop": 128
       }
-    },
-    "text_gallery_MpUcET": {
-      "type": "text-gallery",
-      "blocks": {
-        "image_JY3HbX": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/GSBlue-logos-1440x186.png",
-            "alt_image": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_JY3HbX"
-      ],
-      "name": "Text & Gallery",
-      "settings": {
-        "id_section": "",
-        "main_title": "",
-        "subtitle": "",
-        "content": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects"
-      }
     }
   },
   "order": [
@@ -583,7 +561,6 @@
     "rich_text_fycJJg",
     "image_slider_7tF4tQ",
     "tech_spec_gFwMPj",
-    "intro_slider_EqR7Bn",
-    "text_gallery_MpUcET"
+    "intro_slider_EqR7Bn"
   ]
 }
