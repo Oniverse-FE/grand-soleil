@@ -153,7 +153,7 @@
         "card_EmiiRJ": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/gallery-vertical-03-1.jpg",
+            "image": "shopify://shop_images/4-Exterior_Aerials.jpg",
             "card_title": "2. Thermoplastic sails",
             "card_subtitle": "The sails are made from thermoplastic materials, further committing to reducing environmental impact, Developed by OneSails, the 4T FORTET™ sails are the world’s first “green sails”.’. Their membranes and assembly process are designed to meet the highest standards in terms of environmental impact and recyclability. Traditional glues, resins, and solvents have been replaced with an innovative hot-melt process, while the base polymer is 100% recyclable through standard waste disposal methods.",
             "link": ""
@@ -162,7 +162,7 @@
         "card_BWg8Lg": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/gallery-vertical-05-1.jpg",
+            "image": "shopify://shop_images/15-Cockpit.jpg",
             "card_title": "3. Design for disassembly",
             "card_subtitle": "A smart design approach allows easy separation of boat accessories and components, similar to end-of-life practices in the automotive industry. This critical process ensures that every part of the Grand Soleil BLUE can be effectively disassembled and recycled, minimizing environmental impact.",
             "link": ""
@@ -181,8 +181,24 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
-            "card_title": "Architettura navale firmata Matteo Polli",
-            "card_subtitle": "La carena del GS52P è un capolavoro di idrodinamica. Le linee d'acqua sono ottimizzate per ridurre la resistenza e massimizzare la stabilità. Questo si traduce in un vantaggio tangibile: angoli di bolina più stretti, accelerazione immediata e un passaggio sull'onda morbido e asciutto, per performance superiori in ogni condizione.",
+            "card_title": "5. Electric propulsion",
+            "card_subtitle": "A 6 kW electric motor with a direct Pod Drive transmission from E-Propulsion. This compact, low-maintenance solution ensures absolute silence onboard and a plug-and-play installation. Ideal for zero-emission navigation, it promotes a more sustainable future by reducing environmental impact.",
+            "link": ""
+          }
+        },
+        "card_YiJ87T": {
+          "type": "card",
+          "settings": {
+            "card_title": "Titolo Card",
+            "card_subtitle": "Sottotitolo descrittivo",
+            "link": ""
+          }
+        },
+        "card_9Pe76t": {
+          "type": "card",
+          "settings": {
+            "card_title": "Titolo Card",
+            "card_subtitle": "Sottotitolo descrittivo",
             "link": ""
           }
         }
@@ -194,7 +210,9 @@
         "card_EmiiRJ",
         "card_BWg8Lg",
         "card_grK6hC",
-        "card_AAjMgB"
+        "card_AAjMgB",
+        "card_YiJ87T",
+        "card_9Pe76t"
       ],
       "name": "Multi Cards Slider",
       "settings": {
