@@ -402,7 +402,7 @@
           "name": "Berths",
           "settings": {
             "label": "Berths",
-            "value": "6/9"
+            "value": "6/8"
           }
         },
         "tech_spec_item_DgcCGY": {
@@ -410,7 +410,7 @@
           "name": "Overall length (Performance)",
           "settings": {
             "label": "Overall length (Performance)",
-            "value": "14.33 m – 47 ft"
+            "value": "17.05 m – 55.11 ft"
           }
         },
         "tech_spec_item_iN4xft": {
@@ -418,7 +418,7 @@
           "name": "Gennaker area (Performance)",
           "settings": {
             "label": "Gennaker area (Performance)",
-            "value": "170 m² -1830 ft²"
+            "value": "250 m² -3014 ft²"
           }
         },
         "tech_spec_item_kjkWWb": {
@@ -426,7 +426,7 @@
           "name": "Mainsail area (Performance)",
           "settings": {
             "label": "Mainsail area (Performance)",
-            "value": "59 m² – 635 ft²"
+            "value": "95 m² – 1023 ft²"
           }
         },
         "tech_spec_item_4cGwUt": {
@@ -434,7 +434,7 @@
           "name": "Self taking jib (Performance)",
           "settings": {
             "label": "Self taking jib (Performance)",
-            "value": "47 m² – 506 ft²"
+            "value": "62 m² – 667 ft²"
           }
         },
         "tech_spec_item_iAjHFm": {
@@ -442,7 +442,7 @@
           "name": "Overall length (race)",
           "settings": {
             "label": "Overall length (race)",
-            "value": "15 m – 49.21 ft"
+            "value": "17.95 m – 58.11 ft"
           }
         },
         "tech_spec_item_giPaCt": {
@@ -450,7 +450,7 @@
           "name": "Gennaker area (race)",
           "settings": {
             "label": "Gennaker area (race)",
-            "value": "195 m² – 2100 ft²"
+            "value": "280 m² – 2691 ft²"
           }
         },
         "tech_spec_item_3g7XFH": {
@@ -458,7 +458,7 @@
           "name": "Mainsail area (race)",
           "settings": {
             "label": "Mainsail area (race)",
-            "value": "66 m² -711 ft²"
+            "value": "100 m² – 1076 ft²"
           }
         },
         "tech_spec_item_83D6Hr": {
@@ -466,7 +466,7 @@
           "name": "Self taking jib (race)",
           "settings": {
             "label": "Self taking jib (race)",
-            "value": "57 m² – 614 ft²"
+            "value": "65 m² – 700 ft²"
           }
         }
       },
