@@ -189,14 +189,14 @@
       "settings": {
         "id": "intro",
         "first-cta-visible": false,
-        "first-cta-label": "Scarica la brochure",
+        "first-cta-label": "",
         "first-cta-link": "",
         "brochure-transparent": false,
         "brochure-bg-color": "#ffffff",
         "brochure-color": "#000000",
         "brochure-border-color": "#ffffff",
         "second-cta-visible": false,
-        "second-cta-label": "Richiedi informazioni",
+        "second-cta-label": "",
         "second-cta-link": "",
         "info-transparent": true,
         "info-bg-color": "#000000",
@@ -417,107 +417,86 @@
         "pb_mob": 104
       }
     },
-    "rich_text_fycJJg": {
-      "type": "rich-text",
-      "name": "Rich text",
-      "settings": {
-        "rt_subtitle": "",
-        "rt_title": "THE RACE VERSION",
-        "rt_text1": "The Race version of the Grand Soleil 52 is designed for owners seeking top-level performance and a strong racing attitude. Compared to the standard configuration, this setup features a deck optimized for competitive sailing, with six winches, longitudinal jib tracks, and a recessed mainsheet traveller with electric controls, seamlessly integrated into the cockpit to ensure efficiency and freedom of movement during maneuvers.\n\nThe bowsprit is extended by 90 cm compared to the standard version, allowing for more effective use of asymmetric sails or gennakers, especially downwind. Completing the Race configuration are textile lifelines, which are lighter and more efficient than traditional ones, and the option to equip the yacht with a carbon mast and boom, reducing overall weight and increasing rig stiffness — key elements for maximizing racing performance.",
-        "rt-cta_label": "",
-        "rt-cta_link": "",
-        "rt-cta_label_2": "",
-        "rt-cta_link_2": "",
-        "enable_alt_style": false,
-        "alignment_mobile": "left",
-        "alignment_desktop": "center",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80
-      }
-    },
-    "image_slider_7tF4tQ": {
-      "type": "image-slider",
+    "pdp_multi_cards_reKfei": {
+      "type": "pdp-multi-cards",
       "blocks": {
-        "image_slider_image_8wHiWd": {
-          "type": "image-slider-image",
+        "title_3UmQzJ": {
+          "type": "title",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GS-52-gallery-01_desktop-3.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "editorial-title": "LAYOUT 3 CABINS"
           }
         },
-        "image_slider_image_gFeVKg": {
-          "type": "image-slider-image",
+        "text_area_3rKCFG": {
+          "type": "text-area",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GS-52-gallery-02_desktop-3.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "editor-text": "In the three-cabin version (std.) the layout includes, in addition to the owner’s cabin, two guest cabins aft with double beds. Every space has been conceived to ensure maximum comfort, even during longer passages.",
+            "editorial-label": "",
+            "editorial-url": ""
           }
         },
-        "image_slider_image_6qiqgH": {
-          "type": "image-slider-image",
+        "card_EtV4jG": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GS-52-gallery-03_desktop-3.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "image": "shopify://shop_images/interiors-07.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
           }
         },
-        "image_slider_image_jbB4cX": {
-          "type": "image-slider-image",
+        "card_czzQxB": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GS-52-gallery-04_desktop-3.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "image": "shopify://shop_images/interiors-08.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
           }
         },
-        "image_slider_image_6mPGf6": {
-          "type": "image-slider-image",
+        "card_fMerxk": {
+          "type": "card",
           "settings": {
-            "image-slider-image": "shopify://shop_images/GS-52-gallery-05_desktop-3.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "image": "shopify://shop_images/interiors-09.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "image_slider_image_8wHiWd",
-        "image_slider_image_gFeVKg",
-        "image_slider_image_6qiqgH",
-        "image_slider_image_jbB4cX",
-        "image_slider_image_6mPGf6"
+        "title_3UmQzJ",
+        "text_area_3rKCFG",
+        "card_EtV4jG",
+        "card_czzQxB",
+        "card_fMerxk"
       ],
-      "name": "Slider",
+      "name": "Multi Cards Slider",
       "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "tech_spec_gFwMPj": {
       "type": "tech-spec",
       "blocks": {
+        "tech_spec_item_H3Macx": {
+          "type": "tech-spec-item",
+          "name": "Overall length",
+          "settings": {
+            "label": "Overall length",
+            "value": "13.83 m – 45.37 ft"
+          }
+        },
         "tech_spec_item_8Drwyc": {
           "type": "tech-spec-item",
           "name": "Hull length",
           "settings": {
             "label": "Hull length",
-            "value": "16.20 m – 53.2 ft"
+            "value": "12.95 m – 42.49 ft"
           }
         },
         "tech_spec_item_mY8ptH": {
@@ -525,39 +504,7 @@
           "name": "Max beam",
           "settings": {
             "label": "Max beam",
-            "value": "5.15 m – 16.11 ft"
-          }
-        },
-        "tech_spec_item_4jQ9LR": {
-          "type": "tech-spec-item",
-          "name": "Displacement",
-          "settings": {
-            "label": "Displacement",
-            "value": "16.5 t – 36376 lb"
-          }
-        },
-        "tech_spec_item_CXFKwq": {
-          "type": "tech-spec-item",
-          "name": "Engines",
-          "settings": {
-            "label": "Engines",
-            "value": "75 hp Volvo Penta Saildrive std.<br>80 hp Yanmar opt."
-          }
-        },
-        "tech_spec_item_HEEjGJ": {
-          "type": "tech-spec-item",
-          "name": "Water tank",
-          "settings": {
-            "label": "Water tank",
-            "value": "600 l approx – 159 gal approx"
-          }
-        },
-        "tech_spec_item_4zpik8": {
-          "type": "tech-spec-item",
-          "name": "Fuel tank",
-          "settings": {
-            "label": "Fuel tank",
-            "value": "350 l approx – 92 gal approx"
+            "value": "4.18 m – 13.71 ft"
           }
         },
         "tech_spec_item_pcg3ef": {
@@ -565,97 +512,76 @@
           "name": "Draft",
           "settings": {
             "label": "Draft",
-            "value": "2.90 m (9.6 ft) std.<br>2.50 m / 8.2 ft & 2.70 m / 8.8 ft opt."
+            "value": "2.25 m – 7.38 ft"
+          }
+        },
+        "tech_spec_item_4jQ9LR": {
+          "type": "tech-spec-item",
+          "name": "Displacement",
+          "settings": {
+            "label": "Displacement",
+            "value": "11.1 t approx – 22200 lb approx"
+          }
+        },
+        "tech_spec_item_4zpik8": {
+          "type": "tech-spec-item",
+          "name": "Fuel tank",
+          "settings": {
+            "label": "Fuel tank",
+            "value": "200 l – 53 gal"
+          }
+        },
+        "tech_spec_item_HEEjGJ": {
+          "type": "tech-spec-item",
+          "name": "Water tank",
+          "settings": {
+            "label": "Water tank",
+            "value": "300 l – 79 gal"
+          }
+        },
+        "tech_spec_item_CXFKwq": {
+          "type": "tech-spec-item",
+          "name": "Engines",
+          "settings": {
+            "label": "Engines",
+            "value": "50 hp std.<br>60 hp opt."
           }
         },
         "tech_spec_item_4hkqx9": {
           "type": "tech-spec-item",
-          "name": "Berths",
+          "name": "Sail Area",
           "settings": {
-            "label": "Berths",
-            "value": "6/8"
-          }
-        },
-        "tech_spec_item_DgcCGY": {
-          "type": "tech-spec-item",
-          "name": "Overall length (Performance)",
-          "settings": {
-            "label": "Overall length (Performance)",
-            "value": "17.05 m – 55.11 ft"
-          }
-        },
-        "tech_spec_item_iN4xft": {
-          "type": "tech-spec-item",
-          "name": "Gennaker area (Performance)",
-          "settings": {
-            "label": "Gennaker area (Performance)",
-            "value": "250 m² -3014 ft²"
-          }
-        },
-        "tech_spec_item_kjkWWb": {
-          "type": "tech-spec-item",
-          "name": "Mainsail area (Performance)",
-          "settings": {
-            "label": "Mainsail area (Performance)",
-            "value": "95 m² – 1023 ft²"
-          }
-        },
-        "tech_spec_item_4cGwUt": {
-          "type": "tech-spec-item",
-          "name": "Self taking jib (Performance)",
-          "settings": {
-            "label": "Self taking jib (Performance)",
-            "value": "62 m² – 667 ft²"
-          }
-        },
-        "tech_spec_item_iAjHFm": {
-          "type": "tech-spec-item",
-          "name": "Overall length (race)",
-          "settings": {
-            "label": "Overall length (race)",
-            "value": "17.95 m – 58.11 ft"
-          }
-        },
-        "tech_spec_item_giPaCt": {
-          "type": "tech-spec-item",
-          "name": "Gennaker area (race)",
-          "settings": {
-            "label": "Gennaker area (race)",
-            "value": "280 m² – 2691 ft²"
+            "label": "Sail Area",
+            "value": "108 m² – 1163 ft²"
           }
         },
         "tech_spec_item_3g7XFH": {
           "type": "tech-spec-item",
-          "name": "Mainsail area (race)",
+          "name": "Guests",
           "settings": {
-            "label": "Mainsail area (race)",
-            "value": "100 m² – 1076 ft²"
+            "label": "Guests",
+            "value": "6"
           }
         },
         "tech_spec_item_83D6Hr": {
           "type": "tech-spec-item",
-          "name": "Self taking jib (race)",
+          "name": "CE CATEGORY",
           "settings": {
-            "label": "Self taking jib (race)",
-            "value": "65 m² – 700 ft²"
+            "label": "CE CATEGORY",
+            "value": "A “Ocean”"
           }
         }
       },
       "block_order": [
+        "tech_spec_item_H3Macx",
         "tech_spec_item_8Drwyc",
         "tech_spec_item_mY8ptH",
-        "tech_spec_item_4jQ9LR",
-        "tech_spec_item_CXFKwq",
-        "tech_spec_item_HEEjGJ",
-        "tech_spec_item_4zpik8",
         "tech_spec_item_pcg3ef",
+        "tech_spec_item_4jQ9LR",
+        "tech_spec_item_4zpik8",
+        "tech_spec_item_HEEjGJ",
+        "tech_spec_item_CXFKwq",
         "tech_spec_item_4hkqx9",
-        "tech_spec_item_DgcCGY",
-        "tech_spec_item_iN4xft",
-        "tech_spec_item_kjkWWb",
-        "tech_spec_item_4cGwUt",
-        "tech_spec_item_iAjHFm",
-        "tech_spec_item_giPaCt",
         "tech_spec_item_3g7XFH",
         "tech_spec_item_83D6Hr"
       ],
@@ -681,7 +607,7 @@
         "intro_title_myk7Wt": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "About the GS 52",
+            "intro-title-text": "About the GS 42 long cruise",
             "small-title": ""
           }
         },
@@ -689,7 +615,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "Naval architecture: Matteo Polli\nDeck and interior design: Nauta Design\nShipyard: Cantiere del Pardo\nCE Category: “A” OCEAN"
+            "intro-text-area-text": "Water lines: Marco Lostuzzi\nDeck and Interior design: Nauta Design\nBuilder: Cantiere del Pardo"
           }
         }
       },
@@ -734,8 +660,7 @@
     "full_image_TK6nte",
     "rich_text_9KLqWX",
     "pdp_multi_cards_CbG6MH",
-    "rich_text_fycJJg",
-    "image_slider_7tF4tQ",
+    "pdp_multi_cards_reKfei",
     "tech_spec_gFwMPj",
     "intro_slider_EqR7Bn"
   ]
