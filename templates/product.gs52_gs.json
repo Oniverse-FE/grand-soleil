@@ -179,13 +179,13 @@
         "title_Gaf8M6": {
           "type": "title",
           "settings": {
-            "editorial-title": "SIMPLE SAILING AND COMFORT: PERFORMANCE LAYOUT"
+            "editorial-title": "INTERIORS"
           }
         },
         "text_area_gmtHcx": {
           "type": "text-area",
           "settings": {
-            "editor-text": "The performance layout is designed for those looking for performance and comfort, with attention to detail that allows elegance and improved navigation.",
+            "editor-text": "Built entirely in sandwich plate with composite wood compartmentalisation bulkheads, the Grand Soleil 52 Performance has been studied down to the smallest detail to make the most of its space and offer living areas large for a yacht this size, without affecting the weight. The large dinette features the chart area in the bow, big storage compartments and an ergonomic and fully equipped C-shaped galley (with 3 fridge-freezers offering 172 litres of storage space), to ensure a pleasant stay on board even for long periods.\nThe interior layout includes three cabins and three bathrooms: the master cabin in the bow with a large bathroom and shower stall, the double cabin in the stern with a dedicated bathroom, and the vip double cabin (std.) with a bathroom, shower stall, and the possibility of direct access from the dinette. The vip cabin can also have twin beds (opt.).\n\nOwners can choose among different essences, such as oak, grey oak or teak; in all cases, chromatic elegance is ensured by the contrasting floorboards.",
             "editorial-label": "",
             "editorial-url": ""
           }
@@ -193,7 +193,7 @@
         "card_rj3fVW": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GrandSoleilGS44_20cb_04230.jpg",
+            "image": "shopify://shop_images/GS-52-interiors-teak-EN-01_desktop-1.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -202,7 +202,7 @@
         "card_EmiiRJ": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/image002-1440x807.jpg",
+            "image": "shopify://shop_images/GS-52-interiors-teak-EN-02_desktop-1.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -211,7 +211,7 @@
         "card_BWg8Lg": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-44-large-slider-03-desktop.jpg",
+            "image": "shopify://shop_images/GS-52-interiors-teak-EN-03_desktop-1.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -220,16 +220,7 @@
         "card_grK6hC": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-44-large-slider-04-desktop.jpg",
-            "card_title": "",
-            "card_subtitle": "",
-            "link": ""
-          }
-        },
-        "card_AAjMgB": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/GS-44-large-slider-05-desktop.jpg",
+            "image": "shopify://shop_images/GS-52-interiors-teak-EN-04_desktop-1.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -242,8 +233,7 @@
         "card_rj3fVW",
         "card_EmiiRJ",
         "card_BWg8Lg",
-        "card_grK6hC",
-        "card_AAjMgB"
+        "card_grK6hC"
       ],
       "name": "Multi Cards Slider",
       "settings": {
