@@ -359,6 +359,7 @@
       "blocks": {
         "tech_spec_item_DgcCGY": {
           "type": "tech-spec-item",
+          "name": "Overall length",
           "settings": {
             "label": "Overall length",
             "value": "11.3 m – 37.07 ft"
@@ -366,6 +367,7 @@
         },
         "tech_spec_item_8Drwyc": {
           "type": "tech-spec-item",
+          "name": "Hull length",
           "settings": {
             "label": "Hull length",
             "value": "9.99 m – 32.8 ft"
@@ -373,6 +375,7 @@
         },
         "tech_spec_item_mY8ptH": {
           "type": "tech-spec-item",
+          "name": "Max beam",
           "settings": {
             "label": "Max beam",
             "value": "3.70 m – 12 ft"
@@ -380,6 +383,7 @@
         },
         "tech_spec_item_4jQ9LR": {
           "type": "tech-spec-item",
+          "name": "Displacement",
           "settings": {
             "label": "Displacement",
             "value": "3500 kg – 7716 lb (lightship)"
@@ -387,61 +391,138 @@
         },
         "tech_spec_item_pcg3ef": {
           "type": "tech-spec-item",
+          "name": "Draft std.",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Draft std.",
+            "value": "2.2 m – 7.2 ft"
           }
         },
         "tech_spec_item_iN4xft": {
           "type": "tech-spec-item",
+          "name": "Shallow keel",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Shallow keel",
+            "value": "1.8 m – 5.9 ft"
           }
         },
         "tech_spec_item_kjkWWb": {
           "type": "tech-spec-item",
+          "name": "Std. Construction",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Std. Construction",
+            "value": "Termoplastic resin + NLcomp tachnology (hull available only in white)"
           }
         },
         "tech_spec_item_4cGwUt": {
           "type": "tech-spec-item",
+          "name": "Opt. Construction",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Opt. Construction",
+            "value": "Vinylester resin (paintable hull with various color options)"
           }
         },
         "tech_spec_item_iAjHFm": {
           "type": "tech-spec-item",
+          "name": "Std. Engine",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Std. Engine",
+            "value": "E-propulsion POD DRIVE 6.0 EVO (6KW)"
           }
         },
         "tech_spec_item_giPaCt": {
           "type": "tech-spec-item",
+          "name": "Range with std. engine",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Range with std. engine",
+            "value": "30 NM (at 5kn of speed)60 NM with 2 batt."
           }
         },
         "tech_spec_item_3g7XFH": {
           "type": "tech-spec-item",
+          "name": "Opt. Engine",
           "settings": {
-            "label": "Etichetta",
-            "value": "Valore"
+            "label": "Opt. Engine",
+            "value": "Diesel Engine"
           }
         },
         "tech_spec_item_83D6Hr": {
           "type": "tech-spec-item",
           "settings": {
+            "label": "Fuel capacity with engine opt.",
+            "value": "55 L – 14.5 gal"
+          }
+        },
+        "tech_spec_item_mycqLV": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Engine power capacity",
+            "value": "8 kw std.+ 8 kw opt."
+          }
+        },
+        "tech_spec_item_Jr9NqJ": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Solar energy system",
+            "value": "340 w nominal power"
+          }
+        },
+        "tech_spec_item_e8Gidq": {
+          "type": "tech-spec-item",
+          "settings": {
             "label": "Etichetta",
             "value": "Valore"
           }
         },
-        "tech_spec_item_mycqLV": {
+        "tech_spec_item_W7CWqU": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_79iGHg": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_HBaEBD": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_i6mKQP": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_Jt6hVt": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_NRygrY": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_HEEjGJ": {
+          "type": "tech-spec-item",
+          "settings": {
+            "label": "Etichetta",
+            "value": "Valore"
+          }
+        },
+        "tech_spec_item_qb3YH8": {
           "type": "tech-spec-item",
           "settings": {
             "label": "Etichetta",
@@ -470,6 +551,16 @@
         "tech_spec_item_3g7XFH",
         "tech_spec_item_83D6Hr",
         "tech_spec_item_mycqLV",
+        "tech_spec_item_Jr9NqJ",
+        "tech_spec_item_e8Gidq",
+        "tech_spec_item_W7CWqU",
+        "tech_spec_item_79iGHg",
+        "tech_spec_item_HBaEBD",
+        "tech_spec_item_i6mKQP",
+        "tech_spec_item_Jt6hVt",
+        "tech_spec_item_NRygrY",
+        "tech_spec_item_HEEjGJ",
+        "tech_spec_item_qb3YH8",
         "tech_spec_item_whQ9Gq"
       ],
       "name": "Technical Spec Right Col",
