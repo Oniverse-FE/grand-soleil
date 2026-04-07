@@ -124,38 +124,13 @@
         "width-mobile": "327px"
       }
     },
-    "full_image_tqFBzW": {
-      "type": "full-image",
-      "name": "Full Image",
-      "settings": {
-        "id": "full-image",
-        "image_desktop": "shopify://shop_images/img.png",
-        "image_mobile": "shopify://shop_images/img.png",
-        "margin_block": "0",
-        "margin_block_mobile": "0"
-      }
-    },
-    "animation_text_H4fCbf": {
-      "type": "animation-text",
-      "name": "Animation text",
-      "settings": {
-        "simple-intro-title": "Performance",
-        "simple-intro-text": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela.",
-        "pt_desk": 200,
-        "pb_desk": 200,
-        "pt_tab": 160,
-        "pb_tab": 160,
-        "pt_mob": 128,
-        "pb_mob": 128
-      }
-    },
     "intro_slider_X3xXex": {
       "type": "intro-slider",
       "blocks": {
         "intro_title_anGtHB": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "L'eleganza della velocità: un design senza tempo",
+            "intro-title-text": "PIONEERING DESIGN UNVEILED",
             "small-title": ""
           }
         },
@@ -163,7 +138,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "Il profilo del Grand Soleil 52 Performance è un equilibrio magistrale tra potenza ed eleganza. Le linee esterne, firmate da Nauta Design, comunicano sportività da ogni angolazione, con una tuga filante e pulita che si integra perfettamente nel design aggressivo dello scafo. Ma è sotto la superficie che si cela il cuore della performance: l'architettura navale di Matteo Polli è ottimizzata per l'eccellenza idrodinamica. Le sezioni di poppa, potenti e svasate, garantiscono stabilità di forma, potenza alle andature portanti e un controllo eccezionale. L'ingresso di prua fine e verticale assicura un passaggio sull'onda morbido, efficiente e asciutto, massimizzando la velocità di bolina. Questi non sono semplici tratti stilistici, ma scelte ingegneristiche che si traducono in benefici tangibili per l'armatore: angoli di bolina più stretti, reattività immediata al timone e una stabilità che infonde sicurezza anche nelle condizioni più impegnative. La costruzione in sandwich e infusione garantisce la massima rigidità e leggerezza, permettendo allo scafo di convertire ogni raffica in pura accelerazione."
+            "intro-text-area-text": "How this has been achieved? By pursing several groundbreaking design and construction methodologies:\n\n\n<b>1. Sustainable construction</b>\nThe Grand Soleil BLUE, built with the Composite® technology developed by Italian startup NIcomp, marks a breakthrough in boat construction through the use of thermoplastic resin, a choice that aims to solve one of the most significant problems in the marine industry: end-of-life disposal."
           }
         }
       },
@@ -194,6 +169,86 @@
         "pb_mobile": 48,
         "pb_tablet": 72,
         "pb_desktop": 128
+      }
+    },
+    "image_slider_7tF4tQ": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_gFeVKg": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-01-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6qiqgH": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-02-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jbB4cX": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-03-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6mPGf6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-05-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_zGMWFt": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-06-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_t44Gtj": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-07-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_gFeVKg",
+        "image_slider_image_6qiqgH",
+        "image_slider_image_jbB4cX",
+        "image_slider_image_6mPGf6",
+        "image_slider_image_zGMWFt",
+        "image_slider_image_t44Gtj"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
       }
     },
     "text_gallery_VNXjx6": {
@@ -510,21 +565,47 @@
         "pt_mob": 48,
         "pb_mob": 48
       }
+    },
+    "animation_text_H4fCbf": {
+      "type": "animation-text",
+      "name": "Animation text",
+      "settings": {
+        "simple-intro-title": "Performance",
+        "simple-intro-text": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela.",
+        "pt_desk": 200,
+        "pb_desk": 200,
+        "pt_tab": 160,
+        "pb_tab": 160,
+        "pt_mob": 128,
+        "pb_mob": 128
+      }
+    },
+    "full_image_tqFBzW": {
+      "type": "full-image",
+      "name": "Full Image",
+      "settings": {
+        "id": "full-image",
+        "image_desktop": "shopify://shop_images/img.png",
+        "image_mobile": "shopify://shop_images/img.png",
+        "margin_block": "0",
+        "margin_block_mobile": "0"
+      }
     }
   },
   "order": [
     "hero_banner_FHwwWU",
     "rich_text_ppGgwa",
     "image_slider_L8iGY6",
-    "full_image_tqFBzW",
-    "animation_text_H4fCbf",
     "intro_slider_X3xXex",
+    "image_slider_7tF4tQ",
     "text_gallery_VNXjx6",
     "intro_slider_NXFyW9",
     "image_slider_RCqcXw",
     "pdp_multi_cards_CbG6MH",
     "tech_spec_gFwMPj",
     "find_dealer_mzgD4K",
-    "text_image_with_background_EEb9Tf"
+    "text_image_with_background_EEb9Tf",
+    "animation_text_H4fCbf",
+    "full_image_tqFBzW"
   ]
 }
