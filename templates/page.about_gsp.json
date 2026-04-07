@@ -305,19 +305,24 @@
         "label_discover": "Scopri"
       }
     },
-    "rich_text_inverted_CA9MBR": {
-      "type": "rich-text-inverted",
-      "name": "Rich text inverted",
+    "rich_text_article_f89MfE": {
+      "type": "rich-text-article",
+      "name": "Rich text artaicle",
       "settings": {
-        "rti-content_alignment_mobile": "center",
-        "rti-content_alignment": "center",
-        "rti-cta_position": "center",
-        "rti-title": "Il vostro prossimo traguardo: Grand Soleil 52P",
-        "rti-text1": "Più che una barca, è una dichiarazione di intenti. Il punto d'incontro tra la vostra ambizione sportiva e il piacere di navigare. Scegliere il Grand Soleil 52 Performance significa rifiutare i compromessi. Significa possedere l'eredità di un nome leggendario, evoluta nell'arma da regata e fast cruiser definitivo.",
-        "rti-cta_label": "Trova un dealer",
-        "rti-cta_link": "#",
-        "rti-cta_label2": "Chiedi informazioni",
-        "rti-cta_link2": "#"
+        "rta_subtitle": "IL RITORNO DI UN MITO",
+        "rta_h1title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
+        "rta_title": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO",
+        "rta_text1": "",
+        "rta-cta_label": "",
+        "rta-cta_link": "",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
       }
     }
   },
@@ -335,6 +340,6 @@
     "rich_text_article_WrpcRw",
     "mosaic_N7HwH9",
     "model_home_rEkRce",
-    "rich_text_inverted_CA9MBR"
+    "rich_text_article_f89MfE"
   ]
 }
