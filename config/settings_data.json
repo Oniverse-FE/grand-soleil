@@ -125,16 +125,6 @@
               "visibility": "gs"
             }
           },
-          "card_MqxPbA": {
-            "type": "card",
-            "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
-              "description": "Performance",
-              "link": "shopify://products/gs40",
-              "visibility": "gs"
-            }
-          },
           "card_g9XyAQ": {
             "type": "card",
             "settings": {
@@ -145,13 +135,23 @@
               "visibility": "gs"
             }
           },
+          "card_MqxPbA": {
+            "type": "card",
+            "settings": {
+              "image": "shopify://shop_images/GrandSoleilGS44_20cb_00133.jpg",
+              "title": "GS 44",
+              "description": "Performance",
+              "link": "shopify://products/gs-44",
+              "visibility": "gs"
+            }
+          },
           "card_Q8iagr": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/img.png",
+              "image": "shopify://shop_images/GS52PERFORMANCE-223.jpg",
               "title": "GS 52",
               "description": "Performance",
-              "link": "",
+              "link": "shopify://products/gs-52",
               "visibility": "gs"
             }
           },
@@ -225,8 +225,8 @@
           "chip_rdmeyg",
           "chip_pmXWUb",
           "text_UegwHE",
-          "card_MqxPbA",
           "card_g9XyAQ",
+          "card_MqxPbA",
           "card_Q8iagr",
           "text_y6kF6y",
           "card_KMJeXP",
