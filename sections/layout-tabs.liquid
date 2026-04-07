@@ -1,15 +1,15 @@
 <div id="{{ section.settings.id }}" 
-     class="top-view-section w-full h-auto flex flex-col items-center justify-center py-8 lg:py-20" 
-     style="background-color: {{ section.settings.bg_color }};">
+     class="top-view-section w-full h-auto flex flex-col items-center justify-center py-[64px] md:py-[96px] lg:py-[128px] bg-white_gs">
 
-  <div class="px-[16px] lg:px-[80px] mb-[32px] lg:mb-[60px] w-full flex justify-center">
-    <div class="relative flex items-center bg-[#F2F2F2] rounded-full p-1 border border-[#E0E0E0] w-fit">
-      <span class="category-slider-bg absolute h-[calc(100%-8px)] top-[4px] left-[4px] bg-black rounded-full transition-all duration-300 ease-in-out"></span>
+  <div class="px-[16px] mb-[24px] lg:mb-[64px] w-full flex flex-col gap-6 justify-center items-start lg:items-center">
+    <h2 class="heading-md_gs heading-md_gsp text-data_gs uppercase">{{ section.settings.title_layout }}</h2>
+    <div class="relative flex items-center bg-[#101C26] rounded-full p-1 w-fit">
+      <span class="category-slider-bg absolute h-[calc(100%-8px)] top-[4px] left-[4px] bg-[#4DBAFA] rounded-full transition-all duration-300 ease-in-out"></span>
       {% for block in section.blocks %}
         {% if block.settings.category_name != blank %}
-          <div class="top-view-tab-categories cursor-pointer relative z-10 px-6 py-2 lg:px-10 lg:py-3 transition-colors duration-300" 
+          <div class="top-view-tab-categories cursor-pointer relative z-10 px-8 py-5 transition-colors duration-300 {% if forloop.first %}tab-active{% endif %}" 
                data-tab-index="{{ forloop.index0 }}">
-            <p class="text-[14px] lg:text-[18px] font-medium leading-none whitespace-nowrap uppercase tracking-wider">
+            <p class="link-lg_gs link-lg_gsp text-color_gs">
               {{ block.settings.category_name }}
             </p>
           </div>
@@ -21,14 +21,14 @@
   {% for block in section.blocks %} 
     <div class="top-view-deck-block w-full {% if forloop.first %}active{% endif %}" data-block-index="{{ forloop.index0 }}">
       
-      <div class="top-view-cta-wrapper relative w-full px-[16px] lg:px-[80px] mb-8 lg:mb-12 flex justify-center">
-        <div class="inline-flex flex-row items-center justify-center gap-x-8 border-b border-[#BEBEBE] relative no-scrollbar overflow-x-auto">
+      <div class="top-view-cta-wrapper relative w-full px-[16px] lg:px-[80px] mb-8 lg:mb-12 flex justify-start lg:justify-center">
+        <div class="inline-flex flex-row items-center justify-center gap-x-0 border-b border-[#BEBEBE] relative no-scrollbar overflow-x-auto">
           {% for i in (1..7) %}
             {% capture tab_label %}tab_{{ i }}_label{% endcapture %}
             {% capture tab_image %}tab_{{ i }}_image{% endcapture %}
             {% if block.settings[tab_label] != blank and block.settings[tab_image] %}
               <button type="button" 
-                      class="top-view-cta-toggle pb-3 text-[14px] lg:text-[16px] font-semibold tracking-[-0.28px] whitespace-nowrap transition-colors duration-300" 
+                      class="top-view-cta-toggle px-3 py-2 body-sm_gs body-sm_gsp lg:body-md_gs lg:body-md_gsp whitespace-nowrap transition-colors duration-300 {% if forloop.first %}active{% endif %}" 
                       data-tab-id="{{ i }}">
                 {{ block.settings[tab_label] }}
               </button>
@@ -41,33 +41,44 @@
       {% for i in (1..7) %}
         {% capture tab_label %}tab_{{ i }}_label{% endcapture %}
         {% capture tab_image %}tab_{{ i }}_image{% endcapture %}
-        {% capture tab_content %}tab_{{ i }}_content{% endcapture %}
         {% if block.settings[tab_label] != blank and block.settings[tab_image] %}
           <div class="top-view-tab-content {% unless forloop.first %}hidden{% endunless %}" data-content-id="{{ i }}">
-            <div class="w-full flex items-center justify-center">
+            
+            <div class="xl:px-[128px] lg:px-[64px] px-[16px] w-full flex items-center justify-center mb-12">
               <img src="{{ block.settings[tab_image] | image_url: width: 1440 }}" alt="{{ block.settings[tab_label] }}" class="w-full max-w-[1440px] h-auto block">
             </div>
 
-            <div class="w-full flex flex-col items-center pt-8 pb-8 lg:pt-16 lg:pb-12 px-[16px] lg:px-[160px]">
-              <p class="text-center text-black text-[14px] leading-[20px] lg:text-[20px] lg:leading-[28px] max-w-[900px]">
-                {{ block.settings[tab_content] }}
-              </p>
-            </div>
-
-            <div class="w-full lg:px-[160px] px-[16px] mb-12">
-              <div class="gallery-slider-container flex flex-row gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4">
-                {% for j in (1..10) %}
+            <div class="w-full">
+              <div class="gallery-slider-container flex flex-row gap-4 overflow-x-auto no-scrollbar xl:px-[128px] lg:px-[64px] px-[16px] scroll-smooth">
+                {% for j in (1..12) %}
                   {% capture gallery_img %}tab_{{ i }}_gallery_image{{ j }}{% endcapture %}
                   {% if block.settings[gallery_img] %}
-                    <div class="gallery-slide shrink-0 w-[85%] lg:w-[calc(33.333%-11px)] snap-start">
-                      <div class="overflow-hidden rounded-[8px]">
+                    <div class="gallery-slide shrink-0 w-[85%] lg:w-[calc(45%-11px)] snap-start">
+                      <div class="overflow-hidden rounded-[8px] aspect-[4/5] lg:aspect-[3/2]">
                         <img src="{{ block.settings[gallery_img] | image_url: width: 800 }}" 
-                             class="w-full object-cover wh-image-slider" 
+                             class="w-full h-full object-cover" 
                              loading="lazy">
                       </div>
                     </div>
                   {% endif %}
                 {% endfor %}
+              </div>
+
+              <div class="flex flex-row justify-between items-center xl:px-[128px] lg:px-[64px] px-[16px] mt-8">
+                  <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-data_gs">
+                      <span class="current-slide-num">01</span>
+                      <span class="mx-2">-</span>
+                      <span class="total-slides-num">01</span>
+                  </div>
+
+                  <div class="flex gap-[14px]">
+                      <button class="gallery-prev flex justify-center items-center transition-all duration-300 pt-3">
+                          {% render 'gs-arrow-left-black' %}
+                      </button>
+                      <button class="gallery-next flex justify-center items-center transition-all duration-300 pb-3">
+                          {% render 'gs-arrow-right-black' %}
+                      </button>
+                  </div>
               </div>
             </div>
           </div>
@@ -79,35 +90,33 @@
 
 <style>
 /* Categorie & Labels */
-.top-view-tab-categories { color: #888; }
-.top-view-tab-categories.active-tab { color: #FFFFFF; }
+.top-view-tab-categories { color: #05090D; }
+.top-view-tab-categories.tab-active { color: #05090D; }
 .top-view-cta-toggle { color: #888; background: transparent; border: none; cursor: pointer; }
-.top-view-cta-toggle.active { color: #000000; }
+.top-view-cta-toggle.active { color: #05090D; }
 
 /* Deck Blocks */
 .top-view-deck-block { display: none; }
 .top-view-deck-block.active { display: block; }
-
-/* Slider Gallery */
-.gallery-slider-container {
-  -webkit-overflow-scrolling: touch;
-}
-.wh-image-slider { 
-  height: 250px !important; 
-  width: 100%;
-}
-@media (min-width: 1024px) { 
-  .wh-image-slider { height: 400px !important; } 
-}
 
 /* Utilities */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .hidden { display: none !important; }
 
-/* Forza allineamento centro per contenitore scrollabile */
-.top-view-cta-wrapper div {
-  min-width: fit-content;
+.top-view-cta-wrapper div { min-width: fit-content; }
+
+/* Arrow Disabled State */
+.gallery-prev.disabled, .gallery-next.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: default;
+}
+
+@supports not (aspect-ratio: 1/1) {
+  .aspect-\[4\/5\] { padding-top: 125%; position: relative; }
+  .aspect-\[3\/2\] { padding-top: 66.66%; position: relative; }
+  .aspect-\[4\/5\] img, .aspect-\[3\/2\] img { position: absolute; top: 0; left: 0; height: 100%; }
 }
 </style>
 
@@ -135,12 +144,64 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Categorie
+  function initGalleryLogic(container) {
+    const scrollContainer = container.querySelector('.gallery-slider-container');
+    const prevBtn = container.querySelector('.gallery-prev');
+    const nextBtn = container.querySelector('.gallery-next');
+    const currentSpan = container.querySelector('.current-slide-num');
+    const totalSpan = container.querySelector('.total-slides-num');
+    
+    if (!scrollContainer) return;
+
+    const slides = scrollContainer.querySelectorAll('.gallery-slide');
+    const totalSlides = slides.length;
+    if(totalSpan) totalSpan.textContent = totalSlides.toString().padStart(2, '0');
+
+    const updateArrows = () => {
+      const scrollLeft = scrollContainer.scrollLeft;
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      
+      // Toggle freccia sinistra
+      if (scrollLeft <= 5) {
+        prevBtn?.classList.add('disabled');
+      } else {
+        prevBtn?.classList.remove('disabled');
+      }
+
+      // Toggle freccia destra
+      if (scrollLeft >= maxScroll - 5) {
+        nextBtn?.classList.add('disabled');
+      } else {
+        nextBtn?.classList.remove('disabled');
+      }
+
+      // Update counter
+      const slideWidth = slides[0]?.offsetWidth + 16 || 1;
+      const index = Math.round(scrollLeft / slideWidth);
+      if(currentSpan) currentSpan.textContent = (index + 1).toString().padStart(2, '0');
+    };
+
+    nextBtn?.addEventListener('click', () => {
+      const step = slides[0].offsetWidth + 16;
+      scrollContainer.scrollBy({ left: step, behavior: 'smooth' });
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      const step = slides[0].offsetWidth + 16;
+      scrollContainer.scrollBy({ left: -step, behavior: 'smooth' });
+    });
+
+    scrollContainer.addEventListener('scroll', updateArrows);
+    
+    // Inizializzazione immediata
+    setTimeout(updateArrows, 100);
+  }
+
   catTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const index = tab.dataset.tabIndex;
-      catTabs.forEach(t => t.classList.remove('active-tab'));
-      tab.classList.add('active-tab');
+      catTabs.forEach(t => t.classList.remove('tab-active'));
+      tab.classList.add('tab-active');
       updateCategorySlider(tab);
 
       deckBlocks.forEach(block => {
@@ -148,12 +209,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (block.classList.contains('active')) {
            const firstCta = block.querySelector('.top-view-cta-toggle');
            if (firstCta) firstCta.click();
+           updateUnderline(block);
         }
       });
     });
   });
 
-  // Labels
   deckBlocks.forEach(block => {
     const btns = block.querySelectorAll('.top-view-cta-toggle');
     const contents = block.querySelectorAll('.top-view-tab-content');
@@ -164,24 +225,25 @@ document.addEventListener('DOMContentLoaded', function () {
         contents.forEach(c => c.classList.add('hidden'));
         btn.classList.add('active');
         const target = block.querySelector(`[data-content-id="${btn.dataset.tabId}"]`);
-        if (target) target.classList.remove('hidden');
+        if (target) {
+          target.classList.remove('hidden');
+          initGalleryLogic(target);
+        }
         updateUnderline(block);
       });
     });
+
+    const firstContent = block.querySelector('.top-view-tab-content:not(.hidden)');
+    if (firstContent) initGalleryLogic(firstContent);
   });
 
-  // Init
   const initAll = () => {
-    const activeCat = section.querySelector('.top-view-tab-categories.active-tab') || catTabs[0];
-    if (activeCat) {
-      activeCat.classList.add('active-tab');
-      updateCategorySlider(activeCat);
-    }
+    const activeCat = section.querySelector('.top-view-tab-categories.tab-active') || catTabs[0];
+    if (activeCat) updateCategorySlider(activeCat);
     deckBlocks.forEach(updateUnderline);
   };
 
   window.addEventListener('resize', initAll);
-  // Ritardo per caricamento font/layout
   setTimeout(initAll, 400);
 });
 </script>
@@ -189,67 +251,19 @@ document.addEventListener('DOMContentLoaded', function () {
 {% schema %}
 {
   "name": "PDP - Top view",
-
   "settings": [
-    {
-      "id": "id",
-      "type": "text",
-      "label": "ID section",
-      "default": "TopView"
-    },
-    {
-      "id": "cta_gallery",
-      "type": "text",
-      "label": "Cta gallery"
-    },
-    {
-      "type": "header",
-      "content": "Color - Section"
-    },
-    {
-      "id": "bg_color",
-      "type": "color",
-      "label": "Background color"
-    }
+    { "id": "id", "type": "text", "label": "ID section", "default": "TopView" },
+    { "id": "title_layout", "type": "text", "label": "Title", "default": "Layout" }
   ],
-
   "blocks": [
     {
       "type": "top_view_block",
       "name": "Deck Block",
       "settings": [
-
-        {
-          "type": "header",
-          "content": "Basic"
-        },
-        {
-          "id": "category_name",
-          "type": "text",
-          "label": "Category name"
-        },
-        {
-          "id": "overlay_type",
-          "type": "select",
-          "label": "Overlay",
-          "options": [
-            { "value": "main-deck", "label": "Main Deck" },
-            { "value": "lower-deck", "label": "Lower Deck" },
-            { "value": "flybridge", "label": "Flybridge" }
-          ]
-        },
-
-        {
-          "type": "header",
-          "content": "Tab 1"
-        },
+        { "id": "category_name", "type": "text", "label": "Category name" },
+        { "type": "header", "content": "Tab 1" },
         { "id": "tab_1_label", "type": "text", "label": "Tab 1 label" },
         { "id": "tab_1_image", "type": "image_picker", "label": "Tab 1 main image" },
-        { "id": "tab_1_content", "type": "textarea", "label": "Tab 1 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
         { "id": "tab_1_gallery_image1", "type": "image_picker", "label": "Tab 1 gallery image 1" },
         { "id": "tab_1_gallery_image2", "type": "image_picker", "label": "Tab 1 gallery image 2" },
         { "id": "tab_1_gallery_image3", "type": "image_picker", "label": "Tab 1 gallery image 3" },
@@ -262,161 +276,14 @@ document.addEventListener('DOMContentLoaded', function () {
         { "id": "tab_1_gallery_image10", "type": "image_picker", "label": "Tab 1 gallery image 10" },
         { "id": "tab_1_gallery_image11", "type": "image_picker", "label": "Tab 1 gallery image 11" },
         { "id": "tab_1_gallery_image12", "type": "image_picker", "label": "Tab 1 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 2"
-        },
+        { "type": "header", "content": "Tab 2" },
         { "id": "tab_2_label", "type": "text", "label": "Tab 2 label" },
         { "id": "tab_2_image", "type": "image_picker", "label": "Tab 2 main image" },
-        { "id": "tab_2_content", "type": "textarea", "label": "Tab 2 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_2_gallery_image1", "type": "image_picker", "label": "Tab 2 gallery image 1" },
-        { "id": "tab_2_gallery_image2", "type": "image_picker", "label": "Tab 2 gallery image 2" },
-        { "id": "tab_2_gallery_image3", "type": "image_picker", "label": "Tab 2 gallery image 3" },
-        { "id": "tab_2_gallery_image4", "type": "image_picker", "label": "Tab 2 gallery image 4" },
-        { "id": "tab_2_gallery_image5", "type": "image_picker", "label": "Tab 2 gallery image 5" },
-        { "id": "tab_2_gallery_image6", "type": "image_picker", "label": "Tab 2 gallery image 6" },
-        { "id": "tab_2_gallery_image7", "type": "image_picker", "label": "Tab 2 gallery image 7" },
-        { "id": "tab_2_gallery_image8", "type": "image_picker", "label": "Tab 2 gallery image 8" },
-        { "id": "tab_2_gallery_image9", "type": "image_picker", "label": "Tab 2 gallery image 9" },
-        { "id": "tab_2_gallery_image10", "type": "image_picker", "label": "Tab 2 gallery image 10" },
-        { "id": "tab_2_gallery_image11", "type": "image_picker", "label": "Tab 2 gallery image 11" },
-        { "id": "tab_2_gallery_image12", "type": "image_picker", "label": "Tab 2 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 3"
-        },
-        { "id": "tab_3_label", "type": "text", "label": "Tab 3 label" },
-        { "id": "tab_3_image", "type": "image_picker", "label": "Tab 3 main image" },
-        { "id": "tab_3_content", "type": "textarea", "label": "Tab 3 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_3_gallery_image1", "type": "image_picker", "label": "Tab 3 gallery image 1" },
-        { "id": "tab_3_gallery_image2", "type": "image_picker", "label": "Tab 3 gallery image 2" },
-        { "id": "tab_3_gallery_image3", "type": "image_picker", "label": "Tab 3 gallery image 3" },
-        { "id": "tab_3_gallery_image4", "type": "image_picker", "label": "Tab 3 gallery image 4" },
-        { "id": "tab_3_gallery_image5", "type": "image_picker", "label": "Tab 3 gallery image 5" },
-        { "id": "tab_3_gallery_image6", "type": "image_picker", "label": "Tab 3 gallery image 6" },
-        { "id": "tab_3_gallery_image7", "type": "image_picker", "label": "Tab 3 gallery image 7" },
-        { "id": "tab_3_gallery_image8", "type": "image_picker", "label": "Tab 3 gallery image 8" },
-        { "id": "tab_3_gallery_image9", "type": "image_picker", "label": "Tab 3 gallery image 9" },
-        { "id": "tab_3_gallery_image10", "type": "image_picker", "label": "Tab 3 gallery image 10" },
-        { "id": "tab_3_gallery_image11", "type": "image_picker", "label": "Tab 3 gallery image 11" },
-        { "id": "tab_3_gallery_image12", "type": "image_picker", "label": "Tab 3 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 4"
-        },
-        { "id": "tab_4_label", "type": "text", "label": "Tab 4 label" },
-        { "id": "tab_4_image", "type": "image_picker", "label": "Tab 4 main image" },
-        { "id": "tab_4_content", "type": "textarea", "label": "Tab 4 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_4_gallery_image1", "type": "image_picker", "label": "Tab 4 gallery image 1" },
-        { "id": "tab_4_gallery_image2", "type": "image_picker", "label": "Tab 4 gallery image 2" },
-        { "id": "tab_4_gallery_image3", "type": "image_picker", "label": "Tab 4 gallery image 3" },
-        { "id": "tab_4_gallery_image4", "type": "image_picker", "label": "Tab 4 gallery image 4" },
-        { "id": "tab_4_gallery_image5", "type": "image_picker", "label": "Tab 4 gallery image 5" },
-        { "id": "tab_4_gallery_image6", "type": "image_picker", "label": "Tab 4 gallery image 6" },
-        { "id": "tab_4_gallery_image7", "type": "image_picker", "label": "Tab 4 gallery image 7" },
-        { "id": "tab_4_gallery_image8", "type": "image_picker", "label": "Tab 4 gallery image 8" },
-        { "id": "tab_4_gallery_image9", "type": "image_picker", "label": "Tab 4 gallery image 9" },
-        { "id": "tab_4_gallery_image10", "type": "image_picker", "label": "Tab 4 gallery image 10" },
-        { "id": "tab_4_gallery_image11", "type": "image_picker", "label": "Tab 4 gallery image 11" },
-        { "id": "tab_4_gallery_image12", "type": "image_picker", "label": "Tab 4 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 5"
-        },
-        { "id": "tab_5_label", "type": "text", "label": "Tab 5 label" },
-        { "id": "tab_5_image", "type": "image_picker", "label": "Tab 5 main image" },
-        { "id": "tab_5_content", "type": "textarea", "label": "Tab 5 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_5_gallery_image1", "type": "image_picker", "label": "Tab 5 gallery image 1" },
-        { "id": "tab_5_gallery_image2", "type": "image_picker", "label": "Tab 5 gallery image 2" },
-        { "id": "tab_5_gallery_image3", "type": "image_picker", "label": "Tab 5 gallery image 3" },
-        { "id": "tab_5_gallery_image4", "type": "image_picker", "label": "Tab 5 gallery image 4" },
-        { "id": "tab_5_gallery_image5", "type": "image_picker", "label": "Tab 5 gallery image 5" },
-        { "id": "tab_5_gallery_image6", "type": "image_picker", "label": "Tab 5 gallery image 6" },
-        { "id": "tab_5_gallery_image7", "type": "image_picker", "label": "Tab 5 gallery image 7" },
-        { "id": "tab_5_gallery_image8", "type": "image_picker", "label": "Tab 5 gallery image 8" },
-        { "id": "tab_5_gallery_image9", "type": "image_picker", "label": "Tab 5 gallery image 9" },
-        { "id": "tab_5_gallery_image10", "type": "image_picker", "label": "Tab 5 gallery image 10" },
-        { "id": "tab_5_gallery_image11", "type": "image_picker", "label": "Tab 5 gallery image 11" },
-        { "id": "tab_5_gallery_image12", "type": "image_picker", "label": "Tab 5 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 6"
-        },
-        { "id": "tab_6_label", "type": "text", "label": "Tab 6 label" },
-        { "id": "tab_6_image", "type": "image_picker", "label": "Tab 6 main image" },
-        { "id": "tab_6_content", "type": "textarea", "label": "Tab 6 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_6_gallery_image1", "type": "image_picker", "label": "Tab 6 gallery image 1" },
-        { "id": "tab_6_gallery_image2", "type": "image_picker", "label": "Tab 6 gallery image 2" },
-        { "id": "tab_6_gallery_image3", "type": "image_picker", "label": "Tab 6 gallery image 3" },
-        { "id": "tab_6_gallery_image4", "type": "image_picker", "label": "Tab 6 gallery image 4" },
-        { "id": "tab_6_gallery_image5", "type": "image_picker", "label": "Tab 6 gallery image 5" },
-        { "id": "tab_6_gallery_image6", "type": "image_picker", "label": "Tab 6 gallery image 6" },
-        { "id": "tab_6_gallery_image7", "type": "image_picker", "label": "Tab 6 gallery image 7" },
-        { "id": "tab_6_gallery_image8", "type": "image_picker", "label": "Tab 6 gallery image 8" },
-        { "id": "tab_6_gallery_image9", "type": "image_picker", "label": "Tab 6 gallery image 9" },
-        { "id": "tab_6_gallery_image10", "type": "image_picker", "label": "Tab 6 gallery image 10" },
-        { "id": "tab_6_gallery_image11", "type": "image_picker", "label": "Tab 6 gallery image 11" },
-        { "id": "tab_6_gallery_image12", "type": "image_picker", "label": "Tab 6 gallery image 12" },
-
-        {
-          "type": "header",
-          "content": "Tab 7"
-        },
-        { "id": "tab_7_label", "type": "text", "label": "Tab 7 label" },
-        { "id": "tab_7_image", "type": "image_picker", "label": "Tab 7 main image" },
-        { "id": "tab_7_content", "type": "textarea", "label": "Tab 7 content" },
-        {
-          "type": "header",
-          "content": "Gallery"
-        },
-        { "id": "tab_7_gallery_image1", "type": "image_picker", "label": "Tab 7 gallery image 1" },
-        { "id": "tab_7_gallery_image2", "type": "image_picker", "label": "Tab 7 gallery image 2" },
-        { "id": "tab_7_gallery_image3", "type": "image_picker", "label": "Tab 7 gallery image 3" },
-        { "id": "tab_7_gallery_image4", "type": "image_picker", "label": "Tab 7 gallery image 4" },
-        { "id": "tab_7_gallery_image5", "type": "image_picker", "label": "Tab 7 gallery image 5" },
-        { "id": "tab_7_gallery_image6", "type": "image_picker", "label": "Tab 7 gallery image 6" },
-        { "id": "tab_7_gallery_image7", "type": "image_picker", "label": "Tab 7 gallery image 7" },
-        { "id": "tab_7_gallery_image8", "type": "image_picker", "label": "Tab 7 gallery image 8" },
-        { "id": "tab_7_gallery_image9", "type": "image_picker", "label": "Tab 7 gallery image 9" },
-        { "id": "tab_7_gallery_image10", "type": "image_picker", "label": "Tab 7 gallery image 10" },
-        { "id": "tab_7_gallery_image11", "type": "image_picker", "label": "Tab 7 gallery image 11" },
-        { "id": "tab_7_gallery_image12", "type": "image_picker", "label": "Tab 7 gallery image 12" }
+        { "id": "tab_2_gallery_image1", "type": "image_picker", "label": "Tab 2 gallery image 1" }
       ]
     }
   ],
-
-  "presets": [
-    {
-      "name": "PDP - Top view",
-      "category": "New PDP"
-    }
-  ],
-
+  "presets": [{ "name": "Layout", "category": "PDP - only GS" }],
   "max_blocks": 3
 }
 {% endschema %}
