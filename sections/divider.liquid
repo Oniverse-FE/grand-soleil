@@ -1,20 +1,6 @@
 <div class="divider-container-{{ section.id }} w-full">
   <div class="divider-wrapper-{{ section.id }} mx-auto w-full">
-    
-    {% if section.settings.text != blank %}
-      <div class="flex items-center justify-center gap-4 w-full">
-        <div class="line-element-{{ section.id }} flex-grow"></div>
-        
-        <span class="divider-text-{{ section.id }} flex-shrink-0 whitespace-nowrap caption-45">
-          {{ section.settings.text }}
-        </span>
-
-        <div class="line-element-{{ section.id }} flex-grow"></div>
-      </div>
-    {% else %}
-      <div class="line-element-{{ section.id }}"></div>
-    {% endif %}
-
+    <div class="line-element-{{ section.id }}"></div>
   </div>
 </div>
 
@@ -44,9 +30,6 @@
     width: 100%;
   }
 
-  .divider-text-{{ section.id }} {
-    color: {{ section.settings.text_color }};
-  }
 </style>
 
 {% schema %}
@@ -56,28 +39,6 @@
     {
       "type": "header",
       "content": "Contenuto Testuale"
-    },
-    {
-      "type": "text",
-      "id": "text",
-      "label": "Testo Centrale",
-      "info": "Lascia vuoto per una linea continua"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Colore Testo",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "text_size",
-      "min": 10,
-      "max": 40,
-      "step": 1,
-      "unit": "px",
-      "label": "Dimensione Testo",
-      "default": 16
     },
     {
       "type": "header",
@@ -143,10 +104,7 @@
   "presets": [
     {
       "name": "Divider",
-      "category": "Template article",
-      "settings": {
-        "text": "Il Tuo Titolo"
-      }
+      "category": "Common sections"
     }
   ]
 }

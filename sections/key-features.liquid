@@ -1,28 +1,15 @@
-<div class="w-full key-padding" style="--padding-top-desktop: {{ section.settings.padding_top }}; --padding-bottom-desktop: {{ section.settings.padding_bottom }};  --padding-top-mobile: {{ section.settings.padding_top_mobile }};   --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }};">
-  <!-- Pulsanti prev/next su mobile -->
-  <div class="flex lg:hidden justify-end gap-2 z-20 px-4 md:px-12 pb-4">
-    <button class="prev-features p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-        <path d="M16 4L9.41421 10.5858C8.63316 11.3668 8.63316 12.6332 9.41421 13.4142L16 20" stroke="white" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <button class="next-features p-2 rounded-full flex justify-center items-center bg-transparent text-white border-white border-[1px] hover:bg-white/40 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="size-3 md:size-5 lg:size-6" viewBox="0 0 24 24" fill="none">
-        <path d="M8 20L14.5858 13.4142C15.3668 12.6332 15.3668 11.3668 14.5858 10.5858L8 4" stroke="white" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </div>
+<div class="w-full key-padding bg_gsp" style="--padding-top-desktop: {{ section.settings.padding_top }}; --padding-bottom-desktop: {{ section.settings.padding_bottom }};  --padding-top-mobile: {{ section.settings.padding_top_mobile }};   --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }};">
 
   <!-- Lista box scrollabile su mobile -->
-  <div id="scroll-container-{{ section.id }}" class="flex lg:hidden px-4 md:px-12 gap-2 lg:gap-4 overflow-x-auto no-scrollbar">
+  <div id="scroll-container-{{ section.id }}" class="flex flex-col lg:hidden px-4 md:px-12 gap-2 lg:gap-4">
     {% for block in section.blocks %}
       {% case block.type %}
       {% when 'feature' %}
-      <div class="w-[327px] flex-shrink-0 h-auto p-4 gap-4 bg-antracite rounded-lg items-center justify-center flex">
-        <div class="text-4xl leading-[42px]" style="color:{{ section.settings.feature-number-color }};">
-          <h6>{{ block.settings.feature-number }}</h6>
+      <div class="w-full flex-shrink-0 h-auto p-8 gap-3 bg-[#EFECE8] rounded-[16px] items-center justify-center flex">
+        <div class="subtitle_gsp text-color_gsp">
+          <h6>{{ block.settings.feature-title }}</h6>
         </div>
-        <div class="font-semibold text-[16px] leading-[22px] w-full" style="color:{{ section.settings.feature-text-color }};">
+        <div class="body-md_gsp text-color_gsp w-full">
           {{ block.settings.feature-text }}
         </div>
       </div>
@@ -45,11 +32,11 @@
     {% for block in section.blocks %}
       {% case block.type %}
       {% when 'feature' %}
-      <div class="flex h-auto p-6 gap-4 bg-antracite rounded-lg items-center justify-center">
-        <div class="text-[42px] leading-[48px]" style="color:{{ section.settings.feature-number-color }};">
-          <h6>{{ block.settings.feature-number }}</h6>
+      <div class="flex flex-col h-auto p-10 gap-6 bg-[#EFECE8] rounded-[16px] items-start justify-center">
+        <div class="heading-md_gsp text-color_gsp">
+          <h6>{{ block.settings.feature-title }}</h6>
         </div>
-        <div class="font-semibold text-[18px] leading-6 w-full" style="color:{{ section.settings.feature-text-color }};">
+        <div class="body-lg_gsp text-color_gsp w-full">
           {{ block.settings.feature-text }}
         </div>
       </div>
@@ -180,24 +167,6 @@
   "name": "Key features",
   "settings": [
     {
-      "type": "text",
-      "id": "id",
-      "label": "Id section",
-      "default": "key-features"
-    },
-    {
-      "type": "color",
-      "id": "feature-number-color",
-      "label": "Feature number color",
-      "default": "#F76C00"
-    },
-    {
-      "type": "color",
-      "id": "feature-text-color",
-      "label": "Feature text color",
-      "default": "#ffffff"
-    },
-    {
       "type": "select",
       "id": "padding_top",
       "label": "Space top",
@@ -254,15 +223,15 @@
       "settings": [
         {
           "type": "text",
-          "id": "feature-number",
-          "label": "Number of the feature",
-          "default": "01."
+          "id": "feature-title",
+          "label": "Title",
+          "default": "Accoglienza"
         },
         {
           "type": "textarea",
           "id": "feature-text",
-          "label": "Text of the feature",
-          "default": "Cockpit con bar integrato, dotato di frigorifero ad alta capacità, ice maker e lavello a scomparsa"
+          "label": "Text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
         }
       ]
     }
@@ -270,7 +239,7 @@
   "presets": [
     {
       "name": "Key feature",
-      "category": "PDP Sections"
+      "category": "Only GSP"
     }
   ]
 }

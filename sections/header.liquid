@@ -112,11 +112,11 @@
 
       <div id="right-panel" class="hidden flex-col">
         <div class="px-6">
-          <div class="chips-container flex flex-wrap gap-2 items-center">
+          <div class="chips-container flex flex-wrap gap-2 items-center pb-2">
             {% for block in section.blocks %}
               {% if block.type == 'chip' %}
                 <button data-target="{{ block.settings.id_target }}"
-                   class="custom-chip px-6 py-3 rounded-[50px] transition-all duration-300 link-md_gs link-md_gsp {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" 
+                   class="custom-chip px-6 py-4 rounded-[50px] transition-all duration-300 link-md_gs link-md_gsp {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" 
                    {{ block.shopify_attributes }}>
                   {{ block.settings.title }}
                 </button>
@@ -130,7 +130,7 @@
               {% case block.type %}
                 {% when 'text' %}
                   {% assign active_section_id = block.settings.id_gamme %}
-                  <div id="{{ block.settings.id_gamme }}" data-observer-target="{{ block.settings.id_gamme }}" class="scroll-section col-span-1 md:col-span-2 pt-16 pb-2 flex flex-col gap-2 {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" {{ block.shopify_attributes }}>
+                  <div id="{{ block.settings.id_gamme }}" data-observer-target="{{ block.settings.id_gamme }}" class="scroll-section col-span-1 md:col-span-2 pt-0 pb-2 flex flex-col gap-2 {% if block.settings.visibility == 'gs' %}gs-only{% elsif block.settings.visibility == 'gsp' %}gsp-only{% endif %}" {{ block.shopify_attributes }}>
                     <div class="menu-md_gs menu-md_gsp">{{ block.settings.title_gamme }}</div>
                     {% if block.settings.link_gamme != blank %}
                       <a href="{{ block.settings.url_gamme }}" class="body-sm_gs body-sm_gsp underline underline-offset-4">{{ block.settings.link_gamme }}</a>
@@ -143,6 +143,18 @@
                         <h4 class="menu-model_gsp menu-model_gs">{{ block.settings.title }}</h4>
                         <p class="menu-model_gsp menu-model_gs">{{ block.settings.description }}</p>
                       </div>
+                      <span class="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 bg-[#05090D] rounded-full p-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <g clip-path="url(#clip0_3323_3339)">
+                                  <path d="M5.07107 21.2169L19.2132 7.07481L5.77817 6.3677L10.0208 10.6103" stroke="#FAF9F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </g>
+                              <defs>
+                                  <clipPath id="clip0_3323_3339">
+                                  <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                              </defs>
+                          </svg>
+                      </span>
                     </div>
                     {% if block.settings.image != blank %}
                       <div class="aspect-[4/3] overflow-hidden rounded-[8px] bg-[#80808020] mt-auto">
@@ -190,7 +202,7 @@
   .submenu-trigger.active { transform: rotate(45deg); }
   .submenu.open { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
 
-  .chips-container { position: sticky; top: 0; z-index: 40; background-color: var(--bg-color); padding: 24px 0 16px 0; transition: background-color var(--transition-speed); }
+  .chips-container { position: sticky; top: 0; z-index: 40; background-color: var(--bg-color); padding-block: 32px; transition: background-color var(--transition-speed); }
   .custom-chip { border: 1px solid var(--border-color); color: inherit; background: transparent; }
   .custom-chip.is-active { background-color: var(--text-color); color: var(--bg-color); border-color: var(--text-color); }
   .custom-card { background-color: var(--card); border: 1px solid var(--border-color); }

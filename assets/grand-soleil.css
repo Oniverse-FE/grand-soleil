@@ -933,6 +933,9 @@ background-color:#EBEFF2;
     background:  #0B1319;
 }
 
+.bg-05090D_gs{
+    background-color: #05090D;    
+}
 .bg-modelli_gs{
     border-radius: 16px;
     background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
