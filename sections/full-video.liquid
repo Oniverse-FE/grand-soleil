@@ -2,12 +2,12 @@
 {% assign shortEmbedMobile = section.settings.vimeo-short-mobile %}
 
 {% if section.settings.full-video-rounded == true %}
-  <div class="relative w-full px-4 lg:px-24">
+  <div class="relative w-full px-4 lg:px-24 bg_gs bg_gsp">
 {% endif %}
 
 <div id="{{ section.settings.id }}"
-     class="relative w-full fullvideo-padding aspect-video overflow-hidden {% if section.settings.full-video-rounded == true %}rounded-[10px]{% endif %}"
-     style="--margin-bottom-mobile: {{ section.settings.margin_block_mobile }}; --margin-bottom-desktop: {{ section.settings.margin_block }}">
+     class="relative w-full fullvideo-padding aspect-video overflow-hidden  bg_gs bg_gsp {% if section.settings.full-video-rounded == true %}rounded-[16px]{% endif %}"
+     style="--padding-bottom-mobile: {{ section.settings.padding_block_mobile }}; --padding-bottom-desktop: {{ section.settings.padding_block }}">
 
   <!-- Short video desktop -->
   {% if shortEmbedDesktop != blank %}
@@ -57,12 +57,12 @@
 
 <style>
   .fullvideo-padding {
-    margin-bottom: var(--margin-bottom-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
   }
 
   @media screen and (min-width: 768px) {
     .fullvideo-padding {
-      margin-bottom: var(--margin-bottom-desktop);
+      padding-bottom: var(--padding-bottom-desktop);
     }
   }
 </style>
@@ -102,16 +102,6 @@
       "id": "vimeo-short-mobile",
       "label": "Vimeo SHORT embed code (Mobile)"
     },
-    {
-      "type": "textarea",
-      "id": "vimeo-long-embed",
-      "label": "Vimeo LONG embed code (Desktop)"
-    },
-    {
-      "type": "textarea",
-      "id": "vimeo-long-mobile",
-      "label": "Vimeo LONG embed code (Mobile)"
-    },
 
     {
       "type": "header",
@@ -119,7 +109,7 @@
     },
     {
       "type": "select",
-      "id": "margin_block",
+      "id": "padding_block",
       "label": "Space",
       "options": [
         { "value": "0", "label": "0" },
@@ -129,7 +119,7 @@
     },
     {
       "type": "select",
-      "id": "margin_block_mobile",
+      "id": "padding_block_mobile",
       "label": "Space above/below (mobile)",
       "options": [
         { "value": "0", "label": "0" },
