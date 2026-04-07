@@ -315,6 +315,9 @@
     },
     "rich_text_NJ9ddn": {
       "type": "rich-text",
+      "custom_css": [
+        ".bg_gsp{background-color:#EFECE8}"
+      ],
       "name": "Rich text",
       "settings": {
         "rt_subtitle": "",
