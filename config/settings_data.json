@@ -208,7 +208,7 @@
             "type": "text",
             "settings": {
               "id_gamme": "blue",
-              "title_gamme": "Natura allo stato puro",
+              "title_gamme": "Nature in its purest form",
               "link_gamme": "",
               "url_gamme": "",
               "visibility": "gs"
@@ -217,10 +217,10 @@
           "card_HJYKVa": {
             "type": "card",
             "settings": {
-              "image": "shopify://shop_images/img.png",
-              "title": "GS 42",
+              "image": "shopify://shop_images/DSC04949.jpg",
+              "title": "GS Blue",
               "description": "Blue",
-              "link": "",
+              "link": "shopify://products/gs-blue",
               "visibility": "gs"
             }
           }
