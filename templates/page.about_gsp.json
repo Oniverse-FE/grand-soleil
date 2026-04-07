@@ -79,9 +79,9 @@
         "pt_mobile": 48,
         "pt_tablet": 72,
         "pt_desktop": 128,
-        "pb_mobile": 48,
-        "pb_tablet": 72,
-        "pb_desktop": 128
+        "pb_mobile": 56,
+        "pb_tablet": 56,
+        "pb_desktop": 96
       }
     },
     "key_features_EttV7W": {
@@ -122,54 +122,20 @@
         "padding_bottom_mobile": 0
       }
     },
-    "image_slider_U74ykJ": {
-      "type": "image-slider",
-      "blocks": {
-        "image_slider_image_VjgEt9": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_xB3LeL": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_UnAAUb": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "image_slider_image_VjgEt9",
-        "image_slider_image_xB3LeL",
-        "image_slider_image_UnAAUb"
-      ],
-      "name": "Slider",
+    "empty_space_6qyRWJ": {
+      "type": "empty-space",
+      "name": "Empty space",
       "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
+        "mobile-height": 50,
+        "desktop-height": 50
+      }
+    },
+    "rounded_image_aJixDd": {
+      "type": "rounded-image",
+      "name": "Rounded Image",
+      "settings": {
+        "rounded-image": "shopify://shop_images/2-Day_Layout_ClosedTable.jpg",
+        "rounded-image-alt": "Alt"
       }
     },
     "intro_slider_hNGFDa": {
@@ -396,7 +362,8 @@
     "rounded_image_n6LpmU",
     "intro_slider_PdzaCf",
     "key_features_EttV7W",
-    "image_slider_U74ykJ",
+    "empty_space_6qyRWJ",
+    "rounded_image_aJixDd",
     "intro_slider_hNGFDa",
     "image_slider_m3z8xf",
     "rich_text_article_WrpcRw",
