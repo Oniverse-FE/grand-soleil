@@ -248,51 +248,119 @@
         "content": "The Grand Soleil 44 has a racing soul that it doesn’t want to hide. The design goal was clear from the start: to create the right balance between design and performance even for less experienced owners."
       }
     },
-    "intro_slider_X3xXex": {
-      "type": "intro-slider",
+    "rich_text_fycJJg": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "AIRY, LIVEABLE, BEAUTIFUL INTERIORS",
+        "rt_title": "",
+        "rt_text1": "The Grand Soleil 44 is the proof that performance doesn’t need to sacrifice comfort at all, thanks to large and beautiful interior spaces, amplified by the brightness that filters through the windows of the hull and the deck. Three cabins and two bathrooms, both with separate shower cubicles, complete the relaxation area. The L-shaped kitchen and dinette with a comfortable U-shaped sofa and table are positioned centrally, offering hospitality to up to eight people. Another three-seater sofa with a chart table adds even more comfort and flexibility for guests onboard.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "pdp_multi_cards_KEjtJk": {
+      "type": "pdp-multi-cards",
       "blocks": {
-        "intro_title_anGtHB": {
-          "type": "intro-title",
+        "title_KxKmDK": {
+          "type": "title",
           "settings": {
-            "intro-title-text": "COMPETE AT THE BEST:RACE LAYOUT",
-            "small-title": ""
+            "editorial-title": "ANOTHER STEP INTO THE COMFORT OF A LUXURY ESCAPE"
           }
         },
-        "intro_text_area_LHpLyg": {
-          "type": "intro-text-area",
+        "text_area_WNWFXH": {
+          "type": "text-area",
           "settings": {
-            "intro-text-area-title": "",
-            "intro-text-area-text": "The Grand Soleil 44 has a racing soul that it doesn’t want to hide. The design goal was clear from the start: to create the right balance between design and performance even for less experienced owners."
+            "editor-text": "The volume of the hull has been designed to offer maximum comfort. The interior spaces of the Grand Soleil 44 have a sense of freedom and practicality often found in larger yachts, with a layout that guarantees privacy even with many guests on board.",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_VqRTdC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-01_desktop.jpg",
+            "card_title": "COMFORTABLE, SPACIOUS AND FUNCTIONAL",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_VQtbRB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-02_desktop.jpg",
+            "card_title": "BRIGHT INTERIORS",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_JDJWFy": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-03_desktop.jpg",
+            "card_title": "DOUBLE VERSION LOCKERS",
+            "card_subtitle": "*Included in the performance cruising layout",
+            "link": ""
+          }
+        },
+        "card_eQKAGU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-04_desktop.jpg",
+            "card_title": "OWNER CABIN",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_EVMhVz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-05_desktop.jpg",
+            "card_title": "GUEST CABIN",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_A7DqWX": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-06_desktop.jpg",
+            "card_title": "LUXURY FURNISHINGS",
+            "card_subtitle": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "intro_title_anGtHB",
-        "intro_text_area_LHpLyg"
+        "title_KxKmDK",
+        "text_area_WNWFXH",
+        "card_VqRTdC",
+        "card_VQtbRB",
+        "card_JDJWFy",
+        "card_eQKAGU",
+        "card_EVMhVz",
+        "card_A7DqWX"
       ],
-      "name": "Intro - Slider",
+      "name": "Multi Cards Slider",
       "settings": {
-        "id": "intro",
-        "first-cta-visible": false,
-        "first-cta-label": "",
-        "first-cta-link": "",
-        "brochure-transparent": false,
-        "brochure-bg-color": "#ffffff",
-        "brochure-color": "#000000",
-        "brochure-border-color": "#ffffff",
-        "second-cta-visible": false,
-        "second-cta-label": "",
-        "second-cta-link": "",
-        "info-transparent": true,
-        "info-bg-color": "#000000",
-        "info-color": "#ffffff",
-        "info-border-color": "#ffffff",
-        "pt_mobile": 48,
-        "pt_tablet": 72,
-        "pt_desktop": 128,
-        "pb_mobile": 48,
-        "pb_tablet": 72,
-        "pb_desktop": 128
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
       }
     },
     "image_slider_7tF4tQ": {
@@ -301,7 +369,7 @@
         "image_slider_image_gFeVKg": {
           "type": "image-slider-image",
           "settings": {
-            "image-slider-image": "shopify://shop_images/2-Day_Layout_ClosedTable.jpg",
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_04259_1.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -310,7 +378,7 @@
         "image_slider_image_6qiqgH": {
           "type": "image-slider-image",
           "settings": {
-            "image-slider-image": "shopify://shop_images/3-Night_Layout.jpg",
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_00024.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -328,25 +396,7 @@
         "image_slider_image_6mPGf6": {
           "type": "image-slider-image",
           "settings": {
-            "image-slider-image": "shopify://shop_images/gallery-vertical-05-1.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_zGMWFt": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/gallery-vertical-06-1.jpg",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_t44Gtj": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/gallery-vertical-07-1.jpg",
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_05251.jpg",
             "image-slider-image-alt": "",
             "image-slider-image-title": "",
             "image-slider-overlay": false
@@ -357,9 +407,7 @@
         "image_slider_image_gFeVKg",
         "image_slider_image_6qiqgH",
         "image_slider_image_jbB4cX",
-        "image_slider_image_6mPGf6",
-        "image_slider_image_zGMWFt",
-        "image_slider_image_t44Gtj"
+        "image_slider_image_6mPGf6"
       ],
       "name": "Slider",
       "settings": {
@@ -681,7 +729,8 @@
     "image_slider_L8iGY6",
     "pdp_multi_cards_CbG6MH",
     "text_gallery_888Jzy",
-    "intro_slider_X3xXex",
+    "rich_text_fycJJg",
+    "pdp_multi_cards_KEjtJk",
     "image_slider_7tF4tQ",
     "tech_spec_gFwMPj",
     "intro_slider_EqR7Bn",
