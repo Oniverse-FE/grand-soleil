@@ -84,24 +84,24 @@
         "pb_desktop": 96
       }
     },
-    "key_features_EttV7W": {
+    "key_features_DgYCTw": {
       "type": "key-features",
       "blocks": {
-        "feature_FUxmX8": {
+        "feature_gayNEm": {
           "type": "feature",
           "settings": {
             "feature-title": "Accoglienza",
             "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
           }
         },
-        "feature_GKaKF3": {
+        "feature_r3QWzh": {
           "type": "feature",
           "settings": {
             "feature-title": "Accoglienza",
             "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
           }
         },
-        "feature_bLzEC8": {
+        "feature_BTcUGP": {
           "type": "feature",
           "settings": {
             "feature-title": "Accoglienza",
@@ -110,9 +110,9 @@
         }
       },
       "block_order": [
-        "feature_FUxmX8",
-        "feature_GKaKF3",
-        "feature_bLzEC8"
+        "feature_gayNEm",
+        "feature_r3QWzh",
+        "feature_BTcUGP"
       ],
       "name": "Key feature",
       "settings": {
@@ -126,8 +126,8 @@
       "type": "empty-space",
       "name": "Empty space",
       "settings": {
-        "mobile-height": 50,
-        "desktop-height": 50
+        "mobile-height": 56,
+        "desktop-height": 96
       }
     },
     "rounded_image_aJixDd": {
@@ -185,54 +185,58 @@
         "pb_desktop": 128
       }
     },
-    "image_slider_m3z8xf": {
-      "type": "image-slider",
+    "key_features_EttV7W": {
+      "type": "key-features",
       "blocks": {
-        "image_slider_image_xiJrLc": {
-          "type": "image-slider-image",
+        "feature_FUxmX8": {
+          "type": "feature",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
           }
         },
-        "image_slider_image_C36dBM": {
-          "type": "image-slider-image",
+        "feature_GKaKF3": {
+          "type": "feature",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
           }
         },
-        "image_slider_image_98rjjU": {
-          "type": "image-slider-image",
+        "feature_bLzEC8": {
+          "type": "feature",
           "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
+            "feature-title": "Accoglienza",
+            "feature-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis pulvinar nulla ac imperdiet. Curabitur ut ipsum non diam fringilla gravida."
           }
         }
       },
       "block_order": [
-        "image_slider_image_xiJrLc",
-        "image_slider_image_C36dBM",
-        "image_slider_image_98rjjU"
+        "feature_FUxmX8",
+        "feature_GKaKF3",
+        "feature_bLzEC8"
       ],
-      "name": "Slider",
+      "name": "Key feature",
       "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "empty_space_ANdg7X": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 56,
+        "desktop-height": 96
+      }
+    },
+    "rounded_image_ijPgTz": {
+      "type": "rounded-image",
+      "name": "Rounded Image",
+      "settings": {
+        "rounded-image": "shopify://shop_images/2-Deck_Details.jpg",
+        "rounded-image-alt": "Alt"
       }
     },
     "rich_text_article_WrpcRw": {
@@ -265,80 +269,40 @@
         "image_3": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png"
       }
     },
-    "news_list_ynrNdG": {
-      "type": "news-list",
-      "name": "News Slider",
-      "settings": {
-        "news-slider-title": "RIVIVI LE ULTIME VITTORIE",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem diam, sagittis non libero et, finibus molestie mauris.",
-        "news-cta-label": "Leggi l'articolo",
-        "news-slider-cta-all-label": "",
-        "pt_desk": 96,
-        "pb_desk": 128,
-        "pt_tab": 96,
-        "pb_tab": 96,
-        "pt_mob": 48,
-        "pb_mob": 104
-      }
-    },
-    "list_image_text_NAaFPC": {
-      "type": "list-image-text",
+    "model_home_rEkRce": {
+      "type": "model-home",
       "blocks": {
-        "item_nMxQHR": {
-          "type": "item",
+        "tab_p8UMBD": {
+          "type": "tab",
           "settings": {
-            "img_left": false,
-            "image_desktop": "shopify://shop_images/img.png",
-            "title": "Gamma performance",
-            "text": "\"Where Speed Meets Style.\" È l'incarnazione del nostro DNA da regata. Yacht progettati per massimizzare le prestazioni, la reattività al timone e l'adrenalina pura, senza mai rinunciare all'eleganza e al comfort che contraddistinguono il brand. Per chi cerca il brivido della velocità e ama sentire la barca rispondere a ogni minima regolazione. Disponibile anche in versione Race per dominare i campi di regata.",
-            "cta_label": "Scopri di più",
-            "cta_url": "#"
+            "tab_title": "GS Plus 65",
+            "tab_collection": "gs72-plus"
           }
         },
-        "item_NLTGjM": {
-          "type": "item",
+        "tab_zqgdEz": {
+          "type": "tab",
           "settings": {
-            "img_left": false,
-            "image_desktop": "shopify://shop_images/0_3-HERO_1.png",
-            "title": "Gamma long Cruise",
-            "text": "\"Comfort Beyond Distance.\" È l'anima blue water, pensata per chi concepisce la barca come una vera e propria casa sul mare. Volumi generosi, autonomia impareggiabile, soluzioni di stivaggio intelligenti e un comfort assoluto definiscono questa gamma. L'eccellenza costruttiva e le doti marine garantiscono navigazioni sicure e confortevoli su qualsiasi distanza, per vivere il mare senza confini.",
-            "cta_label": "Scopri di più",
-            "cta_url": "#"
+            "tab_title": "GS Plus 72",
+            "tab_collection": "gsp-72"
+          }
+        },
+        "tab_Qg3raw": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "GS Plus 80",
+            "tab_collection": "gsp-80"
           }
         }
       },
       "block_order": [
-        "item_nMxQHR",
-        "item_NLTGjM"
+        "tab_p8UMBD",
+        "tab_zqgdEz",
+        "tab_Qg3raw"
       ],
-      "name": "List image & text",
+      "name": "Gamma Section",
       "settings": {
-        "main_title": "Due interpretazioni dell'eccellenza Grand Soleil",
-        "center_title": true,
-        "pt_desk": 80,
-        "pb_desk": 80,
-        "pt_mob": 40,
-        "pb_mob": 40
-      }
-    },
-    "text_image_with_background_pHwXNp": {
-      "type": "text-image-with-background",
-      "name": "Box Testo e Immagine",
-      "settings": {
-        "image_position": "right",
-        "mobile_reverse": false,
-        "image": "shopify://shop_images/8c1bcf8c83cad77d667160bd61d7799932395e52.png",
-        "pretitle": "SERVICE & AFTER SALE",
-        "title": "Valore che dura nel tempo",
-        "content": "<p>Navigare su un Grand Soleil significa poter contare su un after sales pensato per seguirti in ogni rotta. Una rete di service partner selezionati e il supporto diretto del cantiere ti affiancano per manutenzione, assistenza, refitting, aggiornamenti di bordo e ricambi originali, preservando performance, sicurezza e valore nel tempo. Ovunque tu sia, trovi un supporto rapido e qualificato, con il know-how di chi costruisce barche a vela da sempre. Scopri tutti i servizi nell’area After Sales.</p>",
-        "button_label": "Scopri tutti i servizi",
-        "button_link": "",
-        "pt_desk": 200,
-        "pb_desk": 200,
-        "pt_tab": 160,
-        "pb_tab": 160,
-        "pt_mob": 104,
-        "pb_mob": 104
+        "tab_collections": "LINEA GRAND SOLEIL",
+        "label_discover": "Scopri"
       }
     },
     "rich_text_inverted_CA9MBR": {
@@ -361,16 +325,16 @@
     "rich_text_TT4N3z",
     "rounded_image_n6LpmU",
     "intro_slider_PdzaCf",
-    "key_features_EttV7W",
+    "key_features_DgYCTw",
     "empty_space_6qyRWJ",
     "rounded_image_aJixDd",
     "intro_slider_hNGFDa",
-    "image_slider_m3z8xf",
+    "key_features_EttV7W",
+    "empty_space_ANdg7X",
+    "rounded_image_ijPgTz",
     "rich_text_article_WrpcRw",
     "mosaic_N7HwH9",
-    "news_list_ynrNdG",
-    "list_image_text_NAaFPC",
-    "text_image_with_background_pHwXNp",
+    "model_home_rEkRce",
     "rich_text_inverted_CA9MBR"
   ]
 }
