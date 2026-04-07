@@ -163,7 +163,7 @@
         "card_rj3fVW": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/GS-44-large-slider-01-desktop.jpg",
+            "image": "shopify://shop_images/GrandSoleilGS44_20cb_04230.jpg",
             "card_title": "",
             "card_subtitle": "",
             "link": ""
@@ -226,13 +226,35 @@
         "pb_mob": 104
       }
     },
+    "text_gallery_888Jzy": {
+      "type": "text-gallery",
+      "blocks": {
+        "image_zebRpe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0_0-HERO.jpg",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_zebRpe"
+      ],
+      "name": "Text & Gallery",
+      "settings": {
+        "id_section": "",
+        "main_title": "COMPETE AT THE BEST:RACE LAYOUT",
+        "subtitle": "",
+        "content": "The Grand Soleil 44 has a racing soul that it doesn’t want to hide. The design goal was clear from the start: to create the right balance between design and performance even for less experienced owners."
+      }
+    },
     "intro_slider_X3xXex": {
       "type": "intro-slider",
       "blocks": {
         "intro_title_anGtHB": {
           "type": "intro-title",
           "settings": {
-            "intro-title-text": "Convertible interiors. From day to night, with a touch",
+            "intro-title-text": "COMPETE AT THE BEST:RACE LAYOUT",
             "small-title": ""
           }
         },
@@ -240,7 +262,7 @@
           "type": "intro-text-area",
           "settings": {
             "intro-text-area-title": "",
-            "intro-text-area-text": "The interiors of the Grand Soleil BLUE reflect the project’s essential and refined vision: bright spaces, clean lines, and natural, functional materials. The layout, understated yet welcoming, is designed to adapt seamlessly to different moments of the day.\n\nThanks to a modular system of cushions and surfaces, the space effortlessly transitions from the Day configuration—perfect for relaxation, reading or socializing—to the Night setup, comfortably accommodating up to four people without compromising on comfort or style.\n\nEvery detail has been carefully crafted to offer an authentic onboard experience, in perfect balance between functionality and Italian design."
+            "intro-text-area-text": "The Grand Soleil 44 has a racing soul that it doesn’t want to hide. The design goal was clear from the start: to create the right balance between design and performance even for less experienced owners."
           }
         }
       },
@@ -658,6 +680,7 @@
     "intro_slider_FyKTW6",
     "image_slider_L8iGY6",
     "pdp_multi_cards_CbG6MH",
+    "text_gallery_888Jzy",
     "intro_slider_X3xXex",
     "image_slider_7tF4tQ",
     "tech_spec_gFwMPj",
