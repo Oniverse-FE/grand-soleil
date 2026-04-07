@@ -167,52 +167,44 @@
   "name": "Key features",
   "settings": [
     {
-      "type": "select",
+      "type": "range",
       "id": "padding_top",
       "label": "Space top",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "72px", "label": "Small - 72px" },
-        { "value": "128px", "label": "Medium - 128px" },
-        { "value": "160px", "label": "Big - 160px" }
-      ],
-      "default": "72px"
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
     },
     {
-      "type": "select",
+      "type": "range",
       "id": "padding_bottom",
       "label": "Space bottom",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "72px", "label": "Small - 72px" },
-        { "value": "128px", "label": "Medium - 128px" },
-        { "value": "280px", "label": "Big - 280px" }
-      ],
-      "default": "128px"
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
     },
     {
-      "type": "select",
+      "type": "range",
       "id": "padding_top_mobile",
       "label": "Space top (mobile)",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "48px", "label": "Small - 48px" },
-        { "value": "72px", "label": "Medium - 72px" },
-        { "value": "128px", "label": "Big - 128px" }
-      ],
-      "default": "48px"
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 56
     },
     {
-      "type": "select",
+      "type": "range",
       "id": "padding_bottom_mobile",
       "label": "Space bottom (mobile)",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "40px", "label": "Small - 40px" },
-        { "value": "48px", "label": "Medium - 48px" },
-        { "value": "72px", "label": "Big - 72px" }
-      ],
-      "default": "48px"
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 56
     }
   ],
   "blocks": [
