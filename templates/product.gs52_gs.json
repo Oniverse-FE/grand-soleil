@@ -1,0 +1,676 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_FHwwWU": {
+      "type": "hero-banner",
+      "blocks": {
+        "content_zyg8E8": {
+          "type": "content",
+          "settings": {
+            "content-media": false,
+            "content-image-mobile": "shopify://shop_images/2023_ORC-WC_Wind-Whisper_JSpurdzins-WEB-1.jpg",
+            "content-image-desktop": "shopify://shop_images/2023_ORC-WC_Wind-Whisper_JSpurdzins-WEB-5.jpg",
+            "content-subtitle": "GS 44 RACE | ORC WORLD CHAMPION 2021, 2022, 2023, 2024",
+            "content-title": "BORN TO PERFORM",
+            "content-title-color": "#ffffff",
+            "button_1_label": "",
+            "button_1_url": "",
+            "button_2_label": "",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_zyg8E8"
+      ],
+      "name": "Hero Banner",
+      "settings": {}
+    },
+    "rich_text_ppGgwa": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "",
+        "rt_title": "ONE DESIGN, DUAL PURPOSE",
+        "rt_text1": "The Grand Soleil 44 was a great challenge for Cantiere del Pardo. Designed by Matteo Polli, a designer renowned for his high-performance hull lines, the 44-footer completes the Performance range by showing a well-balanced relationship between size and performance. During navigation maneuvers, the owner and guests can take advantage of all the necessary space, for the comfort of the interiors and for the livability of the deck.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "intro_slider_FyKTW6": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_n7fJ6z": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "FROM PERFORMANCE TO RACE",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_YGnqPP": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "The Grand Soleil 44 is available in two models. The first, the Performance model, has a sail plan and deck setup that allows you to sail easily and simply. The second, the Race version, has a competitive character and identity. Both versions ooze the timeless style and elegance that are the hallmarks of the entire Grand Soleil range."
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_n7fJ6z",
+        "intro_text_area_YGnqPP"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "image_slider_L8iGY6": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_QNU3Eb": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_00409.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_Gr8KK6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_04259.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_QNU3Eb",
+        "image_slider_image_Gr8KK6"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "pdp_multi_cards_CbG6MH": {
+      "type": "pdp-multi-cards",
+      "blocks": {
+        "title_Gaf8M6": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "SIMPLE SAILING AND COMFORT: PERFORMANCE LAYOUT"
+          }
+        },
+        "text_area_gmtHcx": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "The performance layout is designed for those looking for performance and comfort, with attention to detail that allows elegance and improved navigation.",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_rj3fVW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GrandSoleilGS44_20cb_04230.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_EmiiRJ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/image002-1440x807.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_BWg8Lg": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-large-slider-03-desktop.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_grK6hC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-large-slider-04-desktop.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_AAjMgB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-large-slider-05-desktop.jpg",
+            "card_title": "",
+            "card_subtitle": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_Gaf8M6",
+        "text_area_gmtHcx",
+        "card_rj3fVW",
+        "card_EmiiRJ",
+        "card_BWg8Lg",
+        "card_grK6hC",
+        "card_AAjMgB"
+      ],
+      "name": "Multi Cards Slider",
+      "settings": {
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "text_gallery_888Jzy": {
+      "type": "text-gallery",
+      "blocks": {
+        "image_zebRpe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0_0-HERO.jpg",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_zebRpe"
+      ],
+      "name": "Text & Gallery",
+      "settings": {
+        "id_section": "",
+        "main_title": "COMPETE AT THE BEST:RACE LAYOUT",
+        "subtitle": "",
+        "content": "The Grand Soleil 44 has a racing soul that it doesn’t want to hide. The design goal was clear from the start: to create the right balance between design and performance even for less experienced owners."
+      }
+    },
+    "rich_text_fycJJg": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "rt_subtitle": "AIRY, LIVEABLE, BEAUTIFUL INTERIORS",
+        "rt_title": "",
+        "rt_text1": "The Grand Soleil 44 is the proof that performance doesn’t need to sacrifice comfort at all, thanks to large and beautiful interior spaces, amplified by the brightness that filters through the windows of the hull and the deck. Three cabins and two bathrooms, both with separate shower cubicles, complete the relaxation area. The L-shaped kitchen and dinette with a comfortable U-shaped sofa and table are positioned centrally, offering hospitality to up to eight people. Another three-seater sofa with a chart table adds even more comfort and flexibility for guests onboard.",
+        "rt-cta_label": "",
+        "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
+        "enable_alt_style": false,
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80
+      }
+    },
+    "pdp_multi_cards_KEjtJk": {
+      "type": "pdp-multi-cards",
+      "blocks": {
+        "title_KxKmDK": {
+          "type": "title",
+          "settings": {
+            "editorial-title": "ANOTHER STEP INTO THE COMFORT OF A LUXURY ESCAPE"
+          }
+        },
+        "text_area_WNWFXH": {
+          "type": "text-area",
+          "settings": {
+            "editor-text": "The volume of the hull has been designed to offer maximum comfort. The interior spaces of the Grand Soleil 44 have a sense of freedom and practicality often found in larger yachts, with a layout that guarantees privacy even with many guests on board.",
+            "editorial-label": "",
+            "editorial-url": ""
+          }
+        },
+        "card_VqRTdC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-01_desktop.jpg",
+            "card_title": "COMFORTABLE, SPACIOUS AND FUNCTIONAL",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_VQtbRB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-02_desktop.jpg",
+            "card_title": "BRIGHT INTERIORS",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_JDJWFy": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-03_desktop.jpg",
+            "card_title": "DOUBLE VERSION LOCKERS",
+            "card_subtitle": "*Included in the performance cruising layout",
+            "link": ""
+          }
+        },
+        "card_eQKAGU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-04_desktop.jpg",
+            "card_title": "OWNER CABIN",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_EVMhVz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-05_desktop.jpg",
+            "card_title": "GUEST CABIN",
+            "card_subtitle": "",
+            "link": ""
+          }
+        },
+        "card_A7DqWX": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/GS-44-interiors-teak-06_desktop.jpg",
+            "card_title": "LUXURY FURNISHINGS",
+            "card_subtitle": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_KxKmDK",
+        "text_area_WNWFXH",
+        "card_VqRTdC",
+        "card_VQtbRB",
+        "card_JDJWFy",
+        "card_eQKAGU",
+        "card_EVMhVz",
+        "card_A7DqWX"
+      ],
+      "name": "Multi Cards Slider",
+      "settings": {
+        "id": "editorial-cards",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 104,
+        "pb_mob": 104
+      }
+    },
+    "image_slider_7tF4tQ": {
+      "type": "image-slider",
+      "blocks": {
+        "image_slider_image_gFeVKg": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_04259_1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6qiqgH": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_00024.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_jbB4cX": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/gallery-vertical-03-1.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        },
+        "image_slider_image_6mPGf6": {
+          "type": "image-slider-image",
+          "settings": {
+            "image-slider-image": "shopify://shop_images/GrandSoleilGS44_20cb_05251.jpg",
+            "image-slider-image-alt": "",
+            "image-slider-image-title": "",
+            "image-slider-overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "image_slider_image_gFeVKg",
+        "image_slider_image_6qiqgH",
+        "image_slider_image_jbB4cX",
+        "image_slider_image_6mPGf6"
+      ],
+      "name": "Slider",
+      "settings": {
+        "id": "slider",
+        "image-slider-title": "",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "width-desktop": "932px",
+        "width-mobile": "327px"
+      }
+    },
+    "tech_spec_gFwMPj": {
+      "type": "tech-spec",
+      "blocks": {
+        "tech_spec_item_8Drwyc": {
+          "type": "tech-spec-item",
+          "name": "Hull length",
+          "settings": {
+            "label": "Hull length",
+            "value": "13.40 m – 43.96 ft "
+          }
+        },
+        "tech_spec_item_mY8ptH": {
+          "type": "tech-spec-item",
+          "name": "Max beam",
+          "settings": {
+            "label": "Max beam",
+            "value": "4.27 m – 14.01 ft"
+          }
+        },
+        "tech_spec_item_4jQ9LR": {
+          "type": "tech-spec-item",
+          "name": "Displacement",
+          "settings": {
+            "label": "Displacement",
+            "value": "10.3 t approx – 20600 lb approx "
+          }
+        },
+        "tech_spec_item_CXFKwq": {
+          "type": "tech-spec-item",
+          "name": "Engines",
+          "settings": {
+            "label": "Engines",
+            "value": "Volvo Penta 50 hp Saildrive std.60 hp opt. "
+          }
+        },
+        "tech_spec_item_HEEjGJ": {
+          "type": "tech-spec-item",
+          "name": "Water tank",
+          "settings": {
+            "label": "Water tank",
+            "value": "300 l – 79 gal "
+          }
+        },
+        "tech_spec_item_4zpik8": {
+          "type": "tech-spec-item",
+          "name": "Fuel tank",
+          "settings": {
+            "label": "Fuel tank",
+            "value": "170 l – 45 gal "
+          }
+        },
+        "tech_spec_item_pcg3ef": {
+          "type": "tech-spec-item",
+          "name": "Draft",
+          "settings": {
+            "label": "Draft",
+            "value": "2.60 m / 8.53 ft std.<br>2.40 m / 7.87 ft & 2.80 m / 9.19 ft opt."
+          }
+        },
+        "tech_spec_item_4hkqx9": {
+          "type": "tech-spec-item",
+          "name": "Berths",
+          "settings": {
+            "label": "Berths",
+            "value": "6/9"
+          }
+        },
+        "tech_spec_item_DgcCGY": {
+          "type": "tech-spec-item",
+          "name": "Overall length (Performance)",
+          "settings": {
+            "label": "Overall length (Performance)",
+            "value": "14.33 m – 47 ft"
+          }
+        },
+        "tech_spec_item_iN4xft": {
+          "type": "tech-spec-item",
+          "name": "Gennaker area (Performance)",
+          "settings": {
+            "label": "Gennaker area (Performance)",
+            "value": "170 m² -1830 ft²"
+          }
+        },
+        "tech_spec_item_kjkWWb": {
+          "type": "tech-spec-item",
+          "name": "Mainsail area (Performance)",
+          "settings": {
+            "label": "Mainsail area (Performance)",
+            "value": "59 m² – 635 ft²"
+          }
+        },
+        "tech_spec_item_4cGwUt": {
+          "type": "tech-spec-item",
+          "name": "Self taking jib (Performance)",
+          "settings": {
+            "label": "Self taking jib (Performance)",
+            "value": "47 m² – 506 ft²"
+          }
+        },
+        "tech_spec_item_iAjHFm": {
+          "type": "tech-spec-item",
+          "name": "Overall length (race)",
+          "settings": {
+            "label": "Overall length (race)",
+            "value": "15 m – 49.21 ft"
+          }
+        },
+        "tech_spec_item_giPaCt": {
+          "type": "tech-spec-item",
+          "name": "Gennaker area (race)",
+          "settings": {
+            "label": "Gennaker area (race)",
+            "value": "195 m² – 2100 ft²"
+          }
+        },
+        "tech_spec_item_3g7XFH": {
+          "type": "tech-spec-item",
+          "name": "Mainsail area (race)",
+          "settings": {
+            "label": "Mainsail area (race)",
+            "value": "66 m² -711 ft²"
+          }
+        },
+        "tech_spec_item_83D6Hr": {
+          "type": "tech-spec-item",
+          "name": "Self taking jib (race)",
+          "settings": {
+            "label": "Self taking jib (race)",
+            "value": "57 m² – 614 ft²"
+          }
+        }
+      },
+      "block_order": [
+        "tech_spec_item_8Drwyc",
+        "tech_spec_item_mY8ptH",
+        "tech_spec_item_4jQ9LR",
+        "tech_spec_item_CXFKwq",
+        "tech_spec_item_HEEjGJ",
+        "tech_spec_item_4zpik8",
+        "tech_spec_item_pcg3ef",
+        "tech_spec_item_4hkqx9",
+        "tech_spec_item_DgcCGY",
+        "tech_spec_item_iN4xft",
+        "tech_spec_item_kjkWWb",
+        "tech_spec_item_4cGwUt",
+        "tech_spec_item_iAjHFm",
+        "tech_spec_item_giPaCt",
+        "tech_spec_item_3g7XFH",
+        "tech_spec_item_83D6Hr"
+      ],
+      "name": "Technical Spec Right Col",
+      "settings": {
+        "id": "tech-spec",
+        "tech-spec-title": "TECHNICAL SPECIFICATION",
+        "brochure-visible": true,
+        "brochure-cta-label": "Download brochure",
+        "brochure-link": "",
+        "info-cta-visible": true,
+        "info-cta-label": "Request info",
+        "info-cta-link": "shopify://pages/contact",
+        "padding_top": "72px",
+        "padding_bottom": "128px",
+        "padding_top_mobile": "48px",
+        "padding_bottom_mobile": "48px"
+      }
+    },
+    "intro_slider_EqR7Bn": {
+      "type": "intro-slider",
+      "blocks": {
+        "intro_title_myk7Wt": {
+          "type": "intro-title",
+          "settings": {
+            "intro-title-text": "About the GS 44",
+            "small-title": ""
+          }
+        },
+        "intro_text_area_Kb6Q6H": {
+          "type": "intro-text-area",
+          "settings": {
+            "intro-text-area-title": "",
+            "intro-text-area-text": "Naval architecture: Matteo Polli\nDeck and Interior Design: Nauta Design\nShipyard: Cantiere del Pardo\nCE Category: “A” OCEAN"
+          }
+        }
+      },
+      "block_order": [
+        "intro_title_myk7Wt",
+        "intro_text_area_Kb6Q6H"
+      ],
+      "name": "Intro - Slider",
+      "settings": {
+        "id": "intro",
+        "first-cta-visible": false,
+        "first-cta-label": "",
+        "first-cta-link": "",
+        "brochure-transparent": false,
+        "brochure-bg-color": "#ffffff",
+        "brochure-color": "#000000",
+        "brochure-border-color": "#ffffff",
+        "second-cta-visible": false,
+        "second-cta-label": "",
+        "second-cta-link": "",
+        "info-transparent": true,
+        "info-bg-color": "#000000",
+        "info-color": "#ffffff",
+        "info-border-color": "#ffffff",
+        "pt_mobile": 48,
+        "pt_tablet": 72,
+        "pt_desktop": 128,
+        "pb_mobile": 48,
+        "pb_tablet": 72,
+        "pb_desktop": 128
+      }
+    },
+    "text_gallery_MpUcET": {
+      "type": "text-gallery",
+      "blocks": {
+        "image_JY3HbX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GSBlue-logos-1440x186.png",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_JY3HbX"
+      ],
+      "name": "Text & Gallery",
+      "settings": {
+        "id_section": "",
+        "main_title": "",
+        "subtitle": "",
+        "content": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_FHwwWU",
+    "rich_text_ppGgwa",
+    "intro_slider_FyKTW6",
+    "image_slider_L8iGY6",
+    "pdp_multi_cards_CbG6MH",
+    "text_gallery_888Jzy",
+    "rich_text_fycJJg",
+    "pdp_multi_cards_KEjtJk",
+    "image_slider_7tF4tQ",
+    "tech_spec_gFwMPj",
+    "intro_slider_EqR7Bn",
+    "text_gallery_MpUcET"
+  ]
+}
