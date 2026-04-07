@@ -120,7 +120,7 @@
             "settings": {
               "id_gamme": "performance",
               "title_gamme": "Prestazioni al massimo livello",
-              "link_gamme": "Scopri Performance",
+              "link_gamme": "Discover Performance",
               "url_gamme": "",
               "visibility": "gs"
             }
@@ -160,7 +160,7 @@
             "settings": {
               "id_gamme": "long-cruise",
               "title_gamme": "Comfort in ogni situazione",
-              "link_gamme": "Scopri Long Cruise",
+              "link_gamme": "Discover Long Cruise",
               "url_gamme": "",
               "visibility": "gs"
             }
