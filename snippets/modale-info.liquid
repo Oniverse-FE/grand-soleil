@@ -1,255 +1,344 @@
-<div id="form-wrapper" class="fixed inset-0 flex justify-start items-start z-[9999] opacity-0 pointer-events-none transition-all duration-700 w-full lg:w-1/2">
-    
-    {% form 'customer', id: 'newsletter_form', class: 'w-full h-full' %}
+<div class="shopify-section-modal flex justify-center">
+  <div id="customModalInfo" class="fixed inset-0 z-[9999] hidden flex items-start justify-start overflow-y-auto bg-modali_gs bg-modali_gsp w-full lg:w-1/2">
+    <div class="bg-transparent w-full overflow-hidden mb-10 transform transition-all">
+      
+      <div class="flex gap-10 justify-between items-start px-4 md:px-10 lg:px-[64px] xl:px-[128px] pt-6 pb-6 md:pb-10 md:pt-20 lg:pt-[96px]">
+        <h2 class="heading-sm_gs md:heading-md_gs lg:heading-lg_gs heading-sm_gsp md:heading-md_gsp lg:heading-lg_gsp text-color_gs text-color_gsp">
+          {% if form.posted_successfully? %}
+            {{ section.settings.modal_title_ty | default: 'Richiesta inviata' }}
+          {% else %}
+            {{ section.settings.modal_title | default: 'Titolo Modale' }}
+          {% endif %}
+        </h2>
+        <button id="closeBtn" type="button" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5418 4.32754C18.8347 4.03472 19.3094 4.03468 19.6023 4.32754C19.8951 4.62042 19.8951 5.09521 19.6023 5.38809L12.99 11.9994L19.6023 18.6117C19.8951 18.9046 19.8951 19.3794 19.6023 19.6723C19.3094 19.9652 18.8346 19.9652 18.5418 19.6723L11.9294 13.06L5.45972 19.5307C5.16682 19.8232 4.69195 19.8234 4.39917 19.5307C4.1064 19.2379 4.10665 18.763 4.39917 18.4701L10.8689 11.9994L4.39917 5.53067C4.1064 5.2379 4.10665 4.76305 4.39917 4.47012C4.69207 4.17723 5.16683 4.17723 5.45972 4.47012L11.9294 10.9389L18.5418 4.32754Z" fill="#EBEFF2"/>
+            </svg>
+        </button>
+      </div>
+
+      {% form 'customer', id: 'info_form' %}
         
-        <div id="form-box-news"
-             class="flex flex-col h-full max-h-screen overflow-y-auto lg:px-[64px] xl:py-[128px] lg:py-[64px] py-6 px-4 gap-10 text-color_gs text-color_gsp bg_gs bg_gsp" 
-             style="opacity:90%"> 
-            
-            <div class="flex flex-col gap-12">
-                <div class="w-full flex flex-row justify-between">
-                    <div class="flex justify-start heading-lg_gs heading-lg_gsp uppercase text-color_gs text-color_gsp">
-                        {{ section.settings.news-form-title }}
-                    </div>
-                    <div class="flex justify-end heading-lg_gs heading-lg_gsp uppercase text-color_gs text-color_gsp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18.5424 4.32715C18.8353 4.03433 19.31 4.03428 19.6029 4.32715C19.8957 4.62002 19.8957 5.09482 19.6029 5.3877L12.9906 11.999L19.6029 18.6113C19.8957 18.9042 19.8957 19.379 19.6029 19.6719C19.31 19.9648 18.8353 19.9648 18.5424 19.6719L11.9301 13.0596L5.46033 19.5303C5.16742 19.8228 4.69255 19.823 4.39978 19.5303C4.10701 19.2375 4.10726 18.7626 4.39978 18.4697L10.8695 11.999L4.39978 5.53027C4.10701 5.2375 4.10726 4.76265 4.39978 4.46973C4.69267 4.17683 5.16743 4.17683 5.46033 4.46973L11.9301 10.9385L18.5424 4.32715Z" fill="#141312"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">  
-                    <div class="md:col-span-2 flex justify-start caption text-color_gs text-color_gsp">
-                        {{ section.settings.news-form-required-text }}
-                    </div>
+        {% if form.posted_successfully? %}
+          <div class="flex flex-col gap-6 px-4 md:px-10 lg:px-[64px] xl:px-[128px] py-10 text-color_gs text-color_gsp">
+            <p class="caption">{{ section.settings.modal_text_ty | default: 'Presto verrai contattato in merito alla richiesta che hai inviato.' }}</p>
+            <button type="button" onclick="document.getElementById('closeBtn').click()" class="w-max px-8 py-4 close-cta link-lg_gs link-lg_gsp">
+              {{ section.settings.modal_close_ty | default: 'chiudi' }}
+            </button>
+          </div>
+          
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const modal = document.getElementById('customModalInfo');
+              if(modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+              }
+            });
+          </script>
 
-                    <div class="flex flex-col gap-1">
-                        <div class="flex caption text-color_gs text-color_gsp">
-                            {{ section.settings.news-fname-label}}{% if section.settings.news-fname-required == true %}*{% endif %}
-                        </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
-                            type="text" id="news-form-first-name" name="contact[first_name]"
-                            placeholder="{{- section.settings.news-fname-placeholder }}" {% if section.settings.news-fname-required == true %} required {% endif %}>
-                    </div>
+        {% else %}
+          <div id="info-form-box" class="flex flex-col overflow-y-auto overflow-visible lg:px-10 lg:py-10 py-6 px-4 gap-10 text-color_gs text-color_gsp px-4 md:px-10 lg:px-[64px] xl:px-[128px]">
+              
+              <div class="flex flex-col gap-12">
+                  {% if form.errors %}
+                    <div class="text-red-500 caption">{{ form.errors | default_errors }}</div>
+                  {% endif %}
 
-                    <div class="flex flex-col gap-1">
-                        <div class="flex caption text-color_gs text-color_gsp">
-                            {{ section.settings.news-lname-label}}{% if section.settings.news-lname-required == true %}*{% endif %}
-                        </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
-                            type="text" id="news-form-last-name" name="contact[last_name]"
-                            placeholder="{{- section.settings.news-lname-placeholder }}" {% if section.settings.news-lname-required == true %} required {% endif %}>
-                    </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div class="md:col-span-2 flex justify-start caption text-color_gs text-color_gsp opacity-70">
+                          {{ section.settings.info-form-required-text }}
+                      </div>
 
-                    <div class="flex flex-col gap-1 relative">
-                        <div class="flex caption text-color_gs text-color_gsp">
-                            {{ section.settings.news-country-label}}{% if section.settings.news-country-required == true %}*{% endif %}
-                        </div>
-                        <div class="relative w-full">
-                            <input
-                                class="w-full caption text-color_gs text-color_gsp opacity-[50%] border-b-1 py-1 border-white pr-10 country-input"
-                                type="text" name="contact[country]" id="news-country-main"
-                                placeholder="{{ section.settings.news-form-boat-q-port-placeholder}}"
-                                autocomplete="off" required>
-                            <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
-                            <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <ul class="countryList absolute top-full mt-1 bg-[#1a1a1a] border border-gray-700 max-h-60 overflow-y-auto overflow-x-hidden w-full rounded-md shadow-md hidden z-[6000]"></ul>
-                    </div>
+                      <div class="flex flex-col gap-1">
+                          <div class="flex caption">{{ section.settings.info-fname-label}}{% if section.settings.info-fname-required %}*{% endif %}</div>
+                          <input class="caption opacity-[50%] py-1 bg-transparent border-b border-white outline-none" type="text" name="contact[first_name]" placeholder="{{ section.settings.info-fname-placeholder }}" {% if section.settings.info-fname-required %}required{% endif %}>
+                      </div>
 
-                    <div class="flex flex-col gap-1">
-                        <div class="flex caption text-color_gs text-color_gsp">
-                            {{ section.settings.news-mail-label}}{% if section.settings.news-mail-required == true %}*{% endif %}
-                        </div>
-                        <input class="caption text-color_gs text-color_gsp opacity-[50%] py-1"
-                            type="email" id="news-form-mail" name="contact[email]"
-                            placeholder="{{- section.settings.news-mail-placeholder }}" {% if section.settings.news-mail-required == true %} required {% endif %}>
-                    </div>
-                </div>
+                      <div class="flex flex-col gap-1">
+                          <div class="flex caption">{{ section.settings.info-lname-label}}{% if section.settings.info-lname-required %}*{% endif %}</div>
+                          <input class="caption opacity-[50%] py-1 bg-transparent border-b border-white outline-none" type="text" name="contact[last_name]" placeholder="{{ section.settings.info-lname-placeholder }}" {% if section.settings.info-lname-required %}required{% endif %}>
+                      </div>
 
-                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
-                    <div class="flex">{{ section.settings.news-boat-q-label }}</div>
-                    <div class="flex flex-col gap-2">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex gap-2 justify-start items-center">
-                                <input type="radio" class="size-5 custom-radio" id="boat-y" name="contact[boat-question]" value="vd" data-target="boat-y-fields">
-                                <label for="boat-y">{{ section.settings.news-boat-q-affermative-label }}</label>
-                            </div>
-                            <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
-                                <div class="flex flex-col gap-1 w-full">
-                                    <input class="w-full py-2 bg-transparent" type="text" name="contact[boat-y-model]" placeholder="Model">
-                                </div>
-                                <div class="flex flex-col gap-1 relative w-full">
-                                    <input class="w-full py-2 bg-transparent country-input" type="text" name="contact[boat-y-port]" placeholder="Port" autocomplete="off">
-                                    <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
-                                    <ul class="countryList absolute top-full left-0 mt-1 bg-transparent tex-[#000] max-h-40 overflow-y-auto w-full hidden z-[6000]"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex gap-2 justify-start items-center">
-                            <input type="radio" class="size-5 custom-radio" id="boat-n" name="contact[boat-question]" value="no">
-                            <label for="boat-n">{{ section.settings.news-boat-q-negative-label }}</label>
-                        </div>
-                    </div>
-                </div>
+                      <div class="flex flex-col gap-1 relative">
+                          <div class="flex caption">{{ section.settings.info-country-label}}*</div>
+                          <input class="caption country-input opacity-[50%] border-b py-1 border-white pr-10 bg-transparent outline-none" type="text" name="contact[country]" autocomplete="off" required placeholder="{{ section.settings.info-form-boat-q-port-placeholder}}">
+                          <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
+                          <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/></svg>
+                          </div>
+                          <ul class="countryList absolute top-full mt-1 border_gs bg-modali_gsp max-h-60 overflow-y-auto w-full rounded-[16px] shadow-md hidden z-50"></ul>
+                      </div>
 
-                <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
-                    <div class="flex">{{ section.settings.news-boat-sel-label }}</div>
-                    {% assign options = section.settings.options | split: ',' %}
-                    <div class="flex flex-wrap gap-2" data-name="contact[boat-selection]">
-                        {% for option in options %}
-                            {% assign clean_option = option | strip %}
-                            <label class="flex gap-1 py-1.5 px-4 chip cursor-pointer rounded-full transition-all">
-                                <input type="checkbox" class="multi-checkbox hidden" value="{{ clean_option }}">
-                                {{ clean_option }}
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <input type="hidden" name="contact[boat-selection]" id="news-form-boat-selection">
-                </div>
+                      <div class="flex flex-col gap-1">
+                          <div class="flex caption">{{ section.settings.info-mail-label}}{% if section.settings.info-mail-required %}*{% endif %}</div>
+                          <input class="caption opacity-[50%] py-1 bg-transparent border-b border-white outline-none" type="email" name="contact[email]" placeholder="{{ section.settings.info-mail-placeholder }}" {% if section.settings.info-mail-required %}required{% endif %}>
+                      </div>
+                  </div>
 
-                <div class="flex flex-col gap-4">
-                    <div class="flex text-color_gs  text-color_gsp">{{ section.settings.news-message-label }}</div>
-                    <div class="textarea-wrapper rounded-xl p-4">
-                        <textarea id="news-form-message" class="w-full bg-transparent outline-none resize-none min-h-[80px] text-color_gs  text-color_gsp"
-                            name="contact[message]" placeholder="{{ section.settings.news-message-placeholder }}"
-                            maxlength="250"></textarea>
-                        <div class="char-counter text-right text-xs opacity-50" id="news-message-counter">0 / 250</div>
-                    </div>
-                </div>
+                  <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                      <div class="flex">{{ section.settings.info-boat-q-label }}</div>
+                      <div class="flex flex-col gap-2">
+                          <div class="flex flex-col gap-2">
+                              <div class="flex gap-2 items-center">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-y" name="contact[boat_question]" value="yes" data-target="boat-y-fields">
+                                  <label for="boat-y">{{ section.settings.info-boat-q-affermative-label }}</label>
+                              </div>
+                              <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-2">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[current_model]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[current_port]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
+                              </div>
+                          </div>
+                          <div class="flex flex-col gap-2">
+                              <div class="flex gap-2 items-center">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-o" name="contact[boat_question]" value="other" data-target="boat-o-fields">
+                                  <label for="boat-o">{{ section.settings.info-boat-q-other-label }}</label>
+                              </div>
+                              <div id="boat-o-fields" class="hidden flex flex-col md:flex-row gap-4 my-2 w-full">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[other_model]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[other_port]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
+                              </div>
+                          </div>
+                          <div class="flex gap-2 items-center">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-n" name="contact[boat_question]" value="no">
+                              <label for="boat-n">{{ section.settings.info-boat-q-negative-label }}</label>
+                          </div>
+                      </div>
+                  </div>
 
-                <div class="flex flex-col gap-6 text-sm text-color_gs text-color_gsp">
-                    <div class="flex items-start gap-4">
-                        <input type="checkbox" class="w-5 h-5 mt-1" id="news-form-marketingConsent">
-                        <label for="news-form-marketingConsent">{{ section.settings.news-form-markConsLabel }}</label>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <input type="checkbox" class="w-5 h-5 mt-1" id="news-form-profilingConsent" disabled>
-                        <label id="news-form-profilingLabel" class="opacity-50" for="news-form-profilingConsent">
-                            {{ section.settings.news-form-profConsLabel }}
-                        </label>
-                    </div>
-                </div>
-            </div>
+                  <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                      <div class="flex text-color_gs text-color_gsp">
+                          {{ section.settings.info-buy-q-label }}{% if section.settings.info-buy-q-required == true %}*{% endif %}
+                      </div>
+                      <div class="flex flex-col gap-2">
+                          <div class="flex gap-2 justify-start items-center">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-y" name="contact[buy_question]" value="yes">
+                              <label for="buy-y"> {{ section.settings.info-buy-q-affermative-label }}</label>
+                          </div>
+                          <div class="flex gap-2 justify-start items-center">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-n" name="contact[buy_question]" value="no">
+                              <label for="buy-n"> {{ section.settings.info-buy-q-negative-label }}</label>
+                          </div>
+                      </div>
+                  </div>
 
-            <div class="flex justify-end pb-10">
-                <button id="news-form-submit" type="submit" 
-                        class="px-10 py-3 transition-transform hover:scale-105">
-                    {{ section.settings.news-form-submit-button-text | default: 'SEND' }}
-                </button>
-            </div>
+                  <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                      <div class="flex">{{ section.settings.info-boat-sel-label }}</div>
+                      {% assign options = section.settings.options | split: ',' %}
+                      <div class="flex flex-wrap gap-2">
+                          {% for option in options %}
+                          {% assign opt = option | strip %}
+                          <label class="pill-btn flex gap-1 py-1.5 px-3 cursor-pointer rounded-full border border-white transition-all">
+                              <input type="checkbox" class="multi-checkbox hidden" value="{{ opt }}">
+                              {{ opt }}
+                          </label>
+                          {% endfor %}
+                      </div>
+                      <input type="hidden" name="contact[boat_selection]" id="boat_selection_hidden">
+                  </div>
 
-            <input type="hidden" name="contact[tags]" id="CustomerTags" value="newsletter">
-            <input type="hidden" name="contact[note]" id="CustomerNote">
-        </div>
-    {% endform %}
+                  <div class="flex flex-col gap-4">
+                      <div class="flex caption">{{ section.settings.info-message-label }}</div>
+                      <div class="textarea-wrapper p-4 border border-white border-opacity-30">
+                          <textarea id="info-message" class="w-full bg-transparent resize-none min-h-[40px] opacity-[50%] outline-none caption" name="contact[body]" maxlength="250" placeholder="{{ section.settings.info-message-placeholder }}"></textarea>
+                          <div class="char-counter flex justify-end text-[10px] mt-1" id="char-counter">0 / 250</div>
+                      </div>
+                  </div>
+
+                  <div class="caption text-color_gs text-color_gsp flex flex-col gap-4">
+                      <div class="flex">{{ section.settings.info-info-q-label }}</div>
+                      <div class="flex flex-col gap-2">
+                          <div class="flex gap-2 justify-start items-center">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-mail" name="contact[preference]" value="mail">
+                              <label for="info-mail">{{ section.settings.info-info-q-mail-label }}</label>
+                          </div>
+
+                          <div>
+                              <div class="flex gap-2 justify-start items-center">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-phone" name="contact[preference]" value="phone" data-target="phone-fields-phone">
+                                  <label for="info-phone">{{ section.settings.info-info-q-phone-label }}</label>
+                              </div>
+                              <div id="phone-fields-phone" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
+                                  <div class="flex flex-col gap-1 w-full md:w-[100px]">
+                                      <div class="caption">{{ section.settings.info-form-info-q-prefix-label }}</div>
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[prefix_phone]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
+                                  </div>
+                                  <div class="flex flex-col gap-1 w-full">
+                                      <div class="caption">{{ section.settings.info-form-info-q-phone-label }}</div>
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[phone_phone]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div>
+                              <div class="flex gap-2 justify-start items-center">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-both" name="contact[preference]" value="both" data-target="phone-fields-both">
+                                  <label for="info-both">{{ section.settings.info-info-q-both-label }}</label>
+                              </div>
+                              <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
+                                  <div class="flex flex-col gap-1 w-full md:w-[100px]">
+                                      <div class="caption">{{ section.settings.info-form-info-q-prefix-label }}</div>
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[prefix_both]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
+                                  </div>
+                                  <div class="flex flex-col gap-1 w-full">
+                                      <div class="caption">{{ section.settings.info-form-info-q-phone-label }}</div>
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[phone_both]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="flex flex-col gap-6">
+                      <div class="flex items-center gap-4">
+                          <input type="checkbox" class="w-6 h-6 cursor-pointer" id="marketing-consent">
+                          <label class="caption" for="marketing-consent">
+                              {{ section.settings.info-form-markConsLabel }}
+                              <u><a href="{{ section.settings.info-privacy-url }}">{{ section.settings.info-form-privacy-label | default: "Privacy Policy" }}</a></u>
+                          </label>
+                      </div>
+                      <div class="flex items-center gap-4">
+                          <input type="checkbox" class="w-6 h-6 cursor-pointer disabled:opacity-30" id="profiling-consent" disabled>
+                          <label class="caption transition-opacity duration-200" id="profiling-label" for="profiling-consent" style="opacity: 0.5;">
+                              {{ section.settings.info-form-profConsLabel }}
+                              <u><a href="{{ section.settings.info-privacy-url }}">{{ section.settings.info-form-privacy-label | default: "Privacy Policy" }}</a></u>
+                          </label>
+                      </div>
+                  </div>
+
+                  <div class="flex justify-end mt-4">
+                      <button id="info-form-submit" type="submit" class="px-8 py-4 bg-[#76787B] text-black rounded-full font-bold transition-all hover:bg-white">
+                          {{ section.settings.info-form-submit-button-text }}
+                      </button>
+                  </div>
+
+                  <input type="hidden" name="contact[tags]" id="CustomerTags" value="form_lead">
+              </div>
+          </div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
 </div>
 
 <style>
-    #form-box-news::-webkit-scrollbar { width: 4px; }
-    #form-box-news::-webkit-scrollbar-thumb { background: #ffffff55; border-radius: 10px; }
-
-
+    .countryList::-webkit-scrollbar { display: none; }
     .country-arrow.open svg { transform: rotate(180deg); }
-    .countryList li:hover { background: #000; }
+    #profiling-consent:not(:disabled) + label { opacity: 1 !important; }
+    .pill-btn.selected { background-color: white; color: black; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('#newsletter_form');
-    if (!form) return;
+    const modal = document.getElementById('customModalInfo');
+    const openBtn = document.getElementById('openModalInfo'); 
+    const closeBtn = document.getElementById('closeBtn');
+    const form = document.getElementById('info_form');
 
-    // --- LOGICA PAESI (RIPRISTINATA DALL'ORIGINALE) ---
-    let allCountries = [];
-    fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json')
-        .then(res => res.json())
-        .then(data => {
-            allCountries = data.map(c => ({ name: c.name.common, code: c.cca2.toLowerCase() }));
-        });
+    // MODAL OPEN/CLOSE
+    if (openBtn) openBtn.onclick = () => { modal.classList.remove('hidden'); document.body.style.overflow='hidden'; };
+    if (closeBtn) closeBtn.onclick = () => { modal.classList.add('hidden'); document.body.style.overflow=''; };
 
-    const countryInputs = document.querySelectorAll('.country-input');
-    
-    countryInputs.forEach(input => {
-        const container = input.closest('.relative');
-        const list = container.querySelector('.countryList');
-        const arrow = container.querySelector('.country-arrow');
-        const flagDiv = container.querySelector('.country-flag');
-
-        input.addEventListener('focus', () => {
-            list.classList.remove('hidden');
-            arrow?.classList.add('open');
-            renderCountries('', list, input, flagDiv);
-        });
-
-        input.addEventListener('input', (e) => {
-            renderCountries(e.target.value, list, input, flagDiv);
-        });
-    });
-
-    function renderCountries(filter, list, input, flagDiv) {
-        list.innerHTML = '';
-        const filtered = allCountries.filter(c => 
-            c.name.toLowerCase().includes(filter.toLowerCase())
-        ).slice(0, 50);
-
-        filtered.forEach(c => {
-            const li = document.createElement('li');
-            li.className = 'px-4 py-2 cursor-pointer flex items-center gap-2 text-white';
-            li.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-3"> ${c.name}`;
-            li.addEventListener('mousedown', (e) => {
-                e.preventDefault();
-                input.value = c.name;
-                if(flagDiv) flagDiv.innerHTML = `<img src="https://flagcdn.com/w40/${c.code}.png" class="w-5 h-3">`;
-                list.classList.add('hidden');
-                input.closest('.relative').querySelector('.country-arrow')?.classList.remove('open');
-            });
-            list.appendChild(li);
-        });
-    }
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('country-input')) {
-            document.querySelectorAll('.countryList').forEach(l => l.classList.add('hidden'));
-            document.querySelectorAll('.country-arrow').forEach(a => a.classList.remove('open'));
-        }
-    });
-
-    // --- ALTRE LOGICHE (RADIO, CHECKBOX, ECC) ---
-    const radios = form.querySelectorAll('input[type="radio"]');
-    radios.forEach(radio => {
+    // RADIO CONDITIONAL FIELDS
+    document.querySelectorAll('.radio-toggle').forEach(radio => {
         radio.addEventListener('change', function() {
-            const group = this.name;
-            form.querySelectorAll(`input[name="${group}"]`).forEach(r => {
-                const target = document.getElementById(r.dataset.target);
-                if (target) target.classList.add('hidden');
+            // Nasconde tutti i target dello stesso name group
+            const groupName = this.getAttribute('name');
+            document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+                const targetId = r.getAttribute('data-target');
+                if (targetId) {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) targetEl.classList.add('hidden');
+                }
             });
-            const active = document.getElementById(this.dataset.target);
-            if (active) active.classList.remove('hidden');
+            // Mostra il target di quello selezionato
+            const activeId = this.getAttribute('data-target');
+            if (activeId) {
+                const activeEl = document.getElementById(activeId);
+                if (activeEl) activeEl.classList.remove('hidden');
+            }
         });
     });
 
-    const boatLabels = form.querySelectorAll('[data-name="contact[boat-selection]"] label');
-    boatLabels.forEach(label => {
-        label.addEventListener('click', function(e) {
-            e.preventDefault();
+    // MULTI CHECKBOX PILLS (FIXED)
+    document.querySelectorAll('.pill-btn').forEach(pill => {
+        pill.addEventListener('click', function(e) {
             const cb = this.querySelector('input');
             cb.checked = !cb.checked;
-            this.classList.toggle('label-active', cb.checked);
-            const selected = Array.from(form.querySelectorAll('.multi-checkbox:checked')).map(c => c.value);
-            document.getElementById('news-form-boat-selection').value = selected.join(', ');
+            this.classList.toggle('selected', cb.checked);
+            
+            const selected = Array.from(document.querySelectorAll('.multi-checkbox:checked'))
+                                 .map(el => el.value);
+            document.getElementById('boat_selection_hidden').value = selected.join(', ');
         });
     });
 
-    const mkt = document.getElementById('news-form-marketingConsent');
-    const prof = document.getElementById('news-form-profilingConsent');
-    if(mkt) {
-        mkt.addEventListener('change', () => {
-            prof.disabled = !mkt.checked;
-            document.getElementById('news-form-profilingLabel').style.opacity = mkt.checked ? "1" : "0.5";
-        });
+    // TEXTAREA COUNTER
+    const tx = document.getElementById('info-message');
+    if (tx) {
+        tx.oninput = function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+            document.getElementById('char-counter').textContent = this.value.length + ' / 250';
+        };
+    }
+
+    // CONSENT LOGIC
+    const mkt = document.getElementById('marketing-consent');
+    const prof = document.getElementById('profiling-consent');
+    const profLabel = document.getElementById('profiling-label');
+    if (mkt && prof) {
+        mkt.onchange = function() {
+            prof.disabled = !this.checked;
+            if (!this.checked) { 
+                prof.checked = false; 
+                profLabel.style.opacity = "0.5"; 
+            } else { 
+                profLabel.style.opacity = "1"; 
+            }
+        };
+    }
+
+    // COUNTRY AUTOCOMPLETE
+    let countries = [];
+    fetch('https://restcountries.com/v3.1/all?fields=name,cca2').then(r => r.json()).then(data => {
+        countries = data.map(c => ({ name: c.name.common, code: c.cca2.toLowerCase() })).sort((a,b) => a.name.localeCompare(b.name));
+    });
+
+    const cInput = document.querySelector('.country-input');
+    const cList = document.querySelector('.countryList');
+    if (cInput) {
+        cInput.oninput = function() {
+            const val = this.value.toLowerCase();
+            cList.innerHTML = '';
+            if (val.length < 1) { cList.classList.add('hidden'); return; }
+            const matches = countries.filter(c => c.name.toLowerCase().includes(val)).slice(0, 8);
+            matches.forEach(c => {
+                const li = document.createElement('li');
+                li.className = 'px-4 py-2 hover:bg-white hover:text-black cursor-pointer flex items-center gap-2 text-white text-sm';
+                li.innerHTML = `<img src="https://flagcdn.com/w20/${c.code}.png" width="20"> <span>${c.name}</span>`;
+                li.onmousedown = () => {
+                    cInput.value = c.name;
+                    document.querySelector('.country-flag').innerHTML = `<img src="https://flagcdn.com/w20/${c.code}.png" width="20">`;
+                    cList.classList.add('hidden');
+                };
+                cList.appendChild(li);
+            });
+            cList.classList.remove('hidden');
+        };
+        cInput.onblur = () => setTimeout(() => cList.classList.add('hidden'), 200);
+    }
+
+    // SUBMIT HANDLER
+    if(form) {
+      form.onsubmit = function() {
+          let tags = ['form_lead'];
+          if (mkt && mkt.checked) tags.push('mkt_ok');
+          if (prof && prof.checked) tags.push('prof_ok');
+          document.getElementById('CustomerTags').value = tags.join(',');
+          document.getElementById('info-form-submit').disabled = true;
+          document.getElementById('info-form-submit').innerText = '...';
+      };
     }
 });
 </script>

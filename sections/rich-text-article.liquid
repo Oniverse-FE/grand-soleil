@@ -1,7 +1,7 @@
 <div class="bg_gs bg_gsp rich-text-{{ section.id }} flex flex-col px-4 md:px-8 lg:px-10 xl:px-[128px] gap-10 lg:gap-12">
     <div class="flex flex-col gap-3 lg:gap-6 
-        {% if section.settings.alignment_mobile == 'center' %} items-center text-center {% else %} items-starta text-left {% endif %}
-        {% if section.settings.alignment_desktop == 'center' %} md:items-center md:text-center {% else %} md:items-starta md:text-left {% endif %}">
+        {% if section.settings.alignment_mobile == 'center' %} items-center text-center {% else %} items-start text-left {% endif %}
+        {% if section.settings.alignment_desktop == 'center' %} md:items-center md:text-center {% else %} md:items-start md:text-left {% endif %}">
         
         {%- if section.settings.rta_subtitle != blank -%}
           <div class="flex pretitle-sm_gs pretitle-sm_gsp md:pretitle-lg_gs md:pretitle-lg_gsp text-blue_gs text-truffle_gsp">
@@ -10,11 +10,12 @@
         {%- endif -%}
 
         {%- if section.settings.rta_h1title != blank -%}
-          <div class="flex heading-md_gs heading-md_gsp md:title_gs md:title_gsp text-color_gs text-color_gsp">
+          <h1 class="flex heading-md_gs heading-md_gsp md:title_gs md:title_gsp text-color_gs text-color_gsp">
               {{ section.settings.rta_h1title }}
-          </div>
+          </h1>
         {%- endif -%}
-                {%- if section.settings.rta_title != blank -%}
+
+        {%- if section.settings.rta_title != blank -%}
           <div class="flex heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp">
               {{ section.settings.rta_title }}
           </div>
@@ -25,84 +26,126 @@
               {{ section.settings.rta_text1 | newline_to_br }}
           </div>
         {%- endif -%}
-        {% if section.settings.rta-cta_link != blank %}
-              <a id="cta-1-{{ section.id }}"
+
+        {%- comment -%} Sezione Bottoni {%- endcomment -%}
+        {% if section.settings.rta-cta_link != blank or section.settings.rta_modal_label != blank %}
+          <div class="flex flex-col md:flex-row flex-wrap gap-4 w-full 
+              {% if section.settings.alignment_mobile == 'center' %} justify-center {% else %} justify-start {% endif %}
+              {% if section.settings.alignment_desktop == 'center' %} md:justify-center {% else %} md:justify-start {% endif %}">
+            
+            {%- if section.settings.rta-cta_link != blank -%}
+              <a id="cta-link-{{ section.id }}"
                   href="{{ section.settings.rta-cta_link }}"
-                  class="cta-button w-full text-center lg:w-fit px-7 py-3.5 link-lg_gs link-lg_gsp cta-truffle_gsp cta-101C26_gs transition-all duration-300">
+                  class="cta-button w-full md:w-fit text-center px-7 py-3.5 link-lg_gs link-lg_gsp cta-truffle_gsp cta-101C26_gs transition-all duration-300">
                 {{ section.settings.rta-cta_label }}
               </a>
+            {%- endif -%}
+
+            {%- if section.settings.rta_modal_label != blank -%}
+              <button type="button"
+                  id="{{ section.settings.rta_modal_id }}"
+                  class="cta-button w-full md:w-fit text-center px-7 py-3.5 link-lg_gs link-lg_gsp cta-truffle_gsp cta-blue_gs transition-all duration-300">
+                {{ section.settings.rta_modal_label }}
+              </button>
+            {%- endif -%}
+          </div>
         {% endif %}
      </div>
 </div>
 
+{% render 'modale-hall-of-fame' %}
 <style>
-    /* Mobile (Base) */
   .rich-text-{{ section.id }} {
     padding-top: {{ section.settings.pt_mobile }}px;
     padding-bottom: {{ section.settings.pb_mobile }}px;
   }
-
-  /* Tablet (768px+) */
   @media screen and (min-width: 768px) {
     .rich-text-{{ section.id }} {
       padding-top: {{ section.settings.pt_tablet }}px;
       padding-bottom: {{ section.settings.pb_tablet }}px;
     }
   }
-
-  /* Desktop (1024px+) */
   @media screen and (min-width: 1024px) {
     .rich-text-{{ section.id }} {
       padding-top: {{ section.settings.pt_desktop }}px;
       padding-bottom: {{ section.settings.pb_desktop }}px;
     }
   }
+  /* Stile minimo per rendere il bottone modale coerente */
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 
 {% schema %}
 {
-  "name": "Rich text",
+  "name": "Rich text article",
   "settings": [
     {
       "type": "header",
-      "content": "Section Content"
+      "content": "Testi"
     },
     {
       "type": "text",
       "id": "rta_subtitle",
-      "label": "Subtitle",
+      "label": "Sottotitolo",
       "default": "IL RITORNO DI UN MITO"
     },
     {
       "type": "text",
       "id": "rta_h1title",
-      "label": "Title",
+      "label": "Titolo H1",
       "default": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO"
     },
     {
       "type": "text",
       "id": "rta_title",
-      "label": "Title",
+      "label": "Titolo Standard",
       "default": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO"
     },
     {
       "type": "textarea",
       "id": "rta_text1",
-      "label": "Text area"
+      "label": "Corpo del testo"
     },
-        {
+    {
+      "type": "header",
+      "content": "Bottone 1 (Link)"
+    },
+    {
       "type": "text",
       "id": "rta-cta_label",
-      "label": "Label Bottone 1"
+      "label": "Etichetta Link",
+      "default": "Scopri di più"
     },
     {
       "type": "url",
       "id": "rta-cta_link",
-      "label": "Link Bottone 1"
+      "label": "URL Link"
     },
     {
       "type": "header",
-      "content": "Alignment"
+      "content": "Bottone 2 (Modale)"
+    },
+    {
+      "type": "text",
+      "id": "rta_modal_label",
+      "label": "Etichetta Modale",
+      "default": "Apri Modale"
+    },
+    {
+      "type": "text",
+      "id": "rta_modal_id",
+      "label": "ID Modale",
+      "info": "Inserisci 'openModalHallofFame' per la modale Hall of fame oppure 'openInfo' per modale Richiedi informazioni"
+    },
+    {
+      "type": "header",
+      "content": "Allineamento"
     },
     {
       "type": "select",
@@ -126,52 +169,98 @@
     },
     {
       "type": "header",
-      "content": "Padding Top"
+      "content": "Padding"
     },
+    { "type": "range", "id": "pt_mobile", "label": "Top Mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "pt_tablet", "label": "Top Tablet", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "pt_desktop", "label": "Top Desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80 },
+    { "type": "range", "id": "pb_mobile", "label": "Bottom Mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "pb_tablet", "label": "Bottom Tablet", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "pb_desktop", "label": "Bottom Desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80 },
     {
-      "type": "range",
-      "id": "pt_mobile",
-      "label": "Top Mobile",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40
-    },
+      "type": "text",
+      "id": "modal_title",
+      "label": "Titolo Modale",
+      "default": "Specifiche Prodotto"
+    }
+  ],
+  "blocks": [
     {
-      "type": "range",
-      "id": "pt_tablet",
-      "label": "Top Tablet",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60
-    },
-    {
-      "type": "range",
-      "id": "pt_desktop",
-      "label": "Top Desktop",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80
-    },
-    {
-      "type": "header",
-      "content": "Padding Bottom"
-    },
-    {
-      "type": "range",
-      "id": "pb_mobile",
-      "label": "Bottom Mobile",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 40
-    },
-    {
-      "type": "range",
-      "id": "pb_tablet",
-      "label": "Bottom Tablet",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 60
-    },
-    {
-      "type": "range",
-      "id": "pb_desktop",
-      "label": "Bottom Desktop",
-      "min": 0, "max": 200, "step": 2, "unit": "px", "default": 80
+      "type": "row",
+      "name": "Riga Contenuto",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_left",
+          "label": "Titolo SX",
+          "default": "2023"
+        },
+        {
+          "type": "text",
+          "id": "list_right_1",
+          "label": "1",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_2",
+          "label": "2",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_3",
+          "label": "3",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_4",
+          "label": "4",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_5",
+          "label": "5",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_6",
+          "label": "6",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_7",
+          "label": "7",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_8",
+          "label": "8",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_9",
+          "label": "9",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        },
+        {
+          "type": "text",
+          "id": "list_right_10",
+          "label": "10",
+          "default": "1° - Four Peaks Race di Hong Kong - GS 44 Wild Card - Glenn Smith"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Rich text artaicle",
+      "name": "Rich text article",
       "category": "Article"
     }
   ]

@@ -956,9 +956,9 @@ color:#EBEFF2;
     color:#141312 !important;
 }
 
-#form-box-news input[type="text"],
-#form-box-news input[type="email"],
-#form-box-news input[type="tel"] {
+#news-form-box input[type="text"],
+#news-form-box input[type="email"],
+#news-form-box input[type="tel"] {
     border-radius: 50px;
     border: 0.5px solid #141312;
     background: transparent !important;
@@ -983,6 +983,67 @@ color:#EBEFF2;
     border: 0.5px solid #141312;    
 }
 
+#info-form-box input[type="text"],
+#info-form-box input[type="email"],
+#info-form-box input[type="tel"] {
+    border-radius: 50px;
+    border: 0.5px solid #141312;
+    background: transparent !important;
+    outline: none;
+    padding: 8px 16px;
+    color: #141312;
+}
+
+#info-form-box textarea:focus {
+    outline: none;
+}
+
+#info-form-box input[type="radio"] {
+    appearance: none;
+    border: 0.5px solid #141312;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+#info-form-box input[type="radio"]:checked {
+    background-color: #141312 !important;
+}
+
+#info-form-box input[type="checkbox"] {
+    appearance: none;
+    border: 0.5px solid #141312;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    padding: 10px;
+}
+#info-form-box input[type="checkbox"]:checked {
+    background-color: #141312 !important;
+}
+
+.pill-btn, .pill-btn-news {
+    border-radius: 999;
+    border: 0.5px solid #141312;
+    background-color: transparent !important;
+    color: #141312 !important;
+    padding: 6px 16px;
+}
+
+.pill-btn:hover, .pill-btn-news:hover{
+    background-color: #141312 !important; 
+    color: #FAF9F7 !important;
+}
+
+.pill-btn.selected, .pill-btn-news.selected{
+    background-color: #141312 !important;
+    color:#FAF9F7 !important;
+}
+
+.textarea-wrapper {
+    border-radius: 16px;
+    border: 0.5px solid #141312;    
+}
+
 .chip{
     border: 0.5px solid #141312;
 }
@@ -997,8 +1058,17 @@ color:#EBEFF2;
     color: #FAF9F7 !important; 
 }
 
-#news-form-submit { 
+#news-form-submit, .close-cta { 
     border-radius: 50px;
     border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
     background: var(--System-Disabled, #76787B);
+}
+
+.bg-modali_gsp{
+    background: var(--gs-blur-gs-blur-dark-90, rgba(235, 239, 242, 0.80)); 
+    backdrop-filter: blur(48px);
+}
+
+.border_gsp{
+    border: 0.5px solid var(--gs-primary-chinese-black, #141312);
 }

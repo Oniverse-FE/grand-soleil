@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col gap-[48px]">
-                                <button id="newsletter-submit" type="button" aria-label="{{ block.settings.newsletter-title }}"
+                                <button id="openModalNews" type="button" aria-label="{{ block.settings.newsletter-title }}"
                                     class="cta-blue_gs cta-truffle_gsp link-lg_gs link-lg_gsp px-6 py-4 rounded-[50px] w-full md:w-[205px]">
                                     {{ block.settings.newsletter-submit-button-text }}
                                 </button>
@@ -185,371 +185,56 @@
   "settings": [
     { "type": "image_picker", "id": "logo_gs", "label": "Logo GS" },
     { "type": "image_picker", "id": "logo_gsp", "label": "Logo GSP" },
-    { "type": "text", "id": "bar-text", "label": "Footer Copyright", "default": "©2026 CANTIERE DEL PARDO S.p.A." },{
-"type": "text",
-"id": "news-form-title",
-"label": "Title",
-"default": "Iscriviti alla newsletter"
-},
-{
-"type": "text",
-"id": "news-form-required-text",
-"label": "Form 'required' text",
-"default": "* indicates required fields"
-},
-{
-"type": "text",
-"id": "news-fname-label",
-"label": "First Name Label",
-"default": "First name"
-},
-{
-"type": "checkbox",
-"id": "news-fname-required",
-"label": "First Name Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-fname-placeholder",
-"label": "First Name Placeholder",
-"default": "Insert your first name"
-},
-{
-"type": "text",
-"id": "news-lname-label",
-"label": "Last Name Label",
-"default": "Last name"
-},
-{
-"type": "checkbox",
-"id": "news-lname-required",
-"label": "Last Name Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-lname-placeholder",
-"label": "Last Name Placeholder",
-"default": "Insert your last name"
-},
-{
-"type": "text",
-"id": "news-country-label",
-"label": "Contry Label",
-"default": "Country"
-},
-{
-"type": "checkbox",
-"id": "news-country-required",
-"label": "Country Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-country-placeholder",
-"label": "Country Placeholder",
-"default": "Select your country"
-},
-{
-"type": "text",
-"id": "news-phone-label",
-"label": "Phone Label",
-"default": "Phone"
-},
-{
-"type": "checkbox",
-"id": "news-phone-required",
-"label": "Phone Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-phone-placeholder",
-"label": "Phone Placeholder",
-"default": "+391234567890"
-},
-{
-"type": "text",
-"id": "news-mail-label",
-"label": "Mail Label",
-"default": "Email"
-},
-{
-"type": "checkbox",
-"id": "news-mail-required",
-"label": "Mail Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-mail-placeholder",
-"label": "Mail Placeholder",
-"default": "example@domain.com"
-},
-{
-"type": "text",
-"id": "news-date-label",
-"label": "Date Label",
-"default": "Appointment day"
-},
-{
-"type": "checkbox",
-"id": "news-date-required",
-"label": "Date Required",
-"default": true
-},
-{
-"type": "text",
-"id": "news-date-placeholder",
-"label": "Date Placeholder",
-"default": "Select a date"
-},
-{
-"type": "text",
-"id": "news-boat-q-label",
-"label": "Boat Question Label",
-"default": "Have you already got a boat?"
-},
-{
-"type": "checkbox",
-"id": "news-boat-q-required",
-"label": "Boat question Required",
-"default": false
-},
-{
-"type": "text",
-"id": "news-boat-q-affermative-label",
-"label": "Boat question affermative label",
-"default": "Yes, by Grand Soleil Yacths"
-},
-{
-"type": "text",
-"id": "news-boat-q-other-label",
-"label": "Boat question other label",
-"default": "Yes, by other brands"
-},
-{
-"type": "text",
-"id": "news-boat-q-negative-label",
-"label": "Boat question negative label",
-"default": "No"
-},
-{
-"type": "text",
-"id": "news-buy-q-label",
-"label": "Buy Question Label",
-"default": "Are you interested in buying a Grand Soleil's Yacht in the next 6–12 months?"
-},
-{
-"type": "checkbox",
-"id": "news-buy-q-required",
-"label": "Buy question Required",
-"default": false
-},
-{
-"type": "text",
-"id": "news-buy-q-affermative-label",
-"label": "Buy question affermative label",
-"default": "Yes"
-},
-{
-"type": "text",
-"id": "news-buy-q-negative-label",
-"label": "Buy question negative label",
-"default": "No"
-},
-{
-"type": "text",
-"id": "news-boat-sel-label",
-"label": "Boat Selection Label",
-"default": "For which boats would you like more information?"
-},
-{
-"type": "checkbox",
-"id": "news-boat-sel-required",
-"label": "Boat Selection Required",
-"default": false
-},
-{
-"type": "textarea",
-"id": "options",
-"label": "Boat (separeted by comma)",
-"default": "VD32, VD40, VD48, VD56, VD75"
-},
-{
-"type": "text",
-"id": "news-message-label",
-"label": "Message Label",
-"default": "Any specific request?"
-},
-{
-"type": "checkbox",
-"id": "news-message-required",
-"label": "Message Required",
-"default": false
-},
-{
-"type": "text",
-"id": "news-message-placeholder",
-"label": "Message Placeholder",
-"default": "Write your request here"
-},
-{
-"type": "number",
-"id": "news-message-max-lenght",
-"label" : "Message max lenght"
-},
-{
-"type": "text",
-"id": "news-news-q-label",
-"label": "news Question Label",
-"default": "news preferences"
-},
-{
-"type": "checkbox",
-"id": "news-news-q-required",
-"label": "news question Required",
-"default": false
-},
-{
-"type": "text",
-"id": "news-news-q-mail-label",
-"label": "news question mail label",
-"default": "Email"
-},
-{
-"type": "text",
-"id": "news-news-q-phone-label",
-"label": "news question phone label",
-"default": "Phone"
-},
-{
-"type": "text",
-"id": "news-news-q-both-label",
-"label": "news question both label",
-"default": "Both"
-},
-{
-"type":"text",
-"id": "news-form-markConsLabel",
-"label": "Marketing consent text",
-"default": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms."
-},
-{
-"type":"text",
-"id": "news-form-profConsLabel",
-"label": "Profiling consent text",
-"default": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us. "
-},
-{
-"type": "url",
-"id": "news-form-privacy-page",
-"label": "Privacy Policy Page URL"
-},
-{
-"type": "text",
-"id": "news-form-privacy-label",
-"label": "Privacy Policy link label",
-"default": "Privacy Policy"
-},
-{
-"type": "text",
-"id": "news-form-marketing-title",
-"label": "Direct marketing short title",
-"default": "DIRECT MARKETING CONSENT"
-},
-{
-"type": "text",
-"id": "news-form-marketing-text",
-"label": "Direct marketing short text",
-"default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and news data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy: "
-},
-{
-"type": "text",
-"id": "news-form-profiling-title",
-"label": "Profiling short title",
-"default": "PROFILING CONSENT"
-},
-{
-"type": "text",
-"id": "news-form-profiling-text",
-"label": "Profiling short text",
-"default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "
-},
-{
-"type": "text",
-"id": "news-form-submit-button-text",
-"label": "Submit button label",
-"default": "Submit"
-},
-{
-"type": "text",
-"id": "news-form-boat-q-model-label",
-"label": "Boat question - Model label",
-"default" : "Model"
-},
-{
-"type": "text",
-"id": "news-form-boat-q-model-placeholder",
-"label": "Boat question - Model placeholder",
-"default" : "Insert the model"
-},
-{
-"type": "text",
-"id": "news-form-boat-q-port-label",
-"label": "Boat question - Port label",
-"default" : "Mooring country"
-},
-{
-"type": "text",
-"id": "news-form-boat-q-port-placeholder",
-"label": "Boat question - Port placeholder",
-"default" : "Select the country"
-},
-{
-"type": "text",
-"id": "news-form-news-q-prefix-label",
-"label": "news question - Prefix label",
-"default": "Prefix"
-},
-{
-"type": "text",
-"id": "news-form-news-q-prefix-placeholder",
-"label": "news question - Prefix placeholder",
-"default": "+39"
-},
-{
-"type": "text",
-"id": "news-form-news-q-phone-label",
-"label": "news question - Number label",
-"default": "Phone"
-},
-{
-"type": "text",
-"id": "news-form-news-q-phone-placeholder",
-"label": "news question - Number placeholder",
-"default": "XXXXXXXXXX"
-},
-{
-"type": "text",
-"id": "news-form-ty-title",
-"label" : "Thank you popup title",
-"default": "Thank you!"
-},
-{
-"type": "textarea",
-"id": "news-form-ty-text",
-"label": "Thank you popup text",
-"default": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications."
-},
-{
-"type": "text",
-"id": "news-form-ty-btn-label",
-"label": "Thank you button label",
-"default": "Close"
-}
-  ],
+    { "type": "text", "id": "bar-text", "label": "Footer Copyright", "default": "©2026 CANTIERE DEL PARDO S.p.A." },
+    { "type": "text","id": "modal-title","label": "Title","default": "Iscriviti alla newsletter"},
+    { "type": "text","id": "news-form-required-text","label": "Form 'required' text","default": "* indicates required fields"},
+    { "type": "text","id": "news-fname-label","label": "First Name Label","default": "First name"},
+    { "type": "checkbox","id": "news-fname-required","label": "First Name Required","default": true},
+    { "type": "text","id": "news-fname-placeholder","label": "First Name Placeholder","default": "Insert your first name"},
+    { "type": "text","id": "news-lname-label","label": "Last Name Label","default": "Last name"},
+    { "type": "checkbox","id": "news-lname-required","label": "Last Name Required","default": true},
+    { "type": "text","id": "news-lname-placeholder","label": "Last Name Placeholder","default": "Insert your last name"},
+    { "type": "text","id": "news-country-label","label": "Contry Label","default": "Country"},
+    { "type": "checkbox","id": "news-country-required","label": "Country Required","default": true},
+    { "type": "text","id": "news-country-placeholder","label": "Country Placeholder","default": "Select your country"},
+    { "type": "text","id": "news-phone-label","label": "Phone Label","default": "Phone"},
+    { "type": "checkbox","id": "news-phone-required","label": "Phone Required","default": true},
+    { "type": "text","id": "news-phone-placeholder","label": "Phone Placeholder","default": "+391234567890"},
+    { "type": "text","id": "news-mail-label","label": "Mail Label","default": "Email"},
+    { "type": "checkbox","id": "news-mail-required","label": "Mail Required","default": true},
+    { "type": "text","id": "news-mail-placeholder","label": "Mail Placeholder","default": "example@domain.com"},
+    { "type": "text","id": "news-boat-q-label","label": "Boat Question Label", "default": "Have you already got a boat?"},
+    { "type": "checkbox","id": "news-boat-q-required","label": "Boat question Required","default": false},
+    { "type": "text","id": "news-boat-q-affermative-label","label": "Boat question affermative label","default": "Yes, by Grand Soleil Yacths"},
+    { "type": "text","id": "news-boat-q-other-label","label": "Boat question other label","default": "Yes, by other brands"},
+    { "type": "text","id": "news-boat-q-negative-label","label": "Boat question negative label","default": "No"},
+    { "type": "text","id": "news-boat-sel-label","label": "Boat Selection Label","default": "For which boats would you like more information?"},
+    { "type": "checkbox","id": "news-boat-sel-required","label": "Boat Selection Required","default": false},
+    { "type": "textarea","id": "options","label": "Boat (separeted by comma)","default": "GS 40 P, GS 44 P, GS 50 P"},
+    { "type": "text","id": "news-news-q-mail-label","label": "news question mail label","default": "Email"},
+    { "type": "text","id": "news-news-q-phone-label","label": "news question phone label","default": "Phone"},
+    { "type": "text","id": "news-news-q-both-label","label": "news question both label","default": "Both"},
+    { "type":"text","id": "news-form-markConsLabel","label": "Marketing consent text","default": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms."},
+    { "type":"text","id": "news-form-profConsLabel","label": "Profiling consent text","default": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us. "},
+    { "type": "url","id": "news-form-privacy-page","label": "Privacy Policy Page URL"},
+    { "type": "text","id": "news-form-privacy-label","label": "Privacy Policy link label","default": "Privacy Policy"},
+    { "type": "text","id": "news-form-marketing-title","label": "Direct marketing short title","default": "DIRECT MARKETING CONSENT"},
+    { "type": "text","id": "news-form-marketing-text","label": "Direct marketing short text","default": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and news data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy: "},
+    { "type": "text","id": "news-form-profiling-title","label": "Profiling short title","default": "PROFILING CONSENT"},
+    { "type": "text","id": "news-form-profiling-text","label": "Profiling short text","default": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy: "},
+    { "type": "text","id": "news-form-submit-button-text","label": "Submit button label","default": "Submit"},
+    { "type": "text","id": "news-form-boat-q-model-label","label": "Boat question - Model label","default" : "Model"},
+    { "type": "text","id": "news-form-boat-q-model-placeholder","label": "Boat question - Model placeholder","default" : "Insert the model"},
+    { "type": "text","id": "news-form-boat-q-port-label","label": "Boat question - Port label","default" : "Mooring country"},
+    { "type": "text","id": "news-form-boat-q-port-placeholder","label": "Boat question - Port placeholder","default" : "Select the country"},
+    { "type": "text","id": "news-form-news-q-prefix-label","label": "news question - Prefix label","default": "Prefix"},
+    { "type": "text","id": "news-form-news-q-prefix-placeholder","label": "news question - Prefix placeholder","default": "+39"},
+    { "type": "text","id": "news-form-news-q-phone-label","label": "news question - Number label","default": "Phone"},
+    { "type": "text","id": "news-form-news-q-phone-placeholder","label": "news question - Number placeholder","default": "XXXXXXXXXX"},
+    { "type": "text","id": "title_ty","label" : "Thank you popup title","default": "Thank you!"},
+    { "type": "textarea","id": "text_ty","label": "Thank you popup text","default": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications."},
+    { "type": "text","id": "close_ty","label": "Thank you button label","default": "Close"}
+    ],
   "blocks": [
     {
       "type": "newsletter",

@@ -22,18 +22,21 @@
       </div>
 
       <div class="flex-none flex justify-center items-center">
-        <a href="/pages/grand-soleil" class="block relative w-[155px] h-[28px]">
           {% if section.settings.logo_gs != blank %}
+             <a href="/pages/grand-soleil" class="logo-gs relative w-[155px] h-[28px]">
             <img src="{{ section.settings.logo_gs | image_url: width: 300 }}" 
                 alt="Logo GS" 
                 class="logo-gs h-auto w-full transition-opacity duration-500">
+            </a>
           {% endif %}
           {% if section.settings.logo_gsp != blank %}
+             <a href="/pages/grand-soleil-plus" class="logo-gsp relative w-[155px] h-[28px]">
             <img src="{{ section.settings.logo_gsp | image_url: width: 300 }}" 
                 alt="Logo GSP" 
                 class="logo-gsp h-auto w-full transition-opacity duration-500 absolute inset-0">
+                  </a>
           {% endif %}
-        </a>
+
       </div>
 
       <div class="flex-1 text-right">
@@ -210,10 +213,10 @@
   #dropdown-wrapper::-webkit-scrollbar { display: none; }
   #dropdown-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 
-  .logo-gsp { opacity: 0; pointer-events: none; }
-  .logo-gs { opacity: 1; }
-  .gsp .logo-gsp { opacity: 1; pointer-events: auto; }
-  .gsp .logo-gs { opacity: 0; pointer-events: none; }
+  .logo-gsp { display: none; }
+  .logo-gs { display: block; }
+  .gsp .logo-gsp { display: block; }
+  .gsp .logo-gs { display: none; }
 </style>
 
 <script>
