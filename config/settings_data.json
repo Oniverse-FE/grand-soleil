@@ -29,9 +29,9 @@
             "settings": {
               "footer-menu-title-color": "#d6cbc9",
               "footer-menu-link-color": "#ffffff",
-              "footer-menu-1": "",
-              "footer-menu-2": "",
-              "footer-menu-3": ""
+              "footer-menu-1": "main-menu",
+              "footer-menu-2": "main-menu",
+              "footer-menu-3": "main-menu"
             }
           }
         },
