@@ -29,9 +29,9 @@
             "settings": {
               "footer-menu-title-color": "#d6cbc9",
               "footer-menu-link-color": "#ffffff",
-              "footer-menu-1": "main-menu-gsp",
-              "footer-menu-2": "main-menu-gsp",
-              "footer-menu-3": "main-menu-gsp"
+              "footer-menu-1": "",
+              "footer-menu-2": "",
+              "footer-menu-3": ""
             }
           }
         },
@@ -310,8 +310,8 @@
           "logo_width": 150,
           "menu_gs": "main-menu",
           "menu_gsp": "main-menu",
-          "menu_gs_secondary": "main-menu-gsp",
-          "menu_gsp_secondary": "main-menu-gsp",
+          "menu_gs_secondary": "main-menu-azienda",
+          "menu_gsp_secondary": "main-menu-azienda",
           "right_label": "Yachts",
           "toggle_label_gs": "Grand Soleil",
           "toggle_label_gsp": "Grand Soleil Plus"
