@@ -135,7 +135,7 @@
               "image": "shopify://shop_images/GS72_CAPRI-494.jpg",
               "title": "GSP 72",
               "description": "",
-              "link": "shopify://products/gsp-72-shanti",
+              "link": "shopify://collections/gsp-72",
               "visibility": "gsp"
             }
           },
@@ -145,7 +145,7 @@
               "image": "shopify://shop_images/img.png",
               "title": "GSP 80",
               "description": "",
-              "link": "shopify://collections/gs72-plus",
+              "link": "shopify://collections/gsp-80",
               "visibility": "gsp"
             }
           },
