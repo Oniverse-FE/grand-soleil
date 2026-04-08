@@ -43,6 +43,8 @@
         "rt_text1": "Il Grand Soleil 52 Performance segna il ritorno di un nome leggendario, ereditando il DNA del celebre 52 disegnato da German Frers nel 1987 e proiettandolo nel futuro della vela. Questo 52 piedi non è un semplice yacht, ma una dichiarazione d'intenti: è la sintesi perfetta tra l'armonia delle forme, che si traduce in stabilità e performance, e l'innovazione tecnologica. Nasce per un armatore esigente, competente e appassionato, che rifiuta di scegliere tra il brivido della regata e il piacere del fast cruising. Sviluppato sul collaudato binomio tra l'architettura navale di Matteo Polli e il design di Nauta, il GS52P è l'essenza della gamma Performance. Lo scafo, costruito interamente in sandwich e composito, è studiato per offrire volumi e un'abitabilità sorprendenti senza incidere sul peso, garantendo quella rigidità strutturale che si traduce in reattività immediata. È una macchina da vento progettata per chi ama sentire la barca, per chi cerca l'accelerazione in uscita di virata e il controllo assoluto alle andature portanti, senza mai rinunciare a un'eleganza e a un comfort che solo il Made in Italy sa offrire.",
         "rt-cta_label": "",
         "rt-cta_link": "",
+        "rt-cta_label_2": "",
+        "rt-cta_link_2": "",
         "enable_alt_style": false,
         "alignment_mobile": "left",
         "alignment_desktop": "center",
@@ -501,10 +503,18 @@
     "layout_tabs_w869gk": {
       "type": "layout-tabs",
       "blocks": {
+        "top_view_block_WW7iMP": {
+          "type": "top_view_block",
+          "settings": {
+            "category_name": "Lower Deck",
+            "tab_1_label": "",
+            "tab_2_label": ""
+          }
+        },
         "top_view_block_bW4wgA": {
           "type": "top_view_block",
           "settings": {
-            "category_name": "Main deck",
+            "category_name": "Main deck2",
             "tab_1_label": "Standard",
             "tab_1_image": "shopify://shop_images/img_b8af7f06-cebf-4f5b-b22d-025b3a323b0c.png",
             "tab_1_gallery_image1": "shopify://shop_images/GS-BLUE-gallery-04_desktop.jpg",
@@ -527,6 +537,7 @@
         }
       },
       "block_order": [
+        "top_view_block_WW7iMP",
         "top_view_block_bW4wgA"
       ],
       "name": "Layout",
