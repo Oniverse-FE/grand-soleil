@@ -634,20 +634,24 @@
     },
     "text_gallery_MpUcET": {
       "type": "text-gallery",
+      "blocks": {
+        "image_JY3HbX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GSBlue-logos-1440x186.png",
+            "alt_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_JY3HbX"
+      ],
       "name": "Text & Gallery",
       "settings": {
         "id_section": "",
         "main_title": "",
         "subtitle": "",
-        "content": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects."
-      }
-    },
-    "rounded_image_auto_V6yJQc": {
-      "type": "rounded-image-auto",
-      "name": "Rounded Image Auto Height",
-      "settings": {
-        "rounded-image": "shopify://shop_images/GSBlue-logos-1440x186.png",
-        "rounded-image-alt": "Alt"
+        "content": "The project is co-financed by the Emilia-Romagna region as part of the PR-ERDF 2021/2027 program – Action 1.1.1 – Call for experimental research and development projects"
       }
     }
   },
@@ -660,7 +664,6 @@
     "image_slider_7tF4tQ",
     "tech_spec_gFwMPj",
     "intro_slider_EqR7Bn",
-    "text_gallery_MpUcET",
-    "rounded_image_auto_V6yJQc"
+    "text_gallery_MpUcET"
   ]
 }

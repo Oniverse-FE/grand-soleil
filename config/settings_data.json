@@ -44,7 +44,7 @@
           "logo_gs": "shopify://shop_images/Logo_0a9cf007-2afd-449b-bc02-b380fc7dc95e.svg",
           "logo_gsp": "shopify://shop_images/Logo_31a216df-91df-4371-b4b9-466f3f655277.svg",
           "bar-text": "©2024 CANTIERE DEL PARDO S.p.A. • ITALY • P.IVA 03869300404 • Cap. Soc. € 5.261.600,00 i.v. • All Rights Reserved",
-          "modal-title": "Iscriviti alla newsletter",
+          "news-form-title": "Iscriviti alla newsletter",
           "news-form-required-text": "* indicates required fields",
           "news-fname-label": "First name",
           "news-fname-required": true,
@@ -61,14 +61,26 @@
           "news-mail-label": "Email",
           "news-mail-required": true,
           "news-mail-placeholder": "example@domain.com",
+          "news-date-label": "Appointment day",
+          "news-date-required": true,
+          "news-date-placeholder": "Select a date",
           "news-boat-q-label": "Have you already got a boat?",
           "news-boat-q-required": false,
           "news-boat-q-affermative-label": "Yes, by Grand Soleil Yacths",
           "news-boat-q-other-label": "Yes, by other brands",
           "news-boat-q-negative-label": "No",
+          "news-buy-q-label": "Are you interested in buying a Grand Soleil's Yacht in the next 6–12 months?",
+          "news-buy-q-required": false,
+          "news-buy-q-affermative-label": "Yes",
+          "news-buy-q-negative-label": "No",
           "news-boat-sel-label": "For which boats would you like more information?",
           "news-boat-sel-required": false,
           "options": "GS 40 P, GS 44 P, GS 52 P, GS 42 LC, GS 52 LC, GS 60 LC, GS 33 Blue, GS Plus 65, GS Plus 72, GS Plus 80",
+          "news-message-label": "Any specific request?",
+          "news-message-required": false,
+          "news-message-placeholder": "Write your request here",
+          "news-news-q-label": "news preferences",
+          "news-news-q-required": false,
           "news-news-q-mail-label": "Email",
           "news-news-q-phone-label": "Phone",
           "news-news-q-both-label": "Both",
@@ -89,9 +101,9 @@
           "news-form-news-q-prefix-placeholder": "+39",
           "news-form-news-q-phone-label": "Phone",
           "news-form-news-q-phone-placeholder": "XXXXXXXXXX",
-          "title_ty": "Thank you!",
-          "text_ty": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
-          "close_ty": "Close"
+          "news-form-ty-title": "Thank you!",
+          "news-form-ty-text": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
+          "news-form-ty-btn-label": "Close"
         }
       },
       "header": {
@@ -114,7 +126,6 @@
               "title": "GSP 65",
               "description": "",
               "link": "shopify://collections/gs72-plus",
-              "label_coming_soon": "",
               "visibility": "gsp"
             }
           },
@@ -125,7 +136,6 @@
               "title": "GSP 72",
               "description": "",
               "link": "shopify://collections/gsp-72",
-              "label_coming_soon": "",
               "visibility": "gsp"
             }
           },
@@ -136,7 +146,6 @@
               "title": "GSP 80",
               "description": "",
               "link": "shopify://collections/gsp-80",
-              "label_coming_soon": "",
               "visibility": "gsp"
             }
           },
@@ -181,7 +190,6 @@
               "title": "GS 42",
               "description": "Performance",
               "link": "shopify://products/gs40",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -192,7 +200,6 @@
               "title": "GS 44",
               "description": "Performance",
               "link": "shopify://products/gs-44",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -203,7 +210,6 @@
               "title": "GS 52",
               "description": "Performance",
               "link": "shopify://products/gs-52",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -224,7 +230,6 @@
               "title": "GS 42 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-42-lc",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -235,7 +240,6 @@
               "title": "GS 46 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-46-lc",
-              "label_coming_soon": "Coming Soon",
               "visibility": "gs"
             }
           },
@@ -246,7 +250,6 @@
               "title": "GS 52 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-52-lc",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -256,7 +259,6 @@
               "title": "GS 60 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-60-lc",
-              "label_coming_soon": "Coming Soon",
               "visibility": "gs"
             }
           },
@@ -277,7 +279,6 @@
               "title": "GS Blue",
               "description": "Blue",
               "link": "shopify://products/gs-blue",
-              "label_coming_soon": "",
               "visibility": "gs"
             }
           }

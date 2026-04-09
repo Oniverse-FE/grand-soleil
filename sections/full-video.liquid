@@ -1,138 +1,164 @@
-{% assign shortEmbedDesktop = section.settings.vimeo-short-desktop %}
-{% assign shortEmbedMobile = section.settings.vimeo-short-mobile %}
+{% comment %}
+  Video Full-Width con i comandi originali mappati in Tailwind CSS
+{% endcomment %}
 
-{% if section.settings.full-video-rounded == true %}
-  <div class="relative w-full px-4 lg:px-24 bg_gs bg_gsp">
-{% endif %}
+<div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-black h-[100dvh] group" id="video-wrapper-{{ section.id }}">
+  
+  <video 
+    id="video-{{ section.id }}"
+    class="w-full h-full object-cover block cursor-pointer"
+    playsinline 
+    loop 
+    muted 
+    autoplay
+    poster="{{ section.settings.placeholder_image | image_url: width: 1900 }}"
+  >
+    {% if section.settings.mp4_url_mobile != blank %}
+      <source src="{{ section.settings.mp4_url_mobile }}" type="video/mp4" media="(max-width: 767px)">
+    {% endif %}
+    <source src="{{ section.settings.mp4_url }}" type="video/mp4">
+  </video>
 
-<div id="{{ section.settings.id }}"
-     class="relative w-full fullvideo-padding aspect-video overflow-hidden  bg_gs bg_gsp {% if section.settings.full-video-rounded == true %}rounded-[16px]{% endif %}"
-     style="--padding-bottom-mobile: {{ section.settings.padding_block_mobile }}; --padding-bottom-desktop: {{ section.settings.padding_block }}">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+     <button id="center-play-{{ section.id }}" class="w-20 h-20 flex items-center justify-center play-pause rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
+        <span id="center-play-icon-{{ section.id }}">{% render 'play-icon' %}</span>
+        <span id="center-pause-icon-{{ section.id }}" class="hidden">{% render 'pause' %}</span>
+     </button>
+  </div>
 
-  <!-- Short video desktop -->
-  {% if shortEmbedDesktop != blank %}
-  <div class="hidden lg:block absolute top-0 left-0 w-full h-full z-10">
-    <div class="w-full h-full short-desktop-embed">
-      {{ shortEmbedDesktop }}
+  <div class="absolute bottom-6 left-6 right-6 w-auto p-4 controls opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col gap-2">
+    <div class="w-full flex items-center justify-around">
+      
+      <div class="flex items-center justify-around w-full">
+          <div class="w-1/3 lg:w-1/11 whitespace-nowrap body-md_gs body-md_gps text-color_gs text-color_gsp">
+              <span id="current-time-{{ section.id }}">0:00</span> / <span id="total-duration-{{ section.id }}">0:00</span>
+          </div>
+
+          <div class="w-1/3 lg:w-9/11 h-1.5 bg-white/30 rounded-full cursor-pointer relative mr-2" id="progress-container-{{ section.id }}">
+              <div id="progress-bar-{{ section.id }}" class="absolute top-0 left-0 h-full bg-white w-0 rounded-full"></div>
+          </div>
+
+          <div class="w-0.5/3 lg:w-0.5/11 flex items-center gap-2 mr-2">
+              <button id="rewind-{{ section.id }}">{% render 'back-15s' %}</button> 
+              <button id="forward-{{ section.id }}">{% render 'forward-15s' %}</button> 
+          </div>
+
+          <div class="w-0.5/3 lg:w-0.5/11 flex items-center gap-2">
+              <button id="mute-toggle-{{ section.id }}">
+                  <span id="unmute-icon-{{ section.id }}">{% render 'unmute' %}</span>
+                  <span id="mute-icon-{{ section.id }}" class="hidden">{% render 'mute' %}</span>
+              </button>
+              <button class="hidden lg:block" id="fullscreen-{{ section.id }}">
+                  {% render 'fullscreen' %}
+              </button>
+          </div>
+      </div>
+
     </div>
   </div>
-  {% endif %}
-
-  <!-- Short video mobile -->
-  {% if shortEmbedMobile != blank %}
-  <div class="block lg:hidden absolute top-0 left-0 w-full h-full z-10">
-    <div class="w-full h-full short-mobile-embed">
-      {{ shortEmbedMobile }}
-    </div>
-  </div>
-  {% endif %}
-
 </div>
 
-{% if section.settings.full-video-rounded == true %}
-  </div>
-{% endif %}
-
-<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const shortIframeDesktop = document.querySelector('.short-desktop-embed iframe');
-    const shortIframeMobile = document.querySelector('.short-mobile-embed iframe');
-    let shortPlayer;
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.getElementById('video-wrapper-{{ section.id }}');
+  const video = document.getElementById('video-{{ section.id }}');
+  const centerPlayBtn = document.getElementById('center-play-{{ section.id }}');
+  const progressBar = document.getElementById('progress-bar-{{ section.id }}');
+  const progressContainer = document.getElementById('progress-container-{{ section.id }}');
+  const currentTimeDisplay = document.getElementById('current-time-{{ section.id }}');
+  const totalDurationDisplay = document.getElementById('total-duration-{{ section.id }}');
+  
+  const rewindBtn = document.getElementById('rewind-{{ section.id }}');
+  const forwardBtn = document.getElementById('forward-{{ section.id }}');
+  const muteBtn = document.getElementById('mute-toggle-{{ section.id }}');
+  const fullscreenBtn = document.getElementById('fullscreen-{{ section.id }}');
 
-    // Inizializza il player corretto in base alla larghezza dello schermo
-    if (window.innerWidth >= 1024 && shortIframeDesktop) {
-      shortPlayer = new Vimeo.Player(shortIframeDesktop, { loop: false });
-    } else if (shortIframeMobile) {
-      shortPlayer = new Vimeo.Player(shortIframeMobile, { loop: true });
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  const togglePlay = () => {
+    if (video.paused) {
+      video.play();
+      document.getElementById('center-play-icon-{{ section.id }}').classList.add('hidden');
+      document.getElementById('center-pause-icon-{{ section.id }}').classList.remove('hidden');
+    } else {
+      video.pause();
+      document.getElementById('center-play-icon-{{ section.id }}').classList.remove('hidden');
+      document.getElementById('center-pause-icon-{{ section.id }}').classList.add('hidden');
     }
+  };
 
-    if (!shortPlayer) return;
+  centerPlayBtn.addEventListener('click', togglePlay);
+  video.addEventListener('click', togglePlay);
 
-    // Imposta autoplay e muto
-    shortPlayer.setMuted(true);
-    shortPlayer.play().catch(console.warn);
+  video.addEventListener('timeupdate', () => {
+    const percentage = (video.currentTime / video.duration) * 100;
+    progressBar.style.width = percentage + '%';
+    currentTimeDisplay.textContent = formatTime(video.currentTime);
   });
-</script>
 
-<style>
-  .fullvideo-padding {
-    padding-bottom: var(--padding-bottom-mobile);
-  }
+  video.addEventListener('loadedmetadata', () => {
+    totalDurationDisplay.textContent = formatTime(video.duration);
+  });
 
-  @media screen and (min-width: 768px) {
-    .fullvideo-padding {
-      padding-bottom: var(--padding-bottom-desktop);
+  progressContainer.addEventListener('click', (e) => {
+    const rect = progressContainer.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    video.currentTime = pos * video.duration;
+  });
+
+  // Avanti e Indietro (ripristinati i tuoi 10 secondi dell'originale)
+  rewindBtn.addEventListener('click', (e) => { e.stopPropagation(); video.currentTime -= 10; });
+  forwardBtn.addEventListener('click', (e) => { e.stopPropagation(); video.currentTime += 10; });
+
+  muteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    document.getElementById('unmute-icon-{{ section.id }}').classList.toggle('hidden', video.muted);
+    document.getElementById('mute-icon-{{ section.id }}').classList.toggle('hidden', !video.muted);
+  });
+
+  fullscreenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!document.fullscreenElement) {
+      wrapper.requestFullscreen().catch(err => {
+        alert(`Errore: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
     }
-  }
-</style>
+  });
+});
+</script>
 
 {% schema %}
 {
-  "name": "Full Video",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Video Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "full-video-rounded",
-      "label": "Rounded video",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "id",
-      "label": "Section ID",
-      "default": "video"
-    },
-
-    {
-      "type": "header",
-      "content": "Vimeo Embeds"
-    },
-    {
-      "type": "textarea",
-      "id": "vimeo-short-desktop",
-      "label": "Vimeo SHORT embed code (Desktop)"
-    },
-    {
-      "type": "textarea",
-      "id": "vimeo-short-mobile",
-      "label": "Vimeo SHORT embed code (Mobile)"
-    },
-
-    {
-      "type": "header",
-      "content": "Spacing Settings"
-    },
-    {
-      "type": "select",
-      "id": "padding_block",
-      "label": "Space",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "40px", "label": "Small - 40px" }
-      ],
-      "default": "0"
-    },
-    {
-      "type": "select",
-      "id": "padding_block_mobile",
-      "label": "Space above/below (mobile)",
-      "options": [
-        { "value": "0", "label": "0" },
-        { "value": "20px", "label": "Small - 20px" }
-      ],
-      "default": "0"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Full Video",
-      "category": "Media Sections"
-    }
-  ]
+    "name": "Full Video",
+    "settings": [
+        {
+            "type": "url",
+            "id": "mp4_url",
+            "label": "Video Desktop (MP4)"
+        },
+        {
+            "type": "url",
+            "id": "mp4_url_mobile",
+            "label": "Video Mobile (MP4)"
+        },
+        {
+            "type": "image_picker",
+            "id": "placeholder_image",
+            "label": "Immagine di copertina (Poster)"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Full Video",
+            "category": "Media Sections"
+        }
+    ]
 }
 {% endschema %}

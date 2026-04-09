@@ -1,37 +1,162 @@
-<div class="px-4 md:px-12 lg:px-24">
-  <div class="flex w-full rounded-[10px] overflow-hidden justify-center items-center relative">
-    <div class="w-full rounded-[10px] max-w-[1900px]">
-        {{ section.settings.editor-video }}
+<div class="px-4 md:px-10 lg:px-[64px] xl:px-[128px] bg_gs bg_gsp">
+  <div class="group flex w-full rounded-[10px] overflow-hidden justify-center items-center relative bg-black" id="video-wrapper-{{ section.id }}">
+    
+    <video 
+      id="video-{{ section.id }}"
+      class="w-full h-full object-cover block cursor-pointer"
+      playsinline 
+      loop 
+      muted 
+      autoplay
+      poster="{{ section.settings.placeholder_image | image_url: width: 1900 }}"
+    >
+      <source src="{{ section.settings.mp4_url }}" type="video/mp4">
+    </video>
+
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+       <button id="center-play-{{ section.id }}" class="w-20 h-20 flex items-center justify-center rounded-full play-pause opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto">
+          <span id="center-play-icon-{{ section.id }}">{% render 'play-icon' %}</span>
+          <span id="center-pause-icon-{{ section.id }}" class="hidden">{% render 'pause' %}</span>
+       </button>
     </div>
-    <!-- Play button overlay -->
-    <div id="play-button-video" class="absolute top-0 left-0 w-full h-full flex items-center justify-center cursor-pointer z-10 hidden">
-        <div class="w-[80px] h-[80px] flex items-center justify-center rounded-full bg-white/30 backdrop-blur-md text-4xl">
-        {% render 'play-icon' %}
+
+    <div class="absolute bottom-6 left-6 right-6 w-auto p-4 controls opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col gap-2">
+
+      <div class="w-full flex items-center justify-around body-md_gs body-md_gps text-color_gs text-color_gsp">
+        
+        <div class="flex items-center justify-around w-full">
+            <div class="w-1/11 body-md_gs body-md_gps text-color_gs text-color_gsp">
+                <span id="current-time-{{ section.id }}">0:00</span> / <span id="total-duration-{{ section.id }}">0:00</span>
+            </div>
+            <div class="w-9/11 h-1.5 bg-white/30 rounded-full cursor-pointer relative mr-2" id="progress-container-{{ section.id }}">
+                <div id="progress-bar-{{ section.id }}" class="absolute top-0 left-0 h-full bg-white w-0 rounded-full"></div>
+            </div>
+            <div class="w-0.5/11 flex items-center gap-2 mr-2">
+                <button id="rewind-{{ section.id }}">{% render 'back-15s' %}</button> <button id="forward-{{ section.id }}">{% render 'forward-15s' %}</button> 
+            </div>
+            <div class="w-0.5/11 flex items-center gap-2">
+                <button id="mute-toggle-{{ section.id }}">
+                    <span id="unmute-icon-{{ section.id }}">{% render 'unmute' %}</span>
+                    <span id="mute-icon-{{ section.id }}" class="hidden">{% render 'mute' %}</span>
+                </button>
+                <button id="fullscreen-{{ section.id }}">
+                    {% render 'fullscreen' %}
+                </button>
+            </div>
         </div>
+
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.getElementById('video-wrapper-{{ section.id }}');
+  const video = document.getElementById('video-{{ section.id }}');
+  const centerPlayBtn = document.getElementById('center-play-{{ section.id }}');
+  const progressBar = document.getElementById('progress-bar-{{ section.id }}');
+  const progressContainer = document.getElementById('progress-container-{{ section.id }}');
+  const currentTimeDisplay = document.getElementById('current-time-{{ section.id }}');
+  const totalDurationDisplay = document.getElementById('total-duration-{{ section.id }}');
+  
+  const rewindBtn = document.getElementById('rewind-{{ section.id }}');
+  const forwardBtn = document.getElementById('forward-{{ section.id }}');
+  const muteBtn = document.getElementById('mute-toggle-{{ section.id }}');
+  const fullscreenBtn = document.getElementById('fullscreen-{{ section.id }}');
+
+  // Formatta i secondi in mm:ss
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  // Play/Pause
+  const togglePlay = () => {
+    if (video.paused) {
+      video.play();
+      document.getElementById('center-play-icon-{{ section.id }}').classList.add('hidden');
+      document.getElementById('center-pause-icon-{{ section.id }}').classList.remove('hidden');
+    } else {
+      video.pause();
+      document.getElementById('center-play-icon-{{ section.id }}').classList.remove('hidden');
+      document.getElementById('center-pause-icon-{{ section.id }}').classList.add('hidden');
+    }
+  };
+
+  centerPlayBtn.addEventListener('click', togglePlay);
+  video.addEventListener('click', togglePlay);
+
+  // Aggiornamento tempo e barra
+  video.addEventListener('timeupdate', () => {
+    const percentage = (video.currentTime / video.duration) * 100;
+    progressBar.style.width = percentage + '%';
+    currentTimeDisplay.textContent = formatTime(video.currentTime);
+  });
+
+  video.addEventListener('loadedmetadata', () => {
+    totalDurationDisplay.textContent = formatTime(video.duration);
+  });
+
+  // Click sulla barra di progressione
+  progressContainer.addEventListener('click', (e) => {
+    const rect = progressContainer.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    video.currentTime = pos * video.duration;
+  });
+
+  // Avanti e Indietro (10 secondi)
+  rewindBtn.addEventListener('click', () => { video.currentTime -= 10; });
+  forwardBtn.addEventListener('click', () => { video.currentTime += 10; });
+
+  // Muto
+  muteBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    document.getElementById('unmute-icon-{{ section.id }}').classList.toggle('hidden', video.muted);
+    document.getElementById('mute-icon-{{ section.id }}').classList.toggle('hidden', !video.muted);
+  });
+
+  // Fullscreen
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      wrapper.requestFullscreen().catch(err => {
+        alert(`Errore nel tentativo di attivare il tutto schermo: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  });
+});
+</script>
+
 {% schema %}
 {
-    "name": "Rounded Video",
+    "name": "Rounded Video MP4",
     "settings": [
         {
-            "type": "textarea",
-            "id": "editor-video",
-            "label": "Editorial content video"
+            "type": "url",
+            "id": "mp4_url",
+            "label": "URL del file MP4",
+            "info": "Copia il link del file da Contenuti > File"
+        },
+        {
+            "type": "image_picker",
+            "id": "placeholder_image",
+            "label": "Immagine di copertina (Poster)"
         },
         {
             "type": "text",
-            "id": "rounded-image-alt",
-            "label": "Image alt",
-            "default": "Alt"
+            "id": "alt_text",
+            "label": "Alt text del video",
+            "default": "Video editoriale"
         }
-        ],
-        "presets": [
-            {
-                "name": "Rounded Video",
-                "category": "Media Sections"
-            }
-        ]
+    ],
+    "presets": [
+        {
+            "name": "Rounded Video",
+            "category": "Media Sections"
+        }
+    ]
 }
 {% endschema %}

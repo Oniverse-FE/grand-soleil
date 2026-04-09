@@ -1094,3 +1094,17 @@ color:#EBEFF2;
 .top-view-tab-categories.tab-active { 
     color: #FAF9F7; 
 }
+
+.play-pause{
+    border-radius: 50px;
+    border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+    background: var(--gs-secondary-black-truffle, #282624);
+    backdrop-filter: blur(48px);
+}
+
+.controls{
+    border-radius: 16px;
+    border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+    background: var(--gs-secondary-black-truffle, #282624);
+    backdrop-filter: blur(48px);
+}

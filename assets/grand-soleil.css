@@ -785,6 +785,13 @@
     backdrop-filter: blur(48px);
 }
 
+.controls{
+    border-radius: 16px;
+    border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+    background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
+    backdrop-filter: blur(48px);
+}
+
 .bg_gs{
     background: #101C26;
 }
