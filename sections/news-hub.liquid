@@ -1,3 +1,8 @@
+{% comment %} 
+  Paginazione impostata a 9 articoli per pagina per creare la griglia 3x3 
+{% endcomment %}
+{% paginate blogs.news.articles by 9 %}
+
 <div class="flex flex-col px-4 md:px-10 lg:px-[128px] gap-8 lg:gap-[96px] bg_gs">
     
     <div class="heading-md_gs md:title_gs text-color_gs md:text-center">
@@ -5,35 +10,130 @@
     </div>
 
     <div class="w-full overflow-hidden">
+        
+        {% comment %} --- CHIPS FILTRI PER TAG --- {% endcomment %}
         <div id="news-filter-chips" class="flex flex-nowrap justify-start md:justify-center overflow-x-auto gap-3 pb-8 md:pb-[56px] no-scrollbar outline-none">
-            <button class="chip-filter active px-6 py-2 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="all">
+            
+            {% comment %} Chip "All News" {% endcomment %}
+            <a href="{{ blogs.news.url }}" class="chip-filter px-6 py-2 rounded-[50px] link-lg_gs transition-all duration-300 shrink-0 {% unless current_tags %}active{% endunless %}">
                 {{ section.settings.chip_all-news }}
-            </button>
+            </a>
+
+            {% comment %} Chips dinamiche generate dalle impostazioni {% endcomment %}
             {% assign tags = section.settings.filter-tags | split: ',' %}
             {% for tag in tags %}
                 {% assign clean_tag = tag | strip %}
                 {% if clean_tag != blank %}
-                    <button class="chip-filter px-6 rounded-[50px] link-lg_gs text-[#EBEFF2] transition-all duration-300 hover:bg-[#EBEFF2] hover:text-[#05090D] hover:border-[#EBEFF2] shrink-0" data-tag="{{ clean_tag }}">
-                        {{ clean_tag }}
-                    </button>
+                    {% assign tag_handle = clean_tag | handleize %}
+                    
+                    {% comment %} Controllo se questo tag è attualmente attivo {% endcomment %}
+                    {% assign is_active = false %}
+                    {% for current_tag in current_tags %}
+                        {% assign current_tag_handle = current_tag | handleize %}
+                        {% if current_tag_handle == tag_handle %}
+                            {% assign is_active = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if is_active %}
+                        <a href="{{ blogs.news.url }}" class="chip-filter active px-6 py-2 rounded-[50px] link-lg_gs shrink-0 transition-all duration-300">
+                            {{ clean_tag }}
+                        </a>
+                    {% else %}
+                        <a href="{{ blogs.news.url }}/tagged/{{ tag_handle }}" class="chip-filter px-6 py-2 rounded-[50px] link-lg_gs shrink-0 transition-all duration-300">
+                            {{ clean_tag }}
+                        </a>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
-            <div id="news-grid-container" class="flex flex-col gap-12 lg:gap-16">
-        <div id="news-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+
+        <div id="news-grid-container" class="flex flex-col gap-12 lg:gap-16">
+            
+            {% comment %} --- GRIGLIA ARTICOLI --- {% endcomment %}
+            <div id="news-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {% for article in blogs.news.articles %}
+                    <a href="{{ article.url }}" class="group flex flex-col no-underline">
+                        <div class="aspect-4-3 overflow-hidden rounded-[16px] w-full">
+                            {% if article.image %}
+                                <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title | escape }}" class="transition-transform duration-500 group-hover:scale-105">
+                            {% endif %}
+                        </div>
+                        <div class="flex flex-wrap gap-[6px] mt-4">
+                            <span class="link-sm-gs md:link-md_gs article-data_gs text-data_gs py-[6px] px-3">{{ article.published_at | date: "%d.%m.%Y" }}</span>
+                            {% if article.tags.size > 0 %}
+                                <span class="link-sm-gs md:link-md_gs text-color_gs py-[6px] px-3 uppercase">{{ article.tags[0] }}</span>
+                            {% endif %}
+                        </div>
+                        <h3 class="mt-4 subtitle_gs md:heading-sm_gs text-color_gs">
+                            {{ article.title }}
+                        </h3>
+                    </a>
+                {% else %}
+                    {% comment %} Fallback se non ci sono news {% endcomment %}
+                    <div id="no-results" class="col-span-full text-center py-20">
+                        <p class="text-lg opacity-60">Nessuna notizia disponibile in questa categoria.</p>
+                    </div>
+                {% endfor %}
             </div>
 
-        <div id="no-results" class="hidden text-center py-20">
-            <p class="text-lg opacity-60">{{ section.settings.no-event-label }}</p>
-        </div>
+            {% comment %} --- PAGINAZIONE (Identica a Events) --- {% endcomment %}
+            {% if paginate.pages > 1 %}
+                <div class="flex flex-row justify-center items-center w-full gap-4 mt-8 lg:mt-12 mb-16">
+                    
+                    {% comment %} Freccia Indietro {% endcomment %}
+                    {% if paginate.previous %}
+                        <a href="{{ paginate.previous.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70 mr-4">
+                            {% render 'gs-arrow-left-white' %}
+                        </a>
+                    {% else %}
+                        <span class="link-lg-gs link-lg_gsp flex items-center justify-center opacity-30 mr-4 cursor-not-allowed">
+                            {% render 'gs-arrow-left-white' %}
+                        </span>
+                    {% endif %}
 
-        <div id="news-pagination" class="flex justify-center gap-6 text-white mt-4 mb-16"></div>
-    </div>
+                    {% comment %} Numeri e Puntini {% endcomment %}
+                    <div class="flex flex-row items-center gap-2 body-md_gs body-md_gsp text-color_gs text-color_gsp">
+                        {% for part in paginate.parts %}
+                            {% if part.is_link %}
+                                <a href="{{ part.url }}" class="flex items-center justify-center w-8 h-8 rounded-full transition-opacity hover:bg-white_gs hover:opacity-70 text-color_gs text-color_gsp no-underline">
+                                    {{ part.title }}
+                                </a>
+                            {% else %}
+                                {% if part.title == paginate.current_page %}
+                                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-[#EBEFF2] text-[#000] font-bold">
+                                        {{ part.title }}
+                                    </span>
+                                {% else %}
+                                    <span class="flex items-center justify-center w-8 h-8 opacity-60">
+                                        {{ part.title }}
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    {% comment %} Freccia Avanti {% endcomment %}
+                    {% if paginate.next %}
+                        <a href="{{ paginate.next.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70 ml-4">
+                            {% render 'gs-arrow-right-white' %}
+                        </a>
+                    {% else %}
+                        <span class="link-lg-gs link-lg_gsp flex items-center justify-center opacity-30 ml-4 cursor-not-allowed">
+                            {% render 'gs-arrow-right-white' %}
+                        </span>
+                    {% endif %}
+                    
+                </div>
+            {% endif %}
+
+        </div>
     </div>
 </div>
 
-<style>
+{% endpaginate %}
 
+<style>
     .aspect-4-3 {
         position: relative;
         padding-top: 75%; 
@@ -48,110 +148,26 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Stato Attivo delle Chips */
+    /* CSS per Chips come link <a> invece di <button> */
+    .chip-filter {
+        border: 0.5px solid #EBEFF2;
+        color: #EBEFF2;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .chip-filter:hover {
+        background-color: #EBEFF2;
+        color: #05090D;
+        border-color: #EBEFF2;
+    }
     .chip-filter.active {
         background-color: #EBEFF2;
         color: #05090D;
-        border: 0.5px solid #EBEFF2;
-    }
-    .chip-filter {
-        border: 0.5px solid #EBEFF2;
-    }
-
-    .pagination-btn.active {
-        opacity: 1;
-        font-weight: 700;
-        border-bottom: 2px solid white;
+        border-color: #EBEFF2;
     }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const allArticles = [
-        {% for article in blogs.news.articles %}
-        {
-            url: "{{ article.url }}",
-            title: {{ article.title | json }},
-            date: "{{ article.published_at | date: "%d.%m.%Y" }}",
-            image: {{ article.image | image_url: width: 800 | json }},
-            tags: [{% for tag in article.tags %}"{{ tag | downcase }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
-            displayTag: "{{ article.tags[0] }}"
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-    ];
-
-    const perPage = 9;
-    let currentTag = 'all';
-    let currentPage = 1;
-
-    const newsCards = document.getElementById('news-cards');
-    const pagination = document.getElementById('news-pagination');
-    const chips = document.querySelectorAll('.chip-filter');
-    const noResults = document.getElementById('no-results');
-
-    function render() {
-        const filtered = allArticles.filter(a => 
-            currentTag === 'all' || a.tags.includes(currentTag)
-        );
-
-        const start = (currentPage - 1) * perPage;
-        const items = filtered.slice(start, start + perPage);
-
-        if (filtered.length === 0) {
-            newsCards.innerHTML = '';
-            noResults.classList.remove('hidden');
-        } else {
-            noResults.classList.add('hidden');
-            newsCards.innerHTML = items.map(article => `
-                <a href="${article.url}" class="group flex flex-col">
-                    <div class="aspect-4-3 overflow-hidden rounded-[16px] w-full">
-                        ${article.image ? `<img src="${article.image}" alt="${article.title}" class="transition-transform">` : ''}
-                    </div>
-                    <div class="flex flex-wrap gap-[6px] mt-4">
-                        <span class="link-sm-gs md:link-md_gs article-data_gs text-data_gs py-[6px] px-3">${article.date}</span>
-                        ${article.displayTag ? `<span class="link-sm-gs md:link-md_gs text-color_gs py-[6px] px-3 uppercase">${article.displayTag}</span>` : ''}
-                    </div>
-                    <h3 class="mt-4 subtitle_gs md:heading-sm_gs text-color_gs">
-                        ${article.title}
-                    </h3>
-                </a>
-            `).join('');
-        }
-        renderPagination(filtered.length);
-    }
-
-    function renderPagination(totalItems) {
-        pagination.innerHTML = '';
-        const totalPages = Math.ceil(totalItems / perPage);
-        if (totalPages <= 1) return;
-
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement('button');
-            btn.className = `pagination-btn opacity-40 hover:opacity-100 transition-opacity pb-1 text-lg ${i === currentPage ? 'active' : ''}`;
-            btn.innerText = i;
-            btn.onclick = (e) => {
-                e.preventDefault();
-                currentPage = i;
-                render();
-                window.scrollTo({top: document.getElementById('news-grid-container').offsetTop - 120, behavior: 'smooth'});
-            };
-            pagination.appendChild(btn);
-        }
-    }
-
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            chips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentTag = chip.dataset.tag.toLowerCase();
-            currentPage = 1;
-            render();
-        });
-    });
-
-    render();
-});
-</script>
 
 {% schema %}
 {
