@@ -144,84 +144,6 @@
         "rounded-image": "shopify://shop_images/sponsor.jpg",
         "rounded-image-alt": "Alt"
       }
-    },
-    "event_models_6fnNeK": {
-      "type": "event-models",
-      "blocks": {
-        "card_97cURg": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "Performance",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        },
-        "card_Ag4JPL": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "Performance",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        },
-        "card_mHGint": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "Performance",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        },
-        "card_CKXRhH": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "Performance",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        },
-        "card_jiDA3E": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        },
-        "card_jP7YqP": {
-          "type": "card",
-          "settings": {
-            "models_title": "GS 52",
-            "gamma_models": "",
-            "card_link": "shopify://products/gs40",
-            "image": "shopify://shop_images/img.png"
-          }
-        }
-      },
-      "block_order": [
-        "card_97cURg",
-        "card_Ag4JPL",
-        "card_mHGint",
-        "card_CKXRhH",
-        "card_jiDA3E",
-        "card_jP7YqP"
-      ],
-      "name": "Models",
-      "settings": {
-        "title": "Modelli in esposizione",
-        "text": "",
-        "padding_top_mobile": 96,
-        "padding_bottom_mobile": 96,
-        "pt_tab": 128,
-        "pb_tab": 128,
-        "padding_top": 160,
-        "padding_bottom_desktop": 160
-      }
     }
   },
   "order": [
@@ -234,7 +156,6 @@
     "rich_text_article_a3nHNY",
     "rounded_image_auto_E98Yyf",
     "empty_space_3nimwh",
-    "rounded_image_auto_iaKJpj",
-    "event_models_6fnNeK"
+    "rounded_image_auto_iaKJpj"
   ]
 }
