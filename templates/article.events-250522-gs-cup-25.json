@@ -57,7 +57,6 @@
       "settings": {
         "gs-page-title": "Grand Soleil Cup 2025",
         "gs-page-text1": "",
-        "intro-type": true,
         "gs-info-contact-label": "Contact us",
         "gs-info-contact-link": "shopify://pages/contact",
         "padding_top_mobile": 40,
@@ -106,7 +105,7 @@
         "rta_subtitle": "",
         "rta_h1title": "",
         "rta_title": "",
-        "rta_text1": "<p>A weekend of sailing and passion lit up the Adriatic Sea from June 13 to 15, as the second leg of the Grand Soleil Cup 2025 brought the vibrant spirit of Cantiere del Pardo to Portopiccolo. It was an edition to remember: 43 boats on the starting line, setting an all-time record for the Adriatic, and bringing the total Grand Soleil fleet for 2025 to 83 yachts across the Tyrrhenian and Adriatic seas.<br><br><strong>Stealing the spotlight was ATHYRIS, a Grand Soleil 48 Race helmed by Sergio Taccheo</strong>, claiming overall victory both in real time and on corrected time. Joining him on the podium were FOREVER (GS58) and VOLARE (GS44 Race), the latter already crowned “Boat of the Year.”<br><br>On the water, light winds and scenic coastal courses delivered thrilling racing. On land, the atmosphere was equally vibrant—from sunset aperitifs on the terrace to a festive night at Duchis Maris, in the beating heart of Portopiccolo.<br><br>There was great anticipation for the official debut of the new GS52s: BLACK PEKOE III (Race version) by Ernesto Folli and ALBATROSS (Performance version) by Alberto Cocchi—both also honored with special awards.<br><br>An event that celebrated not only performance, but the Grand Soleil spirit in all its forms: from the newest boats to the most historic, and crews with the strongest female presence.<br><br>Cantiere del Pardo extends heartfelt thanks to all owners, crews, partners and sponsors for making this leg of the Grand Soleil Cup 2025 truly unforgettable.</p>",
+        "rta_text1": "<p>A weekend of sailing and passion lit up the Adriatic Sea from June 13 to 15, as the second leg of the Grand Soleil Cup 2025 brought the vibrant spirit of Cantiere del Pardo to Portopiccolo. It was an edition to remember: 43 boats on the starting line, setting an all-time record for the Adriatic, and bringing the total Grand Soleil fleet for 2025 to 83 yachts across the Tyrrhenian and Adriatic seas.<br/><br/><strong>Stealing the spotlight was ATHYRIS, a Grand Soleil 48 Race helmed by Sergio Taccheo</strong>, claiming overall victory both in real time and on corrected time. Joining him on the podium were FOREVER (GS58) and VOLARE (GS44 Race), the latter already crowned “Boat of the Year.”<br/><br/>On the water, light winds and scenic coastal courses delivered thrilling racing. On land, the atmosphere was equally vibrant—from sunset aperitifs on the terrace to a festive night at Duchis Maris, in the beating heart of Portopiccolo.<br/><br/>There was great anticipation for the official debut of the new GS52s: BLACK PEKOE III (Race version) by Ernesto Folli and ALBATROSS (Performance version) by Alberto Cocchi—both also honored with special awards.<br/><br/>An event that celebrated not only performance, but the Grand Soleil spirit in all its forms: from the newest boats to the most historic, and crews with the strongest female presence.<br/><br/>Cantiere del Pardo extends heartfelt thanks to all owners, crews, partners and sponsors for making this leg of the Grand Soleil Cup 2025 truly unforgettable.</p>",
         "rta-cta_label": "DISCOVER THE HIGHLIGHTS",
         "rta-cta_link": "shopify://blogs/news/grand-soleil-cup-2025-record-breaking-fleet-and-spectacle-in-portopiccolo-athyris-grand-soleil-48-race-by-sergio-taccheo-claims-victory",
         "rta_modal_label": "",
@@ -122,12 +121,28 @@
         "modal_title": "Specifiche Prodotto"
       }
     },
+    "rounded_image_auto_E98Yyf": {
+      "type": "rounded-image-auto",
+      "name": "Rounded Image Auto Height",
+      "settings": {
+        "rounded-image": "shopify://shop_images/loghi-eng.jpg",
+        "rounded-image-alt": "Alt"
+      }
+    },
     "empty_space_3nimwh": {
       "type": "empty-space",
       "name": "Empty space",
       "settings": {
         "mobile-height": 50,
         "desktop-height": 50
+      }
+    },
+    "rounded_image_auto_iaKJpj": {
+      "type": "rounded-image-auto",
+      "name": "Rounded Image Auto Height",
+      "settings": {
+        "rounded-image": "shopify://shop_images/sponsor.jpg",
+        "rounded-image-alt": "Alt"
       }
     },
     "event_models_6fnNeK": {
@@ -217,7 +232,9 @@
     "rounded_image_YpALxK",
     "rich_text_article_brJMDt",
     "rich_text_article_a3nHNY",
+    "rounded_image_auto_E98Yyf",
     "empty_space_3nimwh",
+    "rounded_image_auto_iaKJpj",
     "event_models_6fnNeK"
   ]
 }
