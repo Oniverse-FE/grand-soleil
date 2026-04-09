@@ -224,7 +224,7 @@
               "title": "GS 42 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-42-lc",
-              "label_coming_soon": "Coming Soon",
+              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -246,7 +246,7 @@
               "title": "GS 52 LC",
               "description": "Long Cruise",
               "link": "shopify://products/gs-52-lc",
-              "label_coming_soon": "Coming Soon",
+              "label_coming_soon": "",
               "visibility": "gs"
             }
           },
@@ -277,7 +277,7 @@
               "title": "GS Blue",
               "description": "Blue",
               "link": "shopify://products/gs-blue",
-              "label_coming_soon": "Coming Soon",
+              "label_coming_soon": "",
               "visibility": "gs"
             }
           }
