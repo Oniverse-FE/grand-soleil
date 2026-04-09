@@ -41,12 +41,10 @@
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
     --radius-4xl: 2rem;
     --drop-shadow-2xl: 0 25px 25px rgb(0 0 0 / 0.15);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --blur-sm: 8px;
-    --blur-md: 12px;
     --blur-lg: 16px;
     --blur-xl: 24px;
     --aspect-video: 16 / 9;
@@ -617,9 +615,6 @@
   .h-\[28px\] {
     height: 28px;
   }
-  .h-\[32px\] {
-    height: 32px;
-  }
   .h-\[42px\] {
     height: 42px;
   }
@@ -742,9 +737,6 @@
   }
   .w-\[20px\] {
     width: 20px;
-  }
-  .w-\[32px\] {
-    width: 32px;
   }
   .w-\[47px\] {
     width: 47px;
@@ -1754,9 +1746,6 @@
   .text-\[\#D6CBC9\] {
     color: #D6CBC9;
   }
-  .text-\[\#EBEFF2\] {
-    color: #EBEFF2;
-  }
   .text-black {
     color: var(--color-black);
   }
@@ -1809,9 +1798,6 @@
   }
   .opacity-30 {
     opacity: 30%;
-  }
-  .opacity-40 {
-    opacity: 40%;
   }
   .opacity-50 {
     opacity: 50%;
@@ -2079,24 +2065,10 @@
       background-color: var(--color-white);
     }
   }
-  .hover\:border-\[\#EBEFF2\] {
-    &:hover {
-      @media (hover: hover) {
-        border-color: #EBEFF2;
-      }
-    }
-  }
   .hover\:bg-\[\#2c2c2c\] {
     &:hover {
       @media (hover: hover) {
         background-color: #2c2c2c;
-      }
-    }
-  }
-  .hover\:bg-\[\#EBEFF2\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #EBEFF2;
       }
     }
   }
@@ -2114,16 +2086,6 @@
       }
     }
   }
-  .hover\:bg-white\/10 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #fff 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
-        }
-      }
-    }
-  }
   .hover\:bg-white\/40 {
     &:hover {
       @media (hover: hover) {
@@ -2131,13 +2093,6 @@
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-white) 40%, transparent);
         }
-      }
-    }
-  }
-  .hover\:text-\[\#05090D\] {
-    &:hover {
-      @media (hover: hover) {
-        color: #05090D;
       }
     }
   }
