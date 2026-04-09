@@ -93,8 +93,8 @@
             "field_width": "half",
             "form-textfield-type": "text",
             "form-textfield-type-code": "first_name",
-            "form-textfield-label": "Nome",
-            "form-textfield-placeholder": "Mario",
+            "form-textfield-label": "Name",
+            "form-textfield-placeholder": "John",
             "form-textfield-required": true
           }
         },
@@ -104,8 +104,8 @@
             "field_width": "half",
             "form-textfield-type": "text",
             "form-textfield-type-code": "last_name",
-            "form-textfield-label": "Cognome",
-            "form-textfield-placeholder": "Rossi",
+            "form-textfield-label": "Surname",
+            "form-textfield-placeholder": "Doe",
             "form-textfield-required": true
           }
         },
@@ -115,7 +115,7 @@
             "field_width": "third",
             "form-textfield-type": "text",
             "form-textfield-type-code": "phone",
-            "form-textfield-label": "Prefisso",
+            "form-textfield-label": "Prefix",
             "form-textfield-placeholder": "+39",
             "form-textfield-required": false
           }
@@ -126,7 +126,7 @@
             "field_width": "two-thirds",
             "form-textfield-type": "tel",
             "form-textfield-type-code": "phone",
-            "form-textfield-label": "Telefono",
+            "form-textfield-label": "Phone",
             "form-textfield-placeholder": "123456789",
             "form-textfield-required": true
           }
@@ -138,7 +138,7 @@
             "form-textfield-type": "email",
             "form-textfield-type-code": "email",
             "form-textfield-label": "Mail",
-            "form-textfield-placeholder": "mario.rossi@mail.com",
+            "form-textfield-placeholder": "john.doe@mail.com",
             "form-textfield-required": true
           }
         }
@@ -153,7 +153,7 @@
       "name": "Generic form",
       "settings": {
         "generic-form-title": "GET IN TOUCH. EXPLORE MORE.",
-        "generic-form-text": "Non perdere neanche un evento Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!",
+        "generic-form-text": "Don’t miss a single Grand Soleil event. Fill in the form to subscribe to our newsletter and stay up to date!",
         "form-markConsLabel": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services.",
         "form-profConsLabel": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us.",
         "form-marketing-title": "Direct marketing consent",
@@ -162,7 +162,7 @@
         "form-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the «VanDutch Yachts» boats you have purchased or for which you have requested information, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched with information lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the restriction of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
         "form-button-background-color": "#acacac",
         "form-button-text-color": "#000000",
-        "form-submit-button-text": "Iscriviti"
+        "form-submit-button-text": "Subscribe"
       }
     }
   },
