@@ -76,6 +76,29 @@
         "rounded-image-alt": "Alt"
       }
     },
+    "rich_text_article_brJMDt": {
+      "type": "rich-text-article",
+      "name": "Rich text article",
+      "settings": {
+        "rta_subtitle": "",
+        "rta_h1title": "",
+        "rta_title": "",
+        "rta_text1": "A spectacular start for the Grand Soleil Cup 2025: the <b>first leg</b> has officially wrapped up in <b>Cala Galera</b>, from May 23rd to 25th, in collaboration with the Circolo Nautico e della Vela Argentario and the Marina di Cala Galera.",
+        "rta-cta_label": "Scopri di più",
+        "rta-cta_link": "",
+        "rta_modal_label": "Apri Modale",
+        "rta_modal_id": "",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "modal_title": "Specifiche Prodotto"
+      }
+    },
     "event_models_6fnNeK": {
       "type": "event-models",
       "blocks": {
@@ -161,6 +184,7 @@
     "back_button_JacrcE",
     "info_event_nfQiBW",
     "rounded_image_YpALxK",
+    "rich_text_article_brJMDt",
     "event_models_6fnNeK"
   ]
 }
