@@ -84,76 +84,6 @@
         "modal_title": "Specifiche Prodotto"
       }
     },
-    "image_slider_8XDMBB": {
-      "type": "image-slider",
-      "blocks": {
-        "image_slider_image_VHQ7xj": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_gCWnEe": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_f6LKRr": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_Y8q8jr": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        },
-        "image_slider_image_tx9tTx": {
-          "type": "image-slider-image",
-          "settings": {
-            "image-slider-image": "shopify://shop_images/img.png",
-            "image-slider-image-alt": "",
-            "image-slider-image-title": "",
-            "image-slider-overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "image_slider_image_VHQ7xj",
-        "image_slider_image_gCWnEe",
-        "image_slider_image_f6LKRr",
-        "image_slider_image_Y8q8jr",
-        "image_slider_image_tx9tTx"
-      ],
-      "name": "Slider",
-      "settings": {
-        "id": "slider",
-        "image-slider-title": "",
-        "pt_mobile": 40,
-        "pt_tablet": 60,
-        "pt_desktop": 80,
-        "pb_mobile": 40,
-        "pb_tablet": 60,
-        "pb_desktop": 80,
-        "width-desktop": "932px",
-        "width-mobile": "327px"
-      }
-    },
     "generic_form_WchtGP": {
       "type": "generic-form",
       "blocks": {
@@ -222,7 +152,7 @@
       ],
       "name": "Generic form",
       "settings": {
-        "generic-form-title": "Rimani in contatto",
+        "generic-form-title": "GET IN TOUCH. EXPLORE MORE.",
         "generic-form-text": "Non perdere neanche un evento Grand Soleil. Compila il form per iscriverti alla nostra newsletter e restare sempre aggiornato!",
         "form-markConsLabel": "By giving your consent, we will be able to send you commercial communications relating to VanDutch Yachts by e-mail, telephone, and we may carry out market research in order to assess your level of satisfaction with our products and services.",
         "form-profConsLabel": "By giving your consent, we will be able to send you personalised marketing communications based on your purchasing habits and, in general,based on your interests, requests and interactions with us.",
@@ -243,7 +173,6 @@
     "rich_text_GCtfpJ",
     "rounded_image_YpALxK",
     "rich_text_article_4Qcyjc",
-    "image_slider_8XDMBB",
     "generic_form_WchtGP"
   ]
 }
