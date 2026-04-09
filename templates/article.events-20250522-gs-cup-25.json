@@ -121,6 +121,30 @@
         "modal_title": "Specifiche Prodotto"
       }
     },
+    "rounded_image_auto_HrDVdp": {
+      "type": "rounded-image-auto",
+      "name": "Rounded Image Auto Height",
+      "settings": {
+        "rounded-image": "shopify://shop_images/loghi-eng.jpg",
+        "rounded-image-alt": "Alt"
+      }
+    },
+    "empty_space_3nimwh": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 50,
+        "desktop-height": 50
+      }
+    },
+    "rounded_image_auto_NwzxGN": {
+      "type": "rounded-image-auto",
+      "name": "Rounded Image Auto Height",
+      "settings": {
+        "rounded-image": "shopify://shop_images/sponsor.jpg",
+        "rounded-image-alt": "Alt"
+      }
+    },
     "event_models_6fnNeK": {
       "type": "event-models",
       "blocks": {
@@ -208,6 +232,9 @@
     "rounded_image_YpALxK",
     "rich_text_article_brJMDt",
     "rich_text_article_a3nHNY",
+    "rounded_image_auto_HrDVdp",
+    "empty_space_3nimwh",
+    "rounded_image_auto_NwzxGN",
     "event_models_6fnNeK"
   ]
 }
