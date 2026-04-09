@@ -51,42 +51,58 @@
             <div class="flex flex-col lg:flex-row gap-4 xl:gap-10 w-full cursor-pointer bg-dark_gs bg-beige_gsp p-6 md:p-8 lg:p-10 transition-all hover:opacity-90"
                  onclick="window.location.href='{{ article.url }}'">
 
-                <div class="flex flex-col md:flex-row items-start w-full justify-between">
-                    <div class="flex flex-col gap-6 mb-10 md:mb-0">
-                        <div class="flex heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp">
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full gap-6 md:gap-10">
+                    
+                    {% comment %} --- BLOCCO INFORMAZIONI (Occupa tutto lo spazio disponibile) --- {% endcomment %}
+                    <div class="flex-1 flex flex-col text-left">
+                        <div class="heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp mb-4">
                             {{ article.title }}
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <div class="flex gap-2 mb-2">
+                            {% comment %} Tag {% endcomment %}
+                            <div class="flex flex-wrap gap-2 mb-2">
                                 {% for tag in article.tags %}
                                     <span class="text-[10px] uppercase tracking-widest opacity-60">{{ tag }}</span>
                                 {% endfor %}
                             </div>
 
-                            <div class="flex flex-row gap-2 lg:gap-2.5">
-                                <div class="flex flex-row body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp items-center justify-center">
-                                    {{ section.settings.event-slider-date }}:
-                                    {%- assign start = article.metafields.custom.event_start_date | date: "%d" -%}
-                                    {%- assign end = article.metafields.custom.event_end_date | date: "%d %B %Y" -%}
-                                    {{ start }} - {{ end }}
-                                </div>
+                            {% comment %} Data {% endcomment %}
+                            <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp">
+                                {{ section.settings.event-slider-date }}:&nbsp;
+                                {%- assign start_date = article.metafields.custom.event_start_date -%}
+                                {%- assign end_date = article.metafields.custom.event_end_date -%}
+                                {%- if start_date != blank and end_date != blank -%}
+                                    {%- assign start_d = start_date | date: "%d" -%}
+                                    {%- assign start_m = start_date | date: "%B" -%}
+                                    {%- assign start_y = start_date | date: "%Y" -%}
+                                    {%- assign end_d = end_date | date: "%d" -%}
+                                    {%- assign end_m = end_date | date: "%B" -%}
+                                    {%- assign end_y = end_date | date: "%Y" -%}
+                                    {%- if start_y != end_y -%}
+                                        {{ start_d }} {{ start_m }} {{ start_y }} - {{ end_d }} {{ end_m }} {{ end_y }}
+                                    {%- elsif start_m != end_m -%}
+                                        {{ start_d }} {{ start_m }} - {{ end_d }} {{ end_m }} {{ end_y }}
+                                    {%- else -%}
+                                        {{ start_d }} - {{ end_d }} {{ end_m }} {{ end_y }}
+                                    {%- endif -%}
+                                {%- elsif start_date != blank -%}
+                                    {{ start_date | date: "%d %B %Y" }}
+                                {%- endif -%}
                             </div>
 
-                            <div class="flex flex-row gap-2 lg:gap-2.5">
-                                <div class="flex flex-row body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp justify-center items-center">
-                                    {{ section.settings.event-slider-location }}: {{ article.metafields.custom.event_location }}
-                                </div>
+                            {% comment %} Luogo {% endcomment %}
+                            <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp">
+                                {{ section.settings.event-slider-location }}: {{ article.metafields.custom.event_location }}
                             </div>
                         </div>
                     </div>
 
-                    <div class="w-full flex flex-col gap-4 lg:flex-row lg:justify-end lg:items-center">
-                        <div class="flex w-full md:w-auto">
-                            <a href="{{ article.url }}" class="w-full md:min-w-[207px] text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6 no-underline"> 
-                                {{ section.settings.event-slider-cta2-label }}
-                            </a>
-                        </div>
+                    {% comment %} --- BLOCCO BOTTONE (Dimensione fissa basata sul contenuto) --- {% endcomment %}
+                    <div class="w-full md:w-auto flex-shrink-0 mt-4 md:mt-0">
+                        <a href="{{ article.url }}" class="block w-full md:min-w-[207px] text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6 no-underline leading-none"> 
+                            {{ section.settings.event-slider-cta2-label }}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -98,22 +114,57 @@
         {% endfor %}
 
         {% if paginate.pages > 1 %}
-            <div class="flex flex-row justify-center items-center w-full gap-6 mt-8 lg:mt-12">
+            <div class="flex flex-row justify-center items-center w-full gap-4 mt-8 lg:mt-12">
+                
+                {% comment %} --- Freccia Indietro --- {% endcomment %}
                 {% if paginate.previous %}
-                    <a href="{{ paginate.previous.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70">
+                    <a href="{{ paginate.previous.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70 mr-4">
                         {% render 'gs-arrow-left-white' %}
                     </a>
+                {% else %}
+                    {% comment %} Placeholder opaco se non c'è pagina precedente {% endcomment %}
+                    <span class="link-lg-gs link-lg_gsp flex items-center justify-center opacity-30 mr-4 cursor-not-allowed">
+                        {% render 'gs-arrow-left-white' %}
+                    </span>
                 {% endif %}
 
-                <div class="body-md_gs body-md_gsp">
-                    {{ paginate.current_page }} {{ paginate.pages }}
+                {% comment %} --- Numeri di Pagina e Puntini --- {% endcomment %}
+                {% comment %} gap-2 corrisponde a 8px di spazio tra un elemento e l'altro {% endcomment %}
+                <div class="flex flex-row items-center gap-2 body-md_gs body-md_gsp text-color_gs text-color_gsp">
+                    {% for part in paginate.parts %}
+                        {% if part.is_link %}
+                            {% comment %} Pagina cliccabile (Box 32x32) {% endcomment %}
+                            <a href="{{ part.url }}" class="flex items-center justify-center w-8 h-8 rounded-full transition-opacity hover:bg-white_gs hover:opacity-70 text-color_gs text-color_gsp no-underline">
+                                {{ part.title }}
+                            </a>
+                        {% else %}
+                            {% if part.title == paginate.current_page %}
+                                {% comment %} Pagina Corrente Attiva (Cerchio 32x32, Sfondo #EBEFF2, Testo #000) {% endcomment %}
+                                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-[#EBEFF2] text-[#000] font-bold">
+                                    {{ part.title }}
+                                </span>
+                            {% else %}
+                                {% comment %} Puntini di sospensione (...) nel formato 32x32 {% endcomment %}
+                                <span class="flex items-center justify-center w-8 h-8 opacity-60">
+                                    {{ part.title }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
 
+                {% comment %} --- Freccia Avanti --- {% endcomment %}
                 {% if paginate.next %}
-                    <a href="{{ paginate.next.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70">
+                    <a href="{{ paginate.next.url }}" class="link-lg-gs link-lg_gsp flex items-center justify-center transition-opacity hover:opacity-70 ml-4">
                         {% render 'gs-arrow-right-white' %}
                     </a>
+                {% else %}
+                    {% comment %} Placeholder opaco se non c'è pagina successiva {% endcomment %}
+                    <span class="link-lg-gs link-lg_gsp flex items-center justify-center opacity-30 ml-4 cursor-not-allowed">
+                        {% render 'gs-arrow-right-white' %}
+                    </span>
                 {% endif %}
+                
             </div>
         {% endif %}
     </div>

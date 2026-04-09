@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .title_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 56px;
     line-height: 60px;
     font-weight: 500; 
@@ -10,7 +10,7 @@
 }
 
 .heading-lg_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -19,7 +19,7 @@
 }
 
 .quote-lg_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -27,7 +27,7 @@
 }
 
 .heading-md_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -36,7 +36,7 @@
 }
 
 .quote-md_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -44,7 +44,7 @@
 }
 
 .heading-sm_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -53,7 +53,7 @@
 }
 
 .quote-sm_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -61,7 +61,7 @@
 }
 
 .subtitle_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 500; 
@@ -70,7 +70,7 @@
 }
 
 .subtitle-rg_gs{
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 400; 
@@ -220,7 +220,7 @@
 
 .md\:title_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 56px;
     line-height: 60px;
     font-weight: 500; 
@@ -231,7 +231,7 @@
 
 .md\:heading-lg_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -242,7 +242,7 @@
 
 .md\:quote-lg_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -252,7 +252,7 @@
 
 .md\:heading-md_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -263,7 +263,7 @@
 
 .md\:quote-md_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -273,7 +273,7 @@
 
 .md\:heading-sm_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -284,7 +284,7 @@
 
 .md\:quote-sm_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -294,7 +294,7 @@
 
 .md\:subtitle_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 500; 
@@ -305,7 +305,7 @@
 
 .md\:subtitle-rg_gs{
     @media (width >= 48rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 400; 
@@ -490,7 +490,7 @@
 
 .lg\:title_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 56px;
     line-height: 60px;
     font-weight: 500; 
@@ -501,7 +501,7 @@
 
 .lg\:heading-lg_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -512,7 +512,7 @@
 
 .lg\:quote-lg_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 48px;
     line-height: 52px;
     font-weight: 500; 
@@ -522,7 +522,7 @@
 
 .lg\:heading-md_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -533,7 +533,7 @@
 
 .lg\:quote-md_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 32px;
     line-height: 36px;
     font-weight: 500; 
@@ -543,7 +543,7 @@
 
 .lg\:heading-sm_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -554,7 +554,7 @@
 
 .lg\:quote-sm_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 24px;
     line-height: 28px;
     font-weight: 500; 
@@ -564,7 +564,7 @@
 
 .lg\:subtitle_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 500; 
@@ -575,7 +575,7 @@
 
 .lg\:subtitle-rg_gs{
     @media (width >= 64rem) {
-    font-family: "roc-grotesk", sans-serif; 
+    font-family: "roc-grotesk-wide", sans-serif; 
     font-size: 18px;
     line-height: 22px;
     font-weight: 400; 

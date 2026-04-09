@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Forziamo Tailwind a uscire dalla cartella assets e scansionare i file Liquid */
+@source "../layout";
+@source "../templates";
+@source "../sections";
+@source "../snippets";
