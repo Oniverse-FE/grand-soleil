@@ -797,6 +797,10 @@
     color:  #4DBAFA;
 }
 
+.bg-blue_gs{
+    background-color:  #4DBAFA;
+}
+
 .cta-border-light_gs{
     border-radius: 50px;
     border: 0.5px solid #EBEFF2;
@@ -1108,4 +1112,21 @@ background-color:#EBEFF2;
 
 .border_gs{
     border: 0.5px solid var(--gs-primary-chinese-black, #EBEFF2);
+}
+
+.top-view-cta-toggle.active { 
+    color: #05090D; 
+}
+.top-view-cta-toggle { 
+    color: #05090D; 
+    background: transparent; 
+    border: none; cursor: 
+    pointer; 
+}
+
+.top-view-tab-categories { 
+    color: #EBEFF2; 
+}
+.top-view-tab-categories.tab-active { 
+    color: #05090D; 
 }

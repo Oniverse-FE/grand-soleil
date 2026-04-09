@@ -1077,3 +1077,20 @@ color:#EBEFF2;
 .border_gsp{
     border: 0.5px solid var(--gs-primary-chinese-black, #141312);
 }
+
+.top-view-cta-toggle.active { 
+    color: #FAF9F7; 
+}
+.top-view-cta-toggle { 
+    color: #FAF9F7; 
+    background: transparent; 
+    border: none; cursor: 
+    pointer; 
+}
+
+.top-view-tab-categories { 
+    color: #141312; 
+}
+.top-view-tab-categories.tab-active { 
+    color: #FAF9F7; 
+}

@@ -1222,9 +1222,6 @@
   .bg-\[\#1a1a1a\] {
     background-color: #1a1a1a;
   }
-  .bg-\[\#4DBAFA\] {
-    background-color: #4DBAFA;
-  }
   .bg-\[\#101C26\] {
     background-color: #101C26;
   }
@@ -4817,6 +4814,21 @@
 }
 .border_gsp {
   border: 0.5px solid var(--gs-primary-chinese-black, #141312);
+}
+.top-view-cta-toggle.active {
+  color: #FAF9F7;
+}
+.top-view-cta-toggle {
+  color: #FAF9F7;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.top-view-tab-categories {
+  color: #141312;
+}
+.top-view-tab-categories.tab-active {
+  color: #FAF9F7;
 }
 @property --tw-translate-x {
   syntax: "*";

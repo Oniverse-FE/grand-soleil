@@ -1,15 +1,15 @@
 <div id="{{ section.settings.id }}" 
-     class="top-view-section w-full h-auto flex flex-col items-center justify-center py-[64px] md:py-[96px] lg:py-[128px] bg-white_gs">
+     class="top-view-section w-full h-auto flex flex-col items-center justify-center py-[64px] md:py-[96px] lg:py-[128px] bg-white_gs bg-truffle_gsp">
 
   <div class="px-[16px] mb-[24px] lg:mb-[64px] w-full flex flex-col gap-6 justify-center items-start lg:items-center">
-    <h2 class="heading-md_gs heading-md_gsp text-data_gs uppercase">{{ section.settings.title_layout }}</h2>
-    <div class="relative flex items-center bg-[#101C26] rounded-full p-1 w-fit">
-      <span class="category-slider-bg absolute h-[calc(100%-8px)] top-[4px] left-[4px] bg-[#4DBAFA] rounded-full transition-all duration-300 ease-in-out"></span>
+    <h2 class="heading-md_gs heading-md_gsp text-data_gs text-EBEFF2_gsp uppercase">{{ section.settings.title_layout }}</h2>
+    <div class="relative flex items-center bg_gs bg_gsp rounded-full p-1 w-fit">
+      <span class="category-slider-bg absolute h-[calc(100%-8px)] top-[4px] left-[4px] bg-blue_gs bg-truffle_gsp rounded-full transition-all duration-300 ease-in-out"></span>
       {% for block in section.blocks %}
         {% if block.settings.category_name != blank %}
           <div class="top-view-tab-categories cursor-pointer relative z-10 px-8 py-5 transition-colors duration-300 {% if forloop.first %}tab-active{% endif %}" 
                data-tab-index="{{ forloop.index0 }}">
-            <p class="link-lg_gs link-lg_gsp text-color_gs">
+            <p class="link-lg_gs link-lg_gsp">
               {{ block.settings.category_name }}
             </p>
           </div>
@@ -34,7 +34,7 @@
               </button>
             {% endif %}
           {% endfor %}
-          <span class="cta-underline absolute bottom-[-1px] left-0 h-[2px] bg-black transition-all duration-300 ease-in-out"></span>
+          <span class="cta-underline absolute bottom-[-1px] left-0 h-[2px] bg-05090D_gs bg_gsp transition-all duration-300 ease-in-out"></span>
         </div>
       </div>
 
@@ -65,7 +65,7 @@
               </div>
 
               <div class="flex flex-row justify-between items-center xl:px-[128px] lg:px-[64px] px-[16px] mt-8">
-                  <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-data_gs">
+                  <div class="body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-data_gs text-EBEFF2_gsp">
                       <span class="current-slide-num">01</span>
                       <span class="mx-2">-</span>
                       <span class="total-slides-num">01</span>
@@ -73,10 +73,10 @@
 
                   <div class="flex gap-[14px]">
                       <button class="gallery-prev flex justify-center items-center transition-all duration-300 pt-3">
-                          {% render 'gs-arrow-left-black' %}
+                          {% if template contains 'gsp' %}{% render 'gs-arrow-left-black' %}{% else %}{% render 'gs-arrow-left-white' %}{% endif %}
                       </button>
                       <button class="gallery-next flex justify-center items-center transition-all duration-300 pb-3">
-                          {% render 'gs-arrow-right-black' %}
+                          {% if template contains 'gsp' %}{% render 'gs-arrow-right-black' %}{% else %}{% render 'gs-arrow-right-white' %}{% endif %}
                       </button>
                   </div>
               </div>
@@ -89,12 +89,6 @@
 </div>
 
 <style>
-/* Categorie & Labels */
-.top-view-tab-categories { color: #05090D; }
-.top-view-tab-categories.tab-active { color: #05090D; }
-.top-view-cta-toggle { color: #888; background: transparent; border: none; cursor: pointer; }
-.top-view-cta-toggle.active { color: #05090D; }
-
 /* Deck Blocks */
 .top-view-deck-block { display: none; }
 .top-view-deck-block.active { display: block; }
@@ -294,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     }
   ],
-  "presets": [{ "name": "Layout", "category": "PDP - only GS" }],
+  "presets": [{ "name": "Layout", "category": "PDP" }],
   "max_blocks": 3
 }
 {% endschema %}
