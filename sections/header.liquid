@@ -160,10 +160,17 @@
                       </span>
                     </div>
                     {% if block.settings.image != blank %}
-                      <div class="aspect-[4/3] overflow-hidden rounded-[8px] bg-[#80808020] mt-auto">
-                        <img src="{{ block.settings.image | image_url: width: 600 }}" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" loading="lazy">
-                      </div>
-                    {% endif %}
+                    <div class="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-[#80808020] mt-auto">
+                      {% if block.settings.label_coming_soon != blank %}
+                        <div class="absolute bottom-3 left-3 px-3 py-[6px] z-[10] rounded-[50px] pointer-events-none link-sm_gs link-sm_gsp coming-soon_gs coming-soon_gsp bg-black/50 text-white text-xs">
+                          {{ block.settings.label_coming_soon }}
+                        </div>
+                      {% endif %}
+                      <img src="{{ block.settings.image | image_url: width: 600 }}" 
+                          class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700" 
+                          loading="lazy">
+                    </div>
+                  {% endif %}
                   </a>
               {% endcase %}
             {% endfor %}
@@ -389,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { "type": "text", "id": "title", "label": "Titolo" },
         { "type": "text", "id": "description", "label": "Descrizione" },
         { "type": "url", "id": "link", "label": "Link" },
+        { "type": "text","id": "label_coming_soon","label": "Testo Coming Soon","default": "Coming Soon"},
         { "type": "select", "id": "visibility", "label": "Mostra in:", "options": [{"value": "both", "label": "Entrambi"}, {"value": "gs", "label": "Solo GS"}, {"value": "gsp", "label": "Solo GSP"}], "default": "both" }
       ]
     }

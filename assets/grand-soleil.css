@@ -1071,6 +1071,11 @@ background-color:#EBEFF2;
     color:#05090D !important;
 }
 
+.coming-soon_gs{
+    background-color: #101C26 !important;
+    color:#EBEFF2 !important;
+}
+
 .textarea-wrapper {
     border-radius: 16px;
     border: 0.5px solid #EBEFF2;    
@@ -1085,7 +1090,7 @@ background-color:#EBEFF2;
     color: #05090D !important;
 }
 
-.label-active { 
+.label-active, .active-chip { 
     background-color: #EBEFF2 !important; 
     color: #05090D !important; 
 }
