@@ -22,28 +22,30 @@
         {% comment %} Background Media {% endcomment %}
         <div class="absolute inset-0 w-full h-full pointer-events-none">
           {%- if block.settings.video_url != blank -%}
+            {%- assign poster_image = block.settings.image | image_url: width: 1200 -%}
             {{ block.settings.video_url | video_tag: 
                 loop: true, 
                 muted: true, 
                 controls: false, 
                 playsinline: true,
                 preload: "auto",
-                class: 'hover-video absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105' 
+                poster: poster_image,
+                class: 'hover-video absolute inset-0 w-full h-full object-cover z-20 transition-transform duration-1000 group-hover:scale-105' 
             }}
           {%- endif -%}
           
           {%- if block.settings.image != blank -%}
             <img 
               src="{{ block.settings.image | image_url: width: 2000 }}" 
-              alt="{{ block.settings.image.alt }}"
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 {% if block.settings.video_url != blank %}opacity-0{% endif %}"
+              alt="{{ block.settings.image.alt | default: 'Background' }}"
+              class="absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-1000 group-hover:scale-110"
             >
           {%- endif -%}
         </div>
 
-        <div class="absolute inset-0 z-10 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
+        <div class="absolute inset-0 z-30 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
 
-        {% comment %} CONTENUTO CENTRATO: Logo e CTA sempre visibili {% endcomment %}
+        {% comment %} CONTENUTO CENTRATO {% endcomment %}
         <div class="absolute inset-0 z-40 flex flex-col items-center justify-center pointer-events-none p-2">
           <div class="flex flex-col items-center w-full max-w-[90%]">
             {% if block.settings.inner_image != blank %}
@@ -65,10 +67,14 @@
           {% if block.settings.video_url != blank %}
             <button class="video-control-btn pointer-events-auto hidden items-center justify-center w-10 h-10 rounded-full border border-white/50 bg-black/20 backdrop-blur-sm">
               <span class="play-svg">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 10V2L10 6L2 10Z" stroke="#EBEFF2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </span>
               <span class="pause-svg hidden">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M6.50049 14.1882C6.50029 14.464 6.27636 14.688 6.00049 14.6882C5.72447 14.6882 5.50069 14.4641 5.50049 14.1882L5.50049 1.80731C5.50049 1.53117 5.72435 1.30731 6.00049 1.30731C6.27648 1.30749 6.50049 1.53128 6.50049 1.80731L6.50049 14.1882ZM10.5005 14.1882C10.5003 14.464 10.2764 14.688 10.0005 14.6882C9.72447 14.6882 9.50069 14.4641 9.50049 14.1882V1.80731C9.50049 1.53117 9.72435 1.30731 10.0005 1.30731C10.2765 1.30749 10.5005 1.53128 10.5005 1.80731V14.1882Z" fill="#EBEFF2"/>
+                </svg>
               </span>
             </button>
           {% endif %}
@@ -91,11 +97,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = col.querySelector('.video-control-btn');
     const link = col.querySelector('.column-link');
 
-    if (video) video.currentTime = 0.001;
+    if (video) {
+      // Forza il caricamento del video per mostrare il poster o il primo frame
+      video.load();
+      // Imposta il tempo al primo frame non appena possibile
+      video.addEventListener('loadeddata', () => {
+        video.currentTime = 0.001;
+      });
+    }
 
     const playVideo = (v, b) => {
       if (!v) return;
-      v.play();
+      v.play().catch(() => { /* Gestisce blocco autoplay browser */ });
       if (b) {
         b.style.display = 'flex';
         b.querySelector('.play-svg').classList.add('hidden');
@@ -155,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .entrance-column.is-expanded { flex: 4 4 0% !important; }
     .entrance-column:not(.is-expanded) { flex: 1 1 0% !important; }
     
-    /* Assicuriamoci che il testo non scatti o scompaia */
     .entrance-column .z-40 {
       opacity: 1 !important;
       display: flex !important;
