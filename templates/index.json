@@ -20,7 +20,8 @@
         "column_hhhndN": {
           "type": "column",
           "settings": {
-            "video_url": "shopify://files/videos/05 PY P43_desktop.mp4",
+            "image": "shopify://shop_images/DE-gs.jpg",
+            "video_url": "shopify://files/videos/GrandSoleil.mp4",
             "inner_image": "shopify://shop_images/Logo.png",
             "button_label": "Entra",
             "link": "shopify://pages/grand-soleil"
@@ -29,6 +30,7 @@
         "column_FrTCgM": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/DE-gsp.jpg",
             "video_url": "shopify://files/videos/GrandSoleil.mp4",
             "inner_image": "shopify://shop_images/logo.svg",
             "button_label": "Entra",
