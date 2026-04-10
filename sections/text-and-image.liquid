@@ -4,10 +4,10 @@
             --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
      class="img-text-padding bg_gs bg_gsp flex 
             {% if section.settings.mobile_reverse %}flex-col-reverse{% else %}flex-col{% endif %} 
-            {% if section.settings.imgandtext-image-left %}lg:flex-row{% else %}lg:flex-row-reverse{% endif %} 
-            px-4 md:px-12 lg:px-[96px] text-white gap-6 lg:gap-0">
+            {% if section.settings.imgandtext-image-left %}xl:flex-row{% else %}xl:flex-row-reverse{% endif %} 
+            px-4 md:px-10 lg:px-[64px] xl:px-[198px] text-white gap-6 lg:gap-0">
 
-    <div class="w-full lg:w-[calc(6/12*100%)] {% if section.settings.imgandtext-image-left %}lg:mr-[16px]{% else %}lg:ml-[16px]{% endif %}">
+    <div class="w-full xl:w-[calc(6/12*100%)] {% if section.settings.imgandtext-image-left %}xl:mr-[16px]{% else %}xl:ml-[16px]{% endif %}">
         <picture>
           {% if section.settings.imgandtext-image-mobile != blank %}
             <source media="(max-width: 767px)" srcset="{{ section.settings.imgandtext-image-mobile | image_url: width: 800 }}">
@@ -19,10 +19,10 @@
         </picture>
     </div>
 
-    <div class="hidden lg:block lg:w-[calc(1/12*100%)]"></div>
+    <div class="hidden xl:block xl:w-[calc(1/12*100%)]"></div>
 
-    <div class="flex flex-col justify-center gap-2 lg:gap-4 w-full lg:w-[calc(5/12*100%)] {% if section.settings.mobile_reverse %}mb-6 lg:mb-0{% endif %}">
-        <h2 class="flex heading-md_gsp heading-md_gs md:heading-lg_gsp md:heading-lg_gs text-color_gs text-color_gsp">
+    <div class="flex flex-col justify-center gap-2 xl:gap-4 w-full xl:w-[calc(5/12*100%)] {% if section.settings.mobile_reverse %}mb-[56px] xl:mb-0{% endif %}">
+        <h2 class="flex heading-md_gsp heading-md_gs md:heading-lg_gsp md:heading-lg_gs text-color_gs text-color_gsp ">
             {{ section.settings.imgandtext-title }}
         </h2>
         

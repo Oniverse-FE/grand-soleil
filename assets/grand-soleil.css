@@ -1152,3 +1152,8 @@ background-color:#EBEFF2;
     border-radius: 16px;
     border: 1px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
 }
+.bg-textandimage_gs{
+    border-radius: 16px;
+    border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+    background: var(--GS-Shades-Bunker, #0B1319);
+}

@@ -1,13 +1,17 @@
+{% comment %}
+  Sezione Dual/Triple Entrance - Full Viewport h-dvh con logica Two-Tap Mobile
+{% endcomment %}
+
 <section class="relative h-dvh w-full overflow-hidden bg-black section-{{ section.id }}">
   
   {% comment %} Logo Centrale Fisso {% endcomment %}
   {% if section.settings.center_logo != blank %}
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-[231px] md:w-[270px] lg:w-[271px]">
-      <img src="{{ section.settings.center_logo | image_url: width: 600 }}" alt="Main Logo" class="w-full h-auto drop-shadow-2xl">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none w-[231px] md:w-[270px] lg:w-[271px] transition-transform duration-500">
+      <img src="{{ section.settings.center_logo | image_url: width: 600 }}" alt="Main Logo" class="w-full h-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
     </div>
   {% endif %}
 
-  <div class="flex flex-col md:flex-row w-full h-full relative">
+  <div class="flex flex-col md:flex-row w-full h-full relative group/container">
     
     {% for block in section.blocks %}
       <div 
@@ -15,38 +19,42 @@
         {{ block.shopify_attributes }}
       >
         
+        {% comment %} Link sulla colonna {% endcomment %}
         {% if block.settings.link != blank %}
           <a href="{{ block.settings.link }}" class="column-link absolute inset-0 z-[25] block"></a>
         {% endif %}
 
-        {% comment %} Background Media {% endcomment %}
+        {% comment %} Sfondi (Video e Immagine fallback) {% endcomment %}
         <div class="absolute inset-0 w-full h-full pointer-events-none">
           {%- if block.settings.video_url != blank -%}
-            {%- assign poster_image = block.settings.image | image_url: width: 1200 -%}
             {{ block.settings.video_url | video_tag: 
                 loop: true, 
                 muted: true, 
                 controls: false, 
                 playsinline: true,
-                preload: "auto",
-                poster: poster_image,
-                class: 'hover-video absolute inset-0 w-full h-full object-cover z-20 transition-transform duration-1000 group-hover:scale-105' 
+                preload: "auto", 
+                class: 'hover-video absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105' 
             }}
           {%- endif -%}
           
           {%- if block.settings.image != blank -%}
             <img 
               src="{{ block.settings.image | image_url: width: 2000 }}" 
-              alt="{{ block.settings.image.alt | default: 'Background' }}"
-              class="absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-1000 group-hover:scale-110"
+              alt="{{ block.settings.image.alt }}"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 {% if block.settings.video_url != blank %}opacity-0{% endif %}"
+              loading="lazy"
             >
           {%- endif -%}
         </div>
 
-        <div class="absolute inset-0 z-30 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
+        {% comment %} Gradiente {% endcomment %}
+        <div 
+          class="absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0"
+          style="background: linear-gradient(0deg, rgba(5, 9, 13, 0.48) 0%, rgba(5, 9, 13, 0.48) 100%);"
+        ></div>
 
-        {% comment %} CONTENUTO CENTRATO {% endcomment %}
-        <div class="absolute inset-0 z-40 flex flex-col items-center justify-center pointer-events-none p-2">
+        {% comment %} Immagine/Logo interno {% endcomment %}
+                 <div class="absolute inset-0 z-40 flex flex-col items-center justify-center pointer-events-none p-2">
           <div class="flex flex-col items-center w-full max-w-[90%]">
             {% if block.settings.inner_image != blank %}
               <img src="{{ block.settings.inner_image | image_url: width: 400 }}" 
@@ -55,31 +63,32 @@
             {% endif %}
 
             {% if block.settings.button_label != blank %}
-              <div class="inline-block px-4 py-2 md:px-8 md:py-3 link-lg cta_dual-entrance group-hover:cta-hover_dual-entrance whitespace-nowrap">
+              <div class="inline-block px-6 py-4 link-lg cta_dual-entrance group-hover:cta-hover_dual-entrance whitespace-nowrap">
                 {{ block.settings.button_label }}
               </div>
             {% endif %}
           </div>
         </div>
 
-        {% comment %} Pulsante Play/Pause {% endcomment %}
-        <div class="absolute bottom-6 left-6 z-[45] pointer-events-none">
+        {% comment %} Contenuto Bottom {% endcomment %}
+        <div class="relative h-full flex flex-col justify-end p-4 md:p-4 z-30 pointer-events-none">
           {% if block.settings.video_url != blank %}
-            <button class="video-control-btn pointer-events-auto hidden items-center justify-center w-10 h-10 rounded-full border border-white/50 bg-black/20 backdrop-blur-sm">
-              <span class="play-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 10V2L10 6L2 10Z" stroke="#EBEFF2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="pause-svg hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6.50049 14.1882C6.50029 14.464 6.27636 14.688 6.00049 14.6882C5.72447 14.6882 5.50069 14.4641 5.50049 14.1882L5.50049 1.80731C5.50049 1.53117 5.72435 1.30731 6.00049 1.30731C6.27648 1.30749 6.50049 1.53128 6.50049 1.80731L6.50049 14.1882ZM10.5005 14.1882C10.5003 14.464 10.2764 14.688 10.0005 14.6882C9.72447 14.6882 9.50069 14.4641 9.50049 14.1882V1.80731C9.50049 1.53117 9.72435 1.30731 10.0005 1.30731C10.2765 1.30749 10.5005 1.53128 10.5005 1.80731V14.1882Z" fill="#EBEFF2"/>
-                </svg>
-              </span>
-            </button>
+            <div class="flex">
+              <button class="video-control-btn pointer-events-auto flex items-center justify-center w-8 h-8 rounded-full play-pause transition-all duration-300" aria-label="Play/Pause Video">
+                <span class="play-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 10V2L10 6L2 10Z" stroke="#EBEFF2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="pause-svg hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6.50049 14.1882C6.50029 14.464 6.27636 14.688 6.00049 14.6882C5.72447 14.6882 5.50069 14.4641 5.50049 14.1882L5.50049 1.80731C5.50049 1.53117 5.72435 1.30731 6.00049 1.30731C6.27648 1.30749 6.50049 1.53128 6.50049 1.80731L6.50049 14.1882ZM10.5005 14.1882C10.5003 14.464 10.2764 14.688 10.0005 14.6882C9.72447 14.6882 9.50069 14.4641 9.50049 14.1882V1.80731C9.50049 1.53117 9.72435 1.30731 10.0005 1.30731C10.2765 1.30749 10.5005 1.53128 10.5005 1.80731V14.1882Z" fill="#EBEFF2"/>
+                    </svg>
+                </span>
+              </button>
+            </div>
           {% endif %}
         </div>
-
       </div>
     {% endfor %}
 
@@ -90,68 +99,91 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector('.section-{{ section.id }}');
   const columns = container.querySelectorAll('.entrance-column');
+  
   const isMobile = () => window.innerWidth < 768;
 
   columns.forEach(col => {
     const video = col.querySelector('.hover-video');
     const btn = col.querySelector('.video-control-btn');
     const link = col.querySelector('.column-link');
+    if (!video) return;
 
-    if (video) {
-      // Forza il caricamento del video per mostrare il poster o il primo frame
-      video.load();
-      // Imposta il tempo al primo frame non appena possibile
-      video.addEventListener('loadeddata', () => {
-        video.currentTime = 0.001;
-      });
-    }
+    const playIcon = btn?.querySelector('.play-svg');
+    const pauseIcon = btn?.querySelector('.pause-svg');
 
-    const playVideo = (v, b) => {
-      if (!v) return;
-      v.play().catch(() => { /* Gestisce blocco autoplay browser */ });
-      if (b) {
-        b.style.display = 'flex';
-        b.querySelector('.play-svg').classList.add('hidden');
-        b.querySelector('.pause-svg').classList.remove('hidden');
+    const updateUI = () => {
+      if (video.paused) {
+        playIcon?.classList.remove('hidden');
+        pauseIcon?.classList.add('hidden');
+      } else {
+        playIcon?.classList.add('hidden');
+        pauseIcon?.classList.remove('hidden');
       }
     };
 
-    const pauseVideo = (v, b) => {
-      if (!v) return;
-      v.pause();
-      if (b) {
-        b.querySelector('.play-svg').classList.remove('hidden');
-        b.querySelector('.pause-svg').classList.add('hidden');
-      }
-    };
+    // Stato iniziale
+    video.currentTime = 0.1;
 
-    col.addEventListener('mouseenter', () => { if (!isMobile()) playVideo(video, btn); });
-    col.addEventListener('mouseleave', () => { if (!isMobile()) pauseVideo(video, btn); });
-
+    // --- LOGICA MOBILE (Two-Tap) ---
     if (link) {
       link.addEventListener('click', function(e) {
         if (isMobile()) {
           if (!col.classList.contains('is-expanded')) {
-            e.preventDefault();
+            e.preventDefault(); // Blocca navigazione al primo click
+            
+            // Reset altre colonne
             columns.forEach(c => {
               c.classList.remove('is-expanded');
-              const v = c.querySelector('.hover-video');
-              const b = c.querySelector('.video-control-btn');
-              pauseVideo(v, b);
-              if(b) b.style.display = 'none';
+              c.querySelector('.hover-video')?.pause();
             });
+
+            // Espandi questa
             col.classList.add('is-expanded');
-            playVideo(video, btn);
+            video.play().then(updateUI).catch(() => {});
           }
+          // Al secondo click, col ha 'is-expanded', quindi il link parte normalmente
         }
       });
     }
 
+    // --- LOGICA DESKTOP (Hover) ---
+    col.addEventListener('mouseenter', () => {
+      if (!isMobile() && btn?.getAttribute('data-manual-pause') !== 'true') {
+        video.play().then(updateUI).catch(() => {});
+      }
+    });
+
+    col.addEventListener('mouseleave', () => {
+      if (!isMobile()) {
+        video.pause();
+        updateUI();
+      }
+    });
+
+    // --- CONTROLLO MANUALE PLAY/PAUSE ---
     if (btn) {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        video.paused ? playVideo(video, btn) : pauseVideo(video, btn);
+        
+        if (video.paused) {
+          video.play();
+          btn.setAttribute('data-manual-pause', 'false');
+        } else {
+          video.pause();
+          btn.setAttribute('data-manual-pause', 'true');
+        }
+        updateUI();
+      });
+    }
+  });
+
+  // Reset se si clicca fuori (Mobile)
+  document.addEventListener('click', (e) => {
+    if (isMobile() && !e.target.closest('.entrance-column')) {
+      columns.forEach(c => {
+        c.classList.remove('is-expanded');
+        c.querySelector('.hover-video')?.pause();
       });
     }
   });
@@ -161,17 +193,44 @@ document.addEventListener("DOMContentLoaded", () => {
 <style>
   .entrance-column { 
     will-change: flex; 
+    backface-visibility: hidden; 
     transition: flex 0.7s cubic-bezier(0.33, 1, 0.68, 1);
   }
   
+  .section-{{ section.id }} { max-width: 100vw !important; margin: 0 !important; }
+  
+  .video-control-btn {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  
+  .entrance-column:hover .video-control-btn,
+  .entrance-column.is-expanded .video-control-btn {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   @media (max-width: 767px) {
-    .entrance-column.is-expanded { flex: 4 4 0% !important; }
-    .entrance-column:not(.is-expanded) { flex: 1 1 0% !important; }
-    
-    .entrance-column .z-40 {
-      opacity: 1 !important;
-      display: flex !important;
+    /* Layout Mobile */
+    .section-{{ section.id }} .flex-col {
+      display: flex;
+      flex-direction: column;
     }
+
+    /* La colonna attiva prende il ~70% (7/10 della proporzione flex) */
+    .entrance-column.is-expanded {
+      flex: 7 7 0% !important;
+    }
+    
+    .entrance-column:not(.is-expanded) {
+      flex: 1.5 1.5 0% !important;
+    }
+
+    .section-{{ section.id }} .entrance-column .absolute.top-\[40\%\] {
+      top: 50%;
+    }
+    
+    .video-control-btn { opacity: 1; transform: none; }
   }
 </style>
 
@@ -191,11 +250,44 @@ document.addEventListener("DOMContentLoaded", () => {
       "type": "column",
       "name": "Colonna",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Immagine fallback / Poster" },
-        { "type": "video", "id": "video_url", "label": "Video" },
-        { "type": "image_picker", "id": "inner_image", "label": "Logo Interno" },
-        { "type": "text", "id": "button_label", "label": "Testo Bottone", "default": "Shop Now" },
-        { "type": "url", "id": "link", "label": "Link Colonna" }
+        {
+          "type": "header",
+          "content": "Image/Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Immagine fallback"
+        },
+        {
+          "type": "video",
+          "id": "video_url",
+          "label": "Video"
+        },
+        {
+          "type": "header",
+          "content": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "inner_image",
+          "label": "Logo"
+        },
+        {
+          "type": "header",
+          "content": "CTA"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Testo Bottone (Sotto Logo)",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link Colonna"
+        }
       ]
     }
   ],

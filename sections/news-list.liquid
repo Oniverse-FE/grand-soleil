@@ -8,7 +8,7 @@
   {% assign total_news = news_blog.articles_count %}
 
   {% comment %} Colonna Testi Sinistra {% endcomment %}
-  <div class="flex flex-col justify-start items-start lg:w-[35%] gap-4 z-20 bg-inherit">
+  <div class="flex flex-col justify-start items-start md:w-[65%] lg:w-[35%] gap-4 z-20 bg-inherit">
       <div class="text-left flex heading-lg_gs heading-lg_gsp text-color_gs text-color_gsp">
           {{ section.settings.news-slider-title }}
       </div>
@@ -57,9 +57,6 @@
                       <h3 class="heading-sm_gs heading-sm_gsp text-color_gs text-EBEFF2_gsp">
                           {{ article.title }}
                       </h3>
-                      <div class="cta-news-item link-lg_gs link-lg_gsp text-color_gs text-EBEFF2_gsp underline opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 mb-[20px] md:mb-0">
-                         {{ section.settings.news-cta-label }}
-                      </div>
                   </div>
               </div>
           </div>

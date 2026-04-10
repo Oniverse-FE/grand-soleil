@@ -1,8 +1,8 @@
 {%- liquid
   # Logica per l'inversione dell'ordine su Desktop
-  assign desktop_direction = 'md:flex-row'
+  assign desktop_direction = 'xl:flex-row'
   if section.settings.image_position == 'right'
-    assign desktop_direction = 'md:flex-row-reverse'
+    assign desktop_direction = 'xl:flex-row-reverse'
   endif
 
   # Logica per l'inversione dell'ordine su Mobile
@@ -15,11 +15,11 @@
 <div style="--pt-mob: {{ section.settings.pt_mob }}px; --pb-mob: {{ section.settings.pb_mob }}px;
             --pt-tab: {{ section.settings.pt_tab }}px; --pb-tab: {{ section.settings.pb_tab }}px;
             --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;"
-     class="box-text-img-padding px-4 md:px-12 lg:px-[128px] bg_gs bg_gsp">
+     class="box-text-img-padding px-4 md:px-10 lg:px-[64px] xl:px-[128px] bg_gs bg_gsp">
   
-  <div class="flex {{ mobile_direction }} {{ desktop_direction }} overflow-hidden rounded-[16px] shadow-lg bg-truffle_gs bg-beige_gsp min-h-[400px]">
+  <div class="flex {{ mobile_direction }} {{ desktop_direction }} overflow-hidden rounded-[16px] shadow-lg bg-textandimage_gs bg-beige_gsp min-h-[400px]">
     
-    <div class="w-full md:w-1/2 h-72 md:h-auto">
+    <div class="w-full xl:w-1/2 h-72 xl:h-auto">
       {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1200 | image_tag: 
           class: 'w-full h-full object-cover block',
@@ -31,7 +31,7 @@
       {%- endif -%}
     </div>
 
-    <div class="w-full md:w-1/2 flex flex-col justify-start px-6 py-10 md:p-12 lg:p-16">
+    <div class="w-full xl:w-1/2 flex flex-col justify-start px-6 py-10 md:py-10 md:px-8 xl:px-10 xl:py-20">
       
       {%- if section.settings.pretitle != blank -%}
         <p class="pretitle-xs_gs pretitle-xs_gsp md:pretitle-md_gs md:pretitle-md_gsp text-blue_gs text-color_gsp mb-4">

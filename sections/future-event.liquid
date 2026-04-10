@@ -4,7 +4,7 @@
             --pt-desk: {{ section.settings.pt_desk }}px; --pb-desk: {{ section.settings.pb_desk }}px;
             --title-fs-desk: {{ section.settings.font_size_desk }};
             --title-fs-mob: {{ section.settings.font_size_mob }};"
-     class="events-padding bg_gs bg_gsp flex flex-col px-4 md:px-12 lg:px-[128px]">
+     class="events-padding bg_gs bg_gsp flex flex-col px-4 md:px-8 lg:px-10 xl:px-[128px]">
     
     <div class="events-title heading-md_gs heading-md_gsp md:heading-lg_gs md:heading-lg_gsp text-color_gs text-color_gsp text-left md:text-center pb-8 lg:pb-[56px]">
         {{ section.settings.event-slider-title }}
@@ -21,8 +21,8 @@
                     <div class="flex flex-col lg:flex-row gap-4 xl:gap-10 w-full cursor-pointer bg-dark_gs bg-beige_gsp p-6 md:p-8 lg:p-10 transition-all hover:opacity-90"
                          onclick="window.location.href='{{ article.url }}'">
 
-                        <div class="flex flex-col md:flex-row items-start w-full justify-between">
-                            <div class="flex flex-col gap-6 mb-10 md:mb-0">
+                        <div class="flex flex-col lg:flex-row items-start w-full justify-between">
+                            <div class="flex flex-col gap-6 mb-10 lg:mb-0">
                                 <div class="flex heading-sm_gs heading-sm_gsp md:heading-md_gs md:heading-md_gsp text-color_gs text-color_gsp">
                                     {{ article.title }}
                                 </div>
@@ -30,10 +30,10 @@
                                 <div class="flex flex-col gap-2">
                                     <div class="flex flex-row gap-2 lg:gap-2.5">
                                         <div class="flex flex-row body-sm_gs body-sm_gsp md:body-md_gs md:body-md_gsp text-color_gs text-color_gsp items-center justify-center">
-                                            {{ section.settings.event-slider-date }}:
+                                            {{ section.settings.event-slider-date }}: 
                                             {%- assign start = article.metafields.custom.event_start_date | date: "%d" -%}
                                             {%- assign end = article.metafields.custom.event_end_date | date: "%d %B %Y" -%}
-                                            {{ start }} - {{ end }}
+                                             {{ start }} - {{ end }}
                                         </div>
                                     </div>
 
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="w-full flex flex-col gap-4 lg:flex-row lg:justify-end lg:items-center">
-                                <div class="flex w-full md:w-auto">
+                                <div class="flex w-full md:w-[202px] lg:w-auto">
                                     <a href="{{ article.url }}" class="w-full md:min-w-[207px] text-center link-lg-gs link-lg_gsp cta-blue_gs cta-truffle_gsp py-4 px-6"> 
                                         {{ section.settings.event-slider-cta2-label }}
                                     </a>
