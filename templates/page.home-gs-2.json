@@ -257,6 +257,24 @@
         "modal_text_ty": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
         "modal_close_ty": "Close"
       }
+    },
+    "future_event_Jmpfry": {
+      "type": "future-event",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-date": "Data",
+        "event-slider-location": "Luogo",
+        "event-slider-cta2-label": "Discover more",
+        "font_size_desk": "42px",
+        "font_size_mob": "36px",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 32,
+        "pb_mob": 32
+      }
     }
   },
   "order": [
@@ -266,6 +284,7 @@
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
     "news_list_ynrNdG",
+    "future_event_Jmpfry",
     "text_image_with_background_pHwXNp",
     "find_dealer_LkPTw9"
   ]
