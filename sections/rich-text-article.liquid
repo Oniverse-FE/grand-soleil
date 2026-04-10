@@ -23,7 +23,7 @@
 
         {%- if section.settings.rta_text1 != blank -%}
           <div class="body-md_gs body-md_gsp md:body-lg_gs md:body-lg_gsp text-color_gs text-color_gsp lg:max-w-[872px]">
-              {{ section.settings.rta_text1 }}
+              {{ section.settings.rta_text1 | newline_to_br }}
           </div>
         {%- endif -%}
 
@@ -108,7 +108,7 @@
       "default": "ESPERIENZE DI YACHTING DI LUSSO BY CANTIERE DEL PARDO"
     },
     {
-      "type": "richtext",
+      "type": "textarea",
       "id": "rta_text1",
       "label": "Corpo del testo"
     },

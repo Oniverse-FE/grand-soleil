@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {}
+    },
+    "empty_space_6P9eA7": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "mobile-height": 88,
+        "desktop-height": 184
+      }
+    },
+    "back_button_JacrcE": {
+      "type": "back-button",
+      "name": "Back button",
+      "settings": {
+        "back_url": "shopify://blogs/events",
+        "label": "Events",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "info_event_nfQiBW": {
+      "type": "info-event",
+      "blocks": {
+        "info_row_HNJ44z": {
+          "type": "info-row",
+          "settings": {
+            "gs-page-info-type": "cala galera",
+            "gs-page-info-value": "MAY 23-25, 2025"
+          }
+        },
+        "info_row_wjzQYe": {
+          "type": "info-row",
+          "settings": {
+            "gs-page-info-type": "portopiccolo",
+            "gs-page-info-value": "JUNE 13-15, 2025"
+          }
+        }
+      },
+      "block_order": [
+        "info_row_HNJ44z",
+        "info_row_wjzQYe"
+      ],
+      "name": "Info tab",
+      "settings": {
+        "gs-page-title": "Grand Soleil Cup 2025",
+        "gs-page-text1": "",
+        "intro-type": true,
+        "gs-info-contact-label": "Contact us",
+        "gs-info-contact-link": "shopify://pages/contact",
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 56,
+        "pt_tab": 56,
+        "pb_tab": 56,
+        "padding_top": 56,
+        "padding_bottom_desktop": 56
+      }
+    },
+    "rounded_image_YpALxK": {
+      "type": "rounded-image",
+      "name": "Rounded Image",
+      "settings": {
+        "rounded-image": "shopify://shop_images/Thumbe-desktop_ENG.jpg",
+        "rounded-image-alt": "Alt"
+      }
+    },
+    "rich_text_article_brJMDt": {
+      "type": "rich-text-article",
+      "name": "Rich text article",
+      "settings": {
+        "rta_subtitle": "",
+        "rta_h1title": "",
+        "rta_title": "",
+        "rta_text1": "A spectacular start for the Grand Soleil Cup 2025: the <b>first leg</b> has officially wrapped up in <b>Cala Galera</b>, from May 23rd to 25th, in collaboration with the Circolo Nautico e della Vela Argentario and the Marina di Cala Galera.",
+        "rta-cta_label": "Scopri di più",
+        "rta-cta_link": "",
+        "rta_modal_label": "Apri Modale",
+        "rta_modal_id": "",
+        "alignment_mobile": "left",
+        "alignment_desktop": "center",
+        "pt_mobile": 40,
+        "pt_tablet": 60,
+        "pt_desktop": 80,
+        "pb_mobile": 40,
+        "pb_tablet": 60,
+        "pb_desktop": 80,
+        "modal_title": "Specifiche Prodotto"
+      }
+    },
+    "event_models_6fnNeK": {
+      "type": "event-models",
+      "blocks": {
+        "card_97cURg": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_Ag4JPL": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_mHGint": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_CKXRhH": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "Performance",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_jiDA3E": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        },
+        "card_jP7YqP": {
+          "type": "card",
+          "settings": {
+            "models_title": "GS 52",
+            "gamma_models": "",
+            "card_link": "shopify://products/gs40",
+            "image": "shopify://shop_images/img.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_97cURg",
+        "card_Ag4JPL",
+        "card_mHGint",
+        "card_CKXRhH",
+        "card_jiDA3E",
+        "card_jP7YqP"
+      ],
+      "name": "Models",
+      "settings": {
+        "title": "Modelli in esposizione",
+        "text": "",
+        "padding_top_mobile": 96,
+        "padding_bottom_mobile": 96,
+        "pt_tab": 128,
+        "pb_tab": 128,
+        "padding_top": 160,
+        "padding_bottom_desktop": 160
+      }
+    }
+  },
+  "order": [
+    "main",
+    "empty_space_6P9eA7",
+    "back_button_JacrcE",
+    "info_event_nfQiBW",
+    "rounded_image_YpALxK",
+    "rich_text_article_brJMDt",
+    "event_models_6fnNeK"
+  ]
+}

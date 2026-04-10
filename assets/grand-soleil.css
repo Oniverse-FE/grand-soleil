@@ -1137,3 +1137,14 @@ background-color:#EBEFF2;
 .top-view-tab-categories.tab-active { 
     color: #05090D; 
 }
+
+.proxy-bar_gs {
+    background: var(--gs-blur-gs-blur-dark-70, rgba(16, 28, 38, 0.70));
+    backdrop-filter: blur(48px);
+}
+
+.cta-proxybar_gs{
+    border-radius: 50px;
+    border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+    background: var(--GS-Primary-Zircon, #EBEFF2);
+}

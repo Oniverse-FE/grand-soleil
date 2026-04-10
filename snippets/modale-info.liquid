@@ -62,7 +62,7 @@
 
                       <div class="flex flex-col gap-1 relative">
                           <div class="flex caption">{{ section.settings.info-country-label}}*</div>
-                          <input class="caption country-input opacity-[50%] border-b py-1 border-white pr-10 bg-transparent outline-none" type="text" name="contact[country]" autocomplete="off" required placeholder="{{ section.settings.info-form-boat-q-port-placeholder}}">
+                          <input class="caption country-input opacity-[50%] border-b py-1 border-white pr-10 bg-transparent outline-none" type="text" name="contact[note][Paese]" autocomplete="off" required placeholder="{{ section.settings.info-form-boat-q-port-placeholder}}">
                           <div class="country-flag absolute right-8 bottom-0 pb-2 mr-2 z-50 pointer-events-none"></div>
                           <div class="country-arrow absolute right-0 bottom-0 pb-2 mr-2 z-50 pointer-events-none transition-transform duration-300">
                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 8L10.5858 14.5858C11.3668 15.3668 12.6332 15.3668 13.4142 14.5858L20 8" stroke="white" stroke-linecap="round"/></svg>
@@ -81,26 +81,26 @@
                       <div class="flex flex-col gap-2">
                           <div class="flex flex-col gap-2">
                               <div class="flex gap-2 items-center">
-                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-y" name="contact[boat_question]" value="yes" data-target="boat-y-fields">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-y" name="contact[note][Possiede_Barca]" value="Sì" data-target="boat-y-fields">
                                   <label for="boat-y">{{ section.settings.info-boat-q-affermative-label }}</label>
                               </div>
                               <div id="boat-y-fields" class="hidden flex flex-col md:flex-row gap-6 my-2">
-                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[current_model]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
-                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[current_port]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[note][Modello_Attuale]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[note][Porto_Attuale]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
                               </div>
                           </div>
                           <div class="flex flex-col gap-2">
                               <div class="flex gap-2 items-center">
-                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-o" name="contact[boat_question]" value="other" data-target="boat-o-fields">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-o" name="contact[note][Possiede_Barca]" value="Altro" data-target="boat-o-fields">
                                   <label for="boat-o">{{ section.settings.info-boat-q-other-label }}</label>
                               </div>
                               <div id="boat-o-fields" class="hidden flex flex-col md:flex-row gap-4 my-2 w-full">
-                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[other_model]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
-                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[other_port]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[note][Altro_Modello]" placeholder="{{ section.settings.info-form-boat-q-model-placeholder }}">
+                                  <input class="caption border-b border-white bg-transparent py-1 w-full outline-none" type="text" name="contact[note][Altro_Porto]" placeholder="{{ section.settings.info-form-boat-q-port-placeholder }}">
                               </div>
                           </div>
                           <div class="flex gap-2 items-center">
-                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-n" name="contact[boat_question]" value="no">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="boat-n" name="contact[note][Possiede_Barca]" value="No">
                               <label for="boat-n">{{ section.settings.info-boat-q-negative-label }}</label>
                           </div>
                       </div>
@@ -112,11 +112,11 @@
                       </div>
                       <div class="flex flex-col gap-2">
                           <div class="flex gap-2 justify-start items-center">
-                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-y" name="contact[buy_question]" value="yes">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-y" name="contact[note][Intenzione_Acquisto]" value="Sì">
                               <label for="buy-y"> {{ section.settings.info-buy-q-affermative-label }}</label>
                           </div>
                           <div class="flex gap-2 justify-start items-center">
-                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-n" name="contact[buy_question]" value="no">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="buy-n" name="contact[note][Intenzione_Acquisto]" value="No">
                               <label for="buy-n"> {{ section.settings.info-buy-q-negative-label }}</label>
                           </div>
                       </div>
@@ -134,7 +134,7 @@
                           </label>
                           {% endfor %}
                       </div>
-                      <input type="hidden" name="contact[boat_selection]" id="boat_selection_hidden">
+                      <input type="hidden" name="contact[note][Barche_Selezionate]" id="boat_selection_hidden">
                   </div>
 
                   <div class="flex flex-col gap-4">
@@ -149,40 +149,40 @@
                       <div class="flex">{{ section.settings.info-info-q-label }}</div>
                       <div class="flex flex-col gap-2">
                           <div class="flex gap-2 justify-start items-center">
-                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-mail" name="contact[preference]" value="mail">
+                              <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-mail" name="contact[note][Preferenza_Contatto]" value="Email">
                               <label for="info-mail">{{ section.settings.info-info-q-mail-label }}</label>
                           </div>
 
                           <div>
                               <div class="flex gap-2 justify-start items-center">
-                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-phone" name="contact[preference]" value="phone" data-target="phone-fields-phone">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-phone" name="contact[note][Preferenza_Contatto]" value="Telefono" data-target="phone-fields-phone">
                                   <label for="info-phone">{{ section.settings.info-info-q-phone-label }}</label>
                               </div>
                               <div id="phone-fields-phone" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
                                   <div class="flex flex-col gap-1 w-full md:w-[100px]">
                                       <div class="caption">{{ section.settings.info-form-info-q-prefix-label }}</div>
-                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[prefix_phone]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[note][Prefisso_Tel]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
                                   </div>
                                   <div class="flex flex-col gap-1 w-full">
                                       <div class="caption">{{ section.settings.info-form-info-q-phone-label }}</div>
-                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[phone_phone]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[note][Telefono]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
                                   </div>
                               </div>
                           </div>
 
                           <div>
                               <div class="flex gap-2 justify-start items-center">
-                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-both" name="contact[preference]" value="both" data-target="phone-fields-both">
+                                  <input type="radio" class="radio-toggle size-5 rounded-full border border-white appearance-none checked:bg-white cursor-pointer" id="info-both" name="contact[note][Preferenza_Contatto]" value="Entrambi" data-target="phone-fields-both">
                                   <label for="info-both">{{ section.settings.info-info-q-both-label }}</label>
                               </div>
                               <div id="phone-fields-both" class="hidden flex flex-col md:flex-row gap-6 my-2 w-full">
                                   <div class="flex flex-col gap-1 w-full md:w-[100px]">
                                       <div class="caption">{{ section.settings.info-form-info-q-prefix-label }}</div>
-                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[prefix_both]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="text" name="contact[note][Prefisso_Entrambi]" placeholder="{{ section.settings.info-form-info-q-prefix-placeholder }}">
                                   </div>
                                   <div class="flex flex-col gap-1 w-full">
                                       <div class="caption">{{ section.settings.info-form-info-q-phone-label }}</div>
-                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[phone_both]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
+                                      <input class="caption bg-transparent border-b border-white py-1 outline-none opacity-50" type="tel" name="contact[note][Telefono_Entrambi]" placeholder="{{ section.settings.info-form-info-q-phone-placeholder }}">
                                   </div>
                               </div>
                           </div>
@@ -242,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // RADIO CONDITIONAL FIELDS
     document.querySelectorAll('.radio-toggle').forEach(radio => {
         radio.addEventListener('change', function() {
-            // Nasconde tutti i target dello stesso name group
             const groupName = this.getAttribute('name');
             document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
                 const targetId = r.getAttribute('data-target');
@@ -251,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (targetEl) targetEl.classList.add('hidden');
                 }
             });
-            // Mostra il target di quello selezionato
             const activeId = this.getAttribute('data-target');
             if (activeId) {
                 const activeEl = document.getElementById(activeId);
@@ -260,9 +258,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // MULTI CHECKBOX PILLS (FIXED)
+    // MULTI CHECKBOX PILLS
     document.querySelectorAll('.pill-btn').forEach(pill => {
         pill.addEventListener('click', function(e) {
+            e.preventDefault(); // Previene comportamenti strani dei label
             const cb = this.querySelector('input');
             cb.checked = !cb.checked;
             this.classList.toggle('selected', cb.checked);
