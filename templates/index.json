@@ -20,7 +20,6 @@
         "column_hhhndN": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/GS44-CruisingWorld-NEWS-THUMB-1080_1080.jpg",
             "video_url": "shopify://files/videos/05 PY P43_desktop.mp4",
             "inner_image": "shopify://shop_images/Logo.png",
             "button_label": "Entra",
@@ -30,7 +29,6 @@
         "column_FrTCgM": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/GS44-SailingWorld-NEWS-THUMB-1080_1080.jpg",
             "video_url": "shopify://files/videos/GrandSoleil.mp4",
             "inner_image": "shopify://shop_images/logo.svg",
             "button_label": "Entra",
