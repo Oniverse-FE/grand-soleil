@@ -1,188 +1,137 @@
-
-<div class="w-full h-auto flex items-center justify-center fixed z-10 left-0 bottom-0 right-0 proxy-bar_gs proxy-bar_gsp py-4 px-[64px]">
-  <!-- container fab pdp -->
+<div class="w-full h-auto flex items-center justify-center fixed z-10 left-0 bottom-0 right-0 proxy-bar_gs proxy-bar_gsp py-3 md:py-4 px-4 md:px-[64px]">
   <div class="flex flex-row w-full h-[42px] lg:h-[56px]">
     
-    <!-- Badge mobile -->
-    <div class="flex lg:hidden w-[40vw] lg:w-[76vw] flex-row items-center justify-between py-[10px] bg-black/50 backdrop-blur-2xl badge-overlay cursor-pointer py-3 px-4">
-      <p class="tt-norms-pro-extra-med text-[14px] lg:text-[16px] leading-[14px] lg:leading-[16px] tracking-[-0.28px] lg:tracking-[-0.32px] text-white">
+    <div class="arrow-icon flex md:hidden w-[158px] flex-row items-center gap-10 badge-overlay cursor-pointer cta-border-light_gs cta-border-dark_gsp py-1 px-4">
+      <p class="body-sm_gs body-sm_gsp">
         {{ section.settings.cta_text | default: "Overview" }}
       </p>
-      <!-- icona freccia SOLO mobile -->
-      <svg class="arrow-icon transition-transform duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-        <path d="M1.25501 0.951296C1.03837 0.731358 0.667969 0.887129 0.667969 1.19817C0.667969 1.29119 0.70453 1.38036 0.76954 1.4459L5.05849 5.77002C5.57919 6.29867 6.42341 6.29867 6.94411 5.77002L11.237 1.41157C11.2995 1.3481 11.3346 1.26201 11.3346 1.17225C11.3346 0.870756 10.9756 0.719783 10.7656 0.93297L6.4727 5.29141C6.21235 5.55574 5.79025 5.55574 5.5299 5.29141L1.25501 0.951296Z" fill="white"/>
-      </svg>
+      <div class="arrow-wrapper bg-blue_gs bg-truffle_gsp py-2 pl-4 pr-2 rounded-full transition-transform duration-300">
+        {% if template contains 'gsp' %}{% render 'gs-arrow-bottom-white' %}{% else %}{% render 'gs-arrow-bottom-black' %}{% endif %}
+      </div>
     </div>
 
-    <!-- Menu desktop -->
-    <div class="flex w-full justify-between items-center">
-    <ul class="desktop-menu lg:flex w-[76vw] flex-row items-center ">
-      <li><a href="#{{ section.settings.id_item_1 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_1 | default: "Design" }}</a></li>
-      <li><a href="#{{ section.settings.id_item_2 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_2 | default: "Top view" }}</a></li>
-      <li><a href="#{{ section.settings.id_item_3 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_3 | default: "Technical feature" }}</a></li>
-      <li><a href="#{{ section.settings.id_item_4 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_4 | default: "General Arrangement" }}</a></li>
-      <li><a href="#{{ section.settings.id_item_5 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_5 | default: "Gallery" }}</a></li>
-    </ul>
-    <!-- Badge desktop / buttons -->
-      <a class="link-lg_gs link-lg_gsp cta-proxybar_gs cta-proxybar_gsp px-6 py-4 w-[30vw] lg:w-[12vw] flex justify-center items-center px-3 lg:px-4" href="{{ section.settings.find_dealer_link }}">{{ section.settings.find_dealer | default: "Find a dealer" }}
+    <div class="flex w-full justify-end md:justify-between items-center">
+      <ul class="desktop-menu flex w-[76vw] flex-row items-center ">
+        <li><a href="#{{ section.settings.id_item_1 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_1 | default: "Design" }}</a></li>
+        <li><a href="#{{ section.settings.id_item_2 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_2 | default: "Top view" }}</a></li>
+        <li><a href="#{{ section.settings.id_item_3 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_3 | default: "Technical feature" }}</a></li>
+        <li><a href="#{{ section.settings.id_item_4 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_4 | default: "General Arrangement" }}</a></li>
+        <li><a href="#{{ section.settings.id_item_5 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp">{{ section.settings.item_5 | default: "Gallery" }}</a></li>
+      </ul>
+      <a class="link-lg_gs link-lg_gsp cta-proxybar_gs cta-proxybar_gsp px-6 py-3 md:py-4 w-[158px] flex justify-center items-center px-3 lg:px-4" href="{{ section.settings.find_dealer_link }}">
+        {{ section.settings.find_dealer | default: "Find a dealer" }}
       </a>
     </div>
   </div>
 </div>
 
-<!-- Mobile menu dropdown -->
 <div class="fixed inset-x-0 bottom-0 z-30 flex justify-start pointer-events-none lg:hidden">
-  <div
-    class="container-ancor-links pointer-events-auto w-[70vw] h-auto flex flex-col items-start justify-start mb-[48px] p-4 bg-black/50 backdrop-blur-2xl gap-y-4 transform translate-y-full opacity-0 transition-transform duration-300 ease-in-out">
+  <div class="container-ancor-links pointer-events-auto w-[70vw] h-auto flex flex-col items-start justify-start mb-[75px] rounded-[16px] p-4 proxy-bar_gs proxy-bar_gsp gap-y-4 transform translate-y-full opacity-0 transition-all duration-300 ease-in-out">
     <ul class="w-full flex flex-col items-start justify-start gap-y-4">
-      <div class="w-full flex flex-col items-start justify-start gap-y-4">
-        <a href="#{{ section.settings.id_item_1 }}" class="tt-norms-pro-extra-med text-[16px] leading-[16px] tracking-[-0.32px] ancor-link text-white"> {{ section.settings.item_1 | default: "Design" }} </a>
-        <a href="#{{ section.settings.id_item_2 }}" class="tt-norms-pro-extra-med text-[16px] leading-[16px] tracking-[-0.32px] ancor-link text-white"> {{ section.settings.item_2 | default: "Top view" }} </a>
-        <a href="#{{ section.settings.id_item_3 }}" class="tt-norms-pro-extra-med text-[16px] leading-[16px] tracking-[-0.32px] ancor-link text-white"> {{ section.settings.item_3 | default: "Technical feature" }} </a>
-        <a href="#{{ section.settings.id_item_4 }}" class="tt-norms-pro-extra-med text-[16px] leading-[16px] tracking-[-0.32px] ancor-link text-white"> {{ section.settings.item_4 | default: "General Arrangement" }} </a>
-        <a href="#{{ section.settings.id_item_5 }}" class="tt-norms-pro-extra-med text-[16px] leading-[16px] tracking-[-0.32px] ancor-link text-white"> {{ section.settings.item_5 | default: "Gallery" }} </a>
-      </div>
+      <a href="#{{ section.settings.id_item_1 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_1 | default: "Design" }} </a>
+      <a href="#{{ section.settings.id_item_2 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_2 | default: "Top view" }} </a>
+      <a href="#{{ section.settings.id_item_3 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_3 | default: "Technical feature" }} </a>
+      <a href="#{{ section.settings.id_item_4 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_4 | default: "General Arrangement" }} </a>
+      <a href="#{{ section.settings.id_item_5 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_5 | default: "Gallery" }} </a>
     </ul>
   </div>
 </div>
 
 <style>
-.cta-box-gradient {
-  position: relative;
-  overflow: hidden;
+/* Animazione rotazione freccia tramite classe attiva */
+.badge-overlay.is-active .arrow-wrapper {
+  transform: rotate(180deg);
 }
 
-.cta-box-gradient.dealer {
-  background-color: #423C3B;
-  transition: background-color 0.8s ease-in-out;
-}
-
-.cta-box-gradient.pardo {
-  background-color: #262322;
-  transition: background-color 0.8s ease-in-out;
-}
-
+.cta-box-gradient { position: relative; overflow: hidden; }
+.cta-box-gradient.dealer { background-color: #423C3B; transition: background-color 0.8s ease-in-out; }
+.cta-box-gradient.pardo { background-color: #262322; transition: background-color 0.8s ease-in-out; }
 .cta-box-gradient::before {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 200%;
+  content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 200%;
   background: linear-gradient(180deg, transparent 0%, rgba(66,60,59,0.3) 50%, rgba(38,35,34,0.7) 100%);
-  opacity: 0;
-  transition: top 0.8s ease-in-out, opacity 0.8s ease-in-out;
-  z-index: 0;
+  opacity: 0; transition: top 0.8s ease-in-out, opacity 0.8s ease-in-out; z-index: 0;
 }
-
-.cta-box-gradient a {
-  position: relative;
-  z-index: 999;
-}
-
-.cta-box-gradient.pardo::before {
-  background: linear-gradient(180deg, transparent 0%, rgba(38,35,34,0.3) 50%, rgba(66,60,59,0.7) 100%);
-}
-
-.cta-box-gradient:hover::before {
-  top: 0;
-  opacity: 1;
-}
-
-.cta-box-gradient.dealer:hover {
-  background-color: #262322;
-}
-
-.cta-box-gradient.pardo:hover {
-  background-color: #423C3B;
-}
-
-.cta-box-gradient:hover .cta-arrow {
-  transform: rotate(90deg);
-  transition: transform 0.5s ease-in-out;
-}
+.cta-box-gradient a { position: relative; z-index: 999; }
+.cta-box-gradient.pardo::before { background: linear-gradient(180deg, transparent 0%, rgba(38,35,34,0.3) 50%, rgba(66,60,59,0.7) 100%); }
+.cta-box-gradient:hover::before { top: 0; opacity: 1; }
+.cta-box-gradient.dealer:hover { background-color: #262322; }
+.cta-box-gradient.pardo:hover { background-color: #423C3B; }
 
 /* Pallino desktop */
 @media (min-width: 1024px) {
-  ul.desktop-menu li {
-    position: relative;
-  }
-
+  ul.desktop-menu li { position: relative; }
   ul.desktop-menu li::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background-color: white;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; background-color: white; border-radius: 50%; opacity: 0; transition: opacity 0.3s ease;
   }
-
-  ul.desktop-menu li:hover::after,
-  ul.desktop-menu li.active::after {
-    opacity: 1;
-  }
+  ul.desktop-menu li:hover::after, ul.desktop-menu li.active::after { opacity: 1; }
 }
+
+@media (max-width: 1024px) { .desktop-menu { display: none; } }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Seleziona tutti i link ancorati
-  const allAnchorLinks = document.querySelectorAll('.ancor-link, ul.desktop-menu a');
   const containerLinks = document.querySelector('.container-ancor-links');
   const badgeOverlay = document.querySelector('.badge-overlay');
-  const arrowIcon = document.querySelector('.arrow-icon');
   const desktopLinks = document.querySelectorAll('ul.desktop-menu li');
+  const allAnchorLinks = document.querySelectorAll('.desktop-menu a, .container-ancor-links a');
 
   // Funzione scroll con offset
-  const scrollToSection = (element) => {
-    const offset = window.innerWidth >= 1024 ? 40 : 80; // 40px desktop, 16px mobile
-    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - offset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
-  };
-
-  // Toggle menu mobile
-  const toggleMenu = () => {
-    const isOpen = containerLinks.classList.contains('translate-y-0');
-    if (isOpen) {
-      containerLinks.classList.remove('translate-y-0', 'opacity-100');
-      containerLinks.classList.add('translate-y-full', 'opacity-0');
-      arrowIcon.classList.remove('-rotate-180');
-    } else {
-      containerLinks.classList.remove('translate-y-full', 'opacity-0');
-      containerLinks.classList.add('translate-y-0', 'opacity-100');
-      arrowIcon.classList.add('-rotate-180');
+  const scrollToSection = (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const offset = window.innerWidth >= 1024 ? 40 : 80;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
     }
   };
-  badgeOverlay.addEventListener('click', toggleMenu);
 
-  // Gestione click su tutti i link
+  // Toggle menu mobile migliorato
+  const toggleMenu = () => {
+    const isOpened = containerLinks.classList.contains('translate-y-0');
+    
+    if (isOpened) {
+      // Chiudi
+      containerLinks.classList.replace('translate-y-0', 'translate-y-full');
+      containerLinks.classList.replace('opacity-100', 'opacity-0');
+      badgeOverlay.classList.remove('is-active'); // Toglie rotazione
+    } else {
+      // Apri
+      containerLinks.classList.replace('translate-y-full', 'translate-y-0');
+      containerLinks.classList.replace('opacity-0', 'opacity-100');
+      badgeOverlay.classList.add('is-active'); // Attiva rotazione
+    }
+  };
+
+  if (badgeOverlay) {
+    // Ora l'intero blocco risponde al click
+    badgeOverlay.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+  }
+
+  // Gestione click link
   allAnchorLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) scrollToSection(targetElement);
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        scrollToSection(targetId);
 
-      // Chiudi menu mobile se aperto
-      if (containerLinks && containerLinks.classList.contains('translate-y-0')) {
-        containerLinks.classList.remove('translate-y-0', 'opacity-100');
-        containerLinks.classList.add('translate-y-full', 'opacity-0');
-        arrowIcon.classList.remove('-rotate-180');
+        if (containerLinks.classList.contains('translate-y-0')) {
+          toggleMenu();
+        }
       }
     });
   });
 
-  // Gestione pallino attivo desktop
+  // Pallino attivo desktop
   desktopLinks.forEach(li => {
     li.addEventListener('click', () => {
       desktopLinks.forEach(l => l.classList.remove('active'));
