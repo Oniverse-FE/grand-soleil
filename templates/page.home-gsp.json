@@ -250,16 +250,34 @@
       "type": "news-list",
       "name": "News Slider",
       "settings": {
-        "news-slider-title": "LEGGI IL BLOG",
-        "content": "",
+        "news-slider-title": "NEWS",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem diam, sagittis non libero et, finibus molestie mauris.",
         "news-cta-label": "Leggi l'articolo",
-        "news-slider-cta-all-label": "Vedi tutto",
+        "news-slider-cta-all-label": "Leggi tutte le news",
         "pt_desk": 200,
         "pb_desk": 200,
         "pt_tab": 160,
         "pb_tab": 160,
         "pt_mob": 104,
         "pb_mob": 104
+      }
+    },
+    "future_event_HFWCtA": {
+      "type": "future-event",
+      "name": "Future events",
+      "settings": {
+        "event-slider-title": "PROSSIMI EVENTI",
+        "event-slider-date": "Data",
+        "event-slider-location": "Luogo",
+        "event-slider-cta2-label": "Discover more",
+        "font_size_desk": "42px",
+        "font_size_mob": "36px",
+        "pt_desk": 96,
+        "pb_desk": 96,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_mob": 32,
+        "pb_mob": 32
       }
     },
     "text_image_with_background_pHwXNp": {
@@ -351,24 +369,6 @@
         "modal_title_ty": "Thank you!",
         "modal_text_ty": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
         "modal_close_ty": "Close"
-      }
-    },
-    "future_event_HFWCtA": {
-      "type": "future-event",
-      "name": "Future events",
-      "settings": {
-        "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-date": "Data",
-        "event-slider-location": "Luogo",
-        "event-slider-cta2-label": "Discover more",
-        "font_size_desk": "42px",
-        "font_size_mob": "36px",
-        "pt_desk": 96,
-        "pb_desk": 96,
-        "pt_tab": 80,
-        "pb_tab": 80,
-        "pt_mob": 32,
-        "pb_mob": 32
       }
     }
   },
