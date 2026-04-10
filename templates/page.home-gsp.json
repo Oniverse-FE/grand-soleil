@@ -97,7 +97,8 @@
       "name": "Gamma Section",
       "settings": {
         "tab_collections": "LINEA GRAND SOLEIL PLUS",
-        "label_discover": "Scopri"
+        "label_discover": "Scopri",
+        "label_coming_soon": "Coming Soon"
       }
     },
     "multi_card_9ekjXf": {
@@ -208,7 +209,7 @@
       "name": "Image and Text",
       "settings": {
         "imgandtext-image-left": false,
-        "mobile_reverse": false,
+        "mobile_reverse": true,
         "imgandtext-image-desktop": "shopify://shop_images/ef8f4c689b2381a590e579a7783b1d1abf1f3cf5.png",
         "imgandtext-title": "Grand Soleil Cup",
         "imgandtext-text": "La Grand Soleil Cup è l’appuntamento velico che riunisce ogni anno armatori ed equipaggi da tutto il mondo attorno a una passione comune: navigare su una flotta Grand Soleil. Più che una regata, è un evento che alterna prove in mare e momenti di convivialità a terra, tra veleggiate, regate tecniche e serate in banchina. Celebra prestazioni, stile e design, ma soprattutto lo spirito di una comunità internazionale unita dal mare.",
@@ -261,24 +262,6 @@
         "pb_mob": 104
       }
     },
-    "event_slider_yWwQkM": {
-      "type": "event-slider",
-      "name": "Future events",
-      "settings": {
-        "event-slider-title": "PROSSIMI EVENTI",
-        "event-slider-date": "Data",
-        "event-slider-location": "Luogo",
-        "event-slider-cta2-label": "Discover more",
-        "font_size_desk": "42px",
-        "font_size_mob": "36px",
-        "pt_desk": 96,
-        "pb_desk": 96,
-        "pt_tab": 80,
-        "pb_tab": 80,
-        "pt_mob": 24,
-        "pb_mob": 24
-      }
-    },
     "text_image_with_background_pHwXNp": {
       "type": "text-image-with-background",
       "name": "Box Testo e Immagine",
@@ -311,7 +294,63 @@
         "fd-cta_label": "Contatta il dealer",
         "fd-cta_link": "#",
         "fd-cta_label2": "Chiedi informazioni",
-        "fd-cta_link2": "#"
+        "modal_title": "Chiedi informazioni",
+        "info-form-required-text": "* indicates required fields",
+        "info-fname-label": "First name",
+        "info-fname-required": true,
+        "info-fname-placeholder": "Insert your first name",
+        "info-lname-label": "Last name",
+        "info-lname-required": true,
+        "info-lname-placeholder": "Insert your last name",
+        "info-country-label": "Country",
+        "info-country-required": true,
+        "info-country-placeholder": "Select your country",
+        "info-mail-label": "Email",
+        "info-mail-required": true,
+        "info-mail-placeholder": "example@domain.com",
+        "info-date-label": "Appointment day",
+        "info-date-required": true,
+        "info-date-placeholder": "Select a date",
+        "info-boat-q-label": "Have you already got a boat?",
+        "info-boat-q-required": false,
+        "info-boat-q-affermative-label": "Yes, by Grand Soleil Yacths",
+        "info-boat-q-other-label": "Yes, by other brands",
+        "info-boat-q-negative-label": "No",
+        "info-buy-q-label": "Are you interested in buying a Grand Soleil's Yacht in the next 6–12 months?",
+        "info-buy-q-required": false,
+        "info-buy-q-affermative-label": "Yes",
+        "info-buy-q-negative-label": "No",
+        "info-boat-sel-label": "For which boats would you like moreinformation?",
+        "info-boat-sel-required": false,
+        "options": "VD32, VD40, VD48, VD56, VD75",
+        "info-message-label": "Any specific request?",
+        "info-message-required": false,
+        "info-message-placeholder": "Write your request here",
+        "info-info-q-label": "info preferences",
+        "info-info-q-required": false,
+        "info-info-q-mail-label": "Email",
+        "info-info-q-phone-label": "Phone",
+        "info-info-q-both-label": "Both",
+        "info-form-markConsLabel": "With your consent, we will be able to send you commercial communications and satisfaction surveys about our products and services by e-mail and sms.",
+        "info-form-profConsLabel": "With your consent, we will be able to send you personalized commercial communications based on your preferences, purchasing choices, requests and interactions with us.",
+        "info-form-privacy-page": "",
+        "info-form-privacy-label": "Privacy Policy",
+        "info-form-marketing-title": "DIRECT MARKETING CONSENT",
+        "info-form-marketing-text": "By checking this box, you give your consent to receive commercial communications and to participate in market research and satisfaction survey activities concerning Van Dutch Yachts products and services, by e-mail and/or SMS, telephone and traditional paper mail. For this purpose we will use the personal and info data you have provided us with (e.g. first name, last name, address, e-mail, mobile phone number, etc.). The data collected will be stored until we receive a request from you to revoke your consent. The Data Controller is Cantiere Del Pardo SpA. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out if your data is being processed and obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you consider that your personal data is being processed in breach of the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "info-form-profiling-title": "PROFILING CONSENT",
+        "info-form-profiling-text": "By ticking this box, we will send personalised (profiled) commercial communications. For this purpose, we will use the data regarding the Van Dutch Yachts boats you have purchased or for which you have requestedinformation, your country of origin, your anagraphical data, your interactions with us through our website, through the Apps - which may be developed by us or by third parties - and through our social channels: we will thus send you personalised (“profiled”) communications and we will be able to develop products and services that are consistent with our customers' preferences. Moreover, your profile may be enriched withinformation lawfully acquired from third parties and made available to Cantiere del Pardo. The data will be collected for 5 years from the date of their collection. The Data Controller is Cantiere del Pardo Spa. By writing to privacy@cantieredelpardo.com you can exercise your right: i) to access, to find out whether your data is being processed and to obtain a copy of it; ii) to obtain the rectification or integration of your data; iii) to request the deletion of your data; iv) to obtain the limitation of processing; v) to data portability; vi) to withdraw consent. You may also lodge a complaint with the competent data protection supervisory authority if you believe that the processing of your personal data is taking place contrary to the provisions of EU Regulation 2016/679. Full Privacy Policy:",
+        "info-form-submit-button-text": "Submit",
+        "info-form-boat-q-model-label": "Model",
+        "info-form-boat-q-model-placeholder": "Insert the model",
+        "info-form-boat-q-port-label": "Mooring country",
+        "info-form-boat-q-port-placeholder": "Select the country",
+        "info-form-info-q-prefix-label": "Prefix",
+        "info-form-info-q-prefix-placeholder": "+39",
+        "info-form-info-q-phone-label": "Phone",
+        "info-form-info-q-phone-placeholder": "XXXXXXXXXX",
+        "modal_title_ty": "Thank you!",
+        "modal_text_ty": "We have sent a link to your e-mail address to confirm your request to receive our commercial communications.",
+        "modal_close_ty": "Close"
       }
     }
   },
@@ -324,7 +363,6 @@
     "text_and_image_WmYNYT",
     "sailing_story_wwLe3R",
     "news_list_ynrNdG",
-    "event_slider_yWwQkM",
     "text_image_with_background_pHwXNp",
     "find_dealer_LkPTw9"
   ]
