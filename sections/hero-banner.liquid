@@ -1,18 +1,17 @@
 <section class="relative flex flex-col h-dvh w-full overflow-hidden bg-[#101010]" id="hero-{{ section.id }}">
-  <div class="flex-1 relative h-full w-full">
+  <div class="flex-1 relative h-full w-full slides-container cursor-grab active:cursor-grabbing">
     {% for block in section.blocks %}
       <div
-        class="hero-slide {% if forloop.first %}active{% else %}opacity-0 pointer-events-none{% endif %} absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-[1000ms] ease-in-out z-10"
+        class="hero-slide {% if forloop.first %}active{% else %}opacity-0 pointer-events-none{% endif %} absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-[1000ms] ease-in-out z-10"
         data-index="{{ forloop.index0 }}"
       >
-        <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 -z-10 select-none">
           {% if block.settings.content-media %}
             {%- liquid
               assign video_m = block.settings.content-video-mobile
               assign video_d = block.settings.content-video-desktop
             -%}
             
-            {% comment %} Video Mobile {% endcomment %}
             <div class="w-full h-full lg:hidden">
               <video 
                 class="hero-v-ele w-full h-full object-cover" 
@@ -21,7 +20,6 @@
               ></video>
             </div>
 
-            {% comment %} Video Desktop {% endcomment %}
             <div class="w-full h-full hidden lg:block">
               <video 
                 class="hero-v-ele w-full h-full object-cover" 
@@ -30,8 +28,8 @@
               ></video>
             </div>
           {% else %}
-            <img src="{{ block.settings.content-image-mobile | img_url: 'master' }}" class="w-full h-full object-cover lg:hidden" alt="">
-            <img src="{{ block.settings.content-image-desktop | img_url: 'master' }}" class="w-full h-full object-cover hidden lg:inline" alt="">
+            <img src="{{ block.settings.content-image-mobile | img_url: 'master' }}" class="w-full h-full object-cover lg:hidden pointer-events-none" alt="">
+            <img src="{{ block.settings.content-image-desktop | img_url: 'master' }}" class="w-full h-full object-cover hidden lg:inline pointer-events-none" alt="">
           {% endif %}
           <div class="absolute inset-0 bg-black/30"></div>
         </div>
@@ -56,7 +54,6 @@
     {% endfor %}
   </div>
 
-{% comment %} PAGINAZIONE {% endcomment %}
   <div class="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 h-10 px-6 py-2 stepper-hero_gs stepper-hero_gsp">
     {% for block in section.blocks %}
       <button class="pagination-dot relative flex items-center justify-center p-0 bg-transparent border-none cursor-pointer" data-index="{{ forloop.index0 }}" style="width: 24px; height: 24px;">
@@ -67,7 +64,6 @@
           <circle class="progress-ring-fill" cx="12" cy="12" r="11" fill="none" stroke="#282624" stroke-width="2" stroke-dasharray="70" stroke-dashoffset="70" stroke-linecap="round"></circle>
         </svg>
       {% else %}
-        {% comment %} Cerchio per template GS (Azzurro #4DBAFA) {% endcomment %}
         <svg class="progress-svg absolute inset-0 w-6 h-6 -rotate-90 opacity-0 transition-opacity duration-300" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="11" fill="none" stroke="rgba(201, 191, 178, 0.72)" stroke-width="2"></circle>
           <circle class="progress-ring-fill" cx="12" cy="12" r="11" fill="none" stroke="#4DBAFA" stroke-width="2" stroke-dasharray="70" stroke-dashoffset="70" stroke-linecap="round"></circle>
@@ -89,7 +85,8 @@
 </section>
 
 <style>
-  .btn-hero { display: inline-block; padding: 16px 24px; text-align: center; min-width: 157px;}
+  .btn-hero { display: inline-block; padding: 16px 24px; text-align: center; min-width: 157px; transition: transform 0.2s ease;}
+  .btn-hero:active { transform: scale(0.96); }
   .hero-slide.active { opacity: 1; pointer-events: auto; }
   .pagination-dot.is-active .progress-svg { opacity: 1; }
   .pagination-dot.is-active .simple-dot { display: none; }
@@ -97,26 +94,37 @@
   .pagination-dot.is-playing .icon-play { display: none; }
   .pagination-dot.is-playing .icon-pause { display: block; }
   .progress-ring-fill { transition: stroke-dashoffset 0.1s linear; }
+  /* Previene il trascinamento indesiderato su mobile */
+  #hero-{{ section.id }} { touch-action: pan-y; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const section = document.querySelector('#hero-{{ section.id }}');
+  const container = section.querySelector('.slides-container');
   const slides = section.querySelectorAll('.hero-slide');
   const dots = section.querySelectorAll('.pagination-dot');
+  
   let current = 0;
   let isPaused = false;
   let animationFrame;
   let startTime;
   let pausedAt = 0;
+  let currentDuration = 10000;
   const IMG_DURATION = 10000;
+
+  // Variabili Drag
+  let startX = 0;
+  let isDragging = false;
+  const threshold = 60; 
 
   function updateSlide(index) {
     cancelAnimationFrame(animationFrame);
     
     dots.forEach((d, i) => {
       d.classList.remove('is-active', 'is-playing');
-      d.querySelector('.progress-ring-fill').style.strokeDashoffset = 70;
+      const ring = d.querySelector('.progress-ring-fill');
+      if(ring) ring.style.strokeDashoffset = 70;
       if(i === index) d.classList.add('is-active');
     });
 
@@ -139,23 +147,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (video) {
       dots[current].classList.add('is-playing');
-      video.muted = true; // Essenziale per autoplay
+      video.muted = true;
       video.play().then(() => {
-        const d = video.duration ? video.duration * 1000 : IMG_DURATION;
-        startProgress(d);
-      }).catch(() => startProgress(IMG_DURATION));
+        currentDuration = video.duration ? video.duration * 1000 : IMG_DURATION;
+        startProgress(currentDuration);
+      }).catch(() => {
+        currentDuration = IMG_DURATION;
+        startProgress(currentDuration);
+      });
     } else {
-      startProgress(IMG_DURATION);
+      currentDuration = IMG_DURATION;
+      startProgress(currentDuration);
     }
   }
 
   function startProgress(duration) {
-    const ring = dots[current].querySelector('.progress-ring-fill');
+    const activeDot = dots[current];
+    if (!activeDot) return;
+    const ring = activeDot.querySelector('.progress-ring-fill');
+    
     function animate(now) {
       if (!startTime) startTime = now;
       let elapsed = isPaused ? pausedAt : (now - startTime);
       let progress = Math.min(elapsed / duration, 1);
-      ring.style.strokeDashoffset = 70 - (progress * 70);
+      
+      if(ring) ring.style.strokeDashoffset = 70 - (progress * 70);
+      
       if (progress < 1) {
         if (!isPaused) animationFrame = requestAnimationFrame(animate);
       } else {
@@ -165,8 +182,51 @@ document.addEventListener('DOMContentLoaded', function() {
     animationFrame = requestAnimationFrame(animate);
   }
 
+  // --- LOGICA DRAG / SWIPE ---
+  const getPosX = (e) => e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+
+  const onStart = (e) => {
+    // Non attivare il drag se clicchiamo su un link/bottone
+    if (e.target.closest('a') || e.target.closest('button')) return;
+    
+    isDragging = true;
+    startX = getPosX(e);
+    
+    // Pausa temporanea durante il tocco
+    isPaused = true;
+    pausedAt = performance.now() - startTime;
+    cancelAnimationFrame(animationFrame);
+  };
+
+  const onEnd = (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        updateSlide((current + 1) % slides.length);
+      } else {
+        updateSlide((current - 1 + slides.length) % slides.length);
+      }
+    } else {
+      // Riprendi se lo swipe è stato annullato
+      isPaused = false;
+      startTime = performance.now() - pausedAt;
+      startProgress(currentDuration);
+    }
+  };
+
+  container.addEventListener('mousedown', onStart);
+  window.addEventListener('mouseup', onEnd);
+  container.addEventListener('touchstart', onStart, { passive: true });
+  container.addEventListener('touchend', onEnd);
+
+  // --- LOGICA DOTS ---
   dots.forEach(dot => {
-    dot.addEventListener('click', () => {
+    dot.addEventListener('click', (e) => {
       const idx = parseInt(dot.dataset.index);
       if (idx === current) {
         const video = Array.from(slides[current].querySelectorAll('.hero-v-ele')).find(v => v.offsetParent !== null);
@@ -176,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startTime = performance.now() - pausedAt;
             video.play();
             dot.classList.add('is-playing');
-            startProgress(video.duration * 1000 || IMG_DURATION);
+            startProgress(currentDuration);
           } else {
             isPaused = true;
             pausedAt = performance.now() - startTime;
