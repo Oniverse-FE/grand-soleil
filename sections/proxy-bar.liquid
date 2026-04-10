@@ -1,4 +1,4 @@
-<div class="w-full h-auto flex items-center justify-center fixed z-10 left-0 bottom-0 right-0 proxy-bar_gs proxy-bar_gsp py-3 md:py-4 px-4 md:px-[64px]">
+<div class="w-full h-auto flex items-center justify-center fixed z-40 left-0 bottom-0 right-0 proxy-bar_gs proxy-bar_gsp py-3 md:py-4 px-4 md:px-[64px]">
   <div class="flex flex-row w-full h-[42px] lg:h-[56px]">
     
     <div class="arrow-icon flex md:hidden w-[158px] flex-row items-center gap-10 badge-overlay cursor-pointer cta-border-light_gs cta-border-dark_gsp py-1 px-4">
@@ -25,9 +25,9 @@
   </div>
 </div>
 
-<div class="fixed inset-x-0 bottom-0 z-30 flex justify-start pointer-events-none lg:hidden">
-  <div class="container-ancor-links pointer-events-auto w-[70vw] h-auto flex flex-col items-start justify-start mb-[75px] rounded-[16px] p-4 proxy-bar_gs proxy-bar_gsp gap-y-4 transform translate-y-full opacity-0 transition-all duration-300 ease-in-out">
-    <ul class="w-full flex flex-col items-start justify-start gap-y-4">
+<div class="fixed inset-x-0 bottom-[75px] z-0 flex justify-start pointer-events-none lg:hidden">
+  <div class="container-ancor-links pointer-events-auto w-full mx-4 h-auto flex flex-col items-start justify-start border-proxybar_gs border-proxybar_gsp px-4 py-6 proxy-bar_gs proxy-bar_gsp gap-y-6 transform translate-y-full opacity-0 transition-all duration-300 ease-in-out">
+    <ul class="w-full flex flex-col items-start justify-start gap-y-6">
       <a href="#{{ section.settings.id_item_1 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_1 | default: "Design" }} </a>
       <a href="#{{ section.settings.id_item_2 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_2 | default: "Top view" }} </a>
       <a href="#{{ section.settings.id_item_3 }}" class="px-3 body-md_gs body-md_gsp text-color_gs text-color_gsp"> {{ section.settings.item_3 | default: "Technical feature" }} </a>

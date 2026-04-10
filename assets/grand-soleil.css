@@ -1148,3 +1148,8 @@ background-color:#EBEFF2;
     border: 0.5px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
     background: var(--GS-Primary-Zircon, #EBEFF2);
 }
+
+.border-proxybar_gs{
+    border-radius: 16px;
+    border: 1px solid var(--GS-Stroke-Stroke, rgba(235, 239, 242, 0.64));
+}

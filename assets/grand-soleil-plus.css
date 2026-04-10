@@ -1119,3 +1119,8 @@ color:#EBEFF2;
     border: 0.5px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
     background: var(--gs-secondary-black-truffle, #282624);
 }
+
+.border-proxybar_gsp{
+    border-radius: 16px;
+    border: 1px solid var(--gs-stroke-stroke, rgba(201, 191, 178, 0.72));
+}
